@@ -71,6 +71,6 @@
   "MANOSABA-TOUCH_OF_OROBAS.description": "Upon pickup, upgrade [gold]{StarterRelic}[/gold] to [gold]Lv. 5[/gold].",
   "MANOSABA-TOUCH_OF_OROBAS.eventDescription": "Upgrade [gold]{StarterRelic}[/gold] to [gold]Lv. 5[/gold].",
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.title": "Streaming Equipment",
-  "MANOSABA-LIVE_STREAMING_EQUIPMENT.description": "While in [gold]Live Stream Mode[/gold], enemies become [gold]Fans[/gold] after you deal damage to them.\nLv2+: At the start of combat, gain [gold]Hiding[/gold] equal to this relic's level.\nLv4+: Gain 3 [gold]Live Stream Mode[/gold] at the start of combat.\nFans this run: {FanCount}.",
+  "MANOSABA-LIVE_STREAMING_EQUIPMENT.description": "While in [gold]Live Stream Mode[/gold], enemies become [gold]Fans[/gold] after you deal damage to them.\nAt the start of combat, gain [gold]Hiding[/gold] equal to this relic's level.\nLv2+: At the start of combat, gain 3 [gold]Live Stream Mode[/gold].\nLv4+: At the start of your turn, if you have [gold]Live Stream Mode[/gold], gain 1 [gold]Energy[/gold].\nFans this run: {FanCount}.",
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.flavor": "Gotta keep the stream going!"
 }

@@ -71,6 +71,6 @@
   "MANOSABA-TOUCH_OF_OROBAS.description": "取得時、[gold]{StarterRelic}[/gold]を[gold]Lv.5[/gold]にレベルアップする。",
   "MANOSABA-TOUCH_OF_OROBAS.eventDescription": "[gold]{StarterRelic}[/gold]を[gold]Lv.5[/gold]にレベルアップする。",
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.title": "配信機材",
-  "MANOSABA-LIVE_STREAMING_EQUIPMENT.description": "[gold]配信モード[/gold]中にダメージを与えた敵を[gold]ファン[/gold]にする。\nLv2+：戦闘開始時、この遺物のレベルと同じ層数の[gold]隠れ[/gold]を得る。\nLv4+：戦闘開始時、[gold]配信モード[/gold]3。\n累計ファン：{FanCount}。",
+  "MANOSABA-LIVE_STREAMING_EQUIPMENT.description": "[gold]配信モード[/gold]中にダメージを与えた敵を[gold]ファン[/gold]にする。\n戦闘開始時、この遺物のレベルと同じ層数の[gold]隠れ[/gold]を得る。\nLv2+：戦闘開始時、[gold]配信モード[/gold]3。\nLv4+：ターン開始時、[gold]配信モード[/gold]がある場合、エネルギーを1得る。\n累計ファン：{FanCount}。",
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.flavor": "今日も配信頑張るぞ！"
 }

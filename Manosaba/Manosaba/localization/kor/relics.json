@@ -71,6 +71,6 @@
   "MANOSABA-TOUCH_OF_OROBAS.description": "획득 시, [gold]{StarterRelic}[/gold]을(를) [gold]Lv.5[/gold]까지 레벨업합니다.",
   "MANOSABA-TOUCH_OF_OROBAS.eventDescription": "[gold]{StarterRelic}[/gold]을(를) [gold]Lv.5[/gold]까지 레벨업합니다.",
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.title": "방송 장비",
-  "MANOSABA-LIVE_STREAMING_EQUIPMENT.description": "[gold]라이브 모드[/gold] 중 피해를 준 적을 [gold]팬[/gold]으로 만듭니다.\nLv2+: 전투 시작 시 이 유물 레벨과 같은 [gold]숨기[/gold]를 얻습니다.\nLv4+: 전투 시작 시 [gold]라이브 모드[/gold] 3.\n누적 팬: {FanCount}.",
+  "MANOSABA-LIVE_STREAMING_EQUIPMENT.description": "[gold]라이브 모드[/gold] 중 피해를 준 적을 [gold]팬[/gold]으로 만듭니다.\n전투 시작 시 이 유물 레벨과 같은 [gold]숨기[/gold]를 얻습니다.\nLv2+: 전투 시작 시 [gold]라이브 모드[/gold] 3.\nLv4+: 턴 시작 시 [gold]라이브 모드[/gold]가 있으면 에너지 1을 얻습니다.\n누적 팬: {FanCount}.",
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.flavor": "오늘도 방송 화이팅!"
 }

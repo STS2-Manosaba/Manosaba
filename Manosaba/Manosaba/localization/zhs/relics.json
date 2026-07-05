@@ -68,6 +68,6 @@
   "MANOSABA-TOUCH_OF_OROBAS.description": "拾起時，將[gold]{StarterRelic}[/gold]升級至[gold]Lv.5[/gold]。",
   "MANOSABA-TOUCH_OF_OROBAS.eventDescription": "將[gold]{StarterRelic}[/gold]升級至[gold]Lv.5[/gold]。",
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.title": "直播設備",
-  "MANOSABA-LIVE_STREAMING_EQUIPMENT.description": "[gold]直播模式[/gold]下對目標造成傷害後，使其成為粉絲。\nLv2 起，戰鬥開始時獲得與此遺物等級相同層數的[gold]躲藏[/gold]。\nLv4 起，戰鬥開始時獲得 3 層[gold]直播模式[/gold]。\n目前粉絲數量：{FanCount}。",
+  "MANOSABA-LIVE_STREAMING_EQUIPMENT.description": "[gold]直播模式[/gold]下對目標造成傷害後，使其成為粉絲。\n戰鬥開始時，獲得與此遺物等級相同層數的[gold]躲藏[/gold]。\nLv2 起，戰鬥開始時獲得 3 層[gold]直播模式[/gold]。\nLv4 起，回合開始時，如果有[gold]直播模式[/gold]，獲得 1 點能量。\n目前粉絲數量：{FanCount}。",
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.flavor": "今天也要努力直播！"
 }

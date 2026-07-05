@@ -62,17 +62,32 @@ public sealed class LiveStreamingEquipment : LevelingPathCustomRelicModel
             return;
         }
 
-        if (RelicLevel >= 2)
-        {
-            Flash();
-            await CommonActions.Apply<HidingPower>(new ThrowingPlayerChoiceContext(), creature, null, RelicLevel);
-        }
+        Flash();
+        await CommonActions.Apply<HidingPower>(new ThrowingPlayerChoiceContext(), creature, null, RelicLevel);
 
-        if (RelicLevel >= 4)
+        if (RelicLevel >= 2)
         {
             Flash();
             await CommonActions.Apply<LiveStreamModePower>(new ThrowingPlayerChoiceContext(), creature, null, 3m);
         }
+    }
+
+    public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
+    {
+        _ = choiceContext;
+
+        if (RelicLevel < 4 || player != Owner || Owner.Creature is not { } creature)
+        {
+            return;
+        }
+
+        if (!SawatariCocoHelper.IsInLiveStreamMode(creature))
+        {
+            return;
+        }
+
+        Flash();
+        await PlayerCmd.GainEnergy(1, Owner);
     }
 
     public override async Task AfterDamageGiven(
