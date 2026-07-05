@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 namespace manosaba.Characters.SawatariCoco.Cards;
@@ -18,7 +19,9 @@ public sealed class PlayWhatGame : PathCustomCardModel
     private const TargetType targetType = TargetType.Self;
     private const bool shouldShowInCardLibrary = true;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<LetsPlayAGamePower>()];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1)];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<IWantToPlayAGamePower>()];
 
     public PlayWhatGame() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
@@ -28,10 +31,12 @@ public sealed class PlayWhatGame : PathCustomCardModel
     {
         _ = cardPlay;
 
-        decimal letsPlayAGameAmount = Owner.Creature.GetPowerAmount<LetsPlayAGamePower>();
-        if (letsPlayAGameAmount > 0m)
+        decimal iWantToPlayAGameAmount = Owner.Creature.GetPowerAmount<IWantToPlayAGamePower>();
+        if (iWantToPlayAGameAmount > 0m)
         {
-            await CommonActions.Apply<LetsPlayAGamePower>(choiceContext, Owner.Creature, this, -letsPlayAGameAmount);
+            await CommonActions.Apply<IWantToPlayAGamePower>(choiceContext, Owner.Creature, this, -iWantToPlayAGameAmount);
         }
+
+        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
     }
 }

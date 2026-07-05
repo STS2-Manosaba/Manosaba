@@ -15,8 +15,8 @@ using MegaCrit.Sts2.Core.Random;
 
 namespace Manosaba.Characters.SawatariCoco.Powers;
 
-/// <summary>我想玩個遊戲：回合結束時獲得魔女化；魔女化達 150 時每回合開始時被接管。</summary>
-public sealed class LetsPlayAGamePower : PathCustomPowerModel
+/// <summary>I want to play a game：回合結束時獲得魔女化；魔女化達 150 時每回合開始時被接管。</summary>
+public sealed class IWantToPlayAGamePower : PathCustomPowerModel
 {
     private const decimal MajokaPerTurnEnd = 30m;
     private const decimal TakeoverMajokaThreshold = 150m;

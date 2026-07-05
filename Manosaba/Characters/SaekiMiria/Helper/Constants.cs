@@ -113,7 +113,7 @@ namespace Manosaba.Characters.SaekiMiria.Helper
                 typeof(MysteriousCatSetEnergyPower),
 
                 typeof(FanServiceSkillPower),
-                typeof(LetsPlayAGamePower),
+                typeof(IWantToPlayAGamePower),
                 typeof(HidingPower),
                 typeof(LiveStreamModePower),
             };

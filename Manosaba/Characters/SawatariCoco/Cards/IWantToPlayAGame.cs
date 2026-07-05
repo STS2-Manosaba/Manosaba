@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.Models;
 namespace manosaba.Characters.SawatariCoco.Cards;
 
 [Pool(typeof(SawatariCocoCardPool))]
-public sealed class LetsPlayAGame : PathCustomCardModel
+public sealed class IWantToPlayAGame : PathCustomCardModel
 {
     private const int energyCost = 1;
     private const CardType type = CardType.Power;
@@ -27,17 +27,17 @@ public sealed class LetsPlayAGame : PathCustomCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<LetsPlayAGamePower>(1m),
+        new PowerVar<IWantToPlayAGamePower>(1m),
         new CardsVar(playWhatGameTokens),
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<LetsPlayAGamePower>(),
+        HoverTipFactory.FromPower<IWantToPlayAGamePower>(),
         HoverTipFactory.FromCard<PlayWhatGame>(),
     ];
 
-    public LetsPlayAGame() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
+    public IWantToPlayAGame() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
     }
 
@@ -45,7 +45,7 @@ public sealed class LetsPlayAGame : PathCustomCardModel
     {
         _ = cardPlay;
 
-        await CommonActions.Apply<LetsPlayAGamePower>(choiceContext, Owner.Creature, this, DynamicVars["LetsPlayAGamePower"].BaseValue);
+        await CommonActions.Apply<IWantToPlayAGamePower>(choiceContext, Owner.Creature, this, DynamicVars["IWantToPlayAGamePower"].BaseValue);
 
         if (CombatState is not { } combatState)
         {
