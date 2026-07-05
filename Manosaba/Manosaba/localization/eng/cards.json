@@ -931,6 +931,8 @@
   "MANOSABA-THANKS_FOR_THE_TIP.description": "At the end of combat, gain {IfUpgraded:show:10 plus your current Fan Count in|your current Fan Count in} [gold]Gold[/gold].",
   "MANOSABA-ONLINE_SHOPPING.title": "Online Shopping",
   "MANOSABA-ONLINE_SHOPPING.description": "At the start of each turn, choose 1 [gold]Shopping[/gold] card to add to your [gold]Draw Pile[/gold].",
+  "MANOSABA-I_GUESS_I_HAVE_NO_CHOICE.title": "I guess I have no choice",
+  "MANOSABA-I_GUESS_I_HAVE_NO_CHOICE.description": "Coco sees you can't find the equipment.\nGain {FourDPocketPower:diff()} [gold]4D Pocket[/gold].",
   "MANOSABA-TASTY_SNACK.title": "Tasty Snack",
   "MANOSABA-TASTY_SNACK.description": "Spend {Gold:diff()} [gold]Gold[/gold].\nGain {DexterityPower:diff()} [gold]Dexterity[/gold].\nHeal {Heal:diff()} HP.",
   "MANOSABA-NICE_OUTFIT.title": "Nice Outfit",

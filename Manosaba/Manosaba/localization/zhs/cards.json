@@ -931,6 +931,8 @@
   "MANOSABA-THANKS_FOR_THE_TIP.description": "在戰鬥結束時，獲得{IfUpgraded:show:10+目前粉絲數量的|目前粉絲數量的}[gold]金幣[/gold]。",
   "MANOSABA-ONLINE_SHOPPING.title": "網購時間",
   "MANOSABA-ONLINE_SHOPPING.description": "每回合開始時選擇 1 張[gold]商品牌[/gold]加入[gold]抽牌堆[/gold]。",
+  "MANOSABA-I_GUESS_I_HAVE_NO_CHOICE.title": "真拿你沒辦法",
+  "MANOSABA-I_GUESS_I_HAVE_NO_CHOICE.description": "可可看到你找不到裝備。\n獲得 {FourDPocketPower:diff()} 層[gold]百寶袋[/gold]。",
   "MANOSABA-TASTY_SNACK.title": "好吃點心",
   "MANOSABA-TASTY_SNACK.description": "花費 {Gold:diff()} [gold]金幣[/gold]。\n獲得 {DexterityPower:diff()} 點[gold]敏捷[/gold]。\n回復 {Heal:diff()} 點生命值。",
   "MANOSABA-NICE_OUTFIT.title": "好看衣服",

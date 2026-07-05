@@ -115,6 +115,7 @@ public static class SawatariCocoEquipmentHelper
         }
 
         await TryTriggerSetBonusAsync(choiceContext, creature, series, source);
+        await TryTriggerTreasureBagAsync(choiceContext, creature);
     }
 
     public static int GetTotalEquipmentScore(Creature creature)
@@ -171,6 +172,82 @@ public static class SawatariCocoEquipmentHelper
             EquipmentSeries.CutieCats => "cutie_cats",
             _ => null,
         };
+
+    private static async Task TryTriggerTreasureBagAsync(PlayerChoiceContext choiceContext, Creature creature)
+    {
+        if (creature.GetPower<FourDPocketPower>() is not { } fourDPocket || fourDPocket.Amount <= 0m)
+        {
+            return;
+        }
+
+        if (!TryGetNearCompleteSet(creature, out EquipmentSeries series, out EquipmentSlot missingSlot))
+        {
+            return;
+        }
+
+        if (!EquipmentPieceTokenRegistry.TryGetEquipmentCardType(series, missingSlot, out Type equipmentCardType)
+            || ModelDb.GetById<CardModel>(ModelDb.GetId(equipmentCardType)) is not EquipmentCardModel equipmentCard)
+        {
+            return;
+        }
+
+        await PowerCmd.Decrement(fourDPocket);
+
+        await EquipPieceAsync(
+            choiceContext,
+            creature,
+            missingSlot,
+            series,
+            equipmentCard.Id.Entry,
+            equipmentCard.EquipScore,
+            null);
+    }
+
+    private static bool TryGetNearCompleteSet(Creature creature, out EquipmentSeries series, out EquipmentSlot missingSlot)
+    {
+        foreach (EquipmentSeries candidate in Enum.GetValues<EquipmentSeries>())
+        {
+            if (candidate == EquipmentSeries.None)
+            {
+                continue;
+            }
+
+            int matchCount = 0;
+            missingSlot = default;
+            bool hasMissingSlot = false;
+
+            foreach (EquipmentSlot slot in Enum.GetValues<EquipmentSlot>())
+            {
+                EquipmentSeries slotSeries = GetSlotSeries(creature, slot);
+                int score = GetSlotScore(creature, slot);
+
+                if (slotSeries == candidate && score > 0)
+                {
+                    matchCount++;
+                    continue;
+                }
+
+                if (hasMissingSlot)
+                {
+                    matchCount = 0;
+                    break;
+                }
+
+                hasMissingSlot = true;
+                missingSlot = slot;
+            }
+
+            if (matchCount == 3 && hasMissingSlot)
+            {
+                series = candidate;
+                return true;
+            }
+        }
+
+        series = EquipmentSeries.None;
+        missingSlot = default;
+        return false;
+    }
 
     private static async Task TryTriggerSetBonusAsync(
         PlayerChoiceContext choiceContext,

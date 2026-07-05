@@ -931,6 +931,8 @@
   "MANOSABA-THANKS_FOR_THE_TIP.description": "전투 종료 시 {IfUpgraded:show:10+현재 팬 수만큼의|현재 팬 수만큼의} [gold]골드[/gold]를 얻습니다.",
   "MANOSABA-ONLINE_SHOPPING.title": "온라인 쇼핑",
   "MANOSABA-ONLINE_SHOPPING.description": "매 턴 시작 시 [gold]쇼핑[/gold] 카드 1장을 선택해 [gold]뽑을 더미[/gold]에 넣습니다.",
+  "MANOSABA-I_GUESS_I_HAVE_NO_CHOICE.title": "I guess I have no choice",
+  "MANOSABA-I_GUESS_I_HAVE_NO_CHOICE.description": "코코는 장비를 찾지 못하는 걸 본다.\n[gold]4D Pocket[/gold] {FourDPocketPower:diff()}을(를) 얻습니다.",
   "MANOSABA-TASTY_SNACK.title": "맛있는 간식",
   "MANOSABA-TASTY_SNACK.description": "{Gold:diff()} [gold]골드[/gold]를 사용합니다.\n{DexterityPower:diff()} [gold]민첩[/gold]을 얻습니다.\n{Heal:diff()} HP 회복.",
   "MANOSABA-NICE_OUTFIT.title": "예쁜 옷",

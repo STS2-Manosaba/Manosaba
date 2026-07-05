@@ -52,11 +52,35 @@ public static class EquipmentPieceTokenRegistry
             [(EquipmentSeries.CutieCats, EquipmentSlot.Shoes)] = typeof(CutieCatsShoesToken),
         };
 
+    private static readonly IReadOnlyDictionary<(EquipmentSeries Series, EquipmentSlot Slot), Type> SeriesSlotToEquipmentCard =
+        new Dictionary<(EquipmentSeries, EquipmentSlot), Type>
+        {
+            [(EquipmentSeries.PunkCat, EquipmentSlot.Headwear)] = typeof(PunkCatHeadwear),
+            [(EquipmentSeries.PunkCat, EquipmentSlot.Top)] = typeof(PunkCatTop),
+            [(EquipmentSeries.PunkCat, EquipmentSlot.Skirt)] = typeof(PunkCatSkirt),
+            [(EquipmentSeries.PunkCat, EquipmentSlot.Shoes)] = typeof(PunkCatShoes),
+            [(EquipmentSeries.Cybercat, EquipmentSlot.Headwear)] = typeof(CybercatHeadwear),
+            [(EquipmentSeries.Cybercat, EquipmentSlot.Top)] = typeof(CybercatTop),
+            [(EquipmentSeries.Cybercat, EquipmentSlot.Skirt)] = typeof(CybercatSkirt),
+            [(EquipmentSeries.Cybercat, EquipmentSlot.Shoes)] = typeof(CybercatShoes),
+            [(EquipmentSeries.MysteriousCat, EquipmentSlot.Headwear)] = typeof(MysteriousCatHeadwear),
+            [(EquipmentSeries.MysteriousCat, EquipmentSlot.Top)] = typeof(MysteriousCatTop),
+            [(EquipmentSeries.MysteriousCat, EquipmentSlot.Skirt)] = typeof(MysteriousCatPants),
+            [(EquipmentSeries.MysteriousCat, EquipmentSlot.Shoes)] = typeof(MysteriousCatShoes),
+            [(EquipmentSeries.CutieCats, EquipmentSlot.Headwear)] = typeof(CutieCatsHeadwear),
+            [(EquipmentSeries.CutieCats, EquipmentSlot.Top)] = typeof(CutieCatsTop),
+            [(EquipmentSeries.CutieCats, EquipmentSlot.Skirt)] = typeof(CutieCatsPants),
+            [(EquipmentSeries.CutieCats, EquipmentSlot.Shoes)] = typeof(CutieCatsShoes),
+        };
+
     public static bool TryGetTokenType(Type equipmentCardType, out Type tokenType)
         => EquipmentCardToToken.TryGetValue(equipmentCardType, out tokenType!);
 
     public static bool TryGetTokenType(EquipmentSeries series, EquipmentSlot slot, out Type tokenType)
         => SeriesSlotToToken.TryGetValue((series, slot), out tokenType!);
+
+    public static bool TryGetEquipmentCardType(EquipmentSeries series, EquipmentSlot slot, out Type equipmentCardType)
+        => SeriesSlotToEquipmentCard.TryGetValue((series, slot), out equipmentCardType!);
 }
 
 public abstract class EquipmentPieceTokenModel : PathCustomCardModel
