@@ -15,13 +15,15 @@ namespace manosaba.Characters.SawatariCoco.Cards;
 public sealed class SlayTheSpireIi : PathCustomCardModel
 {
     private const int energyCost = 3;
-    private const CardType type = CardType.Power;
+    private const CardType type = CardType.Skill;
     private const CardRarity rarity = CardRarity.Rare;
     private const TargetType targetType = TargetType.Self;
     private const bool shouldShowInCardLibrary = true;
     private const int baseCardCount = 8;
 
     private static readonly LocString SelectionPrompt = new("cards", "MANOSABA-SLAY_THE_SPIRE_II.selectionScreenPrompt");
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
