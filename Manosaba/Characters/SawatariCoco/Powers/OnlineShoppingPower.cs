@@ -45,7 +45,8 @@ public sealed class OnlineShoppingPower : PathCustomPowerModel
                 return;
             }
 
-            await CardPileCmd.AddGeneratedCardToCombat(selected, PileType.Draw, player);
+            CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(selected, PileType.Draw, player, CardPilePosition.Random);
+            CardCmd.PreviewCardPileAdd(result);
         }
     }
 }

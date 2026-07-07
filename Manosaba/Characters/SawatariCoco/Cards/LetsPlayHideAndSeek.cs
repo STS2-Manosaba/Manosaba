@@ -69,7 +69,8 @@ public class LetsPlayHideAndSeek : PathCustomCardModel
             return;
         }
 
-        await CardPileCmd.AddGeneratedCardToCombat(selected, PileType.Draw, Owner);
+        CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(selected, PileType.Draw, Owner, CardPilePosition.Random);
+        CardCmd.PreviewCardPileAdd(result);
     }
 
     protected override void OnUpgrade()

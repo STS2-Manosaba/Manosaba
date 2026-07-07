@@ -52,11 +52,14 @@ public sealed class IWantToPlayAGame : PathCustomCardModel
             return;
         }
 
+        List<CardModel> tokens = [];
         for (int i = 0; i < playWhatGameTokens; i++)
         {
-            CardModel token = combatState.CreateCard(ModelDb.Card<PlayWhatGame>(), Owner);
-            await CardPileCmd.AddGeneratedCardToCombat(token, PileType.Draw, Owner, CardPilePosition.Random);
+            tokens.Add(combatState.CreateCard(ModelDb.Card<PlayWhatGame>(), Owner));
         }
+
+        IReadOnlyList<CardPileAddResult> results = await CardPileCmd.AddGeneratedCardsToCombat(tokens, PileType.Draw, Owner, CardPilePosition.Random);
+        CardCmd.PreviewCardPileAdd(results);
     }
 
     protected override void OnUpgrade()
