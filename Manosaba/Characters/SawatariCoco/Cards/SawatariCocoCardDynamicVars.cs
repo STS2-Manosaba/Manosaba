@@ -290,13 +290,30 @@ internal static class SawatariCocoCardDynamicVars
             bool runGlobalHooks,
             Func<decimal> calculateRaw)
         {
-            decimal raw = Math.Max(calculateRaw(), 0m);
+            EnchantmentModel? enchantment = card.Enchantment;
+            if (enchantment != null)
+            {
+                decimal baseValue = card.DynamicVars.CalculationBase.BaseValue;
+                baseValue += enchantment.EnchantDamageAdditive(baseValue, calculatedVar.Props);
+                baseValue *= enchantment.EnchantDamageMultiplicative(baseValue, calculatedVar.Props);
+                baseValue = Math.Max(baseValue, 0m);
+                if (card.IsEnchantmentPreview)
+                {
+                    calculatedVar.PreviewValue = baseValue;
+                }
+                else
+                {
+                    calculatedVar.EnchantedValue = baseValue;
+                }
+            }
+
+            decimal num = Math.Max(calculateRaw(), 0m);
             if (runGlobalHooks)
             {
                 ICombatState? combatState = card.CombatState ?? card.Owner?.Creature?.CombatState;
                 if (combatState == null || card.Owner == null)
                 {
-                    calculatedVar.PreviewValue = raw;
+                    calculatedVar.PreviewValue = num;
                 }
                 else
                 {
@@ -305,7 +322,7 @@ internal static class SawatariCocoCardDynamicVars
                         combatState,
                         target,
                         calculatedVar.IsFromOsty ? card.Owner.Osty : card.Owner.Creature,
-                        raw,
+                        num,
                         calculatedVar.Props,
                         card,
                         ModifyDamageHookType.All,
@@ -315,7 +332,13 @@ internal static class SawatariCocoCardDynamicVars
             }
             else if (!card.IsEnchantmentPreview)
             {
-                calculatedVar.PreviewValue = raw;
+                if (enchantment != null)
+                {
+                    num += enchantment.EnchantDamageAdditive(num, calculatedVar.Props);
+                    num *= enchantment.EnchantDamageMultiplicative(num, calculatedVar.Props);
+                }
+
+                calculatedVar.PreviewValue = num;
             }
 
             calculatedVar.PreviewValue = Math.Max(calculatedVar.PreviewValue, 0m);
@@ -329,20 +352,36 @@ internal static class SawatariCocoCardDynamicVars
             bool runGlobalHooks,
             Func<decimal> calculateRaw)
         {
-            decimal raw = Math.Max(calculateRaw(), 0m);
+            EnchantmentModel? enchantment = card.Enchantment;
+            if (enchantment != null)
+            {
+                decimal baseValue = card.DynamicVars.CalculationBase.BaseValue;
+                baseValue += enchantment.EnchantBlockAdditive(baseValue);
+                baseValue *= enchantment.EnchantBlockMultiplicative(baseValue);
+                if (card.IsEnchantmentPreview)
+                {
+                    calculatedVar.PreviewValue = baseValue;
+                }
+                else
+                {
+                    calculatedVar.EnchantedValue = baseValue;
+                }
+            }
+
+            decimal num = Math.Max(calculateRaw(), 0m);
             if (runGlobalHooks)
             {
                 ICombatState? combatState = card.CombatState ?? card.Owner?.Creature?.CombatState;
                 if (combatState == null || card.Owner?.Creature == null)
                 {
-                    calculatedVar.PreviewValue = raw;
+                    calculatedVar.PreviewValue = num;
                 }
                 else
                 {
                     calculatedVar.PreviewValue = Hook.ModifyBlock(
                         combatState,
                         card.Owner.Creature,
-                        raw,
+                        num,
                         calculatedVar.Props,
                         card,
                         null,
@@ -351,7 +390,13 @@ internal static class SawatariCocoCardDynamicVars
             }
             else if (!card.IsEnchantmentPreview)
             {
-                calculatedVar.PreviewValue = raw;
+                if (enchantment != null)
+                {
+                    num += enchantment.EnchantBlockAdditive(num);
+                    num *= enchantment.EnchantBlockMultiplicative(num);
+                }
+
+                calculatedVar.PreviewValue = num;
             }
 
             calculatedVar.PreviewValue = Math.Max(calculatedVar.PreviewValue, 0m);
