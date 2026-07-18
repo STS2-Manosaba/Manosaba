@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Runs;
 using System.Runtime.CompilerServices;
 
@@ -84,6 +85,14 @@ public static class Patch_Difficulties
         }
 
         if (!creature.IsEnemy || !ManosabaCombatCompat.HasCombatState(creature))
+        {
+            return false;
+        }
+
+        // 特例：幻象（IllusionPower）的復活補血量是由「已縮放的 MaxHp」推導而來（ReviveMove healing MaxHp - CurrentHp），
+        // 本身已含大廳倍率；若再乘一次會重複縮放（治療跳字灌水；倍率<1 時甚至補不滿）。此類怪跳過，其餘復活怪（實驗體、
+        // MockRevive 等傳入未乘倍率補量者）維持原本縮放。
+        if (creature.HasPower<IllusionPower>())
         {
             return false;
         }
