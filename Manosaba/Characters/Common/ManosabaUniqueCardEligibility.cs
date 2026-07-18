@@ -4,6 +4,7 @@ using Manosaba.Characters.Common.Overrides;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Random;
 using MegaCrit.Sts2.Core.Runs;
 
 namespace Manosaba.Characters.Common;
@@ -79,5 +80,51 @@ public static class ManosabaUniqueCardEligibility
             if (IsBlockedForPlayerOffer(player, card))
                 results.RemoveAt(i);
         }
+    }
+
+    /// <summary>
+    /// 事後補足：唯一卡被 <see cref="FilterCardCreationResults"/> 移除後，補回等量、非重複、且非「已擁有唯一」的卡。
+    /// 只在帶 <see cref="CardCreationFlags.NoCardPoolModifications"/> 的獎勵才需要（此時抽前過濾 <see cref="FilterCardCreationOptions"/>
+    /// 會被跳過，唯一卡才可能被抽進來，例如「藥水的未來」）；一般獎勵的唯一卡本來就不會被抽到，不必補足。
+    /// 補不足時維持較少張數，絕不丟例外。使用與原生 <c>CardFactory.CreateForReward</c> 相同的 RNG
+    /// （<c>options.RngOverride ?? player.PlayerRng.Rewards</c>）與相同的多人卡池限制，維持多人同步。
+    /// </summary>
+    public static void RefillCardRewardAfterUniqueRemoval(Player player, List<CardCreationResult> results, CardCreationOptions options, int removedCount)
+    {
+        if (removedCount <= 0)
+            return;
+
+        if (!options.Flags.HasFlag(CardCreationFlags.NoCardPoolModifications))
+            return;
+
+        HashSet<ModelId> presentIds = results
+            .Select(r => r.Card.CanonicalInstance.Id)
+            .ToHashSet();
+
+        List<CardModel> candidates = FilterForPlayerCount(player, options.GetPossibleCards(player))
+            .Where(c => c.Rarity != CardRarity.Basic && c.Rarity != CardRarity.Ancient)
+            .Where(c => !presentIds.Contains(c.CanonicalInstance.Id))
+            .Where(c => !IsBlockedForPlayerOffer(player, c))
+            .GroupBy(c => c.Id)
+            .Select(g => g.First())
+            .ToList();
+
+        Rng rng = options.RngOverride ?? player.PlayerRng.Rewards;
+        for (int i = 0; i < removedCount && candidates.Count > 0; i++)
+        {
+            CardModel? canonical = rng.NextItem(candidates);
+            if (canonical == null)
+                break;
+
+            candidates.RemoveAll(c => c.Id == canonical.Id);
+            results.Add(new CardCreationResult(player.RunState.CreateCard(canonical, player)));
+        }
+    }
+
+    private static IEnumerable<CardModel> FilterForPlayerCount(Player player, IEnumerable<CardModel> options)
+    {
+        return player.RunState.Players.Count > 1
+            ? options.Where(c => c.MultiplayerConstraint != CardMultiplayerConstraint.SingleplayerOnly)
+            : options.Where(c => c.MultiplayerConstraint != CardMultiplayerConstraint.MultiplayerOnly);
     }
 }

@@ -36,7 +36,12 @@ public static class Patch_Hook_ManosabaUniqueCardOffers
             if (creationOptions.Flags.HasFlag(CardCreationFlags.NoModifyHooks))
                 return;
 
+            int before = cardRewardOptions.Count;
             ManosabaUniqueCardEligibility.FilterCardCreationResults(player, cardRewardOptions);
+            int removed = before - cardRewardOptions.Count;
+
+            // 帶 NoCardPoolModifications 的獎勵（如「藥水的未來」）不會在抽前過濾唯一卡，導致被移除後少一張；補回等量非唯一/未擁有的卡。
+            ManosabaUniqueCardEligibility.RefillCardRewardAfterUniqueRemoval(player, cardRewardOptions, creationOptions, removed);
         }
     }
 
