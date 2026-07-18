@@ -173,38 +173,59 @@ public static class SawatariCocoEquipmentHelper
             _ => null,
         };
 
-    private static async Task TryTriggerTreasureBagAsync(PlayerChoiceContext choiceContext, Creature creature)
+    public static async Task TryTriggerTreasureBagAsync(PlayerChoiceContext choiceContext, Creature creature)
     {
         if (creature.GetPower<FourDPocketPower>() is not { } fourDPocket || fourDPocket.Amount <= 0m)
         {
             return;
         }
 
-        if (!TryGetNearCompleteSet(creature, out EquipmentSeries series, out EquipmentSlot missingSlot))
+        int stacks = (int)fourDPocket.Amount;
+
+        List<(EquipmentSeries series, List<EquipmentSlot> missingSlots)> candidates = GetCompletableSets(creature, stacks);
+        if (candidates.Count == 0)
         {
             return;
         }
 
-        if (!EquipmentPieceTokenRegistry.TryGetEquipmentCardType(series, missingSlot, out Type equipmentCardType)
-            || ModelDb.GetById<CardModel>(ModelDb.GetId(equipmentCardType)) is not EquipmentCardModel equipmentCard)
+        int index = 0;
+        if (candidates.Count > 1)
         {
-            return;
+            index = creature.Player?.RunState.Rng.Niche.NextInt(candidates.Count) ?? 0;
         }
 
-        await PowerCmd.Decrement(fourDPocket);
+        (EquipmentSeries series, List<EquipmentSlot> missingSlots) chosen = candidates[index];
 
-        await EquipPieceAsync(
-            choiceContext,
-            creature,
-            missingSlot,
-            series,
-            equipmentCard.Id.Entry,
-            equipmentCard.EquipScore,
-            null);
+        // Consume the stacks up front so the nested equip re-trigger cannot fire again on the same completion.
+        for (int i = 0; i < chosen.missingSlots.Count; i++)
+        {
+            await PowerCmd.Decrement(fourDPocket);
+        }
+
+        foreach (EquipmentSlot missingSlot in chosen.missingSlots)
+        {
+            if (!EquipmentPieceTokenRegistry.TryGetEquipmentCardType(chosen.series, missingSlot, out Type equipmentCardType)
+                || ModelDb.GetById<CardModel>(ModelDb.GetId(equipmentCardType)) is not EquipmentCardModel equipmentCard)
+            {
+                continue;
+            }
+
+            await EquipPieceAsync(
+                choiceContext,
+                creature,
+                missingSlot,
+                chosen.series,
+                equipmentCard.Id.Entry,
+                equipmentCard.EquipScore,
+                null);
+        }
     }
 
-    private static bool TryGetNearCompleteSet(Creature creature, out EquipmentSeries series, out EquipmentSlot missingSlot)
+    /// <summary>Series that can be completed by filling at most <paramref name="maxFill"/> missing slots (stacks available).</summary>
+    private static List<(EquipmentSeries series, List<EquipmentSlot> missingSlots)> GetCompletableSets(Creature creature, int maxFill)
     {
+        List<(EquipmentSeries series, List<EquipmentSlot> missingSlots)> result = [];
+
         foreach (EquipmentSeries candidate in Enum.GetValues<EquipmentSeries>())
         {
             if (candidate == EquipmentSeries.None)
@@ -213,40 +234,38 @@ public static class SawatariCocoEquipmentHelper
             }
 
             int matchCount = 0;
-            missingSlot = default;
-            bool hasMissingSlot = false;
+            List<EquipmentSlot> missingSlots = [];
 
             foreach (EquipmentSlot slot in Enum.GetValues<EquipmentSlot>())
             {
-                EquipmentSeries slotSeries = GetSlotSeries(creature, slot);
-                int score = GetSlotScore(creature, slot);
-
-                if (slotSeries == candidate && score > 0)
+                if (GetSlotSeries(creature, slot) == candidate && GetSlotScore(creature, slot) > 0)
                 {
                     matchCount++;
-                    continue;
                 }
-
-                if (hasMissingSlot)
+                else
                 {
-                    matchCount = 0;
-                    break;
+                    missingSlots.Add(slot);
                 }
-
-                hasMissingSlot = true;
-                missingSlot = slot;
             }
 
-            if (matchCount == 3 && hasMissingSlot)
+            if (matchCount == 0 || missingSlots.Count < 1 || missingSlots.Count > maxFill)
             {
-                series = candidate;
-                return true;
+                continue;
             }
+
+            bool allFillable = missingSlots.All(slot =>
+                EquipmentPieceTokenRegistry.TryGetEquipmentCardType(candidate, slot, out Type equipmentCardType)
+                && ModelDb.GetById<CardModel>(ModelDb.GetId(equipmentCardType)) is EquipmentCardModel);
+
+            if (!allFillable)
+            {
+                continue;
+            }
+
+            result.Add((candidate, missingSlots));
         }
 
-        series = EquipmentSeries.None;
-        missingSlot = default;
-        return false;
+        return result;
     }
 
     private static async Task TryTriggerSetBonusAsync(

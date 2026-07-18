@@ -13,12 +13,10 @@ namespace manosaba.Characters.SawatariCoco.Cards;
 public sealed class IGuessIHaveNoChoice : PathCustomCardModel
 {
     private const int energyCost = 2;
-    private const CardType type = CardType.Skill;
+    private const CardType type = CardType.Power;
     private const CardRarity rarity = CardRarity.Uncommon;
     private const TargetType targetType = TargetType.Self;
     private const bool shouldShowInCardLibrary = true;
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<FourDPocketPower>(1m)];
 
@@ -40,6 +38,6 @@ public sealed class IGuessIHaveNoChoice : PathCustomCardModel
 
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Retain);
+        AddKeyword(CardKeyword.Innate);
     }
 }

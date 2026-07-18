@@ -1,5 +1,6 @@
 using BaseLib.Utils;
 using manosaba.Characters.SawatariCoco;
+using Manosaba.Characters.Common.Overrides;
 using Manosaba.Characters.Common.Powers;
 using Manosaba.Extensions;
 using MegaCrit.Sts2.Core.Commands;
@@ -22,7 +23,7 @@ public sealed class TreeHollow : PathCustomCardModel
     private const TargetType targetType = TargetType.Self;
     private const bool shouldShowInCardLibrary = true;
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Ethereal];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Ethereal, ManosabaKeywords.Unique];
 
     protected override bool IsPlayable => base.IsPlayable && Owner.Creature.GetPowerAmount<MajokaPower>() < 100m;
 
