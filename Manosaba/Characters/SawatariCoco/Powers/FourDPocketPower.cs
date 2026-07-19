@@ -19,6 +19,12 @@ public sealed class FourDPocketPower : PathCustomPowerModel
     {
         await base.AfterPowerAmountChanged(choiceContext, power, amount, applier, cardSource);
 
+        // This is a global combat hook fired for every power change; only act on our own power.
+        if (power != this)
+        {
+            return;
+        }
+
         if (power.Amount > MaxStacks)
         {
             power.SetAmount(MaxStacks);
