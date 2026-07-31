@@ -10,6 +10,13 @@ namespace Manosaba.Patches;
 public static class Patch_CustomEnergySavePersistence
 {
     [HarmonyPatch(typeof(RunState), nameof(RunState.FromSerializable))]
+    [HarmonyPrefix]
+    private static void RunState_FromSerializable_Prefix()
+    {
+        CharacterCustomEnergyService.ClearAll();
+    }
+
+    [HarmonyPatch(typeof(RunState), nameof(RunState.FromSerializable))]
     [HarmonyPostfix]
     private static void RunState_FromSerializable_Postfix(RunState __result)
     {

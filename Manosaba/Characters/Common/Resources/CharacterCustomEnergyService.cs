@@ -128,6 +128,7 @@ public static class CharacterCustomEnergyService
             return;
         }
 
+        HashSet<string> loadedEnergyIds = new(StringComparer.Ordinal);
         foreach (ICustomEnergySaveCarrier carrier in player.Relics.OfType<ICustomEnergySaveCarrier>())
         {
             CharacterCustomEnergyDefinition definition = carrier.SavedEnergyDefinition;
@@ -136,6 +137,7 @@ public static class CharacterCustomEnergyService
                 continue;
             }
 
+            loadedEnergyIds.Add(definition.EnergyId);
             (ulong, string) key = GetKey(player, definition);
             InitializedThisCombat.Add(key);
             int oldValue = Values.TryGetValue(key, out int existingValue)
@@ -147,6 +149,16 @@ public static class CharacterCustomEnergyService
             {
                 EnergyChanged?.Invoke(player, definition, oldValue, loadedValue);
             }
+        }
+
+        foreach (CharacterCustomEnergyDefinition definition in Definitions.Values)
+        {
+            if (loadedEnergyIds.Contains(definition.EnergyId))
+            {
+                continue;
+            }
+
+            ClearValue(player, definition);
         }
     }
 
@@ -170,6 +182,23 @@ public static class CharacterCustomEnergyService
                     : definition.MinEnergy;
                 SaveToCarrier(player, definition, value);
             }
+        }
+    }
+
+    private static void ClearValue(Player player, CharacterCustomEnergyDefinition definition)
+    {
+        (ulong, string) key = GetKey(player, definition);
+        InitializedThisCombat.Remove(key);
+
+        if (!Values.Remove(key, out int oldValue))
+        {
+            return;
+        }
+
+        int resetValue = definition.MinEnergy;
+        if (oldValue != resetValue)
+        {
+            EnergyChanged?.Invoke(player, definition, oldValue, resetValue);
         }
     }
 
