@@ -36,5 +36,9 @@
   "MANOSABA-MYSTERIOUS_CAT_EQUIPMENT.title": "Mysterious Cat Equipment",
   "MANOSABA-MYSTERIOUS_CAT_EQUIPMENT.description": "When played, choose whether to equip this piece and gain its equipment score.\nWearing the full Mysterious Cat set grants 2 Max Energy. Can trigger only once per combat.",
   "MANOSABA-CUTIE_CATS_EQUIPMENT.title": "Cutie Cats Equipment",
-  "MANOSABA-CUTIE_CATS_EQUIPMENT.description": "When played, choose whether to equip this piece and gain its equipment score.\nWearing the full Cutie Cats set applies 10 [gold]Burn[/gold] and 10 [gold]Poison[/gold] to ALL enemies. Can trigger only once per combat."
+  "MANOSABA-CUTIE_CATS_EQUIPMENT.description": "When played, choose whether to equip this piece and gain its equipment score.\nWearing the full Cutie Cats set applies 10 [gold]Burn[/gold] and 10 [gold]Poison[/gold] to ALL enemies. Can trigger only once per combat.",
+  "MANOSABA-TRIAL.title": "Trial",
+  "MANOSABA-TRIAL.description": "Can only be played while you have [gold]Interrogation Start[/gold]. Without [gold]Law Devil[/gold], this card is not affected by [gold]Strength[/gold], [gold]Majoka[/gold], or similar effects.",
+  "MANOSABA-TESTIMONY.title": "Testimony",
+  "MANOSABA-TESTIMONY.description": "Includes the following cards:\n[gold]Sakuraba Ema's Testimony[/gold]\n[gold]Nikaido Hiro's Testimony[/gold]\n[gold]Natsume Anan's Testimony[/gold]\n[gold]Jogasaki Noah's Testimony[/gold]\n[gold]Hasumi Leia's Testimony[/gold]\n[gold]Saeki Miria's Testimony[/gold]\n[gold]Hosho Mago's Testimony[/gold]\n[gold]Kurobe Nanoka's Testimony[/gold]\n[gold]Shito Alisa's Testimony[/gold]\n[gold]Tachibana Sherry's Testimony[/gold]\n[gold]Tono Hanna's Testimony[/gold]\n[gold]Sawatari Coco's Testimony[/gold]\n[gold]Hikami Meruru's Testimony[/gold]\n[gold]Warden's Testimony[/gold]\n[gold]Guard's Testimony[/gold]\n[gold]Grand Witch's Testimony[/gold]"
 }

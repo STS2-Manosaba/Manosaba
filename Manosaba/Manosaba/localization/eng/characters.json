@@ -167,5 +167,19 @@
   "MANOSABA-SAWATARI_COCO.cardsModifierTitle": "",
   "MANOSABA-SAWATARI_COCO.cardsModifierDescription": "",
   "MANOSABA-SAWATARI_COCO.banter.alive.endTurnPing": "What are you waiting for? Move already~",
-  "MANOSABA-SAWATARI_COCO.banter.dead.endTurnPing": "......"
+  "MANOSABA-SAWATARI_COCO.banter.dead.endTurnPing": "......",
+  "MANOSABA-SAKURABA_EMA.title": "Sakuraba Ema",
+  "MANOSABA-SAKURABA_EMA.titleObject": "",
+  "MANOSABA-SAKURABA_EMA.description": "SakurabaEma investigates with Evidence and turns it into Argument.",
+  "MANOSABA-SAKURABA_EMA.pronounObject": "her",
+  "MANOSABA-SAKURABA_EMA.possessiveAdjective": "her",
+  "MANOSABA-SAKURABA_EMA.pronounPossessive": "hers",
+  "MANOSABA-SAKURABA_EMA.pronounSubject": "she",
+  "MANOSABA-SAKURABA_EMA.goldMonologue": "",
+  "MANOSABA-SAKURABA_EMA.eventDeathPrevention": "",
+  "MANOSABA-SAKURABA_EMA.aromaPrinciple": "",
+  "MANOSABA-SAKURABA_EMA.cardsModifierTitle": "",
+  "MANOSABA-SAKURABA_EMA.cardsModifierDescription": "",
+  "MANOSABA-SAKURABA_EMA.banter.alive.endTurnPing": "The evidence is still here.",
+  "MANOSABA-SAKURABA_EMA.banter.dead.endTurnPing": "..."
 }

@@ -167,5 +167,19 @@
   "MANOSABA-SAWATARI_COCO.cardsModifierTitle": "",
   "MANOSABA-SAWATARI_COCO.cardsModifierDescription": "",
   "MANOSABA-SAWATARI_COCO.banter.alive.endTurnPing": "早くしなさいよ～",
-  "MANOSABA-SAWATARI_COCO.banter.dead.endTurnPing": "......"
+  "MANOSABA-SAWATARI_COCO.banter.dead.endTurnPing": "......",
+  "MANOSABA-SAKURABA_EMA.title": "桜羽 エマ",
+  "MANOSABA-SAKURABA_EMA.titleObject": "",
+  "MANOSABA-SAKURABA_EMA.description": "桜羽 エマは[gold]証拠[/gold]で調査し、それを[gold]論拠[/gold]に変える。",
+  "MANOSABA-SAKURABA_EMA.pronounObject": "彼女",
+  "MANOSABA-SAKURABA_EMA.possessiveAdjective": "彼女の",
+  "MANOSABA-SAKURABA_EMA.pronounPossessive": "彼女のもの",
+  "MANOSABA-SAKURABA_EMA.pronounSubject": "彼女",
+  "MANOSABA-SAKURABA_EMA.goldMonologue": "",
+  "MANOSABA-SAKURABA_EMA.eventDeathPrevention": "",
+  "MANOSABA-SAKURABA_EMA.aromaPrinciple": "",
+  "MANOSABA-SAKURABA_EMA.cardsModifierTitle": "",
+  "MANOSABA-SAKURABA_EMA.cardsModifierDescription": "",
+  "MANOSABA-SAKURABA_EMA.banter.alive.endTurnPing": "証拠はまだここにある。",
+  "MANOSABA-SAKURABA_EMA.banter.dead.endTurnPing": "..."
 }

@@ -36,5 +36,9 @@
   "MANOSABA-MYSTERIOUS_CAT_EQUIPMENT.title": "미스터리어스 캣 장비",
   "MANOSABA-MYSTERIOUS_CAT_EQUIPMENT.description": "사용 시 해당 부위 장비를 변경할지 선택하고 장비 점수를 얻습니다.\n미스터리어스 캣 풀세트 착용 시 최대 에너지 +2. 전투당 1회.",
   "MANOSABA-CUTIE_CATS_EQUIPMENT.title": "큐티 캣츠 장비",
-  "MANOSABA-CUTIE_CATS_EQUIPMENT.description": "사용 시 해당 부위 장비를 변경할지 선택하고 장비 점수를 얻습니다.\n큐티 캣츠 풀세트 착용 시 모든 적에게 [gold]화상[/gold] 10과 [gold]중독[/gold] 10. 전투당 1회."
+  "MANOSABA-CUTIE_CATS_EQUIPMENT.description": "사용 시 해당 부위 장비를 변경할지 선택하고 장비 점수를 얻습니다.\n큐티 캣츠 풀세트 착용 시 모든 적에게 [gold]화상[/gold] 10과 [gold]중독[/gold] 10. 전투당 1회.",
+  "MANOSABA-TRIAL.title": "재판",
+  "MANOSABA-TRIAL.description": "[gold]심문 시작[/gold]이 있어야 사용할 수 있습니다. [gold]법의 악마[/gold]가 없으면 [gold]힘[/gold], [gold]마녀화[/gold] 등의 효과를 받지 않습니다.",
+  "MANOSABA-TESTIMONY.title": "증언 카드",
+  "MANOSABA-TESTIMONY.description": "다음 카드를 포함：\n[gold]사쿠라바 에마의 증언[/gold]\n[gold]니카이도 히로의 증언[/gold]\n[gold]나츠메 안안의 증언[/gold]\n[gold]조가사키 노아의 증언[/gold]\n[gold]하스미 레이아의 증언[/gold]\n[gold]사에키 미리아의 증언[/gold]\n[gold]호쇼 마고의 증언[/gold]\n[gold]쿠로베 나노카의 증언[/gold]\n[gold]시토 아리사의 증언[/gold]\n[gold]타치바나 셰리의 증언[/gold]\n[gold]토노 한나의 증언[/gold]\n[gold]사와타리 코코의 증언[/gold]\n[gold]히카미 메루루의 증언[/gold]\n[gold]교도소장의 증언[/gold]\n[gold]간수의 증언[/gold]\n[gold]대마녀의 증언[/gold]"
 }

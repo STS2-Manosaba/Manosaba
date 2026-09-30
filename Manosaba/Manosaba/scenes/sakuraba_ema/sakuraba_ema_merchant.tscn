@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://chvqcx3etfst5"]
+
+[ext_resource type="Texture2D" uid="uid://c1rays7hlarkk" path="res://Manosaba/images/characters/sakuraba_ema/SakurabaEmaThink.png" id="1_h1avx"]
+
+[node name="SakurabaEmaMerchant" type="Node2D"]
+
+[node name="SakurabaEmaThink" type="Sprite2D" parent="."]
+position = Vector2(-1, -192)
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("1_h1avx")

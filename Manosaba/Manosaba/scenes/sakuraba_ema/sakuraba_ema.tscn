@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://djobi03vjjekd"]
+
+[ext_resource type="Texture2D" uid="uid://dymc2xekh4373" path="res://Manosaba/images/characters/sakuraba_ema/SakurabaEma2.png" id="1_8fokw"]
+
+[node name="SakurabaEma" type="Node2D"]
+
+[node name="Visuals" type="Sprite2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+position = Vector2(-8.999999, -149)
+scale = Vector2(0.2357422, 0.23795925)
+texture = ExtResource("1_8fokw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="IntentPos" type="Marker2D" parent="."]
+position = Vector2(0, -348)
+
+[node name="CenterPos" type="Marker2D" parent="."]
+position = Vector2(3, -199)

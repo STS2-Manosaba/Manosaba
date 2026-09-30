@@ -167,5 +167,19 @@
   "MANOSABA-SAWATARI_COCO.cardsModifierTitle": "",
   "MANOSABA-SAWATARI_COCO.cardsModifierDescription": "",
   "MANOSABA-SAWATARI_COCO.banter.alive.endTurnPing": "還在等什麼？快點行動啦～",
-  "MANOSABA-SAWATARI_COCO.banter.dead.endTurnPing": "......"
+  "MANOSABA-SAWATARI_COCO.banter.dead.endTurnPing": "......",
+  "MANOSABA-SAKURABA_EMA.title": "櫻羽艾瑪",
+  "MANOSABA-SAKURABA_EMA.titleObject": "",
+  "MANOSABA-SAKURABA_EMA.description": "櫻羽艾瑪以[gold]證據[/gold]進行搜查，並將其轉化為[gold]論據[/gold]。",
+  "MANOSABA-SAKURABA_EMA.pronounObject": "她",
+  "MANOSABA-SAKURABA_EMA.possessiveAdjective": "她的",
+  "MANOSABA-SAKURABA_EMA.pronounPossessive": "她的",
+  "MANOSABA-SAKURABA_EMA.pronounSubject": "她",
+  "MANOSABA-SAKURABA_EMA.goldMonologue": "",
+  "MANOSABA-SAKURABA_EMA.eventDeathPrevention": "",
+  "MANOSABA-SAKURABA_EMA.aromaPrinciple": "",
+  "MANOSABA-SAKURABA_EMA.cardsModifierTitle": "",
+  "MANOSABA-SAKURABA_EMA.cardsModifierDescription": "",
+  "MANOSABA-SAKURABA_EMA.banter.alive.endTurnPing": "證據還在這裡。",
+  "MANOSABA-SAKURABA_EMA.banter.dead.endTurnPing": "..."
 }

@@ -137,5 +137,9 @@
   "THE_ARCHITECT.talk.MANOSABA-SAWATARI_COCO.0-2r.next": "続ける",
   "THE_ARCHITECT.talk.MANOSABA-SAWATARI_COCO.0-3r.ancient": "塔の底へ戻れ。\n我が造物は、見世物の番組ではない。",
   "THE_ARCHITECT.talk.MANOSABA-SAWATARI_COCO.0-3r.next": "続ける",
-  "THE_ARCHITECT.talk.MANOSABA-SAWATARI_COCO.0-attack": "..."
+  "THE_ARCHITECT.talk.MANOSABA-SAWATARI_COCO.0-attack": "...",
+  "THE_ARCHITECT.talk.MANOSABA-SAKURABA_EMA.0-0r.char": "証拠はここを示している。\nあと一つ、答えがあればいい。",
+  "THE_ARCHITECT.talk.MANOSABA-SAKURABA_EMA.0-0r.next": "続ける",
+  "THE_ARCHITECT.talk.MANOSABA-SAKURABA_EMA.0-1r.ancient": "ならば証明を示せ、調査員。",
+  "THE_ARCHITECT.talk.MANOSABA-SAKURABA_EMA.0-attack": "..."
 }

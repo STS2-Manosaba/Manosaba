@@ -24,6 +24,7 @@ using manosaba.Characters.NikaidoHiro.Relics;
 using manosaba.Characters.SaekiMiria;
 using manosaba.Characters.SaekiMiria.Helpers;
 using manosaba.Characters.SaekiMiria.Relics;
+using manosaba.Characters.SakurabaEma.Relics;
 using manosaba.Characters.HasumiLeia;
 using manosaba.Characters.HasumiLeia.Helpers;
 using manosaba.Characters.ShitoAlisa;
@@ -87,6 +88,7 @@ public class Entry
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(FeatherFan));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(Ribbon));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(LegIrons));
+        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(LegIronsSakurabaEma));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(Clipboard));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(LiveStreamingEquipment));
         PerfectGuardInputTracker.EnsureInstalled();

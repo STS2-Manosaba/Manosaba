@@ -137,5 +137,9 @@
   "THE_ARCHITECT.talk.MANOSABA-SAWATARI_COCO.0-2r.next": "계속",
   "THE_ARCHITECT.talk.MANOSABA-SAWATARI_COCO.0-3r.ancient": "탑 아래로 돌아가라.\n내 창조물은 네 놀거리가 아니다.",
   "THE_ARCHITECT.talk.MANOSABA-SAWATARI_COCO.0-3r.next": "계속",
-  "THE_ARCHITECT.talk.MANOSABA-SAWATARI_COCO.0-attack": "..."
+  "THE_ARCHITECT.talk.MANOSABA-SAWATARI_COCO.0-attack": "...",
+  "THE_ARCHITECT.talk.MANOSABA-SAKURABA_EMA.0-0r.char": "The evidence points here.\nI only need one more answer.",
+  "THE_ARCHITECT.talk.MANOSABA-SAKURABA_EMA.0-0r.next": "Continue",
+  "THE_ARCHITECT.talk.MANOSABA-SAKURABA_EMA.0-1r.ancient": "Then present your proof, investigator.",
+  "THE_ARCHITECT.talk.MANOSABA-SAKURABA_EMA.0-attack": "..."
 }
