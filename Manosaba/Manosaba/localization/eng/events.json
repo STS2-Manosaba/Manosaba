@@ -8,5 +8,20 @@
   "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.INITIAL.options.FIGHT.description": "Fight to keep the sword.",
   "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.ESCAPE.description": "You flee in panic, pay in blood, and leave the sword behind.",
   "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.VICTORY.description": "You defeat the jailor and take the [gold]Ritual Sword[/gold] from the safe.",
-  "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.FAIL.description": "You fail to defeat the jailor; you leave the sword behind and escape—you gain nothing."
+  "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.FAIL.description": "You fail to defeat the jailor; you leave the sword behind and escape—you gain nothing.",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.title": "Anomalous Library",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.loss": "{character} attempted an unknown trial, but was defeated.",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.description": "You arrive at the familiar Witch Island library, but something feels wrong.\nAn unfamiliar voice reaches your ears.\n???: Welcome to Astral Party, where you can experience anything!\nBefore you can make sense of it, a warden and a jailer appear before you.\nYou choose...",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.options.FIGHT.title": "Fight! Hell yeah!",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.options.FIGHT.description": "Challenge the warden and jailer.",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.options.LEAVE.title": "Leave",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.options.LEAVE.description": "End the event.",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.LEAVE.description": "You leave. Behind you, the warden and jailer dissolve like digital data...",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.description": "You defeat the warden and jailer. A petite girl appears before you.\nRen: Congratulations on completing the Anomalous Library trial! Take your reward!\nYou choose...",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.FAIL.description": "Unable to pass the unknown trial, you flee empty-handed.",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.REWARD.description": "You take your reward and leave the anomalous library.",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.options.GLASS.title": "Obtain relic: [gold]Magnifying Glass[/gold]",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.options.GLASS.description": "Every player obtains the chosen relic.",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.options.DOLL.title": "Obtain relic: [gold]Hanna Puppet[/gold]",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.options.DOLL.description": "Every player obtains the chosen relic."
 }

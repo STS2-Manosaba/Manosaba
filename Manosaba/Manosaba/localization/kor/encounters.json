@@ -1,0 +1,6 @@
+{
+  "MANOSABA-BASEMENT_GUARDIAN_EVENT_ENCOUNTER.title": "지하실 탐색",
+  "MANOSABA-BASEMENT_GUARDIAN_EVENT_ENCOUNTER.loss": "{character}는 [gold]{event}[/gold]에서 의식검을 차지하려 했지만, 감시자에게 패배했다.",
+  "MANOSABA-ANOMALOUS_LIBRARY_ENCOUNTER.title": "이변 도서관",
+  "MANOSABA-ANOMALOUS_LIBRARY_ENCOUNTER.loss": "{character}는 알 수 없는 시련에 도전했지만 패배했다."
+}

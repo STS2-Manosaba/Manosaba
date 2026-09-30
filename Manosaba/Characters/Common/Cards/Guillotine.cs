@@ -8,6 +8,8 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using manosaba.Characters.SakurabaEma.Powers;
+using manosaba.Characters.SakurabaEma.Relics;
 
 namespace Manosaba.Characters.Common.Cards
 {
@@ -38,8 +40,10 @@ namespace Manosaba.Characters.Common.Cards
             .Targeting(target)
             .Execute(choiceContext);
 
-            if (target.IsAlive && target.GetHpPercentRemaining() < (double)(DynamicVars["BeheadedThreshold"].BaseValue / 100m))
+            decimal threshold = DynamicVars["BeheadedThreshold"].BaseValue + (target.HasPower<DeathSentencePower>() ? 5m : 0m);
+            if (target.IsAlive && target.GetHpPercentRemaining() < (double)(threshold / 100m))
             {
+                Owner.Relics.OfType<LegRing>().FirstOrDefault()?.RecordExecution(target);
                 await DoomPower.DoomKill([target]);
             }
         }

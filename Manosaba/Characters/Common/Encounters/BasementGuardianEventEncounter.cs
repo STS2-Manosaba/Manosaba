@@ -1,10 +1,11 @@
+using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Rooms;
 
 namespace Manosaba.Characters.Common.Encounters;
 
-public sealed class BasementGuardianEventEncounter : EncounterModel
+public sealed class BasementGuardianEventEncounter : EncounterModel, ICustomModel
 {
     public override RoomType RoomType => RoomType.Monster;
 

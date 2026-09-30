@@ -9,6 +9,8 @@ using Manosaba.Characters.KurobeNanoka.Cards;
 using Manosaba.Characters.NikaidoHiro.Cards;
 using Manosaba.Characters.SaekiMiria.Cards;
 using manosaba.Characters.SawatariCoco.Cards;
+using manosaba.Characters.SakurabaEma.Cards;
+using manosaba.Characters.SakurabaEma.Relics;
 using Manosaba.Characters.ShitoAlisa.Cards;
 using Manosaba.Characters.TachibanaSherry.Cards;
 using Manosaba.Characters.TonoHanna.Cards;
@@ -90,7 +92,7 @@ namespace Manosaba.Characters.Common.Powers
 
         public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
         {
-            if (power is MajokaPower)
+            if (ReferenceEquals(power, this))
             {
                 if (base.Owner.Player?.Creature is not { } ownerCreature)
                 {
@@ -108,6 +110,12 @@ namespace Manosaba.Characters.Common.Powers
             if (base.Amount >= 100 && Owner.Player != null && Owner.CombatState != null)
             {
                 string characterId = (Owner.Player.Character.Id.ToString() ?? string.Empty).RemovePrefix().ToLowerInvariant();
+                if (characterId == "sakuraba_ema")
+                {
+                    await YouDidWell.Gain(Owner.Player, onlyIfMissing: true);
+                    return;
+                }
+
                 if (!mahouCardsMap.TryGetValue(characterId, out Type? targetType) || targetType == null)
                     return;
                 if (Owner.Player.Deck.Cards.Count(c => c.GetType() == targetType) < 1)

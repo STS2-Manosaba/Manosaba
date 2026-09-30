@@ -24,6 +24,7 @@ using manosaba.Characters.NikaidoHiro.Relics;
 using manosaba.Characters.SaekiMiria;
 using manosaba.Characters.SaekiMiria.Helpers;
 using manosaba.Characters.SaekiMiria.Relics;
+using manosaba.Characters.SakurabaEma.Relics;
 using manosaba.Characters.HasumiLeia;
 using manosaba.Characters.HasumiLeia.Helpers;
 using manosaba.Characters.ShitoAlisa;
@@ -78,6 +79,7 @@ public class Entry
         // Must run even when PatchAll fails — Godot scenes reference scripts from this assembly.
         ScriptManagerBridge.LookupScriptsInAssembly(typeof(Entry).Assembly);
 
+        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(manosaba.Characters.SakurabaEma.Cards.AccUhEartsIndictment));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(DrawingBoard));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(PhotoOfTheGreatWitch));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(PenOfHiro));
@@ -87,6 +89,7 @@ public class Entry
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(FeatherFan));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(Ribbon));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(LegIrons));
+        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(LegRing));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(Clipboard));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(LiveStreamingEquipment));
         PerfectGuardInputTracker.EnsureInstalled();

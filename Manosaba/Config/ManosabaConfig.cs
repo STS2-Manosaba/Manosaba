@@ -1,5 +1,6 @@
 using System;
 using BaseLib.Config;
+using Manosaba.Audio;
 
 namespace Manosaba.Config;
 
@@ -31,10 +32,20 @@ public sealed class ManosabaConfig : SimpleModConfig
     [ConfigHideInUI]
     public static string PerSaveLobbyDifficultyJson { get; set; } = string.Empty;
 
+    private static double _manosabaSfxVolumePercent = 100d;
+
     [ConfigSection("SFXSettings")]
     [ConfigSlider(0, 100, 1, Format = "{0:0}%")]
     [ConfigHoverTip]
-    public static double ManosabaSfxVolumePercent { get; set; } = 100d;
+    public static double ManosabaSfxVolumePercent
+    {
+        get => _manosabaSfxVolumePercent;
+        set
+        {
+            _manosabaSfxVolumePercent = value;
+            GodotSfxRouter.RefreshCustomBgmVolumeFromSettings();
+        }
+    }
 
     [ConfigHoverTip]
     public static ManosabaFxPlayMode LaboursOfHiroEffectFrequency { get; set; } = ManosabaFxPlayMode.EveryTime;
@@ -59,6 +70,18 @@ public sealed class ManosabaConfig : SimpleModConfig
 
     [ConfigHoverTip]
     public static ManosabaFxPlayMode PrideEffectFrequency { get; set; } = ManosabaFxPlayMode.EveryTime;
+
+    [ConfigHoverTip]
+    public static ManosabaFxPlayMode InmuKingEffectFrequency { get; set; } = ManosabaFxPlayMode.EveryTime;
+
+    [ConfigHoverTip]
+    public static ManosabaFxPlayMode EmaWitchTrialAudioFrequency { get; set; } = ManosabaFxPlayMode.EveryTime;
+
+    [ConfigHoverTip]
+    public static ManosabaFxPlayMode InterrogationStartMusicFrequency { get; set; } = ManosabaFxPlayMode.EveryTime;
+
+    [ConfigHoverTip]
+    public static ManosabaFxPlayMode MagicToKillWitchEffectFrequency { get; set; } = ManosabaFxPlayMode.EveryTime;
 
     public static float GetManosabaSfxVolume()
     {

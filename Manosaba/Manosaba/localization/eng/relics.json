@@ -72,5 +72,19 @@
   "MANOSABA-TOUCH_OF_OROBAS.eventDescription": "Upgrade [gold]{StarterRelic}[/gold] to [gold]Lv. 5[/gold].",
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.title": "Streaming Equipment",
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.description": "While in [gold]Live Stream Mode[/gold], enemies become [gold]Fans[/gold] after you deal damage to them.\nAt the start of combat, gain [gold]Hiding[/gold] equal to this relic's level.\nLv2+: At the start of combat, gain 3 [gold]Live Stream Mode[/gold].\nLv4+: At the start of your turn, if you have [gold]Live Stream Mode[/gold], gain 1 [gold]Energy[/gold].\nFans this run: {FanCount}.",
-  "MANOSABA-LIVE_STREAMING_EQUIPMENT.flavor": "Gotta keep the stream going!"
+  "MANOSABA-LIVE_STREAMING_EQUIPMENT.flavor": "Gotta keep the stream going!",
+  "MANOSABA-LEG_IRONS_SAKURABA_EMA.title": "Leg Ring",
+  "MANOSABA-LEG_IRONS_SAKURABA_EMA.description": "At the start of combat, set [gold]Majoka[/gold] gained to 50%.\nLv1–4: Gain [gold]Search Time[/gold]. Each card you play adds 1 stack. At 8 stacks, add 1 [gold]rAwTell Owk...[/gold] to your hand and remove [gold]Search Time[/gold]. Each relic level above Lv1 reduces the requirement by 2 stacks.\nLv5: At the start of combat, add 1 [gold]rAwTell Owk...[/gold] directly to your hand instead of gaining [gold]Search Time[/gold].",
+  "MANOSABA-LEG_IRONS_SAKURABA_EMA.flavor": "A restraint that turns fear into a thread of proof.",
+  "MANOSABA-YOU_DID_WELL.derivations": "Magic to Kill the Witch:\n6: Add 1 cUrOi and 1 shi-des to your hand.\n8: Choose whether to add Exhaust to all your combat cards first.\n12: Add 1 sent-ky to your hand.\n13: Replace the stack-8 effect with transforming all combat cards into Die+.\nSpecial Magic:\n10: Generate upgraded Die and Everyone Should Just Die.\n13: The Grand Witch controls every turn.",
+  "MANOSABA-YOU_DID_WELL.flavor": "You did well.",
+  "MANOSABA-YOU_DID_WELL.title": "You Did Well",
+  "MANOSABA-YOU_DID_WELL.derivationsTitle": "Derivative Effects",
+  "MANOSABA-YOU_DID_WELL.description": "Gain 1 stack when a teammate dies or you land the killing blow on a non-Minion enemy. Starts at 1, maximum 13. Each stack adds 10% Witchification gain to Leg Ring. At 5, gain Magic to Kill the Witch and transform all Trauma into True Trauma in your deck. At 7/9/11, gain Pure/Kind/Good Child Ema after 3 consecutive turns without gaining Suspicion/playing Attacks/taking damage respectively. At 13, require 2 turns.",
+  "MANOSABA-LIBRARY_MAGNIFYING_GLASS.title": "Magnifying Glass",
+  "MANOSABA-LIBRARY_MAGNIFYING_GLASS.description": "For each stack of [gold]Guilt[/gold] you have, deal {PerStack} additional damage and gain {PerStack} additional [gold]Block[/gold], up to {Cap} each.",
+  "MANOSABA-LIBRARY_MAGNIFYING_GLASS.flavor": "A reward from an unknown trial. No scrap of evidence escapes its lens.",
+  "MANOSABA-LIBRARY_HANNA_DOLL.title": "Hanna Puppet",
+  "MANOSABA-LIBRARY_HANNA_DOLL.description": "At the end of combat, gain {PerStack} Gold per stack of [gold]Guilt[/gold] you have, up to {Cap} Gold.",
+  "MANOSABA-LIBRARY_HANNA_DOLL.flavor": "A reward from an unknown trial. This little puppet remembers every piece of evidence."
 }

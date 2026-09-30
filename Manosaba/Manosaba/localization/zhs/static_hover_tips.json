@@ -1,5 +1,7 @@
 {
   "MANOSABA-POTION_CRAFT_FORMULA.title": "藥水合成配方",
+  "MANOSABA-WITCH_ENCYCLOPEDIA.title": "魔女圖鑑",
+  "MANOSABA-WITCH_ENCYCLOPEDIA.description": "獨立的[gold]證物卡[/gold]與[gold]證言卡[/gold]牌堆。這些卡牌加入手牌時自動收納於此，同名卡只保留一張。[gold]提出證據[/gold]可選擇其中一張自動打出，效果結束後返回圖鑑。",
   "MANOSABA-KOTODAMA_ENERGY.title": "言靈",
   "MANOSABA-KOTODAMA_ENERGY.description": "透過安安魔法產生的文字力量。",
   "MANOSABA-KOTODAMA_NOT_ENOUGH": "我沒有足夠的言靈。"

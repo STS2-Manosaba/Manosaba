@@ -8,5 +8,20 @@
   "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.INITIAL.options.FIGHT.description": "戦闘して剣を手に入れる。",
   "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.ESCAPE.description": "あなたは慌てて退き、血の代償を払い、剣を置き去りにした。",
   "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.VICTORY.description": "看守を倒し、金庫から[gold]儀式の剣[/gold]を手に入れた。",
-  "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.FAIL.description": "看守に勝てず、剣を残して逃げた。何も得られなかった。"
+  "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.FAIL.description": "看守に勝てず、剣を残して逃げた。何も得られなかった。",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.title": "異変図書館",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.loss": "{character}は未知の試練に挑んだが、敗れた。",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.description": "見慣れた魔女島の図書館にたどり着いた。しかし、どこか違和感がある。\nその時、耳元で見知らぬ声が響いた。\n？？？：『Astral Party』へようこそ！ ここでは、どんなことでも体験できます！\n状況がつかめないうちに、典獄長と看守が目の前に現れた。\nあなたは……",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.options.FIGHT.title": "戦う！ 最高！",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.options.FIGHT.description": "典獄長と看守に挑む。",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.options.LEAVE.title": "ここを去る",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.options.LEAVE.description": "イベントを終了する。",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.LEAVE.description": "あなたは立ち去った。背後で典獄長と看守の姿がデータのように消えていく……",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.description": "典獄長と看守を倒すと、小柄な少女が目の前に現れた。\n恋：『異変図書館』の試練達成、おめでとう！ 報酬を持っていってね！\nあなたは……",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.FAIL.description": "未知の試練を乗り越えられず、何も得られないまま逃げ出した。",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.REWARD.description": "報酬を受け取り、異変図書館を後にした。",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.options.GLASS.title": "レリック獲得：[gold]虫眼鏡[/gold]",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.options.GLASS.description": "全プレイヤーが選んだレリックを獲得する。",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.options.DOLL.title": "レリック獲得：[gold]ハンナの人形[/gold]",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.options.DOLL.description": "全プレイヤーが選んだレリックを獲得する。"
 }
