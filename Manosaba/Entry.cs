@@ -88,7 +88,7 @@ public class Entry
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(FeatherFan));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(Ribbon));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(LegIrons));
-        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(LegIronsSakurabaEma));
+        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(LegRing));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(Clipboard));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(LiveStreamingEquipment));
         PerfectGuardInputTracker.EnsureInstalled();

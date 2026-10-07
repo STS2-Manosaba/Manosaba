@@ -1,4 +1,6 @@
 {
+  "MANOSABA-TEST_FIELD_POWER.title": "テストフィールドパワー",
+  "MANOSABA-TEST_FIELD_POWER.description": "フィールドに[gold]テストフィールドパワー[/gold]を付与する。\nこの戦闘中、すべてのクリーチャーが与えるダメージが {FieldDamage:diff()} 増加する。\nHPの喪失とパワーの影響を受けないダメージには適用されない。",
   "MANOSABA-BATHROOM_TALK.title": "シャワールーム会談",
   "MANOSABA-BATHROOM_TALK.description": "[gold]召喚[/gold]：{Summon:diff()}を得る。\n{SusPower:diff()}層の[gold]嫌疑[/gold]を得る。",
   "MANOSABA-ACCOMPLICE.title": "共犯",
@@ -1096,7 +1098,7 @@
   "MANOSABA-GRAND_WITCH_TESTIMONY.title": "大魔女の証言",
   "MANOSABA-GRAND_WITCH_TESTIMONY.description": "[gold]証言カード[/gold]。カードを{Cards:diff()}枚引く。{EvidencePower:diff()} [gold]証拠[/gold]を得る。月代 ユキがいる場合、そのプレイヤーの手札に[gold]陳述[/gold]を1枚加える。",
   "MANOSABA-RAW_TELL_OWK.title": "rAwTell Owk...",
-  "MANOSABA-RAW_TELL_OWK.description": "[gold]尋問開始[/gold]を得る。",
+  "MANOSABA-RAW_TELL_OWK.description": "フィールドに[gold]尋問開始[/gold]を付与する。すでに有効な場合、代わりに[gold]尋問進度[/gold]を {Progress:diff()} 層増やす。",
   "MANOSABA-LA_VI_BAVELLABION.title": "LaVI-Bavellabion",
   "MANOSABA-LA_VI_BAVELLABION.description": "[gold]法の悪魔[/gold]を得る。",
   "MANOSABA-PSYCHIC_PHOTOGRAPH.title": "念写写真",
@@ -1182,5 +1184,13 @@
   "MANOSABA-KILL_EMA.title": "エマを殺す",
   "MANOSABA-KILL_EMA.description": "{Cards:diff()}枚引く。ターン終了時、[gold]桜羽 エマ[/gold]の[gold]バッドエンド[/gold]が{Threshold}以上なら、山札から自動でプレイされ戦闘に勝利する。",
   "MANOSABA-NO_WITCH_REST_RITUAL.title": "魔女安息儀式を行わない",
-  "MANOSABA-NO_WITCH_REST_RITUAL.description": "[gold]魔女化[/gold]を{MajokaPower:diff()}得る。山札から[gold]ヒロの十二試練[/gold]を探し、自動でプレイする。"
+  "MANOSABA-NO_WITCH_REST_RITUAL.description": "[gold]魔女化[/gold]を{MajokaPower:diff()}得る。山札から[gold]ヒロの十二試練[/gold]を探し、自動でプレイする。",
+  "MANOSABA-GUILT_SUSPICION.title": "罪証への疑い",
+  "MANOSABA-GUILT_SUSPICION.description": "味方1人を選び、その手札に[gold]罪証への疑い[/gold]を1枚加える。\n自分のターン終了時、このカードが手札にあるなら、{GuiltPower:diff()}層の[gold]罪証[/gold]を得る。",
+  "MANOSABA-GUILT_QUESTION.title": "罪証への疑問",
+  "MANOSABA-GUILT_QUESTION.description": "[gold]裁判[/gold]。味方1人を選び、その手札に[gold]罪証への疑い[/gold]を1枚加える。",
+  "MANOSABA-GUILT_CONCLUSIVE.title": "確かな罪証",
+  "MANOSABA-GUILT_CONCLUSIVE.description": "[gold]裁判[/gold]。[gold]嫌疑[/gold]がある場合のみ使用可能。\n[gold]嫌疑[/gold]を1層消費し、{GuiltPower:diff()}層の[gold]罪証[/gold]を得る。",
+  "MANOSABA-CULPRIT_VERDICT.title": "真犯人判定",
+  "MANOSABA-CULPRIT_VERDICT.description": "[gold]裁判[/gold]。{RequiredRound:diff()}ターン目から使用可能。\n敵味方を問わず、生存しているすべての実体のうち、[gold]罪証[/gold]が最も多い全員に[gold]真犯人[/gold]を与える。すでに[gold]真犯人[/gold]がいる場合は効果なし。"
 }

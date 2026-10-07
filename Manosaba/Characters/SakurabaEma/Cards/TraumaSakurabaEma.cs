@@ -14,7 +14,7 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class TraumaSakurabaEma : PathCustomCardModel
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<MajokaPower>(10m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new TraumaMajokaVar(10m)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<MajokaPower>()];
 
     public TraumaSakurabaEma() : base(0, CardType.Skill, CardRarity.Basic, TargetType.Self, shouldShowInCardLibrary: true)

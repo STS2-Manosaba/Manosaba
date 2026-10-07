@@ -1,5 +1,6 @@
 using BaseLib.Utils;
 using Manosaba.Extensions;
+using Manosaba.Combat;
 using manosaba.Characters.SakurabaEma.Cards;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -26,7 +27,7 @@ public sealed class EvidencePower : PathCustomPowerModel
         if (power != this || amount <= 0m || Amount < RawTellOwkThreshold || Amount - amount >= RawTellOwkThreshold)
             return;
 
-        if (Owner.GetPowerAmount<InterrogationStartPower>() > 0m || Owner.Player == null || Owner.CombatState == null)
+        if (FieldPowerState.Has<InterrogationStartPower>(Owner.CombatState) || Owner.Player == null || Owner.CombatState == null)
             return;
 
         Flash();

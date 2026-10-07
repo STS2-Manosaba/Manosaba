@@ -14,7 +14,7 @@ public sealed class TraumaTrueSakurabaEma : PathCustomCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Eternal];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<MajokaPower>(20m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new TraumaMajokaVar(20m)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromPower<MajokaPower>(),

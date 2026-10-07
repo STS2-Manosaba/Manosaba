@@ -35,12 +35,12 @@ public sealed class PsychicPhotograph : PathCustomCardModel
     {
         _ = cardPlay;
 
-        decimal? legIronsMajokaMultiplier = null;
-        LegIronsMajokaPower? legIronsMajokaPower = Owner.Creature.GetPower<LegIronsMajokaPower>();
-        if (legIronsMajokaPower != null)
+        decimal? legRingMajokaMultiplier = null;
+        LegRingMajokaPower? legRingMajokaPower = Owner.Creature.GetPower<LegRingMajokaPower>();
+        if (legRingMajokaPower != null)
         {
-            legIronsMajokaMultiplier = legIronsMajokaPower.Amount;
-            await PowerCmd.Remove(legIronsMajokaPower);
+            legRingMajokaMultiplier = legRingMajokaPower.Amount;
+            await PowerCmd.Remove(legRingMajokaPower);
         }
 
         try
@@ -53,12 +53,12 @@ public sealed class PsychicPhotograph : PathCustomCardModel
         }
         finally
         {
-            if (legIronsMajokaMultiplier.HasValue)
+            if (legRingMajokaMultiplier.HasValue)
             {
-                await PowerCmd.Apply<LegIronsMajokaPower>(
+                await PowerCmd.Apply<LegRingMajokaPower>(
                     choiceContext,
                     Owner.Creature,
-                    legIronsMajokaMultiplier.Value,
+                    legRingMajokaMultiplier.Value,
                     Owner.Creature,
                     this);
             }

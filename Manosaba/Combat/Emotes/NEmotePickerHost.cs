@@ -14,13 +14,13 @@ namespace Manosaba.Combat.Emotes;
 
 public partial class NEmotePickerHost : Control
 {
-    private const float ToggleSize = 64f;
+    internal const float ToggleSize = 64f;
     private const float ThumbSize = 120f;
     private const float GridCellGap = 10f;
     private const float PanelPadding = 10f;
     private const float GapBetweenPanelAndToggle = 6f;
-    private const float MarginFromScreenRight = 16f;
-    private const float MarginBelowTopBar = 86f;
+    internal const float MarginFromScreenRight = 16f;
+    internal const float MarginBelowTopBar = 86f;
     private const float ExpandAnimSeconds = 0.2f;
     private const int MaxGridRows = 2;
     private const float MaxPanelHeight = 400f;
@@ -363,6 +363,22 @@ public partial class NEmotePickerHost : Control
 public static class EmotePickerUi
 {
     private const string HostNodeName = "ManosabaEmotePickerInjected";
+
+    internal static Vector2 GetPositionBelowPicker(Control combatUi, Vector2 displaySize, float gap)
+    {
+        NEmotePickerHost? host = FindHost(combatUi);
+        if (host != null && !host.IsQueuedForDeletion() && host.Visible)
+        {
+            Rect2 rect = host.GetGlobalRect();
+            return new Vector2(rect.End.X - displaySize.X, rect.End.Y + gap);
+        }
+
+        // Solo combat has no picker. Reserve its normal collapsed location anyway.
+        Vector2 viewportSize = combatUi.GetViewport().GetVisibleRect().Size;
+        return new Vector2(
+            viewportSize.X - NEmotePickerHost.MarginFromScreenRight - displaySize.X,
+            NEmotePickerHost.MarginBelowTopBar + NEmotePickerHost.ToggleSize + gap);
+    }
 
     public static void EnsureShown()
     {

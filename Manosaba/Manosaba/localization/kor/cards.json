@@ -1,4 +1,6 @@
 {
+  "MANOSABA-TEST_FIELD_POWER.title": "테스트 필드 파워",
+  "MANOSABA-TEST_FIELD_POWER.description": "필드에 [gold]테스트 필드 파워[/gold]를 부여합니다.\n이번 전투 동안 모든 개체가 주는 피해가 {FieldDamage:diff()} 증가합니다.\n체력 손실과 파워의 영향을 받지 않는 피해에는 적용되지 않습니다.",
   "MANOSABA-BATHROOM_TALK.title": "샤워실 회담",
   "MANOSABA-BATHROOM_TALK.description": "[gold]소환[/gold]: {Summon:diff()}.\n[gold]의심[/gold]을 {SusPower:diff()} 얻습니다.",
   "MANOSABA-ACCOMPLICE.title": "공범",
@@ -1096,7 +1098,7 @@
   "MANOSABA-GRAND_WITCH_TESTIMONY.title": "대마녀의 증언",
   "MANOSABA-GRAND_WITCH_TESTIMONY.description": "[gold]증언 카드[/gold]. 카드를 {Cards:diff()}장 뽑습니다. [gold]증거[/gold]를 {EvidencePower:diff()} 얻습니다. 츠키시로 유키가 있다면 해당 플레이어의 손에 [gold]진술[/gold] 1장을 넣습니다.",
   "MANOSABA-RAW_TELL_OWK.title": "rAwTell Owk...",
-  "MANOSABA-RAW_TELL_OWK.description": "[gold]심문 시작[/gold]을 얻습니다.",
+  "MANOSABA-RAW_TELL_OWK.description": "필드에 [gold]심문 시작[/gold]을 부여합니다. 이미 활성화되어 있다면 대신 [gold]심문 진행[/gold]을 {Progress:diff()}중첩 증가시킵니다.",
   "MANOSABA-LA_VI_BAVELLABION.title": "LaVI-Bavellabion",
   "MANOSABA-LA_VI_BAVELLABION.description": "[gold]법의 악마[/gold]를 얻습니다.",
   "MANOSABA-PSYCHIC_PHOTOGRAPH.title": "염사 사진",
@@ -1182,5 +1184,13 @@
   "MANOSABA-KILL_EMA.title": "에마 죽이기",
   "MANOSABA-KILL_EMA.description": "카드를 {Cards:diff()}장 뽑습니다. 턴 종료 시 [gold]사쿠라바 에마[/gold]가 가진 [gold]나쁜 결말[/gold] 중첩이 {Threshold} 이상이면 더미에서 자동으로 플레이하고 전투에서 승리합니다.",
   "MANOSABA-NO_WITCH_REST_RITUAL.title": "마녀 안식 의식을 열지 않는다",
-  "MANOSABA-NO_WITCH_REST_RITUAL.description": "[gold]마녀화[/gold]를 {MajokaPower:diff()} 얻습니다. 뽑을 카드 더미에서 [gold]히로의 열두 시련[/gold]을 찾아 자동으로 플레이합니다."
+  "MANOSABA-NO_WITCH_REST_RITUAL.description": "[gold]마녀화[/gold]를 {MajokaPower:diff()} 얻습니다. 뽑을 카드 더미에서 [gold]히로의 열두 시련[/gold]을 찾아 자동으로 플레이합니다.",
+  "MANOSABA-GUILT_SUSPICION.title": "죄증 의혹",
+  "MANOSABA-GUILT_SUSPICION.description": "팀원 한 명을 선택해 그 팀원의 손에 [gold]죄증 의혹[/gold] 1장을 추가합니다.\n자신의 턴 종료 시 이 카드가 손에 있으면 [gold]죄증[/gold]을 {GuiltPower:diff()} 얻습니다.",
+  "MANOSABA-GUILT_QUESTION.title": "죄증 의문",
+  "MANOSABA-GUILT_QUESTION.description": "[gold]재판[/gold]. 팀원 한 명을 선택해 그 팀원의 손에 [gold]죄증 의혹[/gold] 1장을 추가합니다.",
+  "MANOSABA-GUILT_CONCLUSIVE.title": "확실한 죄증",
+  "MANOSABA-GUILT_CONCLUSIVE.description": "[gold]재판[/gold]. [gold]의심[/gold]이 있어야 사용할 수 있습니다.\n[gold]의심[/gold] 1을 소모하고 [gold]죄증[/gold]을 {GuiltPower:diff()} 얻습니다.",
+  "MANOSABA-CULPRIT_VERDICT.title": "진범 판정",
+  "MANOSABA-CULPRIT_VERDICT.description": "[gold]재판[/gold]. {RequiredRound:diff()}턴부터 사용할 수 있습니다.\n아군과 적군을 통틀어 살아 있는 모든 개체 중 [gold]죄증[/gold]이 가장 많은 개체 모두가 [gold]진범[/gold]을 얻습니다. 이미 [gold]진범[/gold]이 있으면 효과가 없습니다."
 }

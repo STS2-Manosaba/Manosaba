@@ -1,44 +1,42 @@
 using BaseLib.Utils;
-using Manosaba.Characters.Common;
-using Manosaba.Extensions;
+using Manosaba.Characters.Common.Overrides;
+using Manosaba.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace manosaba.Characters.SakurabaEma.Powers;
 
-public sealed class InterrogationStartPower : PathCustomPowerModel
+public sealed class InterrogationStartPower : FieldPowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
     public override bool AllowNegative => false;
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<GuiltPower>()];
 
-    public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
+    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props,
+        Creature? dealer, CardModel? cardSource)
     {
-        await EnsureProgressPower(new ThrowingPlayerChoiceContext(), cardSource);
+        // Trial attacks retain Unpowered to exclude Strength/Majoka, but this field
+        // explicitly allows their source's Guilt. Never add it to non-attack damage.
+        bool trialAttack = props.HasFlag(ValueProp.Move) && cardSource?.Type == CardType.Attack &&
+            cardSource.Keywords.Contains(ManosabaKeywords.Trial);
+        return dealer != null && (props.IsPoweredAttack() || trialAttack)
+            ? dealer.GetPowerAmount<GuiltPower>()
+            : 0m;
     }
 
-    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public static Task ApplyToField(PlayerChoiceContext choiceContext, Creature applier, CardModel? cardSource)
     {
-        _ = amount;
-        _ = applier;
+        var field = applier.CombatState
+            ?? throw new InvalidOperationException("Interrogation Start requires an active combat.");
+        FieldPowerState.Apply<InterrogationStartPower>(field, 1);
 
-        if (power == this)
-            await EnsureProgressPower(choiceContext, cardSource);
-    }
-
-    private async Task EnsureProgressPower(PlayerChoiceContext choiceContext, CardModel? cardSource)
-    {
-        if (Owner.HasPower<InterrogationProgress1Power>() ||
-            Owner.HasPower<InterrogationProgress2Power>() ||
-            Owner.HasPower<InterrogationProgress3Power>() ||
-            Owner.HasPower<InterrogationProgress4Power>())
-        {
-            return;
-        }
-
-        await CommonActions.Apply<InterrogationProgress1Power>(choiceContext, Owner, cardSource, InterrogationProgressPowerBase.InitialAmount);
+        FieldPowerState.Ensure<InterrogationProgressPower>(field);
+        return Task.CompletedTask;
     }
 }

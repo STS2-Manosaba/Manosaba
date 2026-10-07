@@ -1,3 +1,4 @@
+using BaseLib.Utils.Attributes;
 using Manosaba.Characters.Common.Powers;
 using Manosaba.Extensions;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -6,7 +7,9 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace manosaba.Characters.SakurabaEma.Powers;
 
-public sealed class LegIronsMajokaPower : PathCustomPowerModel
+// Keep the existing save ID and its localization/image keys after renaming the class.
+[CustomID("MANOSABA-LEG_IRONS_MAJOKA_POWER")]
+public sealed class LegRingMajokaPower : PathCustomPowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;

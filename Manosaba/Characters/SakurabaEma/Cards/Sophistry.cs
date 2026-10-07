@@ -14,7 +14,7 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class Sophistry : EmaTrialCard
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new TrialDamageVar(8m)];
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [HoverTipFactory.FromPower<SusPower>()];
 
     public Sophistry() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy, true)

@@ -1,15 +1,18 @@
 using BaseLib.Utils;
+using BaseLib.Utils.Attributes;
 using manosaba.Characters.NikaidoHiro;
 using manosaba.Characters.SakurabaEma.Cards;
 using manosaba.Characters.SakurabaEma.Powers;
 using Manosaba.Characters.Common;
 using Manosaba.Extensions;
+using manosaba.Extensions;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Saves.Runs;
@@ -17,17 +20,27 @@ using NikaidoHiroCharacter = manosaba.Characters.NikaidoHiro.NikaidoHiro;
 
 namespace manosaba.Characters.SakurabaEma.Relics;
 
+// Keep the existing save ID and localization keys after renaming the class.
+[CustomID("MANOSABA-LEG_IRONS_SAKURABA_EMA")]
 [Pool(typeof(SakurabaEmaRelicPool))]
-public sealed class LegIronsSakurabaEma : LevelingPathCustomRelicModel
+public sealed class LegRing : LevelingPathCustomRelicModel
 {
-    private const decimal BaseMajokaMultiplierPercent = 20m;
-    private const decimal MajokaMultiplierPercentPerLevel = 30m;
-    private const decimal EvidenceThreshold = 10m;
+    public override string PackedIconPath => "leg_ring.png".RelicImagePath();
+    protected override string PackedIconOutlinePath => "leg_ring.png".RelicImagePath();
+    protected override string BigIconPath => "leg_ring.png".RelicImagePath();
+
+    private const decimal MajokaMultiplierPercent = 50m;
     private bool _hirosPenAddedToDeck;
 
     public override RelicRarity Rarity => RelicRarity.Starter;
 
     protected override int MaxRelicLevel => 5;
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        [..base.ExtraHoverTips, HoverTipFactory.FromPower<SearchTimePower>(), HoverTipFactory.FromCard<RawTellOwk>()];
+
+    internal static int GetSearchCardRequirement(int relicLevel)
+        => Math.Max(2, 10 - 2 * Math.Max(1, relicLevel));
 
     [SavedProperty]
     public bool HirosPenAddedToDeck
@@ -45,20 +58,22 @@ public sealed class LegIronsSakurabaEma : LevelingPathCustomRelicModel
         if (Owner.Creature == null)
             return;
 
-        decimal multiplierPercent = BaseMajokaMultiplierPercent + MajokaMultiplierPercentPerLevel * Math.Max(1, RelicLevel);
-        await CommonActions.Apply<LegIronsMajokaPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, null, multiplierPercent);
+        var choiceContext = new ThrowingPlayerChoiceContext();
+        await CommonActions.Apply<LegRingMajokaPower>(choiceContext, Owner.Creature, null, MajokaMultiplierPercent);
+
+        if (RelicLevel >= 5)
+        {
+            await SearchTimePower.GiveRawTellOwk(Owner);
+        }
+        else
+        {
+            // Native application skips zero amounts, so attach once and then initialize the counter at zero.
+            SearchTimePower? search = await CommonActions.Apply<SearchTimePower>(choiceContext, Owner.Creature, null, 1m);
+            search?.StartSearch(GetSearchCardRequirement(RelicLevel));
+        }
 
         if (!HasNikaidoHiroTeammate())
             await TryAddHirosPenToDeck();
-    }
-
-    public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
-    {
-        if (Owner?.Creature == null || player != Owner)
-            return;
-
-        if (Owner.Creature.GetPowerAmount<EvidencePower>() >= EvidenceThreshold)
-            await CommonActions.Apply<ArgumentPower>(choiceContext, Owner.Creature, null, 1m);
     }
 
     public override async Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)

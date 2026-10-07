@@ -1,4 +1,6 @@
 {
+  "MANOSABA-TEST_FIELD_POWER.title": "測試場地能力",
+  "MANOSABA-TEST_FIELD_POWER.description": "向場地施加[gold]測試場地能力[/gold]。\n本場戰鬥中，所有實體造成的傷害提高 {FieldDamage:diff()}。\n不影響失去生命與不受能力影響的傷害。",
   "MANOSABA-BATHROOM_TALK.title": "淋浴間會談",
   "MANOSABA-BATHROOM_TALK.description": "獲得[gold]召喚[/gold]：{Summon:diff()}。\n獲得 {SusPower:diff()} 層[gold]嫌疑[/gold]。",
   "MANOSABA-ACCOMPLICE.title": "共犯",
@@ -1168,7 +1170,7 @@
   "MANOSABA-SMOKE_OUT_EVIDENCE.title": "煙滅證據",
   "MANOSABA-SMOKE_OUT_EVIDENCE.description": "消耗 {Cards:diff()} 張牌。獲得 {SusPower:diff()} 層[gold]嫌疑[/gold]。若有[gold]二階堂希羅[/gold]則獲得該玩家所有的[gold]嫌疑[/gold]層數。",
   "MANOSABA-RAW_TELL_OWK.title": "rAwTell Owk...",
-  "MANOSABA-RAW_TELL_OWK.description": "獲得[gold]審問開始[/gold]。",
+  "MANOSABA-RAW_TELL_OWK.description": "向場地施加[gold]審問開始[/gold]。若場地已有[gold]審問開始[/gold]，改為增加 {Progress:diff()} 層[gold]審問進度[/gold]。",
   "MANOSABA-STATEMENT.title": "發言",
   "MANOSABA-STATEMENT.description": "抽 {Cards:diff()} 張牌，並給予自身 {ArgumentPower:diff()} 層[gold]議論[/gold]。",
   "MANOSABA-LA_VI_BAVELLABION.title": "LaVI-Bavellabion",
@@ -1182,5 +1184,13 @@
   "MANOSABA-DIE_SAKURABA_EMA.title": "去死",
   "MANOSABA-DIE_SAKURABA_EMA.description": "對所有敵人造成 {Damage:diff()} 點傷害。施加 {DoomPower:diff()} 層[gold]災厄[/gold]。若所有敵人擁有[gold]殘骸[/gold]則直接勝利。",
   "MANOSABA-EVERYONE_SHOULD_JUST_DIE.title": "大家都去死就好了",
-  "MANOSABA-EVERYONE_SHOULD_JUST_DIE.description": "抽 {Cards:diff()} 張牌。獲得 {Block:diff()} 點[gold]格擋[/gold]。對所有敵人施加 {EnemyMajokaPower:diff()} 層[gold]魔女化(敵)[/gold]。"
+  "MANOSABA-EVERYONE_SHOULD_JUST_DIE.description": "抽 {Cards:diff()} 張牌。獲得 {Block:diff()} 點[gold]格擋[/gold]。對所有敵人施加 {EnemyMajokaPower:diff()} 層[gold]魔女化(敵)[/gold]。",
+  "MANOSABA-GUILT_SUSPICION.title": "罪證嫌疑",
+  "MANOSABA-GUILT_SUSPICION.description": "選擇一名隊友，將 1 張[gold]罪證嫌疑[/gold]加入其手牌。\n在你的回合結束時，若此牌在手牌中，獲得 {GuiltPower:diff()} 層[gold]罪證[/gold]。",
+  "MANOSABA-GUILT_QUESTION.title": "罪證質疑",
+  "MANOSABA-GUILT_QUESTION.description": "[gold]裁判[/gold]。選擇一名隊友，將 1 張[gold]罪證嫌疑[/gold]加入其手牌。",
+  "MANOSABA-GUILT_CONCLUSIVE.title": "罪證確鑿",
+  "MANOSABA-GUILT_CONCLUSIVE.description": "[gold]裁判[/gold]。需要擁有[gold]嫌疑[/gold]才能使用。\n消耗 1 層[gold]嫌疑[/gold]，獲得 {GuiltPower:diff()} 層[gold]罪證[/gold]。",
+  "MANOSABA-CULPRIT_VERDICT.title": "真兇判定",
+  "MANOSABA-CULPRIT_VERDICT.description": "[gold]裁判[/gold]。第 {RequiredRound:diff()} 回合起才能使用。\n敵我雙方中，[gold]罪證[/gold]層數最高的所有存活實體獲得[gold]真兇[/gold]。若場上已有[gold]真兇[/gold]，則無效果。"
 }

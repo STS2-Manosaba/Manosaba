@@ -38,7 +38,7 @@
   "MANOSABA-CUTIE_CATS_EQUIPMENT.title": "キューティーキャッツ装備",
   "MANOSABA-CUTIE_CATS_EQUIPMENT.description": "使用時、この部位の装備を変更するか選び、装備スコアを得る。\nキューティーキャッツ装備フルセットで全敵に[gold]燃焼[/gold]10と[gold]毒[/gold]10。1戦闘に1回のみ。",
   "MANOSABA-TRIAL.title": "裁判",
-  "MANOSABA-TRIAL.description": "[gold]審問開始[/gold]を持っている時のみ使用できる。[gold]法の悪魔[/gold]がない場合、[gold]筋力[/gold]、[gold]魔女化[/gold]などの効果を受けない。",
+  "MANOSABA-TRIAL.description": "[gold]法の悪魔[/gold]がない場合、このカードは[gold]筋力[/gold]、[gold]魔女化[/gold]などの効果を受けない。攻撃ダメージは[gold]尋問開始[/gold]フィールドによる[gold]罪証[/gold]の加算を受ける。",
   "MANOSABA-TESTIMONY.title": "証言カード",
   "MANOSABA-TESTIMONY.description": "以下のカードを含む：\n[gold]桜羽 エマの証言[/gold]\n[gold]二階堂 ヒロの証言[/gold]\n[gold]夏目 アンアンの証言[/gold]\n[gold]城ケ崎 ノアの証言[/gold]\n[gold]蓮見 レイアの証言[/gold]\n[gold]佐伯 ミリアの証言[/gold]\n[gold]宝生 マーゴの証言[/gold]\n[gold]黒部 ナノカの証言[/gold]\n[gold]紫藤 アリサの証言[/gold]\n[gold]橘 シェリーの証言[/gold]\n[gold]遠野 ハンナの証言[/gold]\n[gold]沢渡 ココの証言[/gold]\n[gold]氷上 メルルの証言[/gold]\n[gold]典獄長の証言[/gold]\n[gold]看守の証言[/gold]\n[gold]大魔女の証言[/gold]"
 }

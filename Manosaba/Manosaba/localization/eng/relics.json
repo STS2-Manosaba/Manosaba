@@ -73,7 +73,7 @@
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.title": "Streaming Equipment",
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.description": "While in [gold]Live Stream Mode[/gold], enemies become [gold]Fans[/gold] after you deal damage to them.\nAt the start of combat, gain [gold]Hiding[/gold] equal to this relic's level.\nLv2+: At the start of combat, gain 3 [gold]Live Stream Mode[/gold].\nLv4+: At the start of your turn, if you have [gold]Live Stream Mode[/gold], gain 1 [gold]Energy[/gold].\nFans this run: {FanCount}.",
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.flavor": "Gotta keep the stream going!",
-  "MANOSABA-LEG_IRONS_SAKURABA_EMA.title": "Leg Irons",
-  "MANOSABA-LEG_IRONS_SAKURABA_EMA.description": "At the start of combat, modify [gold]Majoka[/gold] gained to 20% plus 30% per relic level.\nAt the start of your turn, if you have at least 10 [gold]Evidence[/gold], gain 1 [gold]Argument[/gold].",
+  "MANOSABA-LEG_IRONS_SAKURABA_EMA.title": "Leg Ring",
+  "MANOSABA-LEG_IRONS_SAKURABA_EMA.description": "At the start of combat, set [gold]Majoka[/gold] gained to 50%.\nLv1–4: Gain [gold]Search Time[/gold]. Each card you play adds 1 stack. At 8 stacks, add 1 [gold]rAwTell Owk...[/gold] to your hand and remove [gold]Search Time[/gold]. Each relic level above Lv1 reduces the requirement by 2 stacks.\nLv5: At the start of combat, add 1 [gold]rAwTell Owk...[/gold] directly to your hand instead of gaining [gold]Search Time[/gold].",
   "MANOSABA-LEG_IRONS_SAKURABA_EMA.flavor": "A restraint that turns fear into a thread of proof."
 }

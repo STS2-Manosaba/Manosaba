@@ -32,7 +32,7 @@ public class SakurabaEma : PlaceholderCharacterModel
         ModelDb.Card<SearchSakurabaEma>(),
     ];
 
-    public override IReadOnlyList<RelicModel> StartingRelics => [ModelDb.Relic<LegIronsSakurabaEma>()];
+    public override IReadOnlyList<RelicModel> StartingRelics => [ModelDb.Relic<LegRing>()];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<SakurabaEmaCardPool>();
     public override RelicPoolModel RelicPool => ModelDb.RelicPool<SakurabaEmaRelicPool>();

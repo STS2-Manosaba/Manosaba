@@ -1,4 +1,6 @@
 {
+  "MANOSABA-TEST_FIELD_POWER.title": "Test Field Power",
+  "MANOSABA-TEST_FIELD_POWER.description": "Apply [gold]Test Field Power[/gold] to the field.\nAll creatures deal {FieldDamage:diff()} more damage this combat.\nDoes not affect HP loss or unpowered damage.",
   "MANOSABA-BATHROOM_TALK.title": "Bathroom Talk",
   "MANOSABA-BATHROOM_TALK.description": "Gain [gold]Summon[/gold]: {Summon:diff()}.\nGain {SusPower:diff()} [gold]Suspicion[/gold].",
   "MANOSABA-ACCOMPLICE.title": "Accomplice",
@@ -1096,7 +1098,7 @@
   "MANOSABA-GRAND_WITCH_TESTIMONY.title": "Grand Witch's Testimony",
   "MANOSABA-GRAND_WITCH_TESTIMONY.description": "[gold]Testimony[/gold] card. Draw {Cards:diff()} card. Gain {EvidencePower:diff()} [gold]Evidence[/gold]. If Tsukishiro Yuki is present, add 1 [gold]Statement[/gold] to that player's hand.",
   "MANOSABA-RAW_TELL_OWK.title": "rAwTell Owk...",
-  "MANOSABA-RAW_TELL_OWK.description": "Gain [gold]Interrogation Start[/gold].",
+  "MANOSABA-RAW_TELL_OWK.description": "Apply [gold]Interrogation Start[/gold] to the field. If it is already active, instead add {Progress:diff()} stacks of [gold]Interrogation Progress[/gold].",
   "MANOSABA-LA_VI_BAVELLABION.title": "LaVI-Bavellabion",
   "MANOSABA-LA_VI_BAVELLABION.description": "Gain [gold]Devil of Law[/gold].",
   "MANOSABA-PSYCHIC_PHOTOGRAPH.title": "Psychic Photograph",
@@ -1182,5 +1184,13 @@
   "MANOSABA-KILL_EMA.title": "Kill Ema",
   "MANOSABA-KILL_EMA.description": "Draw {Cards:diff()} card. At end of turn, if [gold]Sakuraba Ema[/gold] has at least {Threshold} stacks of [gold]Bad End[/gold], automatically play this from the pile and win the combat.",
   "MANOSABA-NO_WITCH_REST_RITUAL.title": "No Witch Rest Ritual",
-  "MANOSABA-NO_WITCH_REST_RITUAL.description": "Gain {MajokaPower:diff()} [gold]Majoka[/gold]. Search your draw pile for [gold]Labours of Hiro[/gold] and automatically play it."
+  "MANOSABA-NO_WITCH_REST_RITUAL.description": "Gain {MajokaPower:diff()} [gold]Majoka[/gold]. Search your draw pile for [gold]Labours of Hiro[/gold] and automatically play it.",
+  "MANOSABA-GUILT_SUSPICION.title": "Suspicion of Guilt",
+  "MANOSABA-GUILT_SUSPICION.description": "Choose a teammate. Add 1 [gold]Suspicion of Guilt[/gold] to their hand.\nAt the end of your turn, if this card is in your hand, gain {GuiltPower:diff()} [gold]Guilt[/gold].",
+  "MANOSABA-GUILT_QUESTION.title": "Questioning Guilt",
+  "MANOSABA-GUILT_QUESTION.description": "[gold]Trial[/gold]. Choose a teammate. Add 1 [gold]Suspicion of Guilt[/gold] to their hand.",
+  "MANOSABA-GUILT_CONCLUSIVE.title": "Conclusive Guilt",
+  "MANOSABA-GUILT_CONCLUSIVE.description": "[gold]Trial[/gold]. Requires [gold]Suspicion[/gold] to play.\nConsume 1 [gold]Suspicion[/gold]. Gain {GuiltPower:diff()} [gold]Guilt[/gold].",
+  "MANOSABA-CULPRIT_VERDICT.title": "Culprit Verdict",
+  "MANOSABA-CULPRIT_VERDICT.description": "[gold]Trial[/gold]. Playable from turn {RequiredRound:diff()} onward.\nAll living entities on either side tied for the most [gold]Guilt[/gold] gain [gold]True Culprit[/gold]. Has no effect if a [gold]True Culprit[/gold] is already present."
 }

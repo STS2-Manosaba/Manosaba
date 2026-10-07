@@ -73,7 +73,7 @@
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.title": "配信機材",
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.description": "[gold]配信モード[/gold]中にダメージを与えた敵を[gold]ファン[/gold]にする。\n戦闘開始時、この遺物のレベルと同じ層数の[gold]隠れ[/gold]を得る。\nLv2+：戦闘開始時、[gold]配信モード[/gold]3。\nLv4+：ターン開始時、[gold]配信モード[/gold]がある場合、エネルギーを1得る。\n累計ファン：{FanCount}。",
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.flavor": "今日も配信頑張るぞ！",
-  "MANOSABA-LEG_IRONS_SAKURABA_EMA.title": "足枷",
-  "MANOSABA-LEG_IRONS_SAKURABA_EMA.description": "戦闘開始時、得る[gold]魔女化[/gold]を20%にレリックレベルごとに30%を加えた値に変更する。\nターン開始時、[gold]証拠[/gold]が10以上あるなら、[gold]論拠[/gold]を1得る。",
+  "MANOSABA-LEG_IRONS_SAKURABA_EMA.title": "太ももベルト",
+  "MANOSABA-LEG_IRONS_SAKURABA_EMA.description": "戦闘開始時、得る[gold]魔女化[/gold]を50%に固定する。\nLv1～4：[gold]捜査時間[/gold]を得る。カードを1枚使うたびに1層増加し、8層に達すると[gold]rAwTell Owk...[/gold]を1枚手札に加え、[gold]捜査時間[/gold]を取り除く。Lv1からレリックのレベルが1上がるごとに必要な層数が2減少する。\nLv5：戦闘開始時、[gold]捜査時間[/gold]を得る代わりに[gold]rAwTell Owk...[/gold]を1枚直接手札に加える。",
   "MANOSABA-LEG_IRONS_SAKURABA_EMA.flavor": "恐怖を証明の糸へ変える拘束具。"
 }
