@@ -28,7 +28,7 @@ public sealed class Agreement : EmaTrialCard
         {
             _ = previewMode;
 
-            decimal argument = target?.GetPowerAmount<ArgumentPower>() ?? 0m;
+            decimal argument = ProgressReady(card) ? target?.GetPowerAmount<ArgumentPower>() ?? 0m : 0m;
             decimal blockPerArgument = card.DynamicVars["BlockPerArgument"].BaseValue;
             decimal raw = Math.Max(BaseValue + argument * blockPerArgument, 0m);
 
@@ -92,7 +92,7 @@ public sealed class Agreement : EmaTrialCard
         CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(statement, PileType.Hand, Owner);
         CardCmd.PreviewCardPileAdd(result);
 
-        decimal argument = cardPlay.Target.GetPowerAmount<ArgumentPower>();
+        decimal argument = ProgressReady(this) ? cardPlay.Target.GetPowerAmount<ArgumentPower>() : 0m;
         decimal block = DynamicVars.Block.BaseValue + argument * DynamicVars["BlockPerArgument"].BaseValue;
         await CreatureCmd.GainBlock(cardPlay.Target, new BlockVar(block, TrialMoveValueProp), cardPlay);
     }

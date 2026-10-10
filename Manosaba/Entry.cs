@@ -79,6 +79,7 @@ public class Entry
         // Must run even when PatchAll fails — Godot scenes reference scripts from this assembly.
         ScriptManagerBridge.LookupScriptsInAssembly(typeof(Entry).Assembly);
 
+        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(manosaba.Characters.SakurabaEma.Cards.AccUhEartsIndictment));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(DrawingBoard));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(PhotoOfTheGreatWitch));
         SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(PenOfHiro));

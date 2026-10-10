@@ -2,6 +2,7 @@ using System.Linq;
 using Manosaba.Characters.HikamiMeruru.Powers;
 using Manosaba.Multiplayer;
 using Manosaba.Extensions;
+using manosaba.Characters.SakurabaEma.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -52,11 +53,7 @@ namespace Manosaba.Characters.Common.Powers
                 return;
             }
 
-            // Prison for Two: paired teammates should not target each other with Murderous Impulse.
-            Creature[] filteredAllies = validAllies
-                .Where(c => !PrisonForTwoPower.ShouldExcludeTarget(Owner, c))
-                .Where(c => !IsDecorativeCompanion(c))
-                .ToArray();
+            Creature[] filteredAllies = ResolveTargets(Owner, validAllies);
             if (filteredAllies.Length == 0)
             {
                 return;
@@ -84,6 +81,12 @@ namespace Manosaba.Characters.Common.Powers
             await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), ally, allyDamage, ValueProp.Unpowered, ownerCreature);
         }
 
+        internal static Creature[] ResolveTargets(Creature attacker, IEnumerable<Creature> candidates)
+        {
+            var valid = candidates.Where(c => c != attacker && c.IsAlive && !IsDecorativeCompanion(c)).ToArray();
+            var sheaths = valid.Where(c => c.Player != null && c.HasPower<ScabbardPower>()).OrderBy(c => c.Player!.NetId).ToArray();
+            return sheaths.Length > 0 ? sheaths : valid.Where(c => !PrisonForTwoPower.ShouldExcludeTarget(attacker, c)).ToArray();
+        }
         private static bool HasCombatNode(Creature creature)
         {
             return NCombatRoom.Instance is not { } combatRoom || combatRoom.GetCreatureNode(creature) != null;

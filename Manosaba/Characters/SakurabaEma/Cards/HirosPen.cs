@@ -1,6 +1,8 @@
 using BaseLib.Utils;
 using Manosaba.Characters.Common.Powers;
 using Manosaba.Extensions;
+using Manosaba.Characters.Common.Overrides;
+using manosaba.Characters.SakurabaEma.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -13,7 +15,7 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class HirosPen : PathCustomCardModel
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Eternal];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Evidence, CardKeyword.Eternal];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -24,6 +26,8 @@ public sealed class HirosPen : PathCustomCardModel
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromPower<VigorPower>(),
+        HoverTipFactory.FromKeyword(ManosabaKeywords.Evidence),
+        WitchEncyclopediaState.HoverTip,
         HoverTipFactory.FromKeyword(CardKeyword.Eternal),
     ];
 
@@ -37,6 +41,8 @@ public sealed class HirosPen : PathCustomCardModel
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
         await CommonActions.Apply<VigorPower>(choiceContext, Owner.Creature, this, DynamicVars[nameof(VigorPower)].BaseValue);
     }
+
+    protected override PileType GetResultPileTypeForCardPlay() => WitchEncyclopediaState.PileType;
 
     protected override void OnUpgrade() => DynamicVars[nameof(VigorPower)].UpgradeValueBy(2m);
 }

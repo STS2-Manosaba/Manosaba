@@ -39,6 +39,8 @@
   "MANOSABA-CUTIE_CATS_EQUIPMENT.description": "打出時可選擇是否更換對應部位裝備並獲得裝備分數。\n穿戴全套搗蛋貓咪裝備時，給予敵方全體 10 層[gold]灼燒[/gold]及 10 層[gold]中毒[/gold]。每場戰鬥僅能觸發一次。",
   "MANOSABA-TRIAL.title": "裁判",
   "MANOSABA-TRIAL.description": "若沒有[gold]法的惡魔[/gold]，此牌不受[gold]力量[/gold]、[gold]魔女化[/gold]等能力影響。攻擊傷害仍可獲得[gold]審問開始[/gold]場地的[gold]罪證[/gold]加成。",
-  "MANOSABA-TESTIMONY.title": "證言牌",
-  "MANOSABA-TESTIMONY.description": "包含下列卡牌：\n[gold]櫻羽艾瑪的證言[/gold]\n[gold]二階堂希羅的證言[/gold]\n[gold]夏目安安的證言[/gold]\n[gold]城崎諾亞的證言[/gold]\n[gold]蓮見蕾雅的證言[/gold]\n[gold]佐伯米莉亞的證言[/gold]\n[gold]寶生瑪格的證言[/gold]\n[gold]黑部奈葉香的證言[/gold]\n[gold]紫藤亞里沙的證言[/gold]\n[gold]橘雪莉的證言[/gold]\n[gold]遠野漢娜的證言[/gold]\n[gold]澤渡可可的證言[/gold]\n[gold]冰上梅露露的證言[/gold]\n[gold]典獄長的證言[/gold]\n[gold]看守的證言[/gold]\n[gold]大魔女的證言[/gold]"
+  "MANOSABA-EVIDENCE.title": "證物卡",
+  "MANOSABA-EVIDENCE.description": "加入手牌時自動收納至[gold]魔女圖鑑[/gold]。同名證物只保留一張，打出後返回圖鑑。",
+  "MANOSABA-TESTIMONY.title": "證言卡",
+  "MANOSABA-TESTIMONY.description": "加入手牌時自動收納至[gold]魔女圖鑑[/gold]，同名卡只保留一張，打出後返回圖鑑。\n包含下列卡牌：\n[gold]櫻羽艾瑪的證言[/gold]\n[gold]二階堂希羅的證言[/gold]\n[gold]夏目安安的證言[/gold]\n[gold]城崎諾亞的證言[/gold]\n[gold]蓮見蕾雅的證言[/gold]\n[gold]佐伯米莉亞的證言[/gold]\n[gold]寶生瑪格的證言[/gold]\n[gold]黑部奈葉香的證言[/gold]\n[gold]紫藤亞里沙的證言[/gold]\n[gold]橘雪莉的證言[/gold]\n[gold]遠野漢娜的證言[/gold]\n[gold]澤渡可可的證言[/gold]\n[gold]冰上梅露露的證言[/gold]\n[gold]典獄長的證言[/gold]\n[gold]看守的證言[/gold]\n[gold]大魔女的證言[/gold]"
 }

@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace manosaba.Characters.SakurabaEma.Cards;
 
-[Pool(typeof(SakurabaEmaCardPool))]
+[Pool(typeof(manosaba.Characters.Common.CommonCardPool))]
 public sealed class RawTellOwk : PathCustomCardModel
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

@@ -1,5 +1,7 @@
 {
   "MANOSABA-POTION_CRAFT_FORMULA.title": "Potion Craft Formula",
+  "MANOSABA-WITCH_ENCYCLOPEDIA.title": "Witch Encyclopedia",
+  "MANOSABA-WITCH_ENCYCLOPEDIA.description": "A separate pile for [gold]Evidence Cards[/gold] and [gold]Testimony[/gold] cards. These cards are automatically stored here when added to your hand, with one copy per name. [gold]Present Evidence[/gold] lets you choose one to automatically play and return after its effect resolves.",
   "MANOSABA-KOTODAMA_ENERGY.title": "Kotodama Energy",
   "MANOSABA-KOTODAMA_ENERGY.description": "Textual power generated through Anan's magic.",
   "MANOSABA-KOTODAMA_NOT_ENOUGH": "I don't have enough Kotodama."

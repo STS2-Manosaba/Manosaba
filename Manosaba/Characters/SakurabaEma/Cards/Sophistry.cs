@@ -28,8 +28,8 @@ public sealed class Sophistry : EmaTrialCard
             return;
         }
 
-        int hits = Owner.Creature.GetPowerAmount<SusPower>() > 0m ? 2 : 1;
-        for (int i = 0; i < hits; i++)
+        int hits = ProgressReady(this) && Owner.Creature.GetPowerAmount<SusPower>() > 0m ? 2 : 1;
+        for (int i = 0; i < hits && cardPlay.Target.IsAlive; i++)
         {
             await CreatureCmd.Damage(choiceContext, cardPlay.Target, DynamicVars.Damage.BaseValue, TrialMoveValueProp, Owner.Creature, this);
         }

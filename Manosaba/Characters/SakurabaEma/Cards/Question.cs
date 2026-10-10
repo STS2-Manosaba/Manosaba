@@ -28,12 +28,13 @@ public sealed class Question : EmaTrialCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        _ = choiceContext;
         _ = cardPlay;
         if (CombatState == null)
         {
             return;
         }
+
+        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
 
         List<CardModel> testimonyCards = TestimonyCardHelper.CreateAll(CombatState, Owner)
             .OrderBy(_ => Owner.RunState.Rng.CombatCardSelection.NextInt(int.MaxValue))
@@ -52,7 +53,5 @@ public sealed class Question : EmaTrialCard
         CardCmd.PreviewCardPileAdd(result);
     }
 
-    protected override void OnUpgrade()
-    {
-    }
+    protected override void OnUpgrade() => DynamicVars.Cards.UpgradeValueBy(1m);
 }

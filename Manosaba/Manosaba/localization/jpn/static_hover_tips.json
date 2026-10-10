@@ -1,5 +1,7 @@
 {
   "MANOSABA-POTION_CRAFT_FORMULA.title": "Potion Craft Formula",
+  "MANOSABA-WITCH_ENCYCLOPEDIA.title": "魔女図鑑",
+  "MANOSABA-WITCH_ENCYCLOPEDIA.description": "[gold]証拠カード[/gold]と[gold]証言カード[/gold]の独立した山札。手札に加わると自動で収納され、同名につき1枚保持する。[gold]証拠提出[/gold]で1枚選んで自動で使用し、効果解決後に図鑑に戻す。",
   "MANOSABA-KOTODAMA_ENERGY.title": "言霊",
   "MANOSABA-KOTODAMA_ENERGY.description": "安安の魔法によって生まれた文字の力。",
   "MANOSABA-KOTODAMA_NOT_ENOUGH": "言霊が足りない。"

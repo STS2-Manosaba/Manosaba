@@ -1,5 +1,7 @@
 {
   "MANOSABA-POTION_CRAFT_FORMULA.title": "포션 합성 공식",
+  "MANOSABA-WITCH_ENCYCLOPEDIA.title": "마녀 도감",
+  "MANOSABA-WITCH_ENCYCLOPEDIA.description": "[gold]증거 카드[/gold]와 [gold]증언 카드[/gold]를 위한 독립된 더미입니다. 손에 추가되면 자동으로 보관하며 같은 이름당 1장만 보관합니다. [gold]증거 제시[/gold]로 1장을 선택해 자동 사용하고 효과가 끝나면 도감으로 돌려보냅니다.",
   "MANOSABA-KOTODAMA_ENERGY.title": "언령",
   "MANOSABA-KOTODAMA_ENERGY.description": "안안의 마법으로 만들어진 문자(글자)의 힘.",
   "MANOSABA-KOTODAMA_NOT_ENOUGH": "언령이 부족해."

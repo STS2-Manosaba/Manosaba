@@ -66,10 +66,15 @@ public sealed class BasementExplorationEvent : CustomEventModel
 
     private Task FightRoute()
     {
-        RelicModel ritualSword = ModelDb.Relic<RitualSword>().ToMutable();
-        ritualSword.Owner = Owner!;
-
-        Reward[] extraRewards = [new RelicReward(ritualSword, Owner!)];
+        // Shared event owners are local to each client. Build the same reward list
+        // for every player so reward indices and choice counters stay synchronized.
+        List<Reward> extraRewards = [];
+        foreach (var player in Owner!.RunState.Players.OrderBy(player => player.NetId))
+        {
+            RelicModel ritualSword = ModelDb.Relic<RitualSword>().ToMutable();
+            ritualSword.Owner = player;
+            extraRewards.Add(new RelicReward(ritualSword, player));
+        }
         EnterCombatWithoutExitingEvent<BasementGuardianEventEncounter>(extraRewards, shouldResumeAfterCombat: true);
         return Task.CompletedTask;
     }

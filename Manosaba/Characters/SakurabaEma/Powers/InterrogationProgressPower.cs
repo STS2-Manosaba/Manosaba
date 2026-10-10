@@ -4,7 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 
 namespace manosaba.Characters.SakurabaEma.Powers;
 
-/// <summary>A shared field counter of Trial card plays, with no gameplay effect.</summary>
+/// <summary>A shared field counter of Trial card plays, unlocking conditional effects at ten.</summary>
 public sealed class InterrogationProgressPower : FieldPowerModel
 {
     public override PowerType Type => PowerType.Buff;

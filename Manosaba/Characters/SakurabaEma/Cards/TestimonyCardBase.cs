@@ -4,6 +4,7 @@ using Manosaba.Characters.Common.Overrides;
 using Manosaba.Extensions;
 using manosaba.Extensions;
 using manosaba.Characters.SakurabaEma.Powers;
+using manosaba.Characters.SakurabaEma.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -17,23 +18,26 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 
 public abstract class TestimonyCardBase : PathCustomCardModel
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Testimony, CardKeyword.Exhaust];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Testimony];
     public override bool CanBeGeneratedInCombat => false;
     public override bool CanBeGeneratedByModifiers => false;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(1),
-        new PowerVar<EvidencePower>(2m),
+        new PowerVar<GuiltPower>(2m),
         ..TestimonyVars,
     ];
+
+    protected override PileType GetResultPileTypeForCardPlay() => WitchEncyclopediaState.PileType;
 
     protected virtual IEnumerable<DynamicVar> TestimonyVars => [];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<EvidencePower>(),
+        HoverTipFactory.FromPower<GuiltPower>(),
         HoverTipFactory.FromKeyword(ManosabaKeywords.Testimony),
+        WitchEncyclopediaState.HoverTip,
         ..TestimonyExtraHoverTips,
     ];
 
@@ -47,7 +51,7 @@ public abstract class TestimonyCardBase : PathCustomCardModel
     {
         _ = cardPlay;
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner);
-        await CommonActions.Apply<EvidencePower>(choiceContext, Owner.Creature, this, DynamicVars["EvidencePower"].BaseValue);
+        await CommonActions.Apply<GuiltPower>(choiceContext, Owner.Creature, this, DynamicVars["GuiltPower"].BaseValue);
         await OnAfterTestimony(choiceContext);
     }
 
@@ -76,20 +80,19 @@ public abstract class CharacterTestimonyCardBase : TestimonyCardBase
             return;
         }
 
-        Player? targetPlayer = CombatState.Players
+        // Resolve every matching player in a stable order on all clients.
+        Player[] targetPlayers = CombatState.Players
             .Where(player => player.Creature.IsAlive)
             .Where(IsTargetCharacter)
             .OrderBy(player => player.NetId)
-            .FirstOrDefault();
+            .ToArray();
 
-        if (targetPlayer == null)
+        foreach (Player targetPlayer in targetPlayers)
         {
-            return;
+            CardModel statement = CombatState.CreateCard<Statement>(targetPlayer);
+            CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(statement, PileType.Hand, targetPlayer);
+            CardCmd.PreviewCardPileAdd(result);
         }
-
-        CardModel statement = CombatState.CreateCard<Statement>(targetPlayer);
-        CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(statement, PileType.Hand, targetPlayer);
-        CardCmd.PreviewCardPileAdd(result);
     }
 
     private bool IsTargetCharacter(Player player) =>

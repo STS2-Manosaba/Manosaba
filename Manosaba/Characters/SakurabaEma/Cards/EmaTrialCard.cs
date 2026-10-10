@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using Manosaba.Combat;
 
 namespace manosaba.Characters.SakurabaEma.Cards;
 
@@ -21,6 +22,13 @@ public abstract class EmaTrialCard : PathCustomCardModel
         bool shouldShowInCardLibrary) : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
     }
+
+    public const int ProgressThreshold = 10;
+    public static int Progress(CardModel card) =>
+        (card.CombatState ?? card.Owner?.Creature?.CombatState) is { } field
+            ? FieldPowerState.Get(field).OfType<InterrogationProgressPower>().FirstOrDefault()?.Amount ?? 0
+            : 0;
+    public static bool ProgressReady(CardModel card) => Progress(card) >= ProgressThreshold;
 
     protected ValueProp TrialMoveValueProp =>
         Owner?.Creature?.GetPowerAmount<LawDevilPower>() > 0m
@@ -47,6 +55,7 @@ public abstract class EmaTrialCard : PathCustomCardModel
     [
         HoverTipFactory.FromKeyword(ManosabaKeywords.Trial),
         HoverTipFactory.FromPower<InterrogationStartPower>(),
+        HoverTipFactory.FromPower<InterrogationProgressPower>(),
         HoverTipFactory.FromPower<LawDevilPower>(),
         ..TrialExtraHoverTips,
     ];

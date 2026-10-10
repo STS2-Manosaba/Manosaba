@@ -26,10 +26,10 @@ public class SakurabaEma : PlaceholderCharacterModel
         ModelDb.Card<DefendSakurabaEma>(),
         ModelDb.Card<DefendSakurabaEma>(),
         ModelDb.Card<DefendSakurabaEma>(),
-        ModelDb.Card<DefendSakurabaEma>(),
         ModelDb.Card<TraumaSakurabaEma>(),
         ModelDb.Card<SearchSakurabaEma>(),
         ModelDb.Card<SearchSakurabaEma>(),
+        ModelDb.Card<PresentEvidence>(),
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics => [ModelDb.Relic<LegRing>()];

@@ -20,7 +20,7 @@ public sealed class LawDevilPower : PathCustomPowerModel
             return;
 
         Flash();
-        await CommonActions.Apply<EvidencePower>(choiceContext, Owner, null, 1m);
+        await CommonActions.Apply<GuiltPower>(choiceContext, Owner, null, 1m);
         await CommonActions.Apply<ArgumentPower>(choiceContext, Owner, null, 1m);
     }
 }

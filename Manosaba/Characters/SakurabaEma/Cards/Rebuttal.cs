@@ -3,6 +3,7 @@ using Manosaba.Extensions;
 using manosaba.Characters.SakurabaEma;
 using manosaba.Characters.SakurabaEma.Powers;
 using MegaCrit.Sts2.Core.Combat;
+using manosaba.Characters.SakurabaEma.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -18,17 +19,17 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class Rebuttal : EmaTrialCard
 {
-    private sealed class EvidenceDamageVar : DamageVar
+    private sealed class EncyclopediaDamageVar : DamageVar
     {
-        public EvidenceDamageVar() : base(8m, ValueProp.Move)
+        public EncyclopediaDamageVar() : base(8m, ValueProp.Move)
         {
         }
 
         public override void UpdateCardPreview(CardModel card, CardPreviewMode previewMode, Creature? target, bool runGlobalHooks)
         {
-            decimal evidence = card.Owner?.Creature?.GetPowerAmount<EvidencePower>() ?? 0m;
-            decimal damagePerEvidence = card.DynamicVars["DamagePerEvidence"].BaseValue;
-            decimal raw = Math.Max(BaseValue + evidence * damagePerEvidence, 0m);
+            decimal count = ProgressReady(card) ? WitchEncyclopediaState.CardCount(card.Owner) : 0;
+            decimal damagePerEvidence = card.DynamicVars["DamagePerCard"].BaseValue;
+            decimal raw = Math.Max(BaseValue + count * damagePerEvidence, 0m);
 
             ValueProp props = GetTrialPreviewProps(card);
             if (runGlobalHooks)
@@ -64,11 +65,11 @@ public sealed class Rebuttal : EmaTrialCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new EvidenceDamageVar(),
-        new DynamicVar("DamagePerEvidence", 2m),
+        new EncyclopediaDamageVar(),
+        new DynamicVar("DamagePerCard", 2m),
     ];
 
-    protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [HoverTipFactory.FromPower<EvidencePower>()];
+    protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [WitchEncyclopediaState.HoverTip, HoverTipFactory.FromCard<PresentEvidence>()];
 
     public Rebuttal() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy, true)
     {
@@ -81,8 +82,12 @@ public sealed class Rebuttal : EmaTrialCard
             return;
         }
 
-        decimal evidence = Owner.Creature.GetPowerAmount<EvidencePower>();
-        decimal damage = DynamicVars.Damage.BaseValue + evidence * DynamicVars["DamagePerEvidence"].BaseValue;
+        await WitchEncyclopediaState.Present(choiceContext, Owner, SelectionScreenPrompt);
+        if (!cardPlay.Target.IsAlive)
+            return;
+
+        decimal count = ProgressReady(this) ? WitchEncyclopediaState.CardCount(Owner) : 0;
+        decimal damage = DynamicVars.Damage.BaseValue + count * DynamicVars["DamagePerCard"].BaseValue;
         await CreatureCmd.Damage(choiceContext, cardPlay.Target, damage, TrialMoveValueProp, Owner.Creature, this);
     }
 
