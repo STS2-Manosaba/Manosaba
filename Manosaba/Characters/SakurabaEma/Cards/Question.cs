@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using manosaba.Characters.SakurabaEma.Combat;
 
 namespace manosaba.Characters.SakurabaEma.Cards;
 
@@ -49,9 +50,19 @@ public sealed class Question : EmaTrialCard
             return;
         }
 
-        CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(selected, PileType.Hand, Owner);
+        CardPileAddResult result = await WitchEncyclopediaState.AddForImmediatePlay(selected, Owner);
         CardCmd.PreviewCardPileAdd(result);
+        if (!result.success || selected.HasBeenRemovedFromState) return;
+        try
+        {
+            await CardCmd.AutoPlay(choiceContext, selected, Owner.Creature);
+        }
+        finally
+        {
+            if (!selected.HasBeenRemovedFromState && WitchEncyclopediaState.Get(Owner) is { } encyclopedia && selected.Pile != encyclopedia.Pile)
+                await CardPileCmd.Add(selected, encyclopedia.Pile, skipVisuals: true);
+        }
     }
 
-    protected override void OnUpgrade() => DynamicVars.Cards.UpgradeValueBy(1m);
+    protected override void OnUpgrade() { }
 }

@@ -1,7 +1,7 @@
 using BaseLib.Utils;
 using Manosaba.Characters.Common;
 using Manosaba.Extensions;
-using manosaba.Characters.SakurabaEma.Powers;
+using Manosaba.Characters.Common.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -25,12 +25,12 @@ public sealed class EveryoneShouldJustDie : PathCustomCardModel
     [
         new CardsVar(1),
         new BlockVar(5m, ValueProp.Move),
-        new PowerVar<EnemyMajokaPower>(10m),
+        new PowerVar<MajokaPower>(10m),
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<EnemyMajokaPower>(),
+        HoverTipFactory.FromPower<MajokaPower>(),
     ];
 
     public EveryoneShouldJustDie() : base(1, CardType.Skill, CardRarity.Token, TargetType.Self, true)
@@ -51,13 +51,13 @@ public sealed class EveryoneShouldJustDie : PathCustomCardModel
 
         foreach (Creature enemy in CombatState.GetOpponentsOf(ownerCreature).Where(enemy => enemy.IsHittable))
         {
-            await CommonActions.Apply<EnemyMajokaPower>(choiceContext, enemy, this, DynamicVars["EnemyMajokaPower"].BaseValue);
+            await CommonActions.Apply<MajokaPower>(choiceContext, enemy, this, DynamicVars["MajokaPower"].BaseValue);
         }
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Block.UpgradeValueBy(3m);
-        DynamicVars["EnemyMajokaPower"].UpgradeValueBy(5m);
+        DynamicVars["MajokaPower"].UpgradeValueBy(5m);
     }
 }

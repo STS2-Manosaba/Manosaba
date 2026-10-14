@@ -75,6 +75,7 @@ public abstract class AccUhEartsBase : EmaTrialCard
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class AccUhEartsIndictment : AccUhEartsBase
 {
+    public override string PortraitPath => "res://Manosaba/images/cards/acc_uh_earts_indictment.png";
     private int _battlesCompleted;
     public const int BattlesToTransform = 13;
     [SavedProperty]
@@ -115,6 +116,7 @@ public sealed class AccUhEartsIndictment : AccUhEartsBase
 [Pool(typeof(TokenCardPool))]
 public sealed class AccUhEartsRevelation : AccUhEartsBase
 {
+    public override string PortraitPath => "res://Manosaba/images/cards/acc_uh_earts_revelation.png";
     public override int MaximumHits => 10;
     public override bool CanBeGeneratedInCombat => false;
     public override bool CanBeGeneratedByModifiers => false;

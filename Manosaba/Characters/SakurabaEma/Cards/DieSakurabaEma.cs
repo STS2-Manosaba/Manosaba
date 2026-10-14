@@ -2,7 +2,6 @@ using BaseLib.Utils;
 using Manosaba.Characters.Common.Commands;
 using Manosaba.Characters.Common.Powers;
 using Manosaba.Extensions;
-using manosaba.Characters.SakurabaEma.Powers;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -19,6 +18,8 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(TokenCardPool))]
 public sealed class DieSakurabaEma : PathCustomCardModel
 {
+    private const decimal VictoryMajokaThreshold = 200m;
+
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     public override bool CanBeGeneratedInCombat => false;
     public override bool CanBeGeneratedByModifiers => false;
@@ -27,12 +28,13 @@ public sealed class DieSakurabaEma : PathCustomCardModel
     [
         new DamageVar(3m, ValueProp.Move),
         new PowerVar<DoomPower>(10m),
+        new DynamicVar("MajokaThreshold", VictoryMajokaThreshold),
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromPower<DoomPower>(),
-        HoverTipFactory.FromPower<NarehatePower>(),
+        HoverTipFactory.FromPower<MajokaPower>(),
     ];
 
     public DieSakurabaEma() : base(0, CardType.Attack, CardRarity.Token, TargetType.AllEnemies, true)
@@ -65,7 +67,9 @@ public sealed class DieSakurabaEma : PathCustomCardModel
             await CommonActions.Apply<DoomPower>(choiceContext, enemy, this, DynamicVars["DoomPower"].BaseValue);
         }
 
-        if (enemies.Count > 0 && enemies.Where(enemy => enemy.IsAlive).All(enemy => enemy.GetPowerAmount<NarehatePower>() > 0m))
+        if (enemies.Count > 0 && CombatState.GetOpponentsOf(ownerCreature)
+            .Where(enemy => enemy.IsAlive)
+            .All(enemy => enemy.GetPowerAmount<MajokaPower>() >= DynamicVars["MajokaThreshold"].BaseValue))
         {
             await ManosabaCombatCmd.ForceWinWithoutDeathOrEscape((ICombatState)CombatState);
         }

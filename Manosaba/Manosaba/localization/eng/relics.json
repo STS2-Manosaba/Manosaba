@@ -75,5 +75,10 @@
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.flavor": "Gotta keep the stream going!",
   "MANOSABA-LEG_IRONS_SAKURABA_EMA.title": "Leg Ring",
   "MANOSABA-LEG_IRONS_SAKURABA_EMA.description": "At the start of combat, set [gold]Majoka[/gold] gained to 50%.\nLv1–4: Gain [gold]Search Time[/gold]. Each card you play adds 1 stack. At 8 stacks, add 1 [gold]rAwTell Owk...[/gold] to your hand and remove [gold]Search Time[/gold]. Each relic level above Lv1 reduces the requirement by 2 stacks.\nLv5: At the start of combat, add 1 [gold]rAwTell Owk...[/gold] directly to your hand instead of gaining [gold]Search Time[/gold].",
-  "MANOSABA-LEG_IRONS_SAKURABA_EMA.flavor": "A restraint that turns fear into a thread of proof."
+  "MANOSABA-LEG_IRONS_SAKURABA_EMA.flavor": "A restraint that turns fear into a thread of proof.",
+  "MANOSABA-YOU_DID_WELL.derivations": "Magic to Kill the Witch:\n6: Gain 1 cUrOi and 1 shi-des.\n8: Choose whether to add Exhaust to all your combat cards first.\n12: Gain 1 sent-ky.\n13: Replace the stack-8 effect with transforming all combat cards into Die+.\nSpecial Magic:\n10: Generate upgraded Die and Everyone Should Just Die.\n13: The Grand Witch controls every turn.",
+  "MANOSABA-YOU_DID_WELL.flavor": "You did well.",
+  "MANOSABA-YOU_DID_WELL.title": "You Did Well",
+  "MANOSABA-YOU_DID_WELL.derivationsTitle": "Derivative Effects",
+  "MANOSABA-YOU_DID_WELL.description": "Gain 1 stack when a teammate dies or you land the killing blow on a non-Minion enemy. Starts at 1, maximum 13. Each stack adds 10% Witchification gain to Leg Ring. At 5, gain Magic to Kill the Witch and transform all Trauma into True Trauma in your deck. At 7/9/11, gain Pure/Kind/Good Child Ema after 3 consecutive turns without gaining Suspicion/playing Attacks/taking damage respectively. At 13, require 2 turns."
 }

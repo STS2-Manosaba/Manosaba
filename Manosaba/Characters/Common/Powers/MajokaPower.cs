@@ -10,6 +10,7 @@ using Manosaba.Characters.NikaidoHiro.Cards;
 using Manosaba.Characters.SaekiMiria.Cards;
 using manosaba.Characters.SawatariCoco.Cards;
 using manosaba.Characters.SakurabaEma.Cards;
+using manosaba.Characters.SakurabaEma.Relics;
 using Manosaba.Characters.ShitoAlisa.Cards;
 using Manosaba.Characters.TachibanaSherry.Cards;
 using Manosaba.Characters.TonoHanna.Cards;
@@ -53,7 +54,6 @@ namespace Manosaba.Characters.Common.Powers
             { "shito_alisa", typeof(FireJudgementCourt)},
             { "natsume_anan", typeof(Brainwash)},
             { "sawatari_coco", typeof(Clairvoyance)},
-            { "sakuraba_ema", typeof(MagicToKillTheWitch)},
         };
 
         public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
@@ -92,7 +92,7 @@ namespace Manosaba.Characters.Common.Powers
 
         public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
         {
-            if (power is MajokaPower)
+            if (ReferenceEquals(power, this))
             {
                 if (base.Owner.Player?.Creature is not { } ownerCreature)
                 {
@@ -110,7 +110,11 @@ namespace Manosaba.Characters.Common.Powers
             if (base.Amount >= 100 && Owner.Player != null && Owner.CombatState != null)
             {
                 string characterId = (Owner.Player.Character.Id.ToString() ?? string.Empty).RemovePrefix().ToLowerInvariant();
-                await TransformSakurabaEmaTraumaIfNeeded(characterId);
+                if (characterId == "sakuraba_ema")
+                {
+                    await YouDidWell.Gain(Owner.Player, onlyIfMissing: true);
+                    return;
+                }
 
                 if (!mahouCardsMap.TryGetValue(characterId, out Type? targetType) || targetType == null)
                     return;
@@ -125,27 +129,6 @@ namespace Manosaba.Characters.Common.Powers
                     CardModel cardToHand = Owner.CombatState.CreateCard(cardType, Owner.Player);
                     await CardPileCmd.AddGeneratedCardToCombat(cardToHand, PileType.Hand, Owner.Player);
                 }
-            }
-        }
-
-        private async Task TransformSakurabaEmaTraumaIfNeeded(string characterId)
-        {
-            if (characterId != "sakuraba_ema" || Owner.Player == null)
-            {
-                return;
-            }
-
-            CardModel? trauma = Owner.Player.Deck.Cards.FirstOrDefault(c => c is TraumaSakurabaEma);
-            if (trauma == null)
-            {
-                return;
-            }
-
-            bool wasUpgraded = trauma.IsUpgraded;
-            CardPileAddResult? result = await CardCmd.TransformTo<TraumaTrueSakurabaEma>(trauma);
-            if (wasUpgraded && result is { success: true, cardAdded: { } transformed })
-            {
-                CardCmd.Upgrade(transformed);
             }
         }
 

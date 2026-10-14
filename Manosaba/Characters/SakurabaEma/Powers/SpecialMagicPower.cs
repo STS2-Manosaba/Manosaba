@@ -1,5 +1,6 @@
 using Manosaba.Extensions;
 using manosaba.Characters.SakurabaEma.Cards;
+using manosaba.Characters.SakurabaEma.Relics;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -8,18 +9,19 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.HoverTips;
 
 namespace manosaba.Characters.SakurabaEma.Powers;
 
 public sealed class SpecialMagicPower : PathCustomPowerModel
 {
-    private const int DieCardsPerTurn = 5;
-    private const int EveryoneShouldJustDieCardsPerTurn = 3;
-    private const int MaxAutoPlayedCardsPerTurn = 13;
+    private const int DieCardsPerTurn = 2;
+    private const int EveryoneShouldJustDieCardsPerTurn = 1;
 
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
     public override bool AllowNegative => false;
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [YouDidWell.DerivationTip];
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
@@ -37,6 +39,8 @@ public sealed class SpecialMagicPower : PathCustomPowerModel
         for (int i = 0; i < EveryoneShouldJustDieCardsPerTurn; i++)
             cards.Add(Owner.CombatState.CreateCard<EveryoneShouldJustDie>(player));
 
+        if (YouDidWell.Level(player) >= 10)
+            foreach (CardModel card in cards) CardCmd.Upgrade(card);
         IReadOnlyList<CardPileAddResult> results = await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Hand, player);
         CardCmd.PreviewCardPileAdd(results);
     }
@@ -46,10 +50,11 @@ public sealed class SpecialMagicPower : PathCustomPowerModel
         Player? ownerPlayer = Owner.Player;
         Creature? ownerCreature = ownerPlayer?.Creature;
         ICombatState? combatState = ownerCreature?.CombatState;
-        if (ownerPlayer == null || ownerCreature == null || combatState == null || player != ownerPlayer)
+        if (ownerPlayer == null || ownerCreature == null || combatState == null || player != ownerPlayer || YouDidWell.Level(player) < 13)
             return;
 
-        for (int cardsPlayed = 0; cardsPlayed < MaxAutoPlayedCardsPerTurn; cardsPlayed++)
+        // A finite safety bound protects against zero-cost card generation loops.
+        for (int cardsPlayed = 0; cardsPlayed < 1000; cardsPlayed++)
         {
             if (CombatManager.Instance.IsOverOrEnding || CombatManager.Instance.IsPlayerReadyToEndTurn(player))
                 break;
@@ -65,6 +70,8 @@ public sealed class SpecialMagicPower : PathCustomPowerModel
             await card.SpendResources();
             await CardCmd.AutoPlay(choiceContext, card, target, AutoPlayType.Default, skipXCapture: true);
         }
+        if (!CombatManager.Instance.IsOverOrEnding && !CombatManager.Instance.IsPlayerReadyToEndTurn(player))
+            PlayerCmd.EndTurn(player, canBackOut: false);
     }
 
     private static bool RequiresTarget(TargetType targetType) =>

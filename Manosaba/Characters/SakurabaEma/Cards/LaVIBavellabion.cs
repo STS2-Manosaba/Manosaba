@@ -1,5 +1,6 @@
 using BaseLib.Utils;
 using Manosaba.Extensions;
+using Manosaba.Characters.Common.Overrides;
 using manosaba.Extensions;
 using manosaba.Characters.SakurabaEma;
 using manosaba.Characters.SakurabaEma.Powers;
@@ -12,7 +13,9 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class LaVIBavellabion : PathCustomCardModel
 {
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<LawDevilPower>()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Unique];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        [HoverTipFactory.FromPower<LawDevilPower>(), HoverTipFactory.FromKeyword(ManosabaKeywords.Unique)];
 
     public LaVIBavellabion() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true)
     {

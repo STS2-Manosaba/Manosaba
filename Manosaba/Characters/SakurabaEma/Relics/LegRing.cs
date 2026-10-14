@@ -16,6 +16,8 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Saves.Runs;
+using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 using NikaidoHiroCharacter = manosaba.Characters.NikaidoHiro.NikaidoHiro;
 
 namespace manosaba.Characters.SakurabaEma.Relics;
@@ -31,6 +33,8 @@ public sealed class LegRing : LevelingPathCustomRelicModel
 
     private const decimal MajokaMultiplierPercent = 50m;
     private bool _hirosPenAddedToDeck;
+    private int _corpsePhotoFlags;
+    private HashSet<Creature> _pendingKills = [];
 
     public override RelicRarity Rarity => RelicRarity.Starter;
 
@@ -53,13 +57,25 @@ public sealed class LegRing : LevelingPathCustomRelicModel
         }
     }
 
+    // Each bit records a character's first death across the entire run, including after reload.
+    [SavedProperty]
+    public int CorpsePhotoFlags
+    {
+        get => _corpsePhotoFlags;
+        set { AssertMutable(); _corpsePhotoFlags = value & 31; }
+    }
+
     public override async Task BeforeCombatStart()
     {
+        _pendingKills = [];
         if (Owner.Creature == null)
             return;
 
         var choiceContext = new ThrowingPlayerChoiceContext();
-        await CommonActions.Apply<LegRingMajokaPower>(choiceContext, Owner.Creature, null, MajokaMultiplierPercent);
+        if (Owner.Creature.GetPower<LegRingMajokaPower>() is not { } multiplier)
+            await CommonActions.Apply<LegRingMajokaPower>(choiceContext, Owner.Creature, null, MajokaMultiplierPercent + YouDidWell.Level(Owner) * 10);
+        else
+            await PowerCmd.ModifyAmount(choiceContext, multiplier, MajokaMultiplierPercent + YouDidWell.Level(Owner) * 10 - multiplier.Amount, null, null);
 
         if (RelicLevel >= 5)
         {
@@ -84,13 +100,53 @@ public sealed class LegRing : LevelingPathCustomRelicModel
         if (wasRemovalPrevented || Owner?.Creature?.CombatState == null)
             return;
 
-        if (creature.CombatState != Owner.Creature.CombatState || creature.Side != Owner.Creature.Side)
+        if (creature.CombatState != Owner.Creature.CombatState)
             return;
 
-        if (creature.Player == null || !IsNikaidoHiro(creature.Player))
+        if (creature.Side != Owner.Creature.Side)
+        {
+            if (_pendingKills.Remove(creature) && !creature.HasPower<MinionPower>()) await YouDidWell.Gain(Owner);
+            return;
+        }
+
+        if (creature.Player == null || creature == Owner.Creature)
             return;
 
-        await TryAddHirosPenToDeck();
+        await YouDidWell.Gain(Owner);
+        await TryAddCorpsePhotoToDeck(creature.Player);
+        if (IsNikaidoHiro(creature.Player)) await TryAddHirosPenToDeck();
+    }
+
+    private async Task TryAddCorpsePhotoToDeck(Player fallen)
+    {
+        (string Character, int Flag, Type Card)[] photos =
+        [
+            ("jogasaki_noah", 1, typeof(NoahCorpsePhoto)),
+            ("saeki_miria", 2, typeof(MiriaCorpsePhoto)),
+            ("tono_hanna", 4, typeof(HannaCorpsePhoto)),
+            ("shito_alisa", 8, typeof(AlisaCorpsePhoto)),
+            ("kurobe_nanoka", 16, typeof(NanokaCorpsePhoto)),
+        ];
+        foreach (var photo in photos)
+        {
+            if (!fallen.Character.Id.Entry.EndsWith(photo.Character, StringComparison.OrdinalIgnoreCase)) continue;
+            if ((CorpsePhotoFlags & photo.Flag) != 0) return;
+            CorpsePhotoFlags |= photo.Flag;
+            CardModel canonical = ModelDb.GetById<CardModel>(ModelDb.GetId(photo.Card));
+            if (Owner.Deck.Cards.Any(card => card.Id == canonical.Id)) return;
+            CardModel card = Owner.RunState.CreateCard(canonical, Owner);
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.Add(card, PileType.Deck), 1.2f, CardPreviewStyle.GridLayout);
+            return;
+        }
+    }
+
+    internal void RecordExecution(Creature target) => _pendingKills.Add(target);
+
+    public override Task AfterDamageGiven(PlayerChoiceContext context, Creature? dealer, DamageResult result, ValueProp props, Creature target, CardModel? cardSource)
+    {
+        if (dealer == Owner.Creature && target.Side != Owner.Creature.Side && result.WasTargetKilled && !target.HasPower<MinionPower>())
+            _pendingKills.Add(target);
+        return Task.CompletedTask;
     }
 
     private bool HasNikaidoHiroTeammate()

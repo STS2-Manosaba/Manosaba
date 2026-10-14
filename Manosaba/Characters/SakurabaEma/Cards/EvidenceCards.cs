@@ -35,6 +35,7 @@ public abstract class EvidenceCard : PathCustomCardModel
 [Pool(typeof(TokenCardPool))]
 public sealed class BrokenCrossbowEvidence : EvidenceCard
 {
+    public override string PortraitPath => "res://Manosaba/images/cards/broken_crossbow_evidence.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4m, ValueProp.Move)];
     public BrokenCrossbowEvidence() : base(CardType.Attack, TargetType.AnyEnemy) { }
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -47,6 +48,7 @@ public sealed class BrokenCrossbowEvidence : EvidenceCard
 [Pool(typeof(TokenCardPool))]
 public sealed class NoahsButterflyDrawing : EvidenceCard
 {
+    public override string PortraitPath => "res://Manosaba/images/cards/noahs_butterfly_drawing.png";
     public override bool GainsBlock => true;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(3m, ValueProp.Move)];
     public NoahsButterflyDrawing() : base(CardType.Skill, TargetType.Self) { }
@@ -56,6 +58,7 @@ public sealed class NoahsButterflyDrawing : EvidenceCard
 [Pool(typeof(TokenCardPool))]
 public sealed class WitchIslandPrisonBlueprint : EvidenceCard
 {
+    public override string PortraitPath => "res://Manosaba/images/cards/witch_island_prison_blueprint.png";
     protected override IEnumerable<IHoverTip> EvidenceHoverTips => [HoverTipFactory.FromCard<HouseKeeping>(), HoverTipFactory.FromKeyword(CardKeyword.Exhaust), HoverTipFactory.FromPower<GuiltPower>()];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<GuiltPower>(1m)];
     // The self effect remains useful in solo; the optional Sherry bonus must also be

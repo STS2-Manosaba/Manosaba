@@ -105,7 +105,7 @@ public static class Patch_CardPileCmd_Add_WitchEncyclopedia
     private static bool Prefix(IEnumerable<CardModel> cards, CardPile newPile, CardPilePosition position,
         AbstractModel? clonedBy, ref bool skipVisuals, ref Task<IReadOnlyList<CardPileAddResult>> __result)
     {
-        if (newPile.Type == PileType.Hand && cards.Any(WitchEncyclopediaState.ShouldStore))
+        if (newPile.Type == PileType.Hand && cards.Any(WitchEncyclopediaState.ShouldCaptureFromHand))
         {
             __result = CaptureHandEvidence(cards.ToList(), newPile, position, clonedBy, skipVisuals);
             return false;
@@ -138,7 +138,7 @@ public static class Patch_CardPileCmd_Add_WitchEncyclopedia
         var results = new List<CardPileAddResult>();
         foreach (var card in cards)
         {
-            var target = WitchEncyclopediaState.ShouldStore(card) ? WitchEncyclopediaState.Get(card.Owner)?.Pile : hand;
+            var target = WitchEncyclopediaState.ShouldCaptureFromHand(card) ? WitchEncyclopediaState.Get(card.Owner)?.Pile : hand;
             results.Add(target == null ? new CardPileAddResult { cardAdded = card, success = false } :
                 await CardPileCmd.Add(card, target, position, source, skipVisuals));
         }

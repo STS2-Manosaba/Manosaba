@@ -1,11 +1,10 @@
 using BaseLib.Utils;
-using Manosaba.Characters.Common;
 using Manosaba.Characters.Common.Powers;
 using Manosaba.Extensions;
 using manosaba.Characters.SakurabaEma.Powers;
+using manosaba.Characters.SakurabaEma.Relics;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -17,79 +16,58 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class MagicToKillTheWitch : PathCustomCardModel
 {
-    private const decimal SpecialMagicMajokaThreshold = 100m;
-    private const decimal MajokaPerAdditionalWeak = 25m;
-    private const decimal MaxWeakScalingMajoka = 100m;
-
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Eternal];
-
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
-    [
-        new PowerVar<WeakPower>(1m),
-        new DynamicVar("MajokaPerAdditionalWeak", MajokaPerAdditionalWeak),
-        new DynamicVar("MaxWeakScalingMajoka", MaxWeakScalingMajoka),
-        new DynamicVar("MajokaThreshold", SpecialMagicMajokaThreshold),
-    ];
-
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<WeakPower>(1), new DynamicVar("MajokaThreshold", 100)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<WeakPower>(),
-        HoverTipFactory.FromPower<MajokaPower>(),
-        HoverTipFactory.FromPower<SpecialMagicPower>(),
-        HoverTipFactory.FromKeyword(CardKeyword.Eternal),
-    ];
-
-    public MagicToKillTheWitch() : base(1, CardType.Power, CardRarity.Ancient, TargetType.Self, true)
+        [HoverTipFactory.FromPower<WeakPower>(), HoverTipFactory.FromPower<MajokaPower>(), HoverTipFactory.FromPower<SpecialMagicPower>(), YouDidWell.DerivationTip];
+    public MagicToKillTheWitch() : base(1, CardType.Power, CardRarity.Ancient, TargetType.Self, true) { }
+    protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
-    }
-
-    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-    {
-        _ = cardPlay;
-
-        if (CombatState == null || Owner?.Creature is not { } ownerCreature)
-        {
-            return;
-        }
-
-        decimal weakAmount = CalculateWeakAmount(ownerCreature);
-        foreach (Creature enemy in CombatState.GetOpponentsOf(ownerCreature).Where(enemy => enemy.IsHittable))
-        {
-            await CommonActions.Apply<WeakPower>(choiceContext, enemy, this, weakAmount);
-        }
-
-        if (ownerCreature.GetPowerAmount<MajokaPower>() < DynamicVars["MajokaThreshold"].BaseValue)
-        {
-            return;
-        }
-
-        await ExhaustCombatPiles(choiceContext);
-        await CommonActions.Apply<SpecialMagicPower>(choiceContext, ownerCreature, this, 1m);
+        if (CombatState == null) return;
+        foreach (var enemy in CombatState.GetOpponentsOf(Owner.Creature).Where(c => c.IsHittable).ToList())
+            await CommonActions.Apply<WeakPower>(context, enemy, this, 1);
+        if (Owner.Creature.GetPowerAmount<MajokaPower>() < 100) return;
+        await CommonActions.Apply<SpecialMagicPower>(context, Owner.Creature, this, 1);
+        await Derive(context);
         PlayerCmd.EndTurn(Owner, canBackOut: false);
     }
-
-    private decimal CalculateWeakAmount(Creature ownerCreature)
+    private async Task Derive(PlayerChoiceContext context)
     {
-        decimal majoka = Math.Min(MaxWeakScalingMajoka, ownerCreature.GetPowerAmount<MajokaPower>());
-        return DynamicVars["WeakPower"].BaseValue + Math.Floor(majoka / MajokaPerAdditionalWeak);
-    }
-
-    private async Task ExhaustCombatPiles(PlayerChoiceContext choiceContext)
-    {
-        foreach (PileType pileType in new[] { PileType.Hand, PileType.Discard, PileType.Draw })
+        int level = YouDidWell.Level(Owner);
+        List<CardModel> cards = Owner.PlayerCombatState!.AllCards.ToList();
+        if (level >= 13)
         {
-            List<CardModel> cards = pileType.GetPile(Owner).Cards.ToList();
             foreach (CardModel card in cards)
             {
-                if (ReferenceEquals(card, this))
-                {
-                    continue;
-                }
-
-                await CardCmd.Exhaust(choiceContext, card);
+                if (card.Pile == null || !card.IsTransformable) continue;
+                CardModel replacement = CombatState!.CreateCard<DieSakurabaEma>(Owner);
+                CardCmd.Upgrade(replacement);
+                var result = await CardCmd.Transform(card, replacement);
+                // A replacement in the Play pile has no active CardPlay to move it afterwards.
+                if (result is { success: true, cardAdded: { } transformed } && transformed.Pile?.Type == PileType.Play)
+                    await CardPileCmd.Add(transformed, PileType.Discard);
             }
         }
+        else if (level >= 8)
+        {
+            CardModel? selected = await CardSelectCmd.FromChooseACardScreen(context,
+                [CombatState!.CreateCard<AcceptExhaustMagic>(Owner), CombatState.CreateCard<DeclineExhaustMagic>(Owner)], Owner);
+            if (selected is AcceptExhaustMagic)
+                foreach (CardModel card in cards) card.AddKeyword(CardKeyword.Exhaust);
+        }
+        if (level >= 6)
+        {
+            await Give<CUrOi>();
+            await Give<ShiDes>();
+        }
+        if (level >= 12) await Give<SentKy>();
     }
-
+    private async Task Give<T>() where T : CardModel
+    {
+        CardModel card = Owner.RunState.CreateCard(ModelDb.Card<T>(), Owner);
+        CardCmd.PreviewCardPileAdd(await CardPileCmd.Add(card, PileType.Deck));
+        if (CombatState != null)
+            await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<T>(Owner), PileType.Hand, Owner);
+    }
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
 }
