@@ -80,5 +80,11 @@
   "MANOSABA-YOU_DID_WELL.flavor": "よくできました。",
   "MANOSABA-YOU_DID_WELL.title": "よくできました",
   "MANOSABA-YOU_DID_WELL.derivationsTitle": "派生効果",
-  "MANOSABA-YOU_DID_WELL.description": "仲間の死亡、または手下以外の敵への最後の一撃で1層を得る。初期1層、最大13層。1層ごとに魔女化獲得率+10%、脚輪と加算。5層：魔女を殺す魔法を得て、デッキ内の精神的外傷を真・精神的外傷に変化。7／9／11層：疑惑獲得／攻撃使用／被ダメージなしで連続3ターンを過ごすと、純潔な／優しい／いい子のエマを得る。13層：必要ターンが2に減少。"
+  "MANOSABA-YOU_DID_WELL.description": "仲間の死亡、または手下以外の敵への最後の一撃で1層を得る。初期1層、最大13層。1層ごとに魔女化獲得率+10%、脚輪と加算。5層：魔女を殺す魔法を得て、デッキ内の精神的外傷を真・精神的外傷に変化。7／9／11層：疑惑獲得／攻撃使用／被ダメージなしで連続3ターンを過ごすと、純潔な／優しい／いい子のエマを得る。13層：必要ターンが2に減少。",
+  "MANOSABA-LIBRARY_MAGNIFYING_GLASS.title": "虫眼鏡",
+  "MANOSABA-LIBRARY_MAGNIFYING_GLASS.description": "自分の[gold]罪証[/gold]1層につき、与えるダメージと獲得する[gold]ブロック[/gold]が{PerStack}増加する。それぞれ最大{Cap}。",
+  "MANOSABA-LIBRARY_MAGNIFYING_GLASS.flavor": "未知の試練の報酬。どんな小さな証拠も見逃さない。",
+  "MANOSABA-LIBRARY_HANNA_DOLL.title": "ハンナの人形",
+  "MANOSABA-LIBRARY_HANNA_DOLL.description": "戦闘終了時、自分の[gold]罪証[/gold]1層につき{PerStack}ゴールドを獲得する。最大{Cap}ゴールド。",
+  "MANOSABA-LIBRARY_HANNA_DOLL.flavor": "未知の試練の報酬。小さな人形が、積み重なる罪証を覚えている。"
 }

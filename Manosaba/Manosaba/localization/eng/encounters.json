@@ -1,0 +1,6 @@
+{
+  "MANOSABA-BASEMENT_GUARDIAN_EVENT_ENCOUNTER.title": "Basement Exploration",
+  "MANOSABA-BASEMENT_GUARDIAN_EVENT_ENCOUNTER.loss": "{character} tried to claim the Ritual Sword at [gold]{event}[/gold], but the jailor prevailed.",
+  "MANOSABA-ANOMALOUS_LIBRARY_ENCOUNTER.title": "Anomalous Library",
+  "MANOSABA-ANOMALOUS_LIBRARY_ENCOUNTER.loss": "{character} attempted an unknown trial, but was defeated."
+}

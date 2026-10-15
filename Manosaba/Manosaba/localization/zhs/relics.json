@@ -77,5 +77,11 @@
   "MANOSABA-YOU_DID_WELL.flavor": "你做得很好。",
   "MANOSABA-YOU_DID_WELL.title": "你做得很好",
   "MANOSABA-YOU_DID_WELL.derivationsTitle": "衍生行為",
-  "MANOSABA-YOU_DID_WELL.description": "隊友死亡或你斬殺非爪牙敵人時獲得1層，獲得時為1層，最高13層。每層增加10%魔女化獲得量，與腿環加算。5層：獲得殺死魔女的魔法，牌組中所有精神創傷變化成精神創傷-真。7／9／11層：連續3回合未獲得嫌疑／使用攻擊牌／受到傷害時，分別獲得純潔的艾瑪／善良的艾瑪／好孩子艾瑪。13層：需求改為2回合。"
+  "MANOSABA-YOU_DID_WELL.description": "隊友死亡或你斬殺非爪牙敵人時獲得1層，獲得時為1層，最高13層。每層增加10%魔女化獲得量，與腿環加算。5層：獲得殺死魔女的魔法，牌組中所有精神創傷變化成精神創傷-真。7／9／11層：連續3回合未獲得嫌疑／使用攻擊牌／受到傷害時，分別獲得純潔的艾瑪／善良的艾瑪／好孩子艾瑪。13層：需求改為2回合。",
+  "MANOSABA-LIBRARY_MAGNIFYING_GLASS.title": "放大鏡",
+  "MANOSABA-LIBRARY_MAGNIFYING_GLASS.description": "你每擁有1層[gold]罪證[/gold]，造成的傷害增加{PerStack}點，獲得的[gold]格擋[/gold]增加{PerStack}點。最高{Cap}點。",
+  "MANOSABA-LIBRARY_MAGNIFYING_GLASS.flavor": "未知試煉的獎勵，讓細微的證據無所遁形。",
+  "MANOSABA-LIBRARY_HANNA_DOLL.title": "漢娜人偶",
+  "MANOSABA-LIBRARY_HANNA_DOLL.description": "你每擁有1層[gold]罪證[/gold]，在戰鬥結束之後獲得{PerStack}金幣。最高{Cap}金幣。",
+  "MANOSABA-LIBRARY_HANNA_DOLL.flavor": "未知試煉的獎勵。小小的人偶，記得你留下的每一份罪證。"
 }

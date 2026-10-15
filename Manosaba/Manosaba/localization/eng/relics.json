@@ -80,5 +80,11 @@
   "MANOSABA-YOU_DID_WELL.flavor": "You did well.",
   "MANOSABA-YOU_DID_WELL.title": "You Did Well",
   "MANOSABA-YOU_DID_WELL.derivationsTitle": "Derivative Effects",
-  "MANOSABA-YOU_DID_WELL.description": "Gain 1 stack when a teammate dies or you land the killing blow on a non-Minion enemy. Starts at 1, maximum 13. Each stack adds 10% Witchification gain to Leg Ring. At 5, gain Magic to Kill the Witch and transform all Trauma into True Trauma in your deck. At 7/9/11, gain Pure/Kind/Good Child Ema after 3 consecutive turns without gaining Suspicion/playing Attacks/taking damage respectively. At 13, require 2 turns."
+  "MANOSABA-YOU_DID_WELL.description": "Gain 1 stack when a teammate dies or you land the killing blow on a non-Minion enemy. Starts at 1, maximum 13. Each stack adds 10% Witchification gain to Leg Ring. At 5, gain Magic to Kill the Witch and transform all Trauma into True Trauma in your deck. At 7/9/11, gain Pure/Kind/Good Child Ema after 3 consecutive turns without gaining Suspicion/playing Attacks/taking damage respectively. At 13, require 2 turns.",
+  "MANOSABA-LIBRARY_MAGNIFYING_GLASS.title": "Magnifying Glass",
+  "MANOSABA-LIBRARY_MAGNIFYING_GLASS.description": "For each stack of [gold]Guilt[/gold] you have, deal {PerStack} additional damage and gain {PerStack} additional [gold]Block[/gold], up to {Cap} each.",
+  "MANOSABA-LIBRARY_MAGNIFYING_GLASS.flavor": "A reward from an unknown trial. No scrap of evidence escapes its lens.",
+  "MANOSABA-LIBRARY_HANNA_DOLL.title": "Hanna Puppet",
+  "MANOSABA-LIBRARY_HANNA_DOLL.description": "At the end of combat, gain {PerStack} Gold per stack of [gold]Guilt[/gold] you have, up to {Cap} Gold.",
+  "MANOSABA-LIBRARY_HANNA_DOLL.flavor": "A reward from an unknown trial. This little puppet remembers every piece of evidence."
 }

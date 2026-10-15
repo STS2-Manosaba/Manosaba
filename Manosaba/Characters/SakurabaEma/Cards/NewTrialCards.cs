@@ -35,7 +35,6 @@ public sealed class ExhaustiveMethod : EmaTrialCard
                     ModifyDamageHookType.All, previewMode, out _) : raw;
         }
     }
-    public override string PortraitPath => ModelDb.Card<Rebuttal>().PortraitPath;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new ProgressDamageVar()];
     public ExhaustiveMethod() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, true) { }
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

@@ -21,7 +21,6 @@ public sealed class CulpritVerdict : EmaTrialCard
         [HoverTipFactory.FromPower<GuiltPower>(), HoverTipFactory.FromPower<TrueCulpritPower>()];
     protected override bool IsPlayable => base.IsPlayable && CombatState is { } combat
         && combat.RoundNumber >= DynamicVars["RequiredRound"].IntValue;
-    public override string PortraitPath => ModelDb.Card<RawTellOwk>().PortraitPath;
 
     public CulpritVerdict() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.None, true) { }
 

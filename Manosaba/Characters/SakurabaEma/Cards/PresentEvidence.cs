@@ -13,7 +13,6 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class PresentEvidence : EmaTrialCard
 {
-    public override string PortraitPath => "res://Manosaba/images/cards/search_sakuraba_ema.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<ArgumentPower>(0m)];
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [WitchEncyclopediaState.HoverTip, HoverTipFactory.FromPower<ArgumentPower>()];
     public PresentEvidence() : base(0, CardType.Skill, CardRarity.Basic, TargetType.Self, true) { }

@@ -1,0 +1,6 @@
+{
+  "MANOSABA-BASEMENT_GUARDIAN_EVENT_ENCOUNTER.title": "地下室の探索",
+  "MANOSABA-BASEMENT_GUARDIAN_EVENT_ENCOUNTER.loss": "{character}は[gold]{event}[/gold]で儀式の剣を手に入れようとしたが、看守に敗れた。",
+  "MANOSABA-ANOMALOUS_LIBRARY_ENCOUNTER.title": "異変図書館",
+  "MANOSABA-ANOMALOUS_LIBRARY_ENCOUNTER.loss": "{character}は未知の試練に挑んだが、敗れた。"
+}

@@ -8,5 +8,20 @@
   "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.INITIAL.options.FIGHT.description": "전투하여 검을 손에 넣는다.",
   "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.ESCAPE.description": "서둘러 도망치며 피를 흘리는 대가를 치렀고, 검은 뒤에 남겨 두었다.",
   "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.VICTORY.description": "감시자를 쓰러뜨리고 금고에서 [gold]의식검[/gold]을 가져왔다.",
-  "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.FAIL.description": "감시자를 이기지 못해 검을 남겨 두고 도망쳤다. 아무것도 얻지 못했다."
+  "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.FAIL.description": "감시자를 이기지 못해 검을 남겨 두고 도망쳤다. 아무것도 얻지 못했다.",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.title": "이변 도서관",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.loss": "{character}는 알 수 없는 시련에 도전했지만 패배했다.",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.description": "익숙한 마녀섬 도서관에 도착했지만, 어딘가 위화감이 느껴진다.\n그때 낯선 목소리가 들려온다.\n？？？: 《Astral Party》에 오신 것을 환영합니다! 여기서는 무엇이든 경험할 수 있어요!\n상황을 파악하기도 전에 간수장과 간수가 눈앞에 나타났다.\n당신의 선택은……",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.options.FIGHT.title": "싸우자! 신난다!",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.options.FIGHT.description": "간수장과 간수에게 도전한다.",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.options.LEAVE.title": "이곳을 떠난다",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.options.LEAVE.description": "이벤트를 끝낸다.",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.LEAVE.description": "당신은 이곳을 떠났다. 뒤에서 간수장과 간수의 모습이 데이터처럼 사라진다……",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.description": "간수장과 간수를 쓰러뜨리자 아담한 소녀가 눈앞에 나타났다.\n렌: 이변 도서관의 시련을 통과한 걸 축하해! 보상을 가져가!\n당신의 선택은……",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.FAIL.description": "알 수 없는 시련을 통과하지 못한 당신은 빈손으로 도망쳤다.",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.REWARD.description": "보상을 받고 이변 도서관을 떠났다.",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.options.GLASS.title": "유물 획득: [gold]돋보기[/gold]",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.options.GLASS.description": "모든 플레이어가 선택한 유물을 획득한다.",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.options.DOLL.title": "유물 획득: [gold]한나 인형[/gold]",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.options.DOLL.description": "모든 플레이어가 선택한 유물을 획득한다."
 }

@@ -8,5 +8,20 @@
   "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.INITIAL.options.FIGHT.description": "戰鬥來取得劍。",
   "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.ESCAPE.description": "你倉皇撤離，付出了血的代價，並丟下了劍。",
   "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.VICTORY.description": "你擊倒了看守，從保險箱取走了[gold]儀式劍[/gold]。",
-  "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.FAIL.description": "你未能戰勝看守，留下了劍逃走，你一無所獲。"
+  "MANOSABA-BASEMENT_EXPLORATION_EVENT.pages.FAIL.description": "你未能戰勝看守，留下了劍逃走，你一無所獲。",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.title": "異變圖書館",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.loss": "{character}試圖挑戰未知的試煉，卻被擊敗。",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.description": "你來到了此地，映入眼簾的是再熟悉不過的魔女島圖書館，但你感到一絲違和感。\n此時耳邊傳來了陌生的聲音。\n？？？：歡迎來到《Astral Party》，在這裡你可以體驗到任何事情！\n在你還摸不清楚頭緒時，眼前出現了典獄長以及看守的身影。\n你選擇......",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.options.FIGHT.title": "戰鬥 爽！",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.options.FIGHT.description": "挑戰典獄長與看守。",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.options.LEAVE.title": "離開此地",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.INITIAL.options.LEAVE.description": "結束事件。",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.LEAVE.description": "你選擇離開此地，身後的典獄長以及看守的身影如同數據般消散......",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.description": "你擊倒了典獄長和看守，此時映入眼簾的是一位身材嬌小少女的身影。\n戀：恭喜你完成\"異變圖書館\"的試煉，拿走你的獎勵吧！\n你選擇......",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.FAIL.description": "你未能通過未知的試煉，選擇了逃走，你一無所獲。",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.REWARD.description": "你拿走了獎勵，離開了異變圖書館。",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.options.GLASS.title": "獲得遺物 [gold]放大鏡[/gold]",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.options.GLASS.description": "全體玩家獲得所選遺物。",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.options.DOLL.title": "獲得遺物 [gold]漢娜人偶[/gold]",
+  "MANOSABA-ANOMALOUS_LIBRARY_EVENT.pages.VICTORY.options.DOLL.description": "全體玩家獲得所選遺物。"
 }
