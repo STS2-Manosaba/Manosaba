@@ -1,4 +1,7 @@
 {
+  "MANOSABA-EMA_WITCH_TRIAL_AUDIO_FREQUENCY.title": "Ema’s Witch Trial",
+  "MANOSABA-EMA_WITCH_TRIAL_AUDIO_FREQUENCY.hover.title": "Playback frequency",
+  "MANOSABA-EMA_WITCH_TRIAL_AUDIO_FREQUENCY.hover.desc": "Controls this group’s voices, glass SFX and BGM. Once per run is counted separately for each card and player. Cut-in visuals remain enabled.",
   "MANOSABA-HIKAMI_MERURU_EXAID_EFFECT_FREQUENCY.title": "Hi↗ka↘mi↗ Me↘ru↗ru",
   "MANOSABA-HIKAMI_MERURU_EXAID_EFFECT_FREQUENCY.hover.title": "Playback Frequency",
   "MANOSABA-HIKAMI_MERURU_EXAID_EFFECT_FREQUENCY.hover.desc": "Choose how often Hi↗ka↘mi↗ Me↘ru↗ru plays its special SFX: every time, once per run, or never.",

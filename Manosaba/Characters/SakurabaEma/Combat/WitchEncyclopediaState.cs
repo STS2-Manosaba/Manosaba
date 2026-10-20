@@ -53,15 +53,21 @@ public sealed class WitchEncyclopediaState
 
     // Shared by Present Evidence and Rebuttal. Finish the selected card's effect
     // and return it before the caller calculates its follow-up effect.
-    public static async Task Present(PlayerChoiceContext choiceContext, Player owner, LocString prompt)
+    public static async Task Present(PlayerChoiceContext choiceContext, Player owner, LocString prompt,
+        Func<Task>? beforeResolve = null)
     {
         var state = Get(owner);
         if (state == null || state.Pile.IsEmpty)
+        {
+            if (beforeResolve != null) await beforeResolve();
             return;
+        }
         var prefs = new CardSelectorPrefs(prompt, 1);
         var selected = (await CardSelectCmd.FromSimpleGrid(choiceContext, state.Pile.Cards.ToList(), owner, prefs)).FirstOrDefault();
         if (selected == null)
             return;
+        // The calling card supplies its own presentation. Other evidence callers have no callback.
+        if (beforeResolve != null) await beforeResolve();
         CardCmd.Preview(selected);
         try
         {

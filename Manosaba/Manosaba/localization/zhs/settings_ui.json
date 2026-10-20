@@ -1,4 +1,7 @@
 {
+  "MANOSABA-EMA_WITCH_TRIAL_AUDIO_FREQUENCY.title": "艾瑪的魔女審判",
+  "MANOSABA-EMA_WITCH_TRIAL_AUDIO_FREQUENCY.hover.title": "播放頻率",
+  "MANOSABA-EMA_WITCH_TRIAL_AUDIO_FREQUENCY.hover.desc": "統一設定這組語音、碎玻璃聲與 BGM 的播放頻率。每場冒險一次按每張卡、每位玩家各自計次。此選項不關閉 cut-in 畫面。",
   "MANOSABA-HIKAMI_MERURU_EXAID_EFFECT_FREQUENCY.title": "冰↗上↘梅↗露↘露",
   "MANOSABA-HIKAMI_MERURU_EXAID_EFFECT_FREQUENCY.hover.title": "播放頻率",
   "MANOSABA-HIKAMI_MERURU_EXAID_EFFECT_FREQUENCY.hover.desc": "設定冰↗上↘梅↗露↘露專屬 SFX 播放頻率：每次、每場 Run 一次，或永不播放。",

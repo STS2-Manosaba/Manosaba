@@ -92,6 +92,7 @@ public sealed class DArime : EmaTrialCard
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
         if (play.Target is not { } target) return;
+        await EmaTrialPresentation.Play(this);
         while (target.IsAlive && !MegaCrit.Sts2.Core.Combat.CombatManager.Instance.IsOverOrEnding)
         {
             CardModel? drawn = await CardPileCmd.Draw(context, Owner);

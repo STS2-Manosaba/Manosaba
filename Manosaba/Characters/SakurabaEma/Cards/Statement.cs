@@ -2,6 +2,7 @@ using BaseLib.Utils;
 using Manosaba.Characters.Common;
 using Manosaba.Extensions;
 using manosaba.Extensions;
+using manosaba.Characters.SakurabaEma.Combat;
 using manosaba.Characters.SakurabaEma.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -34,6 +35,7 @@ public sealed class Statement : PathCustomCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         _ = cardPlay;
+        await EmaTrialPresentation.Play(this);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner);
         await CommonActions.Apply<ArgumentPower>(choiceContext, Owner.Creature, this, DynamicVars["ArgumentPower"].BaseValue);
     }

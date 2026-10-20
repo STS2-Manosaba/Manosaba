@@ -76,7 +76,7 @@
   "MANOSABA-LEG_IRONS_SAKURABA_EMA.title": "太ももベルト",
   "MANOSABA-LEG_IRONS_SAKURABA_EMA.description": "戦闘開始時、得る[gold]魔女化[/gold]を50%に固定する。\nLv1～4：[gold]捜査時間[/gold]を得る。カードを1枚使うたびに1層増加し、8層に達すると[gold]rAwTell Owk...[/gold]を1枚手札に加え、[gold]捜査時間[/gold]を取り除く。Lv1からレリックのレベルが1上がるごとに必要な層数が2減少する。\nLv5：戦闘開始時、[gold]捜査時間[/gold]を得る代わりに[gold]rAwTell Owk...[/gold]を1枚直接手札に加える。",
   "MANOSABA-LEG_IRONS_SAKURABA_EMA.flavor": "恐怖を証明の糸へ変える拘束具。",
-  "MANOSABA-YOU_DID_WELL.derivations": "魔女を殺す魔法：\n6層：cUrOiとshi-desを1枚ずつ獲得。\n8層：この戦闘の全カードに廃棄を付与するか選択（最優先）。\n12層：sent-kyを1枚獲得。\n13層：8層効果の代わりに全戦闘カードを「死ね+」に変化。\n特別な魔法：\n10層：生成カードをアップグレード。\n13層：大魔女が全ターンを操作。",
+  "MANOSABA-YOU_DID_WELL.derivations": "魔女を殺す魔法：\n6層：cUrOiとshi-desを1枚ずつ手札に加える。\n8層：この戦闘の全カードに廃棄を付与するか選択（最優先）。\n12層：sent-kyを1枚手札に加える。\n13層：8層効果の代わりに全戦闘カードを「死ね+」に変化。\n特別な魔法：\n10層：生成カードをアップグレード。\n13層：大魔女が全ターンを操作。",
   "MANOSABA-YOU_DID_WELL.flavor": "よくできました。",
   "MANOSABA-YOU_DID_WELL.title": "よくできました",
   "MANOSABA-YOU_DID_WELL.derivationsTitle": "派生効果",

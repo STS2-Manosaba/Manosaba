@@ -73,7 +73,7 @@
   "MANOSABA-LEG_IRONS_SAKURABA_EMA.title": "腿環",
   "MANOSABA-LEG_IRONS_SAKURABA_EMA.description": "戰鬥開始時，獲得的[gold]魔女化[/gold]固定為 50%。\nLv1～4：獲得[gold]搜查時間[/gold]。每使用 1 張牌增加 1 層；達到 8 層時，將 1 張[gold]rAwTell Owk...[/gold]加入手牌並移除[gold]搜查時間[/gold]。每升 1 級，需求減少 2 層。\nLv5：戰鬥開始時直接將 1 張[gold]rAwTell Owk...[/gold]加入手牌，不再獲得[gold]搜查時間[/gold]。",
   "MANOSABA-LEG_IRONS_SAKURABA_EMA.flavor": "將恐懼繫成證明線索的束縛。",
-  "MANOSABA-YOU_DID_WELL.derivations": "殺死魔女的魔法：\n6層：獲得1張cUrOi、1張shi-des。\n8層：可選擇將本場戰鬥中所有牌附加消耗（優先執行）。\n12層：獲得1張sent-ky。\n13層：取代8層效果，將本場戰鬥中所有牌變化成去死+。\n特別的魔法：\n10層：生成的去死與大家都去死就好了改為升級牌。\n13層：大魔女接管所有回合。",
+  "MANOSABA-YOU_DID_WELL.derivations": "殺死魔女的魔法：\n6層：將1張cUrOi、1張shi-des加入手牌。\n8層：可選擇將本場戰鬥中所有牌附加消耗（優先執行）。\n12層：將1張sent-ky加入手牌。\n13層：取代8層效果，將本場戰鬥中所有牌變化成去死+。\n特別的魔法：\n10層：生成的去死與大家都去死就好了改為升級牌。\n13層：大魔女接管所有回合。",
   "MANOSABA-YOU_DID_WELL.flavor": "你做得很好。",
   "MANOSABA-YOU_DID_WELL.title": "你做得很好",
   "MANOSABA-YOU_DID_WELL.derivationsTitle": "衍生行為",

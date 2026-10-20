@@ -19,7 +19,8 @@ public sealed class PresentEvidence : EmaTrialCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await WitchEncyclopediaState.Present(choiceContext, Owner, SelectionScreenPrompt);
+        await WitchEncyclopediaState.Present(choiceContext, Owner, SelectionScreenPrompt,
+            () => EmaTrialPresentation.Play(this));
         if (IsUpgraded)
             await CommonActions.Apply<ArgumentPower>(choiceContext, Owner.Creature, this, DynamicVars["ArgumentPower"].BaseValue);
     }

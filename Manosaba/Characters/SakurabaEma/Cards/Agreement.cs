@@ -1,6 +1,7 @@
 using BaseLib.Utils;
 using Manosaba.Extensions;
 using manosaba.Characters.SakurabaEma;
+using manosaba.Characters.SakurabaEma.Combat;
 using manosaba.Characters.SakurabaEma.Powers;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -88,6 +89,7 @@ public sealed class Agreement : EmaTrialCard
             return;
         }
 
+        await EmaTrialPresentation.Play(this);
         CardModel statement = CombatState.CreateCard<Statement>(Owner);
         CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(statement, PileType.Hand, Owner);
         CardCmd.PreviewCardPileAdd(result);

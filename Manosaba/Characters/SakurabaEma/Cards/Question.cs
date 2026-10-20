@@ -35,6 +35,7 @@ public sealed class Question : EmaTrialCard
             return;
         }
 
+        await EmaTrialPresentation.Play(this);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
 
         List<CardModel> testimonyCards = TestimonyCardHelper.CreateAll(CombatState, Owner)

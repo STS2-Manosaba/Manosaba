@@ -2,6 +2,7 @@ using BaseLib.Utils;
 using Manosaba.Characters.Common.Powers;
 using Manosaba.Extensions;
 using manosaba.Characters.SakurabaEma;
+using manosaba.Characters.SakurabaEma.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -28,6 +29,7 @@ public sealed class Sophistry : EmaTrialCard
             return;
         }
 
+        await EmaTrialPresentation.Play(this);
         int hits = ProgressReady(this) && Owner.Creature.GetPowerAmount<SusPower>() > 0m ? 2 : 1;
         for (int i = 0; i < hits && cardPlay.Target.IsAlive; i++)
         {

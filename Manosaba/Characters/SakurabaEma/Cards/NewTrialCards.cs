@@ -40,7 +40,10 @@ public sealed class ExhaustiveMethod : EmaTrialCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Target is { IsAlive: true } target)
+        {
+            await EmaTrialPresentation.Play(this);
             await CreatureCmd.Damage(choiceContext, target, DynamicVars.Damage.BaseValue + (ProgressReady(this) ? Progress(this) : 0), TrialMoveValueProp, Owner.Creature, this);
+        }
     }
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(4m);
 }
@@ -64,6 +67,7 @@ public abstract class AccUhEartsBase : EmaTrialCard
     {
         if (cardPlay.Target is not { } target)
             return;
+        await EmaTrialPresentation.Play(this);
         int hits = HitCount;
         for (int i = 0; i < hits && target.IsAlive; i++)
             await CreatureCmd.Damage(choiceContext, target, DynamicVars.Damage.BaseValue, TrialMoveValueProp, Owner.Creature, this);

@@ -3,6 +3,7 @@ using Manosaba.Characters.Common.Powers;
 using Manosaba.Extensions;
 using manosaba.Characters.SakurabaEma.Powers;
 using manosaba.Characters.SakurabaEma.Relics;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -33,6 +34,10 @@ public sealed class MagicToKillTheWitch : PathCustomCardModel
     }
     private async Task Derive(PlayerChoiceContext context)
     {
+        // Transforming this card removes it from Play, so its CombatState then becomes null.
+        // Retain the combat scope for all remaining transformations and generated cards.
+        ICombatState? combat = CombatState;
+        if (combat == null) return;
         int level = YouDidWell.Level(Owner);
         List<CardModel> cards = Owner.PlayerCombatState!.AllCards.ToList();
         if (level >= 13)
@@ -40,7 +45,7 @@ public sealed class MagicToKillTheWitch : PathCustomCardModel
             foreach (CardModel card in cards)
             {
                 if (card.Pile == null || !card.IsTransformable) continue;
-                CardModel replacement = CombatState!.CreateCard<DieSakurabaEma>(Owner);
+                CardModel replacement = combat.CreateCard<DieSakurabaEma>(Owner);
                 CardCmd.Upgrade(replacement);
                 var result = await CardCmd.Transform(card, replacement);
                 // A replacement in the Play pile has no active CardPlay to move it afterwards.
@@ -51,23 +56,20 @@ public sealed class MagicToKillTheWitch : PathCustomCardModel
         else if (level >= 8)
         {
             CardModel? selected = await CardSelectCmd.FromChooseACardScreen(context,
-                [CombatState!.CreateCard<AcceptExhaustMagic>(Owner), CombatState.CreateCard<DeclineExhaustMagic>(Owner)], Owner);
+                [combat.CreateCard<AcceptExhaustMagic>(Owner), combat.CreateCard<DeclineExhaustMagic>(Owner)], Owner);
             if (selected is AcceptExhaustMagic)
                 foreach (CardModel card in cards) card.AddKeyword(CardKeyword.Exhaust);
         }
         if (level >= 6)
         {
-            await Give<CUrOi>();
-            await Give<ShiDes>();
+            await Give<CUrOi>(combat);
+            await Give<ShiDes>(combat);
         }
-        if (level >= 12) await Give<SentKy>();
+        if (level >= 12) await Give<SentKy>(combat);
     }
-    private async Task Give<T>() where T : CardModel
+    private async Task Give<T>(ICombatState combat) where T : CardModel
     {
-        CardModel card = Owner.RunState.CreateCard(ModelDb.Card<T>(), Owner);
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.Add(card, PileType.Deck));
-        if (CombatState != null)
-            await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<T>(Owner), PileType.Hand, Owner);
+        await CardPileCmd.AddGeneratedCardToCombat(combat.CreateCard<T>(Owner), PileType.Hand, Owner);
     }
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
 }

@@ -82,7 +82,8 @@ public sealed class Rebuttal : EmaTrialCard
             return;
         }
 
-        await WitchEncyclopediaState.Present(choiceContext, Owner, SelectionScreenPrompt);
+        await WitchEncyclopediaState.Present(choiceContext, Owner, SelectionScreenPrompt,
+            () => EmaTrialPresentation.Play(this));
         if (!cardPlay.Target.IsAlive)
             return;
 

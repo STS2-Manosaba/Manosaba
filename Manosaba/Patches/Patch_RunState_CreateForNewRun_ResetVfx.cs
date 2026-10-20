@@ -21,5 +21,6 @@ public static class Patch_RunState_CreateForNewRun_ResetVfx
         CeremonialSword.ResetSfxForNewRun();
         IAmReborn.ResetSfxForNewRun();
         Pride.ResetSfxForNewRun();
+        manosaba.Characters.SakurabaEma.Combat.EmaTrialPresentation.ResetForNewRun();
     }
 }
