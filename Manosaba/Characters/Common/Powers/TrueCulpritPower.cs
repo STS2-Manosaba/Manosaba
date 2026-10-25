@@ -24,7 +24,9 @@ public sealed class TrueCulpritPower : PathCustomPowerModel
     public override string CustomPackedIconPath => ModelDb.Power<GuiltPower>().CustomPackedIconPath;
     public override string CustomBigIconPath => ModelDb.Power<GuiltPower>().CustomBigIconPath;
     public override string CustomBigBetaIconPath => CustomBigIconPath;
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(StaticHoverTip.Block)];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        [HoverTipFactory.Static(StaticHoverTip.Block), HoverTipFactory.FromPower<GuiltPower>(),
+            HoverTipFactory.FromPower<InterrogationStartPower>()];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DynamicVar("AttackBonus", AttackBonus),

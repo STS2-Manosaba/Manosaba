@@ -37,6 +37,19 @@ public abstract class EmaTrialCard : PathCustomCardModel
 
     protected virtual IEnumerable<IHoverTip> TrialExtraHoverTips => [];
 
+    protected sealed class TrialBlockVar(decimal block) : BlockVar(block, ValueProp.Move | ValueProp.Unpowered)
+    {
+        public override void UpdateCardPreview(CardModel card, CardPreviewMode previewMode, Creature? target, bool runGlobalHooks)
+        {
+            ValueProp props = card.Owner?.Creature?.GetPowerAmount<LawDevilPower>() > 0m
+                ? ValueProp.Move : ValueProp.Move | ValueProp.Unpowered;
+            PreviewValue = runGlobalHooks && (card.CombatState ?? card.Owner?.Creature?.CombatState) is { } combat
+                && (target ?? card.Owner?.Creature) is { } creature
+                ? MegaCrit.Sts2.Core.Hooks.Hook.ModifyBlock(combat, creature, BaseValue, props, card, null, out _)
+                : BaseValue;
+        }
+    }
+
     // Use the same Unpowered rule for the displayed damage as for actual resolution.
     protected sealed class TrialDamageVar(decimal damage) : DamageVar(damage, ValueProp.Move | ValueProp.Unpowered)
     {

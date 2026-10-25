@@ -130,7 +130,6 @@ public sealed class AccUhEartsRevelation : AccUhEartsBase
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class RequestRetrial : EmaTrialCard
 {
-    public override string PortraitPath => ModelDb.Card<RawTellOwk>().PortraitPath;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("RequiredSuspicion", 10m)];
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [HoverTipFactory.FromPower<SusPower>(), HoverTipFactory.FromPower<RetrialExtraTurnPower>()];
     protected override bool IsPlayable => base.IsPlayable && Owner?.Creature?.GetPowerAmount<SusPower>() >= DynamicVars["RequiredSuspicion"].BaseValue;
@@ -148,7 +147,6 @@ public sealed class RequestRetrial : EmaTrialCard
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class Scabbard : PathCustomCardModel
 {
-    public override string PortraitPath => ModelDb.Card<RawTellOwk>().PortraitPath;
     public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Unique];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromKeyword(ManosabaKeywords.Unique), HoverTipFactory.FromPower<ScabbardPower>()];
     // Its defensive effect works against teammates; solo acquisition is kept

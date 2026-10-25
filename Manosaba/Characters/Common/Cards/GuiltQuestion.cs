@@ -14,7 +14,6 @@ public sealed class GuiltQuestion : EmaTrialCard
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [HoverTipFactory.FromCard<GuiltSuspicion>()];
-    public override string PortraitPath => ModelDb.Card<FaceInCourt>().PortraitPath;
 
     public GuiltQuestion() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly, true) { }
 
@@ -23,7 +22,8 @@ public sealed class GuiltQuestion : EmaTrialCard
         if (cardPlay.Target?.Player is not { } teammate || CombatState is not { } combat)
             return;
 
-        await CardPileCmd.AddGeneratedCardToCombat(combat.CreateCard<GuiltSuspicion>(teammate), PileType.Hand, teammate);
+        for (int i = 0; i < 2; i++)
+            await CardPileCmd.AddGeneratedCardToCombat(combat.CreateCard<GuiltSuspicion>(teammate), PileType.Hand, teammate);
     }
 
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);

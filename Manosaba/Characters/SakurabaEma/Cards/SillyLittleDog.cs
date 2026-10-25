@@ -12,9 +12,6 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class SillyLittleDog : PathCustomCardModel
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-        IsUpgraded ? [CardKeyword.Innate] : [];
-
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<KiangPower>(1m)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<KiangPower>()];
@@ -31,5 +28,6 @@ public sealed class SillyLittleDog : PathCustomCardModel
 
     protected override void OnUpgrade()
     {
+        AddKeyword(CardKeyword.Innate);
     }
 }

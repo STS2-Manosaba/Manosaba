@@ -3,6 +3,7 @@ using System.Threading;
 using BaseLib.Utils;
 using BaseLib.Patches.Content;
 using manosaba.Characters.SakurabaEma.Cards;
+using manosaba.Characters.SakurabaEma.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -53,19 +54,19 @@ public sealed class WitchEncyclopediaState
 
     // Shared by Present Evidence and Rebuttal. Finish the selected card's effect
     // and return it before the caller calculates its follow-up effect.
-    public static async Task Present(PlayerChoiceContext choiceContext, Player owner, LocString prompt,
+    public static async Task<CardModel?> Present(PlayerChoiceContext choiceContext, Player owner, LocString prompt,
         Func<Task>? beforeResolve = null)
     {
         var state = Get(owner);
         if (state == null || state.Pile.IsEmpty)
         {
             if (beforeResolve != null) await beforeResolve();
-            return;
+            return null;
         }
         var prefs = new CardSelectorPrefs(prompt, 1);
         var selected = (await CardSelectCmd.FromSimpleGrid(choiceContext, state.Pile.Cards.ToList(), owner, prefs)).FirstOrDefault();
         if (selected == null)
-            return;
+            return null;
         // The calling card supplies its own presentation. Other evidence callers have no callback.
         if (beforeResolve != null) await beforeResolve();
         CardCmd.Preview(selected);
@@ -78,6 +79,9 @@ public sealed class WitchEncyclopediaState
             if (!selected.HasBeenRemovedFromState && !state.Pile.Cards.Contains(selected))
                 await CardPileCmd.Add(selected, state.Pile, skipVisuals: true);
         }
+        if (owner.Creature.GetPower<InformationNetworkPower>() is { } network)
+            await network.AfterPresentEvidence(choiceContext);
+        return selected;
     }
     public static async Task GenerateRandomEvidence(Player player)
     {

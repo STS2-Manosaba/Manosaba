@@ -1,4 +1,5 @@
 using BaseLib.Utils;
+using Manosaba.Characters.Common.Powers;
 using Manosaba.Characters.Common.Overrides;
 using Manosaba.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -21,11 +22,10 @@ public sealed class InterrogationStartPower : FieldPowerModel
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props,
         Creature? dealer, CardModel? cardSource)
     {
-        // Trial attacks retain Unpowered to exclude Strength/Majoka, but this field
-        // explicitly allows their source's Guilt. Never add it to non-attack damage.
         bool trialAttack = props.HasFlag(ValueProp.Move) && cardSource?.Type == CardType.Attack &&
             cardSource.Keywords.Contains(ManosabaKeywords.Trial);
-        return dealer != null && (props.IsPoweredAttack() || trialAttack)
+        bool culpritAttack = dealer?.GetPowerAmount<TrueCulpritPower>() > 0 && props.IsPoweredAttack();
+        return dealer != null && (trialAttack || culpritAttack)
             ? dealer.GetPowerAmount<GuiltPower>()
             : 0m;
     }

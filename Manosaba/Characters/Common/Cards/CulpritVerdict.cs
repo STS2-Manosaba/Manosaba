@@ -16,7 +16,7 @@ namespace Manosaba.Characters.Common.Cards;
 [Pool(typeof(CommonCardPool))]
 public sealed class CulpritVerdict : EmaTrialCard
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("RequiredRound", 8m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("RequiredRound", 6m)];
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips =>
         [HoverTipFactory.FromPower<GuiltPower>(), HoverTipFactory.FromPower<TrueCulpritPower>()];
     protected override bool IsPlayable => base.IsPlayable && CombatState is { } combat
@@ -27,7 +27,7 @@ public sealed class CulpritVerdict : EmaTrialCard
     internal static IReadOnlyList<Creature> FindCulprits(ICombatState combat)
     {
         var creatures = combat.Creatures.Where(creature => creature.IsAlive).ToList();
-        if (creatures.Count == 0 || creatures.Any(creature => creature.GetPowerAmount<TrueCulpritPower>() > 0))
+        if (creatures.Count == 0)
             return [];
 
         int highestGuilt = creatures.Max(creature => creature.GetPowerAmount<GuiltPower>());
