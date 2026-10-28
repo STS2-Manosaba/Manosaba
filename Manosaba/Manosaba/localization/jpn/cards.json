@@ -943,6 +943,8 @@
   "MANOSABA-ON_AIR.description": "{LiveStreamModePower:diff()} 層の[gold]配信モード[/gold]を得る。",
   "MANOSABA-PHONE_LIVE_STREAM.title": "スマホ配信",
   "MANOSABA-PHONE_LIVE_STREAM.description": "{HidingPower:diff()} 層の[gold]隠れ[/gold]を得る。\n{LiveStreamModePower:diff()} 層の[gold]配信モード[/gold]を得る。{IfUpgraded:show:\n{Cards:diff()} 枚引く。}",
+  "MANOSABA-INMU_KING.title": "INMU KING",
+  "MANOSABA-INMU_KING.description": "{HidingPower:diff()} 層の[gold]隠れ[/gold]を得る。\nHPを {Heal:diff()} 回復する。\n{LiveStreamModePower:diff()} 層の[gold]配信モード[/gold]を得る。\n{MajokaPower:diff()} 層の[gold]魔女化[/gold]を得る。",
   "MANOSABA-ESCAPE_WITCH_ISLAND.title": "魔女島からの脱出",
   "MANOSABA-ESCAPE_WITCH_ISLAND.description": "[gold]魔女島牢屋敷[/gold]があるときのみ使用できる。\nすべての[gold]魔女島牢屋敷[/gold]を失い、同量HP回復。",
   "MANOSABA-SHOWER_STREAM.title": "シャワールーム配信",

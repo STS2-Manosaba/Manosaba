@@ -3,6 +3,7 @@ using Manosaba.Characters.HikamiMeruru.Cards;
 using Manosaba.Characters.TachibanaSherry.Cards;
 using Manosaba.Characters.NikaidoHiro.Cards;
 using Manosaba.Characters.HasumiLeia.Cards;
+using manosaba.Characters.SawatariCoco.Cards;
 using manosaba.Characters.NatsumeAnan.Cards;
 using MegaCrit.Sts2.Core.Runs;
 
@@ -21,6 +22,7 @@ public static class Patch_RunState_CreateForNewRun_ResetVfx
         CeremonialSword.ResetSfxForNewRun();
         IAmReborn.ResetSfxForNewRun();
         Pride.ResetSfxForNewRun();
+        InmuKing.ResetBgmForNewRun();
         manosaba.Characters.SakurabaEma.Combat.EmaTrialPresentation.ResetForNewRun();
     }
 }
