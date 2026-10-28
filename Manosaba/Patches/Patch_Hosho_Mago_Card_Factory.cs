@@ -126,7 +126,7 @@ public static class Patch_Hosho_Mago_Card_Factory
             return true;
         }
 
-        List<CardModel> available = BuildHoshoFallbackPool(poolCards, isInCombat: true, includeBasic: true, excludeCardId: null)
+        List<CardModel> available = BuildHoshoFallbackPool(poolCards, isInCombat: true, excludeCardId: null)
             .GroupBy(c => c.Id)
             .Select(g => g.First())
             .ToList();
@@ -184,18 +184,10 @@ public static class Patch_Hosho_Mago_Card_Factory
             return true;
         }
 
-        List<CardModel> available = BuildHoshoFallbackPool(poolCards, isInCombat: true, includeBasic: false, excludeCardId: null)
+        List<CardModel> available = BuildHoshoFallbackPool(poolCards, isInCombat: true, excludeCardId: null)
             .GroupBy(c => c.Id)
             .Select(g => g.First())
             .ToList();
-        if (available.Count == 0)
-        {
-            available = BuildHoshoFallbackPool(poolCards, isInCombat: true, includeBasic: true, excludeCardId: null)
-                .GroupBy(c => c.Id)
-                .Select(g => g.First())
-                .ToList();
-        }
-
         if (available.Count == 0)
         {
             result = Enumerable.Empty<CardModel>();
@@ -415,12 +407,13 @@ public static class Patch_Hosho_Mago_Card_Factory
         return cards.Count > 0 && cards.All(c => c.Pool is HoshoMagoCardPool);
     }
 
-    private static List<CardModel> BuildHoshoFallbackPool(IEnumerable<CardModel> source, bool isInCombat, bool includeBasic, ModelId? excludeCardId = null)
+    private static List<CardModel> BuildHoshoFallbackPool(IEnumerable<CardModel> source, bool isInCombat, ModelId? excludeCardId = null)
     {
         IEnumerable<CardModel> query = source
             .Where(c => excludeCardId == null || c.Id != excludeCardId)
             .Where(c => c.Rarity != CardRarity.Token)
-            .Where(c => includeBasic || c.Rarity != CardRarity.Basic)
+            // Tarot cards use Ancient rarity; allow them without admitting starter cards.
+            .Where(c => c.Rarity != CardRarity.Basic)
             .Where(c => c is not TheWorld && c is not Echoes)
             .Where(c => !isInCombat || c.CanBeGeneratedInCombat);
 
