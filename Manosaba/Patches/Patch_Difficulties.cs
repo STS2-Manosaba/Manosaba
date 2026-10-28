@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Runs;
 using System.Runtime.CompilerServices;
@@ -180,16 +181,17 @@ public static class Patch_Difficulties
     }
 
     /// <summary>
-    /// 與 <see cref="Patch_CreatureCmd_SetMaxHp_HpMultiplier"/> 對稱：<see cref="CreatureCmd.SetMaxAndCurrentHp"/> 會用同一個
-    /// 「已乘多人、未乘大廳」的數值先設 max 再設 current；若只 patch SetMaxHp，current 會卡在 50/76 這類狀態。
-    /// 典型案例：Ovicopter 的 ToughEgg 孵化（<see cref="MegaCrit.Sts2.Core.Models.Monsters.ToughEgg.Hatch"/>）。
+    /// ToughEgg 孵化時會以多人縮放、尚未套大廳倍率的數值呼叫 <see cref="CreatureCmd.SetMaxAndCurrentHp"/>。
+    /// 只在已完成進房縮放的 ToughEgg 孵化後續流程中縮放 current HP；其他 SetCurrentHp 呼叫可能已使用實際 HP，不能通用重乘。
     /// </summary>
     [HarmonyPatch(typeof(CreatureCmd), nameof(CreatureCmd.SetCurrentHp))]
-    private static class Patch_CreatureCmd_SetCurrentHp_HpMultiplier
+    private static class Patch_CreatureCmd_SetCurrentHp_ToughEggHatchHpMultiplier
     {
         private static void Prefix(Creature creature, ref decimal amount)
         {
-            if (!ShouldScaleEnemySetMaxHp(creature, amount))
+            if (!ShouldScaleEnemyHp(creature)
+                || !_hpAppliedAfterAdded.TryGetValue(creature, out _)
+                || creature.Monster is not ToughEgg { IsHatched: true })
             {
                 return;
             }
