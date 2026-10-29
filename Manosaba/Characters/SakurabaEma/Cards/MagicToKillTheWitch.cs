@@ -2,6 +2,7 @@ using BaseLib.Utils;
 using Manosaba.Characters.Common.Powers;
 using Manosaba.Extensions;
 using manosaba.Characters.SakurabaEma.Powers;
+using manosaba.Characters.SakurabaEma.Combat;
 using manosaba.Characters.SakurabaEma.Relics;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -25,9 +26,14 @@ public sealed class MagicToKillTheWitch : PathCustomCardModel
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
         if (CombatState == null) return;
+        if (MagicToKillWitchPresentation.IsEligible(this))
+        {
+            await MagicToKillWitchPresentation.Play(this);
+            if (CombatState == null) return;
+        }
         foreach (var enemy in CombatState.GetOpponentsOf(Owner.Creature).Where(c => c.IsHittable).ToList())
             await CommonActions.Apply<WeakPower>(context, enemy, this, 1);
-        if (Owner.Creature.GetPowerAmount<MajokaPower>() < 100) return;
+        if (Owner.Creature.GetPowerAmount<MajokaPower>() < DynamicVars["MajokaThreshold"].IntValue) return;
         await CommonActions.Apply<SpecialMagicPower>(context, Owner.Creature, this, 1);
         await Derive(context);
         PlayerCmd.EndTurn(Owner, canBackOut: false);

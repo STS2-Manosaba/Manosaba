@@ -1,4 +1,10 @@
 {
+  "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.title": "殺死魔女的魔法",
+  "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.hover.title": "播放頻率",
+  "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.hover.desc": "設定[gold]殺死魔女的魔法[/gold]場景特效與 EmA (-狂-) BGM 的播放頻率：每次、每場冒險每位玩家一次，或不播放。只在櫻羽艾瑪使用此卡且[gold]魔女化[/gold]達到 100 層時觸發。",
+  "MANOSABA-INTERROGATION_START_MUSIC_FREQUENCY.title": "審 問 開 始",
+  "MANOSABA-INTERROGATION_START_MUSIC_FREQUENCY.hover.title": "播放頻率",
+  "MANOSABA-INTERROGATION_START_MUSIC_FREQUENCY.hover.desc": "設定審問開始 BGM「rAwTell Owk....」的播放頻率：每次、每場冒險一次，或不播放。只調整音樂，場地獲得審問開始時仍播放入場特效。",
   "MANOSABA-EMA_WITCH_TRIAL_AUDIO_FREQUENCY.title": "艾瑪的魔女審判",
   "MANOSABA-EMA_WITCH_TRIAL_AUDIO_FREQUENCY.hover.title": "播放頻率",
   "MANOSABA-EMA_WITCH_TRIAL_AUDIO_FREQUENCY.hover.desc": "統一設定這組語音、碎玻璃聲與 BGM 的播放頻率。每場冒險一次按每張卡、每位玩家各自計次。此選項不關閉 cut-in 畫面。",

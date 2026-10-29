@@ -2,6 +2,7 @@ using BaseLib.Utils;
 using Manosaba.Characters.Common.Powers;
 using Manosaba.Characters.Common.Overrides;
 using Manosaba.Combat;
+using manosaba.Characters.SakurabaEma.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -30,13 +31,15 @@ public sealed class InterrogationStartPower : FieldPowerModel
             : 0m;
     }
 
-    public static Task ApplyToField(PlayerChoiceContext choiceContext, Creature applier, CardModel? cardSource)
+    public static async Task ApplyToField(PlayerChoiceContext choiceContext, Creature applier, CardModel? cardSource)
     {
         var field = applier.CombatState
             ?? throw new InvalidOperationException("Interrogation Start requires an active combat.");
+        bool alreadyActive = FieldPowerState.Has<InterrogationStartPower>(field);
         FieldPowerState.Apply<InterrogationStartPower>(field, 1);
 
         FieldPowerState.Ensure<InterrogationProgressPower>(field);
-        return Task.CompletedTask;
+        if (!alreadyActive)
+            await InterrogationStartPresentation.Play();
     }
 }
