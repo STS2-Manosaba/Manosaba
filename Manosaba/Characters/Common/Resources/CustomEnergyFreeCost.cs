@@ -1,4 +1,4 @@
-using System.Runtime.CompilerServices;
+using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Models;
 
@@ -6,86 +6,34 @@ namespace Manosaba.Characters.Common.Resources;
 
 public static class CustomEnergyFreeCost
 {
-    private sealed class FreeCostState
-    {
-        public int UntilPlayed { get; set; }
-        public int ThisTurn { get; set; }
-        public int ThisTurnOrUntilPlayed { get; set; }
-        public int ThisCombat { get; set; }
-
-        public bool IsFree => UntilPlayed > 0 || ThisTurn > 0 || ThisTurnOrUntilPlayed > 0 || ThisCombat > 0;
-    }
-
-    private static readonly ConditionalWeakTable<CardModel, FreeCostState> States = new();
+    private static readonly AccessTools.FieldRef<CardEnergyCost, List<LocalCostModifier>> LocalModifiersRef =
+        AccessTools.FieldRefAccess<CardEnergyCost, List<LocalCostModifier>>("_localModifiers");
 
     public static bool IsFree(CardModel card)
     {
-        return States.TryGetValue(card, out FreeCostState? state) && state.IsFree;
-    }
-
-    public static void MarkFree(CardModel card, LocalCostModifierExpiration expiration)
-    {
-        FreeCostState state = States.GetOrCreateValue(card);
-
-        if (expiration == (LocalCostModifierExpiration.EndOfTurn | LocalCostModifierExpiration.WhenPlayed))
+        CardEnergyCost energyCost = card.EnergyCost;
+        if (!energyCost.HasLocalModifiers)
         {
-            state.ThisTurnOrUntilPlayed++;
-        }
-        else if (expiration == LocalCostModifierExpiration.EndOfTurn)
-        {
-            state.ThisTurn++;
-        }
-        else if (expiration == LocalCostModifierExpiration.WhenPlayed)
-        {
-            state.UntilPlayed++;
-        }
-        else if (expiration == LocalCostModifierExpiration.EndOfCombat)
-        {
-            state.ThisCombat++;
+            return false;
         }
 
-        card.InvokeEnergyCostChanged();
-    }
-
-    public static void ClearEndOfTurn(CardModel card)
-    {
-        if (!States.TryGetValue(card, out FreeCostState? state))
+        // Read the native modifiers instead of tracking setter calls. BaseLib can
+        // compile a caller before our patches and inline those setters, bypassing
+        // later hooks. Native modifiers also follow cloning and expiry automatically.
+        int currentCost = energyCost.GetWithModifiers((CostModifiers)0);
+        foreach (LocalCostModifier modifier in LocalModifiersRef(energyCost))
         {
-            return;
+            // A zero base cost or relative energy reduction alone does not waive
+            // custom resources. Preserve the existing reduceOnly behavior too.
+            if (modifier.Type == LocalCostType.Absolute && modifier.Amount == 0
+                && (!modifier.IsReduceOnly || currentCost > 0))
+            {
+                return true;
+            }
+
+            currentCost = modifier.Modify(currentCost);
         }
 
-        bool wasFree = state.IsFree;
-        state.ThisTurn = 0;
-        state.ThisTurnOrUntilPlayed = 0;
-        RemoveIfEmpty(card, state);
-        if (wasFree)
-        {
-            card.InvokeEnergyCostChanged();
-        }
-    }
-
-    public static void ClearAfterPlayed(CardModel card)
-    {
-        if (!States.TryGetValue(card, out FreeCostState? state))
-        {
-            return;
-        }
-
-        bool wasFree = state.IsFree;
-        state.UntilPlayed = 0;
-        state.ThisTurnOrUntilPlayed = 0;
-        RemoveIfEmpty(card, state);
-        if (wasFree)
-        {
-            card.InvokeEnergyCostChanged();
-        }
-    }
-
-    private static void RemoveIfEmpty(CardModel card, FreeCostState state)
-    {
-        if (!state.IsFree)
-        {
-            States.Remove(card);
-        }
+        return false;
     }
 }
