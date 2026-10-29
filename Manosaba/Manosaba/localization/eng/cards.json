@@ -943,6 +943,8 @@
   "MANOSABA-ON_AIR.description": "Gain {LiveStreamModePower:diff()} [gold]Live Stream Mode[/gold].",
   "MANOSABA-PHONE_LIVE_STREAM.title": "Phone Live Stream",
   "MANOSABA-PHONE_LIVE_STREAM.description": "Gain {HidingPower:diff()} [gold]Hiding[/gold].\nGain {LiveStreamModePower:diff()} [gold]Live Stream Mode[/gold].{IfUpgraded:show:\nDraw {Cards:diff()} cards.}",
+  "MANOSABA-INMU_KING.title": "INMU KING",
+  "MANOSABA-INMU_KING.description": "Gain {HidingPower:diff()} [gold]Hiding[/gold].\nHeal {Heal:diff()} HP.\nGain {LiveStreamModePower:diff()} [gold]Live Stream Mode[/gold].\nGain {MajokaPower:diff()} [gold]Majoka[/gold].",
   "MANOSABA-ESCAPE_WITCH_ISLAND.title": "Escape Witch Island",
   "MANOSABA-ESCAPE_WITCH_ISLAND.description": "Can only be used when you have [gold]Witch Island Prison[/gold].\nRemove all [gold]Witch Island Prison[/gold] and heal for the same amount.",
   "MANOSABA-SHOWER_STREAM.title": "Shower Stream",
