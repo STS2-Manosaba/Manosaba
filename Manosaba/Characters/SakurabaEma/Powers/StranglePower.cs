@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace manosaba.Characters.SakurabaEma.Powers;
 
@@ -22,9 +23,8 @@ public sealed class StranglePower : PathCustomPowerModel
             return;
 
         Flash();
-        decimal newHp = Math.Max(0m, Owner.CurrentHp - Amount);
-        if (Owner.CurrentHp != newHp)
-            await CreatureCmd.SetCurrentHp(Owner, newHp);
+        if (Amount > 0m)
+            await CreatureCmd.Damage(context, Owner, Amount, DamageProps.nonCardHpLoss, null, null);
     }
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> creatures)

@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.ValueProps;
 using NikaidoHiroCharacter = manosaba.Characters.NikaidoHiro.NikaidoHiro;
 
 namespace manosaba.Characters.SakurabaEma.Cards;
@@ -42,10 +43,10 @@ public sealed class Flop : PathCustomCardModel
     {
         _ = cardPlay;
         Creature ownerCreature = Owner.Creature;
-        decimal newHp = Math.Max(1m, ownerCreature.CurrentHp - DynamicVars["HpLoss"].BaseValue);
-        if (ownerCreature.CurrentHp != newHp)
+        decimal hpLoss = Math.Min(DynamicVars["HpLoss"].BaseValue, Math.Max(0m, ownerCreature.CurrentHp - 1m));
+        if (hpLoss > 0m)
         {
-            await CreatureCmd.SetCurrentHp(ownerCreature, newHp);
+            await CreatureCmd.Damage(choiceContext, ownerCreature, hpLoss, DamageProps.cardHpLoss, this);
         }
 
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
