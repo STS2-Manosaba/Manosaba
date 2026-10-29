@@ -1,4 +1,10 @@
 {
+  "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.title": "Magic to Kill the Witch",
+  "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.hover.title": "Playback frequency",
+  "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.hover.desc": "Play the [gold]Magic to Kill the Witch[/gold] scene and EmA (-狂-) BGM every time, once per player per run, or never. Triggers when Sakuraba Ema uses this card with at least 100 [gold]Majoka[/gold].",
+  "MANOSABA-INTERROGATION_START_MUSIC_FREQUENCY.title": "審 問 開 始",
+  "MANOSABA-INTERROGATION_START_MUSIC_FREQUENCY.hover.title": "Music frequency",
+  "MANOSABA-INTERROGATION_START_MUSIC_FREQUENCY.hover.desc": "Play the interrogation start BGM every time, once per run, or never. The entrance animation still plays whenever the field gains Interrogation Start.",
   "MANOSABA-EMA_WITCH_TRIAL_AUDIO_FREQUENCY.title": "Ema’s Witch Trial",
   "MANOSABA-EMA_WITCH_TRIAL_AUDIO_FREQUENCY.hover.title": "Playback frequency",
   "MANOSABA-EMA_WITCH_TRIAL_AUDIO_FREQUENCY.hover.desc": "Controls this group’s voices, glass SFX and BGM. Once per run is counted separately for each card and player. Cut-in visuals remain enabled.",

@@ -24,5 +24,7 @@ public static class Patch_RunState_CreateForNewRun_ResetVfx
         Pride.ResetSfxForNewRun();
         InmuKing.ResetBgmForNewRun();
         manosaba.Characters.SakurabaEma.Combat.EmaTrialPresentation.ResetForNewRun();
+        manosaba.Characters.SakurabaEma.Combat.InterrogationStartPresentation.ResetForNewRun();
+        manosaba.Characters.SakurabaEma.Combat.MagicToKillWitchPresentation.ResetForNewRun();
     }
 }

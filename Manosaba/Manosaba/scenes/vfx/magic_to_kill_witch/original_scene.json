@@ -1,0 +1,170 @@
+{
+  "source": "Act01_Chapter05_Adv09 / Stills.20_1",
+  "commands": [
+    {
+      "line": 656,
+      "type": "ModifyBackgroundExtended",
+      "parameters": {
+        "Id": "Stills",
+        "Scale": "3",
+        "Duration": "0.6",
+        "Lazy": "",
+        "ScenePosition": "120,30",
+        "AppearanceAndTransition": "20_1"
+      }
+    },
+    {
+      "line": 657,
+      "type": "AnimateActorExtended",
+      "parameters": {
+        "ActorIds": "Stills",
+        "Loop": "",
+        "ScenePositionY": "90",
+        "EasingTypeName": "EaseOutQuad",
+        "Duration": "1.5"
+      }
+    },
+    {
+      "line": 658,
+      "type": "ModifyBackgroundExtended",
+      "parameters": {
+        "Duration": "1.2",
+        "Lazy": "",
+        "AppearanceAndTransition": "Transparent",
+        "SubId": "Overlay"
+      }
+    },
+    {
+      "line": 659,
+      "type": "Wait",
+      "parameters": {
+        "WaitMode": "2.4"
+      }
+    },
+    {
+      "line": 661,
+      "type": "ModifyBackgroundExtended",
+      "parameters": {
+        "Id": "Stills",
+        "Scale": "3",
+        "Duration": "0",
+        "Lazy": "",
+        "ScenePosition": "5,45",
+        "AppearanceAndTransition": "20_1",
+        "SubId": "Middle"
+      }
+    },
+    {
+      "line": 662,
+      "type": "AnimateActorExtended",
+      "parameters": {
+        "ActorIds": "Stills-Middle",
+        "Loop": "",
+        "ScenePositionY": "-10",
+        "EasingTypeName": "EaseOutQuad",
+        "Duration": "1.5"
+      }
+    },
+    {
+      "line": 663,
+      "type": "Wait",
+      "parameters": {
+        "WaitMode": "2.4"
+      }
+    },
+    {
+      "line": 666,
+      "type": "ModifyBackgroundExtended",
+      "parameters": {
+        "Id": "Stills",
+        "Rotation": ",,0",
+        "Scale": "1.5",
+        "Duration": "0",
+        "Lazy": "",
+        "ScenePosition": "50,50",
+        "AppearanceAndTransition": "20_1"
+      }
+    },
+    {
+      "line": 667,
+      "type": "SpawnBlur",
+      "parameters": {
+        "ActorId": "Stills",
+        "FadeDuration": "0"
+      }
+    },
+    {
+      "line": 668,
+      "type": "AnimateActorExtended",
+      "parameters": {
+        "ActorIds": "Stills",
+        "Loop": "",
+        "Scale": "1.15",
+        "EasingTypeName": "EaseOutQuad",
+        "Duration": "2.4"
+      }
+    },
+    {
+      "line": 669,
+      "type": "SpawnBlur",
+      "parameters": {
+        "ActorId": "Stills",
+        "Intensity": "0",
+        "FadeDuration": "1.8"
+      }
+    },
+    {
+      "line": 670,
+      "type": "HideActors",
+      "parameters": {
+        "ActorIds": "Stills-Middle",
+        "Duration": "0.6",
+        "Lazy": ""
+      }
+    },
+    {
+      "line": 671,
+      "type": "Wait",
+      "parameters": {
+        "WaitMode": "3"
+      }
+    }
+  ],
+  "first": {
+    "position": [
+      120.0,
+      30.0
+    ],
+    "scale": 3.0,
+    "target_y": 90.0,
+    "duration": 1.5
+  },
+  "second": {
+    "position": [
+      5.0,
+      45.0
+    ],
+    "scale": 3.0,
+    "target_y": -10.0,
+    "duration": 1.5
+  },
+  "reveal": {
+    "position": [
+      50.0,
+      50.0
+    ],
+    "scale": 1.5,
+    "target_scale": 1.15,
+    "duration": 2.4,
+    "blur_duration": 1.8,
+    "crossfade": 0.6
+  },
+  "white_fade": 1.2,
+  "cuts": [
+    1.25,
+    3.77,
+    6.28
+  ],
+  "duration": 11.28,
+  "exit_fade": 0.6
+}

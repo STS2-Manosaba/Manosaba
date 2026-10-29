@@ -1,4 +1,10 @@
 {
+  "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.title": "魔女を殺す魔法",
+  "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.hover.title": "再生頻度",
+  "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.hover.desc": "桜羽 エマが[gold]魔女化[/gold]100以上で[gold]魔女を殺す魔法[/gold]を使用した時の演出とEmA (-狂-) BGMを、毎回、冒険ごとに各プレイヤー1回、または再生しない設定です。",
+  "MANOSABA-INTERROGATION_START_MUSIC_FREQUENCY.title": "審 問 開 始",
+  "MANOSABA-INTERROGATION_START_MUSIC_FREQUENCY.hover.title": "BGMの再生頻度",
+  "MANOSABA-INTERROGATION_START_MUSIC_FREQUENCY.hover.desc": "審問開始BGMを毎回、冒険ごとに1回、または再生しない設定です。場に審問開始が付与された時の演出は常に再生されます。",
   "MANOSABA-EMA_WITCH_TRIAL_AUDIO_FREQUENCY.title": "エマの魔女裁判",
   "MANOSABA-EMA_WITCH_TRIAL_AUDIO_FREQUENCY.hover.title": "再生頻度",
   "MANOSABA-EMA_WITCH_TRIAL_AUDIO_FREQUENCY.hover.desc": "このグループのボイス、ガラス効果音、BGMの再生頻度を設定します。「冒険中に1回」はカード・プレイヤーごとに数えます。カットイン映像は表示されます。",
