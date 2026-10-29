@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Relics;
 using MegaCrit.Sts2.Core.HoverTips;
 
 namespace manosaba.Characters.SakurabaEma.Powers;
@@ -54,6 +55,7 @@ public sealed class SpecialMagicPower : PathCustomPowerModel
             return;
 
         // A finite safety bound protects against zero-cost card generation loops.
+        using var selector = CardSelectCmd.PushSelector(new VakuuCardSelector());
         for (int cardsPlayed = 0; cardsPlayed < 1000; cardsPlayed++)
         {
             if (CombatManager.Instance.IsOverOrEnding || CombatManager.Instance.IsPlayerReadyToEndTurn(player))

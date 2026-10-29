@@ -618,7 +618,7 @@
   "MANOSABA-LIBRARY_CLUE_FIVE_SOLVED_POWER.smartDescription": "단서를 기록했다. 8라운드에 무한 부활이 사라진 후 간수장 최대 체력의 {Percent}%만큼 피해를 주고 이 기억을 제거한다. 이후 달성하면 즉시 정산한다.",
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.smartDescription": "다음 턴 시작 시 손에 발언을 {Amount}장 추가한 뒤 이 효과를 제거합니다.",
   "MANOSABA-ENDLESS_EVIDENCE_POWER.description": "턴 시작 시 무작위 증거품 카드를 {Amount}장 얻습니다.",
-  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.smartDescription": "체력을 잃을 때마다 모든 적이 그 {Amount}배의 체력을 잃습니다.",
+  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.smartDescription": "체력을 잃을 때마다 모든 적이 그 [blue]{Amount}[/blue]배의 체력을 잃습니다.",
   "MANOSABA-ENDLESS_EVIDENCE_POWER.smartDescription": "턴 시작 시 무작위 증거품 카드를 {Amount}장 얻습니다.",
   "MANOSABA-INFORMATION_NETWORK_POWER.title": "정보망",
   "MANOSABA-INFORMATION_NETWORK_POWER.description": "[gold]증거 제시[/gold]를 할 때마다 무작위 적에게 피해를 6 줍니다.",
@@ -632,6 +632,6 @@
   "MANOSABA-ENDLESS_EVIDENCE_POWER.title": "끝없는 증거품",
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.description": "다음 턴 시작 시 손에 발언을 {Amount}장 추가한 뒤 이 효과를 제거합니다.",
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.title": "식후 발언",
-  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.description": "체력을 잃을 때마다 모든 적이 그 {Amount}배의 체력을 잃습니다.",
+  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.description": "체력을 잃을 때마다 모든 적이 그 [blue]1[/blue]배의 체력을 잃습니다.",
   "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.title": "마녀어 통달"
 }

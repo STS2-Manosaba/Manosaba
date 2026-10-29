@@ -7,6 +7,7 @@ using manosaba.Characters.SakurabaEma.Relics;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -19,7 +20,13 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 public sealed class MagicToKillTheWitch : PathCustomCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Eternal];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<WeakPower>(1), new DynamicVar("MajokaThreshold", 100)];
+    private sealed class WitchWeakVar() : PowerVar<WeakPower>(1)
+    {
+        public static decimal AmountFor(CardModel card) => 1m + decimal.Floor((card.Owner?.Creature?.GetPowerAmount<MajokaPower>() ?? 0) / 25m);
+        public override void UpdateCardPreview(CardModel card, CardPreviewMode previewMode, Creature? target, bool runGlobalHooks)
+            => PreviewValue = AmountFor(card);
+    }
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new WitchWeakVar(), new DynamicVar("MajokaThreshold", 100)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [HoverTipFactory.FromPower<WeakPower>(), HoverTipFactory.FromPower<MajokaPower>(), HoverTipFactory.FromPower<SpecialMagicPower>(), YouDidWell.DerivationTip];
     public MagicToKillTheWitch() : base(1, CardType.Power, CardRarity.Ancient, TargetType.Self, true) { }
@@ -31,8 +38,9 @@ public sealed class MagicToKillTheWitch : PathCustomCardModel
             await MagicToKillWitchPresentation.Play(this);
             if (CombatState == null) return;
         }
+        decimal weak = WitchWeakVar.AmountFor(this);
         foreach (var enemy in CombatState.GetOpponentsOf(Owner.Creature).Where(c => c.IsHittable).ToList())
-            await CommonActions.Apply<WeakPower>(context, enemy, this, 1);
+            await CommonActions.Apply<WeakPower>(context, enemy, this, weak);
         if (Owner.Creature.GetPowerAmount<MajokaPower>() < DynamicVars["MajokaThreshold"].IntValue) return;
         await CommonActions.Apply<SpecialMagicPower>(context, Owner.Creature, this, 1);
         await Derive(context);

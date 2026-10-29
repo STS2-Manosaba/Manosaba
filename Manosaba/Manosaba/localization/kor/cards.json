@@ -1135,7 +1135,7 @@
   "MANOSABA-TRAUMA_TRUE_SAKURABA_EMA.title": "트라우마 - 진",
   "MANOSABA-TRAUMA_TRUE_SAKURABA_EMA.description": "[gold]마녀화[/gold]를 {MajokaPower:diff()} 얻습니다.",
   "MANOSABA-MAGIC_TO_KILL_THE_WITCH.title": "마녀를 죽이는 마법",
-  "MANOSABA-MAGIC_TO_KILL_THE_WITCH.description": "마법. 모든 적에게 약화 {WeakPower:diff()}을 부여합니다. 마녀화가 {MajokaThreshold} 이상이면 특별한 마법을 얻고 잘했어의 파생 효과를 실행한 뒤 즉시 턴을 종료합니다.",
+  "MANOSABA-MAGIC_TO_KILL_THE_WITCH.description": "[gold]마법[/gold]. 모든 적에게 [gold]약화[/gold] {WeakPower:diff()}을 부여합니다. [gold]마녀화[/gold]가 {MajokaThreshold} 이상이면 [gold]특별한 마법[/gold]을 얻고 [gold]잘했어[/gold]의 파생 효과를 실행한 뒤 즉시 턴을 종료합니다.",
   "MANOSABA-DIE_SAKURABA_EMA.title": "죽어",
   "MANOSABA-DIE_SAKURABA_EMA.description": "모든 적에게 피해를 {Damage:diff()} 줍니다. [gold]종말[/gold]을 {DoomPower:diff()} 부여합니다. 모든 적이 [gold]마녀화[/gold]를 {MajokaThreshold} 이상 가지고 있으면 즉시 승리합니다.",
   "MANOSABA-EVERYONE_SHOULD_JUST_DIE.title": "모두 죽으면 돼",

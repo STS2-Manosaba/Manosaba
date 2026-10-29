@@ -1135,7 +1135,7 @@
   "MANOSABA-TRAUMA_TRUE_SAKURABA_EMA.title": "トラウマ-真",
   "MANOSABA-TRAUMA_TRUE_SAKURABA_EMA.description": "{MajokaPower:diff()}層の[gold]魔女化[/gold]を得る。",
   "MANOSABA-MAGIC_TO_KILL_THE_WITCH.title": "魔女を殺す魔法",
-  "MANOSABA-MAGIC_TO_KILL_THE_WITCH.description": "魔法。敵全体に脱力{WeakPower:diff()}を付与。魔女化が{MajokaThreshold}以上なら特別な魔法を得て、よくできましたの派生効果を実行し、直ちにターンを終了する。",
+  "MANOSABA-MAGIC_TO_KILL_THE_WITCH.description": "[gold]魔法[/gold]。敵全体に[gold]脱力[/gold]{WeakPower:diff()}を付与。[gold]魔女化[/gold]が{MajokaThreshold}以上なら[gold]特別な魔法[/gold]を得て、[gold]よくできました[/gold]の派生効果を実行し、直ちにターンを終了する。",
   "MANOSABA-DIE_SAKURABA_EMA.title": "死んで",
   "MANOSABA-DIE_SAKURABA_EMA.description": "敵全体に{Damage:diff()}ダメージを与える。{DoomPower:diff()}層の[gold]破滅[/gold]を与える。すべての敵が{MajokaThreshold}層以上の[gold]魔女化[/gold]を持っているなら、即座に勝利する。",
   "MANOSABA-EVERYONE_SHOULD_JUST_DIE.title": "みんな死ねばいい",

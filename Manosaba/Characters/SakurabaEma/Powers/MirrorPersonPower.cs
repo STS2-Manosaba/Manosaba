@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Relics;
 
 namespace manosaba.Characters.SakurabaEma.Powers;
 
@@ -27,6 +28,7 @@ public sealed class MirrorPersonPower : PathCustomPowerModel
             return;
 
         await PowerCmd.Remove(this);
+        using var selector = CardSelectCmd.PushSelector(new VakuuCardSelector());
         for (int cardsPlayed = 0; cardsPlayed < MaxAutoPlayedCardsPerTurn; cardsPlayed++)
         {
             if (CombatManager.Instance.IsOverOrEnding || CombatManager.Instance.IsPlayerReadyToEndTurn(player))

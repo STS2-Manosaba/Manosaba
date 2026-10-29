@@ -149,8 +149,7 @@ public sealed class Scabbard : PathCustomCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Unique];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromKeyword(ManosabaKeywords.Unique), HoverTipFactory.FromPower<ScabbardPower>()];
-    // Its defensive effect works against teammates; solo acquisition is kept
-    // available as requested, even though solo has no ally damage to intercept.
+    public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
     public Scabbard() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true) { }
     protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay) => CommonActions.Apply<ScabbardPower>(choiceContext, Owner.Creature, this, 1m);
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);

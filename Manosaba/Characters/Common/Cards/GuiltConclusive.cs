@@ -31,6 +31,7 @@ public sealed class GuiltConclusive : EmaTrialCard
 
 public abstract class GuiltConversionCard : PathCustomCardModel
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     public override bool CanBeGeneratedInCombat => false;
     public override bool CanBeGeneratedByModifiers => false;
     public override int MaxUpgradeLevel => 0;

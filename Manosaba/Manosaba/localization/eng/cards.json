@@ -1135,7 +1135,7 @@
   "MANOSABA-TRAUMA_TRUE_SAKURABA_EMA.title": "Trauma - True",
   "MANOSABA-TRAUMA_TRUE_SAKURABA_EMA.description": "Gain {MajokaPower:diff()} [gold]Majoka[/gold].",
   "MANOSABA-MAGIC_TO_KILL_THE_WITCH.title": "Magic to Kill the Witch",
-  "MANOSABA-MAGIC_TO_KILL_THE_WITCH.description": "Magic. Apply {WeakPower:diff()} Weak to all enemies. At {MajokaThreshold} or more Witchification, gain Special Magic, trigger You Did Well's derivatives, and immediately end your turn.",
+  "MANOSABA-MAGIC_TO_KILL_THE_WITCH.description": "[gold]Magic[/gold]. Apply {WeakPower:diff()} [gold]Weak[/gold] to all enemies. At {MajokaThreshold} or more [gold]Majoka[/gold], gain [gold]Special Magic[/gold], trigger [gold]You Did Well[/gold]'s derivatives, and immediately end your turn.",
   "MANOSABA-DIE_SAKURABA_EMA.title": "Die",
   "MANOSABA-DIE_SAKURABA_EMA.description": "Deal {Damage:diff()} damage to all enemies. Apply {DoomPower:diff()} [gold]Doom[/gold]. If all enemies have at least {MajokaThreshold} [gold]Majoka[/gold], win immediately.",
   "MANOSABA-EVERYONE_SHOULD_JUST_DIE.title": "Everyone Should Just Die",

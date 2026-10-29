@@ -89,6 +89,19 @@ public sealed class YouDidWell : PathCustomRelicModel
             if (Owner.Creature.CombatState is { } combat)
                 await CardPileCmd.AddGeneratedCardToCombat(combat.CreateCard<MagicToKillTheWitch>(Owner), PileType.Hand, Owner);
         }
+        // Combat copies already exist at BeforeCombatStart; deck transforms do not update them.
+        var activeCombat = Owner.Creature.CombatState;
+        var combatTraumas = activeCombat == null ? [] :
+            Owner.PlayerCombatState?.AllCards.Where(c => c is TraumaSakurabaEma).ToList() ?? [];
+        foreach (CardModel trauma in combatTraumas)
+        {
+            if (trauma.Pile == null || !trauma.IsTransformable) continue;
+            CardModel replacement = activeCombat!.CreateCard<TraumaTrueSakurabaEma>(Owner);
+            if (trauma.IsUpgraded) CardCmd.Upgrade(replacement);
+            var result = await CardCmd.Transform(trauma, replacement);
+            if (result is { success: true, cardAdded: { } transformed } && transformed.Pile?.Type == PileType.Play)
+                await CardPileCmd.Add(transformed, PileType.Discard);
+        }
         foreach (CardModel trauma in Owner.Deck.Cards.Where(c => c is TraumaSakurabaEma).ToList())
         {
             bool upgraded = trauma.IsUpgraded;

@@ -618,7 +618,7 @@
   "MANOSABA-LIBRARY_CLUE_FIVE_SOLVED_POWER.smartDescription": "This clue is recorded. After Infinite Revival is removed in round 8, deal {Percent}% of the warden's maximum HP as damage and remove this memory. Clues solved later resolve immediately.",
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.smartDescription": "At the start of your next turn, add {Amount} Statements to your hand, then remove this power.",
   "MANOSABA-ENDLESS_EVIDENCE_POWER.description": "At the start of your turn, gain {Amount} random Evidence cards.",
-  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.smartDescription": "Whenever you lose HP, all enemies lose {Amount} times that much HP.",
+  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.smartDescription": "Whenever you lose HP, all enemies lose [blue]{Amount}[/blue] times that much HP.",
   "MANOSABA-ENDLESS_EVIDENCE_POWER.smartDescription": "At the start of your turn, gain {Amount} random Evidence cards.",
   "MANOSABA-INFORMATION_NETWORK_POWER.title": "Information Network",
   "MANOSABA-INFORMATION_NETWORK_POWER.description": "Whenever you [gold]Present Evidence[/gold], deal 6 damage to a random enemy.",
@@ -632,6 +632,6 @@
   "MANOSABA-ENDLESS_EVIDENCE_POWER.title": "Endless Evidence",
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.description": "At the start of your next turn, add {Amount} Statements to your hand, then remove this power.",
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.title": "After-Dinner Statement",
-  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.description": "Whenever you lose HP, all enemies lose {Amount} times that much HP.",
+  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.description": "Whenever you lose HP, all enemies lose [blue]1[/blue]× that much HP.",
   "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.title": "Witch Language Mastery"
 }

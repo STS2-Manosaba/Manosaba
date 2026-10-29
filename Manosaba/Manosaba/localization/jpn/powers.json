@@ -615,7 +615,7 @@
   "MANOSABA-LIBRARY_CLUE_FIVE_SOLVED_POWER.smartDescription": "手掛かりを記録した。8ラウンドに無限復活が消えた後、典獄長の最大HPの{Percent}%のダメージを与え、この記憶を消す。以降の達成は即座に精算する。",
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.smartDescription": "次のターン開始時、発言を{Amount}枚手札に加え、この効果を取り除く。",
   "MANOSABA-ENDLESS_EVIDENCE_POWER.description": "ターン開始時、ランダムな証拠品カードを{Amount}枚得る。",
-  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.smartDescription": "HPを失うたび、敵全体がその{Amount}倍のHPを失う。",
+  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.smartDescription": "HPを失うたび、敵全体がその[blue]{Amount}[/blue]倍のHPを失う。",
   "MANOSABA-ENDLESS_EVIDENCE_POWER.smartDescription": "ターン開始時、ランダムな証拠品カードを{Amount}枚得る。",
   "MANOSABA-INFORMATION_NETWORK_POWER.title": "情報網",
   "MANOSABA-INFORMATION_NETWORK_POWER.description": "[gold]証拠提出[/gold]を行うたび、ランダムな敵に6ダメージを与える。",
@@ -629,6 +629,6 @@
   "MANOSABA-ENDLESS_EVIDENCE_POWER.title": "尽きない証拠品",
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.description": "次のターン開始時、発言を{Amount}枚手札に加え、この効果を取り除く。",
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.title": "食後の発言",
-  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.description": "HPを失うたび、敵全体がその{Amount}倍のHPを失う。",
+  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.description": "HPを失うたび、敵全体がその[blue]1[/blue]倍のHPを失う。",
   "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.title": "魔女語の達人"
 }

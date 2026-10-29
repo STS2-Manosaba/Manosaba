@@ -618,7 +618,7 @@
   "MANOSABA-LIBRARY_CLUE_FIVE_SOLVED_POWER.smartDescription": "已記錄此線索。第8回合解除無限復活後，對典獄長造成最大生命{Percent}%的傷害並移除此記憶；其後達成則立即結算。",
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.smartDescription": "下一回合開始時，將 {Amount} 張[gold]發言[/gold]加入你的手牌，然後移除此效果。",
   "MANOSABA-ENDLESS_EVIDENCE_POWER.description": "回合開始時，獲得 {Amount} 張隨機[gold]證物卡[/gold]。",
-  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.smartDescription": "每當你失去生命值時，所有敵人失去該數值的 {Amount} 倍生命值。",
+  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.smartDescription": "每當你失去生命值時，所有敵人失去該數值的 [blue]{Amount}[/blue] 倍生命值。",
   "MANOSABA-ENDLESS_EVIDENCE_POWER.smartDescription": "回合開始時，獲得 {Amount} 張隨機[gold]證物卡[/gold]。",
   "MANOSABA-INFORMATION_NETWORK_POWER.title": "情報網",
   "MANOSABA-INFORMATION_NETWORK_POWER.description": "每當你[gold]提出證據[/gold]時，對隨機敵人造成 6 點傷害。",
@@ -632,6 +632,6 @@
   "MANOSABA-ENDLESS_EVIDENCE_POWER.title": "無盡證物",
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.description": "下一回合開始時，將 {Amount} 張[gold]發言[/gold]加入你的手牌，然後移除此效果。",
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.title": "餐後發言",
-  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.description": "每當你失去生命值時，所有敵人失去該數值的 {Amount} 倍生命值。",
+  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.description": "每當你失去生命值時，所有敵人失去該數值的 [blue]1[/blue] 倍生命值。",
   "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.title": "魔女語精通"
 }

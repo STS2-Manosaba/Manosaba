@@ -55,5 +55,6 @@ public sealed class BookBite : PathCustomCardModel
 
     protected override void OnUpgrade()
     {
+        DynamicVars["VulnerablePower"].UpgradeValueBy(2m);
     }
 }

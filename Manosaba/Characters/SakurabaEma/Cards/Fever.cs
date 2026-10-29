@@ -18,7 +18,7 @@ public sealed class Fever : PathCustomCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<WeakPower>(1m),
-        new PowerVar<MajokaPower>(20m),
+        new TraumaMajokaVar(20m),
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
