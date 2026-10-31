@@ -22,7 +22,7 @@ namespace Manosaba.Characters.SaekiMiria.Cards
         public override bool GainsBlock => true;
         private const int energyCost = 0;
         private const CardType type = CardType.Skill;
-        private const CardRarity rarity = CardRarity.Uncommon;
+        private const CardRarity rarity = CardRarity.Common;
         private const TargetType targetType = TargetType.Self;
         private const bool shouldShowInCardLibrary = true;
         protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<WeakPower>()];
