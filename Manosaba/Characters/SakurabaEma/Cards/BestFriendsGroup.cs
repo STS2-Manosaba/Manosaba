@@ -1,4 +1,5 @@
 using BaseLib.Utils;
+using Manosaba.Characters.Common.Cards;
 using Manosaba.Extensions;
 using manosaba.Characters.SakurabaEma;
 using manosaba.Characters.SakurabaEma.Powers;
@@ -18,7 +19,7 @@ public sealed class BestFriendsGroup : PathCustomCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<BestFriendsGroupPower>(1m)];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<BestFriendsGroupPower>()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<BestFriendsGroupPower>(), HoverTipFactory.FromCard<PicnicTime>()];
 
     public BestFriendsGroup() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
     {

@@ -1,4 +1,5 @@
 using BaseLib.Utils;
+using manosaba.Characters.SakurabaEma.Combat;
 using Manosaba.Extensions;
 using manosaba.Extensions;
 using manosaba.Characters.SakurabaEma;
@@ -13,15 +14,15 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace manosaba.Characters.SakurabaEma.Cards;
 
 [Pool(typeof(SakurabaEmaCardPool))]
-public sealed class EvidenceStrike : PathCustomCardModel
+public sealed class EvidenceStrike : EmaTrialCard
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(3m, ValueProp.Move),
+        new TrialDamageVar(3m),
         new CardsVar(1),
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<LivingPage>()];
+    protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [HoverTipFactory.FromCard<LivingPage>(), HoverTipFactory.FromCard<PresentEvidence>(), WitchEncyclopediaState.HoverTip];
 
     public EvidenceStrike() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy, true)
     {
@@ -34,10 +35,9 @@ public sealed class EvidenceStrike : PathCustomCardModel
             return;
         }
 
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
-            .Targeting(cardPlay.Target)
-            .Execute(choiceContext);
+        await WitchEncyclopediaState.Present(choiceContext, Owner, SelectionScreenPrompt);
+        if (cardPlay.Target.IsAlive)
+            await CreatureCmd.Damage(choiceContext, cardPlay.Target, DynamicVars.Damage.BaseValue, TrialMoveValueProp, Owner.Creature, this);
 
         List<CardModel> cards = [];
         for (int i = 0; i < DynamicVars.Cards.IntValue; i++)
@@ -49,5 +49,5 @@ public sealed class EvidenceStrike : PathCustomCardModel
         CardCmd.PreviewCardPileAdd(results);
     }
 
-    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(3m);
+    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(2m);
 }

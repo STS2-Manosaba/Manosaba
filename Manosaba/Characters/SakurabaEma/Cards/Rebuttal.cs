@@ -19,6 +19,7 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class Rebuttal : EmaTrialCard
 {
+    protected override bool HasProgressEffect => true;
     private sealed class EncyclopediaDamageVar : DamageVar
     {
         public EncyclopediaDamageVar() : base(8m, ValueProp.Move)

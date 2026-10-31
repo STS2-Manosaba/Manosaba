@@ -62,7 +62,7 @@ public abstract class SearchEvidenceCard : EvidenceCard
     }
     protected async Task Hit(PlayerChoiceContext context, Creature? target)
     {
-        if (target is { IsAlive: true }) await CreatureCmd.Damage(context, target, DynamicVars.Damage.BaseValue, ValueProp.Move, Owner.Creature, this);
+        if (target is { IsAlive: true }) await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(target).Execute(context);
     }
     protected async Task Generate(CardModel canonical)
     {
@@ -133,7 +133,8 @@ public sealed class CocoStreamArchive : SearchEvidenceCard
     protected override IEnumerable<IHoverTip> EvidenceHoverTips => [HoverTipFactory.FromPower<LiveStreamModePower>()];
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
-        foreach (Creature enemy in Enemies) await Hit(context, enemy);
+        if (CombatState is { } combat && Enemies.Count > 0)
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(combat).Execute(context);
         await BuffMatches<LiveStreamModePower>(context, "sawatari_coco", 1);
     }
 }
@@ -261,7 +262,8 @@ public sealed class BrokenElectricChair : SearchEvidenceCard
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
         Creature? target = RandomEnemy();
-        for (int i = 0; i < 3 && target is { IsAlive: true }; i++) await Hit(context, target);
+        if (target is { IsAlive: true })
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(target).WithHitCount(3).Execute(context);
     }
 }
 

@@ -24,6 +24,7 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class ExhaustiveMethod : EmaTrialCard
 {
+    protected override bool HasProgressEffect => true;
     private sealed class ProgressDamageVar() : DamageVar(12m, ValueProp.Move | ValueProp.Unpowered)
     {
         public override void UpdateCardPreview(CardModel card, CardPreviewMode previewMode, Creature? target, bool runGlobalHooks)
@@ -50,6 +51,7 @@ public sealed class ExhaustiveMethod : EmaTrialCard
 
 public abstract class AccUhEartsBase : EmaTrialCard
 {
+    protected override bool HasProgressEffect => true;
     private sealed class HitsVar() : DynamicVar("Hits", 1m)
     {
         public override void UpdateCardPreview(CardModel card, CardPreviewMode previewMode, Creature? target, bool runGlobalHooks) =>
@@ -150,7 +152,7 @@ public sealed class Scabbard : PathCustomCardModel
     public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Unique];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromKeyword(ManosabaKeywords.Unique), HoverTipFactory.FromPower<ScabbardPower>()];
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
-    public Scabbard() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true) { }
+    public Scabbard() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self, true) { }
     protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay) => CommonActions.Apply<ScabbardPower>(choiceContext, Owner.Creature, this, 1m);
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
 }

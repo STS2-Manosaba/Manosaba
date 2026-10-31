@@ -14,6 +14,7 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class SuspiciousIWasntInvited : EmaTrialCard
 {
+    protected override bool HasProgressEffect => true;
     public override bool GainsBlock => true;
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new BlockVar(10m, ValueProp.Move), new DynamicVar("AllyBlock", 3m), new CardsVar(1), new PowerVar<SusPower>(1m)];
@@ -22,11 +23,12 @@ public sealed class SuspiciousIWasntInvited : EmaTrialCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.GainBlock(Owner.Creature, new BlockVar(DynamicVars.Block.BaseValue, TrialMoveValueProp), cardPlay);
-        await CommonActions.Apply<SusPower>(choiceContext, Owner.Creature, this, DynamicVars["SusPower"].BaseValue);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner);
+        if (cardPlay.Target is not { } target) return;
+        await CommonActions.Apply<SusPower>(choiceContext, target, this, DynamicVars["SusPower"].BaseValue);
         if (ProgressReady(this) && cardPlay.Target?.GetPowerAmount<SusPower>() > 0m)
         {
-            decimal allyBlock = DynamicVars["AllyBlock"].BaseValue;
+            decimal allyBlock = DynamicVars["AllyBlock"].BaseValue * target.GetPowerAmount<SusPower>();
             await CreatureCmd.GainBlock(Owner.Creature, new BlockVar(allyBlock, TrialMoveValueProp), cardPlay);
             if (cardPlay.Target != Owner.Creature)
                 await CreatureCmd.GainBlock(cardPlay.Target, new BlockVar(allyBlock, TrialMoveValueProp), cardPlay);
@@ -36,5 +38,6 @@ public sealed class SuspiciousIWasntInvited : EmaTrialCard
     {
         DynamicVars.Block.UpgradeValueBy(3m);
         DynamicVars["AllyBlock"].UpgradeValueBy(1m);
+        DynamicVars["SusPower"].UpgradeValueBy(1m);
     }
 }

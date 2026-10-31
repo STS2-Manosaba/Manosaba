@@ -17,7 +17,8 @@ public sealed class Deliberation : EmaTrialCard
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
         IsUpgraded ? [ManosabaKeywords.Trial] : [ManosabaKeywords.Trial, CardKeyword.Exhaust];
 
-    protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [HoverTipFactory.FromKeyword(CardKeyword.Exhaust)];
+    protected override IEnumerable<IHoverTip> TrialExtraHoverTips =>
+        IsUpgraded ? [] : [HoverTipFactory.FromKeyword(CardKeyword.Exhaust)];
 
     public Deliberation() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true)
     {
@@ -45,7 +46,5 @@ public sealed class Deliberation : EmaTrialCard
         await CardPileCmd.Draw(choiceContext, cards.Count, Owner);
     }
 
-    protected override void OnUpgrade()
-    {
-    }
+    protected override void OnUpgrade() => RemoveKeyword(CardKeyword.Exhaust);
 }

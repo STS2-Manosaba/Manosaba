@@ -47,5 +47,9 @@ public sealed class Persuasion : PathCustomCardModel
         await CommonActions.Apply<EnergyNextTurnPower>(choiceContext, target, this, DynamicVars.Energy.BaseValue);
     }
 
-    protected override void OnUpgrade() => DynamicVars.Cards.UpgradeValueBy(1m);
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Cards.UpgradeValueBy(1m);
+        DynamicVars.Energy.UpgradeValueBy(1m);
+    }
 }

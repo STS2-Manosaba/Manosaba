@@ -84,10 +84,11 @@ public sealed class SentKy : EmaTrialCard
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class DArime : EmaTrialCard
 {
+    protected override bool HasProgressEffect => true;
     public override string PortraitPath => ModelDb.Card<Rebuttal>().PortraitPath;
     public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Trial, CardKeyword.Exhaust];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new TrialDamageVar(10), new DynamicVar("Progress", 20)];
-    public DArime() : base(3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy, true) { }
+    public DArime() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy, true) { }
     public override bool ShouldPlay(CardModel card, AutoPlayType autoPlayType) => !ReferenceEquals(card, this) || Progress(this) >= 20;
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
@@ -101,7 +102,7 @@ public sealed class DArime : EmaTrialCard
             await CreatureCmd.Damage(context, target, DynamicVars.Damage.BaseValue, TrialMoveValueProp, Owner.Creature, this);
         }
     }
-    protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
+    protected override void OnUpgrade() => AddKeyword(CardKeyword.Retain);
 }
 
 // Choice cards are displayed by the synchronized native choose-a-card screen.

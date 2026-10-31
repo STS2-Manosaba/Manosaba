@@ -1,4 +1,5 @@
 using BaseLib.Utils;
+using manosaba.Characters.SakurabaEma.Combat;
 using Manosaba.Characters.Common.Powers;
 using Manosaba.Extensions;
 using manosaba.Characters.SakurabaEma;
@@ -25,6 +26,8 @@ public sealed class FaceInCourt : EmaTrialCard
     [
         HoverTipFactory.FromPower<SusPower>(),
         HoverTipFactory.FromCard<Statement>(),
+        HoverTipFactory.FromCard<PresentEvidence>(),
+        WitchEncyclopediaState.HoverTip,
     ];
 
     public FaceInCourt() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly, true)
@@ -36,6 +39,7 @@ public sealed class FaceInCourt : EmaTrialCard
         if (cardPlay.Target?.Player is not { } targetPlayer || CombatState == null)
             return;
 
+        await WitchEncyclopediaState.Present(choiceContext, Owner, SelectionScreenPrompt);
         await CommonActions.Apply<SusPower>(choiceContext, Owner.Creature, this, DynamicVars["SusPower"].BaseValue);
         await CommonActions.Apply<SusPower>(choiceContext, cardPlay.Target, this, DynamicVars["SusPower"].BaseValue);
 
@@ -49,5 +53,9 @@ public sealed class FaceInCourt : EmaTrialCard
         CardCmd.PreviewCardPileAdd(results);
     }
 
-    protected override void OnUpgrade() => DynamicVars.Cards.UpgradeValueBy(1m);
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Cards.UpgradeValueBy(1m);
+        DynamicVars["SusPower"].UpgradeValueBy(1m);
+    }
 }

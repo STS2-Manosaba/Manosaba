@@ -36,6 +36,7 @@ public abstract class EmaTrialCard : PathCustomCardModel
             : ValueProp.Move | ValueProp.Unpowered;
 
     protected virtual IEnumerable<IHoverTip> TrialExtraHoverTips => [];
+    protected virtual bool HasProgressEffect => false;
 
     protected sealed class TrialBlockVar(decimal block) : BlockVar(block, ValueProp.Move | ValueProp.Unpowered)
     {
@@ -64,12 +65,19 @@ public abstract class EmaTrialCard : PathCustomCardModel
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Trial];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromKeyword(ManosabaKeywords.Trial),
-        HoverTipFactory.FromPower<InterrogationStartPower>(),
-        HoverTipFactory.FromPower<InterrogationProgressPower>(),
-        HoverTipFactory.FromPower<LawDevilPower>(),
-        ..TrialExtraHoverTips,
-    ];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips
+    {
+        get
+        {
+            yield return HoverTipFactory.FromKeyword(ManosabaKeywords.Trial);
+            if (Type == CardType.Attack)
+            {
+                yield return HoverTipFactory.FromPower<InterrogationStartPower>();
+                yield return HoverTipFactory.FromPower<LawDevilPower>();
+            }
+            if (HasProgressEffect)
+                yield return HoverTipFactory.FromPower<InterrogationProgressPower>();
+            foreach (IHoverTip tip in TrialExtraHoverTips) yield return tip;
+        }
+    }
 }

@@ -34,7 +34,6 @@ namespace Manosaba.Characters.TachibanaSherry.Cards
         [
             HoverTipFactory.FromPower<LifelongFriendPower>(),
             HoverTipFactory.FromCard<Boulders>(),
-            HoverTipFactory.FromCard<PicnicTime>(),
             HoverTipFactory.FromCard<RefuseMajo>(),
         ];
 

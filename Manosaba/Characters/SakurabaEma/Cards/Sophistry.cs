@@ -15,6 +15,7 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class Sophistry : EmaTrialCard
 {
+    protected override bool HasProgressEffect => true;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new TrialDamageVar(8m)];
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [HoverTipFactory.FromPower<SusPower>()];
 

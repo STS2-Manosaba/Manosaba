@@ -17,16 +17,19 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class InformationSharing : EmaTrialCard
 {
+    protected override bool HasProgressEffect => true;
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
     public override bool GainsBlock => true;
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new TrialBlockVar(8m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new TrialBlockVar(10m), new CardsVar(1)];
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [WitchEncyclopediaState.HoverTip, HoverTipFactory.FromCard<PresentEvidence>()];
     public InformationSharing() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyPlayer, true) { }
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
         if (play.Target?.Player is not { } player || CombatState is not { } combat) return;
         CardModel? evidence = await WitchEncyclopediaState.Present(context, Owner, SelectionScreenPrompt);
-        await CreatureCmd.GainBlock(player.Creature, new BlockVar(DynamicVars.Block.BaseValue, TrialMoveValueProp), play);
+        await CreatureCmd.GainBlock(Owner.Creature, new BlockVar(DynamicVars.Block.BaseValue, TrialMoveValueProp), play);
+        if (player != Owner)
+            await CreatureCmd.GainBlock(player.Creature, new BlockVar(DynamicVars.Block.BaseValue, TrialMoveValueProp), play);
         if (evidence != null)
         {
             // Each player keeps an independent encyclopedia copy, using normal hand-entry capture.
@@ -35,9 +38,22 @@ public sealed class InformationSharing : EmaTrialCard
             CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(copy, PileType.Hand, player));
         }
         if (ProgressReady(this))
-            await CreatureCmd.GainBlock(Owner.Creature, new BlockVar(DynamicVars.Block.BaseValue, TrialMoveValueProp), play);
+        {
+            foreach (var recipient in new[] { Owner, player }.Distinct().OrderBy(p => p.NetId))
+                for (int i = 0; i < DynamicVars.Cards.IntValue; i++)
+                {
+                    CardModel present = combat.CreateCard<PresentEvidence>(recipient);
+                    CardCmd.ApplyKeyword(present, CardKeyword.Ethereal);
+                    CardCmd.ApplyKeyword(present, CardKeyword.Exhaust);
+                    CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(present, PileType.Hand, recipient));
+                }
+        }
     }
-    protected override void OnUpgrade() => DynamicVars.Block.UpgradeValueBy(2m);
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Block.UpgradeValueBy(3m);
+        DynamicVars.Cards.UpgradeValueBy(1m);
+    }
 }
 
 [Pool(typeof(SakurabaEmaCardPool))]
@@ -57,7 +73,7 @@ public sealed class InformationNetwork : EmaTrialCard
 public sealed class JointInvestigation : PathCustomCardModel
 {
     // Deliberately works in solo: the card affects all players, including its owner.
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(2), new DynamicVar("Evidence", 2m)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [WitchEncyclopediaState.HoverTip];
     public JointInvestigation() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self, true) { }
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
@@ -65,7 +81,9 @@ public sealed class JointInvestigation : PathCustomCardModel
         if (CombatState is not { } combat) return;
         var players = combat.Players.Where(p => p.Creature.IsAlive).OrderBy(p => p.NetId).ToList();
         foreach (var player in players) await CardPileCmd.Draw(context, DynamicVars.Cards.IntValue, player);
-        foreach (var player in players) await WitchEncyclopediaState.GenerateRandomEvidence(player);
+        foreach (var player in players)
+            for (int i = 0; i < DynamicVars["Evidence"].IntValue; i++)
+                await WitchEncyclopediaState.GenerateRandomEvidence(player);
     }
     protected override void OnUpgrade() => DynamicVars.Cards.UpgradeValueBy(1m);
 }
@@ -108,6 +126,7 @@ public sealed class Omurice : PathCustomCardModel
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class WitchHammer : EmaTrialCard
 {
+    protected override bool HasProgressEffect => true;
     public override string PortraitPath => ModelDb.Card<Rebuttal>().PortraitPath;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new TrialDamageVar(8m), new DynamicVar("ExtraDamage", 13m)];
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips =>

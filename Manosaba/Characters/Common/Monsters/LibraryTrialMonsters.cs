@@ -213,7 +213,7 @@ public sealed class LibraryGuard : LibraryTrialMonster
     public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 28, 24);
     public override int MaxInitialHp => MinInitialHp;
     private int AttackDamage => AscensionHelper.GetValueIfAscension(AscensionLevel.DeadlyEnemies, 4, 3);
-    protected override string VisualsPath => "jailer.tscn".MonsterScenePath();
+    protected override string VisualsPath => "basement_guardian.tscn".EnemyScenePath();
     public override string? HurtSfx => "event:/Manosaba/audio/monsters/jailer_hurt.ogg";
 
     protected override MonsterMoveStateMachine GenerateMoveStateMachine()

@@ -21,7 +21,7 @@ public sealed class EndlessEvidence : PathCustomCardModel
 {
     public override string PortraitPath => ModelDb.Card<SearchSakurabaEma>().PortraitPath;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<EndlessEvidencePower>(1m)];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<EndlessEvidencePower>(), WitchEncyclopediaState.HoverTip];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<EndlessEvidencePower>(1), WitchEncyclopediaState.HoverTip];
     public EndlessEvidence() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true) { }
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
         => await CommonActions.Apply<EndlessEvidencePower>(context, Owner.Creature, this, 1m);
@@ -89,7 +89,7 @@ public abstract class EmaMagicOption : PathCustomCardModel
 public sealed class GiganticMagic : EmaMagicOption
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<GigantificationPower>()];
-    public GiganticMagic() : base(CardType.Skill, TargetType.Self) { }
+    public GiganticMagic() : base(CardType.Power, TargetType.Self) { }
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
         => await CommonActions.Apply<GigantificationPower>(context, Owner.Creature, this, 1m);
 }

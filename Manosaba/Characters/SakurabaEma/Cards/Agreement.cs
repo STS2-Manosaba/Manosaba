@@ -19,6 +19,7 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class Agreement : EmaTrialCard
 {
+    protected override bool HasProgressEffect => true;
     private sealed class TargetArgumentBlockVar : BlockVar
     {
         public TargetArgumentBlockVar() : base(6m, ValueProp.Move)
@@ -96,10 +97,15 @@ public sealed class Agreement : EmaTrialCard
 
         decimal argument = ProgressReady(this) ? cardPlay.Target.GetPowerAmount<ArgumentPower>() : 0m;
         decimal block = DynamicVars.Block.BaseValue + argument * DynamicVars["BlockPerArgument"].BaseValue;
+        await CreatureCmd.GainBlock(Owner.Creature, new BlockVar(block, TrialMoveValueProp), cardPlay);
         await CreatureCmd.GainBlock(cardPlay.Target, new BlockVar(block, TrialMoveValueProp), cardPlay);
     }
 
-    protected override void OnUpgrade() => DynamicVars.Block.UpgradeValueBy(2m);
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Block.UpgradeValueBy(3m);
+        DynamicVars["BlockPerArgument"].UpgradeValueBy(1m);
+    }
 
     private static ValueProp GetTrialPreviewProps(CardModel card) =>
         card.Owner?.Creature?.GetPowerAmount<LawDevilPower>() > 0m
