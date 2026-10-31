@@ -1247,6 +1247,7 @@
   "MANOSABA-D_ARIME.title": "DArime",
   "MANOSABA-DECLINE_EXHAUST_MAGIC.title": "Leave Unchanged",
   "MANOSABA-SENT_KY.description": "[gold]Trial[/gold]. Present Evidence. Apply [gold]Death Sentence[/gold] to an enemy.",
+  "MANOSABA-SENT_KY.selectionScreenPrompt": "Choose a card from the encyclopedia to automatically play.",
   "MANOSABA-D_ARIME.description": "[gold]Trial[/gold]. Playable only at 20 or more Interrogation Progress. Draw 1 card. If it is a Trial card, Exhaust it and deal {Damage:diff()} damage. Repeat until you draw a non-Trial card.",
   "MANOSABA-DECLINE_EXHAUST_MAGIC.description": "Continue without adding Exhaust.",
   "MANOSABA-HANNA_CORPSE_PHOTO.description": "Gain [gold]Lightness[/gold].{IfUpgraded:show: Draw {Cards:diff()} card.|}",

@@ -1247,6 +1247,7 @@
   "MANOSABA-D_ARIME.title": "DArime",
   "MANOSABA-DECLINE_EXHAUST_MAGIC.title": "保留原狀",
   "MANOSABA-SENT_KY.description": "[gold]裁判[/gold]。提出證據。對一名敵人施加[gold]判處死刑[/gold]。",
+  "MANOSABA-SENT_KY.selectionScreenPrompt": "選擇一張圖鑑中的卡牌自動打出。",
   "MANOSABA-D_ARIME.description": "[gold]裁判[/gold]。只有在[gold]審問進度[/gold]到達20以上時才能使用。抽1張牌，若是[gold]裁判[/gold]牌則將其消耗，並造成 {Damage:diff()} 點傷害，重複直到抽出非裁判牌為止。",
   "MANOSABA-DECLINE_EXHAUST_MAGIC.description": "不附加消耗，繼續執行衍生行為。",
   "MANOSABA-HANNA_CORPSE_PHOTO.description": "獲得[gold]輕盈[/gold]。{IfUpgraded:show: 抽 {Cards:diff()} 張牌。|}",

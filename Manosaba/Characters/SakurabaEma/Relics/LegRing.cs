@@ -7,6 +7,7 @@ using Manosaba.Characters.Common;
 using Manosaba.Extensions;
 using manosaba.Extensions;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -97,7 +98,8 @@ public sealed class LegRing : LevelingPathCustomRelicModel
         _ = choiceContext;
         _ = deathAnimLength;
 
-        if (wasRemovalPrevented || Owner?.Creature?.CombatState == null)
+        // Run completion also kills players, but must not grant combat death rewards.
+        if (wasRemovalPrevented || CombatManager.Instance.IsOverOrEnding || Owner?.Creature?.CombatState == null)
             return;
 
         if (creature.CombatState != Owner.Creature.CombatState)
@@ -181,10 +183,12 @@ public sealed class LegRing : LevelingPathCustomRelicModel
         // Combat deck copies already exist before BeforeCombatStart. Keep the
         // permanent card and add an independent copy through normal evidence capture
         // so it is available in this battle's encyclopedia immediately.
-        if (result.success && Owner.Creature.CombatState is { } combat)
+        if (result.success && !CombatManager.Instance.IsOverOrEnding && Owner.Creature.IsAlive
+            && Owner.PlayerCombatState != null && Owner.Creature.CombatState is { } combat)
         {
             CardModel combatCard = combat.CreateCard(canonicalCard, Owner);
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(combatCard, PileType.Hand, Owner));
+            // The plural command safely returns no results if combat ends before generation.
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat([combatCard], PileType.Hand, Owner));
         }
     }
 

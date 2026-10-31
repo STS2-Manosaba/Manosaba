@@ -49,12 +49,13 @@ public sealed class SakurabaEmeowPower : PathCustomPowerModel
     public override async Task AfterDamageGiven(PlayerChoiceContext context, Creature? dealer, DamageResult result,
         ValueProp props, Creature target, CardModel? cardSource)
     {
-        if (_applyingBleed || dealer != Owner || result.TotalDamage <= 0 || !target.IsAlive) return;
+        // Self-inflicted damage (including Bleed) credits its receiver as dealer.
+        if (_applyingBleed || dealer != Owner || target == Owner || result.TotalDamage <= 0 || !target.IsAlive) return;
         _applyingBleed = true;
         try
         {
             Flash();
-            await CommonActions.Apply<BleedPower>(context, target, cardSource, result.TotalDamage * Amount);
+            await PowerCmd.Apply<BleedPower>(context, target, result.TotalDamage * Amount, Owner, cardSource);
         }
         finally { _applyingBleed = false; }
     }

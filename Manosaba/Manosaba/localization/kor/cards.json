@@ -1247,6 +1247,7 @@
   "MANOSABA-D_ARIME.title": "DArime",
   "MANOSABA-DECLINE_EXHAUST_MAGIC.title": "유지",
   "MANOSABA-SENT_KY.description": "[gold]재판[/gold]. 증거를 제시합니다. 적 하나에게 [gold]사형 선고[/gold]를 부여합니다.",
+  "MANOSABA-SENT_KY.selectionScreenPrompt": "도감에서 자동으로 사용할 카드를 선택하세요.",
   "MANOSABA-D_ARIME.description": "[gold]재판[/gold]. 심문 진행도가 20 이상일 때만 사용 가능합니다. 카드를 1장 뽑습니다. 재판 카드라면 소멸시키고 피해를 {Damage:diff()} 줍니다. 재판이 아닌 카드를 뽑을 때까지 반복합니다.",
   "MANOSABA-DECLINE_EXHAUST_MAGIC.description": "소멸을 부여하지 않고 파생 효과를 계속합니다.",
   "MANOSABA-HANNA_CORPSE_PHOTO.description": "[gold]가벼움[/gold]을 얻습니다.{IfUpgraded:show: 카드를 {Cards:diff()}장 뽑습니다.|}",

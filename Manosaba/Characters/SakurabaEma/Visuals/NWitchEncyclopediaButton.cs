@@ -1,10 +1,12 @@
 using Godot;
 using manosaba.Characters.SakurabaEma.Combat;
 using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.HoverTips;
 using MegaCrit.Sts2.Core.Nodes.Screens;
+using MegaCrit.Sts2.Core.Nodes.Screens.Capstones;
 
 namespace manosaba.Characters.SakurabaEma.Visuals;
 
@@ -13,6 +15,7 @@ public sealed partial class NWitchEncyclopediaButton : TextureButton
     private Player _player = null!;
     private NCombatUi _combatUi = null!;
     private Label _count = null!;
+    private NCardPileScreen? _openScreen;
 
     public void Initialize(Player player, NCombatUi ui)
     {
@@ -51,6 +54,12 @@ public sealed partial class NWitchEncyclopediaButton : TextureButton
 
     private void Refresh()
     {
+        if (_player.Creature.IsDead || CombatManager.Instance.IsOverOrEnding)
+        {
+            ClosePile();
+            Visible = false;
+            return;
+        }
         var state = WitchEncyclopediaState.Get(_player);
         Visible = state?.HasReceivedEvidence == true && _combatUi.DiscardPile.Visible;
         if (!Visible)
@@ -63,9 +72,12 @@ public sealed partial class NWitchEncyclopediaButton : TextureButton
     private void OpenPile()
     {
         HideTip();
+        if (_player.Creature.IsDead || CombatManager.Instance.IsOverOrEnding)
+            return;
         if (WitchEncyclopediaState.Get(_player) is { } state)
         {
             var screen = NCardPileScreen.ShowScreen(state.Pile, []);
+            _openScreen = screen;
             var title = new Label
             {
                 Text = new LocString("static_hover_tips", "MANOSABA-WITCH_ENCYCLOPEDIA.title").GetFormattedText(),
@@ -90,5 +102,19 @@ public sealed partial class NWitchEncyclopediaButton : TextureButton
             tip.GlobalPosition = _combatUi.DiscardPile.GlobalPosition + new Vector2(-320f, -370f);
     }
     private void HideTip() => NHoverTipSet.Remove(this);
-    public override void _ExitTree() => HideTip();
+    private void ClosePile()
+    {
+        // Close through the container so its backstop, focus and pause state reset.
+        // Never close a different screen that replaced our encyclopedia.
+        if (_openScreen != null && NCapstoneContainer.Instance is { } container
+            && ReferenceEquals(container.CurrentCapstoneScreen, _openScreen))
+            container.Close();
+        _openScreen = null;
+    }
+
+    public override void _ExitTree()
+    {
+        ClosePile();
+        HideTip();
+    }
 }

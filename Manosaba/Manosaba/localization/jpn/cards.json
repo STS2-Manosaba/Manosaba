@@ -1247,6 +1247,7 @@
   "MANOSABA-D_ARIME.title": "DArime",
   "MANOSABA-DECLINE_EXHAUST_MAGIC.title": "変更しない",
   "MANOSABA-SENT_KY.description": "[gold]裁判[/gold]。証拠を提示する。敵1体に[gold]死刑宣告[/gold]を付与。",
+  "MANOSABA-SENT_KY.selectionScreenPrompt": "図鑑から自動で使用するカードを1枚選ぶ。",
   "MANOSABA-D_ARIME.description": "[gold]裁判[/gold]。尋問進度が20以上の場合のみ使用可能。カードを1枚引く。裁判カードなら廃棄し、{Damage:diff()}ダメージを与える。裁判以外を引くまで繰り返す。",
   "MANOSABA-DECLINE_EXHAUST_MAGIC.description": "廃棄を付与せず派生効果を続行する。",
   "MANOSABA-HANNA_CORPSE_PHOTO.description": "[gold]軽やかさ[/gold]を得る。{IfUpgraded:show: カードを{Cards:diff()}枚引く。|}",
