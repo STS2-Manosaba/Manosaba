@@ -27,7 +27,7 @@ public sealed class GushaGusha1 : PathCustomCardModel
     protected override void OnUpgrade() => AddKeyword(CardKeyword.Innate);
 }
 
-[Pool(typeof(TokenCardPool))]
+[Pool(typeof(KurobeNanokaCardPool))]
 public sealed class GushaGusha2 : PathCustomCardModel
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<GushaGusha3>(false)];
@@ -42,7 +42,7 @@ public sealed class GushaGusha2 : PathCustomCardModel
     }
 }
 
-[Pool(typeof(TokenCardPool))]
+[Pool(typeof(KurobeNanokaCardPool))]
 public sealed class GushaGusha3 : PathCustomCardModel
 {
     public GushaGusha3() : base(1, CardType.Power, CardRarity.Ancient, TargetType.Self, false) { }
