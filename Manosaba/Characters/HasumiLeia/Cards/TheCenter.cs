@@ -39,6 +39,6 @@ public sealed class TheCenter : PathCustomCardModel
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars["TheCenterPower"].UpgradeValueBy(1m);
     }
 }

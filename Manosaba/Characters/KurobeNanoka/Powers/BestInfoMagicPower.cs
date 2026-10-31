@@ -1,6 +1,7 @@
 using Manosaba.Characters.KurobeNanoka.Cards;
 using Manosaba.Characters.Common.Powers;
 using Manosaba.Extensions;
+using NanokaCharacter = manosaba.Characters.KurobeNanoka.KurobeNanoka;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -19,17 +20,20 @@ public sealed class BestInfoMagicPower : PathCustomPowerModel
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override Task AfterPlayerTurnStart(PlayerChoiceContext context, MegaCrit.Sts2.Core.Entities.Players.Player player)
+    public override Task AfterPlayerTurnStartLate(PlayerChoiceContext context, MegaCrit.Sts2.Core.Entities.Players.Player player)
     {
         if (player.Creature == Owner && player.Creature.Player is { } viewer)
-            PreviewTopCard(viewer, Owner);
+            PreviewTopCard(viewer);
 
         return Task.CompletedTask;
     }
 
-    private void PreviewTopCard(MegaCrit.Sts2.Core.Entities.Players.Player viewer, Creature? caster)
+    private void PreviewTopCard(MegaCrit.Sts2.Core.Entities.Players.Player viewer)
     {
-        decimal accuracy = 30m + Math.Min(70m, (caster ?? Owner).GetPowerAmount<MajokaPower>() * 0.7m);
+        Creature nanoka = Owner.CombatState?.Players
+            .FirstOrDefault(candidate => candidate.Character.Id.Entry.EndsWith(NanokaCharacter.CharacterId, StringComparison.OrdinalIgnoreCase))?.Creature
+            ?? Owner;
+        decimal accuracy = 30m + Math.Min(70m, nanoka.GetPowerAmount<MajokaPower>() * 0.7m);
         DynamicVars["Chance"].BaseValue = accuracy;
         InvokeDisplayAmountChanged();
 

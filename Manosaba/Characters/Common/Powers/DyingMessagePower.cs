@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 
@@ -15,12 +16,15 @@ namespace Manosaba.Characters.NikaidoHiro.Powers
     {
         public override PowerType Type => PowerType.Buff;
         public override PowerStackType StackType => PowerStackType.Single;
+        protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(2), new CardsVar(3)];
 
         private int buffToApply = 3;
 
         public void Upgrade()
         {
             buffToApply += 2;
+            DynamicVars.Cards.BaseValue = buffToApply;
+            InvokeDisplayAmountChanged();
         }
 
         /// <summary>
@@ -39,8 +43,8 @@ namespace Manosaba.Characters.NikaidoHiro.Powers
                 if (item == null || !item.IsAlive || !item.IsPlayer || item == Owner)
                     continue;
 
-                await CommonActions.Apply<DrawCardsNextTurnPower>(choiceContext, item, null, 5, silent: true);
-                await CommonActions.Apply<EnergyNextTurnPower>(choiceContext, item, null, 10, silent: true);
+                await CommonActions.Apply<DrawCardsNextTurnPower>(choiceContext, item, null, buffToApply, silent: true);
+                await CommonActions.Apply<EnergyNextTurnPower>(choiceContext, item, null, 2, silent: true);
             }
         }
 

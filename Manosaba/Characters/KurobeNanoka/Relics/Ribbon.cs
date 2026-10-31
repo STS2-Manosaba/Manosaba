@@ -123,7 +123,12 @@ public sealed class Ribbon : LevelingPathCustomRelicModel
         {
             Console.WriteLine($"[Ribbon] Safe-turn heal triggered. owner={DescribeOwner(Owner)} heal={GetGuardSafeTurnHealAmount()}");
             Flash();
-            await JailerCmd.Heal(choiceContext, Owner, GetGuardSafeTurnHealAmount(), DynamicVars.Summon.BaseValue);
+            await JailerCmd.Heal(
+                choiceContext,
+                Owner,
+                GetGuardSafeTurnHealAmount(),
+                DynamicVars.Summon.BaseValue,
+                allowOverhealToIncreaseMaxHp: RelicLevel >= MaxRelicLevel);
             return;
         }
 

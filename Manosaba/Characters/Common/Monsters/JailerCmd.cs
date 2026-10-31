@@ -14,7 +14,12 @@ namespace Manosaba.Characters.Common.Monsters;
 
 public static class JailerCmd
 {
-    public static async Task<Creature?> Heal(PlayerChoiceContext choiceContext, Player summoner, decimal amount, decimal? reviveMaxHp = null)
+    public static async Task<Creature?> Heal(
+        PlayerChoiceContext choiceContext,
+        Player summoner,
+        decimal amount,
+        decimal? reviveMaxHp = null,
+        bool allowOverhealToIncreaseMaxHp = false)
     {
         _ = choiceContext;
 
@@ -47,7 +52,7 @@ public static class JailerCmd
         EnsureJailerNode(summoner, jailer);
 
         decimal overheal = jailer.CurrentHp + amount - jailer.MaxHp;
-        if (overheal > 0m)
+        if (allowOverhealToIncreaseMaxHp && overheal > 0m)
         {
             await CreatureCmd.GainMaxHp(jailer, overheal);
         }

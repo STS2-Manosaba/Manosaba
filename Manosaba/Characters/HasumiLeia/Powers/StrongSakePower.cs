@@ -12,29 +12,15 @@ namespace Manosaba.Characters.HasumiLeia.Powers;
 
 public sealed class StrongSakePower : PathCustomPowerModel
 {
-    private bool _triggeredThisTurn;
-
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
     public override bool AllowNegative => false;
-
-    public override Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
-    {
-        _ = choiceContext;
-
-        if (Owner.Player == player)
-        {
-            _triggeredThisTurn = false;
-        }
-
-        return Task.CompletedTask;
-    }
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
         _ = context;
 
-        if (_triggeredThisTurn || Owner.Player == null || cardPlay.Card.Owner != Owner.Player)
+        if (Owner.Player == null || cardPlay.Card.Owner != Owner.Player)
         {
             return;
         }
@@ -44,7 +30,6 @@ public sealed class StrongSakePower : PathCustomPowerModel
             return;
         }
 
-        _triggeredThisTurn = true;
         Flash();
 await CommonActions.Apply<EnergyNextTurnPower>(context, Owner, cardPlay.Card, Amount);
     }

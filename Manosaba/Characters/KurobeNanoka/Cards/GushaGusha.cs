@@ -21,7 +21,7 @@ public sealed class GushaGusha1 : PathCustomCardModel
     {
         await CommonActions.Apply<StrengthPower>(context, Owner.Creature, this, 1m);
         await CommonActions.Apply<DexterityPower>(context, Owner.Creature, this, 1m);
-        await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<GushaGusha2>(Owner), PileType.Discard, Owner);
+        await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<GushaGusha2>(Owner), PileType.Draw, Owner, CardPilePosition.Top);
     }
 
     protected override void OnUpgrade() => AddKeyword(CardKeyword.Innate);
@@ -38,7 +38,7 @@ public sealed class GushaGusha2 : PathCustomCardModel
     {
         await CommonActions.Apply<StrengthPower>(context, Owner.Creature, this, 2m);
         await CommonActions.Apply<DexterityPower>(context, Owner.Creature, this, 2m);
-        await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<GushaGusha3>(Owner), PileType.Discard, Owner);
+        await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<GushaGusha3>(Owner), PileType.Draw, Owner, CardPilePosition.Top);
     }
 }
 

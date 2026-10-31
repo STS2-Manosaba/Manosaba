@@ -60,6 +60,8 @@ public sealed class Fairness : PathCustomCardModel
         {
             await CreatureCmd.SetCurrentHp(target, targetNewHp);
         }
+
+        await CardPileCmd.Draw(choiceContext, 1, Owner);
     }
 
     protected override void OnUpgrade()

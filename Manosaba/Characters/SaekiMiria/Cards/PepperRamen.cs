@@ -48,7 +48,7 @@ public sealed class PepperRamen : PathCustomCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars["HealingPower"].UpgradeValueBy(2m);
+        DynamicVars["HealingPower"].UpgradeValueBy(3m);
         DynamicVars["PoisonPower"].UpgradeValueBy(2m);
     }
 }

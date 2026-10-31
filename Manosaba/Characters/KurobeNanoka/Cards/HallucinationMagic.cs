@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -70,10 +71,17 @@ public sealed class HallucinationMagic : PathCustomCardModel
             return;
         }
 
-        await CardPileCmd.Shuffle(choiceContext, Owner);
+        List<CardModel> drawPileCards = PileType.Draw.GetPile(Owner).Cards.ToList();
+        drawPileCards.StableShuffle(Owner.RunState.Rng.Shuffle);
+        foreach (CardModel card in drawPileCards)
+        {
+            await CardPileCmd.Add(card, PileType.Draw, CardPilePosition.Bottom, this, skipVisuals: true);
+        }
 
         // Reverse so the first selected card ends up highest on the draw pile.
         await CardPileCmd.Add(selected.Reverse<CardModel>(), PileType.Draw, CardPilePosition.Top, this, skipVisuals: false);
+
+        await CardPileCmd.Draw(choiceContext, 1, Owner);
     }
 
     protected override void OnUpgrade()
