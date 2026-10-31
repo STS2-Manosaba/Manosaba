@@ -634,4 +634,19 @@
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.title": "餐後發言",
   "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.description": "每當你失去生命值時，所有敵人失去該數值的 [blue]1[/blue] 倍生命值。",
   "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.title": "魔女語精通"
+  ,"MANOSABA-BEST_INFO_MAGIC_POWER.title": "最強情報魔法"
+  ,"MANOSABA-BEST_INFO_MAGIC_POWER.description": "每回合開始時，向每位玩家顯示他們[gold]抽牌堆[/gold]最頂端的牌。"
+  ,"MANOSABA-BEST_INFO_MAGIC_POWER.smartDescription": "每回合開始時，向每位玩家顯示他們[gold]抽牌堆[/gold]頂端的{Amount}張牌，正確率為{Chance}%。"
+  ,"MANOSABA-BURNING_WOUND_POWER.title": "槍傷灼燒"
+  ,"MANOSABA-BURNING_WOUND_POWER.description": "槍擊根據未格擋傷害施加灼燒。"
+  ,"MANOSABA-BURNING_WOUND_POWER.smartDescription": "槍擊施加相當於未格擋傷害30%的[gold]灼燒[/gold]。"
+  ,"MANOSABA-CAMPING_POWER.title": "架槍"
+  ,"MANOSABA-CAMPING_POWER.description": "下個完整回合內無法獲得格擋。在該回合內，槍擊攻擊不會消耗精準。槍擊額外消耗{Energy:energyIcons()}。"
+  ,"MANOSABA-CAMPING_POWER.smartDescription": "下個完整回合內無法獲得[gold]格擋[/gold]。在該回合內，[gold]槍擊[/gold]攻擊不會消耗[gold]精準[/gold]。\n槍擊額外消耗{Energy:energyIcons()}。"
+  ,"MANOSABA-WARDEN_ATTACK_POWER.title": "看守追擊"
+  ,"MANOSABA-WARDEN_ATTACK_POWER.description": "回合結束時，由看守攻擊所有敵人。"
+  ,"MANOSABA-WARDEN_ATTACK_POWER.smartDescription": "回合結束時，由[gold]看守[/gold]對所有敵人造成{Amount}點傷害。"
+  ,"MANOSABA-ACTING_COOL_POWER.title": "耍帥"
+  ,"MANOSABA-ACTING_COOL_POWER.description": "每回合開始時，獲得 {Amount} 層[gold]精準[/gold]。"
+  ,"MANOSABA-ACTING_COOL_POWER.smartDescription": "每回合開始時，獲得 {Amount} 層[gold]精準[/gold]。"
 }

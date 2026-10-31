@@ -103,6 +103,9 @@ public sealed class AccuratePower : PathCustomPowerModel
         }
 
         Console.WriteLine($"[AccuratePower] Consuming after gun attack. ownerNetId={Owner?.Player?.NetId} ownerName={Owner?.Name} card={cardPlay.Card.Id} amount={Amount}");
+        if (Owner.GetPower<CampingPower>() is not null)
+            return;
+
         await PowerCmd.Remove(this);
     }
 

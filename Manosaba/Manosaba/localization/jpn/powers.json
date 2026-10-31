@@ -631,4 +631,19 @@
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.title": "食後の発言",
   "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.description": "HPを失うたび、敵全体がその[blue]1[/blue]倍のHPを失う。",
   "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.title": "魔女語の達人"
+  ,"MANOSABA-BEST_INFO_MAGIC_POWER.title": "最強情報魔法"
+  ,"MANOSABA-BEST_INFO_MAGIC_POWER.description": "各ターン開始時、各プレイヤーに自分の[gold]山札[/gold]の一番上のカードを表示する。"
+  ,"MANOSABA-BEST_INFO_MAGIC_POWER.smartDescription": "各ターン開始時、各プレイヤーに自分の[gold]山札[/gold]の上から{Amount}枚を表示する。正解率は{Chance}%。"
+  ,"MANOSABA-BURNING_WOUND_POWER.title": "銃傷灼熱"
+  ,"MANOSABA-BURNING_WOUND_POWER.description": "銃撃は未軽減ダメージに応じて火傷を与える。"
+  ,"MANOSABA-BURNING_WOUND_POWER.smartDescription": "銃撃は未軽減ダメージの30%に等しい[gold]火傷[/gold]を与える。"
+  ,"MANOSABA-CAMPING_POWER.title": "銃を構える"
+  ,"MANOSABA-CAMPING_POWER.description": "次のターン全体でブロックを得られない。そのターン中、銃撃攻撃は精確を消費しない。銃撃攻撃はエナジーを1追加で消費する。"
+  ,"MANOSABA-CAMPING_POWER.smartDescription": "次のターン全体で[gold]ブロック[/gold]を得られない。そのターン中、[gold]銃撃[/gold]攻撃は[gold]精確[/gold]を消費しない。\n[gold]銃撃[/gold]攻撃はエナジーを1追加で消費する。"
+  ,"MANOSABA-WARDEN_ATTACK_POWER.title": "看守追撃"
+  ,"MANOSABA-WARDEN_ATTACK_POWER.description": "ターン終了時、看守が敵全体を攻撃する。"
+  ,"MANOSABA-WARDEN_ATTACK_POWER.smartDescription": "ターン終了時、[gold]看守[/gold]は敵全体に{Amount}ダメージを与える。"
+  ,"MANOSABA-ACTING_COOL_POWER.title": "カッコつけ"
+  ,"MANOSABA-ACTING_COOL_POWER.description": "各ターン開始時、[gold]精密[/gold]を{Amount}スタック得る。"
+  ,"MANOSABA-ACTING_COOL_POWER.smartDescription": "各ターン開始時、[gold]精密[/gold]を{Amount}スタック得る。"
 }

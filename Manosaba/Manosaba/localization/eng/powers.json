@@ -634,4 +634,19 @@
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.title": "After-Dinner Statement",
   "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.description": "Whenever you lose HP, all enemies lose [blue]1[/blue]× that much HP.",
   "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.title": "Witch Language Mastery"
+  ,"MANOSABA-BEST_INFO_MAGIC_POWER.title": "Best Information Magic"
+  ,"MANOSABA-BEST_INFO_MAGIC_POWER.description": "At the start of each turn, show each player the top card of their [gold]Draw pile[/gold]."
+  ,"MANOSABA-BEST_INFO_MAGIC_POWER.smartDescription": "At the start of each turn, show each player {Amount} card(s) from the top of their [gold]Draw pile[/gold]. The chance of being correct is {Chance}%."
+  ,"MANOSABA-BURNING_WOUND_POWER.title": "Burning Wound"
+  ,"MANOSABA-BURNING_WOUND_POWER.description": "Gun Shots apply Burn based on their unblocked damage."
+  ,"MANOSABA-BURNING_WOUND_POWER.smartDescription": "Gun Shots apply [gold]Burn[/gold] equal to 30% of their unblocked damage."
+  ,"MANOSABA-CAMPING_POWER.title": "Set Up the Gun"
+  ,"MANOSABA-CAMPING_POWER.description": "For the entire next turn, you cannot gain Block. During that turn, your Gun Shot attacks do not consume Accurate. Gun Shot attacks cost 1 additional energy."
+  ,"MANOSABA-CAMPING_POWER.smartDescription": "For the entire next turn, you cannot gain [gold]Block[/gold]. During that turn, your [gold]Gun Shot[/gold] attacks do not consume [gold]Accurate[/gold].\n[gold]Gun Shot[/gold] attacks cost 1 additional energy."
+  ,"MANOSABA-WARDEN_ATTACK_POWER.title": "Warden Pursuit"
+  ,"MANOSABA-WARDEN_ATTACK_POWER.description": "At the end of your turn, the Warden attacks all enemies."
+  ,"MANOSABA-WARDEN_ATTACK_POWER.smartDescription": "At the end of your turn, the [gold]Warden[/gold] deals {Amount} damage to ALL enemies."
+  ,"MANOSABA-ACTING_COOL_POWER.title": "Playing It Cool"
+  ,"MANOSABA-ACTING_COOL_POWER.description": "At the start of each turn, gain {Amount} stacks of [gold]Accurate[/gold]."
+  ,"MANOSABA-ACTING_COOL_POWER.smartDescription": "At the start of each turn, gain {Amount} stacks of [gold]Accurate[/gold]."
 }
