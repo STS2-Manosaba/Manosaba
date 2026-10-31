@@ -134,8 +134,7 @@ public sealed class LegRing : LevelingPathCustomRelicModel
             CorpsePhotoFlags |= photo.Flag;
             CardModel canonical = ModelDb.GetById<CardModel>(ModelDb.GetId(photo.Card));
             if (Owner.Deck.Cards.Any(card => card.Id == canonical.Id)) return;
-            CardModel card = Owner.RunState.CreateCard(canonical, Owner);
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.Add(card, PileType.Deck), 1.2f, CardPreviewStyle.GridLayout);
+            await AddAcquiredEvidence(canonical);
             return;
         }
     }
@@ -170,10 +169,23 @@ public sealed class LegRing : LevelingPathCustomRelicModel
         if (Owner.Deck.Cards.Any(card => card is HirosPen))
             return;
 
-        CardModel canonicalCard = ModelDb.Card<HirosPen>();
+        await AddAcquiredEvidence(ModelDb.Card<HirosPen>());
+    }
+
+    private async Task AddAcquiredEvidence(CardModel canonicalCard)
+    {
         CardModel card = Owner.RunState.CreateCard(canonicalCard, Owner);
         CardPileAddResult result = await CardPileCmd.Add(card, PileType.Deck);
         CardCmd.PreviewCardPileAdd(result, 1.2f, CardPreviewStyle.GridLayout);
+
+        // Combat deck copies already exist before BeforeCombatStart. Keep the
+        // permanent card and add an independent copy through normal evidence capture
+        // so it is available in this battle's encyclopedia immediately.
+        if (result.success && Owner.Creature.CombatState is { } combat)
+        {
+            CardModel combatCard = combat.CreateCard(canonicalCard, Owner);
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(combatCard, PileType.Hand, Owner));
+        }
     }
 
     private static bool IsNikaidoHiro(Player player) =>
