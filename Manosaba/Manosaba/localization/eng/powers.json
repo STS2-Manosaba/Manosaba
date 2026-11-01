@@ -651,5 +651,8 @@
   "MANOSABA-WARDEN_ATTACK_POWER.smartDescription": "At the end of your turn, the [gold]Warden[/gold] deals {Amount} damage to ALL enemies.",
   "MANOSABA-ACTING_COOL_POWER.title": "Playing It Cool",
   "MANOSABA-ACTING_COOL_POWER.description": "At the start of each turn, gain {Amount} stacks of [gold]Accurate[/gold].",
-  "MANOSABA-ACTING_COOL_POWER.smartDescription": "At the start of each turn, gain {Amount} stacks of [gold]Accurate[/gold]."
+  "MANOSABA-ACTING_COOL_POWER.smartDescription": "At the start of each turn, gain {Amount} stacks of [gold]Accurate[/gold].",
+  "MANOSABA-FLOATING_POWER.title": "Float",
+  "MANOSABA-FLOATING_POWER.description": "Takes 20% less damage from Attacks.",
+  "MANOSABA-FLOATING_POWER.smartDescription": "Takes [blue]{DamageDecrease}%[/blue] less damage from Attacks."
 }

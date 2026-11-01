@@ -42,5 +42,7 @@
   "MANOSABA-EVIDENCE.title": "證物卡",
   "MANOSABA-EVIDENCE.description": "加入手牌時自動收納至[gold]魔女圖鑑[/gold]。同名證物只保留一張，打出後返回圖鑑。",
   "MANOSABA-TESTIMONY.title": "證言卡",
-  "MANOSABA-TESTIMONY.description": "加入手牌時自動收納至[gold]魔女圖鑑[/gold]，同名卡只保留一張，打出後返回圖鑑。\n包含下列卡牌：\n[gold]櫻羽艾瑪的證言[/gold]\n[gold]二階堂希羅的證言[/gold]\n[gold]夏目安安的證言[/gold]\n[gold]城崎諾亞的證言[/gold]\n[gold]蓮見蕾雅的證言[/gold]\n[gold]佐伯米莉亞的證言[/gold]\n[gold]寶生瑪格的證言[/gold]\n[gold]黑部奈葉香的證言[/gold]\n[gold]紫藤亞里沙的證言[/gold]\n[gold]橘雪莉的證言[/gold]\n[gold]遠野漢娜的證言[/gold]\n[gold]澤渡可可的證言[/gold]\n[gold]冰上梅露露的證言[/gold]\n[gold]典獄長的證言[/gold]\n[gold]看守的證言[/gold]\n[gold]大魔女的證言[/gold]"
+  "MANOSABA-TESTIMONY.description": "加入手牌時自動收納至[gold]魔女圖鑑[/gold]，同名卡只保留一張，打出後返回圖鑑。\n包含下列卡牌：\n[gold]櫻羽艾瑪的證言[/gold]\n[gold]二階堂希羅的證言[/gold]\n[gold]夏目安安的證言[/gold]\n[gold]城崎諾亞的證言[/gold]\n[gold]蓮見蕾雅的證言[/gold]\n[gold]佐伯米莉亞的證言[/gold]\n[gold]寶生瑪格的證言[/gold]\n[gold]黑部奈葉香的證言[/gold]\n[gold]紫藤亞里沙的證言[/gold]\n[gold]橘雪莉的證言[/gold]\n[gold]遠野漢娜的證言[/gold]\n[gold]澤渡可可的證言[/gold]\n[gold]冰上梅露露的證言[/gold]\n[gold]典獄長的證言[/gold]\n[gold]看守的證言[/gold]\n[gold]大魔女的證言[/gold]",
+  "MANOSABA-FLOATING.title": "漂浮",
+  "MANOSABA-FLOATING.description": "擁有[gold]漂浮[/gold]時，受到攻擊造成的傷害減少 20%。"
 }

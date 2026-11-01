@@ -42,5 +42,7 @@
   "MANOSABA-EVIDENCE.title": "証拠カード",
   "MANOSABA-EVIDENCE.description": "手札に加わると、自動で[gold]魔女図鑑[/gold]に収納される。同名の証拠は1枚のみ保持し、使用後は図鑑に戻る。",
   "MANOSABA-TESTIMONY.title": "証言カード",
-  "MANOSABA-TESTIMONY.description": "手札に加わると、自動で[gold]魔女図鑑[/gold]に収納される。同名につき1枚保持し、使用後は図鑑に戻る。\n以下のカードを含む：\n[gold]桜羽 エマの証言[/gold]\n[gold]二階堂 ヒロの証言[/gold]\n[gold]夏目 アンアンの証言[/gold]\n[gold]城ケ崎 ノアの証言[/gold]\n[gold]蓮見 レイアの証言[/gold]\n[gold]佐伯 ミリアの証言[/gold]\n[gold]宝生 マーゴの証言[/gold]\n[gold]黒部 ナノカの証言[/gold]\n[gold]紫藤 アリサの証言[/gold]\n[gold]橘 シェリーの証言[/gold]\n[gold]遠野 ハンナの証言[/gold]\n[gold]沢渡 ココの証言[/gold]\n[gold]氷上 メルルの証言[/gold]\n[gold]典獄長の証言[/gold]\n[gold]看守の証言[/gold]\n[gold]大魔女の証言[/gold]"
+  "MANOSABA-TESTIMONY.description": "手札に加わると、自動で[gold]魔女図鑑[/gold]に収納される。同名につき1枚保持し、使用後は図鑑に戻る。\n以下のカードを含む：\n[gold]桜羽 エマの証言[/gold]\n[gold]二階堂 ヒロの証言[/gold]\n[gold]夏目 アンアンの証言[/gold]\n[gold]城ケ崎 ノアの証言[/gold]\n[gold]蓮見 レイアの証言[/gold]\n[gold]佐伯 ミリアの証言[/gold]\n[gold]宝生 マーゴの証言[/gold]\n[gold]黒部 ナノカの証言[/gold]\n[gold]紫藤 アリサの証言[/gold]\n[gold]橘 シェリーの証言[/gold]\n[gold]遠野 ハンナの証言[/gold]\n[gold]沢渡 ココの証言[/gold]\n[gold]氷上 メルルの証言[/gold]\n[gold]典獄長の証言[/gold]\n[gold]看守の証言[/gold]\n[gold]大魔女の証言[/gold]",
+  "MANOSABA-FLOATING.title": "浮遊",
+  "MANOSABA-FLOATING.description": "[gold]浮遊[/gold]を持つ間、攻撃から受けるダメージが20%減少する。"
 }

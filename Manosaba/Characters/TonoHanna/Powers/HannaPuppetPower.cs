@@ -41,12 +41,13 @@ public sealed class HannaPuppetPower : PathCustomPowerModel
 
     public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
-        await HannaSoarLiftVisual.TryLiftAsync(Owner, applier);
+        _ = cardSource;
+        await HannaSoarLiftVisual.RegisterLiftAsync(Owner, applier, this, HannaSoarLiftVisual.FullLiftPixels);
     }
 
     public override async Task AfterRemoved(Creature oldOwner)
     {
-        await HannaSoarLiftVisual.TryRestoreAsync(oldOwner);
+        await HannaSoarLiftVisual.RemoveLiftAsync(oldOwner, this);
     }
 
     public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> creatures, ICombatState combatState)

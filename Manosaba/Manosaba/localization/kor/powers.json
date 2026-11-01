@@ -651,5 +651,8 @@
   "MANOSABA-WARDEN_ATTACK_POWER.smartDescription": "턴 종료 시 [gold]간수[/gold]가 모든 적에게 {Amount} 피해를 줍니다.",
   "MANOSABA-ACTING_COOL_POWER.title": "멋 부리기",
   "MANOSABA-ACTING_COOL_POWER.description": "각 턴 시작 시 [gold]정확[/gold]을 {Amount} 중첩 얻습니다.",
-  "MANOSABA-ACTING_COOL_POWER.smartDescription": "각 턴 시작 시 [gold]정확[/gold]을 {Amount} 중첩 얻습니다."
+  "MANOSABA-ACTING_COOL_POWER.smartDescription": "각 턴 시작 시 [gold]정확[/gold]을 {Amount} 중첩 얻습니다.",
+  "MANOSABA-FLOATING_POWER.title": "부유",
+  "MANOSABA-FLOATING_POWER.description": "공격으로 받는 피해가 20% 감소합니다.",
+  "MANOSABA-FLOATING_POWER.smartDescription": "공격으로 받는 피해가 [blue]{DamageDecrease}%[/blue] 감소합니다."
 }

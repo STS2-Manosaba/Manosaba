@@ -36,7 +36,7 @@
   "MANOSABA-HAND_GUN.description": "各戦闘1回、10以上のHPダメージを受ける直前、その敵に[blue]30[/blue]ダメージを与える。",
   "MANOSABA-HAND_GUN.flavor": "リロードするより持ち替えたほうが早い。",
   "MANOSABA-FEATHER_FAN.title": "羽扇",
-  "MANOSABA-FEATHER_FAN.description": "ターン終了時、未使用のエネルギー1につき{GoldPerEnergy}[gold]ゴールド[/gold]を得る。1戦闘につき最大3エネルギー分まで。\nレベルアップするたび、すべての「人形」カードの中からランダムに1枚をデッキに加える。\nLv2以降、[gold]人形コレクション[/gold]を得るたび、[gold]魔女化[/gold]を10得る。\nLv4以降、戦闘開始時、所持[gold]ゴールド[/gold]100ごとにエネルギーを1得る。",
+  "MANOSABA-FEATHER_FAN.description": "ターン終了時、未使用のエネルギー1につき{GoldPerEnergy}[gold]ゴールド[/gold]を得る。1戦闘につき最大3エネルギー分まで。\nレベルアップするたび、すべての「人形」カードの中からランダムに1枚をデッキに加える。\nLv2以降、[gold]翱翔[/gold]または[gold]浮遊[/gold]を持つ場合、与えるダメージが1.5倍になる。\nLv4以降、戦闘開始時、所持[gold]ゴールド[/gold]100ごとにエネルギーを1得る。",
   "MANOSABA-FEATHER_FAN.combatEnergyTrack": "今戦闘：未使用エネルギー{CombatUnspentEnergyGold}/{MaxUnspentEnergyCombat}をゴールドに変換済み。",
   "MANOSABA-FEATHER_FAN.flavor": "残ったエネルギーは、ちりつもで財布に。",
   "MANOSABA-TAROT_DECK.title": "タロットデッキ",

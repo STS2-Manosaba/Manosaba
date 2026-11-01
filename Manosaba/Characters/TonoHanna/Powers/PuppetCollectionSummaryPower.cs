@@ -127,9 +127,6 @@ public sealed class PuppetCollectionSummaryPower : PathCustomPowerModel
 
         int gainedDistinctKinds = target - current;
         await CommonActions.Apply<PuppetCollectionSummaryPower>(new ThrowingPlayerChoiceContext(), owner, null, gainedDistinctKinds, silent: true);
-
-        if (gainedDistinctKinds > 0)
-            await FeatherFan.OnPuppetCollectionIncreasedAsync(owner, gainedDistinctKinds);
     }
 
     private static int CountActiveCollectionKinds(Creature owner)

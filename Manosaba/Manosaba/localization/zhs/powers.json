@@ -651,5 +651,8 @@
   "MANOSABA-WARDEN_ATTACK_POWER.smartDescription": "回合結束時，由[gold]看守[/gold]對所有敵人造成{Amount}點傷害。",
   "MANOSABA-ACTING_COOL_POWER.title": "耍帥",
   "MANOSABA-ACTING_COOL_POWER.description": "每回合開始時，獲得 {Amount} 層[gold]精準[/gold]。",
-  "MANOSABA-ACTING_COOL_POWER.smartDescription": "每回合開始時，獲得 {Amount} 層[gold]精準[/gold]。"
+  "MANOSABA-ACTING_COOL_POWER.smartDescription": "每回合開始時，獲得 {Amount} 層[gold]精準[/gold]。",
+  "MANOSABA-FLOATING_POWER.title": "漂浮",
+  "MANOSABA-FLOATING_POWER.description": "受到攻擊造成的傷害減少 20%。",
+  "MANOSABA-FLOATING_POWER.smartDescription": "受到攻擊造成的傷害減少[blue]{DamageDecrease}%[/blue]。"
 }

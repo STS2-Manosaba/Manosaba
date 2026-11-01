@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using BaseLib.Extensions;
 using BaseLib.Utils;
 using manosaba.Characters.TonoHanna;
 using Manosaba.Characters.Common.Overrides;
@@ -9,7 +10,6 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
@@ -17,9 +17,10 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Rooms;
-using MegaCrit.Sts2.Core.TestSupport;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace manosaba.Characters.TonoHanna.Relics;
 
@@ -50,6 +51,9 @@ public sealed class FeatherFan : LevelingPathCustomRelicModel
     {
         foreach (IHoverTip tip in base.ExtraHoverTips)
             yield return tip;
+
+        yield return HoverTipFactory.FromPower<SoarPower>();
+        yield return HoverTipFactory.FromKeyword(ManosabaKeywords.Floating);
 
         if (!ShouldShowCombatEnergyTrackLine())
             yield break;
@@ -108,6 +112,25 @@ public sealed class FeatherFan : LevelingPathCustomRelicModel
             : Task.CompletedTask;
     }
 
+    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    {
+        _ = target;
+        _ = amount;
+        _ = cardSource;
+
+        if (RelicLevel < 2 || !props.IsPoweredAttack_())
+        {
+            return 1m;
+        }
+
+        if (Owner?.Creature is not { } ownerCreature || dealer != ownerCreature)
+        {
+            return 1m;
+        }
+
+        return ownerCreature.HasPower<SoarPower>() || ownerCreature.HasPower<FloatingPower>() ? 1.5m : 1m;
+    }
+
     private async Task OnRelicLevelIncreasedAsync(int oldLevel, int newLevel)
     {
         if (Owner?.Deck == null || Owner.RunState == null)
@@ -148,25 +171,6 @@ public sealed class FeatherFan : LevelingPathCustomRelicModel
         CardModel card = Owner.RunState.CreateCard(canonical, Owner);
         CardPileAddResult result = await CardPileCmd.Add(card, PileType.Deck);
         CardCmd.PreviewCardPileAdd(result, 1.2f, CardPreviewStyle.GridLayout);
-    }
-
-    /// <summary>Called when <see cref="Manosaba.Characters.TonoHanna.Powers.PuppetCollectionSummaryPower"/> increases (a new distinct puppet appears in the collection).</summary>
-    public static async Task OnPuppetCollectionIncreasedAsync(Creature owner, decimal positiveDelta)
-    {
-        if (positiveDelta <= 0m || TestMode.IsOn)
-        {
-            return;
-        }
-
-        Player? player = owner.Player;
-        FeatherFan? featherFan = player?.GetRelic<FeatherFan>();
-        if (featherFan == null || featherFan.RelicLevel < 2)
-        {
-            return;
-        }
-
-        decimal majoka = 10m * positiveDelta;
-        await CommonActions.Apply<MajokaPower>(new ThrowingPlayerChoiceContext(), owner, null, majoka);
     }
 
     public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> creatures)

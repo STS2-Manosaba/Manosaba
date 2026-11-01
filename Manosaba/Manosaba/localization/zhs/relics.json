@@ -33,7 +33,7 @@
   "MANOSABA-HAND_GUN.description": "每場戰鬥一次，即將受10點以上的生命傷害時，對該名敵人造成[blue]30[/blue]傷害。",
   "MANOSABA-HAND_GUN.flavor": "切到小槍永遠比換子彈快。",
   "MANOSABA-FEATHER_FAN.title": "羽扇",
-  "MANOSABA-FEATHER_FAN.description": "在你的回合結束時，每有1點未使用的能量，獲得 {GoldPerEnergy} [gold]金幣[/gold]，每場戰鬥最多3點。\n遺物升級時，從全部\"人偶\"牌中隨機將 1 張加入牌組。\nLv2 起，每當獲得[gold]人偶收藏[/gold]時，獲得 10 層[gold]魔女化[/gold]。\nLv4 起，戰鬥開始時，每100[gold]金幣[/gold]獲得1點能量。",
+  "MANOSABA-FEATHER_FAN.description": "在你的回合結束時，每有1點未使用的能量，獲得 {GoldPerEnergy} [gold]金幣[/gold]，每場戰鬥最多3點。\n遺物升級時，從全部\"人偶\"牌中隨機將 1 張加入牌組。\nLv2 起，擁有[gold]翱翔[/gold]或[gold]漂浮[/gold]時，造成的傷害變為1.5倍。\nLv4 起，戰鬥開始時，每100[gold]金幣[/gold]獲得1點能量。",
   "MANOSABA-FEATHER_FAN.combatEnergyTrack": "本場戰鬥已將 {CombatUnspentEnergyGold}/{MaxUnspentEnergyCombat} 點剩餘能量換成金幣。",
   "MANOSABA-FEATHER_FAN.flavor": "剩下一點能量，就多存一點錢。",
   "MANOSABA-TAROT_DECK.title": "塔羅牌組",

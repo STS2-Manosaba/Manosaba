@@ -648,5 +648,8 @@
   "MANOSABA-WARDEN_ATTACK_POWER.smartDescription": "ターン終了時、[gold]看守[/gold]は敵全体に{Amount}ダメージを与える。",
   "MANOSABA-ACTING_COOL_POWER.title": "カッコつけ",
   "MANOSABA-ACTING_COOL_POWER.description": "各ターン開始時、[gold]精密[/gold]を{Amount}スタック得る。",
-  "MANOSABA-ACTING_COOL_POWER.smartDescription": "各ターン開始時、[gold]精密[/gold]を{Amount}スタック得る。"
+  "MANOSABA-ACTING_COOL_POWER.smartDescription": "各ターン開始時、[gold]精密[/gold]を{Amount}スタック得る。",
+  "MANOSABA-FLOATING_POWER.title": "浮遊",
+  "MANOSABA-FLOATING_POWER.description": "攻撃から受けるダメージが20%減少する。",
+  "MANOSABA-FLOATING_POWER.smartDescription": "攻撃から受けるダメージが[blue]{DamageDecrease}%[/blue]減少する。"
 }

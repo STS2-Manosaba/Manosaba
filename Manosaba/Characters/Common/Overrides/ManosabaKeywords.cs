@@ -79,6 +79,10 @@ namespace Manosaba.Characters.Common.Overrides
         [KeywordProperties(AutoKeywordPosition.Before)]
         public static CardKeyword Evidence;
 
+        [CustomEnum("floating")]
+        [KeywordProperties(AutoKeywordPosition.Before)]
+        public static CardKeyword Floating;
+
         public readonly record struct StanceBonus(decimal BonusDamage, decimal BonusBlock);
 
         public static async Task<StanceBonus> ResolveHighStance(Creature owner, Creature? applier, CardModel? source)
