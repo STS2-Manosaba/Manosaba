@@ -604,6 +604,8 @@
   "MANOSABA-ASCENSION_ELEVATOR.description": "擲出兩顆[gold]升天電梯骰子[/gold]。\n造成骰面數字總和的 [blue]{BaseMultiplier}[/blue] 倍傷害。\n若兩面皆為[gold]升天電梯[/gold]，造成 [blue]{DoubleElevatorDamage}[/blue] 點傷害；否則，若任一骰面為[gold]升天電梯[/gold]，傷害乘以 [blue]3[/blue]。\n若兩面皆為[gold]電鰻[/gold]，自身受到 [blue]{DoubleEelDamage}[/blue] 點傷害。",
   "MANOSABA-GIVE_HANNA_A_BEER.title": "給漢娜一罐啤酒",
   "MANOSABA-GIVE_HANNA_A_BEER.description": "擲出 3 顆六面骰子。\n造成骰面總和的傷害。\n若[gold]魔女化[/gold]層數大於 {IfUpgraded:show:30|50}，則改為擲出有兩個 4、兩個 5、兩個 6 的骰子。",
+  "MANOSABA-RISK_DICE.title": "風險骰子",
+  "MANOSABA-RISK_DICE.description": "擲出 1 顆 20 面[gold]風險骰子[/gold]。\n擲出[gold]大吉[/gold]時，造成 {Damage:diff()} 點傷害，將此卡返回你的[gold]手牌[/gold]。\n擲出[gold]大凶[/gold]時，受到自上次[gold]大凶[/gold]後使用此卡次數乘以 {SelfDamageMultiplier:diff()} 的傷害。{InCombat:\n（目前[gold]大吉[/gold]機率：[blue]{GoodChance}%[/blue]；自上次[gold]大凶[/gold]後使用次數：[blue]{UsesSinceMisfortune}[/blue]）|}",
   "MANOSABA-LEIA_PUPPET.title": "蕾雅人偶",
   "MANOSABA-LEIA_PUPPET.description": "戰鬥結束時，獲得{Gold:diff()}[gold]金幣[/gold]。\n如果本場戰鬥使用過[gold]米莉亞人偶[/gold]及[gold]可可人偶[/gold]，額外獲得5[gold]金幣[/gold]。",
   "MANOSABA-MARGO_PUPPET.title": "瑪格人偶",
