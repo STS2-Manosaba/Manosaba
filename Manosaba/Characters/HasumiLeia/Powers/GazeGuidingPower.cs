@@ -1,10 +1,10 @@
 using Manosaba.Characters.Common.Powers;
-using Manosaba.Extensions;
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
+using Manosaba.Extensions;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -14,64 +14,40 @@ namespace Manosaba.Characters.HasumiLeia.Powers;
 
 public sealed class GazeGuidingPower : PathCustomPowerModel
 {
-    public override PowerType Type => PowerType.Buff;
+    public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
     public override bool AllowNegative => false;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("DamageReductionPercent", 0m)];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<MajokaPower>()];
-
     public override Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
         SyncDamageReductionPercent();
         return Task.CompletedTask;
     }
 
-    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> creatures)
     {
-        await base.AfterPowerAmountChanged(choiceContext, power, amount, applier, cardSource);
-        if (power is MajokaPower && power.Owner == Owner)
-            SyncDamageReductionPercent();
+        if (side == Owner.Side)
+            await PowerCmd.Remove(this);
     }
 
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (target == null)
+        _ = amount;
+        _ = props;
+        _ = cardSource;
+
+        if (target == null || dealer != Owner || !target.IsPlayer)
             return 1m;
 
-        decimal majoka = Math.Min(100m, Owner.GetPowerAmount<MajokaPower>());
-        decimal reduction = majoka / 200m; // 0..0.5
-
-        ICombatState? combatState = CombatState;
-        bool isMultiplayerGame = combatState != null
-            && combatState.GetTeammatesOf(Owner).Any(c => c != Owner && c.IsPlayer);
-
-        if (!isMultiplayerGame)
-        {
-            if (target != Owner)
-                return 1m;
-
-            return 1m - reduction;
-        }
-
-        if (target == Owner)
-        {
-            return 1m;
-        }
-
-        if (target.IsPlayer && target != Owner && combatState != null && combatState.GetTeammatesOf(Owner).Contains(target))
-            return 1m - reduction;
-
-        return 1m;
+        return 1m - Math.Clamp(Amount / 100m, 0m, 1m);
     }
 
     private void SyncDamageReductionPercent()
     {
-        if (Owner == null)
-            return;
-
-        decimal majoka = Math.Min(100m, Owner.GetPowerAmount<MajokaPower>());
-        DynamicVars["DamageReductionPercent"].BaseValue = majoka / 2m; // 0..50
+        DynamicVars["DamageReductionPercent"].BaseValue = Math.Clamp(Amount, 0m, 100m);
+        InvokeDisplayAmountChanged();
     }
 }
 
