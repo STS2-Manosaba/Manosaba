@@ -24,14 +24,17 @@ public sealed class MirrorPersonPower : PathCustomPowerModel
         Player? ownerPlayer = Owner.Player;
         Creature? ownerCreature = ownerPlayer?.Creature;
         ICombatState? combatState = ownerCreature?.CombatState;
-        if (_armed || ownerPlayer == null || ownerCreature == null || combatState == null || player != ownerPlayer)
+        if (_armed || ownerPlayer == null || ownerCreature == null || ownerCreature.IsDead || combatState == null || player != ownerPlayer)
             return;
 
+        int startTurn = ownerPlayer.PlayerCombatState!.TurnNumber;
         await PowerCmd.Remove(this);
         using var selector = CardSelectCmd.PushSelector(new VakuuCardSelector());
         for (int cardsPlayed = 0; cardsPlayed < MaxAutoPlayedCardsPerTurn; cardsPlayed++)
         {
-            if (CombatManager.Instance.IsOverOrEnding || CombatManager.Instance.IsPlayerReadyToEndTurn(player))
+            if (ownerCreature.IsDead || ownerCreature.CombatState != combatState
+                || ownerPlayer.PlayerCombatState?.TurnNumber != startTurn
+                || CombatManager.Instance.IsOverOrEnding || CombatManager.Instance.IsPlayerReadyToEndTurn(player))
                 break;
 
             CardModel? card = PileType.Hand.GetPile(ownerPlayer).Cards.FirstOrDefault(c => c.CanPlay());
@@ -43,6 +46,13 @@ public sealed class MirrorPersonPower : PathCustomPowerModel
                 break;
 
             await card.SpendResources();
+            // Spending resources runs hooks, which can end the turn/combat or remove the card.
+            if (ownerCreature.IsDead || ownerCreature.CombatState != combatState
+                || ownerPlayer.PlayerCombatState?.TurnNumber != startTurn
+                || CombatManager.Instance.IsOverOrEnding || CombatManager.Instance.IsPlayerReadyToEndTurn(player))
+                break;
+            if (card.HasBeenRemovedFromState || card.Pile != PileType.Hand.GetPile(ownerPlayer))
+                continue;
             await CardCmd.AutoPlay(choiceContext, card, target, AutoPlayType.Default, skipXCapture: true);
         }
 

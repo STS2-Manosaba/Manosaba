@@ -41,6 +41,6 @@ public sealed class AfterDinnerStatementPower : PathCustomPowerModel
         int count = Amount;
         await PowerCmd.Remove(this);
         for (int i = 0; i < count; i++)
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(combat.CreateCard<Statement>(player), PileType.Hand, player));
+            CardCmd.PreviewCardPileAdd(await EmaCardGeneration.Add(combat.CreateCard<Statement>(player), PileType.Hand, player));
     }
 }

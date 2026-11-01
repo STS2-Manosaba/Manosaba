@@ -92,7 +92,7 @@ public sealed class Agreement : EmaTrialCard
 
         await EmaTrialPresentation.Play(this);
         CardModel statement = CombatState.CreateCard<Statement>(Owner);
-        CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(statement, PileType.Hand, Owner);
+        CardPileAddResult result = await EmaCardGeneration.Add(statement, PileType.Hand, Owner);
         CardCmd.PreviewCardPileAdd(result);
 
         decimal argument = ProgressReady(this) ? cardPlay.Target.GetPowerAmount<ArgumentPower>() : 0m;

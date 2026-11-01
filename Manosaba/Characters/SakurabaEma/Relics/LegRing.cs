@@ -98,8 +98,9 @@ public sealed class LegRing : LevelingPathCustomRelicModel
         _ = choiceContext;
         _ = deathAnimLength;
 
-        // Run completion also kills players, but must not grant combat death rewards.
-        if (wasRemovalPrevented || CombatManager.Instance.IsOverOrEnding || Owner?.Creature?.CombatState == null)
+        // The last enemy already makes IsEnding true before AfterDeath runs.
+        // Only reject fully stopped combat here; ally rewards have a stricter guard below.
+        if (wasRemovalPrevented || !CombatManager.Instance.IsInProgress || Owner?.Creature?.CombatState == null)
             return;
 
         if (creature.CombatState != Owner.Creature.CombatState)
@@ -111,7 +112,8 @@ public sealed class LegRing : LevelingPathCustomRelicModel
             return;
         }
 
-        if (creature.Player == null || creature == Owner.Creature)
+        // Run completion also kills players, but must not grant ally death rewards.
+        if (CombatManager.Instance.IsOverOrEnding || creature.Player == null || creature == Owner.Creature)
             return;
 
         await YouDidWell.Gain(Owner);

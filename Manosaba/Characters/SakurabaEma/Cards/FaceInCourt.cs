@@ -46,8 +46,8 @@ public sealed class FaceInCourt : EmaTrialCard
         List<CardPileAddResult> results = [];
         for (int i = 0; i < DynamicVars.Cards.IntValue; i++)
         {
-            results.Add(await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<Statement>(Owner), PileType.Hand, Owner));
-            results.Add(await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<Statement>(targetPlayer), PileType.Hand, targetPlayer));
+            results.Add(await EmaCardGeneration.Add(CombatState.CreateCard<Statement>(Owner), PileType.Hand, Owner));
+            results.Add(await EmaCardGeneration.Add(CombatState.CreateCard<Statement>(targetPlayer), PileType.Hand, targetPlayer));
         }
 
         CardCmd.PreviewCardPileAdd(results);

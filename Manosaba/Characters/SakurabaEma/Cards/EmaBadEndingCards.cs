@@ -1,3 +1,4 @@
+using manosaba.Characters.SakurabaEma.Combat;
 using BaseLib.Utils;
 using Manosaba.Characters.Common.Cards;
 using Manosaba.Characters.Common.Overrides;
@@ -119,7 +120,7 @@ public abstract class EmaBadEndingTokenBase : PathCustomCardModel
             return;
 
         CardModel badEnd = CombatState.CreateCard<BadEnd>(Owner);
-        CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(badEnd, PileType.Draw, Owner);
+        CardPileAddResult result = await EmaCardGeneration.Add(badEnd, PileType.Draw, Owner);
         CardCmd.PreviewCardPileAdd(result);
     }
 
@@ -155,7 +156,7 @@ public abstract class EmaBadEndingTokenBase : PathCustomCardModel
         if (exhaust)
             CardCmd.ApplyKeyword(card, CardKeyword.Exhaust);
 
-        CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, owner);
+        CardPileAddResult result = await EmaCardGeneration.Add(card, PileType.Hand, owner);
         CardCmd.PreviewCardPileAdd(result);
     }
 
@@ -171,7 +172,7 @@ public abstract class EmaBadEndingTokenBase : PathCustomCardModel
         if (exhaust)
             CardCmd.ApplyKeyword(card, CardKeyword.Exhaust);
 
-        CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, owner);
+        CardPileAddResult result = await EmaCardGeneration.Add(card, PileType.Draw, owner);
         CardCmd.PreviewCardPileAdd(result);
     }
 }
@@ -519,7 +520,7 @@ public sealed class EmaIsEvil : PathCustomCardModel
             return;
 
         CardModel card = EmaBadEndingCards.CreateRandomHiroCard(CombatState, Owner);
-        CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner);
+        CardPileAddResult result = await EmaCardGeneration.Add(card, PileType.Hand, Owner);
         CardCmd.PreviewCardPileAdd(result);
     }
 }
@@ -646,7 +647,7 @@ public sealed class ExchangedGlances : HiroBadEndingTokenBase
         if (owner.Creature?.CombatState == null)
             return;
 
-        await CardPileCmd.AddGeneratedCardToCombat(owner.Creature.CombatState.CreateCard<TCard>(owner), PileType.Draw, owner);
+        await EmaCardGeneration.Add(owner.Creature.CombatState.CreateCard<TCard>(owner), PileType.Draw, owner);
     }
 }
 

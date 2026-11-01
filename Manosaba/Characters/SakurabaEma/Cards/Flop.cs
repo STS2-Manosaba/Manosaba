@@ -1,3 +1,4 @@
+using manosaba.Characters.SakurabaEma.Combat;
 using BaseLib.Utils;
 using Manosaba.Characters.Common;
 using Manosaba.Characters.Common.Powers;
@@ -60,7 +61,7 @@ public sealed class Flop : PathCustomCardModel
 
         CardModel ema = CombatState.CreateCard<EmaNikaidoHiro>(nikaidoHiro);
         CardCmd.ApplyKeyword(ema, CardKeyword.Exhaust);
-        CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(ema, PileType.Hand, nikaidoHiro);
+        CardPileAddResult result = await EmaCardGeneration.Add(ema, PileType.Hand, nikaidoHiro);
         CardCmd.PreviewCardPileAdd(result);
     }
 

@@ -57,7 +57,7 @@ public sealed class BadEndSkillGameAction : GameAction
 
         PlayerChoiceContext choiceContext = new GameActionPlayerChoiceContext(this);
         skillPower.MarkUsed();
-        CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(selected, PileType.Hand, Player);
+        CardPileAddResult result = await EmaCardGeneration.Add(selected, PileType.Hand, Player);
         CardCmd.PreviewCardPileAdd(result);
 
         List<Player> hiros = combatState.Players
@@ -71,7 +71,7 @@ public sealed class BadEndSkillGameAction : GameAction
                 return;
 
             CardModel emaIsEvil = combatState.CreateCard<EmaIsEvil>(hiro);
-            CardPileAddResult hiroResult = await CardPileCmd.AddGeneratedCardToCombat(emaIsEvil, PileType.Hand, hiro);
+            CardPileAddResult hiroResult = await EmaCardGeneration.Add(emaIsEvil, PileType.Hand, hiro);
             CardCmd.PreviewCardPileAdd(hiroResult);
         }
     }

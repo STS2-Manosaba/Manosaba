@@ -90,7 +90,7 @@ public abstract class CharacterTestimonyCardBase : TestimonyCardBase
         foreach (Player targetPlayer in targetPlayers)
         {
             CardModel statement = CombatState.CreateCard<Statement>(targetPlayer);
-            CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(statement, PileType.Hand, targetPlayer);
+            CardPileAddResult result = await EmaCardGeneration.Add(statement, PileType.Hand, targetPlayer);
             CardCmd.PreviewCardPileAdd(result);
         }
     }

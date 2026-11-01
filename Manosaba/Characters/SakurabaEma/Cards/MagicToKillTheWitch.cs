@@ -83,7 +83,7 @@ public sealed class MagicToKillTheWitch : PathCustomCardModel
     }
     private async Task Give<T>(ICombatState combat) where T : CardModel
     {
-        await CardPileCmd.AddGeneratedCardToCombat(combat.CreateCard<T>(Owner), PileType.Hand, Owner);
+        await EmaCardGeneration.Add(combat.CreateCard<T>(Owner), PileType.Hand, Owner);
     }
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
 }

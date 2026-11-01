@@ -66,7 +66,7 @@ public abstract class SearchEvidenceCard : EvidenceCard
     }
     protected async Task Generate(CardModel canonical)
     {
-        if (CombatState != null) CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard(canonical, Owner), PileType.Hand, Owner));
+        if (CombatState != null) CardCmd.PreviewCardPileAdd(await EmaCardGeneration.Add(CombatState.CreateCard(canonical, Owner), PileType.Hand, Owner));
     }
     protected async Task GenerateAndPlay(PlayerChoiceContext context, CardModel canonical)
     {

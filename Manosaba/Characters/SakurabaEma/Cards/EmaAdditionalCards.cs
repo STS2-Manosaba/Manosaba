@@ -51,7 +51,7 @@ public sealed class DeductionAfterDinner : PathCustomCardModel
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
         if (CombatState is not { } combat) return;
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(combat.CreateCard<HeartyMeal>(Owner), PileType.Hand, Owner));
+        CardCmd.PreviewCardPileAdd(await EmaCardGeneration.Add(combat.CreateCard<HeartyMeal>(Owner), PileType.Hand, Owner));
         await CommonActions.Apply<AfterDinnerStatementPower>(context, Owner.Creature, this, 2m);
     }
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);

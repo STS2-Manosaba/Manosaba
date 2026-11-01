@@ -1,3 +1,4 @@
+using manosaba.Characters.SakurabaEma.Combat;
 using BaseLib.Utils;
 using Manosaba.Characters.Common.Powers;
 using Manosaba.Extensions;
@@ -43,7 +44,7 @@ public sealed class ScorchingMedicineBottle : EmaTrialCard
             return;
 
         CardModel statement = CombatState.CreateCard<Statement>(Owner);
-        CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(statement, PileType.Hand, Owner);
+        CardPileAddResult result = await EmaCardGeneration.Add(statement, PileType.Hand, Owner);
         CardCmd.PreviewCardPileAdd(result);
     }
 

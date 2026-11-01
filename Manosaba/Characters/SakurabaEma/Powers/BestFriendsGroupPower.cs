@@ -1,3 +1,4 @@
+using manosaba.Characters.SakurabaEma.Combat;
 using BaseLib.Utils;
 using Manosaba.Characters.Common.Cards;
 using Manosaba.Extensions;
@@ -33,7 +34,7 @@ public sealed class BestFriendsGroupPower : PathCustomPowerModel
                 CardModel picnic = Owner.CombatState.CreateCard<PicnicTime>(Owner.Player);
                 CardCmd.ApplyKeyword(picnic, CardKeyword.Ethereal);
                 CardCmd.ApplyKeyword(picnic, CardKeyword.Exhaust);
-                await CardPileCmd.AddGeneratedCardToCombat(picnic, PileType.Hand, Owner.Player);
+                await EmaCardGeneration.Add(picnic, PileType.Hand, Owner.Player);
             }
         }
     }

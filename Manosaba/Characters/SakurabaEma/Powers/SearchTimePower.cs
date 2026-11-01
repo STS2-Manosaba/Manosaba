@@ -1,3 +1,4 @@
+using manosaba.Characters.SakurabaEma.Combat;
 using manosaba.Characters.SakurabaEma.Cards;
 using Manosaba.Extensions;
 using MegaCrit.Sts2.Core.Commands;
@@ -54,7 +55,7 @@ public sealed class SearchTimePower : PathCustomPowerModel
             return;
 
         CardModel card = combat.CreateCard<RawTellOwk>(player);
-        CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, player);
+        CardPileAddResult result = await EmaCardGeneration.Add(card, PileType.Hand, player);
         CardCmd.PreviewCardPileAdd(result);
     }
 }

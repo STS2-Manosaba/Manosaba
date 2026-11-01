@@ -35,7 +35,7 @@ public sealed class InformationSharing : EmaTrialCard
             // Each player keeps an independent encyclopedia copy, using normal hand-entry capture.
             CardModel copy = combat.CreateCard(evidence.CanonicalInstance, player);
             if (evidence.IsUpgraded) CardCmd.Upgrade(copy);
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(copy, PileType.Hand, player));
+            CardCmd.PreviewCardPileAdd(await EmaCardGeneration.Add(copy, PileType.Hand, player));
         }
         if (ProgressReady(this))
         {
@@ -45,7 +45,7 @@ public sealed class InformationSharing : EmaTrialCard
                     CardModel present = combat.CreateCard<PresentEvidence>(recipient);
                     CardCmd.ApplyKeyword(present, CardKeyword.Ethereal);
                     CardCmd.ApplyKeyword(present, CardKeyword.Exhaust);
-                    CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(present, PileType.Hand, recipient));
+                    CardCmd.PreviewCardPileAdd(await EmaCardGeneration.Add(present, PileType.Hand, recipient));
                 }
         }
     }

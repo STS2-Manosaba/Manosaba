@@ -1,3 +1,4 @@
+using manosaba.Characters.SakurabaEma.Combat;
 using Manosaba.Characters.Common.Cards;
 using Manosaba.Extensions;
 using MegaCrit.Sts2.Core.Commands;
@@ -23,6 +24,6 @@ public sealed class WontForgetEveryonePower : PathCustomPowerModel
         CardModel card = Owner.CombatState.CreateCard<PicnicTime>(player);
         CardCmd.ApplyKeyword(card, CardKeyword.Ethereal);
         CardCmd.ApplyKeyword(card, CardKeyword.Exhaust);
-        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, player);
+        await EmaCardGeneration.Add(card, PileType.Draw, player);
     }
 }

@@ -51,14 +51,17 @@ public sealed class SpecialMagicPower : PathCustomPowerModel
         Player? ownerPlayer = Owner.Player;
         Creature? ownerCreature = ownerPlayer?.Creature;
         ICombatState? combatState = ownerCreature?.CombatState;
-        if (ownerPlayer == null || ownerCreature == null || combatState == null || player != ownerPlayer || YouDidWell.Level(player) < 13)
+        if (ownerPlayer == null || ownerCreature == null || ownerCreature.IsDead || combatState == null || player != ownerPlayer || YouDidWell.Level(player) < 13)
             return;
 
+        int startTurn = ownerPlayer.PlayerCombatState!.TurnNumber;
         // A finite safety bound protects against zero-cost card generation loops.
         using var selector = CardSelectCmd.PushSelector(new VakuuCardSelector());
         for (int cardsPlayed = 0; cardsPlayed < 1000; cardsPlayed++)
         {
-            if (CombatManager.Instance.IsOverOrEnding || CombatManager.Instance.IsPlayerReadyToEndTurn(player))
+            if (ownerCreature.IsDead || ownerCreature.CombatState != combatState
+                || ownerPlayer.PlayerCombatState?.TurnNumber != startTurn
+                || CombatManager.Instance.IsOverOrEnding || CombatManager.Instance.IsPlayerReadyToEndTurn(player))
                 break;
 
             CardModel? card = PileType.Hand.GetPile(ownerPlayer).Cards.FirstOrDefault(c => c.CanPlay());
@@ -70,9 +73,18 @@ public sealed class SpecialMagicPower : PathCustomPowerModel
                 break;
 
             await card.SpendResources();
+            // Spending resources runs hooks, which can end the turn/combat or remove the card.
+            if (ownerCreature.IsDead || ownerCreature.CombatState != combatState
+                || ownerPlayer.PlayerCombatState?.TurnNumber != startTurn
+                || CombatManager.Instance.IsOverOrEnding || CombatManager.Instance.IsPlayerReadyToEndTurn(player))
+                break;
+            if (card.HasBeenRemovedFromState || card.Pile != PileType.Hand.GetPile(ownerPlayer))
+                continue;
             await CardCmd.AutoPlay(choiceContext, card, target, AutoPlayType.Default, skipXCapture: true);
         }
-        if (!CombatManager.Instance.IsOverOrEnding && !CombatManager.Instance.IsPlayerReadyToEndTurn(player))
+        if (ownerCreature.IsAlive && ownerCreature.CombatState == combatState
+            && ownerPlayer.PlayerCombatState?.TurnNumber == startTurn
+            && !CombatManager.Instance.IsOverOrEnding && !CombatManager.Instance.IsPlayerReadyToEndTurn(player))
             PlayerCmd.EndTurn(player, canBackOut: false);
     }
 

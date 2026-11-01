@@ -64,7 +64,7 @@ public sealed class YouDidWell : PathCustomRelicModel
     }
     internal async Task SyncMultiplier()
     {
-        if (Owner.Creature.CombatState == null) return;
+        if (CombatManager.Instance.IsOverOrEnding || Owner.Creature.CombatState == null) return;
         int percent = (Owner.Relics.Any(r => r is LegRing) ? 50 : 100) + Stacks * 10;
         LegRingMajokaPower? power = Owner.Creature.GetPower<LegRingMajokaPower>();
         if (power == null)
@@ -86,11 +86,12 @@ public sealed class YouDidWell : PathCustomRelicModel
         {
             CardModel magic = Owner.RunState.CreateCard(ModelDb.Card<MagicToKillTheWitch>(), Owner);
             CardCmd.PreviewCardPileAdd(await CardPileCmd.Add(magic, PileType.Deck));
-            if (Owner.Creature.CombatState is { } combat)
-                await CardPileCmd.AddGeneratedCardToCombat(combat.CreateCard<MagicToKillTheWitch>(Owner), PileType.Hand, Owner);
+            if (!CombatManager.Instance.IsOverOrEnding && Owner.Creature.CombatState is { } combat)
+                await CardPileCmd.AddGeneratedCardsToCombat([combat.CreateCard<MagicToKillTheWitch>(Owner)], PileType.Hand, Owner);
         }
         // Combat copies already exist at BeforeCombatStart; deck transforms do not update them.
-        var activeCombat = Owner.Creature.CombatState;
+        // A finishing kill can unlock permanent cards, but combat effects must stop.
+        var activeCombat = CombatManager.Instance.IsOverOrEnding ? null : Owner.Creature.CombatState;
         var combatTraumas = activeCombat == null ? [] :
             Owner.PlayerCombatState?.AllCards.Where(c => c is TraumaSakurabaEma).ToList() ?? [];
         foreach (CardModel trauma in combatTraumas)

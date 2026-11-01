@@ -46,7 +46,7 @@ public sealed class WitchEncyclopediaState
     {
         CardModel? previous = ImmediatePlayCard.Value;
         ImmediatePlayCard.Value = card;
-        try { return await CardPileCmd.AddGeneratedCardToCombat(card, MegaCrit.Sts2.Core.Entities.Cards.PileType.Hand, owner); }
+        try { return await EmaCardGeneration.Add(card, MegaCrit.Sts2.Core.Entities.Cards.PileType.Hand, owner); }
         finally { ImmediatePlayCard.Value = previous; }
     }
 
@@ -93,7 +93,7 @@ public sealed class WitchEncyclopediaState
         CardModel card = combat.CreateCard(canonical, player);
         // Use the same entry point as other card generation. The pile patch captures it
         // before hand capacity is checked, including when the hand already has ten cards.
-        CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(card, MegaCrit.Sts2.Core.Entities.Cards.PileType.Hand, player);
+        CardPileAddResult result = await EmaCardGeneration.Add(card, MegaCrit.Sts2.Core.Entities.Cards.PileType.Hand, player);
         CardCmd.PreviewCardPileAdd(result);
     }
 }
