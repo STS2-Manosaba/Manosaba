@@ -624,6 +624,8 @@
   "MANOSABA-PUPPET_FULL_TEST.description": "[gold]DEV[/gold]: Apply 1 of each \"Puppet\" collection companion (all 13).",
   "MANOSABA-REFUSE_MAJO.title": "I Don't Want to Be a Witch",
   "MANOSABA-REFUSE_MAJO.description": "Can only be played while you have fewer than 100 [gold]Majoka[/gold].\nTransform all cards in your [gold]Hand[/gold] into [gold]Boulders[/gold] with [gold]Exhaust[/gold] that can be played for free this turn.\nLose all [gold]Majoka[/gold].",
+  "MANOSABA-STEEL_BALL_RUN.title": "Steel Ball Run",
+  "MANOSABA-STEEL_BALL_RUN.description": "Raise [gold]Majoka[/gold] to {MajokaPower:diff()} layers. If already at {MajokaPower}, this has no effect.",
   "MANOSABA-SEWING.title": "Sewing",
   "MANOSABA-SEWING.description": "Gain {Block:diff()} [gold]Block[/gold].\n{IfUpgraded:show:Upgrade all cards with the \"Puppet\" tag in your [gold]Hand[/gold].|Choose a card with the \"Puppet\" tag in your [gold]Hand[/gold] and upgrade it.}",
   "MANOSABA-SEWING.selectionScreenPrompt": "Choose a \"Puppet\" card to upgrade.",

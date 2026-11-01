@@ -29,14 +29,18 @@ SfxCmd.Play(BgmEventPath, 0.8f);
 
 一般短音效也應使用 `SfxCmd.Play` 和 `event:/Manosaba/...` 事件路徑，例如 `event:/Manosaba/audio/SFX/example.mp3`。路由會將非 BGM 事件當作一次性音效播放，並套用 Manosaba 自訂音量。若是角色選擇語音、cut-in 語音或帶有特殊播放次數控制的音效，先沿用對應角色的 helper 或既有卡牌模式。
 
-## 為單一效果提供播放頻率設定
+## BGM 播放頻率設定
 
-若玩家需要單獨控制這段音訊是否播放及播放頻率，沿用 `ManosabaFxPlayMode`：
+每個由卡牌或能力觸發的新 BGM 都必須提供獨立播放頻率設定，不能因為需求沒有明講設定選項而略過。使用 `ManosabaFxPlayMode`，預設為 `EveryTime`，並提供「每次、每場冒險一次、永不播放」三種選項。只有多個效果確實應共用同一播放頻率時，才使用同一個設定，並在交付摘要說明。
 
-1. 在 `ManosabaConfig` 新增預設為 `EveryTime` 的設定屬性，並加上 `[ConfigHoverTip]`。
-2. 在四語 `Manosaba/Manosaba/localization/{eng,zhs,jpn,kor}/settings_ui.json` 新增 `<設定名稱>.title`、`.hover.title`、`.hover.desc`。
-3. 播放前檢查 `Never` 與 `OncePerRun`，只在允許播放時呼叫 `SfxCmd.Play`。
-4. 若使用 `OncePerRun`，在效果類別加上重置方法，並從 `Patch_RunState_CreateForNewRun_ResetVfx` 呼叫，讓新冒險重新計次。
+依下列步驟加入設定：
+
+1. 在 `ManosabaConfig` 新增預設為 `EveryTime` 的 `ManosabaFxPlayMode` 設定屬性，並加上 `[ConfigHoverTip]`。
+2. 在四語 `Manosaba/Manosaba/localization/{eng,zhs,jpn,kor}/settings_ui.json` 新增 `<設定名稱>.title`、`.hover.title`、`.hover.desc`，說明它控制哪首 BGM，以及三種播放選項。
+3. 播放前檢查 `Never` 與 `OncePerRun`，只在設定允許時呼叫 `SfxCmd.Play`。
+4. 若使用 `OncePerRun`，在效果類別保存播放狀態、提供重置方法，並從 `Patch_RunState_CreateForNewRun_ResetVfx` 呼叫，讓新冒險重新計次。
+
+音效也可沿用此模式；若只新增一般短音效，依需求決定是否提供獨立頻率設定。
 
 例：
 
@@ -52,6 +56,12 @@ if (playMode != ManosabaFxPlayMode.Never &&
 ```
 
 全域音量設定由 `ManosabaConfig.ManosabaSfxVolumePercent` 提供。使用 `SfxCmd.Play` 播放 `event:/Manosaba/...` 音訊，才能套用自訂音量和 BGM 暫停／恢復處理。
+
+## 循環與結束清理
+
+- 每首新 BGM 都要確認是否循環。預設播放一次；若曲目要持續循環，將完整事件路徑加入 `GodotSfxRouter.LoopingBgmEvents`。不要只依賴音檔 loop metadata。
+- `GodotSfxRouter` 負責曲目播放期間的原版 BGM 暫停、播放結束後恢復，以及 Manosaba 音量套用。`Patch_StopCustomBgm` 負責離開戰鬥、冒險、主選單或遊戲時停止自訂 BGM 並恢復原版 BGM。一般卡牌沿用這個集中清理流程。
+- 若有新增音檔，確認 Godot 已產生對應 `.import` 資料，並確認事件路徑可載入該資源。
 
 ## 完成檢查表
 

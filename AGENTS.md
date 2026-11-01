@@ -114,8 +114,13 @@
 
 ## 音效與 BGM
 
-- 新增或修改音效／BGM 檔案及播放程式碼時，必須先依照 `Manosaba/Audio/README.md` 接入，並檢查資源路徑、音量設定、播放頻率設定、循環設定與播放結束清理。
-- 自訂音訊應經由專案既有的 `SfxCmd.Play`／`GodotSfxRouter` 路由，確保套用 Manosaba 音量設定及 BGM 暫停／恢復行為。
+- 新增或修改音效／BGM 檔案及播放程式碼時，必須依照 `Manosaba/Audio/README.md` 接入，並逐項確認資源路徑、音量、播放頻率、循環及播放結束清理；不能只確認播放呼叫能編譯。
+- 每個由卡牌或能力觸發的新 BGM 都必須有獨立播放頻率設定，使用 `ManosabaFxPlayMode` 提供「每次、每場冒險一次、永不播放」，預設為 `EveryTime`。不得因使用者未特別要求設定選項而省略。只有當多個效果本來就應共用同一播放控制時，才沿用共用設定，並在摘要說明。
+- 頻率設定須加入 `ManosabaConfig`、四語 `settings_ui.json` 的標題與 hover 文案。使用 `OncePerRun` 時，須保存本次冒險是否已播放，並在 `Patch_RunState_CreateForNewRun_ResetVfx` 重置。
+- BGM 以 `SfxCmd.Play("event:/Manosaba/audio/bgm/...", volume)` 播放，確認事件路徑與音檔路徑完全相符；此路由會套用全域 Manosaba SFX 音量並管理原版 BGM 暫停／恢復。不要自行建立播放器或繞過路由。
+- 每首 BGM 都要明確決定播放一次或循環。預設播放一次；只有設計上需要持續循環時，才將完整事件路徑加入 `GodotSfxRouter.LoopingBgmEvents`，並確認匯入設定。音檔 loop metadata 不會取代此設定。若規格要求讓玩家切換循環，另加設定選項；不可默默改成循環。
+- 確認 Godot 已為新增音檔產生 `.import` 資料。離開戰鬥、冒險或遊戲時沿用 `Patch_StopCustomBgm` 的集中清理流程，使自訂 BGM 停止並恢復原版 BGM；一般卡牌不應自行重複實作清理。
+- 完成交付前逐項回報音檔／事件路徑、音量路由、播放頻率選項、是否循環及清理方式；採用單次播放等預設行為時也要明確寫出。
 
 ## 建置要求
 

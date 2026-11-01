@@ -624,6 +624,8 @@
   "MANOSABA-PUPPET_FULL_TEST.description": "[gold]開発用[/gold]：すべての「人形」収集バフを1スタックずつ付与（13種）。",
   "MANOSABA-REFUSE_MAJO.title": "魔法少女は嫌だ",
   "MANOSABA-REFUSE_MAJO.description": "[gold]魔女化[/gold]が100未満のときのみプレイできる。\n[gold]手札[/gold]のすべてのカードを、このターン無料でプレイできる[gold]消耗[/gold]の[gold]落石[/gold]に変える。\n[gold]魔女化[/gold]をすべて失う。",
+  "MANOSABA-STEEL_BALL_RUN.title": "Steel Ball Run",
+  "MANOSABA-STEEL_BALL_RUN.description": "[gold]魔女化[/gold]を {MajokaPower:diff()} 層まで増やす。すでに {MajokaPower} 層なら効果はない。",
   "MANOSABA-SEWING.title": "裁縫",
   "MANOSABA-SEWING.description": "{Block:diff()}[gold]ブロック[/gold]を得る。\n{IfUpgraded:show:[gold]手札[/gold]の「人形」タグのカードをすべてアップグレードする.|[gold]手札[/gold]の「人形」タグのカードを1枚選んでアップグレードする。}",
   "MANOSABA-SEWING.selectionScreenPrompt": "「人形」カードを1枚選んでアップグレードする。",

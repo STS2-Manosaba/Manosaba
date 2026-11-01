@@ -624,6 +624,8 @@
   "MANOSABA-PUPPET_FULL_TEST.description": "[gold]개발용[/gold]: 13종의 \"인형\" 수집에 각 1 적용합니다.",
   "MANOSABA-REFUSE_MAJO.title": "마녀가 되기 싫어",
   "MANOSABA-REFUSE_MAJO.description": "[gold]마녀화[/gold]가 100 미만일 때만 사용할 수 있습니다.\n[gold]손[/gold]의 모든 카드를 이번 턴 동안 비용 없이 사용할 수 있는 [gold]소멸[/gold]이 부여된 [gold]낙석[/gold]으로 바꿉니다.\n모든 [gold]마녀화[/gold]를 잃습니다.",
+  "MANOSABA-STEEL_BALL_RUN.title": "Steel Ball Run",
+  "MANOSABA-STEEL_BALL_RUN.description": "[gold]마녀화[/gold]를 {MajokaPower:diff()}까지 올립니다. 이미 {MajokaPower} 이상이면 효과가 없습니다.",
   "MANOSABA-SEWING.title": "바느질",
   "MANOSABA-SEWING.description": "[gold]방어도[/gold]를 {Block:diff()} 얻습니다.\n[gold]손[/gold]의 \"인형\" 카드 {IfUpgraded:show:전부|한 장을} 강화합니다.",
   "MANOSABA-SEWING.selectionScreenPrompt": "강화할 \"인형\" 카드를 선택하세요.",

@@ -1,5 +1,6 @@
 using HarmonyLib;
 using Manosaba.Characters.HikamiMeruru.Cards;
+using manosaba.Characters.TonoHanna.Cards;
 using Manosaba.Characters.TachibanaSherry.Cards;
 using Manosaba.Characters.NikaidoHiro.Cards;
 using Manosaba.Characters.HasumiLeia.Cards;
@@ -17,6 +18,7 @@ public static class Patch_RunState_CreateForNewRun_ResetVfx
     {
         LaboursOfHiro.ResetVfxForNewRun();
         HikamiMeruruExaid.ResetSfxForNewRun();
+        SteelBallRun.ResetBgmForNewRun();
         SearchAnalyzeSolve.ResetSfxForNewRun();
         NovelSettingNoahFriendsSfx.ResetSfxForNewRun();
         CeremonialSword.ResetSfxForNewRun();

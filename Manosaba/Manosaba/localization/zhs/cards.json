@@ -626,6 +626,8 @@
   "MANOSABA-PUPPET_FULL_TEST.description": "[gold]開發用[/gold]：對 13 種\"人偶\"收集各疊加 1 層。",
   "MANOSABA-REFUSE_MAJO.title": "不想成為魔女",
   "MANOSABA-REFUSE_MAJO.description": "僅在[gold]魔女化[/gold]未滿100層時可打出。\n[gold]手牌[/gold]中所有牌變為會消耗的[gold]落石[/gold]，在本回合可以免費打出。\n失去所有[gold]魔女化[/gold]。",
+  "MANOSABA-STEEL_BALL_RUN.title": "Steel Ball Run",
+  "MANOSABA-STEEL_BALL_RUN.description": "將[gold]魔女化[/gold]提升至 {MajokaPower:diff()} 層。若已達 {MajokaPower} 層則不生效。",
   "MANOSABA-SEWING.title": "縫紉",
   "MANOSABA-SEWING.description": "獲得 {Block:diff()} 點[gold]格檔[/gold]。\n升級你[gold]手牌[/gold]中的{IfUpgraded:show:所有|一張}名字中含有\"人偶\"的牌",
   "MANOSABA-SEWING.selectionScreenPrompt": "選擇一張\"人偶\"牌升級。",
