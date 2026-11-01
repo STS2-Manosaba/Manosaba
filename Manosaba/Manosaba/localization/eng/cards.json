@@ -588,6 +588,8 @@
   "MANOSABA-FLYING_BROOM.description": "You and another player gain [gold]Soar[/gold] until the start of your next turn.\nIf the target is [gold]Sherry[/gold], both players gain a [gold]Picnic Time[/gold] that can be played for free this turn.",
   "MANOSABA-HANNA_PUPPET.title": "Hanna Puppet",
   "MANOSABA-HANNA_PUPPET.description": "Gain [gold]Soar[/gold] for one turn.\nIf you have played [gold]Sherry Puppet[/gold] this combat, gain 2 [gold]Strength[/gold].",
+  "MANOSABA-GOODNIGHT_YOUNG_LADY.title": "Goodnight, Young Lady",
+  "MANOSABA-GOODNIGHT_YOUNG_LADY.description": "Heal {Heal:diff()} HP.\nHeal 1 additional HP for each stack of [gold]Puppet Collection[/gold].\nEnd your turn.",
   "MANOSABA-DREAMS_INJURED_WINGS.title": "Dream's Injured Wings",
   "MANOSABA-DREAMS_INJURED_WINGS.description": "Gain {FloatingPower:diff()} turn(s) of [gold]Float[/gold].",
   "MANOSABA-WITCH_ISLAND_CAN_FLY.title": "The Witch Island Can Fly♫",

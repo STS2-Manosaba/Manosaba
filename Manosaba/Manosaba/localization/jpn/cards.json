@@ -588,6 +588,8 @@
   "MANOSABA-FLYING_BROOM.description": "あなたともう1人のプレイヤーが、次のターン開始まで[gold]飛翔[/gold]を得る。\n対象が[gold]シェリー[/gold]なら、双方がこのターン無料でプレイできる[gold]ピクニックタイム[/gold]を1枚[gold]手札[/gold]に得る。",
   "MANOSABA-HANNA_PUPPET.title": "ハンナの人形",
   "MANOSABA-HANNA_PUPPET.description": "1ターン[gold]飛翔[/gold]を得る。\nこの戦闘で[gold]シェリーの人形[/gold]を使用済みなら、[gold]筋力[/gold]を2得る。",
+  "MANOSABA-GOODNIGHT_YOUNG_LADY.title": "お嬢様、おやすみなさい",
+  "MANOSABA-GOODNIGHT_YOUNG_LADY.description": "HPを{Heal:diff()}回復する。\n[gold]人形コレクション[/gold]1スタックにつき、HPを追加で1回復する。\nターンを終了する。",
   "MANOSABA-DREAMS_INJURED_WINGS.title": "夢の翼はもう傷ついている",
   "MANOSABA-DREAMS_INJURED_WINGS.description": "{FloatingPower:diff()}ターンの間[gold]浮遊[/gold]を得る。",
   "MANOSABA-WITCH_ISLAND_CAN_FLY.title": "魔女島は飛べる♫",

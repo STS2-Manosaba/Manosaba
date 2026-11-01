@@ -590,6 +590,8 @@
   "MANOSABA-FLYING_BROOM.description": "另一名玩家與你獲得一回合[gold]翱翔[/gold]。\n若目標為[gold]雪莉[/gold]，雙方各獲得一張本回合可免費打出的[gold]野餐時間[/gold]。",
   "MANOSABA-HANNA_PUPPET.title": "漢娜人偶",
   "MANOSABA-HANNA_PUPPET.description": "獲得一回合[gold]翱翔[/gold]。\n如果本場戰鬥使用過[gold]雪莉人偶[/gold]，獲得2點[gold]力量[/gold]。",
+  "MANOSABA-GOODNIGHT_YOUNG_LADY.title": "晚安大小姐",
+  "MANOSABA-GOODNIGHT_YOUNG_LADY.description": "回復 {Heal:diff()} 點生命。\n你每有一層[gold]人偶收藏[/gold]，就額外回復1點生命。\n結束你的回合。",
   "MANOSABA-DREAMS_INJURED_WINGS.title": "夢的翅膀已經受了傷",
   "MANOSABA-DREAMS_INJURED_WINGS.description": "獲得 {FloatingPower:diff()} 回合[gold]漂浮[/gold]。",
   "MANOSABA-WITCH_ISLAND_CAN_FLY.title": "魔女島能飛♫",

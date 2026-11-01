@@ -588,6 +588,8 @@
   "MANOSABA-FLYING_BROOM.description": "자신과 다른 플레이어 한 명이 한 턴 동안 [gold]비행[/gold]을 얻습니다.\n대상이 [gold]셰리[/gold]이면, 양쪽 모두 이번 턴 동안 비용 없이 사용할 수 있는 [gold]피크닉 타임[/gold] 1장을 [gold]손[/gold]으로 가져옵니다.",
   "MANOSABA-HANNA_PUPPET.title": "한나 인형",
   "MANOSABA-HANNA_PUPPET.description": "한 턴 [gold]비행[/gold]을 얻습니다.\n이번 전투에 [gold]셰리 인형[/gold]을 사용했다면 [gold]힘[/gold]을 2 얻습니다.",
+  "MANOSABA-GOODNIGHT_YOUNG_LADY.title": "아가씨, 안녕히 주무세요",
+  "MANOSABA-GOODNIGHT_YOUNG_LADY.description": "체력을 {Heal:diff()} 회복합니다.\n[gold]인형 수집[/gold] 스택마다 체력을 1 추가로 회복합니다.\n턴을 종료합니다.",
   "MANOSABA-DREAMS_INJURED_WINGS.title": "꿈의 날개는 이미 다치고 말았다",
   "MANOSABA-DREAMS_INJURED_WINGS.description": "{FloatingPower:diff()}턴 동안 [gold]부유[/gold]를 얻습니다.",
   "MANOSABA-WITCH_ISLAND_CAN_FLY.title": "마녀섬은 날 수 있어♫",

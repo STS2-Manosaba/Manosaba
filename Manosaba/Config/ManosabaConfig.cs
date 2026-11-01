@@ -57,6 +57,9 @@ public sealed class ManosabaConfig : SimpleModConfig
     public static ManosabaFxPlayMode SteelBallRunBgmFrequency { get; set; } = ManosabaFxPlayMode.EveryTime;
 
     [ConfigHoverTip]
+    public static ManosabaFxPlayMode GoodnightYoungLadyBgmFrequency { get; set; } = ManosabaFxPlayMode.EveryTime;
+
+    [ConfigHoverTip]
     public static ManosabaFxPlayMode SearchAnalyzeSolveEffectFrequency { get; set; } = ManosabaFxPlayMode.EveryTime;
 
     [ConfigHoverTip]
