@@ -7,11 +7,12 @@ namespace Manosaba.Characters.TonoHanna.Vfx;
 
 /// <summary>
 /// Renders a real 3D cube in a small transparent viewport and tumbles it to the supplied face.
-/// Face art is loaded from res://Manosaba/images/characters/tono_hanna/dice/face_1.png through face_6.png.
+/// Numbered face art is loaded from face_1.png through face_6.png; the Ascension Elevator card uses its own art for faces 5 and 6.
 /// </summary>
 public partial class HannaDiceRollVfx : Node2D
 {
     private const string FacePathFormat = "res://Manosaba/images/characters/tono_hanna/dice/face_{0}.png";
+    private const string ElevatorFacePathFormat = "res://Manosaba/images/characters/tono_hanna/dice/face_{0}_{1}.png";
     private const int FaceCount = 6;
     private const int ViewportSize = 256;
     private const float RollDuration = 1.25f;
@@ -44,7 +45,21 @@ public partial class HannaDiceRollVfx : Node2D
     public static Task PlayTwoAtCombatCenterAsync(int firstResult, int secondResult) =>
         PlayAtCombatCenterAsync([firstResult, secondResult]);
 
-    private static async Task PlayAtCombatCenterAsync(IReadOnlyList<int> results)
+    /// <summary>Plays three numbered dice together, side by side, and settles them on their supplied results.</summary>
+    public static Task PlayThreeNumberedAtCombatCenterAsync(
+        int firstResult,
+        int secondResult,
+        int thirdResult,
+        bool useFourToSixFaces) =>
+        PlayAtCombatCenterAsync(
+            [firstResult, secondResult, thirdResult],
+            useElevatorFaces: false,
+            useFourToSixFaces: useFourToSixFaces);
+
+    private static async Task PlayAtCombatCenterAsync(
+        IReadOnlyList<int> results,
+        bool useElevatorFaces = true,
+        bool useFourToSixFaces = false)
     {
         if (results.Count == 0 || results.Any(result => result is < 1 or > FaceCount))
         {
@@ -66,16 +81,17 @@ public partial class HannaDiceRollVfx : Node2D
             room.CombatVfxContainer.AddChildSafely(vfx);
             float horizontalOffset = (i - (results.Count - 1) * 0.5f) * (ViewportSize + 24f);
             vfx.GlobalPosition = center + new Vector2(horizontalOffset, 0f);
-            animations.Add(vfx.PlayAnimationAsync(results[i]));
+            animations.Add(vfx.PlayAnimationAsync(results[i], useElevatorFaces, useFourToSixFaces));
         }
 
         await Task.WhenAll(animations);
     }
 
-    private async Task PlayAnimationAsync(int result)
+    private async Task PlayAnimationAsync(int result, bool useElevatorFaces, bool useFourToSixFaces)
     {
-        Node3D die = Create3DViewportAndDie();
-        Vector3 targetRotation = FaceRotations[result - 1];
+        Node3D die = Create3DViewportAndDie(useElevatorFaces, useFourToSixFaces);
+        int resultFaceIndex = useFourToSixFaces ? result - 4 : result - 1;
+        Vector3 targetRotation = FaceRotations[resultFaceIndex];
 
         // Several full turns on all three axes create a tumbling throw; the keyed result determines the landing face.
         Vector3 fullTurns = new(
@@ -113,7 +129,7 @@ public partial class HannaDiceRollVfx : Node2D
         QueueFree();
     }
 
-    private Node3D Create3DViewportAndDie()
+    private Node3D Create3DViewportAndDie(bool useElevatorFaces, bool useFourToSixFaces)
     {
         var viewport = new SubViewport
         {
@@ -165,19 +181,24 @@ public partial class HannaDiceRollVfx : Node2D
 
         for (int face = 1; face <= FaceCount; face++)
         {
-            AddDieFace(die, face);
+            int faceValue = useFourToSixFaces ? (face - 1) % 3 + 4 : face;
+            AddDieFace(die, face, faceValue, useElevatorFaces);
         }
 
         return die;
     }
 
-    private static void AddDieFace(Node3D die, int face)
+    private static void AddDieFace(Node3D die, int faceIndex, int faceValue, bool useElevatorFaces)
     {
-        string texturePath = string.Format(FacePathFormat, face);
+        string texturePath = useElevatorFaces && faceValue == 5
+            ? string.Format(ElevatorFacePathFormat, faceValue, "elevator")
+            : useElevatorFaces && faceValue == 6
+                ? string.Format(ElevatorFacePathFormat, faceValue, "eel")
+                : string.Format(FacePathFormat, faceValue);
         Texture2D? texture = ResourceLoader.Exists(texturePath) ? GD.Load<Texture2D>(texturePath) : null;
         var material = new StandardMaterial3D
         {
-            AlbedoColor = face % 2 == 0 ? new Color("fff8e9") : new Color("fff1d8"),
+            AlbedoColor = faceIndex % 2 == 0 ? new Color("fff8e9") : new Color("fff1d8"),
             AlbedoTexture = texture,
             ShadingMode = BaseMaterial3D.ShadingModeEnum.Unshaded,
             Transparency = BaseMaterial3D.TransparencyEnum.Alpha,
@@ -187,20 +208,20 @@ public partial class HannaDiceRollVfx : Node2D
         {
             Mesh = new QuadMesh { Size = new Vector2(0.96f, 0.96f) },
             MaterialOverride = material,
-            Position = FacePositions[face - 1],
-            Rotation = FaceRotations[face - 1]
+            Position = FacePositions[faceIndex - 1],
+            Rotation = FaceRotations[faceIndex - 1]
         };
         die.AddChild(surface);
 
         if (texture == null)
         {
-            AddFallbackFaceMarkings(surface, face);
+            AddFallbackFaceMarkings(surface, faceValue, useElevatorFaces);
         }
     }
 
-    private static void AddFallbackFaceMarkings(Node3D surface, int face)
+    private static void AddFallbackFaceMarkings(Node3D surface, int face, bool useElevatorFaces)
     {
-        if (face >= 5)
+        if (useElevatorFaces && face >= 5)
         {
             var label = new Label3D
             {
@@ -220,7 +241,9 @@ public partial class HannaDiceRollVfx : Node2D
             1 => [Vector2.Zero],
             2 => [new(-0.22f, -0.22f), new(0.22f, 0.22f)],
             3 => [new(-0.22f, -0.22f), Vector2.Zero, new(0.22f, 0.22f)],
-            _ => [new(-0.22f, -0.22f), new(0.22f, -0.22f), new(-0.22f, 0.22f), new(0.22f, 0.22f)]
+            4 => [new(-0.22f, -0.22f), new(0.22f, -0.22f), new(-0.22f, 0.22f), new(0.22f, 0.22f)],
+            5 => [new(-0.22f, -0.22f), new(0.22f, -0.22f), Vector2.Zero, new(-0.22f, 0.22f), new(0.22f, 0.22f)],
+            _ => [new(-0.22f, -0.22f), new(0.22f, -0.22f), new(-0.22f, 0.22f), new(0.22f, 0.22f), new(-0.22f, 0f), new(0.22f, 0f)]
         };
         var pipMaterial = new StandardMaterial3D
         {

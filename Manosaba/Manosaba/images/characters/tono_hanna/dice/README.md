@@ -9,6 +9,7 @@ Place the six transparent PNG face images in this folder using these exact names
 - `face_5.png`
 - `face_6.png`
 
-`face_1.png` through `face_4.png` are the numbered 1-4 faces, `face_5.png` is the Ascension Elevator face, and `face_6.png` is the Eel face.
+`face_1.png` through `face_6.png` are the numbered 1-6 faces used by Hanna's numbered dice.
+`face_5_elevator.png` and `face_6_eel.png` are the special Ascension Elevator and Eel faces used by the Ascension Elevator card.
 
-The animation scales each image to fit a 130 px square. Square images with transparent backgrounds work best. Until an image is present, that face uses a simple pip illustration.
+The animation scales each image to fit a 130 px square. Square images with transparent backgrounds work best. Missing numbered faces use pip illustrations; missing special faces use text labels.

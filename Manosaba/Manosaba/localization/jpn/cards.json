@@ -600,6 +600,8 @@
   "MANOSABA-ICE_STRIKE.description": "{CalculatedDamage:diff()}ダメージを与える。[gold]人形コレクション[/gold]のスタック1つにつき、追加で{ExtraDamage:diff()}ダメージ。",
   "MANOSABA-ASCENSION_ELEVATOR.title": "天昇エレベーター",
   "MANOSABA-ASCENSION_ELEVATOR.description": "[gold]天昇エレベーターのサイコロ[/gold]を2個振る。\n出目の数字の合計の[blue]{BaseMultiplier}[/blue]倍のダメージを与える。\n両方の出目が[gold]天昇エレベーター[/gold]なら、[blue]{DoubleElevatorDamage}[/blue]ダメージを与える。それ以外で、どちらかの出目が[gold]天昇エレベーター[/gold]なら、ダメージに[blue]3[/blue]を掛ける。\n両方の出目が[gold]電気ウナギ[/gold]なら、自身に[blue]{DoubleEelDamage}[/blue]ダメージを与える。",
+  "MANOSABA-GIVE_HANNA_A_BEER.title": "ハンナにビールを一缶",
+  "MANOSABA-GIVE_HANNA_A_BEER.description": "6面ダイスを3個振る。\n出目の合計に等しいダメージを与える。\n[gold]魔女化[/gold]が{IfUpgraded:show:30|50}を超えている場合、4、5、6の目がそれぞれ2面ずつあるダイスを振る。",
   "MANOSABA-LEIA_PUPPET.title": "レイアの人形",
   "MANOSABA-LEIA_PUPPET.description": "戦闘終了時、{Gold:diff()}[gold]ゴールド[/gold]を得る。\nこの戦闘で[gold]ミリアの人形[/gold]と[gold]ココの人形[/gold]を使用済みなら、追加で[gold]ゴールド[/gold]を5得る。",
   "MANOSABA-MARGO_PUPPET.title": "マーゴの人形",

@@ -600,6 +600,8 @@
   "MANOSABA-ICE_STRIKE.description": "피해를 {CalculatedDamage:diff()} 줍니다.\n[gold]인형 수집[/gold] 스택마다 추가로 피해를 {ExtraDamage:diff()} 줍니다.",
   "MANOSABA-ASCENSION_ELEVATOR.title": "승천 엘리베이터",
   "MANOSABA-ASCENSION_ELEVATOR.description": "[gold]승천 엘리베이터 주사위[/gold] 2개를 굴립니다.\n숫자 눈금 합의 [blue]{BaseMultiplier}[/blue]배만큼 피해를 줍니다.\n둘 다 [gold]승천 엘리베이터[/gold]가 나오면 피해를 [blue]{DoubleElevatorDamage}[/blue] 줍니다. 그렇지 않고 하나라도 [gold]승천 엘리베이터[/gold]가 나오면 피해에 [blue]3[/blue]을 곱합니다.\n둘 다 [gold]전기뱀장어[/gold]가 나오면 자신에게 피해를 [blue]{DoubleEelDamage}[/blue] 줍니다.",
+  "MANOSABA-GIVE_HANNA_A_BEER.title": "한나에게 맥주 한 캔",
+  "MANOSABA-GIVE_HANNA_A_BEER.description": "6면체 주사위 3개를 굴립니다.\n눈금 합만큼 피해를 줍니다.\n[gold]마녀화[/gold]가 {IfUpgraded:show:30|50}을 초과하면 4, 5, 6이 각각 두 면씩 있는 주사위를 굴립니다.",
   "MANOSABA-LEIA_PUPPET.title": "레이아 인형",
   "MANOSABA-LEIA_PUPPET.description": "전투 종료 시 [gold]골드[/gold]를 {Gold:diff()} 얻습니다.\n이번 전투에 [gold]미리아 인형[/gold]과 [gold]코코 인형[/gold]을 사용했다면 [gold]골드[/gold]를 5 더 얻습니다.",
   "MANOSABA-MARGO_PUPPET.title": "마고 인형",
