@@ -22,7 +22,6 @@ public sealed class ShowYouTheUnseen : PathCustomCardModel
     private const bool shouldShowInCardLibrary = true;
 
     protected override bool HasEnergyCostX => true;
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<ExtremeDash>()];
 
     public ShowYouTheUnseen()
@@ -35,9 +34,8 @@ public sealed class ShowYouTheUnseen : PathCustomCardModel
         if (CombatState is not { } combatState)
             return;
 
-        int timesPlayed = Math.Max(1, DynamicVars.Cards.IntValue);
         int energySpent = ResolveEnergyXValue();
-        int copies = timesPlayed * energySpent;
+        int copies = energySpent;
         if (copies <= 0)
             return;
 
@@ -57,6 +55,5 @@ public sealed class ShowYouTheUnseen : PathCustomCardModel
         }
 
         CardCmd.PreviewCardPileAdd(results);
-        DynamicVars.Cards.BaseValue = timesPlayed + 1;
     }
 }
