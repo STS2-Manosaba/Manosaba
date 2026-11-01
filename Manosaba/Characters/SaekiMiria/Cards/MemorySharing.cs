@@ -26,7 +26,7 @@ namespace Manosaba.Characters.SaekiMiria.Cards
         private const TargetType targetType = TargetType.AllAllies;
         private const bool shouldShowInCardLibrary = true;
         protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<MemorySharingPower>(), HoverTipFactory.FromPower<MajokaPower>()];
-        public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Mahou, CardKeyword.Eternal];
+        public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Mahou, CardKeyword.Eternal, CardKeyword.Innate];
 
         
         public MemorySharing() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
@@ -57,11 +57,6 @@ namespace Manosaba.Characters.SaekiMiria.Cards
                 selfPower?.SetUpgraded(base.IsUpgraded);
             }
             
-        }
-
-        protected override void OnUpgrade()
-        {
-            AddKeyword(CardKeyword.Innate);
         }
     }
 }
