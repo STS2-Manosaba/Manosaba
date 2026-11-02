@@ -1376,7 +1376,7 @@
   "MANOSABA-ACTING_COOL.title": "カッコつけ",
   "MANOSABA-ACTING_COOL.description": "各ターン開始時、[gold]看守[/gold]が場にいるなら、[gold]精密[/gold]を{ActingCoolPower:diff()}スタック得る。",
   "MANOSABA-BEST_INFO_MAGIC.title": "最強情報魔法",
-  "MANOSABA-BEST_INFO_MAGIC.description": "各ターン開始時、各プレイヤーに自分の[gold]山札[/gold]の上から3枚を表示する。正解率は効果の発動者の[gold]魔女化[/gold]に応じて上がる。",
+  "MANOSABA-BEST_INFO_MAGIC.description": "プレイヤーがカードを引くたび、そのプレイヤーに自分の[gold]山札[/gold]の一番上のカードを表示する。正解率は効果の発動者の[gold]魔女化[/gold]に応じて上がる。",
   "MANOSABA-BURNING_WOUND.title": "銃傷灼熱",
   "MANOSABA-BURNING_WOUND.description": "[gold]銃撃[/gold]でダメージを与えるたび、未軽減ダメージの30%に等しい[gold]火傷[/gold]を与える。",
   "MANOSABA-CAMPING.title": "銃を構える",

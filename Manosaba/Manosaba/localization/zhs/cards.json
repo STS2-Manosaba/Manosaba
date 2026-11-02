@@ -1376,7 +1376,7 @@
   "MANOSABA-ACTING_COOL.title": "耍帥",
   "MANOSABA-ACTING_COOL.description": "每回合開始時，若[gold]看守[/gold]在場，獲得{ActingCoolPower:diff()}層[gold]精準[/gold]。",
   "MANOSABA-BEST_INFO_MAGIC.title": "最強情報魔法",
-  "MANOSABA-BEST_INFO_MAGIC.description": "每回合開始時，向每位玩家顯示他們[gold]抽牌堆[/gold]最頂端的3張牌，正確率隨效果施放者的[gold]魔女化[/gold]增加。",
+  "MANOSABA-BEST_INFO_MAGIC.description": "每次玩家抽牌後，向該玩家顯示其[gold]抽牌堆[/gold]最頂端的牌，正確率隨效果施放者的[gold]魔女化[/gold]增加。",
   "MANOSABA-BURNING_WOUND.title": "槍傷灼燒",
   "MANOSABA-BURNING_WOUND.description": "[gold]槍擊[/gold]造成傷害時，施加相當於未格擋傷害30%的[gold]灼燒[/gold]。",
   "MANOSABA-CAMPING.title": "架槍",

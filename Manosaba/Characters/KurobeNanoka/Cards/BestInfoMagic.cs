@@ -24,7 +24,7 @@ public sealed class BestInfoMagic : PathCustomCardModel
             return;
 
         foreach (var player in combatState.Players.Where(player => player.Creature.IsAlive))
-            await CommonActions.Apply<BestInfoMagicPower>(context, player.Creature, this, 3m);
+            await CommonActions.Apply<BestInfoMagicPower>(context, player.Creature, this, 1m);
     }
 
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);

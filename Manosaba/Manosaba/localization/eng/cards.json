@@ -1376,7 +1376,7 @@
   "MANOSABA-ACTING_COOL.title": "Playing It Cool",
   "MANOSABA-ACTING_COOL.description": "At the start of each turn, if the [gold]Warden[/gold] is in play, gain {ActingCoolPower:diff()} stacks of [gold]Accurate[/gold].",
   "MANOSABA-BEST_INFO_MAGIC.title": "The Best Information Magic",
-  "MANOSABA-BEST_INFO_MAGIC.description": "At the start of each turn, show each player the top 3 cards of their [gold]Draw pile[/gold]. The chance of being correct increases with the effect caster's [gold]Majoka[/gold].",
+  "MANOSABA-BEST_INFO_MAGIC.description": "After a player draws a card, show that player the top card of their [gold]Draw pile[/gold]. The chance of being correct increases with the effect caster's [gold]Majoka[/gold].",
   "MANOSABA-BURNING_WOUND.title": "Burning Wound",
   "MANOSABA-BURNING_WOUND.description": "Whenever a [gold]Gun Shot[/gold] deals damage, apply [gold]Burn[/gold] equal to 30% of unblocked damage.",
   "MANOSABA-CAMPING.title": "Set Up the Gun",
