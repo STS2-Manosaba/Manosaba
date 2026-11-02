@@ -14,7 +14,11 @@ namespace Manosaba.Characters.KurobeNanoka.Cards;
 public sealed class ActingCool : PathCustomCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<ActingCoolPower>(40m)];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<ActingCoolPower>()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<ActingCoolPower>(),
+        HoverTipFactory.FromPower<AccuratePower>(),
+    ];
 
     public ActingCool() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true) { }
 
