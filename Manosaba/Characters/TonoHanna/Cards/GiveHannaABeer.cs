@@ -3,6 +3,7 @@ using manosaba.Characters.TonoHanna;
 using Manosaba.Characters.Common.Powers;
 using Manosaba.Extensions;
 using Manosaba.Characters.TonoHanna.Vfx;
+using Manosaba.Characters.TonoHanna.Helpers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -38,7 +39,10 @@ public sealed class GiveHannaABeer : PathCustomCardModel
         int thirdFace = RollFace(minimumFace);
 
         await HannaDiceRollVfx.PlayThreeNumberedAtCombatCenterAsync(firstFace, secondFace, thirdFace, usesHighDice);
-        await DamageCmd.Attack(firstFace + secondFace + thirdFace)
+        int resultTotal = HannaDiceResultHelper.ApplyNumericFaceBonus(ownerCreature, firstFace)
+            + HannaDiceResultHelper.ApplyNumericFaceBonus(ownerCreature, secondFace)
+            + HannaDiceResultHelper.ApplyNumericFaceBonus(ownerCreature, thirdFace);
+        await DamageCmd.Attack(resultTotal)
             .FromCard(this)
             .Targeting(target)
             .Execute(choiceContext);

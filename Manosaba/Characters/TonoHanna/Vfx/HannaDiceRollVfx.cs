@@ -13,10 +13,24 @@ public partial class HannaDiceRollVfx : Node2D
 {
     private const string FacePathFormat = "res://Manosaba/images/characters/tono_hanna/dice/face_{0}.png";
     private const string ElevatorFacePathFormat = "res://Manosaba/images/characters/tono_hanna/dice/face_{0}_{1}.png";
+    private const string AngelsPreparePath = "res://Manosaba/images/characters/tono_hanna/dice/angels_prepare.png";
+    private const string AngelsThrowPath = "res://Manosaba/images/characters/tono_hanna/dice/angels_throw.png";
+    private const string DevilsPreparePath = "res://Manosaba/images/characters/tono_hanna/dice/devils_prepare.png";
+    private const string DevilsThrowPath = "res://Manosaba/images/characters/tono_hanna/dice/devils_throw.png";
     private const int FaceCount = 6;
     private const int ViewportSize = 256;
     private const float RollDuration = 1.25f;
     private const float FrameDelay = 0.016f;
+    private const float HoldBeforeThrowDuration = 0.35f;
+
+    private Sprite2D? _dieOutput;
+
+    private enum Thrower
+    {
+        None,
+        Angel,
+        Devil
+    }
 
     private static readonly Vector3[] FacePositions =
     [
@@ -39,7 +53,13 @@ public partial class HannaDiceRollVfx : Node2D
     ];
 
     /// <summary>Plays a 3D roll at the center of the current combat viewport. The result is one-based (1-6).</summary>
-    public static Task PlayAtCombatCenterAsync(int result) => PlayAtCombatCenterAsync([result]);
+    public static Task PlayAtCombatCenterAsync(int result) => PlayAtCombatCenterAsync([result], useElevatorFaces: false);
+
+    public static Task PlayAngelsThrowAtCombatCenterAsync(int result) =>
+        PlayAtCombatCenterAsync([result], useElevatorFaces: false, thrower: Thrower.Angel);
+
+    public static Task PlayDevilsThrowAtCombatCenterAsync(int result) =>
+        PlayAtCombatCenterAsync([result], useElevatorFaces: false, thrower: Thrower.Devil);
 
     /// <summary>Plays two dice together, side by side, and settles both on their supplied results.</summary>
     public static Task PlayTwoAtCombatCenterAsync(int firstResult, int secondResult) =>
@@ -59,7 +79,8 @@ public partial class HannaDiceRollVfx : Node2D
     private static async Task PlayAtCombatCenterAsync(
         IReadOnlyList<int> results,
         bool useElevatorFaces = true,
-        bool useFourToSixFaces = false)
+        bool useFourToSixFaces = false,
+        Thrower thrower = Thrower.None)
     {
         if (results.Count == 0 || results.Any(result => result is < 1 or > FaceCount))
         {
@@ -81,15 +102,18 @@ public partial class HannaDiceRollVfx : Node2D
             room.CombatVfxContainer.AddChildSafely(vfx);
             float horizontalOffset = (i - (results.Count - 1) * 0.5f) * (ViewportSize + 24f);
             vfx.GlobalPosition = center + new Vector2(horizontalOffset, 0f);
-            animations.Add(vfx.PlayAnimationAsync(results[i], useElevatorFaces, useFourToSixFaces));
+            animations.Add(vfx.PlayAnimationAsync(results[i], useElevatorFaces, useFourToSixFaces, thrower));
         }
 
         await Task.WhenAll(animations);
     }
 
-    private async Task PlayAnimationAsync(int result, bool useElevatorFaces, bool useFourToSixFaces)
+    private async Task PlayAnimationAsync(int result, bool useElevatorFaces, bool useFourToSixFaces, Thrower thrower)
     {
         Node3D die = Create3DViewportAndDie(useElevatorFaces, useFourToSixFaces);
+        Sprite2D? character = CreateThrowingCharacter(thrower);
+        Texture2D? throwTexture = character != null ? GD.Load<Texture2D>(GetThrowerThrowPath(thrower)) : null;
+        bool showThrower = character != null && throwTexture != null && _dieOutput != null;
         int resultFaceIndex = useFourToSixFaces ? result - 4 : result - 1;
         Vector3 targetRotation = FaceRotations[resultFaceIndex];
 
@@ -98,7 +122,20 @@ public partial class HannaDiceRollVfx : Node2D
             Mathf.Tau * (2 + result % 2),
             -Mathf.Tau * (3 + result % 3),
             Mathf.Tau * (2 + (result + 1) % 3));
-        Vector3 startRotation = targetRotation + fullTurns + new Vector3(0.28f, -0.2f, 0.16f);
+        Vector3 heldRotationOffset = new(0.62f, -0.78f, 1.05f);
+        Vector3 startRotation = targetRotation + fullTurns + heldRotationOffset;
+        Vector2 handPosition = GetThrowerHandPosition(thrower);
+
+        if (showThrower)
+        {
+            // Hold the die visibly in the character's hand before the throw begins.
+            die.Rotation = targetRotation + heldRotationOffset;
+            die.Position = Vector3.Zero;
+            _dieOutput!.Position = handPosition;
+            await ToSignal(GetTree().CreateTimer(HoldBeforeThrowDuration), SceneTreeTimer.SignalName.Timeout);
+            character!.Texture = throwTexture;
+        }
+
         die.Rotation = startRotation;
         die.Position = new Vector3(0f, 1.15f, 0.25f);
 
@@ -110,10 +147,28 @@ public partial class HannaDiceRollVfx : Node2D
             die.Rotation = startRotation.Lerp(targetRotation, eased);
 
             float bounce = Mathf.Sin(progress * Mathf.Pi * 3f) * (1f - progress) * 0.22f;
+            if (showThrower)
+            {
+                float travel = 1f - Mathf.Pow(1f - progress, 2f);
+                _dieOutput!.Position = handPosition.Lerp(Vector2.Zero, travel);
+            }
+
             die.Position = new Vector3(
                 Mathf.Sin(progress * Mathf.Pi * 2f) * (1f - progress) * 0.22f,
                 (1f - eased) * 1.15f + Mathf.Abs(bounce),
                 (1f - eased) * 0.25f);
+
+            if (character != null && GodotObject.IsInstanceValid(character))
+            {
+                float throwProgress = Mathf.Clamp((progress - 0.16f) / 0.38f, 0f, 1f);
+                if (progress >= 0.24f && throwTexture != null && character.Texture != throwTexture)
+                {
+                    character.Texture = throwTexture;
+                }
+                character.Position = new Vector2(-132f + throwProgress * 46f, 22f - throwProgress * 18f);
+                character.Rotation = -0.035f * throwProgress;
+                character.Scale = Vector2.One * (0.37f + 0.025f * throwProgress);
+            }
 
             await ToSignal(GetTree().CreateTimer(FrameDelay), SceneTreeTimer.SignalName.Timeout);
             elapsed += FrameDelay;
@@ -149,6 +204,7 @@ public partial class HannaDiceRollVfx : Node2D
             ZIndex = 200
         };
         AddChild(output);
+        _dieOutput = output;
 
         var camera = new Camera3D
         {
@@ -187,6 +243,46 @@ public partial class HannaDiceRollVfx : Node2D
 
         return die;
     }
+
+    private Sprite2D? CreateThrowingCharacter(Thrower thrower)
+    {
+        if (thrower == Thrower.None)
+        {
+            return null;
+        }
+
+        Texture2D? texture = GD.Load<Texture2D>(GetThrowerPreparePath(thrower));
+        if (texture == null)
+        {
+            return null;
+        }
+
+        var character = new Sprite2D
+        {
+            Name = "DiceThrower",
+            Texture = texture,
+            Centered = true,
+            TextureFilter = CanvasItem.TextureFilterEnum.Linear,
+            Position = new Vector2(-132f, 22f),
+            Scale = Vector2.One * 0.37f,
+            ZIndex = 150
+        };
+        AddChild(character);
+        return character;
+    }
+
+    private static string GetThrowerPreparePath(Thrower thrower) =>
+        thrower == Thrower.Angel ? AngelsPreparePath : DevilsPreparePath;
+
+    private static string GetThrowerThrowPath(Thrower thrower) =>
+        thrower == Thrower.Angel ? AngelsThrowPath : DevilsThrowPath;
+
+    private static Vector2 GetThrowerHandPosition(Thrower thrower) => thrower switch
+    {
+        Thrower.Angel => new Vector2(56f, 70f),
+        Thrower.Devil => new Vector2(42f, 42f),
+        _ => Vector2.Zero
+    };
 
     private static void AddDieFace(Node3D die, int faceIndex, int faceValue, bool useElevatorFaces)
     {

@@ -1,5 +1,6 @@
 using BaseLib.Utils;
 using manosaba.Characters.TonoHanna;
+using Manosaba.Characters.TonoHanna.Helpers;
 using Manosaba.Extensions;
 using Manosaba.Characters.TonoHanna.Vfx;
 using MegaCrit.Sts2.Core.Commands;
@@ -58,7 +59,7 @@ public sealed class AscensionElevator : PathCustomCardModel
             return;
         }
 
-        int faceTotal = GetNumericFaceValue(firstFace) + GetNumericFaceValue(secondFace);
+        int faceTotal = GetNumericFaceValue(firstFace, ownerCreature) + GetNumericFaceValue(secondFace, ownerCreature);
         decimal damage = faceTotal * DynamicVars["BaseMultiplier"].BaseValue;
         if (firstFace == ElevatorFace || secondFace == ElevatorFace)
         {
@@ -79,5 +80,6 @@ public sealed class AscensionElevator : PathCustomCardModel
         DynamicVars["BaseMultiplier"].UpgradeValueBy(1m);
     }
 
-    private static int GetNumericFaceValue(int face) => face is >= 1 and <= 4 ? face : 0;
+    private static int GetNumericFaceValue(int face, MegaCrit.Sts2.Core.Entities.Creatures.Creature owner) =>
+        face is >= 1 and <= 4 ? HannaDiceResultHelper.ApplyNumericFaceBonus(owner, face) : 0;
 }
