@@ -512,6 +512,8 @@
   "MANOSABA-SHOW_YOU_THE_UNSEEN.description": "[gold]Xダッシュ[/gold]を山札にX枚加える。",
   "MANOSABA-EXTREME_DASH.title": "Xダッシュ",
   "MANOSABA-EXTREME_DASH.description": "敵1体に{Damage:diff()}ダメージを与える。\nカードを1枚引く。",
+  "MANOSABA-FINAL_ATTACK.title": "ファイナルアタック",
+  "MANOSABA-FINAL_ATTACK.description": "敵1体に{Damage:diff()}ダメージを3回与える。\n他の[gold]剣技[/gold]をプレイしたとき、このカードを自動的にプレイする。",
   "MANOSABA-DEFENSIVE_STANCE.title": "防御姿勢",
   "MANOSABA-DEFENSIVE_STANCE.description": "このターン得る[gold]ブロック[/gold]が2倍になる。",
   "MANOSABA-CLUSTERPHOBIA.title": "閉所恐怖症",

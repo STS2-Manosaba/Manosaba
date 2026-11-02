@@ -512,6 +512,8 @@
   "MANOSABA-SHOW_YOU_THE_UNSEEN.description": "將 X 張[gold]X衝刺[/gold]加入你的抽牌堆。",
   "MANOSABA-EXTREME_DASH.title": "X衝刺",
   "MANOSABA-EXTREME_DASH.description": "對一名敵人造成{Damage:diff()}點傷害。\n抽1張牌。",
+  "MANOSABA-FINAL_ATTACK.title": "最終攻擊",
+  "MANOSABA-FINAL_ATTACK.description": "對一名敵人造成 {Damage:diff()} 點傷害 3 次。\n當你打出其他[gold]劍技[/gold]時，自動打出此牌。",
   "MANOSABA-DEFENSIVE_STANCE.title": "防守姿態",
   "MANOSABA-DEFENSIVE_STANCE.description": "這回合獲得的[gold]格檔[/gold]量兩倍。",
   "MANOSABA-CLUSTERPHOBIA.title": "幽閉恐懼症",
