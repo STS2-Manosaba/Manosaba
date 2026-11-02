@@ -761,7 +761,7 @@
   "MANOSABA-PIERCING_DEATH_SPEAR.title": "突き穿つ死翔の槍",
   "MANOSABA-PIERCING_DEATH_SPEAR.description": "[gold]처형 카드[/gold].\n피해를 {Damage:diff()} 줍니다.\n카드를 {Cards:diff()}장 뽑습니다.",
   "MANOSABA-FORGE_SPEAR.title": "창 제작",
-  "MANOSABA-FORGE_SPEAR.description": "[gold]화살[/gold], [gold]레이피어[/gold], [gold]머리끈[/gold], [gold]빗자루[/gold]를 {Cards:diff()}장씩 [gold]뽑을 카드 더미[/gold]에 추가합니다.\n카드를 뽑을 때 [gold]손[/gold]에 해당 카드들이 있다면 [gold]소멸[/gold]시키고 [gold]간이 창[/gold]을 1장 얻습니다.",
+  "MANOSABA-FORGE_SPEAR.description": "[gold]화살[/gold], [gold]레이피어[/gold], [gold]머리끈[/gold], [gold]빗자루[/gold]를 {Cards:diff()}장씩 [gold]뽑을 카드 더미[/gold]에 추가합니다.\n카드를 뽑을 때 [gold]손[/gold]에 해당 카드들이 있다면 [gold]소멸[/gold]시키고 [gold]간이 창[/gold]을 1장 얻습니다.\n하스미 레이아는 [gold]레이피어[/gold] 없이 [gold]간이 창[/gold]을 제작할 수 있습니다.",
   "MANOSABA-FORTUNE_TELLING.title": "점술",
   "MANOSABA-FORTUNE_TELLING.description": "[gold]뽑을 카드 더미[/gold]에서 카드를 {Cards:diff()}장 선택해 [gold]손[/gold]으로 가져옵니다.",
   "MANOSABA-FORTUNE_TELLING.selectionScreenPrompt": "[gold]손[/gold]으로 가져올 카드를 {Cards:diff()}장 선택하세요.",

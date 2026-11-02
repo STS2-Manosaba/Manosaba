@@ -1,5 +1,6 @@
 using BaseLib.Utils;
 using manosaba.Characters.Common;
+using manosaba.Characters.HasumiLeia;
 using Manosaba.Characters.Common.Overrides;
 using Manosaba.Characters.HasumiLeia.Powers;
 using Manosaba.Extensions;
@@ -12,6 +13,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using HasumiLeiaCharacter = manosaba.Characters.HasumiLeia.HasumiLeia;
 
 namespace Manosaba.Characters.Common.Cards
 {
@@ -42,7 +44,8 @@ namespace Manosaba.Characters.Common.Cards
                 return;
             }
 
-            CardModel? token1, token2, token3, token4;
+            CardModel? token1, token2, token3, token4 = null;
+            bool requiresRapier = Owner.Character is not HasumiLeiaCharacter;
 
             if ((token1 = PileType.Hand.GetPile(Owner).Cards.FirstOrDefault(c => c is SSArrow)) == null)
                 return;
@@ -50,12 +53,13 @@ namespace Manosaba.Characters.Common.Cards
                 return;
             if ((token3 = PileType.Hand.GetPile(Owner).Cards.FirstOrDefault(c => c is SSRibbon)) == null)
                 return;
-            if ((token4 = PileType.Hand.GetPile(Owner).Cards.FirstOrDefault(c => c is SSRapier)) == null)
+            if (requiresRapier && (token4 = PileType.Hand.GetPile(Owner).Cards.FirstOrDefault(c => c is SSRapier)) == null)
                 return;
             await CardPileCmd.RemoveFromCombat(token1);
             await CardPileCmd.RemoveFromCombat(token2);
             await CardPileCmd.RemoveFromCombat(token3);
-            await CardPileCmd.RemoveFromCombat(token4);
+            if (token4 is not null)
+                await CardPileCmd.RemoveFromCombat(token4);
             CardModel craftedSpear = SimpleSpear.Create(Owner, combatState);
             CardPileAddResult result = await CardPileCmd.AddGeneratedCardToCombat(craftedSpear, PileType.Hand, Owner);
             CardCmd.PreviewCardPileAdd(result, 1.2f, CardPreviewStyle.HorizontalLayout);

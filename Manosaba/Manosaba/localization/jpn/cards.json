@@ -761,7 +761,7 @@
   "MANOSABA-PIERCING_DEATH_SPEAR.title": "突き穿つ死翔の槍",
   "MANOSABA-PIERCING_DEATH_SPEAR.description": "[gold]処刑カード[/gold]。\n{Damage:diff()}ダメージを与える。\n{Cards:diff()}枚引く。",
   "MANOSABA-FORGE_SPEAR.title": "槍の鋳造",
-  "MANOSABA-FORGE_SPEAR.description": "[gold]矢[/gold]・[gold]レイピア[/gold]・[gold]ヘアバンド[/gold]・[gold]ほうき[/gold]をそれぞれ{Cards:diff()}枚ずつ[gold]ドローパイル[/gold]に加える。\n[gold]手札[/gold]に[gold]矢[/gold]・[gold]レイピア[/gold]・[gold]ヘアバンド[/gold]・[gold]ほうき[/gold]がある状態でカードを引くと、それらを消費して[gold]簡易ランス[/gold]1枚を得る。",
+  "MANOSABA-FORGE_SPEAR.description": "[gold]矢[/gold]・[gold]レイピア[/gold]・[gold]ヘアバンド[/gold]・[gold]ほうき[/gold]をそれぞれ{Cards:diff()}枚ずつ[gold]ドローパイル[/gold]に加える。\n[gold]手札[/gold]に[gold]矢[/gold]・[gold]レイピア[/gold]・[gold]ヘアバンド[/gold]・[gold]ほうき[/gold]がある状態でカードを引くと、それらを消費して[gold]簡易ランス[/gold]1枚を得る。\n蓮見レイアは[gold]レイピア[/gold]なしで[gold]簡易ランス[/gold]を鋳造できる。",
   "MANOSABA-FORTUNE_TELLING.title": "占い",
   "MANOSABA-FORTUNE_TELLING.description": "[gold]ドローパイル[/gold]から{Cards:diff()}枚選んで[gold]手札[/gold]に加える。",
   "MANOSABA-FORTUNE_TELLING.selectionScreenPrompt": "[gold]手札[/gold]に加えるカードを{Cards:diff()}枚選ぶ。",

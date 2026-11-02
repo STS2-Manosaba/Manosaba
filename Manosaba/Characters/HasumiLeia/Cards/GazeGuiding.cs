@@ -27,8 +27,8 @@ public sealed class GazeGuiding : PathCustomCardModel
     public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Mahou, CardKeyword.Eternal];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CalculationBaseVar(0m),
-        new CalculationExtraVar(100m),
+        new CalculationBaseVar(50m),
+        new CalculationExtraVar(50m),
         new CalculatedVar("DamageReductionPercent").WithMultiplier(GetMajokaFactor),
     ];
 

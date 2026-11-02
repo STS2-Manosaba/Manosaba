@@ -761,7 +761,7 @@
   "MANOSABA-PIERCING_DEATH_SPEAR.title": "Piercing Death-Soaring Spear",
   "MANOSABA-PIERCING_DEATH_SPEAR.description": "[gold]Execution[/gold].\nDeal {Damage:diff()} damage.\nDraw {Cards:diff()} cards.",
   "MANOSABA-FORGE_SPEAR.title": "Forge Spear",
-  "MANOSABA-FORGE_SPEAR.description": "Shuffle {Cards:diff()} each of [gold]Arrow[/gold], [gold]Rapier[/gold], [gold]Ribbon[/gold], and [gold]Broom[/gold] into your [gold]Draw pile[/gold].\nWhen drawing, if your [gold]Hand[/gold] contains [gold]Arrow[/gold], [gold]Rapier[/gold], [gold]Ribbon[/gold], or [gold]Broom[/gold], consume one and gain a [gold]Simple Spear[/gold].",
+  "MANOSABA-FORGE_SPEAR.description": "Shuffle {Cards:diff()} each of [gold]Arrow[/gold], [gold]Rapier[/gold], [gold]Ribbon[/gold], and [gold]Broom[/gold] into your [gold]Draw pile[/gold].\nWhen drawing, if your [gold]Hand[/gold] contains [gold]Arrow[/gold], [gold]Rapier[/gold], [gold]Ribbon[/gold], or [gold]Broom[/gold], consume one and gain a [gold]Simple Spear[/gold].\nHasumi Leia does not need [gold]Rapier[/gold] to forge [gold]Simple Spear[/gold].",
   "MANOSABA-FORTUNE_TELLING.title": "Fortune Telling",
   "MANOSABA-FORTUNE_TELLING.description": "Choose {Cards:diff()} cards from your [gold]Draw pile[/gold] to add to your [gold]Hand[/gold].",
   "MANOSABA-FORTUNE_TELLING.selectionScreenPrompt": "Choose {Cards:diff()} cards to add to your [gold]Hand[/gold].",

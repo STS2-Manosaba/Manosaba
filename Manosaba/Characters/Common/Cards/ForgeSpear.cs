@@ -1,5 +1,6 @@
 using BaseLib.Utils;
 using manosaba.Characters.Common;
+using manosaba.Characters.HasumiLeia;
 using Manosaba.Extensions;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -7,6 +8,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using HasumiLeiaCharacter = manosaba.Characters.HasumiLeia.HasumiLeia;
 
 namespace Manosaba.Characters.Common.Cards
 {
@@ -37,7 +39,8 @@ namespace Manosaba.Characters.Common.Cards
 
             List<CardModel> cards = new List<CardModel>();
             cards.AddRange(SSArrow.Create(base.Owner, base.DynamicVars.Cards.IntValue, combatState));
-            cards.AddRange(SSRapier.Create(base.Owner, base.DynamicVars.Cards.IntValue, combatState));
+            if (base.Owner.Character is not HasumiLeiaCharacter)
+                cards.AddRange(SSRapier.Create(base.Owner, base.DynamicVars.Cards.IntValue, combatState));
             cards.AddRange(SSRibbon.Create(base.Owner, base.DynamicVars.Cards.IntValue, combatState));
             cards.AddRange(SSBroom.Create(base.Owner, base.DynamicVars.Cards.IntValue, combatState));
             IReadOnlyList<CardPileAddResult> results = await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Draw, Owner, CardPilePosition.Random);

@@ -761,7 +761,7 @@
   "MANOSABA-PIERCING_DEATH_SPEAR.title": "突穿死翔之槍",
   "MANOSABA-PIERCING_DEATH_SPEAR.description": "[gold]處刑卡[/gold]。\n造成 {Damage:diff()} 點傷害。\n抽 {Cards:diff()} 張牌。",
   "MANOSABA-FORGE_SPEAR.title": "鑄矛",
-  "MANOSABA-FORGE_SPEAR.description": "將各 {Cards:diff()} 張的[gold]箭矢[/gold]、[gold]刺劍[/gold]、[gold]髮帶[/gold]、[gold]掃帚[/gold]加入[gold]抽牌堆[/gold]。\n抽牌時若手上有[gold]箭矢[/gold]、[gold]刺劍[/gold]、[gold]髮帶[/gold]、[gold]掃帚[/gold]則會消耗並給予一張[gold]簡易長矛[/gold]。",
+  "MANOSABA-FORGE_SPEAR.description": "將各 {Cards:diff()} 張的[gold]箭矢[/gold]、[gold]刺劍[/gold]、[gold]髮帶[/gold]、[gold]掃帚[/gold]加入[gold]抽牌堆[/gold]。\n抽牌時若手上有[gold]箭矢[/gold]、[gold]刺劍[/gold]、[gold]髮帶[/gold]、[gold]掃帚[/gold]則會消耗並給予一張[gold]簡易長矛[/gold]。\n蓮見蕾雅不需要[gold]刺劍[/gold]即可鍛造[gold]簡易長矛[/gold]。",
   "MANOSABA-FORTUNE_TELLING.title": "占卜",
   "MANOSABA-FORTUNE_TELLING.description": "從[gold]抽牌堆[/gold]中選擇 {Cards:diff()} 張牌加入[gold]手牌[/gold]。",
   "MANOSABA-FORTUNE_TELLING.selectionScreenPrompt": "選擇 {Cards:diff()} 張牌加入[gold]手牌[/gold]。",
