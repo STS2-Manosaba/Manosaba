@@ -514,6 +514,8 @@
   "MANOSABA-EXTREME_DASH.description": "敵1体に{Damage:diff()}ダメージを与える。\nカードを1枚引く。",
   "MANOSABA-FINAL_ATTACK.title": "ファイナルアタック",
   "MANOSABA-FINAL_ATTACK.description": "敵1体に{Damage:diff()}ダメージを3回与える。\n他の[gold]剣技[/gold]をプレイしたとき、このカードを自動的にプレイする。",
+  "MANOSABA-STARDUST_MIRAGE.title": "スターダストミラージ",
+  "MANOSABA-STARDUST_MIRAGE.description": "山札の上から5枚を公開する。公開した[gold]剣技[/gold]1枚につき、敵1体に{Damage:diff()}ダメージを3回与える。その後、山札をシャッフルする。",
   "MANOSABA-DEFENSIVE_STANCE.title": "防御姿勢",
   "MANOSABA-DEFENSIVE_STANCE.description": "このターン得る[gold]ブロック[/gold]が2倍になる。",
   "MANOSABA-CLUSTERPHOBIA.title": "閉所恐怖症",

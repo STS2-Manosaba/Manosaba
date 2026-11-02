@@ -514,6 +514,8 @@
   "MANOSABA-EXTREME_DASH.description": "Deal {Damage:diff()} damage to an enemy.\nDraw 1 card.",
   "MANOSABA-FINAL_ATTACK.title": "Final Attack",
   "MANOSABA-FINAL_ATTACK.description": "Deal {Damage:diff()} damage to an enemy 3 times.\nAutomatically play this card when another [gold]Sword Technique[/gold] is played.",
+  "MANOSABA-STARDUST_MIRAGE.title": "Stardust Mirage",
+  "MANOSABA-STARDUST_MIRAGE.description": "Reveal the top 5 cards of your deck. For each [gold]Sword Technique[/gold] revealed, deal {Damage:diff()} damage to an enemy 3 times. Shuffle your draw pile.",
   "MANOSABA-DEFENSIVE_STANCE.title": "Defensive Stance",
   "MANOSABA-DEFENSIVE_STANCE.description": "Double the [gold]Block[/gold] you gain this turn.",
   "MANOSABA-CLUSTERPHOBIA.title": "Claustrophobia",
