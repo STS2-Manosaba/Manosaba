@@ -36,7 +36,7 @@
   "MANOSABA-HAND_GUN.description": "전투당 1번, 체력 피해를 10 이상 받기 직전에 그 적에게 피해를 [blue]30[/blue] 줍니다.",
   "MANOSABA-HAND_GUN.flavor": "재장전하는 것보다 보조 무기로 바꾸는 게 언제나 더 빠르다.",
   "MANOSABA-FEATHER_FAN.title": "깃털 부채",
-  "MANOSABA-FEATHER_FAN.description": "자신의 턴 종료 시 남은 에너지 1마다 [gold]골드[/gold]를 {GoldPerEnergy} 얻습니다. 전투당 최대 3 에너지까지 적용됩니다.\n유물이 레벨업할 때마다 모든 \"인형\" 카드 중 무작위로 1장을 덱에 넣습니다.\nLv2부터 [gold]비상[/gold] 또는 [gold]부유[/gold] 상태면 피해를 1.5배 줍니다.\nLv4부터 전투 시작 시, 보유 [gold]골드[/gold] 100당 에너지를 1 얻습니다.",
+  "MANOSABA-FEATHER_FAN.description": "자신의 턴 종료 시 남은 에너지 1마다 [gold]골드[/gold]를 {GoldPerEnergy} 얻습니다. 전투당 최대 3 에너지까지 적용됩니다.\n유물이 레벨업할 때마다 모든 \"인형\" 카드 중 무작위로 1장을 덱에 넣습니다.\nLv2부터 [gold]비상[/gold], [gold]부유[/gold] 또는 [gold]하늘 섬[/gold] 상태면 피해를 1.5배 줍니다.\nLv4부터 전투 시작 시, 보유 [gold]골드[/gold] 100당 에너지를 1 얻습니다.",
   "MANOSABA-FEATHER_FAN.combatEnergyTrack": "이번 전투: 남은 에너지 {CombatUnspentEnergyGold}/{MaxUnspentEnergyCombat}점을 골드로 전환함.",
   "MANOSABA-FEATHER_FAN.flavor": "에너지가 조금 남으면, 돈도 조금 더 모인다.",
   "MANOSABA-TAROT_DECK.title": "타로 덱",

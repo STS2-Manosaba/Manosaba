@@ -656,7 +656,7 @@
   "MANOSABA-SHY_GLANCE.title": "Shy Glance",
   "MANOSABA-SHY_GLANCE.description": "Deal {Damage:diff()} damage to ALL enemies. Apply 1 [gold]Weak[/gold].",
   "MANOSABA-WATER_WALK.title": "Water Walk",
-  "MANOSABA-WATER_WALK.description": "Gain {BufferPower:diff()} [gold]Buffer[/gold].\nDraw {Cards:diff()} cards.",
+  "MANOSABA-WATER_WALK.description": "Gain {BufferPower:diff()} [gold]Buffer[/gold].\nGain {FloatingPower:diff()} turn of [gold]Float[/gold].",
   "MANOSABA-SUSPICION.title": "Suspicion",
   "MANOSABA-SUSPICION.description": "Gain {Energy:energyIcons()}.\nAdd a [gold]Dazed[/gold] to your [gold]Discard pile[/gold].",
   "MANOSABA-MEAL_WITH_REWARD.title": "Meal With a Reward",

@@ -1,8 +1,8 @@
 using BaseLib.Utils;
 using manosaba.Characters.TonoHanna;
 using Manosaba.Characters.Common.Overrides;
+using Manosaba.Characters.Common.Powers;
 using Manosaba.Extensions;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -25,10 +25,14 @@ public sealed class WaterWalk : PathCustomCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<BufferPower>(1m),
-        new CardsVar(1),
+        new PowerVar<FloatingPower>(1m),
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<BufferPower>()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<BufferPower>(),
+        HoverTipFactory.FromKeyword(ManosabaKeywords.Floating),
+    ];
 
     public WaterWalk()
         : base(energyCost, cardType, cardRarity, playTarget, shouldShowInCardLibrary)
@@ -37,12 +41,13 @@ public sealed class WaterWalk : PathCustomCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        _ = cardPlay;
         await CommonActions.Apply<BufferPower>(choiceContext, Owner.Creature, this, DynamicVars["BufferPower"].BaseValue);
-        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
+        await CommonActions.Apply<FloatingPower>(choiceContext, Owner.Creature, this, DynamicVars["FloatingPower"].BaseValue);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Cards.UpgradeValueBy(1m);
+        DynamicVars["FloatingPower"].UpgradeValueBy(1m);
     }
 }

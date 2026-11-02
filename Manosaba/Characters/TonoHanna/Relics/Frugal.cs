@@ -5,6 +5,7 @@ using BaseLib.Utils;
 using manosaba.Characters.TonoHanna;
 using Manosaba.Characters.Common.Overrides;
 using Manosaba.Characters.Common.Powers;
+using Manosaba.Characters.TonoHanna.Powers;
 using Manosaba.Extensions;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -128,7 +129,11 @@ public sealed class FeatherFan : LevelingPathCustomRelicModel
             return 1m;
         }
 
-        return ownerCreature.HasPower<SoarPower>() || ownerCreature.HasPower<FloatingPower>() ? 1.5m : 1m;
+        return ownerCreature.HasPower<SoarPower>()
+            || ownerCreature.HasPower<FloatingPower>()
+            || ownerCreature.HasPower<SkyIslandPower>()
+            ? 1.5m
+            : 1m;
     }
 
     private async Task OnRelicLevelIncreasedAsync(int oldLevel, int newLevel)

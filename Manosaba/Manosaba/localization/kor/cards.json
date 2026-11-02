@@ -656,7 +656,7 @@
   "MANOSABA-SHY_GLANCE.title": "수줍은 시선",
   "MANOSABA-SHY_GLANCE.description": "모든 적에게 피해를 {Damage:diff()} 줍니다. [gold]약화[/gold]를 1 부여합니다.",
   "MANOSABA-WATER_WALK.title": "경공수상표",
-  "MANOSABA-WATER_WALK.description": "[gold]버퍼[/gold]를 {BufferPower:diff()} 얻습니다.\n카드를 {Cards:diff()}장 뽑습니다.",
+  "MANOSABA-WATER_WALK.description": "[gold]버퍼[/gold]를 {BufferPower:diff()} 얻습니다.\n[gold]부유[/gold]를 {FloatingPower:diff()}턴 얻습니다.",
   "MANOSABA-SUSPICION.title": "의심",
   "MANOSABA-SUSPICION.description": "{Energy:energyIcons()}를 얻습니다.\n[gold]어지러움[/gold]을 1장 [gold]버린 카드 더미[/gold]에 추가합니다.",
   "MANOSABA-MEAL_WITH_REWARD.title": "식후 보상",

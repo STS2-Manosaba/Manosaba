@@ -36,7 +36,7 @@
   "MANOSABA-HAND_GUN.description": "Once per combat, when you are about to take 10 or more HP damage, deal [blue]30[/blue] damage to that enemy.",
   "MANOSABA-HAND_GUN.flavor": "Switching to your sidearm is always faster than reloading.",
   "MANOSABA-FEATHER_FAN.title": "Feather Fan",
-  "MANOSABA-FEATHER_FAN.description": "At the end of your turn, gain {GoldPerEnergy} [gold]Gold[/gold] for each unspent Energy. Up to 3 Energy per combat counts.\nWhenever this relic levels up, add 1 random \"Puppet\" card from all Puppets to your deck.\nFrom Lv2, deal 1.5x damage while you have [gold]Soar[/gold] or [gold]Float[/gold].\nFrom Lv4, at the start of combat, gain 1 Energy for each 100 [gold]Gold[/gold] you have.",
+  "MANOSABA-FEATHER_FAN.description": "At the end of your turn, gain {GoldPerEnergy} [gold]Gold[/gold] for each unspent Energy. Up to 3 Energy per combat counts.\nWhenever this relic levels up, add 1 random \"Puppet\" card from all Puppets to your deck.\nFrom Lv2, deal 1.5x damage while you have [gold]Soar[/gold], [gold]Float[/gold], or [gold]Sky Island[/gold].\nFrom Lv4, at the start of combat, gain 1 Energy for each 100 [gold]Gold[/gold] you have.",
   "MANOSABA-FEATHER_FAN.combatEnergyTrack": "This combat: {CombatUnspentEnergyGold}/{MaxUnspentEnergyCombat} unspent Energy converted to Gold.",
   "MANOSABA-FEATHER_FAN.flavor": "Every leftover spark becomes pocket change.",
   "MANOSABA-TAROT_DECK.title": "Tarot Deck",

@@ -656,7 +656,7 @@
   "MANOSABA-SHY_GLANCE.title": "羞怯目光",
   "MANOSABA-SHY_GLANCE.description": "對所有敵人造成 {Damage:diff()} 點傷害，給予 1 層[gold]虛弱[/gold]。",
   "MANOSABA-WATER_WALK.title": "輕功水上漂",
-  "MANOSABA-WATER_WALK.description": "獲得 {BufferPower:diff()} 層[gold]缓冲[/gold]。\n抽 {Cards:diff()} 張牌。",
+  "MANOSABA-WATER_WALK.description": "獲得 {BufferPower:diff()} 層[gold]缓冲[/gold]。\n獲得 {FloatingPower:diff()} 回合[gold]漂浮[/gold]。",
   "MANOSABA-SUSPICION.title": "懷疑",
   "MANOSABA-SUSPICION.description": "獲得 {Energy:energyIcons()}。\n將一張[gold]暈眩[/gold]加入你的[gold]棄牌堆[/gold]。",
   "MANOSABA-MEAL_WITH_REWARD.title": "吃完有獎勵",

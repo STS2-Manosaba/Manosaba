@@ -656,7 +656,7 @@
   "MANOSABA-SHY_GLANCE.title": "恥じらいのまなざし",
   "MANOSABA-SHY_GLANCE.description": "すべての敵に{Damage:diff()}ダメージを与え、[gold]弱体[/gold]を1層与える。",
   "MANOSABA-WATER_WALK.title": "水上歩き",
-  "MANOSABA-WATER_WALK.description": "{BufferPower:diff()}層の[gold]バッファー[/gold]を得る。\n{Cards:diff()}枚引く。",
+  "MANOSABA-WATER_WALK.description": "{BufferPower:diff()}層の[gold]バッファー[/gold]を得る。\n{FloatingPower:diff()}ターン[gold]浮遊[/gold]を得る。",
   "MANOSABA-SUSPICION.title": "疑い",
   "MANOSABA-SUSPICION.description": "{Energy:energyIcons()}を得る。\n[gold]めまい[/gold]を1枚[gold]捨て札[/gold]に加える。",
   "MANOSABA-MEAL_WITH_REWARD.title": "食後のご褒美",
