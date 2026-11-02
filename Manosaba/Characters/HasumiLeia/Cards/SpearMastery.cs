@@ -1,6 +1,7 @@
 using BaseLib.Utils;
 using manosaba.Characters.HasumiLeia;
 using Manosaba.Characters.Common.Cards;
+using Manosaba.Characters.Common.Overrides;
 using Manosaba.Characters.HasumiLeia.Powers;
 using Manosaba.Extensions;
 using MegaCrit.Sts2.Core.Commands;
@@ -27,6 +28,8 @@ public sealed class SpearMastery : PathCustomCardModel
     ];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<SpearMasteryPower>(1m)];
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Unique];
 
     public SpearMastery()
         : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)

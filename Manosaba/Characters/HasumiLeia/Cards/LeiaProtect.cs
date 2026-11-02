@@ -37,7 +37,7 @@ public sealed class LeiaProtect : PathCustomCardModel
         }
 
         await CreatureCmd.GainBlock(ownerCreature, DynamicVars.Block, cardPlay);
-        await CommonActions.Apply<CoveredPower>(choiceContext, target, this, 1m, silent: true);
+        await CommonActions.Apply<CoveredPower>(choiceContext, target, this, 1m);
     }
 
     protected override void OnUpgrade()
