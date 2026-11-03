@@ -14,12 +14,14 @@ namespace Manosaba.Characters.HasumiLeia.Cards;
 public sealed class TourLive : PathCustomCardModel
 {
     private const int energyCost = 1;
-    private const CardType type = CardType.Power;
-    private const CardRarity rarity = CardRarity.Uncommon;
+    private const CardType type = CardType.Skill;
+    private const CardRarity rarity = CardRarity.Common;
     private const TargetType targetType = TargetType.Self;
     private const bool shouldShowInCardLibrary = true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new GoldVar(10)];
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     public TourLive()
         : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
