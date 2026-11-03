@@ -23,7 +23,7 @@ namespace Manosaba.Characters.HasumiLeia.Cards
         private const bool shouldShowInCardLibrary = true;
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6, ValueProp.Move)];
-        public override IEnumerable<CardKeyword> CanonicalKeywords => [];
+        public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.SwordTechnique];
 
         public StrikeHasumiLeia() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
         {
