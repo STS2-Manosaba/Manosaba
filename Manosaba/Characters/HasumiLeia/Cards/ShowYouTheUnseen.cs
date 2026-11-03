@@ -22,7 +22,7 @@ public sealed class ShowYouTheUnseen : PathCustomCardModel
     private const bool shouldShowInCardLibrary = true;
 
     protected override bool HasEnergyCostX => true;
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<ExtremeDash>()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<ExtremeDash>(IsUpgraded)];
 
     public ShowYouTheUnseen()
         : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)

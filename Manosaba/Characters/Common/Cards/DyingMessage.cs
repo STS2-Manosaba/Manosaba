@@ -43,5 +43,10 @@ namespace Manosaba.Characters.Common.Cards
                 this);
         }
 
+        protected override void OnUpgrade()
+        {
+            DynamicVars.Cards.UpgradeValueBy(2m);
+        }
+
     }
 }
