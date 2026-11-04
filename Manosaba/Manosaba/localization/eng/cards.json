@@ -610,7 +610,7 @@
   "MANOSABA-ICE_STRIKE.title": "Ice Strike",
   "MANOSABA-ICE_STRIKE.description": "Deal {CalculatedDamage:diff()} damage. Deals {ExtraDamage:diff()} additional damage for each stack of your [gold]Puppet Collection[/gold].",
   "MANOSABA-ASCENSION_ELEVATOR.title": "Ascension Elevator",
-  "MANOSABA-ASCENSION_ELEVATOR.description": "Roll two [gold]Ascension Elevator Dice[/gold].\nDeal damage equal to [blue]{BaseMultiplier}[/blue] times the sum of the numbered faces.\nIf both show [gold]Ascension Elevator[/gold], deal [blue]{DoubleElevatorDamage}[/blue] damage. If exactly one shows [gold]Ascension Elevator[/gold], multiply damage by [blue]3[/blue].\nIf both show [gold]Eel[/gold], take [blue]{DoubleEelDamage}[/blue] damage.",
+  "MANOSABA-ASCENSION_ELEVATOR.description": "Roll two [gold]Ascension Elevator Dice[/gold].\nDeal damage equal to {BaseMultiplier:diff()} times the sum of the numbered faces.\nIf both show [gold]Ascension Elevator[/gold], deal {DoubleElevatorDamage} damage. If exactly one shows [gold]Ascension Elevator[/gold], multiply damage by 3.\nIf both show [gold]Eel[/gold], take {DoubleEelDamage} damage.",
   "MANOSABA-HIGH_SENSE.title": "High Sense",
   "MANOSABA-HIGH_SENSE.description": "Gain the skill [gold]High Sense[/gold].",
   "MANOSABA-GIVE_HANNA_A_BEER.title": "Give Hanna a Beer",
