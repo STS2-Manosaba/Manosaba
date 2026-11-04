@@ -30,7 +30,7 @@ public sealed class DevilsDice : PathCustomCardModel
             HoverTipFactory.FromPower<StrengthPower>(),
         ];
 
-    public DevilsDice() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy, true)
+    public DevilsDice() : base(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy, true)
     {
     }
 

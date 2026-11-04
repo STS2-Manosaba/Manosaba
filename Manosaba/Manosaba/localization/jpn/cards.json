@@ -610,7 +610,7 @@
   "MANOSABA-ICE_STRIKE.title": "氷の一撃",
   "MANOSABA-ICE_STRIKE.description": "{CalculatedDamage:diff()}ダメージを与える。[gold]人形コレクション[/gold]のスタック1つにつき、追加で{ExtraDamage:diff()}ダメージ。",
   "MANOSABA-ASCENSION_ELEVATOR.title": "天昇エレベーター",
-  "MANOSABA-ASCENSION_ELEVATOR.description": "[gold]天昇エレベーターのサイコロ[/gold]を2個振る。\n出目の数字の合計の[blue]{BaseMultiplier}[/blue]倍のダメージを与える。\n両方の出目が[gold]天昇エレベーター[/gold]なら、[blue]{DoubleElevatorDamage}[/blue]ダメージを与える。それ以外で、どちらかの出目が[gold]天昇エレベーター[/gold]なら、ダメージに[blue]3[/blue]を掛ける。\n両方の出目が[gold]電気ウナギ[/gold]なら、自身に[blue]{DoubleEelDamage}[/blue]ダメージを与える。",
+  "MANOSABA-ASCENSION_ELEVATOR.description": "[gold]天昇エレベーターのサイコロ[/gold]を2個振る。\n出目の数字の合計の[blue]{BaseMultiplier}[/blue]倍のダメージを与える。\n両方の出目が[gold]天昇エレベーター[/gold]なら、[blue]{DoubleElevatorDamage}[/blue]ダメージを与える。片方だけが[gold]天昇エレベーター[/gold]なら、ダメージに[blue]3[/blue]を掛ける。\n両方の出目が[gold]電気ウナギ[/gold]なら、自身に[blue]{DoubleEelDamage}[/blue]ダメージを与える。",
   "MANOSABA-HIGH_SENSE.title": "ハイセンス",
   "MANOSABA-HIGH_SENSE.description": "スキル：[gold]ハイセンス[/gold]を得る。",
   "MANOSABA-GIVE_HANNA_A_BEER.title": "ハンナにビールを一缶",

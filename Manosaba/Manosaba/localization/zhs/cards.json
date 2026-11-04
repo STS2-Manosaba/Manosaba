@@ -612,7 +612,7 @@
   "MANOSABA-ICE_STRIKE.title": "冰塊打擊",
   "MANOSABA-ICE_STRIKE.description": "造成 {CalculatedDamage:diff()} 點傷害。\n你每有一層[gold]人偶收藏[/gold]，就額外造成 {ExtraDamage:diff()} 點傷害。",
   "MANOSABA-ASCENSION_ELEVATOR.title": "升天電梯",
-  "MANOSABA-ASCENSION_ELEVATOR.description": "擲出兩顆[gold]升天電梯骰子[/gold]。\n造成骰面數字總和的 [blue]{BaseMultiplier}[/blue] 倍傷害。\n若兩面皆為[gold]升天電梯[/gold]，造成 [blue]{DoubleElevatorDamage}[/blue] 點傷害；否則，若任一骰面為[gold]升天電梯[/gold]，傷害乘以 [blue]3[/blue]。\n若兩面皆為[gold]電鰻[/gold]，自身受到 [blue]{DoubleEelDamage}[/blue] 點傷害。",
+  "MANOSABA-ASCENSION_ELEVATOR.description": "擲出兩顆[gold]升天電梯骰子[/gold]。\n造成骰面數字總和的 [blue]{BaseMultiplier}[/blue] 倍傷害。\n若兩面皆為[gold]升天電梯[/gold]，造成 [blue]{DoubleElevatorDamage}[/blue] 點傷害；若只有一面為[gold]升天電梯[/gold]，傷害乘以 [blue]3[/blue]。\n若兩面皆為[gold]電鰻[/gold]，自身受到 [blue]{DoubleEelDamage}[/blue] 點傷害。",
   "MANOSABA-HIGH_SENSE.title": "High Sense",
   "MANOSABA-HIGH_SENSE.description": "獲得技能：[gold]High Sense[/gold]。",
   "MANOSABA-GIVE_HANNA_A_BEER.title": "給漢娜一罐啤酒",

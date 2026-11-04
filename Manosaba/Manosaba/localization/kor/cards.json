@@ -610,7 +610,7 @@
   "MANOSABA-ICE_STRIKE.title": "얼음 타격",
   "MANOSABA-ICE_STRIKE.description": "피해를 {CalculatedDamage:diff()} 줍니다.\n[gold]인형 수집[/gold] 스택마다 추가로 피해를 {ExtraDamage:diff()} 줍니다.",
   "MANOSABA-ASCENSION_ELEVATOR.title": "승천 엘리베이터",
-  "MANOSABA-ASCENSION_ELEVATOR.description": "[gold]승천 엘리베이터 주사위[/gold] 2개를 굴립니다.\n숫자 눈금 합의 [blue]{BaseMultiplier}[/blue]배만큼 피해를 줍니다.\n둘 다 [gold]승천 엘리베이터[/gold]가 나오면 피해를 [blue]{DoubleElevatorDamage}[/blue] 줍니다. 그렇지 않고 하나라도 [gold]승천 엘리베이터[/gold]가 나오면 피해에 [blue]3[/blue]을 곱합니다.\n둘 다 [gold]전기뱀장어[/gold]가 나오면 자신에게 피해를 [blue]{DoubleEelDamage}[/blue] 줍니다.",
+  "MANOSABA-ASCENSION_ELEVATOR.description": "[gold]승천 엘리베이터 주사위[/gold] 2개를 굴립니다.\n숫자 눈금 합의 [blue]{BaseMultiplier}[/blue]배만큼 피해를 줍니다.\n둘 다 [gold]승천 엘리베이터[/gold]가 나오면 피해를 [blue]{DoubleElevatorDamage}[/blue] 줍니다. 하나만 [gold]승천 엘리베이터[/gold]가 나오면 피해에 [blue]3[/blue]을 곱합니다.\n둘 다 [gold]전기뱀장어[/gold]가 나오면 자신에게 피해를 [blue]{DoubleEelDamage}[/blue] 줍니다.",
   "MANOSABA-HIGH_SENSE.title": "하이 센스",
   "MANOSABA-HIGH_SENSE.description": "스킬 [gold]하이 센스[/gold]를 얻습니다.",
   "MANOSABA-GIVE_HANNA_A_BEER.title": "한나에게 맥주 한 캔",

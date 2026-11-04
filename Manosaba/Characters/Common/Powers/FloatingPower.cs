@@ -1,6 +1,5 @@
 using BaseLib.Extensions;
 using BaseLib.Utils;
-using Manosaba.Characters.Common.Overrides;
 using Manosaba.Characters.TonoHanna.Visuals;
 using Manosaba.Extensions;
 using MegaCrit.Sts2.Core.Combat;
@@ -9,7 +8,6 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -29,9 +27,6 @@ public sealed class FloatingPower : PathCustomPowerModel
     public override LocString Title => new LocString("powers", Id.Entry + ".title");
 
     public override LocString Description => new LocString("powers", Id.Entry + ".description");
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        [HoverTipFactory.FromKeyword(ManosabaKeywords.Floating)];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("DamageDecrease", 20m)];
 
