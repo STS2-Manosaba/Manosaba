@@ -14,9 +14,9 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 namespace manosaba.Characters.SakurabaEma.Cards;
 
 [Pool(typeof(TokenCardPool))]
-public sealed class Statement : PathCustomCardModel
+public sealed class Statement : EmaTrialCard
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [..base.CanonicalKeywords, CardKeyword.Exhaust];
     public override bool CanBeGeneratedInCombat => false;
     public override bool CanBeGeneratedByModifiers => false;
 
@@ -26,7 +26,7 @@ public sealed class Statement : PathCustomCardModel
         new PowerVar<ArgumentPower>(1m),
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<ArgumentPower>()];
+    protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [HoverTipFactory.FromPower<ArgumentPower>()];
 
     public Statement() : base(0, CardType.Skill, CardRarity.Token, TargetType.Self, false)
     {

@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Manosaba/scenes/vfx/ema_special_victory/ema_special_victory.gd" id="1"]
+[ext_resource type="Texture2D" path="res://Manosaba/images/characters/sakuraba_ema/Stills/Still_360_000.png" id="2"]
+[ext_resource type="AudioStream" path="res://Manosaba/audio/SFX/ema/kill_ema.ogg" id="3"]
+
+[node name="KillEmaVictory" type="CanvasLayer"]
+layer = 110
+script = ExtResource("1")
+first_still = ExtResource("2")
+voice_stream = ExtResource("3")

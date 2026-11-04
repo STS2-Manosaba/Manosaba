@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Manosaba/scenes/vfx/ema_special_victory/ema_special_victory.gd" id="1"]
+[ext_resource type="Texture2D" path="res://Manosaba/images/characters/sakuraba_ema/Stills/Still_360_001.png" id="2"]
+[ext_resource type="Texture2D" path="res://Manosaba/images/characters/sakuraba_ema/Stills/Still_360_002.png" id="3"]
+[ext_resource type="AudioStream" path="res://Manosaba/audio/SFX/ema/die.ogg" id="4"]
+
+[node name="DieVictory" type="CanvasLayer"]
+layer = 110
+script = ExtResource("1")
+first_still = ExtResource("2")
+second_still = ExtResource("3")
+voice_stream = ExtResource("4")
+voice_gain_db = 8.0

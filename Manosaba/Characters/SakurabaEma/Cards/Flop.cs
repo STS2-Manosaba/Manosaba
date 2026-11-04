@@ -23,7 +23,7 @@ public sealed class Flop : PathCustomCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("HpLoss", 3m),
+        new DynamicVar("HpLoss", 2m),
         new EnergyVar(2),
         new PowerVar<SusPower>(1m),
     ];

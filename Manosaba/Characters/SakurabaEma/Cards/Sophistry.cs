@@ -16,7 +16,7 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 public sealed class Sophistry : EmaTrialCard
 {
     protected override bool HasProgressEffect => true;
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new TrialDamageVar(8m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new TrialDamageVar(9m)];
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [HoverTipFactory.FromPower<SusPower>()];
 
     public Sophistry() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy, true)
@@ -32,11 +32,8 @@ public sealed class Sophistry : EmaTrialCard
 
         await EmaTrialPresentation.Play(this);
         int hits = ProgressReady(this) && Owner.Creature.GetPowerAmount<SusPower>() > 0m ? 2 : 1;
-        for (int i = 0; i < hits && cardPlay.Target.IsAlive; i++)
-        {
-            await CreatureCmd.Damage(choiceContext, cardPlay.Target, DynamicVars.Damage.BaseValue, TrialMoveValueProp, Owner.Creature, this);
-        }
+        await AttackTrialTarget(choiceContext, cardPlay.Target, DynamicVars.Damage.BaseValue, hits);
     }
 
-    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(2m);
+    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(3m);
 }

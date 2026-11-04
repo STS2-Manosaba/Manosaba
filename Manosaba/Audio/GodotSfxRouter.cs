@@ -21,6 +21,7 @@ public static class GodotSfxRouter
     private static AudioStreamPlayer? _customBgmPlayer;
     private static string? _currentBgmEvent;
     private static float _currentBgmBaseVolume = 1f;
+    private static float _customBgmVoiceGain = 1f;
     private static bool _vanillaBgmDucked;
     private static AudioStreamPlayer? _characterSelectPlayer;
 
@@ -164,7 +165,7 @@ public static class GodotSfxRouter
         PauseVanillaBgm();
         ConfigureLoopingBgm(eventPath, stream);
         _currentBgmBaseVolume = volume;
-        float effectiveVolume = volume * GetConfiguredManosabaSfxVolume();
+        float effectiveVolume = volume * GetConfiguredManosabaSfxVolume() * _customBgmVoiceGain;
 
         if (_customBgmPlayer != null && GodotObject.IsInstanceValid(_customBgmPlayer))
         {
@@ -247,8 +248,14 @@ public static class GodotSfxRouter
     {
         if (_customBgmPlayer != null && GodotObject.IsInstanceValid(_customBgmPlayer))
         {
-            _customBgmPlayer.VolumeLinear = _currentBgmBaseVolume * GetConfiguredManosabaSfxVolume();
+            _customBgmPlayer.VolumeLinear = _currentBgmBaseVolume * GetConfiguredManosabaSfxVolume() * _customBgmVoiceGain;
         }
+    }
+
+    internal static void SetCustomBgmVoiceDucking(bool enabled)
+    {
+        _customBgmVoiceGain = enabled ? 0.2f : 1f;
+        RefreshCustomBgmVolumeFromSettings();
     }
 
     private static void PauseVanillaBgm()

@@ -30,5 +30,6 @@ public static class Patch_RunState_CreateForNewRun_ResetVfx
         manosaba.Characters.SakurabaEma.Combat.EmaTrialPresentation.ResetForNewRun();
         manosaba.Characters.SakurabaEma.Combat.InterrogationStartPresentation.ResetForNewRun();
         manosaba.Characters.SakurabaEma.Combat.MagicToKillWitchPresentation.ResetForNewRun();
+        manosaba.Characters.SakurabaEma.Combat.EmaSpecialVictoryPresentation.ResetForNewRun();
     }
 }

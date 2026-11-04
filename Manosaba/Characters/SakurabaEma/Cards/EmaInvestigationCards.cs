@@ -5,6 +5,7 @@ using Manosaba.Extensions;
 using manosaba.Characters.SakurabaEma.Combat;
 using manosaba.Characters.SakurabaEma.Powers;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -20,7 +21,7 @@ public sealed class InformationSharing : EmaTrialCard
     protected override bool HasProgressEffect => true;
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
     public override bool GainsBlock => true;
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new TrialBlockVar(10m), new CardsVar(1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new TrialBlockVar(8m), new CardsVar(1)];
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [WitchEncyclopediaState.HoverTip, HoverTipFactory.FromCard<PresentEvidence>()];
     public InformationSharing() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyPlayer, true) { }
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
@@ -63,7 +64,7 @@ public sealed class InformationNetwork : EmaTrialCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new PowerVar<InformationNetworkPower>(1m), new DynamicVar("TriggerDamage", InformationNetworkPower.DamagePerStack)];
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [HoverTipFactory.FromPower<InformationNetworkPower>(), WitchEncyclopediaState.HoverTip];
-    public InformationNetwork() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true) { }
+    public InformationNetwork() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self, true) { }
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
         => await CommonActions.Apply<InformationNetworkPower>(context, Owner.Creature, this, DynamicVars["InformationNetworkPower"].BaseValue);
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
@@ -95,12 +96,32 @@ public sealed class JudgmentHour : EmaTrialCard
     public override string PortraitPath => ModelDb.Card<FaceInCourt>().PortraitPath;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(5)];
     public JudgmentHour() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self, true) { }
-    protected override Task OnPlay(PlayerChoiceContext context, CardPlay play)
+    protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
+        if (CombatState is not { } combat) return;
+        var candidates = ModelDb.CardPool<SakurabaEmaCardPool>()
+            .GetUnlockedCards(Owner.UnlockState, Owner.RunState.CardMultiplayerConstraint)
+            .Where(card => card.CanBeGeneratedInCombat && card.CanonicalKeywords.Contains(ManosabaKeywords.Trial)
+                && (!IsUpgraded || card.MaxUpgradeLevel > 0))
+            .DistinctBy(card => card.Id)
+            .OrderBy(card => card.Id.Entry, StringComparer.Ordinal)
+            .ToList();
+        List<CardModel> options = [];
+        while (options.Count < 3 && candidates.Count > 0)
+        {
+            int index = Owner.RunState.Rng.CombatCardSelection.NextInt(candidates.Count);
+            CardModel option = combat.CreateCard(candidates[index], Owner);
+            candidates.RemoveAt(index);
+            if (IsUpgraded) CardCmd.Upgrade(option);
+            options.Add(option);
+        }
+
+        if (options.Count > 0 && await CardSelectCmd.FromChooseACardScreen(context, options, Owner) is { } selected)
+            CardCmd.PreviewCardPileAdd(await EmaCardGeneration.Add(selected, PileType.Hand, Owner));
+
         foreach (CardModel card in PileType.Draw.GetPile(Owner).Cards
             .Where(c => !c.Keywords.Contains(ManosabaKeywords.Trial)).Take(DynamicVars.Cards.IntValue).ToList())
             CardCmd.ApplyKeyword(card, ManosabaKeywords.Trial);
-        return Task.CompletedTask;
     }
     protected override void OnUpgrade() => DynamicVars.Cards.UpgradeValueBy(2m);
 }
@@ -128,7 +149,7 @@ public sealed class WitchHammer : EmaTrialCard
 {
     protected override bool HasProgressEffect => true;
     public override string PortraitPath => ModelDb.Card<Rebuttal>().PortraitPath;
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new TrialDamageVar(8m), new DynamicVar("ExtraDamage", 13m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new TrialDamageVar(13m), new DynamicVar("ExtraDamage", 13m)];
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips =>
         [WitchEncyclopediaState.HoverTip, HoverTipFactory.FromCard<PresentEvidence>(), HoverTipFactory.FromPower<BurnPower>(),
             HoverTipFactory.FromPower<MajokaPower>(), HoverTipFactory.FromPower<VulnerablePower>(),
@@ -136,19 +157,20 @@ public sealed class WitchHammer : EmaTrialCard
     public WitchHammer() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy, true) { }
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
-        if (play.Target is not { } target) return;
+        if (play.Target is not { } target || CombatState is not { } combat) return;
         await WitchEncyclopediaState.Present(context, Owner, SelectionScreenPrompt);
-        if (!target.IsAlive) return;
-        await CreatureCmd.Damage(context, target, DynamicVars.Damage.BaseValue, TrialMoveValueProp, Owner.Creature, this);
+        if (!target.IsAlive || !Owner.Creature.IsAlive) return;
+        await using var attack = await AttackCommand.CreateContextAsync(combat, context, this);
+        await DealTrialHit(attack, context, target, DynamicVars.Damage.BaseValue);
         if (!ProgressReady(this)) return;
         // Snapshot after the opening hit, so its damage-triggered effects are included.
         int hits = (target.HasPower<BurnPower>() ? 1 : 0) + (target.HasPower<MajokaPower>() ? 1 : 0)
             + (target.HasPower<VulnerablePower>() ? 1 : 0) + (target.HasPower<WeakPower>() ? 1 : 0)
             + (target.HasPower<BleedPower>() ? 1 : 0);
-        for (int i = 0; i < hits && target.IsAlive; i++)
-            await CreatureCmd.Damage(context, target, DynamicVars["ExtraDamage"].BaseValue, TrialMoveValueProp, Owner.Creature, this);
+        for (int i = 0; i < hits && target.IsAlive && Owner.Creature.IsAlive; i++)
+            await DealTrialHit(attack, context, target, DynamicVars["ExtraDamage"].BaseValue);
     }
-    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(2m);
+    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(5m);
 }
 
 [Pool(typeof(SakurabaEmaCardPool))]

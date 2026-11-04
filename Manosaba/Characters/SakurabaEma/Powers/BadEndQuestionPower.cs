@@ -11,18 +11,20 @@ public sealed class BadEndQuestionPower : PathCustomPowerModel
 {
     private const int BadEndCount = 15;
     private const int ShowMissingListFromAmount = 10;
-    private readonly HashSet<string> _triggeredCardIds = [];
 
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new MissingBadEndsLineVar()];
 
-    public int TriggeredCount => _triggeredCardIds.Count;
+    protected override object InitInternalData() => new HashSet<string>();
+
+    private HashSet<string> TriggeredCardIds => GetInternalData<HashSet<string>>();
+    public int TriggeredCount => TriggeredCardIds.Count;
 
     public bool Record(Type cardType)
     {
-        if (!_triggeredCardIds.Add(cardType.FullName ?? cardType.Name))
+        if (!TriggeredCardIds.Add(cardType.FullName ?? cardType.Name))
             return false;
 
         InvokeDisplayAmountChanged();
@@ -63,7 +65,7 @@ public sealed class BadEndQuestionPower : PathCustomPowerModel
         foreach (Type type in EmaBadEndingCards.EmaPool)
         {
             string id = type.FullName ?? type.Name;
-            if (tracker._triggeredCardIds.Contains(id))
+            if (tracker.TriggeredCardIds.Contains(id))
                 continue;
 
             CardModel card = ModelDb.GetById<CardModel>(ModelDb.GetId(type));

@@ -1,4 +1,10 @@
 {
+  "MANOSABA-KILL_EMA_VICTORY_BGM_FREQUENCY.title": "エマを殺す・特殊勝利",
+  "MANOSABA-KILL_EMA_VICTORY_BGM_FREQUENCY.hover.title": "BGMの再生頻度",
+  "MANOSABA-KILL_EMA_VICTORY_BGM_FREQUENCY.hover.desc": "[gold]エマを殺す[/gold]のBGM「EmA (-危-)」の再生頻度を、毎回、ランごとに1回、再生しない、から選びます。このカードが戦闘中にあり、エマが異なるバッドエンドを15種類発動した時に再生します。この設定はBGMにのみ適用されます。",
+  "MANOSABA-DIE_VICTORY_BGM_FREQUENCY.title": "死んで・特殊勝利",
+  "MANOSABA-DIE_VICTORY_BGM_FREQUENCY.hover.title": "BGMの再生頻度",
+  "MANOSABA-DIE_VICTORY_BGM_FREQUENCY.hover.desc": "[gold]死んで[/gold]のBGM「bloom (-Piano version-)」の再生頻度を、毎回、ランごとに1回、再生しない、から選びます。このカードが戦闘中にあり、生きている敵全員の魔女化が200層以上になった時に再生します。この設定はBGMにのみ適用されます。",
   "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.title": "魔女を殺す魔法",
   "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.hover.title": "再生頻度",
   "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.hover.desc": "桜羽 エマが[gold]魔女化[/gold]100以上で[gold]魔女を殺す魔法[/gold]を使用した時の演出とEmA (-狂-) BGMを、毎回、冒険ごとに各プレイヤー1回、または再生しない設定です。",

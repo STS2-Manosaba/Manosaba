@@ -25,28 +25,35 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 public sealed class ExhaustiveMethod : EmaTrialCard
 {
     protected override bool HasProgressEffect => true;
-    private sealed class ProgressDamageVar() : DamageVar(12m, ValueProp.Move | ValueProp.Unpowered)
+    private sealed class ProgressDamageVar() : DamageVar(20m, ValueProp.Move | ValueProp.Unpowered)
     {
         public override void UpdateCardPreview(CardModel card, CardPreviewMode previewMode, Creature? target, bool runGlobalHooks)
         {
-            decimal raw = BaseValue + (ProgressReady(card) ? Progress(card) : 0);
+            decimal raw = BaseValue + ProgressBonus(card);
             Props = card.Owner?.Creature?.HasPower<LawDevilPower>() == true ? ValueProp.Move : ValueProp.Move | ValueProp.Unpowered;
             PreviewValue = runGlobalHooks && card.Owner != null && (card.CombatState ?? card.Owner.Creature.CombatState) is { } field
                 ? Hook.ModifyDamage(card.Owner.RunState, field, target, card.Owner.Creature, raw, Props, card,
                     ModifyDamageHookType.All, previewMode, out _) : raw;
         }
     }
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new ProgressDamageVar()];
+    private static decimal ProgressBonus(CardModel card) =>
+        ProgressReady(card) ? Progress(card) * card.DynamicVars["DamagePerProgress"].BaseValue : 0m;
+
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new ProgressDamageVar(), new DynamicVar("DamagePerProgress", 1m)];
     public ExhaustiveMethod() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, true) { }
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Target is { IsAlive: true } target)
         {
             await EmaTrialPresentation.Play(this);
-            await CreatureCmd.Damage(choiceContext, target, DynamicVars.Damage.BaseValue + (ProgressReady(this) ? Progress(this) : 0), TrialMoveValueProp, Owner.Creature, this);
+            await AttackTrialTarget(choiceContext, target, DynamicVars.Damage.BaseValue + ProgressBonus(this));
         }
     }
-    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(4m);
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Damage.UpgradeValueBy(10m);
+        DynamicVars["DamagePerProgress"].UpgradeValueBy(1m);
+    }
 }
 
 public abstract class AccUhEartsBase : EmaTrialCard
@@ -63,16 +70,15 @@ public abstract class AccUhEartsBase : EmaTrialCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new TrialDamageVar(5m), new HitsVar(), new DynamicVar("MaxHits", MaximumHits), ..AccVars];
     protected virtual IEnumerable<DynamicVar> AccVars => [];
-    protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [WitchEncyclopediaState.HoverTip];
+    protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [HoverTipFactory.FromCard<PresentEvidence>(), WitchEncyclopediaState.HoverTip];
     protected AccUhEartsBase(CardRarity rarity) : base(1, CardType.Attack, rarity, TargetType.AnyEnemy, true) { }
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Target is not { } target)
             return;
-        await EmaTrialPresentation.Play(this);
-        int hits = HitCount;
-        for (int i = 0; i < hits && target.IsAlive; i++)
-            await CreatureCmd.Damage(choiceContext, target, DynamicVars.Damage.BaseValue, TrialMoveValueProp, Owner.Creature, this);
+        await WitchEncyclopediaState.Present(choiceContext, Owner, SelectionScreenPrompt,
+            () => EmaTrialPresentation.Play(this));
+        await AttackTrialTarget(choiceContext, target, DynamicVars.Damage.BaseValue, HitCount);
     }
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(2m);
 }
@@ -95,6 +101,8 @@ public sealed class AccUhEartsIndictment : AccUhEartsBase
         }
     }
     public override int MaximumHits => 5;
+    protected override IEnumerable<IHoverTip> TrialExtraHoverTips =>
+        [..base.TrialExtraHoverTips, HoverTipFactory.FromCard<AccUhEartsRevelation>()];
     protected override IEnumerable<DynamicVar> AccVars => [new DynamicVar("BattlesRemaining", BattlesToTransform)];
     public AccUhEartsIndictment() : base(CardRarity.Rare) { }
     public override async Task AfterCombatEnd(CombatRoom room)

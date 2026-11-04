@@ -18,7 +18,7 @@ public sealed class EvidenceStrike : EmaTrialCard
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new TrialDamageVar(3m),
+        new TrialDamageVar(6m),
         new CardsVar(1),
     ];
 
@@ -37,7 +37,7 @@ public sealed class EvidenceStrike : EmaTrialCard
 
         await WitchEncyclopediaState.Present(choiceContext, Owner, SelectionScreenPrompt);
         if (cardPlay.Target.IsAlive)
-            await CreatureCmd.Damage(choiceContext, cardPlay.Target, DynamicVars.Damage.BaseValue, TrialMoveValueProp, Owner.Creature, this);
+            await AttackTrialTarget(choiceContext, cardPlay.Target, DynamicVars.Damage.BaseValue);
 
         List<CardModel> cards = [];
         for (int i = 0; i < DynamicVars.Cards.IntValue; i++)
@@ -49,5 +49,5 @@ public sealed class EvidenceStrike : EmaTrialCard
         CardCmd.PreviewCardPileAdd(results);
     }
 
-    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(2m);
+    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(3m);
 }

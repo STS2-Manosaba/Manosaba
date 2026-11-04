@@ -11,10 +11,10 @@ using MegaCrit.Sts2.Core.HoverTips;
 namespace manosaba.Characters.SakurabaEma.Cards;
 
 [Pool(typeof(SakurabaEmaCardPool))]
-public sealed class LaVIBavellabion : PathCustomCardModel
+public sealed class LaVIBavellabion : EmaTrialCard
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Unique];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [..base.CanonicalKeywords, ManosabaKeywords.Unique];
+    protected override IEnumerable<IHoverTip> TrialExtraHoverTips =>
         [HoverTipFactory.FromPower<LawDevilPower>(), HoverTipFactory.FromKeyword(ManosabaKeywords.Unique)];
 
     public LaVIBavellabion() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true)

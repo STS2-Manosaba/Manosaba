@@ -16,7 +16,7 @@ namespace Manosaba.Characters.Common.Cards;
 [Pool(typeof(CommonCardPool))]
 public sealed class CulpritVerdict : EmaTrialCard
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("RequiredRound", 6m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("RequiredRound", 5m)];
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips =>
         [HoverTipFactory.FromPower<GuiltPower>(), HoverTipFactory.FromPower<TrueCulpritPower>()];
     protected override bool IsPlayable => base.IsPlayable && CombatState is { } combat

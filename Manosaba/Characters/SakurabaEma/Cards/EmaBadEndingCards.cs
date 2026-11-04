@@ -1,6 +1,7 @@
 using manosaba.Characters.SakurabaEma.Combat;
 using BaseLib.Utils;
 using Manosaba.Characters.Common.Cards;
+using Manosaba.Characters.Common.Commands;
 using Manosaba.Characters.Common.Overrides;
 using Manosaba.Characters.Common.Powers;
 using Manosaba.Characters.NikaidoHiro.Cards;
@@ -688,18 +689,70 @@ public sealed class FourTwoSixTwoTenFive : HiroBadEndingTokenBase
 [Pool(typeof(TokenCardPool))]
 public sealed class KillEma : HiroBadEndingTokenBase
 {
+    private bool _endTurnAutoPlay;
+    private bool IsInVictoryPile => Pile?.Type is PileType.Hand or PileType.Draw or PileType.Discard or PileType.Exhaust;
+
     public override IEnumerable<CardKeyword> CanonicalKeywords => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1), new DynamicVar("Threshold", 15m)];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<BadEndQuestionPower>()];
 
     public KillEma() : base(0, CardType.Skill, TargetType.None)
     {
     }
 
-    protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        _ = cardPlay;
-        return CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner);
+        var combat = CombatState;
+        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner);
+        if (_endTurnAutoPlay && cardPlay.IsAutoPlay && !CombatManager.Instance.IsOverOrEnding
+            && combat != null && HasRequiredBadEndings(combat))
+        {
+            await EmaSpecialVictoryPresentation.PlayKillEma();
+            if (Owner.Creature.CombatState == combat && !CombatManager.Instance.IsOverOrEnding)
+                await ManosabaCombatCmd.ForceWinWithoutDeathOrEscape(combat);
+        }
     }
+
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext context, CombatSide side, IEnumerable<Creature> participants)
+    {
+        if (side != CombatSide.Player || CombatManager.Instance.IsOverOrEnding
+            || !IsInVictoryPile
+            || Owner?.Creature is not { IsAlive: true, CombatState: { } combat }
+            || !HasRequiredBadEndings(combat))
+            return;
+
+        EmaSpecialVictoryPresentation.TryPlayKillEmaMusic(combat);
+        _endTurnAutoPlay = true;
+        try { await CardCmd.AutoPlay(context, this, null); }
+        finally { _endTurnAutoPlay = false; }
+    }
+
+    public override Task AfterPowerAmountChanged(PlayerChoiceContext context, PowerModel power, decimal amount,
+        Creature? applier, CardModel? cardSource)
+    {
+        if (power is BadEndQuestionPower)
+            CheckMusicThreshold();
+        return Task.CompletedTask;
+    }
+
+    public override Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel? clonedBy)
+    {
+        if (card == this)
+            CheckMusicThreshold();
+        return Task.CompletedTask;
+    }
+
+    private void CheckMusicThreshold()
+    {
+        if (!CombatManager.Instance.IsOverOrEnding && IsInVictoryPile
+            && Owner?.Creature is { IsAlive: true, CombatState: { } combat } && HasRequiredBadEndings(combat))
+            EmaSpecialVictoryPresentation.TryPlayKillEmaMusic(combat);
+    }
+
+    private bool HasRequiredBadEndings(ICombatState combat) =>
+        combat.Players.Any(player => player.Character is SakurabaEma
+            && player.Creature.GetPower<BadEndQuestionPower>() is { } tracker
+            && tracker.TriggeredCount >= DynamicVars["Threshold"].IntValue);
 }
 
 [Pool(typeof(TokenCardPool))]

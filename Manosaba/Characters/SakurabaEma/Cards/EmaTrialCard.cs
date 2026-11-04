@@ -2,7 +2,10 @@ using BaseLib.Utils;
 using Manosaba.Characters.Common.Overrides;
 using Manosaba.Extensions;
 using manosaba.Characters.SakurabaEma.Powers;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.ValueProps;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -34,6 +37,22 @@ public abstract class EmaTrialCard : PathCustomCardModel
         Owner?.Creature?.GetPowerAmount<LawDevilPower>() > 0m
             ? ValueProp.Move
             : ValueProp.Move | ValueProp.Unpowered;
+
+    protected async Task AttackTrialTarget(PlayerChoiceContext context, Creature target, decimal damage, int hits = 1)
+    {
+        if (!target.IsAlive || !Owner.Creature.IsAlive || Owner.Creature.CombatState is not { } combat)
+            return;
+
+        // Group the hits so native AfterAttack effects can inspect the complete attack.
+        await using var attack = await AttackCommand.CreateContextAsync(combat, context, this);
+        for (int i = 0; i < hits && target.IsAlive && Owner.Creature.IsAlive; i++)
+            await DealTrialHit(attack, context, target, damage);
+    }
+
+    protected async Task DealTrialHit(AttackContext attack, PlayerChoiceContext context, Creature target, decimal damage)
+    {
+        attack.AddHit(await CreatureCmd.Damage(context, target, damage, TrialMoveValueProp, Owner.Creature, this));
+    }
 
     protected virtual IEnumerable<IHoverTip> TrialExtraHoverTips => [];
     protected virtual bool HasProgressEffect => false;

@@ -23,12 +23,13 @@ internal static class AttachedTrialRules
 
 // Apply before BeforeAttack listeners, including Vigor, inspect the command.
 [HarmonyPatch(typeof(Hook), nameof(Hook.BeforeAttack))]
-public static class Patch_Hook_BeforeAttack_AttachedTrial
+public static class Patch_Hook_BeforeAttack_Trial
 {
     [HarmonyPrefix]
     private static void Prefix(AttackCommand command)
     {
-        if ((AttachedTrialRules.Apply(command.ModelSource as CardModel, command.DamageProps) & ValueProp.Unpowered) != 0)
+        if (command.ModelSource is CardModel card && card.Keywords.Contains(ManosabaKeywords.Trial)
+            && card.Owner?.Creature?.HasPower<LawDevilPower>() != true)
             command.Unpowered();
     }
 }

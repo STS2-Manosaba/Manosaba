@@ -5,6 +5,7 @@ using Manosaba.Extensions;
 using manosaba.Characters.SakurabaEma.Combat;
 using manosaba.Characters.SakurabaEma.Powers;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -41,7 +42,6 @@ public sealed class CUrOi : PathCustomCardModel
 public sealed class ShiDes : PathCustomCardModel
 {
     private bool _playedThisTurn;
-    public override string PortraitPath => ModelDb.Card<DieSakurabaEma>().PortraitPath;
     public override bool CanBeGeneratedInCombat => false;
     public override bool CanBeGeneratedByModifiers => false;
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<MajokaPower>()];
@@ -71,7 +71,7 @@ public sealed class SentKy : EmaTrialCard
     public override int MaxUpgradeLevel => 0;
     public override bool CanBeGeneratedInCombat => false;
     public override bool CanBeGeneratedByModifiers => false;
-    protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [WitchEncyclopediaState.HoverTip, HoverTipFactory.FromPower<DeathSentencePower>()];
+    protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [HoverTipFactory.FromCard<PresentEvidence>(), WitchEncyclopediaState.HoverTip, HoverTipFactory.FromPower<DeathSentencePower>()];
     public SentKy() : base(0, CardType.Skill, CardRarity.Token, TargetType.AnyEnemy, true) { }
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
@@ -87,19 +87,20 @@ public sealed class DArime : EmaTrialCard
     protected override bool HasProgressEffect => true;
     public override string PortraitPath => ModelDb.Card<Rebuttal>().PortraitPath;
     public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Trial, CardKeyword.Exhaust];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new TrialDamageVar(10), new DynamicVar("Progress", 20)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new TrialDamageVar(13), new DynamicVar("Progress", 20)];
     public DArime() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy, true) { }
     public override bool ShouldPlay(CardModel card, AutoPlayType autoPlayType) => !ReferenceEquals(card, this) || Progress(this) >= 20;
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
-        if (play.Target is not { } target) return;
+        if (play.Target is not { } target || CombatState is not { } combat) return;
         await EmaTrialPresentation.Play(this);
-        while (target.IsAlive && !MegaCrit.Sts2.Core.Combat.CombatManager.Instance.IsOverOrEnding)
+        await using var attack = await AttackCommand.CreateContextAsync(combat, context, this);
+        while (target.IsAlive && Owner.Creature.IsAlive && !MegaCrit.Sts2.Core.Combat.CombatManager.Instance.IsOverOrEnding)
         {
             CardModel? drawn = await CardPileCmd.Draw(context, Owner);
             if (drawn == null || !drawn.Keywords.Contains(ManosabaKeywords.Trial)) break;
             await CardCmd.Exhaust(context, drawn);
-            await CreatureCmd.Damage(context, target, DynamicVars.Damage.BaseValue, TrialMoveValueProp, Owner.Creature, this);
+            await DealTrialHit(attack, context, target, DynamicVars.Damage.BaseValue);
         }
     }
     protected override void OnUpgrade() => AddKeyword(CardKeyword.Retain);
@@ -109,7 +110,7 @@ public sealed class DArime : EmaTrialCard
 [Pool(typeof(TokenCardPool))]
 public sealed class AcceptExhaustMagic : PathCustomCardModel
 {
-    public override string PortraitPath => ModelDb.Card<MagicToKillTheWitch>().PortraitPath;
+    public override string PortraitPath => "res://Manosaba/images/cards/magic_to_kill_the_witch_options.png";
     public override int MaxUpgradeLevel => 0;
     public override bool CanBeGeneratedInCombat => false;
     public override bool CanBeGeneratedByModifiers => false;
@@ -120,7 +121,7 @@ public sealed class AcceptExhaustMagic : PathCustomCardModel
 [Pool(typeof(TokenCardPool))]
 public sealed class DeclineExhaustMagic : PathCustomCardModel
 {
-    public override string PortraitPath => ModelDb.Card<MagicToKillTheWitch>().PortraitPath;
+    public override string PortraitPath => "res://Manosaba/images/cards/magic_to_kill_the_witch_options.png";
     public override int MaxUpgradeLevel => 0;
     public override bool CanBeGeneratedInCombat => false;
     public override bool CanBeGeneratedByModifiers => false;

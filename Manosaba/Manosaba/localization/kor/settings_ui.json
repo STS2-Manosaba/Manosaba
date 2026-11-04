@@ -1,4 +1,10 @@
 {
+  "MANOSABA-KILL_EMA_VICTORY_BGM_FREQUENCY.title": "에마 죽이기 특수 승리",
+  "MANOSABA-KILL_EMA_VICTORY_BGM_FREQUENCY.hover.title": "BGM 재생 빈도",
+  "MANOSABA-KILL_EMA_VICTORY_BGM_FREQUENCY.hover.desc": "[gold]에마 죽이기[/gold]의 BGM 「EmA (-危-)」 재생 빈도를 매번, 모험당 한 번, 재생 안 함 중에서 선택합니다. 전투에 이 카드가 있고 에마가 서로 다른 나쁜 결말을 15종류 발동하면 재생합니다. 이 설정은 BGM에만 적용됩니다.",
+  "MANOSABA-DIE_VICTORY_BGM_FREQUENCY.title": "죽어 특수 승리",
+  "MANOSABA-DIE_VICTORY_BGM_FREQUENCY.hover.title": "BGM 재생 빈도",
+  "MANOSABA-DIE_VICTORY_BGM_FREQUENCY.hover.desc": "[gold]죽어[/gold]의 BGM 「bloom (-Piano version-)」 재생 빈도를 매번, 모험당 한 번, 재생 안 함 중에서 선택합니다. 전투에 이 카드가 있고 살아 있는 모든 적의 마녀화가 200 이상이 되면 재생합니다. 이 설정은 BGM에만 적용됩니다.",
   "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.title": "마녀를 죽이는 마법",
   "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.hover.title": "재생 빈도",
   "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.hover.desc": "Sakuraba Ema가 [gold]마녀화[/gold] 100 이상으로 [gold]마녀를 죽이는 마법[/gold] 카드를 사용할 때 장면 연출과 EmA (-狂-) BGM을 매번, 모험당 플레이어별 한 번, 또는 재생 안 함으로 설정합니다.",

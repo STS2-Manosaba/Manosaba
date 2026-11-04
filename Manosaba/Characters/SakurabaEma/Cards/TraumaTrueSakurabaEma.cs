@@ -31,5 +31,5 @@ public sealed class TraumaTrueSakurabaEma : PathCustomCardModel
         await CommonActions.Apply<MajokaPower>(choiceContext, Owner.Creature, this, DynamicVars["MajokaPower"].BaseValue);
     }
 
-    protected override void OnUpgrade() => DynamicVars["MajokaPower"].UpgradeValueBy(5m);
+    protected override void OnUpgrade() => DynamicVars["MajokaPower"].UpgradeValueBy(10m);
 }

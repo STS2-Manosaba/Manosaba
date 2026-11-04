@@ -15,7 +15,7 @@ public sealed class WitchIslandTreasureMap : PathCustomCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<BadEndSkillPower>(1m)];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<BadEndSkillPower>()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<BadEndSkillPower>(), HoverTipFactory.FromCard<EmaIsEvil>()];
 
     public WitchIslandTreasureMap() : base(3, CardType.Power, CardRarity.Rare, TargetType.Self, true)
     {

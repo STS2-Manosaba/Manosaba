@@ -1,4 +1,10 @@
 {
+  "MANOSABA-KILL_EMA_VICTORY_BGM_FREQUENCY.title": "殺死艾瑪・特殊勝利",
+  "MANOSABA-KILL_EMA_VICTORY_BGM_FREQUENCY.hover.title": "BGM 播放頻率",
+  "MANOSABA-KILL_EMA_VICTORY_BGM_FREQUENCY.hover.desc": "設定[gold]殺死艾瑪[/gold]的 BGM「EmA (-危-)」播放頻率：每次、每場冒險一次，或永不播放。戰鬥中有這張牌，且艾瑪觸發了 15 種不同的壞結局時播放。此設定只控制 BGM。",
+  "MANOSABA-DIE_VICTORY_BGM_FREQUENCY.title": "去死・特殊勝利",
+  "MANOSABA-DIE_VICTORY_BGM_FREQUENCY.hover.title": "BGM 播放頻率",
+  "MANOSABA-DIE_VICTORY_BGM_FREQUENCY.hover.desc": "設定 [gold]去死[/gold] 的 BGM「bloom (-Piano version-)」播放頻率：每次、每場冒險一次，或永不播放。戰鬥中有這張牌，且所有存活敵人都達到 200 層魔女化時播放。此設定只控制 BGM。",
   "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.title": "殺死魔女的魔法",
   "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.hover.title": "播放頻率",
   "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.hover.desc": "設定[gold]殺死魔女的魔法[/gold]場景特效與 EmA (-狂-) BGM 的播放頻率：每次、每場冒險每位玩家一次，或不播放。只在櫻羽艾瑪使用此卡且[gold]魔女化[/gold]達到 100 層時觸發。",

@@ -71,7 +71,7 @@
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.description": "[gold]直播模式[/gold]下對目標造成傷害後，使其成為粉絲。\n戰鬥開始時，獲得與此遺物等級相同層數的[gold]躲藏[/gold]。\nLv2 起，戰鬥開始時獲得 3 層[gold]直播模式[/gold]。\nLv4 起，回合開始時，如果有[gold]直播模式[/gold]，獲得 1 點能量。\n目前粉絲數量：{FanCount}。",
   "MANOSABA-LIVE_STREAMING_EQUIPMENT.flavor": "今天也要努力直播！",
   "MANOSABA-LEG_IRONS_SAKURABA_EMA.title": "腿環",
-  "MANOSABA-LEG_IRONS_SAKURABA_EMA.description": "戰鬥開始時，獲得的[gold]魔女化[/gold]固定為 50%。\nLv1～4：獲得[gold]搜查時間[/gold]。每使用 1 張牌增加 1 層；達到 8 層時，將 1 張[gold]rAwTell Owk...[/gold]加入手牌並移除[gold]搜查時間[/gold]。每升 1 級，需求減少 2 層。\nLv5：戰鬥開始時直接將 1 張[gold]rAwTell Owk...[/gold]加入手牌，不再獲得[gold]搜查時間[/gold]。",
+  "MANOSABA-LEG_IRONS_SAKURABA_EMA.description": "回合開始時，獲得的[gold]魔女化[/gold]減為 50%。獲得[gold]搜查時間[/gold]。遺物每升 1 級，[gold]搜查時間[/gold]所需打出的牌減少 2 張。\nLv3：戰鬥中有[gold]審問開始[/gold]時，從[gold]反駁[/gold]、[gold]提問[/gold]、[gold]贊同[/gold]中選擇 1 張加入你的手牌。每場戰鬥限一次，[gold]贊同[/gold]只在多人遊戲中出現。\nLv5：戰鬥開始時，將 1 張[gold]rAwTell Owk...[/gold]加入你的手牌，取代[gold]搜查時間[/gold]。戰鬥中有[gold]審問開始[/gold]時，你每有 1 層[gold]罪證[/gold]，[gold]裁判[/gold]攻擊牌就額外造成 1 點傷害。",
   "MANOSABA-LEG_IRONS_SAKURABA_EMA.flavor": "將恐懼繫成證明線索的束縛。",
   "MANOSABA-YOU_DID_WELL.derivations": "殺死魔女的魔法：\n6層：將1張cUrOi、1張shi-des加入手牌。\n8層：可選擇將本場戰鬥中所有牌附加消耗（優先執行）。\n12層：將1張sent-ky加入手牌。\n13層：取代8層效果，將本場戰鬥中所有牌變化成去死+。\n特別的魔法：\n10層：生成的去死與大家都去死就好了改為升級牌。\n13層：大魔女接管所有回合。",
   "MANOSABA-YOU_DID_WELL.flavor": "你做得很好。",

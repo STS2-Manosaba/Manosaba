@@ -18,7 +18,7 @@ public sealed class Strangle : PathCustomCardModel
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8m, ValueProp.Move),
+        new DamageVar(9m, ValueProp.Move),
         new PowerVar<StranglePower>(2m),
     ];
 
@@ -48,7 +48,7 @@ public sealed class Strangle : PathCustomCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
         DynamicVars["StranglePower"].UpgradeValueBy(1m);
     }
 }

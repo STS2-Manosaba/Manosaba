@@ -29,10 +29,10 @@ public sealed class EndlessEvidence : PathCustomCardModel
 }
 
 [Pool(typeof(SakurabaEmaCardPool))]
-public sealed class EnoughRedTape : PathCustomCardModel
+public sealed class EnoughRedTape : EmaTrialCard
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [WitchEncyclopediaState.HoverTip, HoverTipFactory.FromCard<PresentEvidence>()];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [..base.CanonicalKeywords, CardKeyword.Exhaust];
+    protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [WitchEncyclopediaState.HoverTip, HoverTipFactory.FromCard<PresentEvidence>()];
     public EnoughRedTape() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true) { }
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {

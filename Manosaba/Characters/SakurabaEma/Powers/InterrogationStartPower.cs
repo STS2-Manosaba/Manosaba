@@ -3,6 +3,7 @@ using Manosaba.Characters.Common.Powers;
 using Manosaba.Characters.Common.Overrides;
 using Manosaba.Combat;
 using manosaba.Characters.SakurabaEma.Combat;
+using manosaba.Characters.SakurabaEma.Relics;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -23,13 +24,16 @@ public sealed class InterrogationStartPower : FieldPowerModel
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props,
         Creature? dealer, CardModel? cardSource)
     {
-        bool trialAttack = props.HasFlag(ValueProp.Move) && cardSource?.Type == CardType.Attack &&
-            cardSource.Keywords.Contains(ManosabaKeywords.Trial);
+        bool trialAttack = IsTrialAttack(props, cardSource);
         bool culpritAttack = dealer?.GetPowerAmount<TrueCulpritPower>() > 0 && props.IsPoweredAttack();
         return dealer != null && (trialAttack || culpritAttack)
             ? dealer.GetPowerAmount<GuiltPower>()
             : 0m;
     }
+
+    internal static bool IsTrialAttack(ValueProp props, CardModel? cardSource) =>
+        props.HasFlag(ValueProp.Move) && cardSource?.Type == CardType.Attack &&
+        cardSource.Keywords.Contains(ManosabaKeywords.Trial);
 
     public static async Task ApplyToField(PlayerChoiceContext choiceContext, Creature applier, CardModel? cardSource)
     {
@@ -39,7 +43,11 @@ public sealed class InterrogationStartPower : FieldPowerModel
         FieldPowerState.Apply<InterrogationStartPower>(field, 1);
 
         FieldPowerState.Ensure<InterrogationProgressPower>(field);
-        if (!alreadyActive)
-            await InterrogationStartPresentation.Play();
+        if (alreadyActive) return;
+
+        await InterrogationStartPresentation.Play();
+        foreach (var player in field.Players.OrderBy(player => player.NetId))
+            foreach (var legRing in player.Relics.OfType<LegRing>())
+                await legRing.OnInterrogationStart(choiceContext, field);
     }
 }

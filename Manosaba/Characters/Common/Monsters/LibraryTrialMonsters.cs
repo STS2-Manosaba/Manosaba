@@ -3,6 +3,7 @@ using BaseLib.Utils;
 using manosaba.Extensions;
 using Manosaba.Characters.Common.Cards;
 using Manosaba.Characters.Common.Powers;
+using Manosaba.Multiplayer;
 using manosaba.Characters.SakurabaEma.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Combat;
@@ -113,8 +114,13 @@ public sealed class LibraryWarden : LibraryTrialMonster
             // Remove immortality before healing and before any clue damage is resolved.
             _transformed = true;
             await PowerCmd.Remove(Creature.GetPower<LibraryInfiniteRevivalPower>()!);
-            await CreatureCmd.GainMaxHp(Creature, ScaleAddedHp(PhaseHp));
-            await CreatureCmd.Heal(Creature, Creature.MaxHp);
+            // The current maximum already includes the lobby multiplier. Scale only the phase gain.
+            decimal gain = ScaleAddedHp(PhaseHp);
+            decimal lobbyMultiplier = ManosabaLobbyDifficultyState.GetEnemyHpMultiplierForGameplay();
+            if (lobbyMultiplier != 1m)
+                gain = Math.Round(gain * lobbyMultiplier, MidpointRounding.AwayFromZero);
+            Creature.SetMaxHpInternal(Math.Min(int.MaxValue, Creature.MaxHp + gain));
+            await CreatureCmd.Heal(Creature, Creature.MaxHp - Creature.CurrentHp);
             await CommonActions.Apply<StrengthPower>(context, Creature, null, 10);
             var players = combatState.Players.Where(p => p.Creature.IsAlive).OrderBy(p => p.NetId).ToList();
             int highest = players.Select(p => p.Creature.GetPowerAmount<GuiltPower>()).DefaultIfEmpty(0).Max();

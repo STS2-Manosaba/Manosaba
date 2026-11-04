@@ -1,4 +1,10 @@
 {
+  "MANOSABA-KILL_EMA_VICTORY_BGM_FREQUENCY.title": "Kill Ema Special Victory",
+  "MANOSABA-KILL_EMA_VICTORY_BGM_FREQUENCY.hover.title": "BGM Playback Frequency",
+  "MANOSABA-KILL_EMA_VICTORY_BGM_FREQUENCY.hover.desc": "Choose how often the [gold]Kill Ema[/gold] BGM “EmA (-危-)” plays: every time, once per run, or never. It starts when Ema has triggered 15 distinct Bad Ends and this card is in combat. This setting controls the BGM only.",
+  "MANOSABA-DIE_VICTORY_BGM_FREQUENCY.title": "Die Special Victory",
+  "MANOSABA-DIE_VICTORY_BGM_FREQUENCY.hover.title": "BGM Playback Frequency",
+  "MANOSABA-DIE_VICTORY_BGM_FREQUENCY.hover.desc": "Choose how often the [gold]Die[/gold] BGM “bloom (-Piano version-)” plays: every time, once per run, or never. It starts once every living enemy has at least 200 Majoka while this card is in combat. This setting controls the BGM only.",
   "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.title": "Magic to Kill the Witch",
   "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.hover.title": "Playback frequency",
   "MANOSABA-MAGIC_TO_KILL_WITCH_EFFECT_FREQUENCY.hover.desc": "Play the [gold]Magic to Kill the Witch[/gold] scene and EmA (-狂-) BGM every time, once per player per run, or never. Triggers when Sakuraba Ema uses this card with at least 100 [gold]Majoka[/gold].",

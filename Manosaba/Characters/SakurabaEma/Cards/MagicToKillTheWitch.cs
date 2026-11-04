@@ -22,7 +22,7 @@ public sealed class MagicToKillTheWitch : PathCustomCardModel
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Eternal];
     private sealed class WitchWeakVar() : PowerVar<WeakPower>(1)
     {
-        public static decimal AmountFor(CardModel card) => 1m + decimal.Floor((card.Owner?.Creature?.GetPowerAmount<MajokaPower>() ?? 0) / 25m);
+        public static decimal AmountFor(CardModel card) => Math.Min(5m, 1m + decimal.Floor((card.Owner?.Creature?.GetPowerAmount<MajokaPower>() ?? 0) / 25m));
         public override void UpdateCardPreview(CardModel card, CardPreviewMode previewMode, Creature? target, bool runGlobalHooks)
             => PreviewValue = AmountFor(card);
     }

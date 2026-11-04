@@ -4,6 +4,8 @@ using manosaba.Characters.NikaidoHiro;
 using manosaba.Characters.SakurabaEma.Cards;
 using manosaba.Characters.SakurabaEma.Powers;
 using Manosaba.Characters.Common;
+using Manosaba.Combat;
+using manosaba.Characters.SakurabaEma.Combat;
 using Manosaba.Extensions;
 using manosaba.Extensions;
 using MegaCrit.Sts2.Core.Commands;
@@ -33,6 +35,7 @@ public sealed class LegRing : LevelingPathCustomRelicModel
     protected override string BigIconPath => "leg_ring.png".RelicImagePath();
 
     private const decimal MajokaMultiplierPercent = 50m;
+    private bool _choseInterrogationCard;
     private bool _hirosPenAddedToDeck;
     private int _corpsePhotoFlags;
     private HashSet<Creature> _pendingKills = [];
@@ -42,7 +45,9 @@ public sealed class LegRing : LevelingPathCustomRelicModel
     protected override int MaxRelicLevel => 5;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        [..base.ExtraHoverTips, HoverTipFactory.FromPower<SearchTimePower>(), HoverTipFactory.FromCard<RawTellOwk>()];
+        [..base.ExtraHoverTips, HoverTipFactory.FromPower<SearchTimePower>(), HoverTipFactory.FromCard<RawTellOwk>(),
+            HoverTipFactory.FromPower<InterrogationStartPower>(), HoverTipFactory.FromPower<GuiltPower>(),
+            HoverTipFactory.FromCard<Rebuttal>(), HoverTipFactory.FromCard<Question>(), HoverTipFactory.FromCard<Agreement>()];
 
     internal static int GetSearchCardRequirement(int relicLevel)
         => Math.Max(2, 10 - 2 * Math.Max(1, relicLevel));
@@ -69,6 +74,7 @@ public sealed class LegRing : LevelingPathCustomRelicModel
     public override async Task BeforeCombatStart()
     {
         _pendingKills = [];
+        _choseInterrogationCard = false;
         if (Owner.Creature == null)
             return;
 
@@ -92,6 +98,26 @@ public sealed class LegRing : LevelingPathCustomRelicModel
         if (!HasNikaidoHiroTeammate())
             await TryAddHirosPenToDeck();
     }
+
+    internal async Task OnInterrogationStart(PlayerChoiceContext context, ICombatState combat)
+    {
+        if (RelicLevel < 3 || _choseInterrogationCard || !Owner.Creature.IsAlive || CombatManager.Instance.IsOverOrEnding)
+            return;
+
+        _choseInterrogationCard = true;
+        List<CardModel> options = [combat.CreateCard<Rebuttal>(Owner), combat.CreateCard<Question>(Owner)];
+        if (combat.Players.Count > 1)
+            options.Add(combat.CreateCard<Agreement>(Owner));
+
+        if (await CardSelectCmd.FromChooseACardScreen(context, options, Owner) is { } selected)
+            CardCmd.PreviewCardPileAdd(await EmaCardGeneration.Add(selected, PileType.Hand, Owner));
+    }
+
+    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props,
+        Creature? dealer, CardModel? cardSource) =>
+        RelicLevel >= 5 && dealer == Owner.Creature && dealer.CombatState is { } combat
+            && InterrogationStartPower.IsTrialAttack(props, cardSource) && FieldPowerState.Has<InterrogationStartPower>(combat)
+            ? dealer.GetPowerAmount<GuiltPower>() : 0m;
 
     public override async Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
     {

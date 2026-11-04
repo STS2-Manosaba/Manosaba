@@ -22,7 +22,7 @@ public sealed class Rebuttal : EmaTrialCard
     protected override bool HasProgressEffect => true;
     private sealed class EncyclopediaDamageVar : DamageVar
     {
-        public EncyclopediaDamageVar() : base(8m, ValueProp.Move)
+        public EncyclopediaDamageVar() : base(9m, ValueProp.Move)
         {
         }
 
@@ -90,10 +90,14 @@ public sealed class Rebuttal : EmaTrialCard
 
         decimal count = ProgressReady(this) ? WitchEncyclopediaState.CardCount(Owner) : 0;
         decimal damage = DynamicVars.Damage.BaseValue + count * DynamicVars["DamagePerCard"].BaseValue;
-        await CreatureCmd.Damage(choiceContext, cardPlay.Target, damage, TrialMoveValueProp, Owner.Creature, this);
+        await AttackTrialTarget(choiceContext, cardPlay.Target, damage);
     }
 
-    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(2m);
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars["DamagePerCard"].UpgradeValueBy(1m);
+    }
 
     private static ValueProp GetTrialPreviewProps(CardModel card) =>
         card.Owner?.Creature?.GetPowerAmount<LawDevilPower>() > 0m

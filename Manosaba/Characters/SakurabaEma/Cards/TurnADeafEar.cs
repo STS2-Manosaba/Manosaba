@@ -19,7 +19,7 @@ public sealed class TurnADeafEar : EmaTrialCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(8m, ValueProp.Move),
+        new TrialBlockVar(8m),
         new PowerVar<WeakPower>(2m),
     ];
 
@@ -41,7 +41,7 @@ public sealed class TurnADeafEar : EmaTrialCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(2m);
+        DynamicVars.Block.UpgradeValueBy(3m);
         DynamicVars["WeakPower"].UpgradeValueBy(1m);
     }
 }
