@@ -29,8 +29,21 @@ public sealed class EscapeRoute : PathCustomCardModel
     {
     }
 
-    protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay) =>
-        CommonActions.Apply<BlockNextTurnPower>(choiceContext, Owner.Creature, this, DynamicVars.Block.BaseValue);
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        // Resolve the amount through the normal block pipeline first. This
+        // applies Dexterity and respects effects that prevent block gain,
+        // matching primitive cards such as Dodge and Roll.
+        decimal blockAmount = await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
+        if (blockAmount <= 0m)
+        {
+            return;
+        }
+
+        // Escape Route grants the resolved amount next turn, not this turn.
+        await CreatureCmd.LoseBlock(Owner.Creature, blockAmount);
+        await PowerCmd.Apply<BlockNextTurnPower>(choiceContext, Owner.Creature, blockAmount, Owner.Creature, this);
+    }
 
     protected override void OnUpgrade()
     {
