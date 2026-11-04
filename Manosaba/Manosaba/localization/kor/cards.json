@@ -1407,7 +1407,7 @@
   "MANOSABA-GUSHA_GUSHA3.title": "구샤 구샤",
   "MANOSABA-GUSHA_GUSHA3.description": "[gold]힘[/gold]과 [gold]민첩[/gold]을 3 얻습니다.",
   "MANOSABA-MY_TURN_TO_PROTECT.title": "내가 지킬 차례",
-  "MANOSABA-MY_TURN_TO_PROTECT.description": "[gold]간수[/gold]가 전장에 있으면 [gold]방어도[/gold]를 {Block:diff()} 얻습니다. [gold]간수[/gold]의 HP가 20% 미만이면 2배가 됩니다.",
+  "MANOSABA-MY_TURN_TO_PROTECT.description": "[gold]방어도[/gold]를 {Block:diff()} 얻습니다. [gold]간수[/gold]의 HP가 20% 미만이면 2배가 됩니다.",
   "MANOSABA-NANOKA_SEARCH.title": "환시 조사",
   "MANOSABA-NANOKA_SEARCH.description": "다음 턴 시작 시 {Energy:energyIcons()}를 얻고 카드를 {Cards:diff()}장 뽑습니다.",
   "MANOSABA-WARDEN_ATTACK.title": "간수 추격",

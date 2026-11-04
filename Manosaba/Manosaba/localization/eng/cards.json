@@ -1407,7 +1407,7 @@
   "MANOSABA-GUSHA_GUSHA3.title": "Gusha Gusha",
   "MANOSABA-GUSHA_GUSHA3.description": "Gain 3 [gold]Strength[/gold] and 3 [gold]Dexterity[/gold].",
   "MANOSABA-MY_TURN_TO_PROTECT.title": "My Turn to Protect",
-  "MANOSABA-MY_TURN_TO_PROTECT.description": "If the [gold]Warden[/gold] is in play, gain {Block:diff()} [gold]Block[/gold]. Double this if the [gold]Warden[/gold] has less than 20% HP.",
+  "MANOSABA-MY_TURN_TO_PROTECT.description": "Gain {Block:diff()} [gold]Block[/gold]. Double this if the [gold]Warden[/gold] has less than 20% HP.",
   "MANOSABA-NANOKA_SEARCH.title": "Hallucination Search",
   "MANOSABA-NANOKA_SEARCH.description": "At the start of next turn, gain {Energy:energyIcons()} and draw {Cards:diff()} cards.",
   "MANOSABA-WARDEN_ATTACK.title": "Warden Pursuit",

@@ -1407,7 +1407,7 @@
   "MANOSABA-GUSHA_GUSHA3.title": "愚者愚者",
   "MANOSABA-GUSHA_GUSHA3.description": "[gold]筋力[/gold]と[gold]敏捷[/gold]を3得る。",
   "MANOSABA-MY_TURN_TO_PROTECT.title": "私が守る番",
-  "MANOSABA-MY_TURN_TO_PROTECT.description": "[gold]看守[/gold]が場にいるなら{Block:diff()}の[gold]ブロック[/gold]を得る。[gold]看守[/gold]のHPが20%未満なら2倍になる。",
+  "MANOSABA-MY_TURN_TO_PROTECT.description": "{Block:diff()}の[gold]ブロック[/gold]を得る。[gold]看守[/gold]のHPが20%未満なら2倍になる。",
   "MANOSABA-NANOKA_SEARCH.title": "幻視調査",
   "MANOSABA-NANOKA_SEARCH.description": "次のターン開始時、{Energy:energyIcons()}を得て、カードを{Cards:diff()}枚引く。",
   "MANOSABA-WARDEN_ATTACK.title": "看守追撃",

@@ -36,8 +36,8 @@ public sealed class Comedian : PathCustomCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         int qualifyingCards = PileType.Hand.GetPile(Owner).Cards.Count(IsComedianCard);
-        DynamicVars.Block.BaseValue = 8m + qualifyingCards * DynamicVars["BonusBlock"].BaseValue;
-        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
+        decimal blockAmount = 8m + qualifyingCards * DynamicVars["BonusBlock"].BaseValue;
+        await CreatureCmd.GainBlock(Owner.Creature, new BlockVar(blockAmount, ValueProp.Move), cardPlay);
     }
 
     protected override void OnUpgrade() => DynamicVars["BonusBlock"].UpgradeValueBy(1m);
