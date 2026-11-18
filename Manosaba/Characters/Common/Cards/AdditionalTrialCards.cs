@@ -13,13 +13,17 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Manosaba.Characters.Common.Cards;
 
-[Pool(typeof(CommonCardPool))]
+[Pool(typeof(TokenCardPool))]
 public sealed class Counterargument : EmaTrialCard
 {
+    public override bool CanBeGeneratedInCombat => false;
+    public override bool CanBeGeneratedByModifiers => false;
+
     protected override bool HasProgressEffect => true;
 
     private sealed class ArgumentDamageVar() : DamageVar(11m, ValueProp.Move | ValueProp.Unpowered)
@@ -41,7 +45,7 @@ public sealed class Counterargument : EmaTrialCard
     protected override IEnumerable<DynamicVar> CanonicalVars => [new ArgumentDamageVar(), new DynamicVar("BonusDamage", 2m)];
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips =>
         [HoverTipFactory.FromCard<Statement>(), HoverTipFactory.FromPower<ArgumentPower>(), HoverTipFactory.FromCard<PresentEvidence>(), WitchEncyclopediaState.HoverTip];
-    public Counterargument() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy, true) { }
+    public Counterargument() : base(1, CardType.Attack, CardRarity.Token, TargetType.AnyEnemy, false) { }
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
         if (play.Target is not { } target || CombatState is not { } combat) return;

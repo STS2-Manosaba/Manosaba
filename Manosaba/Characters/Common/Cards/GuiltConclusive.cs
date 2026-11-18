@@ -13,12 +13,15 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 
 namespace Manosaba.Characters.Common.Cards;
 
-[Pool(typeof(CommonCardPool))]
+[Pool(typeof(TokenCardPool))]
 public sealed class GuiltConclusive : EmaTrialCard
 {
+    public override bool CanBeGeneratedInCombat => false;
+    public override bool CanBeGeneratedByModifiers => false;
+
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips =>
         [HoverTipFactory.FromCard<SuspicionConversion>(), HoverTipFactory.FromCard<GuiltConversion>()];
-    public GuiltConclusive() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true) { }
+    public GuiltConclusive() : base(1, CardType.Skill, CardRarity.Token, TargetType.Self, false) { }
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (CombatState is not { } combat) return;

@@ -8,17 +8,21 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.CardPools;
 
 namespace manosaba.Characters.SakurabaEma.Cards;
 
-[Pool(typeof(manosaba.Characters.Common.CommonCardPool))]
+[Pool(typeof(TokenCardPool))]
 public sealed class RawTellOwk : PathCustomCardModel
 {
+    public override bool CanBeGeneratedInCombat => false;
+    public override bool CanBeGeneratedByModifiers => false;
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [HoverTipFactory.FromPower<InterrogationStartPower>(), HoverTipFactory.FromPower<InterrogationProgressPower>()];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Progress", 10m)];
 
-    public RawTellOwk() : base(0, CardType.Power, CardRarity.Uncommon, TargetType.Self, true)
+    public RawTellOwk() : base(0, CardType.Power, CardRarity.Token, TargetType.Self, false)
     {
     }
 

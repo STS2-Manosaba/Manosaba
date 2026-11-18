@@ -6,16 +6,20 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 
 namespace Manosaba.Characters.Common.Cards;
 
-[Pool(typeof(CommonCardPool))]
+[Pool(typeof(TokenCardPool))]
 public sealed class GuiltQuestion : EmaTrialCard
 {
+    public override bool CanBeGeneratedInCombat => false;
+    public override bool CanBeGeneratedByModifiers => false;
+
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [HoverTipFactory.FromCard<GuiltSuspicion>()];
 
-    public GuiltQuestion() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyAlly, true) { }
+    public GuiltQuestion() : base(1, CardType.Skill, CardRarity.Token, TargetType.AnyAlly, false) { }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
