@@ -10,16 +10,7 @@ public static class ManosabaCombatCmd
 {
     public static async Task ForceWinWithoutDeathOrEscape(ICombatState? combatState)
     {
-        if (combatState == null)
-        {
-            return;
-        }
-
-        await ForceWinWithoutDeathOrEscape(new CombatStateWrapper(combatState));
-    }
-
-    public static async Task ForceWinWithoutDeathOrEscape(CombatStateWrapper combatState)
-    {
+        if (combatState == null) return;
         CombatManager? combatManager = CombatManager.Instance;
         if (combatManager == null || !combatManager.IsInProgress)
         {
@@ -37,7 +28,7 @@ public static class ManosabaCombatCmd
         await combatManager.CheckWinCondition();
     }
 
-    private static async Task ReleaseStolenCards(CombatStateWrapper combatState)
+    private static async Task ReleaseStolenCards(ICombatState combatState)
     {
         foreach (Creature creature in combatState.Creatures.ToList())
         {

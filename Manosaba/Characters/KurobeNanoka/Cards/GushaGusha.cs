@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using manosaba.Characters.KurobeNanoka;
 using MegaCrit.Sts2.Core.Models.Powers;
 using Manosaba.Extensions;
@@ -21,7 +21,8 @@ public sealed class GushaGusha1 : PathCustomCardModel
     {
         await CommonActions.Apply<StrengthPower>(context, Owner.Creature, this, 1m);
         await CommonActions.Apply<DexterityPower>(context, Owner.Creature, this, 1m);
-        await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<GushaGusha2>(Owner), PileType.Draw, Owner, CardPilePosition.Top);
+        if (CombatState is { } combatState)
+            await CardPileCmd.AddGeneratedCardToCombat(combatState.CreateCard<GushaGusha2>(Owner), PileType.Draw, Owner, CardPilePosition.Top);
     }
 
     protected override void OnUpgrade() => AddKeyword(CardKeyword.Innate);
@@ -38,7 +39,8 @@ public sealed class GushaGusha2 : PathCustomCardModel
     {
         await CommonActions.Apply<StrengthPower>(context, Owner.Creature, this, 2m);
         await CommonActions.Apply<DexterityPower>(context, Owner.Creature, this, 2m);
-        await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<GushaGusha3>(Owner), PileType.Draw, Owner, CardPilePosition.Top);
+        if (CombatState is { } combatState)
+            await CardPileCmd.AddGeneratedCardToCombat(combatState.CreateCard<GushaGusha3>(Owner), PileType.Draw, Owner, CardPilePosition.Top);
     }
 }
 

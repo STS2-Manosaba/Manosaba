@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using Manosaba.Characters.Common.Commands;
 using MegaCrit.Sts2.Core.Combat;
 using Manosaba.Extensions;
@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Manosaba.Characters.ShitoAlisa.Powers;
 
-/// <summary>終焉的倒數計時：歸 0 時直接獲勝。</summary>
+/// <summary>邨らч逧・呈丙險域凾・壽ｭｸ 0 譎ら峩謗･迯ｲ蜍昴・/summary>
 public sealed class FinalCountdownPower : PathCustomPowerModel
 {
     private const string VfxScenePath = "res://Manosaba/scenes/shito_alisa/vfx/final_countdown_ring_flames.tscn";
@@ -49,7 +49,7 @@ public sealed class FinalCountdownPower : PathCustomPowerModel
 
         _winTriggered = true;
         await ManosabaVfxCmd.PlaySceneAtCombatCenterAndWait(VfxScenePath, fitCoverViewport: false);
-        CombatStateWrapper? combatState = ManosabaCombatCompat.From(Owner);
+        ICombatState? combatState = ManosabaCombatCompat.From(Owner);
         if (combatState != null)
         {
             await ManosabaCombatCmd.ForceWinWithoutDeathOrEscape(combatState);
@@ -64,7 +64,7 @@ public sealed class FinalCountdownPower : PathCustomPowerModel
         await CommonActions.Apply<FinalCountdownPower>(new ThrowingPlayerChoiceContext(), owner, cardSource, -1m, silent: true);
     }
 
-    private static bool IsCombatOverOrEnding(CombatStateWrapper? combatState)
+    private static bool IsCombatOverOrEnding(ICombatState? combatState)
     {
         if (combatState == null)
             return true;
