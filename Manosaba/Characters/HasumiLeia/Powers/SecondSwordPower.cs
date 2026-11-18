@@ -84,7 +84,7 @@ public sealed class SecondSwordPower : PathCustomPowerModel
                 extraDamage,
                 ValueProp.Unpowered,
                 Owner,
-                card);
+                card, null);
         }
     }
 }

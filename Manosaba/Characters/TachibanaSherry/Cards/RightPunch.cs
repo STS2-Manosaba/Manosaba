@@ -38,7 +38,7 @@ namespace Manosaba.Characters.TachibanaSherry.Cards
             }
 
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .TargetingAllOpponentsCompat(base.CombatState)
                 .Execute(choiceContext);
             await CommonActions.Apply<StrengthPower>(choiceContext, base.Owner.Creature, this, base.DynamicVars["StrengthPower"].BaseValue);

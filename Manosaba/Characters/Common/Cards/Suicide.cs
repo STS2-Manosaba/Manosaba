@@ -57,7 +57,7 @@ namespace Manosaba.Characters.Common.Cards
                 DynamicVars.Damage.BaseValue,
                 ValueProp.Unpowered,
                 base.Owner.Creature,
-                this);
+                this, null);
             await CommonActions.Apply<MajokaPower>(choiceContext, base.Owner.Creature, this, DynamicVars["MajokaPower"].BaseValue);
         }
 

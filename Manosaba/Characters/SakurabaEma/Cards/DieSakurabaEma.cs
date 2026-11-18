@@ -60,7 +60,7 @@ public sealed class DieSakurabaEma : PathCustomCardModel
         foreach (Creature enemy in enemies)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(enemy)
                 .Execute(choiceContext);
         }

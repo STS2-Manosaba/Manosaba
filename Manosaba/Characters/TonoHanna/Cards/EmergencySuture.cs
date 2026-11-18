@@ -67,7 +67,7 @@ public sealed class EmergencySuture : PathCustomCardModel
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(statusCount)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .TargetingAllOpponentsCompat(CombatState)
             .Execute(choiceContext);
     }

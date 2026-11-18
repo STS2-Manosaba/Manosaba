@@ -38,7 +38,7 @@ namespace Manosaba.Characters.HasumiLeia.Cards
                 return;
 
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
             await CommonActions.Apply<WeakPower>(choiceContext, target, this, DynamicVars["WeakPower"].BaseValue);

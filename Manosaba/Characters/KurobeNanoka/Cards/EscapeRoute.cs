@@ -41,7 +41,7 @@ public sealed class EscapeRoute : PathCustomCardModel
         }
 
         // Escape Route grants the resolved amount next turn, not this turn.
-        await CreatureCmd.LoseBlock(Owner.Creature, blockAmount);
+        await CreatureCmd.LoseBlock(choiceContext, Owner.Creature, blockAmount, Owner.Creature);
         await PowerCmd.Apply<BlockNextTurnPower>(choiceContext, Owner.Creature, blockAmount, Owner.Creature, this);
     }
 

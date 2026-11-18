@@ -40,7 +40,7 @@ namespace Manosaba.Characters.Common.Cards
                 Owner.Creature.CurrentHp,
                 ValueProp.Unpowered,
                 Owner.Creature,
-                this);
+                this, null);
         }
 
         protected override void OnUpgrade()

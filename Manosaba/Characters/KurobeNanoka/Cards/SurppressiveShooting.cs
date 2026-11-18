@@ -47,11 +47,11 @@ public sealed class SurppressiveShooting : GunBase
             return;
         }
 
-        await ExecuteGunAttack(choiceContext, target, DynamicVars.Damage.BaseValue);
+        await ExecuteGunAttack(choiceContext, target, DynamicVars.Damage.BaseValue, cardPlay);
         await Cmd.Wait(1.00f);
-        await ExecuteGunAttack(choiceContext, target, DynamicVars.Damage.BaseValue);
+        await ExecuteGunAttack(choiceContext, target, DynamicVars.Damage.BaseValue, cardPlay);
         await Cmd.Wait(1.00f);
-        await ExecuteGunAttack(choiceContext, target, DynamicVars.Damage.BaseValue);
+        await ExecuteGunAttack(choiceContext, target, DynamicVars.Damage.BaseValue, cardPlay);
         await CreatureCmd.Stun(target);
     }
 

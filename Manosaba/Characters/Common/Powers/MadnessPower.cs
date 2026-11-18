@@ -110,7 +110,7 @@ public sealed class MadnessPower : PathCustomPowerModel
                 hpLoss,
                 ValueProp.Unblockable | ValueProp.Unpowered,
                 effectSource,
-                cardSource);
+                cardSource, null);
         }
 
         if (!Owner.IsAlive)

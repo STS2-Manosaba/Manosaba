@@ -37,7 +37,7 @@ public sealed class ExtremeDash : PathCustomCardModel
             return;
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
 

@@ -55,7 +55,7 @@ public sealed class StardustMirage : PathCustomCardModel
 
                 await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                     .WithHitCount(HitCount)
-                    .FromCard(this)
+                    .FromCard(this, cardPlay)
                     .Targeting(target)
                     .Execute(choiceContext);
             }

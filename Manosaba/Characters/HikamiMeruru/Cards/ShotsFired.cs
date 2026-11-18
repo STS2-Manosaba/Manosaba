@@ -35,7 +35,7 @@ namespace Manosaba.Characters.HikamiMeruru.Cards
                 return;
 
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(target)
                 .Execute(choiceContext);
 

@@ -22,9 +22,9 @@ internal static class ManosabaCharacterSelectRandomGate
         return true;
     }
 
-    internal static bool ShouldShowRandomForLobbyPlayers(IEnumerable<LobbyPlayer> players)
+    internal static bool ShouldShowRandomForLobbyPlayers(IEnumerable<StartRunLobbyPlayer> players)
     {
-        foreach (LobbyPlayer player in players)
+        foreach (StartRunLobbyPlayer player in players)
         {
             UnlockState unlockState = UnlockState.FromSerializable(player.unlockState);
             if (AreAllPlayableCharactersUnlocked(unlockState))

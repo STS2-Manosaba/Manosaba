@@ -50,6 +50,6 @@ public sealed class LandMine : PathCustomCardModel
             DynamicVars.Damage.BaseValue,
             ValueProp.Unblockable | ValueProp.Unpowered,
             ownerCreature,
-            this);
+            this, null);
     }
 }

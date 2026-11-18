@@ -47,7 +47,7 @@ public sealed class KyuMiraclePartners : PathCustomCardModel
         }
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .TargetingAllOpponentsCompat(CombatState)
             .Execute(choiceContext);
     }

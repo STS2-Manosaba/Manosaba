@@ -41,7 +41,7 @@ public sealed class MagicianRed : ShitoAlisaCardModel
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CommonActions.Apply<FireballSwarmPower>(choiceContext, Owner.Creature, this, -4m);
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
         await CommonActions.Apply<RedBindPower>(choiceContext, cardPlay.Target, this, 1m);
     }
 

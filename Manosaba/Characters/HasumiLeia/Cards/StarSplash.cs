@@ -46,7 +46,7 @@ public sealed class StarSplash : PathCustomCardModel
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(DynamicVars.Repeat.IntValue)
             .WithHitFx("vfx/vfx_dramatic_stab")
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
 
@@ -56,27 +56,27 @@ public sealed class StarSplash : PathCustomCardModel
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(3)
             .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(2)
             .WithHitFx("vfx/vfx_big_slash")
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitFx("vfx/vfx_flying_slash")
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(2)
             .WithHitFx("vfx/vfx_dramatic_stab", null, "blunt_attack.mp3")
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
         */

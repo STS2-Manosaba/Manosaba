@@ -25,7 +25,7 @@ public sealed class BlackPaintOrb : ManosabaOrbModel
 
     public override async Task Passive(PlayerChoiceContext choiceContext, Creature? target)
     {
-        Trigger();
+        ActivatePassive();
         PlayPassiveSfx();
         await CommonActions.Apply<MajokaPower>(choiceContext, Owner.Creature, null, PassiveVal);
     }

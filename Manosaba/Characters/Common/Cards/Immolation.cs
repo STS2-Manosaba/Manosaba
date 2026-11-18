@@ -40,7 +40,7 @@ namespace Manosaba.Characters.Common.Cards
             if (combatState == null)
                 return;
 
-            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this)
+            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this, cardPlay)
             .TargetingAllOpponentsCompat(combatState)
             .Execute(choiceContext);
             List<Creature> targets = (from c in combatState.GetOpponentsOf(base.Owner.Creature)

@@ -58,7 +58,7 @@ namespace Manosaba.Characters.TonoHanna.Powers
                 return;
 
             ICombatState combat = Owner.CombatState;
-            await CreatureCmd.Damage(context, combat.HittableEnemies, Amount, ValueProp.Unpowered, Owner, null);
+            await CreatureCmd.Damage(context, combat.HittableEnemies, Amount, ValueProp.Unpowered, Owner, null, null);
 
             if (cardPlay.Card is HiroPuppet)
             {
@@ -71,7 +71,7 @@ namespace Manosaba.Characters.TonoHanna.Powers
                         hiroBonus,
                         ValueProp.Unpowered,
                         Owner,
-                        null);
+                        null, null);
                 }
             }
         }

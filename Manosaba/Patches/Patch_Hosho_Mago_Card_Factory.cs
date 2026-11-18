@@ -236,7 +236,7 @@ public static class Patch_Hosho_Mago_Card_Factory
             return true;
         }
 
-        bool isInTriggeringCombat = lastingCandy.CombatsSeen > 0 && lastingCandy.CombatsSeen % 2 == 0;
+        bool isInTriggeringCombat = lastingCandy.CombatRewardsSeen > 0 && lastingCandy.CombatRewardsSeen % 2 == 0;
         if (!isInTriggeringCombat)
         {
             return true;
@@ -255,7 +255,7 @@ public static class Patch_Hosho_Mago_Card_Factory
             return true;
         }
 
-        CardCreationOptions safeOptions = new CardCreationOptions(powerCards, CardCreationSource.Other, CardRarityOddsType.Uniform)
+        CardCreationOptions safeOptions = new CardCreationOptions(creationOptions.CardPools, CardCreationSource.Other, CardRarityOddsType.Uniform, c => powerCards.Any(p => p.Id == c.Id))
             .WithFlags(CardCreationFlags.NoModifyHooks | CardCreationFlags.NoCardPoolModifications);
         CardModel? cardModel = CardFactory.CreateForReward(lastingCandy.Owner, 1, safeOptions).FirstOrDefault()?.Card;
         if (cardModel != null)

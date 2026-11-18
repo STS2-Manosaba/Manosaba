@@ -44,7 +44,7 @@ public class RecoilShot : GunBase
         var target = cardPlay.Target;
         if (target == null)
             return;
-        await ExecuteGunAttack(choiceContext, target, DynamicVars.Damage.BaseValue);
+        await ExecuteGunAttack(choiceContext, target, DynamicVars.Damage.BaseValue, cardPlay);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
     }
 

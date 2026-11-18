@@ -70,6 +70,6 @@ public sealed class HandGun : PathCustomRelicModel
         _triggeredThisCombat = true;
         Flash();
         NanokaHelper.PlayGunFireSfx();
-        await CreatureCmd.Damage(choiceContext, dealer, DynamicVars.Damage.BaseValue, ValueProp.Move, Owner.Creature, null);
+        await CreatureCmd.Damage(choiceContext, dealer, DynamicVars.Damage.BaseValue, ValueProp.Move, Owner.Creature, null, null);
     }
 }

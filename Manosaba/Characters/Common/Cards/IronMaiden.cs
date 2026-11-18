@@ -49,7 +49,7 @@ public sealed class IronMaiden : PathCustomCardModel
         }
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
         await PowerCmd.Apply<WeakPower>(choiceContext, target, DynamicVars.Weak.BaseValue, Owner.Creature, this);

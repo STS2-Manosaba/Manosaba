@@ -254,7 +254,7 @@ public sealed class KillTwoBirdsWithOneStone : EmaBadEndingTokenBase
         for (int i = 0; i < DynamicVars["Hits"].IntValue; i++)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(cardPlay.Target)
                 .Execute(choiceContext);
         }
@@ -373,7 +373,7 @@ public sealed class WanderingNarehate : EmaBadEndingTokenBase
         for (int i = 0; i < hits; i++)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(cardPlay.Target)
                 .Execute(choiceContext);
         }
@@ -399,7 +399,7 @@ public sealed class MysteriousLandmineGirl : EmaBadEndingTokenBase
         foreach (Creature enemy in CombatState.HittableEnemies.ToList())
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(enemy)
                 .Execute(choiceContext);
         }

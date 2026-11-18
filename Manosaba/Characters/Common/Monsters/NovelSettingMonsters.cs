@@ -122,7 +122,7 @@ public sealed class NovelClawedCockatrice : NovelSettingMonsterBase
         }
 
         ThrowingPlayerChoiceContext context = new();
-        await CreatureCmd.Damage(context, livingTargets, DamageAmount, ValueProp.Move, base.Creature, null);
+        await CreatureCmd.Damage(context, livingTargets, DamageAmount, ValueProp.Move, base.Creature, null, null);
         foreach (Creature target in livingTargets)
         {
             await CommonActions.Apply<VulnerablePower>(new ThrowingPlayerChoiceContext(), target, null, VulnerableAmount);
@@ -155,7 +155,7 @@ public sealed class NovelCrimsonValstrax : NovelSettingMonsterBase
                 FixedDamage,
                 ValueProp.Unblockable | ValueProp.Unpowered,
                 base.Creature,
-                null);
+                null, null);
         }
     }
 }

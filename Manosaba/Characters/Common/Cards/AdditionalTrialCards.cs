@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using manosaba.Characters.Common;
 using manosaba.Characters.SakurabaEma.Cards;
 using manosaba.Characters.SakurabaEma.Combat;
@@ -29,7 +29,7 @@ public sealed class Counterargument : EmaTrialCard
             decimal raw = BaseValue + ArgumentBonus(card);
             Props = card.Owner?.Creature.HasPower<LawDevilPower>() == true ? ValueProp.Move : ValueProp.Move | ValueProp.Unpowered;
             PreviewValue = runGlobalHooks && card.Owner != null && (card.CombatState ?? card.Owner.Creature.CombatState) is { } combat
-                ? Hook.ModifyDamage(card.Owner.RunState, combat, target, card.Owner.Creature, raw, Props, card,
+                ? Hook.ModifyDamage(card.Owner.RunState, combat, target, card.Owner.Creature, raw, Props, card, null,
                     ModifyDamageHookType.All, previewMode, out _) : raw;
         }
     }
@@ -46,7 +46,7 @@ public sealed class Counterargument : EmaTrialCard
     {
         if (play.Target is not { } target || CombatState is not { } combat) return;
         await WitchEncyclopediaState.Present(context, Owner, SelectionScreenPrompt);
-        await AttackTrialTarget(context, target, DynamicVars.Damage.BaseValue + ArgumentBonus(this));
+        await AttackTrialTarget(context, target, DynamicVars.Damage.BaseValue + ArgumentBonus(this), play);
         CardCmd.PreviewCardPileAdd(await EmaCardGeneration.Add(combat.CreateCard<Statement>(Owner), PileType.Hand, Owner));
     }
     protected override void OnUpgrade()

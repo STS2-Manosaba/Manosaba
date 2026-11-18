@@ -29,7 +29,7 @@ public abstract class TestimonyCardBase : PathCustomCardModel
         ..TestimonyVars,
     ];
 
-    protected override PileType GetResultPileTypeForCardPlay() => WitchEncyclopediaState.PileType;
+    protected override MegaCrit.Sts2.Core.Entities.Cards.CardLocation GetResultLocationForCardPlay() => new(Owner, WitchEncyclopediaState.PileType, MegaCrit.Sts2.Core.Entities.Cards.CardPilePosition.Bottom);
 
     protected virtual IEnumerable<DynamicVar> TestimonyVars => [];
 

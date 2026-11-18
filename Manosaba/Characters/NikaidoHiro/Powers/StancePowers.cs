@@ -61,7 +61,7 @@ namespace Manosaba.Characters.NikaidoHiro.Powers
             await PowerCmd.Remove<LowStancePower>(Owner);
         }
 
-        public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+        public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay)
         {
             if (!ShouldAffectDamage(props))
             {
@@ -104,7 +104,7 @@ namespace Manosaba.Characters.NikaidoHiro.Powers
             await PowerCmd.Remove<MidStancePower>(Owner);
         }
 
-        public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+        public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay)
         {
             if (!ShouldAffectDamage(props))
             {

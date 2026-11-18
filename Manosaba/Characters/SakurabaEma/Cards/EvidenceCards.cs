@@ -27,7 +27,7 @@ public abstract class EvidenceCard : PathCustomCardModel
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromKeyword(ManosabaKeywords.Evidence), WitchEncyclopediaState.HoverTip, ..EvidenceHoverTips];
 
     protected EvidenceCard(CardType type, TargetType target) : base(0, type, CardRarity.Token, target, true) { }
-    protected override PileType GetResultPileTypeForCardPlay() => WitchEncyclopediaState.PileType;
+    protected override MegaCrit.Sts2.Core.Entities.Cards.CardLocation GetResultLocationForCardPlay() => new(Owner, WitchEncyclopediaState.PileType, MegaCrit.Sts2.Core.Entities.Cards.CardPilePosition.Bottom);
     // Evidence has no upgrade effects by design; it is a reusable generated token.
     protected override void OnUpgrade() { }
 }
@@ -41,7 +41,7 @@ public sealed class BrokenCrossbowEvidence : EvidenceCard
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Target is { } target)
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(target).Execute(choiceContext);
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this, cardPlay).Targeting(target).Execute(choiceContext);
     }
 }
 

@@ -49,7 +49,7 @@ public sealed class RedPaintOrb : ManosabaOrbModel
             return;
         }
 
-        Trigger();
+        ActivatePassive();
         PlayPassiveSfx();
         await CreatureCmd.Damage(choiceContext, chosen, PassiveVal, ValueProp.Unpowered, Owner.Creature);
     }
@@ -69,7 +69,7 @@ public sealed class RedPaintOrb : ManosabaOrbModel
             return [];
         }
 
-        await CreatureCmd.Damage(playerChoiceContext, enemies, EvokeVal, ValueProp.Unpowered, Owner.Creature, null);
+        await CreatureCmd.Damage(playerChoiceContext, enemies, EvokeVal, ValueProp.Unpowered, Owner.Creature, null, null);
         return enemies;
     }
 }

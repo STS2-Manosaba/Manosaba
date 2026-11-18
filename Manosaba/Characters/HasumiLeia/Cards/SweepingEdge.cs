@@ -38,7 +38,7 @@ namespace Manosaba.Characters.HasumiLeia.Cards
             if (combatState == null)
                 return;
 
-            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this)
+            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this, cardPlay)
             .TargetingAllOpponentsCompat(combatState)
             .Execute(choiceContext);
 

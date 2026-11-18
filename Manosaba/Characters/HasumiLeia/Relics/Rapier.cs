@@ -104,7 +104,7 @@ namespace manosaba.Characters.HasumiLeia.Relics
                             parryDealer = null;
                         }
 
-                        await CreatureCmd.Damage(choiceContext, dealer, damage, parryProps, parryDealer, null);
+                        await CreatureCmd.Damage(choiceContext, dealer, damage, parryProps, parryDealer, null, null);
                         if (parryProps.HasFlag(ValueProp.Move))
                         {
                             dealtPoweredReflectDamage = true;

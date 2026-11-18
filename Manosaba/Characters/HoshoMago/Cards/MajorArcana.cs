@@ -265,7 +265,7 @@ public sealed class TheEmpress : HoshoMagoArcanaBase
         AttackCommand attackCommand = await DamageCmd
             .Attack(DynamicVars.CalculatedDamage)
             .Targeting(target)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Execute(choiceContext);
         IEnumerable<DamageResult> results = attackCommand.Results.SelectMany(hit => hit);
         int totalUnblockedDamage = results.Where(result => result.Receiver.IsEnemy).Sum(result => result.UnblockedDamage);
@@ -304,7 +304,7 @@ public sealed class TheEmperor : HoshoMagoArcanaBase
         }
 
         await DamageCmd.Attack(DynamicVars.CalculatedDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
     }
@@ -422,7 +422,7 @@ public sealed class TheChariot : HoshoMagoArcanaBase
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(hitCount)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .TargetingAllOpponentsCompat(CombatState)
             .Execute(choiceContext);
     }
@@ -809,7 +809,7 @@ public sealed class TheTower : HoshoMagoArcanaBase
         if (enemies.Count > 0)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .TargetingAllOpponentsCompat(combatState)
                 .Execute(choiceContext);
         }
@@ -927,7 +927,7 @@ public sealed class TheMoon : HoshoMagoArcanaBase
         }
 
         await DamageCmd.Attack(DynamicVars.CalculatedDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
     }

@@ -81,7 +81,7 @@ public sealed class FlameBait : PathCustomCardModel
                         card.Owner.Creature,
                         num,
                         Props,
-                        card,
+                        card, null,
                         ModifyDamageHookType.All,
                         previewMode,
                         out IEnumerable<AbstractModel> _);
@@ -128,10 +128,10 @@ public sealed class FlameBait : PathCustomCardModel
             ownerCreature,
             DynamicVars.HpLoss.BaseValue,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
-            this);
+            this, null);
 
         await DamageCmd.Attack(DynamicVars.CalculatedDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
     }

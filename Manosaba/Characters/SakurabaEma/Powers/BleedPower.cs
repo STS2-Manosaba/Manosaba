@@ -44,7 +44,7 @@ public sealed class BleedPower : PathCustomPowerModel
 
         decimal damage = GetTriggerDamage();
         await PowerCmd.Remove(this);
-        await CreatureCmd.Damage(choiceContext, Owner, damage, ValueProp.Unpowered, Owner, null);
+        await CreatureCmd.Damage(choiceContext, Owner, damage, ValueProp.Unpowered, Owner, null, null);
     }
 
     private void RefreshDynamicValues()

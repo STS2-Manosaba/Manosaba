@@ -49,7 +49,7 @@ public sealed class Fireball : ShitoAlisaCardModel
         if (IsUpgraded)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .TargetingAllOpponentsCompat(state)
                 .Execute(choiceContext);
         }
@@ -57,7 +57,7 @@ public sealed class Fireball : ShitoAlisaCardModel
         {
             ArgumentNullException.ThrowIfNull(cardPlay.Target, nameof(cardPlay.Target));
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(cardPlay.Target)
                 .Execute(choiceContext);
         }

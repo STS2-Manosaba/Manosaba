@@ -36,7 +36,7 @@ namespace Manosaba.Characters.Common.Cards
             }
 
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
 

@@ -44,7 +44,7 @@ public sealed class AscensionElevator : PathCustomCardModel
         if (firstFace == EelFace && secondFace == EelFace)
         {
             await DamageCmd.Attack(DynamicVars["DoubleEelDamage"].BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(ownerCreature)
                 .Execute(choiceContext);
             return;
@@ -53,7 +53,7 @@ public sealed class AscensionElevator : PathCustomCardModel
         if (firstFace == ElevatorFace && secondFace == ElevatorFace)
         {
             await DamageCmd.Attack(DynamicVars["DoubleElevatorDamage"].BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(target)
                 .Execute(choiceContext);
             return;
@@ -69,7 +69,7 @@ public sealed class AscensionElevator : PathCustomCardModel
         if (damage > 0m)
         {
             await DamageCmd.Attack(damage)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(target)
                 .Execute(choiceContext);
         }

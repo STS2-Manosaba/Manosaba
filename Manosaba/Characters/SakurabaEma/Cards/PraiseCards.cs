@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using Manosaba.Characters.Common.Overrides;
 using Manosaba.Characters.Common.Powers;
 using Manosaba.Extensions;
@@ -58,7 +58,7 @@ public sealed class ShiDes : PathCustomCardModel
         if (play.Target is { } target)
         {
             await PlayOwnerAttackAnimAsync();
-            await CreatureCmd.Damage(context, target, target.GetPowerAmount<MajokaPower>(), ValueProp.Move | ValueProp.Unpowered | ValueProp.Unblockable, Owner.Creature, this);
+            await CreatureCmd.Damage(context, target, target.GetPowerAmount<MajokaPower>(), ValueProp.Move | ValueProp.Unpowered | ValueProp.Unblockable, Owner.Creature, this, null);
         }
     }
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);
@@ -94,13 +94,13 @@ public sealed class DArime : EmaTrialCard
     {
         if (play.Target is not { } target || CombatState is not { } combat) return;
         await EmaTrialPresentation.Play(this);
-        await using var attack = await AttackCommand.CreateContextAsync(combat, context, this);
+        await using var attack = await AttackCommand.CreateContextAsync(combat, context, play);
         while (target.IsAlive && Owner.Creature.IsAlive && !MegaCrit.Sts2.Core.Combat.CombatManager.Instance.IsOverOrEnding)
         {
             CardModel? drawn = await CardPileCmd.Draw(context, Owner);
             if (drawn == null || !drawn.Keywords.Contains(ManosabaKeywords.Trial)) break;
             await CardCmd.Exhaust(context, drawn);
-            await DealTrialHit(attack, context, target, DynamicVars.Damage.BaseValue);
+            await DealTrialHit(attack, context, target, DynamicVars.Damage.BaseValue, play);
         }
     }
     protected override void OnUpgrade() => AddKeyword(CardKeyword.Retain);

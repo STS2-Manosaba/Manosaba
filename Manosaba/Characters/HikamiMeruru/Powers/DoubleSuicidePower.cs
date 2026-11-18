@@ -19,7 +19,7 @@ namespace Manosaba.Characters.HikamiMeruru.Powers
 
         protected override IEnumerable<DynamicVar> CanonicalVars => [new ExtraDamageVar(3)];
 
-        public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+        public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay)
         {
             if (target != Owner)
             {

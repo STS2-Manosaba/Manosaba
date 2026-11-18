@@ -47,7 +47,7 @@ public sealed class PunkCatHeadwear : EquipmentCardModel
             return;
         }
 
-        await CreatureCmd.Damage(choiceContext, combatState.HittableEnemies, damage, ValueProp.Move, dealer, this);
+        await CreatureCmd.Damage(choiceContext, combatState.HittableEnemies, damage, ValueProp.Move, dealer, this, null);
     }
 
     protected override void OnUpgrade()
@@ -85,7 +85,7 @@ public sealed class PunkCatTop : EquipmentCardModel
             : 1 + GetLiveStreamHitBonus(Owner.Creature);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(hitCount)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
     }
@@ -126,7 +126,7 @@ public sealed class PunkCatSkirt : EquipmentCardModel
         }
 
         await DamageCmd.Attack(DynamicVars.CalculatedDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
 
@@ -164,7 +164,7 @@ public sealed class PunkCatShoes : EquipmentCardModel
         }
 
         await DamageCmd.Attack(DynamicVars.CalculatedDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
     }

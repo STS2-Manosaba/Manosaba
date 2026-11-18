@@ -48,6 +48,6 @@ public sealed class AccomplicePower : PathCustomPowerModel
         if (enemy == null)
             return;
 
-        await CreatureCmd.Damage(choiceContext, enemy, DynamicVars.Damage.BaseValue, ValueProp.Unpowered, source, null);
+        await CreatureCmd.Damage(choiceContext, enemy, DynamicVars.Damage.BaseValue, ValueProp.Unpowered, source, null, null);
     }
 }

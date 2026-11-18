@@ -53,7 +53,7 @@ public sealed class BasementExplorationEvent : CustomEventModel
                 EscapeHpLoss,
                 ValueProp.Unblockable | ValueProp.Unpowered,
                 null,
-                null);
+                null, null);
 
             List<CardModel> selected = (await CardSelectCmd.FromDeckForRemoval(
                 Owner,

@@ -50,7 +50,7 @@ public sealed class PureEmaPower : EmaPraisePower
 
 public sealed class KindEmaPower : EmaPraisePower
 {
-    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource) =>
+    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay) =>
         target == Owner ? 0.9m : 1m;
     public override async Task BeforeSideTurnEnd(PlayerChoiceContext context, CombatSide side, IEnumerable<Creature> participants)
     {
@@ -78,6 +78,6 @@ public sealed class DeathSentencePower : PathCustomPowerModel
     public override string CustomPackedIconPath => "res://Manosaba/images/powers/guilt_power.png";
     public override string CustomBigIconPath => CustomPackedIconPath;
     public override string CustomBigBetaIconPath => CustomPackedIconPath;
-    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource) =>
+    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay) =>
         target == Owner && cardSource?.Keywords.Contains(ManosabaKeywords.Execution) == true ? 1.2m : 1m;
 }

@@ -42,7 +42,7 @@ public sealed class BloodOrb : ManosabaOrbModel
             throw new InvalidOperationException("Blood orbs cannot target creatures.");
         }
 
-        Trigger();
+        ActivatePassive();
         PlayPassiveSfx();
         AddLayers(1m);
         return Task.CompletedTask;
@@ -50,7 +50,7 @@ public sealed class BloodOrb : ManosabaOrbModel
 
     public override async Task<IEnumerable<Creature>> Evoke(PlayerChoiceContext playerChoiceContext)
     {
-        Trigger();
+        ActivateEvoke([Owner.Creature]);
         PlayEvokeSfx();
         await CreatureCmd.Heal(Owner.Creature, EvokeVal);
         return [Owner.Creature];

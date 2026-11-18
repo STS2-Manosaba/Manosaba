@@ -40,7 +40,7 @@ public class BurnPower : PathCustomPowerModel
             return (int)base.Amount;
         }
 
-        decimal damage = Hook.ModifyDamage(combatState.RunState, combatState, base.Owner, null, base.Amount, ValueProp.Unblockable | ValueProp.Unpowered, null, ModifyDamageHookType.All, CardPreviewMode.None, out IEnumerable<AbstractModel> _);
+        decimal damage = Hook.ModifyDamage(combatState.RunState, combatState, base.Owner, null, base.Amount, ValueProp.Unblockable | ValueProp.Unpowered, null, null, ModifyDamageHookType.All, CardPreviewMode.None, out IEnumerable<AbstractModel> _);
         return (int)damage;
     }
 
@@ -93,7 +93,7 @@ public class BurnPower : PathCustomPowerModel
                 break;
             }
 
-            await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), base.Owner, base.Amount, ValueProp.Unblockable | ValueProp.Unpowered, null, null);
+            await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), base.Owner, base.Amount, ValueProp.Unblockable | ValueProp.Unpowered, null, null, null);
             if (!base.Owner.IsAlive)
             {
                 await Cmd.CustomScaledWait(0.1f, 0.25f);

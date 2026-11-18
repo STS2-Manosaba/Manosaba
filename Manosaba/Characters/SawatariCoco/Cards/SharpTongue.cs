@@ -48,7 +48,7 @@ public sealed class SharpTongue : PathCustomCardModel
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(DynamicVars.Repeat.IntValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .TargetingAllOpponentsCompat(combatState)
             .Execute(choiceContext);
 

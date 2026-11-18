@@ -49,7 +49,7 @@ public sealed class Rebuttal : EmaTrialCard
                         card.Owner.Creature,
                         raw,
                         props,
-                        card,
+                        card, null,
                         ModifyDamageHookType.All,
                         previewMode,
                         out IEnumerable<AbstractModel> _);
@@ -90,7 +90,7 @@ public sealed class Rebuttal : EmaTrialCard
 
         decimal count = ProgressReady(this) ? WitchEncyclopediaState.CardCount(Owner) : 0;
         decimal damage = DynamicVars.Damage.BaseValue + count * DynamicVars["DamagePerCard"].BaseValue;
-        await AttackTrialTarget(choiceContext, cardPlay.Target, damage);
+        await AttackTrialTarget(choiceContext, cardPlay.Target, damage, cardPlay);
     }
 
     protected override void OnUpgrade()

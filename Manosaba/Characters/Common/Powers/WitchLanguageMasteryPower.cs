@@ -47,6 +47,6 @@ public sealed class WitchLanguageMasteryPower : PathCustomPowerModel
         Flash();
         decimal loss = (decimal)result.TotalDamage * MultiplierPerStack * Amount;
         await CreatureCmd.Damage(context, combat.GetOpponentsOf(Owner).Where(enemy => enemy.IsAlive),
-            loss, DamageProps.nonCardHpLoss, null, null);
+            loss, DamageProps.nonCardHpLoss, null, null, null);
     }
 }

@@ -28,7 +28,7 @@ public sealed class LibraryMagnifyingGlass : PathCustomRelicModel
         Owner.Creature.GetPowerAmount<GuiltPower>() * DynamicVars["PerStack"].BaseValue);
 
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props,
-        Creature? dealer, CardModel? cardSource) => dealer == Owner.Creature && !props.HasFlag(ValueProp.Unpowered) ? Bonus : 0;
+        Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay) => dealer == Owner.Creature && !props.HasFlag(ValueProp.Unpowered) ? Bonus : 0;
 
     public override decimal ModifyBlockAdditive(Creature target, decimal block, ValueProp props,
         CardModel? cardSource, CardPlay? cardPlay) => target == Owner.Creature && props.IsPoweredCardOrMonsterMoveBlock() ? Bonus : 0;

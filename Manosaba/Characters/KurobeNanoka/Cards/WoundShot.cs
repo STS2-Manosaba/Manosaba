@@ -47,7 +47,7 @@ public class WoundShot : GunBase
         var target = cardPlay.Target;
         if (target == null)
             return;
-        await ExecuteGunAttack(choiceContext, target, DynamicVars.Damage.BaseValue);
+        await ExecuteGunAttack(choiceContext, target, DynamicVars.Damage.BaseValue, cardPlay);
         await CommonActions.Apply<VulnerablePower>(choiceContext, target, this, DynamicVars.Vulnerable.BaseValue);
     }
 

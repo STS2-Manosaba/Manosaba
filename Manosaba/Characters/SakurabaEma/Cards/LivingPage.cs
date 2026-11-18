@@ -52,7 +52,7 @@ public sealed class LivingPage : PathCustomCardModel
         decimal damage = DynamicVars.Damage.BaseValue + previousUses * DynamicVars["DamagePerUse"].BaseValue;
 
         await DamageCmd.Attack(damage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 

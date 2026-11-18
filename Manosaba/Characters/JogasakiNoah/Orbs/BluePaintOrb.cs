@@ -30,7 +30,7 @@ public sealed class BluePaintOrb : ManosabaOrbModel
             throw new InvalidOperationException("Blue paint orb cannot target creatures.");
         }
 
-        Trigger();
+        ActivatePassive();
         PlayPassiveSfx();
         await CreatureCmd.GainBlock(Owner.Creature, PassiveVal, ValueProp.Unpowered, null);
     }

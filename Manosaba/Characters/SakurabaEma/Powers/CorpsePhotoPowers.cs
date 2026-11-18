@@ -47,7 +47,7 @@ public sealed class RedButterflyPower : CappedCorpsePhotoPower
     public override string CustomPackedIconPath => "res://Manosaba/images/powers/liquid_manipulation_power.png";
     public override string CustomBigIconPath => CustomPackedIconPath;
     public override string CustomBigBetaIconPath => CustomPackedIconPath;
-    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource) =>
+    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay) =>
         target == Owner ? -Math.Min(Amount, 5) : 0;
 }
 
@@ -70,7 +70,7 @@ public sealed class LightnessPower : PathCustomPowerModel
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<DexterityPower>()];
-    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource) =>
+    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay) =>
         dealer == Owner && cardSource?.Type == CardType.Attack && props.HasFlag(ValueProp.Move) ? Owner.GetPowerAmount<DexterityPower>() : 0;
     public override async Task AfterSideTurnEnd(PlayerChoiceContext context, CombatSide side, IEnumerable<Creature> participants)
     {

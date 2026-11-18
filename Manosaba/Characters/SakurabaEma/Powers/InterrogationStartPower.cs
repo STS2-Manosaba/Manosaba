@@ -22,7 +22,7 @@ public sealed class InterrogationStartPower : FieldPowerModel
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<GuiltPower>()];
 
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props,
-        Creature? dealer, CardModel? cardSource)
+        Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay)
     {
         bool trialAttack = IsTrialAttack(props, cardSource);
         bool culpritAttack = dealer?.GetPowerAmount<TrueCulpritPower>() > 0 && props.IsPoweredAttack();

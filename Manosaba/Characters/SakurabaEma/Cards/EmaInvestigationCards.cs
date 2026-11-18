@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using Manosaba.Characters.Common.Overrides;
 using Manosaba.Characters.Common.Powers;
 using Manosaba.Extensions;
@@ -160,15 +160,15 @@ public sealed class WitchHammer : EmaTrialCard
         if (play.Target is not { } target || CombatState is not { } combat) return;
         await WitchEncyclopediaState.Present(context, Owner, SelectionScreenPrompt);
         if (!target.IsAlive || !Owner.Creature.IsAlive) return;
-        await using var attack = await AttackCommand.CreateContextAsync(combat, context, this);
-        await DealTrialHit(attack, context, target, DynamicVars.Damage.BaseValue);
+        await using var attack = await AttackCommand.CreateContextAsync(combat, context, play);
+        await DealTrialHit(attack, context, target, DynamicVars.Damage.BaseValue, play);
         if (!ProgressReady(this)) return;
         // Snapshot after the opening hit, so its damage-triggered effects are included.
         int hits = (target.HasPower<BurnPower>() ? 1 : 0) + (target.HasPower<MajokaPower>() ? 1 : 0)
             + (target.HasPower<VulnerablePower>() ? 1 : 0) + (target.HasPower<WeakPower>() ? 1 : 0)
             + (target.HasPower<BleedPower>() ? 1 : 0);
         for (int i = 0; i < hits && target.IsAlive && Owner.Creature.IsAlive; i++)
-            await DealTrialHit(attack, context, target, DynamicVars["ExtraDamage"].BaseValue);
+            await DealTrialHit(attack, context, target, DynamicVars["ExtraDamage"].BaseValue, play);
     }
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(5m);
 }

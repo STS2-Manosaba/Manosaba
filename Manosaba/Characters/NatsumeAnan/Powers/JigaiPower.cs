@@ -35,6 +35,6 @@ public sealed class JigaiPower : ManosabaTemporaryStrengthPower
             Amount,
             ValueProp.Unblockable | ValueProp.Unpowered,
             null,
-            null);
+            null, null);
     }
 }

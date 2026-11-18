@@ -45,7 +45,7 @@ namespace Manosaba.Characters.SaekiMiria.Powers
         }
 
 
-        public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+        public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay)
         {
             if (target != base.Owner)
             {

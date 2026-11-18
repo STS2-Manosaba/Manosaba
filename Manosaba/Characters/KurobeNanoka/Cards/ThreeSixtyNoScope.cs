@@ -64,7 +64,7 @@ public sealed class ThreeSixtyNoScope : GunBase
             await CreatureCmd.Kill(target);
             return;
         }
-        await ExecuteGunAttack(choiceContext, target, DynamicVars.Damage.BaseValue);
+        await ExecuteGunAttack(choiceContext, target, DynamicVars.Damage.BaseValue, cardPlay);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
     }
 

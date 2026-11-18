@@ -43,7 +43,7 @@ namespace Manosaba.Characters.Common.Cards
         protected override async Task OnTurnEndInHand(PlayerChoiceContext choiceContext)
         {
             VfxCmd.PlayOnCreatureCenter(base.Owner.Creature, "vfx/vfx_bloody_impact");
-            await CreatureCmd.Damage(choiceContext, base.Owner.Creature, base.DynamicVars.Damage, this);
+            await CreatureCmd.Damage(choiceContext, base.Owner.Creature, base.DynamicVars.Damage, this, null);
         }
     }
 }

@@ -324,7 +324,7 @@ internal static class SawatariCocoCardDynamicVars
                         calculatedVar.IsFromOsty ? card.Owner.Osty : card.Owner.Creature,
                         num,
                         calculatedVar.Props,
-                        card,
+                        card, null,
                         ModifyDamageHookType.All,
                         previewMode,
                         out IEnumerable<AbstractModel> _);

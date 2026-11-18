@@ -69,7 +69,7 @@ public sealed class PiercingBlood : SekketsusoujitsuAttackCard
 
         decimal bloodBonus = await ConsumeBloodOrbDamageBonus(choiceContext);
         await DamageCmd.Attack(DynamicVars.CalculationBase.BaseValue + bloodBonus)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
     }
@@ -111,7 +111,7 @@ public sealed class SuperNova : SekketsusoujitsuAttackCard
         decimal bloodBonus = await ConsumeBloodOrbDamageBonus(choiceContext);
         await DamageCmd.Attack(DynamicVars.CalculationBase.BaseValue + bloodBonus)
             .WithHitCount(DynamicVars.Repeat.IntValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .TargetingAllOpponentsCompat(CombatState)
             .Execute(choiceContext);
     }
@@ -168,7 +168,7 @@ public sealed class Kesseiseki : SekketsusoujitsuAttackCard
 
         decimal bloodBonus = await ConsumeBloodOrbDamageBonus(choiceContext);
         await DamageCmd.Attack(DynamicVars.CalculationBase.BaseValue + bloodBonus)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
     }
@@ -237,7 +237,7 @@ public sealed class Karibarai : SekketsusoujitsuAttackCard
         }
 
         await DamageCmd.Attack(damage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
     }
@@ -317,7 +317,7 @@ public sealed class BloodDraw : PathCustomCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.Damage(choiceContext, Owner.Creature, DynamicVars.Damage.BaseValue, DynamicVars.Damage.Props, Owner.Creature, this);
+        await CreatureCmd.Damage(choiceContext, Owner.Creature, DynamicVars.Damage.BaseValue, DynamicVars.Damage.Props, Owner.Creature, this, cardPlay);
 
         for (int i = 0; i < DynamicVars.Repeat.IntValue; i++)
         {

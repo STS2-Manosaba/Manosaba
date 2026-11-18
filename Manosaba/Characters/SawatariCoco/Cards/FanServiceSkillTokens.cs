@@ -102,6 +102,6 @@ public sealed class FanServiceRoastTimeToken : FanServiceEventTokenBase
             return;
         }
 
-        await CreatureCmd.Damage(choiceContext, combatState.HittableEnemies, damage, ValueProp.Unpowered, dealer, this);
+        await CreatureCmd.Damage(choiceContext, combatState.HittableEnemies, damage, ValueProp.Unpowered, dealer, this, null);
     }
 }

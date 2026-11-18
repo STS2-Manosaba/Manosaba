@@ -49,7 +49,7 @@ public sealed class PurplePaintOrb : ManosabaOrbModel
             return;
         }
 
-        Trigger();
+        ActivatePassive();
         PlayPassiveSfx();
         await CommonActions.Apply<DoomPower>(choiceContext, chosen, null, PassiveVal);
     }

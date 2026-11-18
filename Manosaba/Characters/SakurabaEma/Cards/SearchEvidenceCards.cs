@@ -60,9 +60,9 @@ public abstract class SearchEvidenceCard : EvidenceCard
     {
         foreach (Player player in MatchingPlayers(id)) await Apply<T>(context, player.Creature, amount);
     }
-    protected async Task Hit(PlayerChoiceContext context, Creature? target)
+    protected async Task Hit(PlayerChoiceContext context, Creature? target, CardPlay play)
     {
-        if (target is { IsAlive: true }) await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(target).Execute(context);
+        if (target is { IsAlive: true }) await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this, play).Targeting(target).Execute(context);
     }
     protected async Task Generate(CardModel canonical)
     {
@@ -119,7 +119,7 @@ public sealed class BloodstainedHairRibbon : SearchEvidenceCard
     protected override IEnumerable<IHoverTip> EvidenceHoverTips => [HoverTipFactory.FromPower<MajokaPower>()];
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
-        await Hit(context, RandomEnemy());
+        await Hit(context, RandomEnemy(), play);
         await BuffMatches<MajokaPower>(context, "kurobe_nanoka", 5);
     }
 }
@@ -134,7 +134,7 @@ public sealed class CocoStreamArchive : SearchEvidenceCard
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
         if (CombatState is { } combat && Enemies.Count > 0)
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(combat).Execute(context);
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this, play).TargetingAllOpponents(combat).Execute(context);
         await BuffMatches<LiveStreamModePower>(context, "sawatari_coco", 1);
     }
 }
@@ -214,7 +214,7 @@ public sealed class StoreroomBulletMarks : SearchEvidenceCard
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(1, ValueProp.Move), new BlockVar(1, ValueProp.Move)];
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
-        await Hit(context, RandomEnemy());
+        await Hit(context, RandomEnemy(), play);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play);
     }
 }
@@ -263,7 +263,7 @@ public sealed class BrokenElectricChair : SearchEvidenceCard
     {
         Creature? target = RandomEnemy();
         if (target is { IsAlive: true })
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(target).WithHitCount(3).Execute(context);
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this, play).Targeting(target).WithHitCount(3).Execute(context);
     }
 }
 

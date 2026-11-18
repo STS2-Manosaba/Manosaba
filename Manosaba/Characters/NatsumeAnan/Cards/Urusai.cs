@@ -59,7 +59,7 @@ public sealed class Urusai : NatsumeKotodamaCardModel
 
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .WithHitCount(hits)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .TargetingRandomOpponents(combatState)
                 .Execute(choiceContext);
         }

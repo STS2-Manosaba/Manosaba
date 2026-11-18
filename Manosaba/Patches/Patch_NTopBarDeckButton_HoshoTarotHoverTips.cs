@@ -44,7 +44,7 @@ public static class Patch_NTopBarDeckButton_HoshoTarotHoverTips
 
         string tarotCollectionText = BuildTarotCollectionText(tarotPool, ownedTarotIds);
         LocString deckTitle = new LocString("static_hover_tips", "DECK.title");
-        string hotkey = NInputManager.Instance?.GetShortcutKey(MegaInput.viewDeckAndTabLeft).ToString() ?? string.Empty;
+        string hotkey = NInputManager.Instance?.GetCurrentHotkey(MegaInput.viewDeckAndTabLeft).ToString() ?? string.Empty;
         deckTitle.Add("Hotkey", hotkey);
         IEnumerable<IHoverTip> tips =
         [

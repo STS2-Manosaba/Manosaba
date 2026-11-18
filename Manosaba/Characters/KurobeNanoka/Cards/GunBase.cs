@@ -65,7 +65,7 @@ public abstract class GunBase : PathCustomCardModel
         return true;
     }
 
-    protected Task ExecuteGunAttack(PlayerChoiceContext choiceContext, Creature target, decimal damage)
+    protected Task ExecuteGunAttack(PlayerChoiceContext choiceContext, Creature target, decimal damage, CardPlay cardPlay)
     {
         Console.WriteLine($"[GunBase] Executing gun attack. card={Id} ownerNetId={Owner?.NetId} ownerName={Owner?.Creature?.Name} target={target?.Name} damage={damage} spentBulletsThisPlay={SpentBulletsThisPlay}");
         return DamageCmd.Attack(damage)
@@ -73,7 +73,7 @@ public abstract class GunBase : PathCustomCardModel
             .WithHitFx(
                 vfx: "vfx/vfx_attack_blunt",
                 sfx: NanokaHelper.GUN_SHOT_SFX)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target!)
             .Execute(choiceContext);
     }

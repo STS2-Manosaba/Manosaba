@@ -47,7 +47,7 @@ namespace Manosaba.Characters.Common.Cards
                 return;
 
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
         }

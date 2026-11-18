@@ -42,7 +42,7 @@ namespace Manosaba.Characters.Common.Cards
                 .Attack(DynamicVars.Damage.BaseValue)
                 .WithHitCount(num)
                 .WithHitFx(vfx: "vfx/vfx_attack_lightning", sfx: EvokeSfx)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .TargetingRandomOpponents(CombatState)
                 .Execute(choiceContext);
         }
@@ -71,7 +71,7 @@ namespace Manosaba.Characters.Common.Cards
             VfxCmd.PlayOnCreature(target, "vfx/vfx_attack_lightning");
 
             PlayEvokeSfx();
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(target).Execute(choiceContext);
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this, null).Targeting(target).Execute(choiceContext);
             return;
         }
 

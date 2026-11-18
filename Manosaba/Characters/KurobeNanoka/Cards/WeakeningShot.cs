@@ -47,7 +47,7 @@ public class WeakeningShot : GunBase
         var target = cardPlay.Target;
         if (target == null)
             return;
-        await ExecuteGunAttack(choiceContext, target, DynamicVars.Damage.BaseValue);
+        await ExecuteGunAttack(choiceContext, target, DynamicVars.Damage.BaseValue, cardPlay);
         await CommonActions.Apply<WeakPower>(choiceContext, target, this, DynamicVars.Weak.BaseValue);
     }
 

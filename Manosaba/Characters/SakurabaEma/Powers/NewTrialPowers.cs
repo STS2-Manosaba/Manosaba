@@ -36,7 +36,7 @@ public sealed class ScabbardPower : PathCustomPowerModel
     public override PowerStackType StackType => PowerStackType.Single;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("DamageCap", 10m)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<MurderousImpulsePower>()];
-    public override decimal ModifyDamageCap(Creature? target, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public override decimal ModifyDamageCap(Creature? target, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay)
     {
         var attackingPlayer = dealer?.Player ?? cardSource?.Owner;
         return target == Owner && attackingPlayer != null && attackingPlayer != Owner.Player &&

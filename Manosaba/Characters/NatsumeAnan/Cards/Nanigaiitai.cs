@@ -43,7 +43,7 @@ public sealed class Nanigaiitai : NatsumeKotodamaCardModel
         }
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .TargetingAllOpponentsCompat(combatState)
             .Execute(choiceContext);
 

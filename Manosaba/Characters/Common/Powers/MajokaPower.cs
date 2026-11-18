@@ -56,7 +56,7 @@ namespace Manosaba.Characters.Common.Powers
             { "sawatari_coco", typeof(Clairvoyance)},
         };
 
-        public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+        public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay)
         {
             if (base.Owner != dealer)
             {

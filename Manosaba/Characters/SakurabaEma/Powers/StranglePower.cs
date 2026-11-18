@@ -24,7 +24,7 @@ public sealed class StranglePower : PathCustomPowerModel
 
         Flash();
         if (Amount > 0m)
-            await CreatureCmd.Damage(context, Owner, Amount, DamageProps.nonCardHpLoss, null, null);
+            await CreatureCmd.Damage(context, Owner, Amount, DamageProps.nonCardHpLoss, null, null, null);
     }
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> creatures)

@@ -15,7 +15,7 @@ namespace Manosaba.Characters.TachibanaSherry.Powers
 
         protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<HangingKill>()];
 
-        public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+        public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay)
         {
             if (target != base.Owner)
                 return 1m;

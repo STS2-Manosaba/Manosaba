@@ -42,7 +42,7 @@ public sealed class HirosPen : PathCustomCardModel
         await CommonActions.Apply<VigorPower>(choiceContext, Owner.Creature, this, DynamicVars[nameof(VigorPower)].BaseValue);
     }
 
-    protected override PileType GetResultPileTypeForCardPlay() => WitchEncyclopediaState.PileType;
+    protected override MegaCrit.Sts2.Core.Entities.Cards.CardLocation GetResultLocationForCardPlay() => new(Owner, WitchEncyclopediaState.PileType, MegaCrit.Sts2.Core.Entities.Cards.CardPilePosition.Bottom);
 
     protected override void OnUpgrade() => DynamicVars[nameof(VigorPower)].UpgradeValueBy(2m);
 }

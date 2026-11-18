@@ -29,7 +29,7 @@ namespace Manosaba.Characters.NikaidoHiro.Powers
             _sourceCard = sourceCard;
         }
 
-        public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+        public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay)
         {
             if (target != Owner)
             {
@@ -73,7 +73,7 @@ namespace Manosaba.Characters.NikaidoHiro.Powers
                 var attackBuilder = DamageCmd.Attack(Amount);
                 if (_sourceCard != null)
                 {
-                    attackBuilder = attackBuilder.FromCard(_sourceCard);
+                    attackBuilder = attackBuilder.FromCard(_sourceCard, null);
                 }
 
                 await attackBuilder

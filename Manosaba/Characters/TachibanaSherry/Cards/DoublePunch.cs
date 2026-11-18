@@ -42,7 +42,7 @@ namespace Manosaba.Characters.TachibanaSherry.Cards
             }
 
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(target)
                 .WithHitCount(hitCount)
                 .Execute(choiceContext);

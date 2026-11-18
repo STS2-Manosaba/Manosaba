@@ -104,7 +104,7 @@ public sealed class FireBreathingMagic : EmaMagicOption
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
         if (play.Target is not { } target) return;
-        await CreatureCmd.Damage(context, target, DynamicVars.Damage.BaseValue, ValueProp.Move, Owner.Creature, this);
+        await CreatureCmd.Damage(context, target, DynamicVars.Damage.BaseValue, ValueProp.Move, Owner.Creature, this, null);
         if (target.IsAlive) await CommonActions.Apply<BurnPower>(context, target, this, DynamicVars["BurnPower"].BaseValue);
     }
 }

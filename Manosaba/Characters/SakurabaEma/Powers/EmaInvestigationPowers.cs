@@ -33,7 +33,7 @@ public sealed class InformationNetworkPower : PathCustomPowerModel
         Creature? target = combat.RunState.Rng.CombatTargets.NextItem(enemies);
         if (target == null) return;
         Flash();
-        await CreatureCmd.Damage(context, target, DynamicVars["TriggerDamage"].BaseValue * Amount, ValueProp.Unpowered, Owner, null);
+        await CreatureCmd.Damage(context, target, DynamicVars["TriggerDamage"].BaseValue * Amount, ValueProp.Unpowered, Owner, null, null);
     }
 }
 

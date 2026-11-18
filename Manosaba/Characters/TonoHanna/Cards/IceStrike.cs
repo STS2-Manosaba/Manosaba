@@ -85,7 +85,7 @@ public class IceStrike : PathCustomCardModel
                         IsFromOsty ? card.Owner.Osty : card.Owner.Creature,
                         num,
                         Props,
-                        card,
+                        card, null,
                         ModifyDamageHookType.All,
                         previewMode,
                         out IEnumerable<AbstractModel> _);
@@ -127,7 +127,7 @@ public class IceStrike : PathCustomCardModel
         }
 
         await DamageCmd.Attack(DynamicVars.CalculatedDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
     }

@@ -23,7 +23,7 @@ public sealed class LibraryExecutionerPower : PathCustomPowerModel
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("PerGuilt", 2)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<GuiltPower>()];
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props,
-        Creature? dealer, CardModel? cardSource) => dealer == Owner && target != null && props.IsPoweredAttack()
+        Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay) => dealer == Owner && target != null && props.IsPoweredAttack()
         ? target.GetPowerAmount<GuiltPower>() * DynamicVars["PerGuilt"].BaseValue : 0;
 }
 

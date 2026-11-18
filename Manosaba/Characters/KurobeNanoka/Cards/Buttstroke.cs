@@ -49,7 +49,7 @@ public sealed class Buttstroke : PathCustomCardModel
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitFx(vfx: "vfx/vfx_attack_blunt", sfx: BluntHitSfx)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
 

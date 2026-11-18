@@ -31,7 +31,7 @@ namespace Manosaba.Characters.Common.Cards
             if (target == null)
                 return;
 
-            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(base.DynamicVars.Repeat.IntValue).FromCard(this)
+            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(base.DynamicVars.Repeat.IntValue).FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
         }

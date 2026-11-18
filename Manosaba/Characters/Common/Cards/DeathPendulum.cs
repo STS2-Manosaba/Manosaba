@@ -49,7 +49,7 @@ public sealed class DeathPendulum : PathCustomCardModel
         int hitCount = (int)((CalculatedVar)DynamicVars[calculatedHitsKey]).Calculate(null);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(hitCount)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .TargetingAllOpponentsCompat(combatState)
             .Execute(choiceContext);
     }

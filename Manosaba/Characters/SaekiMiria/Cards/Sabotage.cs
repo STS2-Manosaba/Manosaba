@@ -37,7 +37,7 @@ namespace Manosaba.Characters.SaekiMiria.Cards
             }
 
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(target)
                 .Execute(choiceContext);
             await CommonActions.Apply<VulnerablePower>(choiceContext, target, this, DynamicVars.Vulnerable.BaseValue);

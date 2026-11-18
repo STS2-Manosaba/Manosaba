@@ -78,20 +78,6 @@ public class Entry
 
         // Must run even when PatchAll fails — Godot scenes reference scripts from this assembly.
         ScriptManagerBridge.LookupScriptsInAssembly(typeof(Entry).Assembly);
-
-        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(manosaba.Characters.SakurabaEma.Cards.AccUhEartsIndictment));
-        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(DrawingBoard));
-        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(PhotoOfTheGreatWitch));
-        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(PenOfHiro));
-        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(SprayCanOfNoah));
-        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(CabinetKey));
-        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(MagnifyingGlass));
-        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(FeatherFan));
-        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(Ribbon));
-        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(LegIrons));
-        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(LegRing));
-        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(Clipboard));
-        SavedPropertiesTypeCache.InjectTypeIntoCache(typeof(LiveStreamingEquipment));
         PerfectGuardInputTracker.EnsureInstalled();
         CharacterSfxRegistry.Register(TachibanaSherry.CharacterId, SherrySfx.Instance);
         CharacterSfxRegistry.Register(SaekiMiria.CharacterId, SaekiMiriaSfx.Instance);

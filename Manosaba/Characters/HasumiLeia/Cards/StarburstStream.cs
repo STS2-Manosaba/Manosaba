@@ -89,7 +89,7 @@ public sealed class StarburstStream : PathCustomCardModel
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(HitCount)
             .WithHitFx("vfx/vfx_big_slash")
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
 
@@ -109,7 +109,7 @@ public sealed class StarburstStream : PathCustomCardModel
             string vfx = (i % 2 == 0) ? "vfx/vfx_big_slash" : "vfx/vfx_flying_slash";
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .WithHitFx(vfx)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(target)
                 .Execute(choiceContext);
 
@@ -125,7 +125,7 @@ public sealed class StarburstStream : PathCustomCardModel
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .WithHitCount(2)
                 .WithHitFx("vfx/vfx_dramatic_stab")
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(target)
                 .Execute(choiceContext);
 
@@ -143,7 +143,7 @@ public sealed class StarburstStream : PathCustomCardModel
                 // Small pause + big-hit VFX before the 17th (upgrade) hit.
                 await Cmd.CustomScaledWait(0.5f, 0.5f);
                 VfxCmd.PlayOnCreature(target, "vfx/vfx_big_slash");
-                await CreatureCmd.Damage(choiceContext, target, extraDamage, ValueProp.Unpowered, dealer, this);
+                await CreatureCmd.Damage(choiceContext, target, extraDamage, ValueProp.Unpowered, dealer, this, null);
             }
         }
     }

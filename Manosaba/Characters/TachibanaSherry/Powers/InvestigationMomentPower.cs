@@ -78,7 +78,7 @@ public sealed class InvestigationMomentPower : PathCustomPowerModel
 
             decimal clue = Owner.GetPowerAmount<CluePower>();
             if (clue > 0m)
-                await CreatureCmd.Damage(choiceContext, target, clue, ValueProp.Unpowered, Owner, null);
+                await CreatureCmd.Damage(choiceContext, target, clue, ValueProp.Unpowered, Owner, null, null);
 
             if (clue > 0m)
                 await CommonActions.Apply<CluePower>(choiceContext, Owner, null, -clue);

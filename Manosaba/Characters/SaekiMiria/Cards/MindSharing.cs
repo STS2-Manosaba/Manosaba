@@ -143,10 +143,6 @@ namespace Manosaba.Characters.NikaidoHiro.Cards
 
         private static void DoHackyThingsForSpecificPowers(PowerModel power)
         {
-            if (power is ITemporaryPower temporaryPower)
-            {
-                temporaryPower.IgnoreNextInstance();
-            }
             if (power is ManosabaTemporaryStrengthPower manosabaTemporaryStrengthPower)
             {
                 manosabaTemporaryStrengthPower.IgnoreNextInstance();

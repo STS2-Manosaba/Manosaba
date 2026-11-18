@@ -21,6 +21,6 @@ public sealed class UnluckyPower : PathCustomPowerModel
             return;
         }
 
-        await CreatureCmd.Damage(choiceContext, Owner, Amount, ValueProp.Unpowered, Owner, null);
+        await CreatureCmd.Damage(choiceContext, Owner, Amount, ValueProp.Unpowered, Owner, null, null);
     }
 }

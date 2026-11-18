@@ -55,7 +55,7 @@ public sealed class HiroPuppet : PathCustomCardModel
         decimal damageDealt = await CombatDamageTracker.MeasureDamageToTarget(
             target,
             () => DamageCmd.Attack(damage)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(target)
                 .Execute(choiceContext));
 

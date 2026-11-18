@@ -39,7 +39,7 @@ public class StrikeHoshoMago : PathCustomCardModel
         }
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
     }

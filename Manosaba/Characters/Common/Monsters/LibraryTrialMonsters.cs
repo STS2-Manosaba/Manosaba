@@ -185,7 +185,7 @@ public sealed class LibraryWarden : LibraryTrialMonster
                     _settled |= bit;
                     await RemoveCluePower(clue, true);
                     await CreatureCmd.Damage(context, Creature, Creature.MaxHp * 0.10m,
-                        ValueProp.Unblockable | ValueProp.Unpowered, null, null);
+                        ValueProp.Unblockable | ValueProp.Unpowered, null, null, null);
                 }
             }
         }

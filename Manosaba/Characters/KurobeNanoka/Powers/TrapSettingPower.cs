@@ -42,7 +42,7 @@ public sealed class TrapSettingPower : PathCustomPowerModel
         decimal amount,
         ValueProp props,
         Creature? dealer,
-        CardModel? cardSource)
+        CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay)
     {
         _ = amount;
 

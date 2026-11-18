@@ -114,7 +114,7 @@ public sealed class LegRing : LevelingPathCustomRelicModel
     }
 
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props,
-        Creature? dealer, CardModel? cardSource) =>
+        Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay) =>
         RelicLevel >= 5 && dealer == Owner.Creature && dealer.CombatState is { } combat
             && InterrogationStartPower.IsTrialAttack(props, cardSource) && FieldPowerState.Has<InterrogationStartPower>(combat)
             ? dealer.GetPowerAmount<GuiltPower>() : 0m;

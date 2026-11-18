@@ -119,7 +119,7 @@ public static class PotionCraftTargetingService
             return false;
         }
 
-        if (sourcePotion.IsQueued || owner.Creature.IsDead || !owner.CanRemovePotions)
+        if (sourcePotion.IsQueued || owner.Creature.IsDead || !owner.CanUseOrRemovePotions)
         {
             return false;
         }
@@ -236,7 +236,7 @@ public static class PotionCraftTargetingService
             return false;
         }
 
-        if (sourcePotion.IsQueued || targetPotion.IsQueued || !sourcePotion.Owner.CanRemovePotions)
+        if (sourcePotion.IsQueued || targetPotion.IsQueued || !sourcePotion.Owner.CanUseOrRemovePotions)
         {
             return false;
         }

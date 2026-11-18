@@ -46,7 +46,7 @@ namespace Manosaba.Characters.NikaidoHiro.Cards
             for (int i = 0; i < DynamicVars.Repeat.IntValue; i++)
             {
                 await CreatureCmd.TriggerAnim(ema, "Attack", 0.15f);
-                await CreatureCmd.Damage(choiceContext, target, damage, ValueProp.Move, ema, this);
+                await CreatureCmd.Damage(choiceContext, target, damage, ValueProp.Move, ema, this, null);
             }
         }
 

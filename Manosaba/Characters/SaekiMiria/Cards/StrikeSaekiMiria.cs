@@ -33,7 +33,7 @@ namespace Manosaba.Characters.SaekiMiria.Cards
                 return;
 
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(target)
                 .Execute(choiceContext);
         }

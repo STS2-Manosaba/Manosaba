@@ -34,7 +34,7 @@ namespace Manosaba.Characters.NikaidoHiro.Powers
                     return;
                 }
 
-                await CreatureCmd.Damage(choiceContext, target, Owner.CurrentHp, ValueProp.Move, Owner, null);
+                await CreatureCmd.Damage(choiceContext, target, Owner.CurrentHp, ValueProp.Move, Owner, null, null);
             }
         }
 

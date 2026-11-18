@@ -59,17 +59,7 @@ public static class ManosabaUniqueCardEligibility
             return true;
         }
 
-        if (options.CustomCardPool != null)
-        {
-            CardModel[] filtered = options.GetPossibleCards(player).Where(Combined).ToArray();
-            if (filtered.Length == 0)
-                return options;
-            return options.WithCustomPool(filtered, options.RarityOdds);
-        }
-
-        // WithCardPools clears _cardPools before AddRange; CardPools returns that same list — snapshot first.
-        List<CardPoolModel> poolSnapshot = options.CardPools.ToList();
-        return options.WithCardPools(poolSnapshot, Combined);
+        return options.WithFilter(Combined);
     }
 
     public static void FilterCardCreationResults(Player player, List<CardCreationResult> results)

@@ -29,7 +29,7 @@ public sealed class YellowPaintOrb : ManosabaOrbModel
             throw new InvalidOperationException("Yellow paint orb cannot target creatures.");
         }
 
-        Trigger();
+        ActivatePassive();
         PlayPassiveSfx();
         await PlayerCmd.GainEnergy(PassiveVal, Owner);
     }

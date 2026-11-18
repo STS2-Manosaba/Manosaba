@@ -43,7 +43,7 @@ namespace manosaba.Characters.TachibanaSherry.Relics
                 await CommonActions.Apply<MajokaPower>(choiceContext, base.Owner.Creature, null, -majoka);
         }
 
-        public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+        public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay)
         {
             if (target != base.Owner.Creature)
                 return 1m;

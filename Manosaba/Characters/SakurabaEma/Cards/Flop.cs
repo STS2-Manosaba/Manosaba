@@ -47,7 +47,7 @@ public sealed class Flop : PathCustomCardModel
         decimal hpLoss = Math.Min(DynamicVars["HpLoss"].BaseValue, Math.Max(0m, ownerCreature.CurrentHp - 1m));
         if (hpLoss > 0m)
         {
-            await CreatureCmd.Damage(choiceContext, ownerCreature, hpLoss, DamageProps.cardHpLoss, this);
+            await CreatureCmd.Damage(choiceContext, ownerCreature, hpLoss, DamageProps.cardHpLoss, this, null);
         }
 
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);

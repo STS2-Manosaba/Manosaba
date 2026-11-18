@@ -32,7 +32,7 @@ public sealed class FinalCountdown : ShitoAlisaCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.Damage(choiceContext, Owner.Creature, DynamicVars.Damage.BaseValue, ValueProp.Unpowered, Owner.Creature, this);
+        await CreatureCmd.Damage(choiceContext, Owner.Creature, DynamicVars.Damage.BaseValue, ValueProp.Unpowered, Owner.Creature, this, null);
         await CommonActions.Apply<FinalCountdownPower>(choiceContext, Owner.Creature, this, DynamicVars["FinalCountdownPower"].BaseValue);
     }
 

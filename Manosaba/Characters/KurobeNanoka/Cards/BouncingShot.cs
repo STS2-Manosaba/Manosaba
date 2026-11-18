@@ -80,7 +80,7 @@ public sealed class BouncingShot : GunBase
                 continue;
             }
 
-            await ExecuteGunAttack(choiceContext, target, damage);
+            await ExecuteGunAttack(choiceContext, target, damage, cardPlay);
             damage *= BounceMultiplier;
         }
     }

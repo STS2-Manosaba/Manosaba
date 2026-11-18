@@ -17,12 +17,12 @@ namespace Manosaba.Patches;
 internal static class ManosabaRandomCharacterPool
 {
     private static readonly Lazy<FieldInfo?> LobbyPlayerCharacterField = new(
-        () => typeof(LobbyPlayer).GetField(
+        () => typeof(StartRunLobbyPlayer).GetField(
             "character",
             BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic));
 
     private static readonly Lazy<FieldInfo?> LobbyPlayerIdField = new(
-        () => typeof(LobbyPlayer).GetField(
+        () => typeof(StartRunLobbyPlayer).GetField(
             "id",
             BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic));
 
@@ -39,24 +39,24 @@ internal static class ManosabaRandomCharacterPool
     private static Assembly ModAssembly => typeof(Entry).Assembly;
 
     /// <summary>參考組件中的 <see cref="LobbyPlayer"/> 未必公開 <c>character</c> 欄位，改以反射讀取。</summary>
-    internal static CharacterModel? ReadLobbyPlayerCharacter(LobbyPlayer? player)
+    internal static CharacterModel? ReadLobbyPlayerCharacter(StartRunLobbyPlayer? player)
     {
         if (player is null)
         {
             return null;
         }
 
-        return LobbyPlayerCharacterField.Value?.GetValue(player) as CharacterModel;
+        return LobbyPlayerCharacterField.Value?.GetValue(player.Value) as CharacterModel;
     }
 
-    internal static ulong? ReadLobbyPlayerId(LobbyPlayer? player)
+    internal static ulong? ReadLobbyPlayerId(StartRunLobbyPlayer? player)
     {
         if (player is null)
         {
             return null;
         }
 
-        object? v = LobbyPlayerIdField.Value?.GetValue(player);
+        object? v = LobbyPlayerIdField.Value?.GetValue(player.Value);
         return v is ulong u ? u : null;
     }
 

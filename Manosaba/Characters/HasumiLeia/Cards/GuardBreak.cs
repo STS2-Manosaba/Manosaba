@@ -35,12 +35,12 @@ public sealed class GuardBreak : PathCustomCardModel
         }
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        await CreatureCmd.LoseBlock(target, target.Block);
+        await CreatureCmd.LoseBlock(choiceContext, target, target.Block, null);
     }
 
     protected override void OnUpgrade()

@@ -30,7 +30,7 @@ public sealed class WhitePaintOrb : ManosabaOrbModel
             throw new InvalidOperationException("White paint orb cannot target creatures.");
         }
 
-        Trigger();
+        ActivatePassive();
         PlayPassiveSfx();
         await CardPileCmd.Draw(choiceContext, PassiveVal, Owner);
     }

@@ -15,6 +15,6 @@ public sealed class TestFieldPower : FieldPowerModel
     public override string CustomBigBetaIconPath => CustomBigIconPath;
 
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props,
-        Creature? dealer, CardModel? cardSource) =>
+        Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay) =>
         dealer != null && !props.HasFlag(ValueProp.Unpowered) ? Amount : 0m;
 }

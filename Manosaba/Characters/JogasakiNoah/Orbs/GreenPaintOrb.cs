@@ -49,7 +49,7 @@ public sealed class GreenPaintOrb : ManosabaOrbModel
             return;
         }
 
-        Trigger();
+        ActivatePassive();
         PlayPassiveSfx();
         await CommonActions.Apply<PoisonPower>(choiceContext, chosen, null, PassiveVal);
     }

@@ -49,7 +49,7 @@ public sealed class FireTornado : ShitoAlisaCardModel
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(x)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .TargetingAllOpponentsCompat(combatState)
             .Execute(choiceContext);
 

@@ -37,7 +37,7 @@ public sealed class ParallelSting : PathCustomCardModel
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(2)
             .WithHitFx("vfx/vfx_attack_blunt")
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
     }

@@ -54,7 +54,7 @@ public class YouAreWeakEma : ShitoAlisaCardModel
         if (totalDamage <= 0m)
             return;
 
-        await DamageCmd.Attack(totalDamage).FromCard(this).Targeting(cardPlay.Target).Execute(choiceContext);
+        await DamageCmd.Attack(totalDamage).FromCard(this, cardPlay).Targeting(cardPlay.Target).Execute(choiceContext);
     }
 
     protected override void OnUpgrade()

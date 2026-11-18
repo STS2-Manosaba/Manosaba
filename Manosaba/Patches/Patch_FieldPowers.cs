@@ -38,7 +38,7 @@ public static class Patch_FieldPower_ModifyDamage
 {
     [HarmonyPrefix]
     private static void Prefix(ICombatState? combatState, Creature? target, Creature? dealer,
-        ref decimal damage, ValueProp props, CardModel? cardSource, ModifyDamageHookType modifyDamageHookType,
+        ref decimal damage, ValueProp props, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay, ModifyDamageHookType modifyDamageHookType,
         out List<AbstractModel> __state)
     {
         __state = [];
@@ -47,7 +47,7 @@ public static class Patch_FieldPower_ModifyDamage
 
         foreach (var power in FieldPowerState.Get(combatState))
         {
-            decimal extra = power.ModifyDamageAdditive(target, damage, props, dealer, cardSource);
+            decimal extra = power.ModifyDamageAdditive(target, damage, props, dealer, cardSource, cardPlay);
             if (extra == 0m)
                 continue;
             damage += extra;

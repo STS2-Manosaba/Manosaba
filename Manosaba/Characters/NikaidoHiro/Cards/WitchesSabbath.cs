@@ -67,7 +67,7 @@ namespace Manosaba.Characters.NikaidoHiro.Cards
             decimal damage = (DynamicVars.CalculationBase.BaseValue + voteAmount * 5 + majokaAmount / 25) * (1 + 0.01m * majokaAmount);
 
             await DamageCmd.Attack(damage)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .TargetingAllOpponentsCompat(combatState)
                 .Execute(choiceContext);
         }

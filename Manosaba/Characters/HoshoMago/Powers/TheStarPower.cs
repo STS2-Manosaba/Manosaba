@@ -46,7 +46,7 @@ public sealed class TheStarPower : PathCustomPowerModel
         }
 
         await ReflectionDamageGuard.Run(() =>
-            CreatureCmd.Damage(choiceContext, dealer, reflectedDamage, ValueProp.Unpowered, Owner, null));
+            CreatureCmd.Damage(choiceContext, dealer, reflectedDamage, ValueProp.Unpowered, Owner, null, null));
     }
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> creatures)

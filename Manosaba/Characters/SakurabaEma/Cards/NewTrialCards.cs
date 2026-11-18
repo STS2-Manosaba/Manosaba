@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using Manosaba.Characters.Common;
 using Manosaba.Characters.Common.Overrides;
 using Manosaba.Characters.Common.Powers;
@@ -32,7 +32,7 @@ public sealed class ExhaustiveMethod : EmaTrialCard
             decimal raw = BaseValue + ProgressBonus(card);
             Props = card.Owner?.Creature?.HasPower<LawDevilPower>() == true ? ValueProp.Move : ValueProp.Move | ValueProp.Unpowered;
             PreviewValue = runGlobalHooks && card.Owner != null && (card.CombatState ?? card.Owner.Creature.CombatState) is { } field
-                ? Hook.ModifyDamage(card.Owner.RunState, field, target, card.Owner.Creature, raw, Props, card,
+                ? Hook.ModifyDamage(card.Owner.RunState, field, target, card.Owner.Creature, raw, Props, card, null,
                     ModifyDamageHookType.All, previewMode, out _) : raw;
         }
     }
@@ -46,7 +46,7 @@ public sealed class ExhaustiveMethod : EmaTrialCard
         if (cardPlay.Target is { IsAlive: true } target)
         {
             await EmaTrialPresentation.Play(this);
-            await AttackTrialTarget(choiceContext, target, DynamicVars.Damage.BaseValue + ProgressBonus(this));
+            await AttackTrialTarget(choiceContext, target, DynamicVars.Damage.BaseValue + ProgressBonus(this), cardPlay);
         }
     }
     protected override void OnUpgrade()
@@ -78,7 +78,7 @@ public abstract class AccUhEartsBase : EmaTrialCard
             return;
         await WitchEncyclopediaState.Present(choiceContext, Owner, SelectionScreenPrompt,
             () => EmaTrialPresentation.Play(this));
-        await AttackTrialTarget(choiceContext, target, DynamicVars.Damage.BaseValue, HitCount);
+        await AttackTrialTarget(choiceContext, target, DynamicVars.Damage.BaseValue, cardPlay, HitCount);
     }
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(2m);
 }

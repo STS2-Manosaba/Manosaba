@@ -42,7 +42,7 @@ public sealed class Linear : PathCustomCardModel
         }
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .WithHitFx("vfx/vfx_dramatic_stab", null, "blunt_attack.mp3")
             .Execute(choiceContext);

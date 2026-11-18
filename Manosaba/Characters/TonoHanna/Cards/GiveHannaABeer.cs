@@ -43,7 +43,7 @@ public sealed class GiveHannaABeer : PathCustomCardModel
             + HannaDiceResultHelper.ApplyNumericFaceBonus(ownerCreature, secondFace)
             + HannaDiceResultHelper.ApplyNumericFaceBonus(ownerCreature, thirdFace);
         await DamageCmd.Attack(resultTotal)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
     }

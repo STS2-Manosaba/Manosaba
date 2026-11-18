@@ -56,7 +56,7 @@ public sealed class AccuratePower : PathCustomPowerModel
         decimal amount,
         ValueProp props,
         Creature? dealer,
-        CardModel? cardSource)
+        CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay)
     {
         _ = target;
         _ = amount;

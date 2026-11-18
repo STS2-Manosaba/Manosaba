@@ -28,7 +28,7 @@ internal static class ManosabaKaleidoscopeHelper
     {
         Player owner = kaleidoscope.Owner;
         List<Reward> rewards = [];
-        CardCreationOptions rerollOptions = CardCreationOptions.ForNonCombatWithDefaultOdds(Array.Empty<CardModel>());
+        CardCreationOptions rerollOptions = CardCreationOptions.ForNonCombatWithDefaultOdds(Array.Empty<CardPoolModel>());
         List<CardModel>? tarotPool = null;
 
         for (int i = 0; i < kaleidoscope.DynamicVars.Cards.IntValue; i++)

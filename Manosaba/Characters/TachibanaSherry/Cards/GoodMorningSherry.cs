@@ -85,7 +85,7 @@ public sealed class GoodMorningSherry : PathCustomCardModel
                         IsFromOsty ? card.Owner.Osty : card.Owner.Creature,
                         num,
                         Props,
-                        card,
+                        card, null,
                         ModifyDamageHookType.All,
                         previewMode,
                         out IEnumerable<AbstractModel> _);
@@ -134,7 +134,7 @@ public sealed class GoodMorningSherry : PathCustomCardModel
         await CreatureCmd.Damage(choiceContext, ownerCreature, 2m, ValueProp.Unpowered, ownerCreature);
 
         await DamageCmd.Attack(DynamicVars.CalculatedDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
     }

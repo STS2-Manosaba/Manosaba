@@ -82,7 +82,7 @@ public sealed class RiskDice : PathCustomCardModel
         if (greatLuck)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(target)
                 .Execute(choiceContext);
 
@@ -92,7 +92,7 @@ public sealed class RiskDice : PathCustomCardModel
         }
 
         decimal selfDamage = power.UsesSinceMisfortune * DynamicVars["SelfDamageMultiplier"].BaseValue;
-        await CreatureCmd.Damage(choiceContext, ownerCreature, selfDamage, ValueProp.Unpowered, ownerCreature, this);
+        await CreatureCmd.Damage(choiceContext, ownerCreature, selfDamage, ValueProp.Unpowered, ownerCreature, this, null);
         power.ResetAfterMisfortune();
     }
 

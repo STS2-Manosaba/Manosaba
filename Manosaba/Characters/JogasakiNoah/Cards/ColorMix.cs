@@ -58,7 +58,7 @@ namespace Manosaba.Characters.JogasakiNoah.Cards
             }
 
             await DamageCmd.Attack(DynamicVars.CalculatedDamage)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(target)
                 .Execute(choiceContext);
         }

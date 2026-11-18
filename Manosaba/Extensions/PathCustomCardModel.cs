@@ -47,7 +47,7 @@ namespace Manosaba.Extensions
         }
 
         /// <summary>Vanilla-style attack wind-up: owner attack anim (BaseLib <c>CustomAttackSfx</c>) via <see cref="CreatureCmd.TriggerAnim"/>.</summary>
-        /// <remarks>Use when damage is not from <c>DamageCmd.Attack(...).FromCard(this)</c> so the <b>card owner</b> still gets attack SFX (e.g. pet as damage dealer).</remarks>
+        /// <remarks>Use when damage is not from <c>DamageCmd.Attack(...).FromCard(this, cardPlay)</c> so the <b>card owner</b> still gets attack SFX (e.g. pet as damage dealer).</remarks>
         public Task PlayOwnerAttackAnimAsync()
         {
             if (Owner?.Creature is not { } creature || Owner.Character is null)

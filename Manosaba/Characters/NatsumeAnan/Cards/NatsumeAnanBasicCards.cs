@@ -31,7 +31,7 @@ public sealed class StrikeNatsumeAnan : NatsumeKotodamaCardModel
             return;
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
     }

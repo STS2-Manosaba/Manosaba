@@ -206,11 +206,11 @@ namespace Manosaba.Characters.JogasakiNoah.Cards
 
             if (oldModel != null)
             {
-                oldModel.Triggered -= flashHandler;
+                oldModel.PassiveActivated -= flashHandler;
             }
 
-            newModel.Triggered -= flashHandler;
-            newModel.Triggered += flashHandler;
+            newModel.PassiveActivated -= flashHandler;
+            newModel.PassiveActivated += flashHandler;
         }
 
         private static Vector2 GetGapPosition(IReadOnlyList<NOrb> orbSlots, int maxInsertIndex, int insertIndex)

@@ -36,7 +36,7 @@ public sealed class TrueCulpritPower : PathCustomPowerModel
     ];
 
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props,
-        Creature? dealer, CardModel? cardSource)
+        Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay)
     {
         decimal bonus = Owner == dealer && props.IsPoweredAttack() ? AttackBonus : 0m;
         if (target == Owner && amount > 0m)

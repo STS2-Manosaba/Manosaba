@@ -46,7 +46,7 @@ namespace Manosaba.Characters.NikaidoHiro.Cards
 
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .WithHitCount(DynamicVars.Repeat.IntValue)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .TargetingAllOpponentsCompat(combatState)
                 .Execute(choiceContext);
 

@@ -46,7 +46,7 @@ namespace Manosaba.Characters.Common.Powers
 
             if (target == base.Owner && result.BlockedDamage > 0 && props.IsPoweredAttack_() && dealer != null)
             {
-                await ReflectionDamageGuard.Run(() => CreatureCmd.Damage(choiceContext, dealer, result.BlockedDamage, ValueProp.Move, base.Owner, null));
+                await ReflectionDamageGuard.Run(() => CreatureCmd.Damage(choiceContext, dealer, result.BlockedDamage, ValueProp.Move, base.Owner, null, null));
                 _pendingVigorClear = true;
                 _lastReflectedDealer = dealer;
             }

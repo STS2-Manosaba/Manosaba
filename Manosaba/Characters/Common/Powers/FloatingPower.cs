@@ -30,7 +30,7 @@ public sealed class FloatingPower : PathCustomPowerModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("DamageDecrease", 20m)];
 
-    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay)
     {
         _ = amount;
         _ = dealer;

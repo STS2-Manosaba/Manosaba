@@ -27,7 +27,7 @@ public sealed class LiveStreamModePower : PathCustomPowerModel
             && Owner.Player is { } player
             && player.RunState.Rng.CombatTargets.NextItem(combatState.HittableEnemies) is { } target)
         {
-            await CreatureCmd.Damage(choiceContext, target, damage, ValueProp.Unpowered, Owner, null);
+            await CreatureCmd.Damage(choiceContext, target, damage, ValueProp.Unpowered, Owner, null, null);
         }
 
         await CommonActions.Apply<LiveStreamModePower>(choiceContext, Owner, null, -1m);

@@ -113,7 +113,7 @@ public sealed class FeatherFan : LevelingPathCustomRelicModel
             : Task.CompletedTask;
     }
 
-    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay)
     {
         _ = target;
         _ = amount;

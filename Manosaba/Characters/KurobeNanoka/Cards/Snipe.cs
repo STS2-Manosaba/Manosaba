@@ -49,7 +49,7 @@ public class Snipe : GunBase
 
         decimal damage = DynamicVars.CalculatedDamage.Calculate(target);
 
-        await ExecuteGunAttack(choiceContext, target, damage);
+        await ExecuteGunAttack(choiceContext, target, damage, cardPlay);
     }
 
     protected override void OnUpgrade()

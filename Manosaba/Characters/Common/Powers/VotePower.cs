@@ -16,7 +16,7 @@ public class VotePower : PathCustomPowerModel
     public override PowerStackType StackType => PowerStackType.Counter;
     public override bool AllowNegative => false;
 
-    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay)
     {
         if (target != Owner || Amount <= 0m || amount <= 0m || props.HasFlag(ValueProp.Unpowered))
         {

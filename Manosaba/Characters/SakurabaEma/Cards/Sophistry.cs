@@ -32,7 +32,7 @@ public sealed class Sophistry : EmaTrialCard
 
         await EmaTrialPresentation.Play(this);
         int hits = ProgressReady(this) && Owner.Creature.GetPowerAmount<SusPower>() > 0m ? 2 : 1;
-        await AttackTrialTarget(choiceContext, cardPlay.Target, DynamicVars.Damage.BaseValue, hits);
+        await AttackTrialTarget(choiceContext, cardPlay.Target, DynamicVars.Damage.BaseValue, cardPlay, hits);
     }
 
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(3m);

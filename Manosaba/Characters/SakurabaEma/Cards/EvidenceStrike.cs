@@ -37,7 +37,7 @@ public sealed class EvidenceStrike : EmaTrialCard
 
         await WitchEncyclopediaState.Present(choiceContext, Owner, SelectionScreenPrompt);
         if (cardPlay.Target.IsAlive)
-            await AttackTrialTarget(choiceContext, cardPlay.Target, DynamicVars.Damage.BaseValue);
+            await AttackTrialTarget(choiceContext, cardPlay.Target, DynamicVars.Damage.BaseValue, cardPlay);
 
         List<CardModel> cards = [];
         for (int i = 0; i < DynamicVars.Cards.IntValue; i++)

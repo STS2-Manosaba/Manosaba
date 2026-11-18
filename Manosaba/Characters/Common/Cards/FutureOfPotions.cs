@@ -42,7 +42,7 @@ public sealed class FutureOfPotions : PathCustomCardModel
         decimal damageDealt = await MeasureDamageToTarget(
             target,
             () => DamageCmd.Attack(damage)
-                .FromCard(this)
+                .FromCard(this, cardPlay)
                 .Targeting(target)
                 .Execute(choiceContext));
 
@@ -62,7 +62,7 @@ public sealed class FutureOfPotions : PathCustomCardModel
                     selfDamage,
                     ValueProp.Unpowered,
                     ownerCreature,
-                    this);
+                    this, null);
             }
         }
     }

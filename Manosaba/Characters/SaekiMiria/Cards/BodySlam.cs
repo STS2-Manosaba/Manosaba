@@ -45,7 +45,7 @@ public sealed class BodySlam : PathCustomCardModel
         }
 
         await DamageCmd.Attack(DynamicVars.CalculatedDamage)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(target)
             .Execute(choiceContext);
 

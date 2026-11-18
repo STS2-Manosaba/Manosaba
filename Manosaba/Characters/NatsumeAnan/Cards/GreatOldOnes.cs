@@ -280,7 +280,7 @@ public sealed class PageNyarlathotep : GreatOldOnePageCard
         }
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
         await CommonActions.Apply<ShadowFromTheSteeplePower>(choiceContext, cardPlay.Target, this, DynamicVars["ShadowFromTheSteeplePower"].BaseValue);
@@ -378,7 +378,7 @@ public sealed class PageHastur : GreatOldOnePageCard
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(DynamicVars["Hits"].IntValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .TargetingAllOpponentsCompat(combatState)
             .Execute(choiceContext);
     }
@@ -406,7 +406,7 @@ public sealed class PageCthugha : GreatOldOnePageCard
         }
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
     }

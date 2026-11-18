@@ -62,7 +62,7 @@ public sealed class SicklyPower : PathCustomPowerModel
         await CreatureCmd.Heal(Owner, 1m);
     }
 
-    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay)
     {
         _ = amount;
         _ = props;

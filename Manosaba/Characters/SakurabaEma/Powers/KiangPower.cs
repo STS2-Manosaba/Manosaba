@@ -28,7 +28,7 @@ public sealed class KiangPower : PathCustomPowerModel
         new DynamicVar("EndTurnDamage", EndTurnDamage),
     ];
 
-    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay)
     {
         _ = props;
         _ = dealer;
@@ -84,7 +84,7 @@ public sealed class KiangPower : PathCustomPowerModel
         if (target == null)
             return;
 
-        await CreatureCmd.Damage(choiceContext, target, EndTurnDamage * Amount, ValueProp.Unpowered, Owner, null);
+        await CreatureCmd.Damage(choiceContext, target, EndTurnDamage * Amount, ValueProp.Unpowered, Owner, null, null);
     }
 
     private bool HasHiroEmaDog()

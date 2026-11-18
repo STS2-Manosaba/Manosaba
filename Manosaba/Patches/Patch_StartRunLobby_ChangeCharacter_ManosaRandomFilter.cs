@@ -38,9 +38,9 @@ public static class Patch_StartRunLobby_ChangeCharacter_ManosaRandomFilter
             return;
         }
 
-        LobbyPlayer? target = __instance.Players?.FirstOrDefault(p =>
+        StartRunLobbyPlayer target = __instance.Players.FirstOrDefault(p =>
             ManosabaRandomCharacterPool.ReadLobbyPlayerId(p) == playerId);
-        if (target == null)
+        if (target.id != playerId)
         {
             return;
         }

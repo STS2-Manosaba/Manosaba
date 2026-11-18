@@ -30,6 +30,6 @@ public sealed class WardenAttackPower : PathCustomPowerModel
 
         IReadOnlyList<Creature> enemies = Owner.CombatState.GetOpponentsOf(Owner).Where(c => c.IsAlive && c.IsHittable).ToList();
         if (enemies.Count > 0)
-            await CreatureCmd.Damage(context, enemies, Amount, ValueProp.Unpowered, Owner, null);
+            await CreatureCmd.Damage(context, enemies, Amount, ValueProp.Unpowered, Owner, null, null);
     }
 }

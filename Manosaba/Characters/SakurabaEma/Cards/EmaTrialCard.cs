@@ -1,4 +1,4 @@
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using Manosaba.Characters.Common.Overrides;
 using Manosaba.Extensions;
 using manosaba.Characters.SakurabaEma.Powers;
@@ -38,20 +38,20 @@ public abstract class EmaTrialCard : PathCustomCardModel
             ? ValueProp.Move
             : ValueProp.Move | ValueProp.Unpowered;
 
-    protected async Task AttackTrialTarget(PlayerChoiceContext context, Creature target, decimal damage, int hits = 1)
+    protected async Task AttackTrialTarget(PlayerChoiceContext context, Creature target, decimal damage, CardPlay cardPlay, int hits = 1)
     {
         if (!target.IsAlive || !Owner.Creature.IsAlive || Owner.Creature.CombatState is not { } combat)
             return;
 
         // Group the hits so native AfterAttack effects can inspect the complete attack.
-        await using var attack = await AttackCommand.CreateContextAsync(combat, context, this);
+        await using var attack = await AttackCommand.CreateContextAsync(combat, context, cardPlay);
         for (int i = 0; i < hits && target.IsAlive && Owner.Creature.IsAlive; i++)
-            await DealTrialHit(attack, context, target, damage);
+            await DealTrialHit(attack, context, target, damage, cardPlay);
     }
 
-    protected async Task DealTrialHit(AttackContext attack, PlayerChoiceContext context, Creature target, decimal damage)
+    protected async Task DealTrialHit(AttackContext attack, PlayerChoiceContext context, Creature target, decimal damage, CardPlay cardPlay)
     {
-        attack.AddHit(await CreatureCmd.Damage(context, target, damage, TrialMoveValueProp, Owner.Creature, this));
+        attack.AddHit(await CreatureCmd.Damage(context, target, damage, TrialMoveValueProp, Owner.Creature, this, cardPlay));
     }
 
     protected virtual IEnumerable<IHoverTip> TrialExtraHoverTips => [];

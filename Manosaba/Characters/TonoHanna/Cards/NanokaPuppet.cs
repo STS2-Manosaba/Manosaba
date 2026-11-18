@@ -88,7 +88,7 @@ namespace Manosaba.Characters.TonoHanna.Cards
                             IsFromOsty ? card.Owner.Osty : card.Owner.Creature,
                             num,
                             Props,
-                            card,
+                            card, null,
                             ModifyDamageHookType.All,
                             previewMode,
                             out IEnumerable<AbstractModel> _);
@@ -141,7 +141,7 @@ namespace Manosaba.Characters.TonoHanna.Cards
             decimal damage = DynamicVars.CalculationBase.BaseValue + DynamicVars.ExtraDamage.BaseValue * puppetCount;
             decimal damageDealt = await CombatDamageTracker.MeasureDamageToTarget(
                 target,
-                () => DamageCmd.Attack(damage).FromCard(this).Targeting(target).Execute(choiceContext));
+                () => DamageCmd.Attack(damage).FromCard(this, cardPlay).Targeting(target).Execute(choiceContext));
 
             if (emaUsed && damageDealt > 0m)
             {

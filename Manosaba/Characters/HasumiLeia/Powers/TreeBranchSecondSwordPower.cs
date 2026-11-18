@@ -89,7 +89,7 @@ public sealed class TreeBranchSecondSwordPower : PathCustomPowerModel
                 extraDamage,
                 ValueProp.Unpowered,
                 Owner,
-                card);
+                card, null);
         }
     }
 
