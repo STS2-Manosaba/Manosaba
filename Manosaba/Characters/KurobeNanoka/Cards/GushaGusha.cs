@@ -1,4 +1,4 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using manosaba.Characters.KurobeNanoka;
 using MegaCrit.Sts2.Core.Models.Powers;
 using Manosaba.Extensions;

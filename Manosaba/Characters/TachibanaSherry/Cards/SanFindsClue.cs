@@ -61,7 +61,7 @@ public sealed class SanFindsClue : PathCustomCardModel
         DynamicVars.Damage.UpgradeValueBy(3m);
     }
 
-    /// <summary>疑點本回合增量變動時，刷新此牌的耗�E顯示、E/summary>
+    /// <summary>本回合獲得的疑點層數變動時，刷新此牌的耗能顯示。</summary>
     public static void RefreshCostsForOwner(Player? player)
     {
         if (player == null)
