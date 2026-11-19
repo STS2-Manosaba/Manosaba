@@ -33,9 +33,6 @@ public static class Patch_NOrb_UpdateVisuals_ManosabaOrb
     private static readonly AccessTools.FieldRef<NOrb, TextureRect> OutlineRef =
         AccessTools.FieldRefAccess<NOrb, TextureRect>("_outline");
 
-    private static readonly AccessTools.FieldRef<NOrb, CpuParticles2D> FlashParticleRef =
-        AccessTools.FieldRefAccess<NOrb, CpuParticles2D>("_flashParticle");
-
     private static readonly AccessTools.FieldRef<NOrb, Control> LabelContainerRef =
         AccessTools.FieldRefAccess<NOrb, Control>("_labelContainer");
 
@@ -63,7 +60,6 @@ public static class Patch_NOrb_UpdateVisuals_ManosabaOrb
         MegaLabel passiveLabel = PassiveLabelRef(__instance);
         MegaLabel evokeLabel = EvokeLabelRef(__instance);
         TextureRect outline = OutlineRef(__instance);
-        CpuParticles2D flashParticle = FlashParticleRef(__instance);
         Control labelContainer = LabelContainerRef(__instance);
         bool isLocal = IsLocalRef(__instance);
 
@@ -84,8 +80,6 @@ public static class Patch_NOrb_UpdateVisuals_ManosabaOrb
         }
 
         outline.Visible = false;
-        flashParticle.Visible = true;
-        flashParticle.Texture = model.Icon;
         labelContainer.Visible = isLocal;
 
         if (!isLocal)

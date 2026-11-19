@@ -23,7 +23,6 @@ namespace Manosaba.Characters.JogasakiNoah.Cards
         private static readonly FieldInfo? OrbQueueOrbsField = AccessTools.Field(typeof(OrbQueue), "_orbs");
         private static readonly FieldInfo? OrbManagerOrbsField = AccessTools.Field(typeof(NOrbManager), "_orbs");
         private static readonly FieldInfo? OrbManagerCurTweenField = AccessTools.Field(typeof(NOrbManager), "_curTween");
-        private static readonly MethodInfo? NOrbFlashMethod = AccessTools.Method(typeof(NOrb), "Flash");
 
         public static async Task ChannelAt(PlayerChoiceContext choiceContext, OrbModel orb, Player player, int insertIndex)
         {
@@ -186,31 +185,9 @@ namespace Manosaba.Characters.JogasakiNoah.Cards
                 NOrb node = orbNodes[i];
                 if (node.Model != desired)
                 {
-                    RebindOrbTriggeredHandler(node, node.Model, desired);
                     node.ReplaceOrb(desired);
                 }
             }
-        }
-
-        private static void RebindOrbTriggeredHandler(NOrb node, OrbModel? oldModel, OrbModel newModel)
-        {
-            if (NOrbFlashMethod == null)
-            {
-                return;
-            }
-
-            if (Delegate.CreateDelegate(typeof(Action), node, NOrbFlashMethod, throwOnBindFailure: false) is not Action flashHandler)
-            {
-                return;
-            }
-
-            if (oldModel != null)
-            {
-                oldModel.PassiveActivated -= flashHandler;
-            }
-
-            newModel.PassiveActivated -= flashHandler;
-            newModel.PassiveActivated += flashHandler;
         }
 
         private static Vector2 GetGapPosition(IReadOnlyList<NOrb> orbSlots, int maxInsertIndex, int insertIndex)
