@@ -22,7 +22,7 @@ Choose from 12 characters, each with a distinct way to play:
 [b]Natsume Anan[/b] — Build and spend Kotodama for powerful effects while carefully managing Sanity.
 [b]Shito Alisa[/b] — Stack Burn, build up Fireball Swarm, and unleash Fireballs for explosive damage.
 [b]Sawatari Coco[/b] — Manage Live Stream Mode and Hiding while collecting equipment and completing sets.
-[b]Sakuraba Ema (in development)[/b]
+[b]Sakuraba Ema (in development)[/b] If Ema appears in-game before her official release, this is unexpected behavior.
 
 [h2]More Content[/h2]
 Build your deck with 400+ cards, and explore character-themed events and unique mechanics.
@@ -31,7 +31,7 @@ Build your deck with 400+ cards, and explore character-themed events and unique 
 English · Simplified Chinese · Traditional Chinese · Japanese · Korean
 
 [h2]Compatibility[/h2]
-Targeting Slay the Spire 2 v0.111.1 (public branch).
+Compatible with Slay the Spire 2 public branch v0.111.1 and beta branch v0.113.1. Compatibility may vary between versions.
 
 [h2]Bug Reports / 錯誤回報[/h2]
 Please post in the Bug Reports discussion thread. Include your installed mod list and the relevant game log or error log so our team can investigate the cause. Steps to reproduce are also helpful.
@@ -63,7 +63,7 @@ Please post in the Bug Reports discussion thread. Include your installed mod lis
 [b]夏目安安[/b] —— 累积并花费言灵发动强力效果，同时谨慎管理理智值。
 [b]紫藤亚里莎[/b] —— 叠加燃烧、累积火球环绕，再释放火球造成爆发伤害。
 [b]泽渡可可[/b] —— 管理直播模式与藏匿效果，同时收集装备并搭配套装。
-[b]樱羽艾玛（开发中）[/b]
+[b]樱羽艾玛（开发中）[/b] 艾玛目前仍在开发中；若在正式推出前于游戏中出现，属于非预期现象。
 
 [h2]更多内容[/h2]
 使用400+张卡牌构筑牌组，探索角色主题事件与独特机制。
@@ -72,7 +72,7 @@ Please post in the Bug Reports discussion thread. Include your installed mod lis
 英语 · 简体中文 · 繁体中文 · 日语 · 韩语
 
 [h2]游戏版本[/h2]
-适配目标：《杀戮尖塔2》v0.111.1（public 正式分支）。
+支持《杀戮尖塔2》正式分支 v0.111.1 与 beta 测试分支 v0.113.1。不同游戏版本间的兼容性可能有所差异。
 
 [h2]错误反馈 / Bug Reports[/h2]
 请在“错误回报”讨论串中留言，并附上已安装的模组列表及相关游戏日志或报错日志，帮助团队分析原因。若能提供复现步骤，也请一并说明。
@@ -104,7 +104,7 @@ Please post in the Bug Reports discussion thread. Include your installed mod lis
 [b]夏目安安[/b] —— 累積並花費言靈發動強力效果，同時謹慎管理理智值。
 [b]紫藤亞里莎[/b] —— 疊加燃燒、累積火球環繞，再釋放火球造成爆發傷害。
 [b]澤渡可可[/b] —— 管理直播模式與藏匿效果，同時收集裝備並搭配套裝。
-[b]櫻羽艾瑪（開發中）[/b]
+[b]櫻羽艾瑪（開發中）[/b] 艾瑪目前仍在開發中；若在正式推出前於遊戲中出現，屬於非預期現象。
 
 [h2]更多內容[/h2]
 使用400+張卡牌構築牌組，探索角色主題事件與獨特機制。
@@ -113,7 +113,7 @@ Please post in the Bug Reports discussion thread. Include your installed mod lis
 英文 · 簡體中文 · 繁體中文 · 日文 · 韓文
 
 [h2]遊戲版本[/h2]
-適配目標：《殺戮尖塔2》v0.111.1（public 正式分支）。
+支援《殺戮尖塔2》正式分支 v0.111.1 與 beta 測試分支 v0.113.1。不同遊戲版本間的相容性可能有所差異。
 
 [h2]錯誤回報 / Bug Reports[/h2]
 請在「錯誤回報」討論串中留言，並附上已安裝的模組清單及相關遊戲日誌或錯誤日誌，協助團隊分析原因。若能提供重現步驟，也請一併說明。
@@ -145,7 +145,7 @@ Please post in the Bug Reports discussion thread. Include your installed mod lis
 [b]夏目アンアン[/b] — 言霊を蓄えて消費し、正気度を管理しながら強力な効果を使います。
 [b]紫藤アリサ[/b] — 燃焼を重ねて火球の群れを蓄え、一気に放ちます。
 [b]沢渡ココ[/b] — ライブ配信モードと隠れ身を管理しながら、装備を集めてセットを揃えます。
-[b]桜羽 エマ（開発中）[/b]
+[b]桜羽 エマ（開発中）[/b] エマは現在開発中です。正式リリース前にゲーム内に登場した場合は、想定外の動作です。
 
 [h2]その他のコンテンツ[/h2]
 400枚以上のカードでデッキを構築し、キャラクターをテーマにしたイベントや独自のメカニクスを楽しめます。
@@ -154,7 +154,7 @@ Please post in the Bug Reports discussion thread. Include your installed mod lis
 英語 · 簡体字中国語 · 繁体字中国語 · 日本語 · 韓国語
 
 [h2]対応バージョン[/h2]
-対象：Slay the Spire 2 v0.111.1（publicブランチ）。
+Slay the Spire 2のpublicブランチ v0.111.1とbetaブランチ v0.113.1に対応しています。ゲームのバージョンによって互換性が異なる場合があります。
 
 [h2]不具合報告 / Bug Reports[/h2]
 不具合は「Bug Reports」ディスカッションに投稿してください。導入済みModの一覧と、原因調査に役立つゲームログまたはエラーログを添えてください。再現手順もあると助かります。
@@ -186,7 +186,7 @@ Please post in the Bug Reports discussion thread. Include your installed mod lis
 [b]나츠메 안안[/b] — 언령을 모아 사용하고 이성을 관리하며 강력한 효과를 발동합니다.
 [b]시토 아리사[/b] — 화상을 쌓고 화염구 무리를 모아 한꺼번에 방출합니다.
 [b]사와타리 코코[/b] — 라이브 스트리밍 모드와 은신을 관리하며 장비를 모아 세트를 맞춥니다.
-[b]Sakuraba Ema (개발 중)[/b]
+[b]Sakuraba Ema (개발 중)[/b] 에마는 현재 개발 중입니다. 정식 출시 전에 게임에 등장한다면 이는 의도되지 않은 현상입니다.
 
 [h2]추가 콘텐츠[/h2]
 400장 이상의 카드로 덱을 구성하고, 캐릭터 테마 이벤트와 고유 메커니즘을 만나보세요.
@@ -195,7 +195,7 @@ Please post in the Bug Reports discussion thread. Include your installed mod lis
 영어 · 중국어 간체 · 중국어 번체 · 일본어 · 한국어
 
 [h2]호환 버전[/h2]
-대상 버전: Slay the Spire 2 v0.111.1 (public 브랜치).
+Slay the Spire 2의 public 브랜치 v0.111.1과 beta 브랜치 v0.113.1을 지원합니다. 게임 버전에 따라 호환성이 달라질 수 있습니다.
 
 [h2]버그 제보 / Bug Reports[/h2]
 버그는 “Bug Reports” 토론에 제보해 주세요. 원인 분석을 위해 설치된 모드 목록과 관련 게임 로그 또는 오류 로그를 함께 올려 주세요. 재현 방법도 알려 주시면 도움이 됩니다.
