@@ -37,6 +37,7 @@ For every new card, power, or keyword, update all supported languages:
 
 - `eng`
 - `zhs`
+- `zht`
 - `jpn`
 - `kor`
 

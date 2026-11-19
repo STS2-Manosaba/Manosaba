@@ -24,7 +24,6 @@ namespace Manosaba.Characters.Common.Monsters;
 public abstract class LibraryTrialMonster : MonsterModel, ICustomModel
 {
     private Player? _defeatingPlayer;
-    public override bool IsHealthBarVisible => true;
 
     protected decimal ScaleAddedHp(int baseHp) => Creature.ScaleHpForMultiplayer(baseHp,
         CombatState.Encounter, CombatState.Players.Count, CombatState.RunState.CurrentActIndex);
@@ -46,7 +45,7 @@ public abstract class LibraryTrialMonster : MonsterModel, ICustomModel
     }
 }
 
-public sealed class LibraryWarden : LibraryTrialMonster
+public sealed class LibraryWarden : LibraryTrialMonster, Manosaba.Compatibility.IManosabaAfterDeathHandler
 {
     public const int TransformationRound = 8;
     public const int BasePhaseHpGain = 220;
@@ -148,7 +147,7 @@ public sealed class LibraryWarden : LibraryTrialMonster
         if (power is GuiltPower && power.Owner.IsPlayer && Creature.IsAlive) await SyncClues(context);
     }
 
-    public override async Task AfterDeath(PlayerChoiceContext context, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
+    public async Task HandleAfterDeath(PlayerChoiceContext context, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
     {
         if (creature == Creature)
         {
@@ -211,7 +210,7 @@ public sealed class LibraryWarden : LibraryTrialMonster
     }
 }
 
-public sealed class LibraryGuard : LibraryTrialMonster
+public sealed class LibraryGuard : LibraryTrialMonster, Manosaba.Compatibility.IManosabaAfterDeathHandler
 {
     public const int RevivalDelay = 2;
     public const int HpPerRevival = 3;
@@ -242,7 +241,7 @@ public sealed class LibraryGuard : LibraryTrialMonster
         await CommonActions.Apply<LibraryExecutionerPower>(context, Creature, null, 1);
     }
 
-    public override async Task AfterDeath(PlayerChoiceContext context, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
+    public async Task HandleAfterDeath(PlayerChoiceContext context, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
     {
         if (creature != Creature || wasRemovalPrevented) return;
         _reviveRound = CombatState.RoundNumber + RevivalDelay;

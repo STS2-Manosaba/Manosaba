@@ -34,7 +34,7 @@ namespace Manosaba.Characters.HasumiLeia.Cards
 
         protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
         {
-            await CommonActions.Apply<ShowOffPower>(choiceContext, base.Owner.Creature, this, base.DynamicVars.Strength.BaseValue);
+            await CommonActions.Apply<Manosaba.Characters.HasumiLeia.Powers.ShowOffPower>(choiceContext, base.Owner.Creature, this, base.DynamicVars.Strength.BaseValue);
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
         }
 

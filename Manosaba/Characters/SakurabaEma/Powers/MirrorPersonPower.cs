@@ -29,7 +29,7 @@ public sealed class MirrorPersonPower : PathCustomPowerModel
 
         int startTurn = ownerPlayer.PlayerCombatState!.TurnNumber;
         await PowerCmd.Remove(this);
-        using var selector = CardSelectCmd.PushSelector(new VakuuCardSelector());
+        using var selector = Manosaba.Compatibility.GameApiCompat.PushSelector(ownerPlayer, new VakuuCardSelector());
         for (int cardsPlayed = 0; cardsPlayed < MaxAutoPlayedCardsPerTurn; cardsPlayed++)
         {
             if (ownerCreature.IsDead || ownerCreature.CombatState != combatState

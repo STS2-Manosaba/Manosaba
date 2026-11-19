@@ -18,7 +18,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace manosaba.Characters.SakurabaEma.Cards;
 
 [Pool(typeof(TokenCardPool))]
-public sealed class DieSakurabaEma : PathCustomCardModel
+public sealed class DieSakurabaEma : PathCustomCardModel, Manosaba.Compatibility.IManosabaAfterDeathHandler
 {
     private const decimal VictoryMajokaThreshold = 200m;
     private bool _endTurnAutoPlay;
@@ -101,7 +101,7 @@ public sealed class DieSakurabaEma : PathCustomCardModel
         return Task.CompletedTask;
     }
 
-    public override Task AfterDeath(PlayerChoiceContext context, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
+    public Task HandleAfterDeath(PlayerChoiceContext context, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
     {
         if (!wasRemovalPrevented && creature.Side == CombatSide.Enemy)
             CheckMusicThreshold();

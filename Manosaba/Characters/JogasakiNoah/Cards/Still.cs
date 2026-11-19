@@ -61,7 +61,7 @@ namespace Manosaba.Characters.JogasakiNoah.Cards
                 {
                     Vector2 s = node.Visuals.GetCurrentBody().Scale;
                     node.Visuals.GetCurrentBody().Scale = new Vector2(-Mathf.Abs(s.X), s.Y);
-                    node.ToggleIsInteractable(true);
+                    Manosaba.Compatibility.GameApiCompat.SetCreatureInteractable(node, true);
                 }
 
                 Creature perspective = pet.PetOwner?.Creature ?? Owner.Creature;

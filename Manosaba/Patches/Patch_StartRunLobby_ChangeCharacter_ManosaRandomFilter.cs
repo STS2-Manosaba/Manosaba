@@ -30,10 +30,9 @@ public static class Patch_StartRunLobby_ChangeCharacter_ManosaRandomFilter
     private static void Prefix(
         StartRunLobby __instance,
         ulong playerId,
-        ref CharacterModel character,
-        bool isRandomCharacterResolution)
+        ref CharacterModel character)
     {
-        if (!isRandomCharacterResolution)
+        if (!StartRunLobbyRandomResolutionScope.IsActive)
         {
             return;
         }

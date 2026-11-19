@@ -104,8 +104,11 @@ public static class NovelSettingMonsterCmd
         if (TestMode.IsOff)
         {
             NCreature? nCreature = NCombatRoom.Instance?.GetCreatureNode(summoned);
-            nCreature?.OstyScaleToSize(summoned.MaxHp, 0.75f);
-            nCreature?.ToggleIsInteractable(true);
+            if (nCreature != null)
+            {
+                Manosaba.Compatibility.GameApiCompat.ScaleOstyToSize(nCreature, summoned.MaxHp, 0.75f);
+                Manosaba.Compatibility.GameApiCompat.SetCreatureInteractable(nCreature, true);
+            }
         }
 
         CombatManager.Instance.History.Summoned(combatState, (int)amount, summoner);

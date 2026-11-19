@@ -71,7 +71,7 @@ public sealed class IWantToPlayAGamePower : PathCustomPowerModel
             return;
         }
 
-        using (CardSelectCmd.PushSelector(new VakuuCardSelector()))
+        using (Manosaba.Compatibility.GameApiCompat.PushSelector(ownerPlayer, new VakuuCardSelector()))
         {
             int cardsPlayed = 0;
             for (; cardsPlayed < MaxAutoPlayCards; cardsPlayed++)

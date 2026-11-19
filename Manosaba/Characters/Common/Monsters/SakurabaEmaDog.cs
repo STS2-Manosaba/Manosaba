@@ -9,7 +9,6 @@ namespace Manosaba.Characters.Common.Monsters
     {
         public override int MinInitialHp => 1;
         public override int MaxInitialHp => 1;
-        public override bool IsHealthBarVisible => true;
         public override string? HurtSfx => "event:/Manosaba/audio/monsters/sakuraba_ema_dog_hurt.ogg";
 
         /// <summary>寵物出手（<c>CreatureCmd.TriggerAnim(ema, "Attack", …)</c>）時播放；可之後換成專用吠叫/咬擊檔。</summary>

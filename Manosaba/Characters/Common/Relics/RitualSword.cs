@@ -16,7 +16,7 @@ namespace Manosaba.Characters.Common.Relics;
 /// Event relic: counts enemy <see cref="Creature"/> deaths (see vanilla <c>GremlinHorn</c> <c>AfterDeath</c>), then replaces with <see cref="RitualSwordBloodied"/>.
 /// </summary>
 [Pool(typeof(EventRelicPool))]
-public sealed class RitualSword : PathCustomRelicModel
+public sealed class RitualSword : PathCustomRelicModel, Manosaba.Compatibility.IManosabaAfterDeathHandler
 {
     private const string EnemiesKey = "Enemies";
 
@@ -42,7 +42,7 @@ public sealed class RitualSword : PathCustomRelicModel
         }
     }
 
-    public override async Task AfterDeath(PlayerChoiceContext choiceContext, Creature target, bool wasRemovalPrevented, float deathAnimLength)
+    public async Task HandleAfterDeath(PlayerChoiceContext choiceContext, Creature target, bool wasRemovalPrevented, float deathAnimLength)
     {
         _ = choiceContext;
         _ = deathAnimLength;

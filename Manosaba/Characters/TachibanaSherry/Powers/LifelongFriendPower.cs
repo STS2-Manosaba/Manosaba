@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace Manosaba.Characters.TachibanaSherry.Powers
 {
-    public sealed class LifelongFriendPower : PathCustomPowerModel
+    public sealed class LifelongFriendPower : PathCustomPowerModel, Manosaba.Compatibility.IManosabaAfterDeathHandler
     {
         private Creature? _partner;
 
@@ -50,7 +50,7 @@ namespace Manosaba.Characters.TachibanaSherry.Powers
             }
         }
 
-        public override async Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
+        public async Task HandleAfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
         {
             if (wasRemovalPrevented)
                 return;

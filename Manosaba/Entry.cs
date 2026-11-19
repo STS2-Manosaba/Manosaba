@@ -41,6 +41,7 @@ using Manosaba.Audio;
 using Manosaba.Characters.TachibanaSherry.Helpers;
 using Manosaba.Characters.JogasakiNoah.Potions;
 using Manosaba.Config;
+using Manosaba.Compatibility;
 using Manosaba.Input;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Modding;
@@ -75,6 +76,9 @@ public class Entry
                 Log.Error($"Harmony failed patching {type.FullName}: {ex.Message}");
             }
         }
+
+        BetaModeLobbyDifficultyPatches.Install(harmony);
+        BetaCharacterSelectPatches.Install(harmony);
 
         // Must run even when PatchAll fails — Godot scenes reference scripts from this assembly.
         ScriptManagerBridge.LookupScriptsInAssembly(typeof(Entry).Assembly);

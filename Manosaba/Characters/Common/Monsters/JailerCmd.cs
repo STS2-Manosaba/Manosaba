@@ -125,8 +125,8 @@ public static class JailerCmd
         if (jailerNode != null)
         {
             PushJailerToBack(jailerNode);
-            jailerNode.ToggleIsInteractable(true);
-            jailerNode.OstyScaleToSize(jailer.MaxHp, 0.75f);
+            Manosaba.Compatibility.GameApiCompat.SetCreatureInteractable(jailerNode, true);
+            Manosaba.Compatibility.GameApiCompat.ScaleOstyToSize(jailerNode, jailer.MaxHp, 0.75f);
         }
     }
 

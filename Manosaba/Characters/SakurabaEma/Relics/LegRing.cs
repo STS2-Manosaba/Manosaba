@@ -28,7 +28,7 @@ namespace manosaba.Characters.SakurabaEma.Relics;
 // Keep the existing save ID and localization keys after renaming the class.
 [CustomID("MANOSABA-LEG_IRONS_SAKURABA_EMA")]
 [Pool(typeof(SakurabaEmaRelicPool))]
-public sealed class LegRing : LevelingPathCustomRelicModel
+public sealed class LegRing : LevelingPathCustomRelicModel, Manosaba.Compatibility.IManosabaAfterDeathHandler
 {
     public override string PackedIconPath => "leg_ring.png".RelicImagePath();
     protected override string PackedIconOutlinePath => "leg_ring.png".RelicImagePath();
@@ -119,7 +119,7 @@ public sealed class LegRing : LevelingPathCustomRelicModel
             && InterrogationStartPower.IsTrialAttack(props, cardSource) && FieldPowerState.Has<InterrogationStartPower>(combat)
             ? dealer.GetPowerAmount<GuiltPower>() : 0m;
 
-    public override async Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
+    public async Task HandleAfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
     {
         _ = choiceContext;
         _ = deathAnimLength;

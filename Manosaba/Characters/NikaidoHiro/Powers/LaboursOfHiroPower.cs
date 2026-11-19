@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Manosaba.Characters.NikaidoHiro.Powers
 {
-    public class LaboursOfHiroPower : PathCustomPowerModel
+    public class LaboursOfHiroPower : PathCustomPowerModel, Manosaba.Compatibility.IManosabaAfterDeathHandler
     {
         public override PowerType Type => PowerType.Buff;
         public override PowerStackType StackType => PowerStackType.Single;
@@ -33,7 +33,7 @@ namespace Manosaba.Characters.NikaidoHiro.Powers
             }
         }
 
-        public override async Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
+        public async Task HandleAfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
         {
             _ = choiceContext;
             _ = deathAnimLength;

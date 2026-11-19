@@ -13,7 +13,6 @@ public sealed class Jailer : MonsterModel, ICustomModel
 
     public override int MinInitialHp => StartingHp;
     public override int MaxInitialHp => StartingHp;
-    public override bool IsHealthBarVisible => true;
     public override string? HurtSfx => "event:/Manosaba/audio/monsters/jailer_hurt.ogg";
 
     protected override string VisualsPath => "jailer.tscn".MonsterScenePath();

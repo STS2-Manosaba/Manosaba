@@ -20,7 +20,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace Manosaba.Characters.TachibanaSherry.Powers;
 
 /// <summary>扳手腕：每名玩家同時只能鎖定一名敵人；依雙方力量調整傷害。</summary>
-public sealed class AchubaPower : PathCustomPowerModel
+public sealed class AchubaPower : PathCustomPowerModel, Manosaba.Compatibility.IManosabaAfterDeathHandler
 {
     private const string ApplierVar = "Applier";
     private const decimal DamageBonusMultiplier = 1.2m;
@@ -63,7 +63,7 @@ public sealed class AchubaPower : PathCustomPowerModel
         }
     }
 
-    public override async Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
+    public async Task HandleAfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
     {
         _ = choiceContext;
         _ = deathAnimLength;

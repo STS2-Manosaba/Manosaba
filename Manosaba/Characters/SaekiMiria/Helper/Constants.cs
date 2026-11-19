@@ -80,7 +80,7 @@ namespace Manosaba.Characters.SaekiMiria.Helper
                 typeof(VigorPower),
                 typeof(DemonFormPower),
 
-                typeof(ShowOffPower),
+                typeof(Manosaba.Characters.HasumiLeia.Powers.ShowOffPower),
 
                 typeof(ScaldingTouchPower),
                 typeof(FireballSwarmPower),

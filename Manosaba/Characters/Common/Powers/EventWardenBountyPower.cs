@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace Manosaba.Characters.Common.Powers;
 
-public sealed class EventWardenBountyPower : PathCustomPowerModel
+public sealed class EventWardenBountyPower : PathCustomPowerModel, Manosaba.Compatibility.IManosabaAfterDeathHandler
 {
     public const int GoldReward = 5;
 
@@ -16,7 +16,7 @@ public sealed class EventWardenBountyPower : PathCustomPowerModel
 
     protected override bool IsVisibleInternal => false;
 
-    public override async Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
+    public async Task HandleAfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
     {
         _ = choiceContext;
         _ = deathAnimLength;

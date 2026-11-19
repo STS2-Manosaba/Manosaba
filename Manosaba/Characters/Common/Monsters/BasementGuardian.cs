@@ -25,7 +25,6 @@ public sealed class BasementGuardian : MonsterModel, ICustomModel
 
     public override int MinInitialHp => AscensionHelper.GetValueIfAscension(AscensionLevel.ToughEnemies, 108, 101);
     public override int MaxInitialHp => MinInitialHp;
-    public override bool IsHealthBarVisible => true;
 
     protected override string VisualsPath => "basement_guardian.tscn".EnemyScenePath();
 

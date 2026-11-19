@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Manosaba.Characters.NikaidoHiro.Powers
 {
-    public class DyingMessagePower : PathCustomPowerModel
+    public class DyingMessagePower : PathCustomPowerModel, Manosaba.Compatibility.IManosabaAfterDeathHandler
     {
         public override PowerType Type => PowerType.Buff;
         public override PowerStackType StackType => PowerStackType.Single;
@@ -33,7 +33,7 @@ namespace Manosaba.Characters.NikaidoHiro.Powers
         /// 若被 <c>ShouldDie</c> / <c>ShouldDieLate</c> 擋下（蜥蜴尾巴、死亡迴歸等），引擎會先以 <c>true</c> 呼叫本方法，再執行擋死方的 <c>AfterPreventingDeath</c>。
         /// 其他「致死觸發一次再復活」的效果可沿用同一寫法，無需逐一套件白名單。
         /// </summary>
-        public override async Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
+        public async Task HandleAfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
         {
             if (creature != base.Owner || base.CombatState == null)
                 return;

@@ -71,8 +71,11 @@ namespace Manosaba.Characters.Common.Monsters
             if (TestMode.IsOff)
             {
                 NCreature? nCreature = NCombatRoom.Instance?.GetCreatureNode(ema);
-                nCreature?.OstyScaleToSize(ema.MaxHp, 0.75f);
-                nCreature?.ToggleIsInteractable(true);
+                if (nCreature != null)
+                {
+                    Manosaba.Compatibility.GameApiCompat.ScaleOstyToSize(nCreature, ema.MaxHp, 0.75f);
+                    Manosaba.Compatibility.GameApiCompat.SetCreatureInteractable(nCreature, true);
+                }
             }
 
             CombatManager.Instance.History.Summoned(combatState, (int)amount, summoner);

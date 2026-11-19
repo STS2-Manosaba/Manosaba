@@ -56,7 +56,7 @@ public sealed class SpecialMagicPower : PathCustomPowerModel
 
         int startTurn = ownerPlayer.PlayerCombatState!.TurnNumber;
         // A finite safety bound protects against zero-cost card generation loops.
-        using var selector = CardSelectCmd.PushSelector(new VakuuCardSelector());
+        using var selector = Manosaba.Compatibility.GameApiCompat.PushSelector(player, new VakuuCardSelector());
         for (int cardsPlayed = 0; cardsPlayed < 1000; cardsPlayed++)
         {
             if (ownerCreature.IsDead || ownerCreature.CombatState != combatState

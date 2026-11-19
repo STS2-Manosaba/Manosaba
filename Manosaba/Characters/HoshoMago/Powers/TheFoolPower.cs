@@ -39,7 +39,7 @@ public sealed class TheFoolPower : PathCustomPowerModel
 
         await PowerCmd.Remove(this);
         bool flag;
-        using (CardSelectCmd.PushSelector(new VakuuCardSelector()))
+        using (Manosaba.Compatibility.GameApiCompat.PushSelector(player, new VakuuCardSelector()))
         {
             int cardsPlayed;
             for (cardsPlayed = 0; cardsPlayed < 13; cardsPlayed++)

@@ -24,7 +24,6 @@ public abstract class NovelSettingMonsterBase : MonsterModel, ICustomModel
 
     public override int MinInitialHp => StartingHp;
     public override int MaxInitialHp => StartingHp;
-    public override bool IsHealthBarVisible => true;
 
     protected override string VisualsPath => VisualSceneFileName.MonsterScenePath();
 
