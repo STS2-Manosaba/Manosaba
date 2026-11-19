@@ -11,7 +11,6 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Cards;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
-using MegaCrit.Sts2.Core.TestSupport;
 using MegaCrit.Sts2.Core.Runs;
 
 namespace Manosaba.Patches;
@@ -91,7 +90,7 @@ public static class Patch_NCard_FindOnTable_WitchEncyclopedia
     [HarmonyPrefix]
     private static bool Prefix(CardModel card, PileType? overridePile, ref NCard? __result)
     {
-        if ((card.Pile?.Type ?? overridePile) != WitchEncyclopediaState.PileType)
+        if ((overridePile ?? card.Pile?.Type) != WitchEncyclopediaState.PileType)
             return true;
         __result = null;
         return false;
@@ -103,11 +102,11 @@ public static class Patch_CardPileCmd_Add_WitchEncyclopedia
 {
     [HarmonyPrefix]
     private static bool Prefix(IEnumerable<CardModel> cards, CardPile newPile, CardPilePosition position,
-        AbstractModel? clonedBy, ref bool skipVisuals, ref Task<IReadOnlyList<CardPileAddResult>> __result)
+        AbstractModel? clonedBy, ref bool skipVisuals, bool isChangingOwners, ref Task<IReadOnlyList<CardPileAddResult>> __result)
     {
         if (newPile.Type == PileType.Hand && cards.Any(WitchEncyclopediaState.ShouldCaptureFromHand))
         {
-            __result = CaptureHandEvidence(cards.ToList(), newPile, position, clonedBy, skipVisuals);
+            __result = CaptureHandEvidence(cards.ToList(), newPile, position, clonedBy, skipVisuals, isChangingOwners);
             return false;
         }
         if (newPile.Type == WitchEncyclopediaState.PileType)
@@ -118,7 +117,7 @@ public static class Patch_CardPileCmd_Add_WitchEncyclopedia
             var incoming = cards.ToList();
             if (incoming.Count > 1 || incoming.Any(card => newPile.Cards.Any(existing => existing.Id == card.Id)))
             {
-                __result = AddUnique(incoming, newPile, position, clonedBy);
+                __result = AddUnique(incoming, newPile, position, clonedBy, isChangingOwners);
                 return false;
             }
         }
@@ -126,27 +125,29 @@ public static class Patch_CardPileCmd_Add_WitchEncyclopedia
     }
 
     [HarmonyPostfix]
-    private static void Postfix(CardPile newPile, ref Task<IReadOnlyList<CardPileAddResult>> __result)
+    private static void Postfix(CardPile newPile, bool __runOriginal, ref Task<IReadOnlyList<CardPileAddResult>> __result)
     {
-        if (newPile.Type == WitchEncyclopediaState.PileType)
+        if (__runOriginal && newPile.Type == WitchEncyclopediaState.PileType)
             __result = FinishCapture(__result, newPile);
     }
 
     private static async Task<IReadOnlyList<CardPileAddResult>> CaptureHandEvidence(List<CardModel> cards,
-        CardPile hand, CardPilePosition position, AbstractModel? source, bool skipVisuals)
+        CardPile hand, CardPilePosition position, AbstractModel? source, bool skipVisuals, bool isChangingOwners)
     {
         var results = new List<CardPileAddResult>();
         foreach (var card in cards)
         {
             var target = WitchEncyclopediaState.ShouldCaptureFromHand(card) ? WitchEncyclopediaState.Get(card.Owner)?.Pile : hand;
-            results.Add(target == null ? new CardPileAddResult { cardAdded = card, success = false } :
-                await CardPileCmd.Add(card, target, position, source, skipVisuals));
+            if (target == null)
+                results.Add(new CardPileAddResult { cardAdded = card, success = false });
+            else
+                results.AddRange(await CardPileCmd.Add([card], target, position, source, skipVisuals, isChangingOwners));
         }
         return results;
     }
 
     private static async Task<IReadOnlyList<CardPileAddResult>> AddUnique(List<CardModel> cards,
-        CardPile pile, CardPilePosition position, AbstractModel? source)
+        CardPile pile, CardPilePosition position, AbstractModel? source, bool isChangingOwners)
     {
         var results = new List<CardPileAddResult>();
         foreach (var card in cards)
@@ -162,7 +163,7 @@ public static class Patch_CardPileCmd_Add_WitchEncyclopedia
             else if (pile.Cards.Contains(card))
                 results.Add(new CardPileAddResult { cardAdded = card, oldPile = pile, success = true });
             else
-                results.Add(await CardPileCmd.Add(card, pile, position, source, skipVisuals: true));
+                results.AddRange(await CardPileCmd.Add([card], pile, position, source, skipVisuals: true, isChangingOwners: isChangingOwners));
         }
         return results;
     }
@@ -174,6 +175,7 @@ public static class Patch_CardPileCmd_Add_WitchEncyclopedia
         {
             WitchEncyclopediaState.Get(result.cardAdded.Owner)?.MarkReceivedEvidence();
             RemoveTableNode(result.cardAdded, result.oldPile);
+            result.oldPile?.InvokeCardRemoved(result.cardAdded);
             result.oldPile?.InvokeContentsChanged();
             result.oldPile?.InvokeCardRemoveFinished();
         }
@@ -183,24 +185,15 @@ public static class Patch_CardPileCmd_Add_WitchEncyclopedia
 
     private static void RemoveTableNode(CardModel card, CardPile? oldPile)
     {
-        if (TestMode.IsOn)
+        if (oldPile?.Type is not (PileType.Hand or PileType.Play))
             return;
-        // The model has already moved into the encyclopedia. FindOnTable reads
-        // its current pile even when an override is supplied, so look up only
-        // the OLD hand/play containers directly. Freshly generated evidence
-        // has no old pile and no table node to clean up.
-        var ui = NCombatRoom.Instance?.Ui;
-        if (ui == null)
-            return;
-        var node = oldPile?.Type switch
-        {
-            PileType.Hand => ui.Hand.GetCard(card) ?? ui.PlayQueue.GetCardNode(card) ?? ui.GetCardFromPlayContainer(card),
-            PileType.Play => ui.GetCardFromPlayContainer(card),
-            _ => null,
-        };
+        var node = NCard.FindOnTable(card, oldPile.Type);
         if (node == null)
             return;
-        if (oldPile?.Type == PileType.Hand)
+        var ui = NCombatRoom.Instance!.Ui;
+        if (ui.PlayQueue.IsAncestorOf(node))
+            ui.PlayQueue.RemoveCardFromQueueForExecution(card);
+        if (ui.Hand.IsAncestorOf(node))
             ui.Hand.Remove(card);
         node.GetParent()?.RemoveChild(node);
         node.QueueFree();

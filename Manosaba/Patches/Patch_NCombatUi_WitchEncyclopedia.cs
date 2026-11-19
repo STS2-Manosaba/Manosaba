@@ -23,6 +23,9 @@ public static class Patch_NCombatUi_WitchEncyclopedia
         __instance.AddChild(button);
     }
     [HarmonyPatch(nameof(NCombatUi.Deactivate))]
+    [HarmonyPostfix]
+    private static void Deactivate(NCombatUi __instance) => Remove(__instance);
+
     [HarmonyPatch("PostCombatCleanUp")]
     [HarmonyPostfix]
     private static void Remove(NCombatUi __instance)

@@ -13,6 +13,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Saves.Runs;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -85,8 +86,9 @@ public sealed class YouDidWell : PathCustomRelicModel
         if (!Owner.Deck.Cards.Any(c => c is MagicToKillTheWitch))
         {
             CardModel magic = Owner.RunState.CreateCard(ModelDb.Card<MagicToKillTheWitch>(), Owner);
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.Add(magic, PileType.Deck));
-            if (!CombatManager.Instance.IsOverOrEnding && Owner.Creature.CombatState is { } combat)
+            var added = await CardPileCmd.Add(magic, PileType.Deck);
+            CardCmd.PreviewCardPileAdd(added);
+            if (added.success && !CombatManager.Instance.IsOverOrEnding && Owner.Creature is { IsAlive: true, CombatState: { } combat })
                 await CardPileCmd.AddGeneratedCardsToCombat([combat.CreateCard<MagicToKillTheWitch>(Owner)], PileType.Hand, Owner);
         }
         // Combat copies already exist at BeforeCombatStart; deck transforms do not update them.
@@ -103,11 +105,21 @@ public sealed class YouDidWell : PathCustomRelicModel
             if (result is { success: true, cardAdded: { } transformed } && transformed.Pile?.Type == PileType.Play)
                 await CardPileCmd.Add(transformed, PileType.Discard);
         }
-        foreach (CardModel trauma in Owner.Deck.Cards.Where(c => c is TraumaSakurabaEma).ToList())
+        if (!CombatManager.Instance.IsEnding)
+            await TransformDeckTraumas();
+    }
+
+    // Native Transform skips even deck cards during a finishing kill. Victory runs before rewards.
+    public override Task AfterCombatVictory(CombatRoom room) =>
+        Stacks >= 5 ? TransformDeckTraumas() : Task.CompletedTask;
+
+    private async Task TransformDeckTraumas()
+    {
+        foreach (CardModel trauma in Owner.Deck.Cards.OfType<TraumaSakurabaEma>().Where(c => c.IsTransformable).ToList())
         {
-            bool upgraded = trauma.IsUpgraded;
-            var result = await CardCmd.TransformTo<TraumaTrueSakurabaEma>(trauma);
-            if (upgraded && result is { success: true, cardAdded: { } transformed }) CardCmd.Upgrade(transformed);
+            var replacement = Owner.RunState.CreateCard<TraumaTrueSakurabaEma>(Owner);
+            if (trauma.IsUpgraded) CardCmd.Upgrade(replacement);
+            await CardCmd.Transform(trauma, replacement);
         }
     }
     public override Task AfterPowerAmountChanged(PlayerChoiceContext context, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
