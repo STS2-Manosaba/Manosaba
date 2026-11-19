@@ -14,9 +14,6 @@ namespace manosaba.Characters.SakurabaEma.Powers;
 
 public sealed class RetrialExtraTurnPower : PathCustomPowerModel
 {
-    public override string CustomPackedIconPath => ModelDb.Power<ArgumentPower>().CustomPackedIconPath;
-    public override string CustomBigIconPath => CustomPackedIconPath;
-    public override string CustomBigBetaIconPath => CustomPackedIconPath;
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
     public override bool ShouldTakeExtraTurn(Player player) => player == Owner.Player && Amount > 0;
@@ -29,9 +26,6 @@ public sealed class RetrialExtraTurnPower : PathCustomPowerModel
 
 public sealed class ScabbardPower : PathCustomPowerModel
 {
-    public override string CustomPackedIconPath => ModelDb.Power<GuiltPower>().CustomPackedIconPath;
-    public override string CustomBigIconPath => CustomPackedIconPath;
-    public override string CustomBigBetaIconPath => CustomPackedIconPath;
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("DamageCap", 10m)];

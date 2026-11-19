@@ -15,9 +15,6 @@ public sealed class EndlessEvidencePower : PathCustomPowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    public override string CustomPackedIconPath => ModelDb.Power<GuiltPower>().CustomPackedIconPath;
-    public override string CustomBigIconPath => CustomPackedIconPath;
-    public override string CustomBigBetaIconPath => CustomPackedIconPath;
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [WitchEncyclopediaState.HoverTip];
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext context, Player player)
     {
@@ -31,9 +28,6 @@ public sealed class AfterDinnerStatementPower : PathCustomPowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    public override string CustomPackedIconPath => ModelDb.Power<ArgumentPower>().CustomPackedIconPath;
-    public override string CustomBigIconPath => CustomPackedIconPath;
-    public override string CustomBigBetaIconPath => CustomPackedIconPath;
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<Statement>()];
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext context, Player player)
     {

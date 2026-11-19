@@ -21,8 +21,6 @@ public abstract class EvidenceCard : PathCustomCardModel
     public override bool CanBeGeneratedInCombat => false;
     public override bool CanBeGeneratedByModifiers => false;
     public override int MaxUpgradeLevel => 0;
-    // Temporary art until individual evidence portraits are supplied.
-    public override string PortraitPath => "res://Manosaba/images/cards/search_sakuraba_ema.png";
     protected virtual IEnumerable<IHoverTip> EvidenceHoverTips => [];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromKeyword(ManosabaKeywords.Evidence), WitchEncyclopediaState.HoverTip, ..EvidenceHoverTips];
 

@@ -17,6 +17,8 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class SmokeOutEvidence : PathCustomCardModel
 {
+    public override string PortraitPath => "res://Manosaba/images/cards/accomplice.png";
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(2),

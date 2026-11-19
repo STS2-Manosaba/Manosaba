@@ -13,9 +13,6 @@ public sealed class FreeScorchingBottlePower : PathCustomPowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
-    public override string CustomPackedIconPath => "res://Manosaba/images/powers/burn_power.png";
-    public override string CustomBigIconPath => CustomPackedIconPath;
-    public override string CustomBigBetaIconPath => CustomPackedIconPath;
     public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
     {
         modifiedCost = originalCost;

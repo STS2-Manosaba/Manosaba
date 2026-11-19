@@ -304,6 +304,8 @@ public sealed class HeartyMeal : EmaBadEndingTokenBase
 [Pool(typeof(TokenCardPool))]
 public sealed class MediationPunch : EmaBadEndingTokenBase
 {
+    public override string PortraitPath => "res://Manosaba/images/cards/could_it_be_that_equal_treatment_token.png";
+
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<StrengthPower>(3m), new PowerVar<SusPower>(2m)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => base.ExtraHoverTips.Concat([HoverTipFactory.FromPower<StrengthPower>(), HoverTipFactory.FromPower<SusPower>()]);
 
@@ -342,6 +344,8 @@ public sealed class ShowerRoomMirror : EmaBadEndingTokenBase
 [Pool(typeof(TokenCardPool))]
 public sealed class SuspicionGhosts : EmaBadEndingTokenBase
 {
+    public override string PortraitPath => "res://Manosaba/images/cards/suspicion.png";
+
     public SuspicionGhosts() : base(0, CardType.Power, TargetType.None)
     {
     }
@@ -356,6 +360,8 @@ public sealed class SuspicionGhosts : EmaBadEndingTokenBase
 [Pool(typeof(TokenCardPool))]
 public sealed class WanderingNarehate : EmaBadEndingTokenBase
 {
+    public override string PortraitPath => "res://Manosaba/images/cards/narehate_feeding.png";
+
     protected override bool HasEnergyCostX => true;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(18m, ValueProp.Move)];
 
@@ -437,6 +443,8 @@ public sealed class Elope : EmaBadEndingTokenBase
 [Pool(typeof(TokenCardPool))]
 public sealed class NotYourFault : EmaBadEndingTokenBase
 {
+    public override string PortraitPath => "res://Manosaba/images/cards/you_are_weak_ema.png";
+
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<BurnPower>(10m)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => base.ExtraHoverTips.Append(HoverTipFactory.FromPower<BurnPower>());
 

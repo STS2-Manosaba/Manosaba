@@ -17,9 +17,6 @@ public sealed class LibraryExecutionerPower : PathCustomPowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
-    public override string CustomPackedIconPath => ModelDb.Power<GuiltPower>().CustomPackedIconPath;
-    public override string CustomBigIconPath => CustomPackedIconPath;
-    public override string CustomBigBetaIconPath => CustomPackedIconPath;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("PerGuilt", 2)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<GuiltPower>()];
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props,

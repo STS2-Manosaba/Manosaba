@@ -21,9 +21,6 @@ public sealed class TrueCulpritPower : PathCustomPowerModel
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
     public override bool AllowNegative => false;
-    public override string CustomPackedIconPath => ModelDb.Power<GuiltPower>().CustomPackedIconPath;
-    public override string CustomBigIconPath => ModelDb.Power<GuiltPower>().CustomBigIconPath;
-    public override string CustomBigBetaIconPath => CustomBigIconPath;
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [HoverTipFactory.Static(StaticHoverTip.Block), HoverTipFactory.FromPower<GuiltPower>(),
             HoverTipFactory.FromPower<InterrogationStartPower>()];

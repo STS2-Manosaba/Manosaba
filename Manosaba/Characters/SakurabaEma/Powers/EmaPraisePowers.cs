@@ -75,9 +75,6 @@ public sealed class DeathSentencePower : PathCustomPowerModel
 {
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Single;
-    public override string CustomPackedIconPath => "res://Manosaba/images/powers/guilt_power.png";
-    public override string CustomBigIconPath => CustomPackedIconPath;
-    public override string CustomBigBetaIconPath => CustomPackedIconPath;
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, MegaCrit.Sts2.Core.Entities.Cards.CardPlay? cardPlay) =>
         target == Owner && cardSource?.Keywords.Contains(ManosabaKeywords.Execution) == true ? 1.2m : 1m;
 }

@@ -296,6 +296,7 @@ public sealed class ApprenticeWitchFiles : SearchEvidenceCard
 [Pool(typeof(TokenCardPool))]
 public sealed class Note169231 : SearchEvidenceCard
 {
+    public override string PortraitPath => "res://Manosaba/images/cards/torture_show_invitation.png";
     protected override IEnumerable<IHoverTip> EvidenceHoverTips => [HoverTipFactory.FromCard<Vote>()];
     protected override Task OnPlay(PlayerChoiceContext context, CardPlay play) => Generate(ModelDb.Card<Vote>());
 }

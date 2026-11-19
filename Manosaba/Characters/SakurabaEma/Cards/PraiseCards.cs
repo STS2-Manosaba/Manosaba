@@ -85,7 +85,6 @@ public sealed class SentKy : EmaTrialCard
 public sealed class DArime : EmaTrialCard
 {
     protected override bool HasProgressEffect => true;
-    public override string PortraitPath => ModelDb.Card<Rebuttal>().PortraitPath;
     public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Trial, CardKeyword.Exhaust];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new TrialDamageVar(13), new DynamicVar("Progress", 20)];
     public DArime() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy, true) { }

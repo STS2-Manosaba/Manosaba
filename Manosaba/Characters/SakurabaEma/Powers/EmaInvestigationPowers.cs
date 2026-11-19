@@ -21,9 +21,6 @@ public sealed class InformationNetworkPower : PathCustomPowerModel
     public const decimal DamagePerStack = 6m;
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    public override string CustomPackedIconPath => ModelDb.Power<GuiltPower>().CustomPackedIconPath;
-    public override string CustomBigIconPath => CustomPackedIconPath;
-    public override string CustomBigBetaIconPath => CustomPackedIconPath;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("TriggerDamage", DamagePerStack)];
     internal async Task AfterPresentEvidence(PlayerChoiceContext context)
     {
@@ -42,9 +39,6 @@ public sealed class SakurabaEmeowPower : PathCustomPowerModel
     private bool _applyingBleed;
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    public override string CustomPackedIconPath => ModelDb.Power<BleedPower>().CustomPackedIconPath;
-    public override string CustomBigIconPath => CustomPackedIconPath;
-    public override string CustomBigBetaIconPath => CustomPackedIconPath;
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<BleedPower>()];
     public override async Task AfterDamageGiven(PlayerChoiceContext context, Creature? dealer, DamageResult result,
         ValueProp props, Creature target, CardModel? cardSource)
@@ -65,9 +59,6 @@ public sealed class GluttonyPower : PathCustomPowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
-    public override string CustomPackedIconPath => ModelDb.Power<MajokaPower>().CustomPackedIconPath;
-    public override string CustomBigIconPath => CustomPackedIconPath;
-    public override string CustomBigBetaIconPath => CustomPackedIconPath;
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new PowerVar<StrengthPower>(1m), new PowerVar<DexterityPower>(1m), new PowerVar<MajokaPower>(10m),
             new DynamicVar("Heal", 1m), new PowerVar<GuiltPower>(1m)];
