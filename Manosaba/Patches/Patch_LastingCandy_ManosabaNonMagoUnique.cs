@@ -13,7 +13,7 @@ namespace Manosaba.Patches;
 public static class Patch_LastingCandy_ManosabaNonMagoUnique
 {
     [HarmonyPostfix]
-    private static void Postfix(Player player, List<CardCreationResult> options, bool __result)
+    private static void Postfix(Player player, List<CardCreationResult> cardRewardOptions, bool __result)
     {
         if (!__result)
         {
@@ -25,6 +25,6 @@ public static class Patch_LastingCandy_ManosabaNonMagoUnique
             return;
         }
 
-        ManosabaUniqueCardEligibility.FilterCardCreationResults(player, options);
+        ManosabaUniqueCardEligibility.FilterCardCreationResults(player, cardRewardOptions);
     }
 }

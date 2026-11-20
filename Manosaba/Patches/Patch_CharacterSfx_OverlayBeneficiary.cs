@@ -59,8 +59,8 @@ public static class Patch_SmithRestSiteOption_DoRemotePostSelectVfx_OverlayBenef
 public static class Patch_CreatureCmd_LoseBlock_OverlayBeneficiary
 {
     [HarmonyPrefix]
-    private static void Prefix(Creature creature) =>
-        CharacterSfxOverlayBeneficiary.Push(creature.Player?.NetId);
+    private static void Prefix(Creature target) =>
+        CharacterSfxOverlayBeneficiary.Push(target.Player?.NetId);
 
     [HarmonyFinalizer]
     private static void Finalizer() =>
