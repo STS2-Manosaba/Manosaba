@@ -98,7 +98,7 @@ public static class Patch_NCard_FindOnTable_WitchEncyclopedia
     }
 }
 [HarmonyPatch(typeof(CardPileCmd), nameof(CardPileCmd.Add),
-    [typeof(IEnumerable<CardModel>), typeof(CardPile), typeof(CardPilePosition), typeof(AbstractModel), typeof(bool)])]
+    [typeof(IEnumerable<CardModel>), typeof(CardPile), typeof(CardPilePosition), typeof(AbstractModel), typeof(bool), typeof(bool)])]
 public static class Patch_CardPileCmd_Add_WitchEncyclopedia
 {
     [HarmonyPrefix]
