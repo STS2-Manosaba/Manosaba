@@ -80,18 +80,28 @@ public sealed class ManosabaConfig : SimpleModConfig
     [ConfigHoverTip]
     public static ManosabaFxPlayMode InmuKingEffectFrequency { get; set; } = ManosabaFxPlayMode.EveryTime;
 
+    // TODO(ema): Ema-only effect; hidden while the character is hidden.
+    [ConfigHideInUI]
     [ConfigHoverTip]
     public static ManosabaFxPlayMode EmaWitchTrialAudioFrequency { get; set; } = ManosabaFxPlayMode.EveryTime;
 
+    // TODO(ema): Ema-only effect; hidden while the character is hidden.
+    [ConfigHideInUI]
     [ConfigHoverTip]
     public static ManosabaFxPlayMode InterrogationStartMusicFrequency { get; set; } = ManosabaFxPlayMode.EveryTime;
 
+    // TODO(ema): Ema-only effect; hidden while the character is hidden.
+    [ConfigHideInUI]
     [ConfigHoverTip]
     public static ManosabaFxPlayMode MagicToKillWitchEffectFrequency { get; set; } = ManosabaFxPlayMode.EveryTime;
 
+    // TODO(ema): Ema-only effect; hidden while the character is hidden.
+    [ConfigHideInUI]
     [ConfigHoverTip]
     public static ManosabaFxPlayMode KillEmaVictoryBgmFrequency { get; set; } = ManosabaFxPlayMode.EveryTime;
 
+    // TODO(ema): Ema-only effect; hidden while the character is hidden.
+    [ConfigHideInUI]
     [ConfigHoverTip]
     public static ManosabaFxPlayMode DieVictoryBgmFrequency { get; set; } = ManosabaFxPlayMode.EveryTime;
 

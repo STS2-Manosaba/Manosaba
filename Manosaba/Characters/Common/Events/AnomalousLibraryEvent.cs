@@ -19,7 +19,12 @@ public sealed class AnomalousLibraryEvent : CustomEventModel
     public override string CustomInitialPortraitPath => "res://images/events/manosaba-anomalous_library_event.png";
     public override EncounterModel CanonicalEncounter => ModelDb.Encounter<AnomalousLibraryEncounter>();
 
-    public override bool IsAllowed(IRunState runState) => runState.CurrentActIndex == 1
+    // This event is built around Ema's Guilt / Interrogation mechanics; keep it out of runs while Ema is hidden.
+    private static bool IsEmaContentHidden =>
+        ModelDb.Character<manosaba.Characters.SakurabaEma.SakurabaEma>().HideFromVanillaCharacterSelect;
+
+    public override bool IsAllowed(IRunState runState) => !IsEmaContentHidden
+        && runState.CurrentActIndex == 1
         && runState.Players.Any(p => ManosabaRandomCharacterPool.IsManosabaPlayableCharacter(p.Character));
 
     protected override IReadOnlyList<EventOption> GenerateInitialOptions() =>
