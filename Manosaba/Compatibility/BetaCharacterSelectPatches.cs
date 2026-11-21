@@ -251,6 +251,10 @@ internal static class BetaCharacterSelectPatches
             button.MouseFilter = Control.MouseFilterEnum.Pass;
         }
 
+        // Read the viewport size before RemoveChild: once detached, buttonContainer is outside the tree and
+        // GetViewportRect() logs '!is_inside_tree()' and returns an empty rect (forcing the 1800px fallback).
+        float viewportWidth = parent.IsInsideTree() ? parent.GetViewportRect().Size.X : 0f;
+
         int index = buttonContainer.GetIndex();
         parent.RemoveChild(buttonContainer);
 
@@ -259,7 +263,6 @@ internal static class BetaCharacterSelectPatches
             buttonContainer,
             control =>
             {
-                float viewportWidth = buttonContainer.GetViewportRect().Size.X;
                 float maxScrollWidth = viewportWidth > 0f ? MathF.Min(1800f, viewportWidth - 80f) : 1800f;
                 float scrollWidth = MathF.Min(116f * buttons.Count, MathF.Max(1f, maxScrollWidth));
 

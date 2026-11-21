@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using Manosaba.Compatibility;
 
 namespace Manosaba.Characters.TonoHanna.Powers
 {
@@ -58,14 +59,14 @@ namespace Manosaba.Characters.TonoHanna.Powers
                 return;
 
             ICombatState combat = Owner.CombatState;
-            await CreatureCmd.Damage(context, combat.HittableEnemies, Amount, ValueProp.Unpowered, Owner, null, null);
+            await GameApiCompat.Damage(context, combat.HittableEnemies, Amount, ValueProp.Unpowered, Owner, null, null);
 
             if (cardPlay.Card is HiroPuppet)
             {
                 decimal hiroBonus = DynamicVars["HiroBonus"].BaseValue;
                 if (hiroBonus > 0m)
                 {
-                    await CreatureCmd.Damage(
+                    await GameApiCompat.Damage(
                         context,
                         combat.HittableEnemies,
                         hiroBonus,

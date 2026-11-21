@@ -12,16 +12,39 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
-using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace Manosaba.Characters.JogasakiNoah.Potions
 {
     [Pool(typeof(JogasakiNoahPotionPool))]
     public class DrawingBoard : PathCustomPotionModel
     {
-        [SavedProperty]
-        public ModelId _storedMonsterId { get; set; } = ModelId.none;
-        public SavedProperties? SaveData => SavedProperties.From(this);
+        /// <summary>
+        /// Base-game <c>[SavedProperty]</c> only works on cards/relics/enchantments/modifiers, so on a potion the stored
+        /// monster was lost on save/load and reconnect. BaseLib's <see cref="SavedSpireField{TKey,TVal}"/> supports potions
+        /// through its custom save path; the id is stored as its <see cref="ModelId.ToString"/> form.
+        /// </summary>
+        private static readonly SavedSpireField<DrawingBoard, string> StoredMonsterField = CreateStoredMonsterField();
+
+        private static SavedSpireField<DrawingBoard, string> CreateStoredMonsterField()
+        {
+            var field = new SavedSpireField<DrawingBoard, string>(() => null, "storedMonsterId")
+            {
+                Serializer = (value, writer) => writer.WriteString(value ?? string.Empty),
+                Deserializer = reader => reader.ReadString(),
+            };
+            field.CopyOnClone();
+            return field;
+        }
+
+        private ModelId StoredMonsterId
+        {
+            get
+            {
+                string? raw = StoredMonsterField.Get(this);
+                return string.IsNullOrEmpty(raw) ? ModelId.none : ModelId.Deserialize(raw);
+            }
+        }
+
         public bool IsNetworked => true;
         public override PotionUsage Usage => PotionUsage.CombatOnly;
         public override PotionRarity Rarity => PotionRarity.Token;
@@ -32,18 +55,19 @@ namespace Manosaba.Characters.JogasakiNoah.Potions
         public void SetStoredMonster(ModelId id)
         {
             AssertMutable();
-            _storedMonsterId = id;
+            StoredMonsterField.Set(this, id == ModelId.none ? null : id.ToString());
         }
 
         protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
         {
-            if (_storedMonsterId == ModelId.none) return;
+            ModelId storedMonsterId = StoredMonsterId;
+            if (storedMonsterId == ModelId.none) return;
             if (Owner?.Creature?.CombatState is not { } combatState)
             {
                 return;
             }
 
-            MonsterModel? canonicalMonster = ModelDb.GetById<MonsterModel>(_storedMonsterId);
+            MonsterModel? canonicalMonster = ModelDb.GetById<MonsterModel>(storedMonsterId);
             if (canonicalMonster == null)
             {
                 return;

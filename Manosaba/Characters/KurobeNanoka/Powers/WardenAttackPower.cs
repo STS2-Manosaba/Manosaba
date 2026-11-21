@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using Manosaba.Compatibility;
 
 namespace Manosaba.Characters.KurobeNanoka.Powers;
 
@@ -30,6 +31,6 @@ public sealed class WardenAttackPower : PathCustomPowerModel
 
         IReadOnlyList<Creature> enemies = Owner.CombatState.GetOpponentsOf(Owner).Where(c => c.IsAlive && c.IsHittable).ToList();
         if (enemies.Count > 0)
-            await CreatureCmd.Damage(context, enemies, Amount, ValueProp.Unpowered, Owner, null, null);
+            await GameApiCompat.Damage(context, enemies, Amount, ValueProp.Unpowered, Owner, null, null);
     }
 }

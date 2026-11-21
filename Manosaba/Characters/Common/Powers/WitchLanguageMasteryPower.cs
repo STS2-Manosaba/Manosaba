@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using Manosaba.Compatibility;
 
 namespace Manosaba.Characters.Common.Powers;
 
@@ -46,7 +47,7 @@ public sealed class WitchLanguageMasteryPower : PathCustomPowerModel
 
         Flash();
         decimal loss = (decimal)result.TotalDamage * MultiplierPerStack * Amount;
-        await CreatureCmd.Damage(context, combat.GetOpponentsOf(Owner).Where(enemy => enemy.IsAlive),
+        await GameApiCompat.Damage(context, combat.GetOpponentsOf(Owner).Where(enemy => enemy.IsAlive),
             loss, DamageProps.nonCardHpLoss, null, null, null);
     }
 }

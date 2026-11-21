@@ -13,6 +13,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using System.Linq;
+using Manosaba.Compatibility;
 
 namespace Manosaba.Characters.HasumiLeia.Cards;
 
@@ -142,7 +143,7 @@ public sealed class StarburstStream : PathCustomCardModel
             {
                 // Small pause + big-hit VFX before the 17th (upgrade) hit.
                 await Cmd.CustomScaledWait(0.5f, 0.5f);
-                VfxCmd.PlayOnCreature(target, "vfx/vfx_big_slash");
+                GameApiCompat.PlayVfxOnCreature(target, "vfx/vfx_big_slash");
                 await CreatureCmd.Damage(choiceContext, target, extraDamage, ValueProp.Unpowered, dealer, this, null);
             }
         }

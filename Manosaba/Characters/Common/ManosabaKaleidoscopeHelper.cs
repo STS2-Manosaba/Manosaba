@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Relics;
 using MegaCrit.Sts2.Core.Rewards;
 using MegaCrit.Sts2.Core.Runs;
+using Manosaba.Compatibility;
 
 namespace Manosaba.Characters.Common;
 
@@ -45,7 +46,7 @@ internal static class ManosabaKaleidoscopeHelper
                 cardsToOffer.Add(CreateRewardCardFromPool(owner, pool, ref tarotPool));
             }
 
-            rewards.Add(new CardReward(cardsToOffer, CardCreationSource.Other, owner, rerollOptions));
+            rewards.Add(GameApiCompat.NewCardReward(cardsToOffer, CardCreationSource.Other, owner, rerollOptions));
         }
 
         await RewardsCmd.OfferCustom(owner, rewards);

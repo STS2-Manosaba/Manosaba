@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using Manosaba.Compatibility;
 
 namespace Manosaba.Characters.Common.Cards
 {
@@ -42,7 +43,7 @@ namespace Manosaba.Characters.Common.Cards
 
         protected override async Task OnTurnEndInHand(PlayerChoiceContext choiceContext)
         {
-            VfxCmd.PlayOnCreatureCenter(base.Owner.Creature, "vfx/vfx_bloody_impact");
+            GameApiCompat.PlayVfxOnCreatureCenter(base.Owner.Creature, "vfx/vfx_bloody_impact");
             await CreatureCmd.Damage(choiceContext, base.Owner.Creature, base.DynamicVars.Damage, this, null);
         }
     }

@@ -14,6 +14,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using Manosaba.Compatibility;
 
 namespace manosaba.Characters.SawatariCoco.Cards;
 
@@ -47,7 +48,7 @@ public sealed class PunkCatHeadwear : EquipmentCardModel
             return;
         }
 
-        await CreatureCmd.Damage(choiceContext, combatState.HittableEnemies, damage, ValueProp.Move, dealer, this, null);
+        await GameApiCompat.Damage(choiceContext, combatState.HittableEnemies, damage, ValueProp.Move, dealer, this, null);
     }
 
     protected override void OnUpgrade()

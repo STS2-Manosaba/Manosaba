@@ -60,9 +60,14 @@ public static class Patch_NPauseMenu_SaveAndQuit_StopCustomBgm
     }
 }
 
-[HarmonyPatch(typeof(NRun), nameof(NRun.ShowGameOverScreen), new[] { typeof(SerializableRun) })]
+[HarmonyPatch]
 public static class Patch_NRun_ShowGameOverScreen_StopCustomBgm
 {
+    [HarmonyTargetMethods]
+    private static IEnumerable<MethodBase> TargetMethods() =>
+        AccessTools.GetDeclaredMethods(typeof(NRun))
+            .Where(method => method.Name == nameof(NRun.ShowGameOverScreen));
+
     [HarmonyPrefix]
     private static void Prefix()
     {

@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.MonsterMoves.Intents;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
 using MegaCrit.Sts2.Core.ValueProps;
+using Manosaba.Compatibility;
 
 namespace Manosaba.Characters.Common.Monsters;
 
@@ -121,7 +122,7 @@ public sealed class NovelClawedCockatrice : NovelSettingMonsterBase
         }
 
         ThrowingPlayerChoiceContext context = new();
-        await CreatureCmd.Damage(context, livingTargets, DamageAmount, ValueProp.Move, base.Creature, null, null);
+        await GameApiCompat.Damage(context, livingTargets, DamageAmount, ValueProp.Move, base.Creature, null, null);
         foreach (Creature target in livingTargets)
         {
             await CommonActions.Apply<VulnerablePower>(new ThrowingPlayerChoiceContext(), target, null, VulnerableAmount);
@@ -148,7 +149,7 @@ public sealed class NovelCrimsonValstrax : NovelSettingMonsterBase
         {
             await ValstraxDiveBombVfxCmd.PlayUntilImpactForTargets(enemyTargets);
             ThrowingPlayerChoiceContext context = new();
-            await CreatureCmd.Damage(
+            await GameApiCompat.Damage(
                 context,
                 enemyTargets,
                 FixedDamage,

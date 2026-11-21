@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using Manosaba.Compatibility;
 
 namespace Manosaba.Characters.KurobeNanoka.Cards;
 
@@ -56,7 +57,7 @@ public sealed class ThreeSixtyNoScope : GunBase
             NanokaHelper.PlayAWPSfx();
             for(int i = 0; i < 5; i++)
             {
-                VfxCmd.PlayOnCreature(target, "vfx/vfx_attack_lightning");
+                GameApiCompat.PlayVfxOnCreature(target, "vfx/vfx_attack_lightning");
                 await Cmd.Wait(0.3f);
             }
             ManosabaVideoCmd.PlayFullscreenOneShot(InstaKillVideoPath, chromaKeyGreen: true);

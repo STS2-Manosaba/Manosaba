@@ -14,6 +14,7 @@ using MegaCrit.Sts2.Core.Rewards;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.ValueProps;
+using Manosaba.Compatibility;
 
 namespace Manosaba.Characters.Common.Events;
 
@@ -73,7 +74,7 @@ public sealed class BasementExplorationEvent : CustomEventModel
         {
             RelicModel ritualSword = ModelDb.Relic<RitualSword>().ToMutable();
             ritualSword.Owner = player;
-            extraRewards.Add(new RelicReward(ritualSword, player));
+            extraRewards.Add(GameApiCompat.NewRelicReward(ritualSword, player));
         }
         EnterCombatWithoutExitingEvent<BasementGuardianEventEncounter>(extraRewards, shouldResumeAfterCombat: true);
         return Task.CompletedTask;

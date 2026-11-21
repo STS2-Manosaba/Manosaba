@@ -73,14 +73,18 @@
 		<NoWarn>$(NoWarn);MSB3270</NoWarn>
 	</PropertyGroup>
 
+	<!-- Private=true so these land in bin/<config>/ and in Manosaba.deps.json. Headless Godot (pck export) loads the
+	     project assembly through AssemblyDependencyResolver, which only resolves deps.json entries; with Private=false it
+	     cannot resolve sts2 and fails with TypeLoadException on script classes such as ManosabaCharacterVisuals.
+	     Only Manosaba.dll is copied to the mods folder (CopyToModsFolderOnBuild), so the game still uses its own copies. -->
 	<ItemGroup Condition="Exists('$(Sts2DataDir)')">
 		<Reference Include="0Harmony">
 			<HintPath>$(Sts2DataDir)/0Harmony.dll</HintPath>
-			<Private>false</Private>
+			<Private>true</Private>
 		</Reference>
 		<Reference Include="sts2">
 			<HintPath>$(Sts2DataDir)/sts2.dll</HintPath>
-			<Private>false</Private>
+			<Private>true</Private>
 		</Reference>
 	</ItemGroup>
 

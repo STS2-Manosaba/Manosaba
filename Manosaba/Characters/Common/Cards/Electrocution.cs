@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using Manosaba.Compatibility;
 
 namespace Manosaba.Characters.Common.Cards
 {
@@ -68,7 +69,7 @@ namespace Manosaba.Characters.Common.Cards
                 return;
             }
 
-            VfxCmd.PlayOnCreature(target, "vfx/vfx_attack_lightning");
+            GameApiCompat.PlayVfxOnCreature(target, "vfx/vfx_attack_lightning");
 
             PlayEvokeSfx();
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this, null).Targeting(target).Execute(choiceContext);

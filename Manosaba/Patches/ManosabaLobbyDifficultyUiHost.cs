@@ -76,6 +76,12 @@ public static class ManosabaLobbyDifficultyUiHost
         public MessageHandlerDelegate<ManosabaDifficultySettingsMessage>? Handler;
         public bool HandlerRegistered;
 
+        /// <summary>
+        /// Net service the handler is registered on. A client that is disconnected and rejoins keeps the same screen
+        /// (owner) but gets a new net service, so the handler must be moved to it.
+        /// </summary>
+        public INetGameService? RegisteredNetService;
+
         public int LastSentPlayerCount = int.MinValue;
         public double LastSentEnemyHpPercent;
         public double LastSentEnemyAttackPercent;
@@ -425,9 +431,15 @@ public static class ManosabaLobbyDifficultyUiHost
         DifficultyUiState state,
         Func<LobbyDifficultyUiNetContext?> getLobby)
     {
-        if (state.HandlerRegistered)
+        if (state.HandlerRegistered && ReferenceEquals(state.RegisteredNetService, lobby.NetService))
         {
             return;
+        }
+
+        if (state.HandlerRegistered && state.RegisteredNetService != null && state.Handler != null)
+        {
+            // Rejoined on a new connection: drop the handler from the stale service before registering on the new one.
+            state.RegisteredNetService.UnregisterMessageHandler<ManosabaDifficultySettingsMessage>(state.Handler);
         }
 
         state.Handler ??= delegate (ManosabaDifficultySettingsMessage message, ulong _)
@@ -441,6 +453,7 @@ public static class ManosabaLobbyDifficultyUiHost
 
         lobby.NetService.RegisterMessageHandler<ManosabaDifficultySettingsMessage>(state.Handler);
         state.HandlerRegistered = true;
+        state.RegisteredNetService = lobby.NetService;
     }
 
     private static void UnregisterHandlerIfNeeded(object owner, Func<LobbyDifficultyUiNetContext?> getLobby)
@@ -451,12 +464,14 @@ public static class ManosabaLobbyDifficultyUiHost
             return;
         }
 
-        if (state.HandlerRegistered && maybe.HasValue && state.Handler != null)
+        INetGameService? service = state.RegisteredNetService ?? (maybe.HasValue ? maybe.Value.NetService : null);
+        if (state.HandlerRegistered && service != null && state.Handler != null)
         {
-            maybe.Value.NetService.UnregisterMessageHandler<ManosabaDifficultySettingsMessage>(state.Handler);
+            service.UnregisterMessageHandler<ManosabaDifficultySettingsMessage>(state.Handler);
         }
 
         state.HandlerRegistered = false;
+        state.RegisteredNetService = null;
     }
 
     private static ManosabaDifficultySettingsMessage BuildMessageFromLobby()

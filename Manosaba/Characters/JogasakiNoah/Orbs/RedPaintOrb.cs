@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.ValueProps;
+using Manosaba.Compatibility;
 
 namespace Manosaba.Characters.JogasakiNoa.Orbs;
 
@@ -69,7 +70,7 @@ public sealed class RedPaintOrb : ManosabaOrbModel
             return [];
         }
 
-        await CreatureCmd.Damage(playerChoiceContext, enemies, EvokeVal, ValueProp.Unpowered, Owner.Creature, null, null);
+        await GameApiCompat.Damage(playerChoiceContext, enemies, EvokeVal, ValueProp.Unpowered, Owner.Creature, null, null);
         return enemies;
     }
 }

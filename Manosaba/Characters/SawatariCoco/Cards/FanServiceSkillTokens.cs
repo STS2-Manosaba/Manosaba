@@ -13,6 +13,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 using Manosaba.Characters.Common.Powers;
 using Manosaba.Utils;
+using Manosaba.Compatibility;
 
 namespace manosaba.Characters.SawatariCoco.Cards;
 
@@ -102,6 +103,6 @@ public sealed class FanServiceRoastTimeToken : FanServiceEventTokenBase
             return;
         }
 
-        await CreatureCmd.Damage(choiceContext, combatState.HittableEnemies, damage, ValueProp.Unpowered, dealer, this, null);
+        await GameApiCompat.Damage(choiceContext, combatState.HittableEnemies, damage, ValueProp.Unpowered, dealer, this, null);
     }
 }
