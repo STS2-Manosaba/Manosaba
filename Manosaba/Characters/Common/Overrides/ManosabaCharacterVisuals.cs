@@ -72,14 +72,14 @@ namespace Manosaba.Characters.Common.Overrides
 				return;
 			}
 
-			if (RunManager.Instance.IsSingleplayerOrFakeMultiplayer)
-			{
-				_creatureNode.Visible = true;
-				return;
-			}
-
-			_creatureNode.Visible = _creature.IsAlive;
+			_creatureNode.Visible = IsCreatureVisible(_creature);
 		}
+
+		protected virtual bool IsCreatureVisible(Creature creature) =>
+			RunManager.Instance.IsSingleplayerOrFakeMultiplayer || creature.IsAlive;
+
+		protected virtual bool UsesMajokaPortrait(Creature creature) =>
+			creature.GetPowerAmount<MajokaPower>() >= 100;
 
 		private void InitializeMajokaVisuals()
 		{
@@ -111,7 +111,7 @@ namespace Manosaba.Characters.Common.Overrides
 				return;
 			}
 
-			bool isMajoka = _creature.GetPowerAmount<MajokaPower>() >= 100;
+			bool isMajoka = UsesMajokaPortrait(_creature);
 			foreach ((CanvasItem visual, bool baseVisible) in _baseVisualVisibility)
 			{
 				if (!GodotObject.IsInstanceValid(visual))
