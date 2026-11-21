@@ -1,6 +1,5 @@
 using System.Linq;
 using System.Reflection;
-using BaseLib.Abstracts;
 using Manosaba;
 using Manosaba.Config;
 using Manosaba.Multiplayer;
@@ -64,14 +63,10 @@ internal static class ManosabaRandomCharacterPool
     internal static bool IsManosabaPlayableCharacter(CharacterModel c) =>
         c is not RandomCharacter && ReferenceEquals(c.GetType().Assembly, ModAssembly);
 
-    private static bool IsEligibleForManosabaRandom(CharacterModel c) =>
-        IsManosabaPlayableCharacter(c)
-        && c is not CustomCharacterModel { AllowInVanillaRandomCharacterSelect: false };
-
     internal static CharacterModel[] BuildManosabaOnlyPool()
     {
         return ModelDb.AllCharacters
-            .Where(IsEligibleForManosabaRandom)
+            .Where(IsManosabaPlayableCharacter)
             .ToArray();
     }
 
@@ -100,7 +95,7 @@ internal static class ManosabaRandomCharacterPool
             return;
         }
 
-        if (IsEligibleForManosabaRandom(incoming))
+        if (IsManosabaPlayableCharacter(incoming))
         {
             return;
         }

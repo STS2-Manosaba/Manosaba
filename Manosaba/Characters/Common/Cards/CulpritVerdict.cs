@@ -10,23 +10,19 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.CardPools;
 
 namespace Manosaba.Characters.Common.Cards;
 
-[Pool(typeof(TokenCardPool))]
+[Pool(typeof(CommonCardPool))]
 public sealed class CulpritVerdict : EmaTrialCard
 {
-    public override bool CanBeGeneratedInCombat => false;
-    public override bool CanBeGeneratedByModifiers => false;
-
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("RequiredRound", 5m)];
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips =>
         [HoverTipFactory.FromPower<GuiltPower>(), HoverTipFactory.FromPower<TrueCulpritPower>()];
     protected override bool IsPlayable => base.IsPlayable && CombatState is { } combat
         && combat.RoundNumber >= DynamicVars["RequiredRound"].IntValue;
 
-    public CulpritVerdict() : base(1, CardType.Power, CardRarity.Token, TargetType.None, false) { }
+    public CulpritVerdict() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.None, true) { }
 
     internal static IReadOnlyList<Creature> FindCulprits(ICombatState combat)
     {

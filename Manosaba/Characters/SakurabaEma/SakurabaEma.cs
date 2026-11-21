@@ -12,9 +12,6 @@ public class SakurabaEma : PlaceholderCharacterModel
 {
     public const string CharacterId = "sakuraba_ema";
 
-    public override bool HideFromVanillaCharacterSelect => true;
-    public override bool HideInCompendium => true;
-
     public static readonly Color Color = new("E8A0BF");
     public override Color MapDrawingColor => Color;
     public override Color NameColor => Color;

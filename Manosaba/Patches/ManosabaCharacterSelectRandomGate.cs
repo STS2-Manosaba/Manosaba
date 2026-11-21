@@ -1,4 +1,3 @@
-using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Unlocks;
@@ -12,8 +11,7 @@ internal static class ManosabaCharacterSelectRandomGate
 {
     internal static bool AreAllPlayableCharactersUnlocked(UnlockState unlockState)
     {
-        foreach (CharacterModel c in ModelDb.AllCharacters.Where(
-                     static c => c is not CustomCharacterModel { AllowInVanillaRandomCharacterSelect: false }))
+        foreach (CharacterModel c in ModelDb.AllCharacters)
         {
             if (!unlockState.Characters.Contains(c))
             {
