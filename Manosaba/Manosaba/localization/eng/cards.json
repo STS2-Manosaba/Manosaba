@@ -1104,8 +1104,6 @@
   "MANOSABA-PRESENT_EVIDENCE.selectionScreenPrompt": "Choose a card from the encyclopedia to automatically play.",
   "MANOSABA-SEARCH_SAKURABA_EMA.title": "Search",
   "MANOSABA-SEARCH_SAKURABA_EMA.description": "Draw {Cards:diff()} card(s). Gain 1 random [gold]Evidence Card[/gold].",
-  "MANOSABA-SHOVEL_STRIKE.title": "Shovel Strike",
-  "MANOSABA-SHOVEL_STRIKE.description": "Deal {Damage:diff()} damage.\nApply {WeakPower:diff()} [gold]Weak[/gold].",
   "MANOSABA-FEVER.title": "Fever",
   "MANOSABA-FEVER.description": "Gain {WeakPower:diff()} [gold]Weak[/gold].\nGain {MajokaPower:diff()} [gold]Majoka[/gold].",
   "MANOSABA-EVIDENCE_STRIKE.title": "Evidence Strike",

@@ -18,9 +18,6 @@ namespace Manosaba.Characters.Common.Relics;
 public sealed class LibraryMagnifyingGlass : PathCustomRelicModel
 {
     public override RelicRarity Rarity => RelicRarity.Event;
-    public override string PackedIconPath => "res://Manosaba/images/relics/magnifying_glass.png";
-    protected override string PackedIconOutlinePath => PackedIconPath;
-    protected override string BigIconPath => PackedIconPath;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("PerStack", 2), new DynamicVar("Cap", 20)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [HoverTipFactory.FromPower<GuiltPower>(), HoverTipFactory.Static(StaticHoverTip.Block)];
@@ -38,9 +35,6 @@ public sealed class LibraryMagnifyingGlass : PathCustomRelicModel
 public sealed class LibraryHannaDoll : PathCustomRelicModel
 {
     public override RelicRarity Rarity => RelicRarity.Event;
-    public override string PackedIconPath => "res://Manosaba/images/powers/hanna_puppet_collection.png";
-    protected override string PackedIconOutlinePath => PackedIconPath;
-    protected override string BigIconPath => PackedIconPath;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("PerStack", 3), new DynamicVar("Cap", 30)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<GuiltPower>()];
 

@@ -20,7 +20,7 @@ public abstract class EmaPraisePower : PathCustomPowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
-    public override string CustomPackedIconPath => "res://Manosaba/images/powers/special_magic_power.png";
+    public override string CustomPackedIconPath => "res://Manosaba/images/powers/ema_power_text.png";
     public override string CustomBigIconPath => CustomPackedIconPath;
     public override string CustomBigBetaIconPath => CustomPackedIconPath;
 }

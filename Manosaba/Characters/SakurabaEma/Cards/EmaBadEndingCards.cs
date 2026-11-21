@@ -622,6 +622,7 @@ public sealed class RoastEvilLittleDog : HiroBadEndingTokenBase
 [Pool(typeof(TokenCardPool))]
 public sealed class AnimalFriends : HiroBadEndingTokenBase
 {
+    public override string PortraitPath => "res://Manosaba/images/cards/novel_creation.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1)];
 
     public AnimalFriends() : base(0, CardType.Skill, TargetType.None)

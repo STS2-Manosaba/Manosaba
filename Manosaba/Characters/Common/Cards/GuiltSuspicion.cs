@@ -6,7 +6,6 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
 namespace Manosaba.Characters.Common.Cards;
@@ -23,7 +22,6 @@ public sealed class GuiltSuspicion : PathCustomCardModel
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust, CardKeyword.Ethereal];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<GuiltPower>(1m)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<GuiltPower>()];
-    public override string PortraitPath => ModelDb.Card<BadEnd>().PortraitPath;
 
     public GuiltSuspicion() : base(1, CardType.Status, CardRarity.Token, TargetType.AnyAlly, true) { }
 

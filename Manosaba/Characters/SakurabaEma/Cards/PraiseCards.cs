@@ -20,7 +20,6 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(TokenCardPool))]
 public sealed class CUrOi : PathCustomCardModel
 {
-    public override string PortraitPath => ModelDb.Card<DefendSakurabaEma>().PortraitPath;
     public override bool GainsBlock => true;
     public override bool CanBeGeneratedInCombat => false;
     public override bool CanBeGeneratedByModifiers => false;
@@ -67,7 +66,6 @@ public sealed class ShiDes : PathCustomCardModel
 [Pool(typeof(TokenCardPool))]
 public sealed class SentKy : EmaTrialCard
 {
-    public override string PortraitPath => ModelDb.Card<PresentEvidence>().PortraitPath;
     public override int MaxUpgradeLevel => 0;
     public override bool CanBeGeneratedInCombat => false;
     public override bool CanBeGeneratedByModifiers => false;

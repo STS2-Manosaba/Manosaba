@@ -60,7 +60,6 @@ public sealed class InformationSharing : EmaTrialCard
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class InformationNetwork : EmaTrialCard
 {
-    public override string PortraitPath => ModelDb.Card<SearchSakurabaEma>().PortraitPath;
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new PowerVar<InformationNetworkPower>(1m), new DynamicVar("TriggerDamage", InformationNetworkPower.DamagePerStack)];
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [HoverTipFactory.FromPower<InformationNetworkPower>(), WitchEncyclopediaState.HoverTip];
@@ -93,7 +92,6 @@ public sealed class JointInvestigation : PathCustomCardModel
 public sealed class JudgmentHour : EmaTrialCard
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [..base.CanonicalKeywords, CardKeyword.Exhaust];
-    public override string PortraitPath => ModelDb.Card<FaceInCourt>().PortraitPath;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(5)];
     public JudgmentHour() : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self, true) { }
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
@@ -130,7 +128,6 @@ public sealed class JudgmentHour : EmaTrialCard
 public sealed class Omurice : PathCustomCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
-    public override string PortraitPath => ModelDb.Card<HeartyMeal>().PortraitPath;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Heal", 5m), new PowerVar<VigorPower>(4m)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<VigorPower>()];
     public Omurice() : base(0, CardType.Skill, CardRarity.Rare, TargetType.Self, true) { }
@@ -148,7 +145,6 @@ public sealed class Omurice : PathCustomCardModel
 public sealed class WitchHammer : EmaTrialCard
 {
     protected override bool HasProgressEffect => true;
-    public override string PortraitPath => ModelDb.Card<Rebuttal>().PortraitPath;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new TrialDamageVar(13m), new DynamicVar("ExtraDamage", 13m)];
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips =>
         [WitchEncyclopediaState.HoverTip, HoverTipFactory.FromCard<PresentEvidence>(), HoverTipFactory.FromPower<BurnPower>(),
@@ -188,7 +184,6 @@ public sealed class ValentineGift : PathCustomCardModel
 public sealed class Gluttony : PathCustomCardModel
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Unique];
-    public override string PortraitPath => ModelDb.Card<HeartyMeal>().PortraitPath;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<GluttonyPower>(1m)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<GluttonyPower>(), HoverTipFactory.FromKeyword(ManosabaKeywords.Unique)];
     public Gluttony() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self, true) { }

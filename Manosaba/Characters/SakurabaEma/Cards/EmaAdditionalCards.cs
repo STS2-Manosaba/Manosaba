@@ -19,7 +19,6 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class EndlessEvidence : PathCustomCardModel
 {
-    public override string PortraitPath => ModelDb.Card<SearchSakurabaEma>().PortraitPath;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<EndlessEvidencePower>(1m)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<EndlessEvidencePower>(1), WitchEncyclopediaState.HoverTip];
     public EndlessEvidence() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true) { }
@@ -45,7 +44,6 @@ public sealed class EnoughRedTape : EmaTrialCard
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class DeductionAfterDinner : PathCustomCardModel
 {
-    public override string PortraitPath => ModelDb.Card<HeartyMeal>().PortraitPath;
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<HeartyMeal>(), HoverTipFactory.FromCard<Statement>()];
     public DeductionAfterDinner() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self, true) { }
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)

@@ -35,7 +35,7 @@ public abstract class GuiltConversionCard : PathCustomCardModel
     public override bool CanBeGeneratedInCombat => false;
     public override bool CanBeGeneratedByModifiers => false;
     public override int MaxUpgradeLevel => 0;
-    public override string PortraitPath => ModelDb.Card<Rebuttal>().PortraitPath;
+    public override string PortraitPath => ModelDb.Card<GuiltConclusive>().PortraitPath;
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [HoverTipFactory.FromPower<SusPower>(), HoverTipFactory.FromPower<GuiltPower>()];
     protected GuiltConversionCard() : base(0, CardType.Skill, CardRarity.Token, TargetType.Self, false) { }

@@ -1104,8 +1104,6 @@
   "MANOSABA-PRESENT_EVIDENCE.selectionScreenPrompt": "図鑑から自動で使用するカードを1枚選ぶ。",
   "MANOSABA-SEARCH_SAKURABA_EMA.title": "捜査",
   "MANOSABA-SEARCH_SAKURABA_EMA.description": "カードを{Cards:diff()}枚引く。ランダムな[gold]証拠カード[/gold]を1枚得る。",
-  "MANOSABA-SHOVEL_STRIKE.title": "シャベル打撃",
-  "MANOSABA-SHOVEL_STRIKE.description": "{Damage:diff()} ダメージを与える。\n[gold]脱力[/gold]を {WeakPower:diff()} 層与える。",
   "MANOSABA-FEVER.title": "発熱",
   "MANOSABA-FEVER.description": "[gold]脱力[/gold]を {WeakPower:diff()} 層得る。\n[gold]魔女化[/gold]を {MajokaPower:diff()} 層得る。",
   "MANOSABA-EVIDENCE_STRIKE.title": "証物打撃",

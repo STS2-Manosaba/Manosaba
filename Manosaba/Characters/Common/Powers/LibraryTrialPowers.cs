@@ -73,31 +73,20 @@ public sealed class LibraryGuardRevivalPower : PathCustomPowerModel
 
 public abstract class LibraryCluePower : PathCustomPowerModel
 {
-    protected abstract int ClueNumber { get; }
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;
-    public override string CustomPackedIconPath => ClueNumber switch
-    {
-        1 => "res://Manosaba/images/powers/guilt_power.png",
-        2 => "res://Manosaba/images/powers/majoka_power.png",
-        3 => "res://Manosaba/images/powers/sus_power.png",
-        4 => "res://Manosaba/images/powers/argument_power.png",
-        _ => "res://Manosaba/images/powers/best_friends_group_power.png",
-    };
-    public override string CustomBigIconPath => CustomPackedIconPath;
-    public override string CustomBigBetaIconPath => CustomPackedIconPath;
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new DynamicVar("Percent", 10), new DynamicVar("Round", LibraryWarden.TransformationRound)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<GuiltPower>()];
 }
 
-public sealed class LibraryClueOnePower : LibraryCluePower { protected override int ClueNumber => 1; }
-public sealed class LibraryClueTwoPower : LibraryCluePower { protected override int ClueNumber => 2; }
-public sealed class LibraryClueThreePower : LibraryCluePower { protected override int ClueNumber => 3; }
-public sealed class LibraryClueFourPower : LibraryCluePower { protected override int ClueNumber => 4; }
-public sealed class LibraryClueFivePower : LibraryCluePower { protected override int ClueNumber => 5; }
-public sealed class LibraryClueOneSolvedPower : LibraryCluePower { protected override int ClueNumber => 1; }
-public sealed class LibraryClueTwoSolvedPower : LibraryCluePower { protected override int ClueNumber => 2; }
-public sealed class LibraryClueThreeSolvedPower : LibraryCluePower { protected override int ClueNumber => 3; }
-public sealed class LibraryClueFourSolvedPower : LibraryCluePower { protected override int ClueNumber => 4; }
-public sealed class LibraryClueFiveSolvedPower : LibraryCluePower { protected override int ClueNumber => 5; }
+public sealed class LibraryClueOnePower : LibraryCluePower { }
+public sealed class LibraryClueTwoPower : LibraryCluePower { }
+public sealed class LibraryClueThreePower : LibraryCluePower { }
+public sealed class LibraryClueFourPower : LibraryCluePower { }
+public sealed class LibraryClueFivePower : LibraryCluePower { }
+public sealed class LibraryClueOneSolvedPower : LibraryCluePower { }
+public sealed class LibraryClueTwoSolvedPower : LibraryCluePower { }
+public sealed class LibraryClueThreeSolvedPower : LibraryCluePower { }
+public sealed class LibraryClueFourSolvedPower : LibraryCluePower { }
+public sealed class LibraryClueFiveSolvedPower : LibraryCluePower { }

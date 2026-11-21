@@ -1,5 +1,4 @@
 using Manosaba.Extensions;
-using manosaba.Characters.SakurabaEma.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -15,9 +14,6 @@ public sealed class WitchLanguageMasteryPower : PathCustomPowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    public override string CustomPackedIconPath => ModelDb.Power<GuiltPower>().CustomPackedIconPath;
-    public override string CustomBigIconPath => CustomPackedIconPath;
-    public override string CustomBigBetaIconPath => CustomPackedIconPath;
     private const int MultiplierPerStack = 2;
     private const string MultiplierKey = "Multiplier";
 
