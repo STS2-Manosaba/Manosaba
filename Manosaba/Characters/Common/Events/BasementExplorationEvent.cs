@@ -67,15 +67,13 @@ public sealed class BasementExplorationEvent : CustomEventModel
 
     private Task FightRoute()
     {
-        // Shared event owners are local to each client. Build the same reward list
-        // for every player so reward indices and choice counters stay synchronized.
-        List<Reward> extraRewards = [];
-        foreach (var player in Owner!.RunState.Players.OrderBy(player => player.NetId))
-        {
-            RelicModel ritualSword = ModelDb.Relic<RitualSword>().ToMutable();
-            ritualSword.Owner = player;
-            extraRewards.Add(GameApiCompat.NewRelicReward(ritualSword, player));
-        }
+        // Each player's event instance calls ReadyToEnterCombat for its own Owner, and
+        // EventCombatSynchronizer merges every player's list into the combat room.
+        // So only add the Owner's reward here (same as vanilla TheLanternKey);
+        // adding one per player would grant N swords to each player.
+        RelicModel ritualSword = ModelDb.Relic<RitualSword>().ToMutable();
+        ritualSword.Owner = Owner!;
+        List<Reward> extraRewards = [GameApiCompat.NewRelicReward(ritualSword, Owner!)];
         EnterCombatWithoutExitingEvent<BasementGuardianEventEncounter>(extraRewards, shouldResumeAfterCombat: true);
         return Task.CompletedTask;
     }

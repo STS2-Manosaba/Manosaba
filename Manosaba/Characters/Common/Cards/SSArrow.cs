@@ -39,6 +39,24 @@ namespace Manosaba.Characters.Common.Cards
 
         public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
         {
+            if (card.Owner != Owner)
+                return;
+            await TryCraftSpear();
+        }
+
+        // Parts can reach the hand without being "drawn" (e.g. Smart Spear moves them via
+        // CardPileCmd.Add, which only fires AfterCardChangedPiles), so check here too.
+        public override async Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel? clonedBy)
+        {
+            if (card.Owner != Owner
+                || card is not (SSArrow or SSBroom or SSRibbon or SSRapier)
+                || card.Pile?.Type != PileType.Hand)
+                return;
+            await TryCraftSpear();
+        }
+
+        private async Task TryCraftSpear()
+        {
             if (Owner?.Creature?.CombatState is not { } combatState)
             {
                 return;
