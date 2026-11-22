@@ -22,11 +22,54 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Models.Potions;
 using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.Factories;
+using LeiaVoiding = Manosaba.Characters.HasumiLeia.Cards.Voiding;
+using SherryDoublePunch = Manosaba.Characters.TachibanaSherry.Cards.DoublePunch;
+using SherryIsekaiElevator = Manosaba.Characters.TachibanaSherry.Cards.IsekaiElevator;
+using HannaSuspicion = Manosaba.Characters.TonoHanna.Cards.Suspicion;
+using MagoDreamInterpretation = Manosaba.Characters.HoshoMago.Cards.DreamInterpretation;
+using MiriaNarehateFeeding = Manosaba.Characters.SaekiMiria.Cards.NarehateFeeding;
+using MiriaWalkingMisfortune = Manosaba.Characters.SaekiMiria.Cards.WalkingMisfortune;
+using AlisaYouAreWeakEma = Manosaba.Characters.ShitoAlisa.Cards.YouAreWeakEma;
+using CocoLetsPlayHideAndSeek = manosaba.Characters.SawatariCoco.Cards.LetsPlayHideAndSeek;
+using AnanNovelCreation = manosaba.Characters.NatsumeAnan.Cards.NovelCreation;
+using NoahStill = Manosaba.Characters.JogasakiNoah.Cards.Still;
+using LeiaCharacter = manosaba.Characters.HasumiLeia.HasumiLeia;
+using MagoCharacter = manosaba.Characters.HoshoMago.HoshoMago;
+using MiriaCharacter = manosaba.Characters.SaekiMiria.SaekiMiria;
+using AlisaCharacter = manosaba.Characters.ShitoAlisa.ShitoAlisa;
+using CocoCharacter = manosaba.Characters.SawatariCoco.SawatariCoco;
+using AnanCharacter = manosaba.Characters.NatsumeAnan.NatsumeAnan;
+using NoahCharacter = manosaba.Characters.JogasakiNoah.JogasakiNoah;
+using NikaidoHiroCardPool = manosaba.Characters.NikaidoHiro.NikaidoHiroCardPool;
 using HikamiMeruruCharacter = manosaba.Characters.HikamiMeruru.HikamiMeruru;
 using SherryCharacter = manosaba.Characters.TachibanaSherry.TachibanaSherry;
 using HannaCharacter = manosaba.Characters.TonoHanna.TonoHanna;
 
 namespace manosaba.Characters.SakurabaEma.Cards;
+
+internal static class EmaBadEndTeammateGifts
+{
+    public static async Task Give<TCard>(CardModel source, PileType pile, bool ethereal, bool exhaust, params string[] characterIds)
+        where TCard : CardModel, new()
+    {
+        ICombatState? combatState = source.CombatState;
+        if (combatState == null)
+            return;
+
+        foreach (Player teammate in EmaCardTargeting.FindTeammatesByCharacterIds(combatState, source.Owner.Creature, characterIds))
+        {
+            CardModel card = combatState.CreateCard<TCard>(teammate);
+            if (ethereal)
+                CardCmd.ApplyKeyword(card, CardKeyword.Ethereal);
+            if (exhaust)
+                CardCmd.ApplyKeyword(card, CardKeyword.Exhaust);
+
+            CardPileAddResult result = await EmaCardGeneration.Add(card, pile, teammate);
+            CardCmd.PreviewCardPileAdd(result);
+        }
+    }
+}
 
 internal static class EmaBadEndingCards
 {
@@ -182,6 +225,7 @@ public abstract class EmaBadEndingTokenBase : PathCustomCardModel
 public sealed class StandInFrontOfTeammate : EmaBadEndingTokenBase
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(10m, ValueProp.Move)];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => base.ExtraHoverTips.Append(HoverTipFactory.FromCard<LeiaVoiding>());
 
     public StandInFrontOfTeammate() : base(0, CardType.Skill, TargetType.Self)
     {
@@ -191,6 +235,7 @@ public sealed class StandInFrontOfTeammate : EmaBadEndingTokenBase
     {
         await StartBadEnding(choiceContext);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
+        await EmaBadEndTeammateGifts.Give<LeiaVoiding>(this, PileType.Draw, true, true, LeiaCharacter.CharacterId);
     }
 }
 
@@ -207,13 +252,17 @@ public sealed class LockedPunishmentRoom : EmaBadEndingTokenBase
     {
         _ = cardPlay;
         await StartBadEnding(choiceContext);
-        IEnumerable<CardModel> selected = await CardSelectCmd.FromHandForDiscard(
+        if (PileType.Hand.GetPile(Owner).IsEmpty)
+            return;
+
+        IEnumerable<CardModel> selected = await CardSelectCmd.FromHand(
             choiceContext,
             Owner,
-            new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, DynamicVars.Cards.IntValue),
+            new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, DynamicVars.Cards.IntValue),
             null,
             this);
-        await CardCmd.Discard(choiceContext, selected);
+        foreach (CardModel card in selected.ToList())
+            await CardCmd.Exhaust(choiceContext, card);
     }
 }
 
@@ -233,6 +282,7 @@ public sealed class ManEatingBook : EmaBadEndingTokenBase
         await StartBadEnding(choiceContext);
         for (int i = 0; i < DynamicVars.Cards.IntValue; i++)
             await AddCardToHand<LivingPage>(Owner);
+        await EmaBadEndTeammateGifts.Give<LivingPage>(this, PileType.Hand, false, false, SherryCharacter.CharacterId);
     }
 }
 
@@ -307,7 +357,7 @@ public sealed class MediationPunch : EmaBadEndingTokenBase
     public override string PortraitPath => "res://Manosaba/images/cards/could_it_be_that_equal_treatment_token.png";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<StrengthPower>(3m), new PowerVar<SusPower>(2m)];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => base.ExtraHoverTips.Concat([HoverTipFactory.FromPower<StrengthPower>(), HoverTipFactory.FromPower<SusPower>()]);
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => base.ExtraHoverTips.Concat([HoverTipFactory.FromPower<StrengthPower>(), HoverTipFactory.FromPower<SusPower>(), HoverTipFactory.FromCard<SherryDoublePunch>()]);
 
     public MediationPunch() : base(0, CardType.Power, TargetType.Self)
     {
@@ -319,6 +369,7 @@ public sealed class MediationPunch : EmaBadEndingTokenBase
         await StartBadEnding(choiceContext);
         await CommonActions.Apply<StrengthPower>(choiceContext, Owner.Creature, this, DynamicVars["StrengthPower"].BaseValue);
         await CommonActions.Apply<SusPower>(choiceContext, Owner.Creature, this, DynamicVars["SusPower"].BaseValue);
+        await EmaBadEndTeammateGifts.Give<SherryDoublePunch>(this, PileType.Draw, true, true, SherryCharacter.CharacterId);
     }
 }
 
@@ -346,6 +397,12 @@ public sealed class SuspicionGhosts : EmaBadEndingTokenBase
 {
     public override string PortraitPath => "res://Manosaba/images/cards/suspicion.png";
 
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => base.ExtraHoverTips.Concat([
+        HoverTipFactory.FromCard<FortuneTelling>(),
+        HoverTipFactory.FromCard<HannaSuspicion>(),
+        HoverTipFactory.FromCard<MagoDreamInterpretation>(),
+    ]);
+
     public SuspicionGhosts() : base(0, CardType.Power, TargetType.None)
     {
     }
@@ -354,6 +411,9 @@ public sealed class SuspicionGhosts : EmaBadEndingTokenBase
     {
         _ = cardPlay;
         await StartBadEnding(choiceContext);
+        await AddCardToHand<FortuneTelling>(Owner, true, true);
+        await EmaBadEndTeammateGifts.Give<HannaSuspicion>(this, PileType.Draw, true, true, HannaCharacter.CharacterId);
+        await EmaBadEndTeammateGifts.Give<MagoDreamInterpretation>(this, PileType.Draw, true, true, MagoCharacter.CharacterId);
     }
 }
 
@@ -364,6 +424,7 @@ public sealed class WanderingNarehate : EmaBadEndingTokenBase
 
     protected override bool HasEnergyCostX => true;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(18m, ValueProp.Move)];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => base.ExtraHoverTips.Append(HoverTipFactory.FromCard<MiriaNarehateFeeding>());
 
     public WanderingNarehate() : base(-1, CardType.Attack, TargetType.AnyEnemy)
     {
@@ -383,6 +444,8 @@ public sealed class WanderingNarehate : EmaBadEndingTokenBase
                 .Targeting(cardPlay.Target)
                 .Execute(choiceContext);
         }
+
+        await EmaBadEndTeammateGifts.Give<MiriaNarehateFeeding>(this, PileType.Draw, true, true, MiriaCharacter.CharacterId);
     }
 }
 
@@ -446,7 +509,7 @@ public sealed class NotYourFault : EmaBadEndingTokenBase
     public override string PortraitPath => "res://Manosaba/images/cards/you_are_weak_ema.png";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<BurnPower>(10m)];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => base.ExtraHoverTips.Append(HoverTipFactory.FromPower<BurnPower>());
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => base.ExtraHoverTips.Concat([HoverTipFactory.FromPower<BurnPower>(), HoverTipFactory.FromCard<AlisaYouAreWeakEma>()]);
 
     public NotYourFault() : base(0, CardType.Attack, TargetType.AnyEnemy)
     {
@@ -459,6 +522,7 @@ public sealed class NotYourFault : EmaBadEndingTokenBase
 
         await StartBadEnding(choiceContext);
         await CommonActions.Apply<BurnPower>(choiceContext, cardPlay.Target, this, DynamicVars["BurnPower"].BaseValue);
+        await EmaBadEndTeammateGifts.Give<AlisaYouAreWeakEma>(this, PileType.Draw, true, true, AlisaCharacter.CharacterId);
     }
 }
 
@@ -571,13 +635,18 @@ public sealed class PickUpFirePoker : HiroBadEndingTokenBase
 public sealed class HideAndSeekBadEnd : HiroBadEndingTokenBase
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<DexterityPower>(2m)];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<DexterityPower>(), HoverTipFactory.FromCard<CocoLetsPlayHideAndSeek>()];
 
     public HideAndSeekBadEnd() : base(0, CardType.Skill, TargetType.Self)
     {
     }
 
-    protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay) =>
-        CommonActions.Apply<DexterityPower>(choiceContext, Owner.Creature, this, DynamicVars["DexterityPower"].BaseValue);
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        _ = cardPlay;
+        await CommonActions.Apply<DexterityPower>(choiceContext, Owner.Creature, this, DynamicVars["DexterityPower"].BaseValue);
+        await EmaBadEndTeammateGifts.Give<CocoLetsPlayHideAndSeek>(this, PileType.Draw, true, true, CocoCharacter.CharacterId);
+    }
 }
 
 [Pool(typeof(TokenCardPool))]
@@ -587,11 +656,27 @@ public sealed class TheMistakeIsYours : HiroBadEndingTokenBase
     {
     }
 
-    protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        _ = choiceContext;
         _ = cardPlay;
-        return Task.CompletedTask;
+        if (CombatState == null)
+            return;
+
+        IEnumerable<CardModel> attacks = ModelDb.CardPool<NikaidoHiroCardPool>()
+            .GetUnlockedCards(Owner.UnlockState, Owner.RunState.CardMultiplayerConstraint)
+            .Where(card => card.Pool is NikaidoHiroCardPool)
+            .Where(card => card.Type == CardType.Attack && card.Rarity != CardRarity.Token && card.CanBeGeneratedInCombat);
+        CardModel? canonical = CardFactory
+            .GetDistinctForCombat(Owner, attacks, 1, Owner.RunState.Rng.CombatCardGeneration)
+            .FirstOrDefault();
+        if (canonical == null)
+            return;
+
+        CardModel card = CombatState.CreateCard(canonical, Owner);
+        CardPileAddResult result = await WitchEncyclopediaState.AddForImmediatePlay(card, Owner);
+        CardCmd.PreviewCardPileAdd(result);
+        if (result.success && !card.HasBeenRemovedFromState)
+            await CardCmd.AutoPlay(choiceContext, card, null);
     }
 }
 
@@ -624,15 +709,18 @@ public sealed class AnimalFriends : HiroBadEndingTokenBase
 {
     public override string PortraitPath => "res://Manosaba/images/cards/novel_creation.png";
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1)];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<AnanNovelCreation>(), HoverTipFactory.FromCard<NoahStill>()];
 
     public AnimalFriends() : base(0, CardType.Skill, TargetType.None)
     {
     }
 
-    protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         _ = cardPlay;
-        return CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner);
+        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner);
+        await EmaBadEndTeammateGifts.Give<AnanNovelCreation>(this, PileType.Draw, true, true, AnanCharacter.CharacterId);
+        await EmaBadEndTeammateGifts.Give<NoahStill>(this, PileType.Draw, true, false, NoahCharacter.CharacterId);
     }
 }
 
@@ -650,6 +738,7 @@ public sealed class ExchangedGlances : HiroBadEndingTokenBase
         _ = choiceContext;
         _ = cardPlay;
         await AddCardToDraw<ForgeSpear>(Owner);
+        await EmaBadEndTeammateGifts.Give<ForgeSpear>(this, PileType.Draw, false, false, LeiaCharacter.CharacterId);
     }
 
     private static async Task AddCardToDraw<TCard>(Player owner) where TCard : CardModel, new()
@@ -665,15 +754,17 @@ public sealed class ExchangedGlances : HiroBadEndingTokenBase
 public sealed class ScapegoatSwitch : HiroBadEndingTokenBase
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<IntangiblePower>(1m)];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<IntangiblePower>(), HoverTipFactory.FromCard<MiriaWalkingMisfortune>()];
 
     public ScapegoatSwitch() : base(1, CardType.Power, TargetType.Self)
     {
     }
 
-    protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         _ = cardPlay;
-        return CommonActions.Apply<IntangiblePower>(choiceContext, Owner.Creature, this, DynamicVars["IntangiblePower"].BaseValue);
+        await CommonActions.Apply<IntangiblePower>(choiceContext, Owner.Creature, this, DynamicVars["IntangiblePower"].BaseValue);
+        await EmaBadEndTeammateGifts.Give<MiriaWalkingMisfortune>(this, PileType.Draw, true, false, MiriaCharacter.CharacterId);
     }
 }
 
@@ -681,17 +772,18 @@ public sealed class ScapegoatSwitch : HiroBadEndingTokenBase
 public sealed class FourTwoSixTwoTenFive : HiroBadEndingTokenBase
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(1)];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [EnergyHoverTip];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [EnergyHoverTip, HoverTipFactory.FromCard<SherryIsekaiElevator>()];
 
     public FourTwoSixTwoTenFive() : base(0, CardType.Power, TargetType.Self)
     {
     }
 
-    protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         _ = choiceContext;
         _ = cardPlay;
-        return PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
+        await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
+        await EmaBadEndTeammateGifts.Give<SherryIsekaiElevator>(this, PileType.Draw, true, true, SherryCharacter.CharacterId);
     }
 }
 

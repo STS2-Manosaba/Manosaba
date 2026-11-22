@@ -79,7 +79,7 @@
   "MANOSABA-YOU_DID_WELL.flavor": "你做得很好。",
   "MANOSABA-YOU_DID_WELL.title": "你做得很好",
   "MANOSABA-YOU_DID_WELL.derivationsTitle": "衍生行为",
-  "MANOSABA-YOU_DID_WELL.description": "队友死亡或你斩杀非爪牙敌人时获得1层，获得时为1层，最高13层。每层增加10%魔女化获得量，与腿环加算。5层：获得杀死魔女的魔法，牌组中所有精神创伤变化成精神创伤-真。7／9／11层：连续3回合未获得嫌疑／使用攻击牌／受到伤害时，分别获得纯洁的艾玛／善良的艾玛／好孩子艾玛。13层：需求改为2回合。",
+  "MANOSABA-YOU_DID_WELL.description": "队友死亡或你斩杀非爪牙敌人时获得1层，最高13层。每层增加10%魔女化获得量，与腿环加算。5层：获得杀死魔女的魔法，牌组中所有精神创伤变化成精神创伤-真。7／9／11层：连续3回合未获得嫌疑／使用攻击牌／受到伤害时，分别获得纯洁的艾玛／善良的艾玛／好孩子艾玛。13层：需求改为2回合。",
   "MANOSABA-LIBRARY_MAGNIFYING_GLASS.title": "放大镜",
   "MANOSABA-LIBRARY_MAGNIFYING_GLASS.description": "你每拥有1层[gold]罪证[/gold]，造成的伤害增加{PerStack}点，获得的[gold]格挡[/gold]增加{PerStack}点。最高{Cap}点。",
   "MANOSABA-LIBRARY_MAGNIFYING_GLASS.flavor": "未知试炼的奖励，让细微的证据无所遁形。",
