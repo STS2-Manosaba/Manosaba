@@ -37,7 +37,7 @@ Compatible with Slay the Spire 2 public branch v0.111.1 and beta branch v0.113.1
 Please post in the Bug Reports discussion thread. Include your installed mod list and the relevant game log or error log so our team can investigate the cause. Steps to reproduce are also helpful.
 
 [h2]Special Thanks[/h2]
-[b]Development:[/b] Fuhuo & Shiki
+[b]Development:[/b] Fuhuo, Shiki & Ayakawa Ho
 [b]Quality of Life & Stability Fixes:[/b] advent259141 & junyudev
 [b]Art:[/b] 鯉魚 & Elflia
 [b]QA:[/b] 游音殒梦, zerozeroduck, HighSierra & Reka
@@ -78,7 +78,7 @@ Please post in the Bug Reports discussion thread. Include your installed mod lis
 请在“错误回报”讨论串中留言，并附上已安装的模组列表及相关游戏日志或报错日志，帮助团队分析原因。若能提供复现步骤，也请一并说明。
 
 [h2]特别鸣谢[/h2]
-[b]开发：[/b] Fuhuo & Shiki
+[b]开发：[/b] Fuhuo、Shiki & Ayakawa Ho
 [b]优化与稳定性修复：[/b] advent259141 & junyudev
 [b]美术：[/b] 鯉魚 & Elflia
 [b]测试：[/b] 游音殒梦、zerozeroduck、HighSierra & Reka
@@ -119,7 +119,7 @@ Please post in the Bug Reports discussion thread. Include your installed mod lis
 請在「錯誤回報」討論串中留言，並附上已安裝的模組清單及相關遊戲日誌或錯誤日誌，協助團隊分析原因。若能提供重現步驟，也請一併說明。
 
 [h2]特別感謝[/h2]
-[b]開發：[/b] Fuhuo & Shiki
+[b]開發：[/b] Fuhuo、Shiki & Ayakawa Ho
 [b]品質改善與穩定性修正：[/b] advent259141 & junyudev
 [b]美術：[/b] 鯉魚 & Elflia
 [b]測試：[/b] 游音殒梦、zerozeroduck、HighSierra & Reka
@@ -160,7 +160,7 @@ Slay the Spire 2のpublicブランチ v0.111.1とbetaブランチ v0.113.1に対
 不具合は「Bug Reports」ディスカッションに投稿してください。導入済みModの一覧と、原因調査に役立つゲームログまたはエラーログを添えてください。再現手順もあると助かります。
 
 [h2]SPECIAL THANKS[/h2]
-[b]開発：[/b] Fuhuo & Shiki
+[b]開発：[/b] Fuhuo、Shiki & Ayakawa Ho
 [b]利便性向上・安定性修正：[/b] advent259141 & junyudev
 [b]アート：[/b] 鯉魚 & Elflia
 [b]QA：[/b] 游音殒梦、zerozeroduck、HighSierra & Reka
@@ -201,7 +201,7 @@ Slay the Spire 2의 public 브랜치 v0.111.1과 beta 브랜치 v0.113.1을 지�
 버그는 “Bug Reports” 토론에 제보해 주세요. 원인 분석을 위해 설치된 모드 목록과 관련 게임 로그 또는 오류 로그를 함께 올려 주세요. 재현 방법도 알려 주시면 도움이 됩니다.
 
 [h2]SPECIAL THANKS[/h2]
-[b]개발:[/b] Fuhuo & Shiki
+[b]개발:[/b] Fuhuo, Shiki & Ayakawa Ho
 [b]편의성 및 안정성 수정:[/b] advent259141 & junyudev
 [b]아트:[/b] 鯉魚 & Elflia
 [b]QA:[/b] 游音殒梦, zerozeroduck, HighSierra & Reka
