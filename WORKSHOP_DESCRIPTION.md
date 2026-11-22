@@ -6,10 +6,10 @@ The description sections below use Steam BBCode. Copy only the text under the la
 
 A Slay the Spire 2 mod inspired by Magical Girl Witch Trials.
 
-[h1]12 CHARACTERS · 400+ CARDS · MORE TO EXPLORE[/h1]
+[h1]13 CHARACTERS · 400+ CARDS · MORE TO EXPLORE[/h1]
 
 [h2]Characters & Playstyles[/h2]
-Choose from 12 characters, each with a distinct way to play:
+Choose from 13 characters, each with a distinct way to play:
 [b]Nikaido Hiro[/b] — Build Suspicion to strengthen your attacks, and switch between three stances to balance offense and defense.
 [b]Hikami Meruru[/b] — Craft and use potions, build Firepower, and generate Catalysts to fuel your potion engine.
 [b]Tachibana Sherry[/b] — Gather Clues and build Investigation Moment to trigger powerful effects and gain combat advantages.
@@ -22,7 +22,7 @@ Choose from 12 characters, each with a distinct way to play:
 [b]Natsume Anan[/b] — Build and spend Kotodama for powerful effects while carefully managing Sanity.
 [b]Shito Alisa[/b] — Stack Burn, build up Fireball Swarm, and unleash Fireballs for explosive damage.
 [b]Sawatari Coco[/b] — Manage Live Stream Mode and Hiding while collecting equipment and completing sets.
-[b]Sakuraba Ema (in development)[/b] If Ema appears in-game before her official release, this is unexpected behavior.
+[b]Sakuraba Ema[/b] — Play Trial cards to advance the interrogation, present evidence from the Witch Encyclopedia, and build Majoka toward the Magic to Kill the Witch.
 
 [h2]More Content[/h2]
 Build your deck with 400+ cards, and explore character-themed events and unique mechanics.
@@ -47,10 +47,10 @@ Please post in the Bug Reports discussion thread. Include your installed mod lis
 
 一款以《魔法少女的魔女审判》为灵感制作的《杀戮尖塔2》模组。
 
-[h1]12位角色 · 400+张卡牌 · 更多精彩内容[/h1]
+[h1]13位角色 · 400+张卡牌 · 更多精彩内容[/h1]
 
 [h2]角色与玩法[/h2]
-选择12位各具特色的角色，体验不同的战斗机制：
+选择13位各具特色的角色，体验不同的战斗机制：
 [b]二阶堂希罗[/b] —— 累积嫌疑强化攻击，并切换三种架势调整攻防。
 [b]冰上梅露露[/b] —— 调制并使用药水、累积火力，生成催化剂强化药水循环。
 [b]橘雪莉[/b] —— 收集疑点并累积调查时刻，触发强力效果并取得战斗优势。
@@ -63,7 +63,7 @@ Please post in the Bug Reports discussion thread. Include your installed mod lis
 [b]夏目安安[/b] —— 累积并花费言灵发动强力效果，同时谨慎管理理智值。
 [b]紫藤亚里莎[/b] —— 叠加燃烧、累积火球环绕，再释放火球造成爆发伤害。
 [b]泽渡可可[/b] —— 管理直播模式与藏匿效果，同时收集装备并搭配套装。
-[b]樱羽艾玛（开发中）[/b] 艾玛目前仍在开发中；若在正式推出前于游戏中出现，属于非预期现象。
+[b]樱羽艾玛[/b] —— 打出裁判牌推进审问，从魔女图鉴提出证据，并累积魔女化迈向杀死魔女的魔法。
 
 [h2]更多内容[/h2]
 使用400+张卡牌构筑牌组，探索角色主题事件与独特机制。
@@ -88,10 +88,10 @@ Please post in the Bug Reports discussion thread. Include your installed mod lis
 
 一款以《魔法少女的魔女審判》為靈感製作的《殺戮尖塔2》模組。
 
-[h1]12位角色 · 400+張卡牌 · 更多精彩內容[/h1]
+[h1]13位角色 · 400+張卡牌 · 更多精彩內容[/h1]
 
 [h2]角色與玩法[/h2]
-選擇12位各具特色的角色，體驗不同的戰鬥機制：
+選擇13位各具特色的角色，體驗不同的戰鬥機制：
 [b]二階堂希羅[/b] —— 累積嫌疑強化攻擊，並切換三種架勢調整攻防。
 [b]冰上梅露露[/b] —— 調製並使用藥水、累積火力，生成催化劑強化藥水循環。
 [b]橘雪莉[/b] —— 收集疑點並累積調查時刻，觸發強力效果並取得戰鬥優勢。
@@ -104,7 +104,7 @@ Please post in the Bug Reports discussion thread. Include your installed mod lis
 [b]夏目安安[/b] —— 累積並花費言靈發動強力效果，同時謹慎管理理智值。
 [b]紫藤亞里莎[/b] —— 疊加燃燒、累積火球環繞，再釋放火球造成爆發傷害。
 [b]澤渡可可[/b] —— 管理直播模式與藏匿效果，同時收集裝備並搭配套裝。
-[b]櫻羽艾瑪（開發中）[/b] 艾瑪目前仍在開發中；若在正式推出前於遊戲中出現，屬於非預期現象。
+[b]櫻羽艾瑪[/b] —— 打出裁判牌推進審問，從魔女圖鑑提出證據，並累積魔女化邁向殺死魔女的魔法。
 
 [h2]更多內容[/h2]
 使用400+張卡牌構築牌組，探索角色主題事件與獨特機制。
@@ -129,10 +129,10 @@ Please post in the Bug Reports discussion thread. Include your installed mod lis
 
 『魔法少女ノ魔女裁判』に着想を得たSlay the Spire 2のModです。
 
-[h1]12人のキャラクター · 400枚以上のカード · さらに広がる冒険[/h1]
+[h1]13人のキャラクター · 400枚以上のカード · さらに広がる冒険[/h1]
 
 [h2]キャラクターとプレイスタイル[/h2]
-それぞれ異なる戦い方を持つ12人のキャラクターから選べます：
+それぞれ異なる戦い方を持つ13人のキャラクターから選べます：
 [b]二階堂ヒロ[/b] — 疑念を積み重ねて攻撃を強化し、3種類の構えで攻防を切り替えます。
 [b]氷上メルル[/b] — ポーションを調合・使用し、火力を高めて触媒を生み出すポーション戦略を展開します。
 [b]橘シェリー[/b] — 手がかりと調査時間を積み重ね、強力な効果で戦闘を有利に進めます。
@@ -145,7 +145,7 @@ Please post in the Bug Reports discussion thread. Include your installed mod lis
 [b]夏目アンアン[/b] — 言霊を蓄えて消費し、正気度を管理しながら強力な効果を使います。
 [b]紫藤アリサ[/b] — 燃焼を重ねて火球の群れを蓄え、一気に放ちます。
 [b]沢渡ココ[/b] — ライブ配信モードと隠れ身を管理しながら、装備を集めてセットを揃えます。
-[b]桜羽 エマ（開発中）[/b] エマは現在開発中です。正式リリース前にゲーム内に登場した場合は、想定外の動作です。
+[b]桜羽エマ[/b] — 裁判カードで尋問を進め、魔女図鑑から証拠を提出し、魔女化を高めて「魔女を殺す魔法」を目指します。
 
 [h2]その他のコンテンツ[/h2]
 400枚以上のカードでデッキを構築し、キャラクターをテーマにしたイベントや独自のメカニクスを楽しめます。
@@ -170,10 +170,10 @@ Slay the Spire 2のpublicブランチ v0.111.1とbetaブランチ v0.113.1に対
 
 마법소녀의 마녀재판에서 영감을 받은 Slay the Spire 2 모드입니다.
 
-[h1]12명의 캐릭터 · 400장 이상의 카드 · 더 많은 콘텐츠[/h1]
+[h1]13명의 캐릭터 · 400장 이상의 카드 · 더 많은 콘텐츠[/h1]
 
 [h2]캐릭터와 플레이 스타일[/h2]
-각기 다른 전투 방식을 가진 12명의 캐릭터를 선택하세요:
+각기 다른 전투 방식을 가진 13명의 캐릭터를 선택하세요:
 [b]니카이도 히로[/b] — 의심을 쌓아 공격을 강화하고 세 가지 자세로 공격과 방어를 전환합니다.
 [b]히카미 메루루[/b] — 포션을 조합하고 사용하며 화력을 쌓아 촉매를 만드는 포션 전략을 펼칩니다.
 [b]타치바나 셰리[/b] — 단서와 조사 시점을 쌓아 강력한 효과를 발동하고 전투에서 우위를 점합니다.
@@ -186,7 +186,7 @@ Slay the Spire 2のpublicブランチ v0.111.1とbetaブランチ v0.113.1に対
 [b]나츠메 안안[/b] — 언령을 모아 사용하고 이성을 관리하며 강력한 효과를 발동합니다.
 [b]시토 아리사[/b] — 화상을 쌓고 화염구 무리를 모아 한꺼번에 방출합니다.
 [b]사와타리 코코[/b] — 라이브 스트리밍 모드와 은신을 관리하며 장비를 모아 세트를 맞춥니다.
-[b]Sakuraba Ema (개발 중)[/b] 에마는 현재 개발 중입니다. 정식 출시 전에 게임에 등장한다면 이는 의도되지 않은 현상입니다.
+[b]사쿠라바 에마[/b] — 재판 카드로 심문을 진행하고, 마녀 도감에서 증거를 제시하며, 마녀화를 쌓아 마녀를 죽이는 마법을 노립니다.
 
 [h2]추가 콘텐츠[/h2]
 400장 이상의 카드로 덱을 구성하고, 캐릭터 테마 이벤트와 고유 메커니즘을 만나보세요.
