@@ -1376,7 +1376,7 @@
   "MANOSABA-ENOUGH_RED_TAPE.title": "Enough Red Tape!",
   "MANOSABA-WHAT_IS_EMAS_MAGIC.description": "Choose and play one: [gold]Gigantic Magic[/gold], [gold]Fire-Breathing Magic[/gold], or [gold]Glowing Magic[/gold].",
   "MANOSABA-FIRE_BREATHING_MAGIC.description": "Deal {Damage:diff()} damage. Apply {BurnPower:diff()} [gold]Burn[/gold].",
-  "MANOSABA-WITCH_LANGUAGE_MASTERY.description": "Whenever you take damage, all enemies lose HP equal to 2 times that damage, including damage absorbed by [gold]Block[/gold].",
+  "MANOSABA-WITCH_LANGUAGE_MASTERY.description": "Whenever you take damage, all enemies lose HP equal to 1× that damage, including damage absorbed by [gold]Block[/gold].",
   "MANOSABA-FIRE_BREATHING_MAGIC.title": "Fire-Breathing Magic",
   "MANOSABA-ENOUGH_RED_TAPE.description": "[gold]Trial[/gold]. [gold]Present Evidence[/gold] 3 times.",
   "MANOSABA-COUNTERARGUMENT.description": "[gold]Trial[/gold]. [gold]Present Evidence[/gold]. Deal {Damage:diff()} damage. Add 1 [gold]Statement[/gold] to your hand. At 10 or more [gold]Interrogation Progress[/gold], deal {BonusDamage:diff()} additional damage per stack of [gold]Argument[/gold] you have.",

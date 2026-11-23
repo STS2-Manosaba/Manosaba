@@ -642,7 +642,7 @@
   "MANOSABA-ENDLESS_EVIDENCE_POWER.title": "无尽证物",
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.description": "下一回合开始时，将 {Amount} 张[gold]发言[/gold]加入你的手牌，然后移除此效果。",
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.title": "餐后发言",
-  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.description": "每当你受到伤害，所有敌人失去该伤害量的 [blue]2[/blue] 倍生命值。被[gold]格挡[/gold]挡下的伤害也计入。",
+  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.description": "每当你受到伤害，所有敌人失去该伤害量的 [blue]1[/blue] 倍生命值。被[gold]格挡[/gold]挡下的伤害也计入。",
   "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.title": "魔女语精通",
   "MANOSABA-BEST_INFO_MAGIC_POWER.title": "最强情报魔法",
   "MANOSABA-BEST_INFO_MAGIC_POWER.description": "每次抽牌後，向每位玩家显示他们[gold]抽牌堆[/gold]最顶端的牌。",

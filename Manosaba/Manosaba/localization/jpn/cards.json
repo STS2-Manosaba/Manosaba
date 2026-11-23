@@ -1376,7 +1376,7 @@
   "MANOSABA-ENOUGH_RED_TAPE.title": "煩わしい手続きはもう十分！",
   "MANOSABA-WHAT_IS_EMAS_MAGIC.description": "[gold]巨大化魔法[/gold]、[gold]火炎魔法[/gold]、[gold]発光魔法[/gold]から1枚選んでプレイする。",
   "MANOSABA-FIRE_BREATHING_MAGIC.description": "{Damage:diff()}ダメージを与える。[gold]灼焼[/gold]を{BurnPower:diff()}与える。",
-  "MANOSABA-WITCH_LANGUAGE_MASTERY.description": "ダメージを受けるたび、敵全体がそのダメージの2倍のHPを失う。[gold]ブロック[/gold]で防いだダメージも含む。",
+  "MANOSABA-WITCH_LANGUAGE_MASTERY.description": "ダメージを受けるたび、敵全体がそのダメージの1倍のHPを失う。[gold]ブロック[/gold]で防いだダメージも含む。",
   "MANOSABA-FIRE_BREATHING_MAGIC.title": "火炎魔法",
   "MANOSABA-ENOUGH_RED_TAPE.description": "[gold]裁判[/gold]。[gold]証拠提出[/gold]を3回行う。",
   "MANOSABA-COUNTERARGUMENT.description": "[gold]裁判[/gold]。[gold]証拠提出[/gold]。{Damage:diff()}ダメージを与える。[gold]陳述[/gold]を1枚手札に加える。[gold]尋問進度[/gold]が10層以上なら、自分の[gold]論拠[/gold]1層につき追加で{BonusDamage:diff()}ダメージを与える。",

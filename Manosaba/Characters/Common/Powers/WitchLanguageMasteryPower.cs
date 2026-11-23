@@ -14,7 +14,7 @@ public sealed class WitchLanguageMasteryPower : PathCustomPowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-    private const int MultiplierPerStack = 2;
+    private const int MultiplierPerStack = 1;
     private const string MultiplierKey = "Multiplier";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar(MultiplierKey, MultiplierPerStack)];

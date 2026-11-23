@@ -60,7 +60,7 @@ public sealed class Counterargument : EmaTrialCard
 public sealed class WitchLanguageMastery : PathCustomCardModel
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<WitchLanguageMasteryPower>(1)];
-    public WitchLanguageMastery() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self, true) { }
+    public WitchLanguageMastery() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self, true) { }
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
         => await CommonActions.Apply<WitchLanguageMasteryPower>(context, Owner.Creature, this, 1m);
     protected override void OnUpgrade() => EnergyCost.UpgradeBy(-1);

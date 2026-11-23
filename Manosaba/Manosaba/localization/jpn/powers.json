@@ -639,7 +639,7 @@
   "MANOSABA-ENDLESS_EVIDENCE_POWER.title": "尽きない証拠品",
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.description": "次のターン開始時、[gold]陳述[/gold]を{Amount}枚手札に加え、この効果を取り除く。",
   "MANOSABA-AFTER_DINNER_STATEMENT_POWER.title": "食後の発言",
-  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.description": "ダメージを受けるたび、敵全体がそのダメージの[blue]2[/blue]倍のHPを失う。[gold]ブロック[/gold]で防いだダメージも含む。",
+  "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.description": "ダメージを受けるたび、敵全体がそのダメージの[blue]1[/blue]倍のHPを失う。[gold]ブロック[/gold]で防いだダメージも含む。",
   "MANOSABA-WITCH_LANGUAGE_MASTERY_POWER.title": "魔女語の達人",
   "MANOSABA-BEST_INFO_MAGIC_POWER.title": "最強情報魔法",
   "MANOSABA-BEST_INFO_MAGIC_POWER.description": "カードを引くたび、各プレイヤーに自分の[gold]山札[/gold]の一番上のカードを表示する。",

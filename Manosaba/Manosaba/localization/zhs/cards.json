@@ -1376,7 +1376,7 @@
   "MANOSABA-ENOUGH_RED_TAPE.title": "受够繁文缛节了！",
   "MANOSABA-WHAT_IS_EMAS_MAGIC.description": "选择并打出一张：[gold]巨大化魔法[/gold]、[gold]喷火魔法[/gold]、[gold]发光魔法[/gold]。",
   "MANOSABA-FIRE_BREATHING_MAGIC.description": "造成 {Damage:diff()} 点伤害。给予 {BurnPower:diff()} 层[gold]灼烧[/gold]。",
-  "MANOSABA-WITCH_LANGUAGE_MASTERY.description": "每当你受到伤害，所有敌人失去该伤害量的 2 倍生命值。被[gold]格挡[/gold]挡下的伤害也计入。",
+  "MANOSABA-WITCH_LANGUAGE_MASTERY.description": "每当你受到伤害，所有敌人失去该伤害量的 1 倍生命值。被[gold]格挡[/gold]挡下的伤害也计入。",
   "MANOSABA-FIRE_BREATHING_MAGIC.title": "喷火魔法",
   "MANOSABA-ENOUGH_RED_TAPE.description": "[gold]裁判[/gold]。[gold]提出证据[/gold] 3 次。",
   "MANOSABA-COUNTERARGUMENT.description": "[gold]裁判[/gold]。[gold]提出证据[/gold]。造成 {Damage:diff()} 点伤害。将 1 张[gold]发言[/gold]加入你的手牌。若[gold]裁判进度[/gold]至少 10 层，你每有 1 层[gold]议论[/gold]就额外造成 {BonusDamage:diff()} 点伤害。",
