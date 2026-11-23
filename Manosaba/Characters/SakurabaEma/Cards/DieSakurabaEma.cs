@@ -5,6 +5,7 @@ using Manosaba.Extensions;
 using manosaba.Characters.SakurabaEma.Combat;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -13,6 +14,9 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.Nodes.Cards;
+using MegaCrit.Sts2.Core.Nodes.Combat;
+using MegaCrit.Sts2.Core.TestSupport;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace manosaba.Characters.SakurabaEma.Cards;
@@ -22,6 +26,7 @@ public sealed class DieSakurabaEma : PathCustomCardModel, Manosaba.Compatibility
 {
     private const decimal VictoryMajokaThreshold = 200m;
     private bool _endTurnAutoPlay;
+    private CardModel? _transformOriginal;
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     public override bool CanBeGeneratedInCombat => false;
@@ -42,6 +47,29 @@ public sealed class DieSakurabaEma : PathCustomCardModel, Manosaba.Compatibility
 
     public DieSakurabaEma() : base(0, CardType.Attack, CardRarity.Token, TargetType.AllEnemies, true)
     {
+    }
+
+    internal async Task<CardPileAddResult?> TransformFrom(CardModel original)
+    {
+        _transformOriginal = original;
+        try { return await CardCmd.Transform(original, this); }
+        finally { _transformOriginal = null; }
+    }
+
+    public override void AfterTransformedTo()
+    {
+        base.AfterTransformedTo();
+        if (_transformOriginal is not { } original || TestMode.IsOn || !LocalContext.IsMine(this)
+            || Pile is not { Type: PileType.Hand } handPile || NPlayerHand.Instance is not { } hand
+            || NCard.FindOnTable(original, PileType.Hand) != null)
+            return;
+
+        // Transform has already swapped the models. Its next step animates the original
+        // node and binds it to this replacement. Restore a missing visual before that lookup.
+        int index = handPile.Cards.TakeWhile(c => c != this)
+            .Count(c => hand.GetCardHolder(c)?.GetParent() == hand.CardHolderContainer);
+        if (NCard.Create(original) is { } node)
+            hand.Add(node, index);
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

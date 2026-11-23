@@ -59,9 +59,9 @@ public sealed class MagicToKillTheWitch : PathCustomCardModel
             foreach (CardModel card in cards)
             {
                 if (card.Pile == null || !card.IsTransformable) continue;
-                CardModel replacement = combat.CreateCard<DieSakurabaEma>(Owner);
+                var replacement = combat.CreateCard<DieSakurabaEma>(Owner);
                 CardCmd.Upgrade(replacement);
-                var result = await CardCmd.Transform(card, replacement);
+                var result = await replacement.TransformFrom(card);
                 // A replacement in the Play pile has no active CardPlay to move it afterwards.
                 if (result is { success: true, cardAdded: { } transformed } && transformed.Pile?.Type == PileType.Play)
                     await CardPileCmd.Add(transformed, PileType.Discard);
