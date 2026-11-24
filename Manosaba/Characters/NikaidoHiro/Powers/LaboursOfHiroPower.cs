@@ -49,7 +49,7 @@ namespace Manosaba.Characters.NikaidoHiro.Powers
             }
 
             Flash();
-            await CommonActions.Apply<MajokaPower>(choiceContext, Owner, null, DynamicVars[nameof(StrengthPower)].BaseValue);
+            await CommonActions.Apply<StrengthPower>(choiceContext, Owner, null, DynamicVars[nameof(StrengthPower)].BaseValue);
         }
     }
 }

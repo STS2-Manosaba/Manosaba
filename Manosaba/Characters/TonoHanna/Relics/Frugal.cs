@@ -130,6 +130,7 @@ public sealed class FeatherFan : LevelingPathCustomRelicModel
         }
 
         return ownerCreature.HasPower<SoarPower>()
+            || ownerCreature.HasPower<HannaPuppetPower>()
             || ownerCreature.HasPower<FloatingPower>()
             || ownerCreature.HasPower<SkyIslandPower>()
             ? 1.5m
