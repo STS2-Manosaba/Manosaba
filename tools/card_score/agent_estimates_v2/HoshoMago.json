@@ -1,0 +1,238 @@
+{
+  "character": "HoshoMago",
+  "source": "mod",
+  "assumptions": [
+    "單人模式；隊友相關效果（隱者分享、星星替人承傷、太陽全隊）計 0",
+    "TarotDeck 使卡牌獎勵/商店全為塔羅牌（CardRarity.Ancient），典型牌組：4 打擊、4 防禦、創傷、解夢 + 中後期約 6～10 張不重複塔羅；集齊 21 張得世界屬罕見",
+    "『牌組中有X』連動觸發率依典型擁有比例估：單一指定塔羅約 35%，三張同時約 8%",
+    "能力牌假設第 2 回合打出、剩約 4.5 回合；平均魔女化約 30～50 層",
+    "多人：4人隊伍、隊友為一般Manosaba角色；隊友向效果按實際受益人數，需特定角色乘約3/13；差異僅在隱者（隊友無實體）、星星（替隊友承傷反彈）、太陽（全隊最大能量）、死神（我方全體災厄波及隊友）、惡魔（發狂/降血影響隊友）",
+    "v2：升級數值逐張以 MajorArcana.cs 的 UpgradeValueBy 確認"
+  ],
+  "mechanic_values": {
+    "魔女化": "每層約 0.07；中段加傷曲線平緩，過 100 有風險",
+    "塔羅連動": "單一連動條件期望觸發約 35%，隨牌組塔羅數上升",
+    "重放": "每次重放 ≈ 抽牌堆隨機牌價值約 1.1",
+    "無實體": "1 層 ≈ 2.5（抵擋一整回合傷害）",
+    "災厄": "每層 0.15，全體 ×1.4",
+    "戀人": "回血續航，25% 約 0.5"
+  },
+  "cards": {
+    "StrikeHoshoMago": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "6 傷害，升級 9。",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5
+    },
+    "DefendHoshoMago": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "5 格檔，升級 8。",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6
+    },
+    "TraumaHoshoMago": {
+      "value": 0.7,
+      "value_upgraded": 1.05,
+      "confidence": "medium",
+      "reasoning": "10 層魔女化×0.07，升級 15 層，供回音與加傷。",
+      "value_multi": 0.7,
+      "value_multi_upgraded": 1.05
+    },
+    "DreamInterpretation": {
+      "value": 1.4,
+      "value_upgraded": 1.7,
+      "confidence": "medium",
+      "reasoning": "三選一塔羅入手（0.4+最佳淨值約1），未升級附消耗略降。",
+      "value_multi": 1.4,
+      "value_multi_upgraded": 1.7
+    },
+    "Echoes": {
+      "value": 2.8,
+      "value_upgraded": 2.8,
+      "confidence": "low",
+      "reasoning": "抽牌堆隨機牌重放1+4×魔女化/100次，40層約2.6次×1.1；升級僅降費。",
+      "value_multi": 2.8,
+      "value_multi_upgraded": 2.8
+    },
+    "TheFool": {
+      "value": 1.9,
+      "value_upgraded": 2.7,
+      "confidence": "low",
+      "reasoning": "下回合2能量但由可可接管；有世界時10能量5抽極強但罕見。",
+      "value_multi": 1.9,
+      "value_multi_upgraded": 2.7
+    },
+    "TheMagician": {
+      "value": 2.8,
+      "value_upgraded": 3.9,
+      "confidence": "medium",
+      "reasoning": "塔羅種類約8×5層=40魔女化≈2.8，升級7層/種。",
+      "value_multi": 2.8,
+      "value_multi_upgraded": 3.9
+    },
+    "TheHighPriestess": {
+      "value": 1.7,
+      "value_upgraded": 2.1,
+      "confidence": "medium",
+      "reasoning": "7格檔+每張狀態牌4格並消耗，狀態牌期望約0.4張。",
+      "value_multi": 1.7,
+      "value_multi_upgraded": 2.1
+    },
+    "TheEmpress": {
+      "value": 1.6,
+      "value_upgraded": 2.3,
+      "confidence": "medium",
+      "reasoning": "約6傷+50%吸血，有皇帝×1.5（約35%）。",
+      "value_multi": 1.6,
+      "value_multi_upgraded": 2.3
+    },
+    "TheEmperor": {
+      "value": 3.8,
+      "value_upgraded": 5.6,
+      "confidence": "medium",
+      "reasoning": "20傷，有女皇×1.5（約35%）期望約23傷。",
+      "value_multi": 3.8,
+      "value_multi_upgraded": 5.6
+    },
+    "TheHierophant": {
+      "value": 1.6,
+      "value_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "全體2虛弱2易傷=(0.6+0.7)×1.4≈1.8，消耗一張手牌約-0.25；升級各3層。",
+      "value_multi": 1.6,
+      "value_multi_upgraded": 2.4
+    },
+    "TheLovers": {
+      "value": 0.8,
+      "value_upgraded": 0.8,
+      "confidence": "low",
+      "reasoning": "攻擊此敵回復25%傷害，有惡魔+10%，純續航；升級降費。",
+      "value_multi": 0.8,
+      "value_multi_upgraded": 0.8
+    },
+    "TheChariot": {
+      "value": 3.1,
+      "value_upgraded": 4.6,
+      "confidence": "medium",
+      "reasoning": "全體4×3，有力量卡+1次（35%），×1.4。",
+      "value_multi": 3.1,
+      "value_multi_upgraded": 4.6
+    },
+    "Strength": {
+      "value": 3.6,
+      "value_upgraded": 6.0,
+      "confidence": "high",
+      "reasoning": "1費3永久力量能力，升級5層。",
+      "value_multi": 3.6,
+      "value_multi_upgraded": 6.0
+    },
+    "TheHermit": {
+      "value": 2.5,
+      "value_upgraded": 2.8,
+      "confidence": "medium",
+      "reasoning": "1層無實體≈擋一回合傷害；隊友分享單人為0；升級保留。",
+      "value_multi": 3.1,
+      "value_multi_upgraded": 3.4
+    },
+    "WheelOfFortune": {
+      "value": 2.2,
+      "value_upgraded": 2.9,
+      "confidence": "medium",
+      "reasoning": "洗回至多4張再抽4（換手非淨增）；升級6張。",
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.9
+    },
+    "Justice": {
+      "value": 1.5,
+      "value_upgraded": 1.5,
+      "confidence": "low",
+      "reasoning": "消耗全手牌換抑制力，代價高；有節制每張+3格。升級降費。",
+      "value_multi": 1.5,
+      "value_multi_upgraded": 1.5
+    },
+    "TheHangedMan": {
+      "value": 1.5,
+      "value_upgraded": 2.2,
+      "confidence": "medium",
+      "reasoning": "使敵-2力量（升級-3），對照Disarm類錨點。",
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.2
+    },
+    "Death": {
+      "value": 3.3,
+      "value_upgraded": 5.0,
+      "confidence": "medium",
+      "reasoning": "全體20災厄×0.15×1.4，自身5災厄扣分，有魔術師×1.5。",
+      "value_multi": 2.7,
+      "value_multi_upgraded": 4.4
+    },
+    "Temperance": {
+      "value": 0.3,
+      "value_upgraded": 0.3,
+      "confidence": "medium",
+      "reasoning": "戰鬥結束30金幣，無戰鬥效果；有正義+10格。升級降費。",
+      "value_multi": 0.3,
+      "value_multi_upgraded": 0.3
+    },
+    "TheDevil": {
+      "value": 1.2,
+      "value_upgraded": 1.4,
+      "confidence": "low",
+      "reasoning": "三選一：發狂系雙面效果或全場血量降至50%（非Boss），高變異。",
+      "value_multi": 0.8,
+      "value_multi_upgraded": 1.0
+    },
+    "TheTower": {
+      "value": 2.5,
+      "value_upgraded": 3.4,
+      "confidence": "medium",
+      "reasoning": "全體9傷(2.1)+移除人工制品/禁增益約0.4；升級12傷、禁增益2回合。",
+      "value_multi": 2.5,
+      "value_multi_upgraded": 3.4
+    },
+    "TheStar": {
+      "value": 3.4,
+      "value_upgraded": 4.6,
+      "confidence": "medium",
+      "reasoning": "16格檔(3.2)+受擊100%反彈；升級20格、反彈150%。",
+      "value_multi": 4.4,
+      "value_multi_upgraded": 5.4
+    },
+    "TheMoon": {
+      "value": 1.3,
+      "value_upgraded": 1.6,
+      "confidence": "low",
+      "reasoning": "5傷+目標中毒/災厄/灼燒25%（升級40%），瑪格來源少。",
+      "value_multi": 1.3,
+      "value_multi_upgraded": 1.6
+    },
+    "TheSun": {
+      "value": 4.5,
+      "value_upgraded": 4.5,
+      "confidence": "medium",
+      "reasoning": "最大能量+1持續約4.5回合；升級降費。",
+      "value_multi": 5.6,
+      "value_multi_upgraded": 5.6
+    },
+    "Judgement": {
+      "value": 0.7,
+      "value_upgraded": 0.9,
+      "confidence": "low",
+      "reasoning": "清除減益並依數量回能量，典型約0.7個減益。",
+      "value_multi": 0.7,
+      "value_multi_upgraded": 0.9
+    },
+    "TheWorld": {
+      "value": 4.0,
+      "value_upgraded": 4.0,
+      "confidence": "low",
+      "reasoning": "本場升級全部卡牌，抽牌堆空時直接勝利；需集齊21塔羅極罕見。",
+      "value_multi": 4.0,
+      "value_multi_upgraded": 4.0
+    }
+  }
+}

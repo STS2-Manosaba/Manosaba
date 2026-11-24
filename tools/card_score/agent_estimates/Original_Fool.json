@@ -1,0 +1,741 @@
+{
+ "character": "Fool",
+ "source": "original-beta",
+ "assumptions": [
+  "起始遺物SongBow每場戰鬥給6瞄準（下一次箭矢攻擊+6）",
+  "只有1支箭矢；箭矢扎入敵人後需攻擊3次才鬆脫，發射牌期望可用率約0.65",
+  "敵人處於扎穿狀態的期望約45%",
+  "旋律：本回合打出帶哇/啾/叽標籤的牌即獲得，典型每回合1.5種",
+  "能力牌按剩4-5回合計"
+ ],
+ "mechanic_values": {
+  "瞄準": "每點約0.17（下一次箭矢攻擊+1傷）",
+  "拉伸": "每點≈1格檔=0.2",
+  "悲傷": "不可打出的保留狀態牌，本身約-0.2，但多張卡有協同",
+  "喜悅": "0費消耗得1能抽1，約1.5",
+  "箭矢/扎穿": "發射需可用箭矢，扎穿是多張卡的觸發條件",
+  "旋律": "每種約0.5～1，依協同牌而定"
+ },
+ "cards": {
+  "StrikeFool": {
+   "value": 1.0,
+   "value_upgraded": 1.5,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.5,
+   "confidence": "high",
+   "reasoning": "6傷/升級9傷"
+  },
+  "DefendFool": {
+   "value": 1.0,
+   "value_upgraded": 1.6,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.6,
+   "confidence": "high",
+   "reasoning": "5格檔/升級8"
+  },
+  "FoolishShot": {
+   "value": 1.75,
+   "value_upgraded": 2.25,
+   "value_multi": 1.75,
+   "value_multi_upgraded": 2.25,
+   "confidence": "medium",
+   "reasoning": "發射15傷×箭矢可用率約0.65＋首射瞄準加成"
+  },
+  "QuickShot": {
+   "value": 1.2,
+   "value_upgraded": 1.5,
+   "value_multi": 1.2,
+   "value_multi_upgraded": 1.5,
+   "confidence": "medium",
+   "reasoning": "0費發射10傷，受箭矢可用率限制"
+  },
+  "HeavyShot": {
+   "value": 2.6,
+   "value_upgraded": 3.1,
+   "value_multi": 2.6,
+   "value_multi_upgraded": 3.1,
+   "confidence": "medium",
+   "reasoning": "20傷且瞄準雙倍，箭矢可用率約0.65"
+  },
+  "SkyShot": {
+   "value": 3.4,
+   "value_upgraded": 4.6,
+   "value_multi": 3.4,
+   "value_multi_upgraded": 4.6,
+   "confidence": "medium",
+   "reasoning": "固有發射30傷，首回合箭矢幾乎必可用"
+  },
+  "DivineShot": {
+   "value": 4.4,
+   "value_upgraded": 5.4,
+   "value_multi": 4.4,
+   "value_multi_upgraded": 5.4,
+   "confidence": "medium",
+   "reasoning": "保留，0費發射40傷，可等箭矢"
+  },
+  "RainShot": {
+   "value": 1.8,
+   "value_upgraded": 2.3,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.3,
+   "confidence": "medium",
+   "reasoning": "發射12傷並濺射其他敵人，約×1.4"
+  },
+  "RapidShot": {
+   "value": 1.4,
+   "value_upgraded": 1.8,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 1.8,
+   "confidence": "medium",
+   "reasoning": "發射3×3傷，多段加速鬆脫，瞄準只加一次"
+  },
+  "RepeatShot": {
+   "value": 2.6,
+   "value_upgraded": 3.4,
+   "value_multi": 2.6,
+   "value_multi_upgraded": 3.4,
+   "confidence": "low",
+   "reasoning": "X次發射15傷，但只有1支箭矢，期望約1.3次"
+  },
+  "TrickShot": {
+   "value": 2.0,
+   "value_upgraded": 2.4,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.4,
+   "confidence": "medium",
+   "reasoning": "發射12傷並回手，可重複使用但受箭矢限制"
+  },
+  "HobblingShot": {
+   "value": 1.85,
+   "value_upgraded": 2.6,
+   "value_multi": 1.85,
+   "value_multi_upgraded": 2.6,
+   "confidence": "medium",
+   "reasoning": "發射13傷＋1虛弱1易傷，受箭矢限制"
+  },
+  "MelodicShot": {
+   "value": 2.1,
+   "value_upgraded": 2.3,
+   "value_multi": 2.1,
+   "value_multi_upgraded": 2.3,
+   "confidence": "medium",
+   "reasoning": "發射12傷×(1+旋律數)，典型約2次命中"
+  },
+  "BlossomShot": {
+   "value": 2.4,
+   "value_upgraded": 3.0,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 3.0,
+   "confidence": "medium",
+   "reasoning": "發射11傷並得等量拉伸"
+  },
+  "ArrowStab": {
+   "value": 1.9,
+   "value_upgraded": 2.4,
+   "value_multi": 1.9,
+   "value_multi_upgraded": 2.4,
+   "confidence": "medium",
+   "reasoning": "9傷＋有箭矢時回收發射牌（約0.4）"
+  },
+  "BowSmack": {
+   "value": 1.75,
+   "value_upgraded": 2.25,
+   "value_multi": 1.75,
+   "value_multi_upgraded": 2.25,
+   "confidence": "medium",
+   "reasoning": "8傷，扎穿約45%時回1能量"
+  },
+  "KiHop": {
+   "value": 1.7,
+   "value_upgraded": 2.15,
+   "value_multi": 1.7,
+   "value_multi_upgraded": 2.15,
+   "confidence": "medium",
+   "reasoning": "7傷，扎穿時抽2張（約45%）"
+  },
+  "WahHammer": {
+   "value": 2.0,
+   "value_upgraded": 2.5,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.5,
+   "confidence": "medium",
+   "reasoning": "9傷，扎穿時雙倍"
+  },
+  "WahSweep": {
+   "value": 1.85,
+   "value_upgraded": 2.55,
+   "value_multi": 1.85,
+   "value_multi_upgraded": 2.55,
+   "confidence": "high",
+   "reasoning": "全體8傷"
+  },
+  "WahTouch": {
+   "value": 1.35,
+   "value_upgraded": 1.9,
+   "value_multi": 1.35,
+   "value_multi_upgraded": 1.9,
+   "confidence": "high",
+   "reasoning": "6傷＋1易傷"
+  },
+  "WahCho": {
+   "value": 1.1,
+   "value_upgraded": 1.75,
+   "value_multi": 1.1,
+   "value_multi_upgraded": 1.75,
+   "confidence": "high",
+   "reasoning": "0費3傷3格檔，雙旋律"
+  },
+  "WahChoKi": {
+   "value": 3.8,
+   "value_upgraded": 4.8,
+   "value_multi": 3.8,
+   "value_multi_upgraded": 4.8,
+   "confidence": "high",
+   "reasoning": "9傷9格檔抽1，三旋律"
+  },
+  "WahKi": {
+   "value": 2.2,
+   "value_upgraded": 2.9,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 2.9,
+   "confidence": "medium",
+   "reasoning": "2×2傷＋下回合1能量抽1"
+  },
+  "WahBlast": {
+   "value": 4.6,
+   "value_upgraded": 5.9,
+   "value_multi": 4.6,
+   "value_multi_upgraded": 5.9,
+   "confidence": "medium",
+   "reasoning": "全體14傷，有啾/叽時打兩次（約60%）"
+  },
+  "WahSymphony": {
+   "value": 3.3,
+   "value_upgraded": 4.4,
+   "value_multi": 3.3,
+   "value_multi_upgraded": 4.4,
+   "confidence": "low",
+   "reasoning": "全體6＋每張旋律牌4傷，典型約4張"
+  },
+  "KiWhip": {
+   "value": 2.8,
+   "value_upgraded": 3.95,
+   "value_multi": 2.8,
+   "value_multi_upgraded": 3.95,
+   "confidence": "high",
+   "reasoning": "5傷＋下回合2能量"
+  },
+  "KiChant": {
+   "value": 0.65,
+   "value_upgraded": 0.8,
+   "value_multi": 0.65,
+   "value_multi_upgraded": 0.8,
+   "confidence": "medium",
+   "reasoning": "看3選1到手，類似強化抽1"
+  },
+  "KiRest": {
+   "value": 2.4,
+   "value_upgraded": 3.4,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 3.4,
+   "confidence": "medium",
+   "reasoning": "保留；下回合2能量，常可保留手牌"
+  },
+  "KiVerse": {
+   "value": 1.6,
+   "value_upgraded": 2.9,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.9,
+   "confidence": "low",
+   "reasoning": "下一張旋律牌重打一次"
+  },
+  "ChoFirm": {
+   "value": 1.85,
+   "value_upgraded": 2.5,
+   "value_multi": 1.85,
+   "value_multi_upgraded": 2.5,
+   "confidence": "medium",
+   "reasoning": "6格檔，有箭矢時再一次（約70%）"
+  },
+  "ChoReady": {
+   "value": 2.1,
+   "value_upgraded": 2.95,
+   "value_multi": 2.1,
+   "value_multi_upgraded": 2.95,
+   "confidence": "medium",
+   "reasoning": "8格檔＋3瞄準"
+  },
+  "ChoBarbs": {
+   "value": 1.8,
+   "value_upgraded": 2.3,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.3,
+   "confidence": "medium",
+   "reasoning": "7格檔＋本回合3荊棘"
+  },
+  "ChoKi": {
+   "value": 2.3,
+   "value_upgraded": 2.9,
+   "value_multi": 2.3,
+   "value_multi_upgraded": 2.9,
+   "confidence": "medium",
+   "reasoning": "8格檔並重獲花費的拉伸，約+3.5格檔"
+  },
+  "ChoLimbs": {
+   "value": 2.0,
+   "value_upgraded": 2.8,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.8,
+   "confidence": "medium",
+   "reasoning": "5格檔兩次，常因旋律降至0費"
+  },
+  "ChoChorus": {
+   "value": 4.0,
+   "value_upgraded": 4.6,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 4.6,
+   "confidence": "low",
+   "reasoning": "12格檔並免費打出手中哇/叽牌，約1.5張"
+  },
+  "DeepStretch": {
+   "value": 1.9,
+   "value_upgraded": 2.5,
+   "value_multi": 1.9,
+   "value_multi_upgraded": 2.5,
+   "confidence": "high",
+   "reasoning": "7拉伸（≈7格檔）＋抽1"
+  },
+  "Bounce": {
+   "value": 2.0,
+   "value_upgraded": 2.6,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.6,
+   "confidence": "medium",
+   "reasoning": "10拉伸，下回合回手可重複"
+  },
+  "Growth": {
+   "value": 1.4,
+   "value_upgraded": 1.9,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 1.9,
+   "confidence": "low",
+   "reasoning": "消耗手中悲傷，每張4拉伸，典型約1.7張"
+  },
+  "HarmonicShield": {
+   "value": 1.5,
+   "value_upgraded": 2.1,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 2.1,
+   "confidence": "medium",
+   "reasoning": "5×旋律數格檔，典型1.5種"
+  },
+  "Jest": {
+   "value": 3.0,
+   "value_upgraded": 3.8,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.8,
+   "confidence": "medium",
+   "reasoning": "14格檔＋一張悲傷"
+  },
+  "SorrowfulStrike": {
+   "value": 2.4,
+   "value_upgraded": 3.1,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 3.1,
+   "confidence": "medium",
+   "reasoning": "13傷＋2悲傷（佔手但有協同）"
+  },
+  "MourningBlow": {
+   "value": 1.75,
+   "value_upgraded": 2.6,
+   "value_multi": 1.75,
+   "value_multi_upgraded": 2.6,
+   "confidence": "medium",
+   "reasoning": "0費10傷，變為悲傷回手"
+  },
+  "Anguish": {
+   "value": 2.4,
+   "value_upgraded": 2.7,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 2.7,
+   "confidence": "low",
+   "reasoning": "6傷＋每張生成過的悲傷+6，典型約2張"
+  },
+  "PunchOfJoy": {
+   "value": 2.6,
+   "value_upgraded": 3.2,
+   "value_multi": 2.6,
+   "value_multi_upgraded": 3.2,
+   "confidence": "medium",
+   "reasoning": "13傷，將悲傷變喜悅"
+  },
+  "Rummage": {
+   "value": 1.1,
+   "value_upgraded": 1.6,
+   "value_multi": 1.1,
+   "value_multi_upgraded": 1.6,
+   "confidence": "medium",
+   "reasoning": "抽2＋一張悲傷"
+  },
+  "Vitriol": {
+   "value": 0.7,
+   "value_upgraded": 1.0,
+   "value_multi": 0.7,
+   "value_multi_upgraded": 1.0,
+   "confidence": "high",
+   "reasoning": "2虛弱＋悲傷"
+  },
+  "BrightenUp": {
+   "value": 3.2,
+   "value_upgraded": 4.2,
+   "value_multi": 3.2,
+   "value_multi_upgraded": 4.2,
+   "confidence": "medium",
+   "reasoning": "2悲傷＋2喜悅（每張喜悅約1.5）"
+  },
+  "DislikeYou": {
+   "value": 1.7,
+   "value_upgraded": 1.9,
+   "value_multi": 1.7,
+   "value_multi_upgraded": 1.9,
+   "confidence": "medium",
+   "reasoning": "8傷，本回合射擊額外50%傷"
+  },
+  "EpicRetrieval": {
+   "value": 3.4,
+   "value_upgraded": 4.4,
+   "value_multi": 3.4,
+   "value_multi_upgraded": 4.4,
+   "confidence": "medium",
+   "reasoning": "15傷，造成鬆脫時回3能（約40%）"
+  },
+  "Timber": {
+   "value": 4.0,
+   "value_upgraded": 5.0,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 5.0,
+   "confidence": "medium",
+   "reasoning": "20傷，擊殺時全體30傷（約35%）"
+  },
+  "Nail": {
+   "value": 2.3,
+   "value_upgraded": 3.1,
+   "value_multi": 2.3,
+   "value_multi_upgraded": 3.1,
+   "confidence": "medium",
+   "reasoning": "扎穿時20傷＋2虛弱2易傷（約55%）"
+  },
+  "Coda": {
+   "value": 6.7,
+   "value_upgraded": 9.2,
+   "value_multi": 6.7,
+   "value_multi_upgraded": 9.2,
+   "confidence": "medium",
+   "reasoning": "40傷，旋律降費"
+  },
+  "RhythmStrike": {
+   "value": 1.4,
+   "value_upgraded": 1.7,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 1.7,
+   "confidence": "medium",
+   "reasoning": "0費4傷×(1+旋律數)，典型約2.2次"
+  },
+  "SteadyCadence": {
+   "value": 2.4,
+   "value_upgraded": 2.9,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 2.9,
+   "confidence": "medium",
+   "reasoning": "10傷＋抽旋律種數，約1.5張"
+  },
+  "LockedIn": {
+   "value": 0.9,
+   "value_upgraded": 1.0,
+   "value_multi": 0.9,
+   "value_multi_upgraded": 1.0,
+   "confidence": "medium",
+   "reasoning": "從抽牌堆取一張發射牌到手"
+  },
+  "BlotOutTheSky": {
+   "value": 1.6,
+   "value_upgraded": 1.6,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 1.6,
+   "confidence": "medium",
+   "reasoning": "隨機發射牌本回合免費，扣箭矢可用率"
+  },
+  "Recall": {
+   "value": 0.6,
+   "value_upgraded": 0.6,
+   "value_multi": 0.6,
+   "value_multi_upgraded": 0.6,
+   "confidence": "low",
+   "reasoning": "扎穿時鬆脫並放牌到抽牌堆頂"
+  },
+  "Uproot": {
+   "value": 0.9,
+   "value_upgraded": 1.15,
+   "value_multi": 0.9,
+   "value_multi_upgraded": 1.15,
+   "confidence": "medium",
+   "reasoning": "扎穿時鬆脫＋3易傷"
+  },
+  "Wrest": {
+   "value": 0.6,
+   "value_upgraded": 0.85,
+   "value_multi": 0.6,
+   "value_multi_upgraded": 0.85,
+   "confidence": "medium",
+   "reasoning": "扎穿時鬆脫並抽1"
+  },
+  "Nock": {
+   "value": 1.0,
+   "value_upgraded": 1.35,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.35,
+   "confidence": "high",
+   "reasoning": "5瞄準＝下一次發射+5傷"
+  },
+  "Brace": {
+   "value": 2.0,
+   "value_upgraded": 2.6,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.6,
+   "confidence": "medium",
+   "reasoning": "X次8瞄準，典型X≈1.5"
+  },
+  "ShowOff": {
+   "value": 1.0,
+   "value_upgraded": 1.15,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.15,
+   "confidence": "medium",
+   "reasoning": "5瞄準，擊殺時永久成長，消耗"
+  },
+  "Quietus": {
+   "value": 1.8,
+   "value_upgraded": 2.8,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.8,
+   "confidence": "medium",
+   "reasoning": "下次射擊雙倍（升級三倍），但摧毀箭矢"
+  },
+  "Florescence": {
+   "value": 2.5,
+   "value_upgraded": 3.1,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 3.1,
+   "confidence": "low",
+   "reasoning": "消耗發射牌生成全力射擊"
+  },
+  "WhistlingArrows": {
+   "value": 0.6,
+   "value_upgraded": 0.8,
+   "value_multi": 0.6,
+   "value_multi_upgraded": 0.8,
+   "confidence": "medium",
+   "reasoning": "0費3格檔，發射時回手"
+  },
+  "Encore": {
+   "value": 1.6,
+   "value_upgraded": 2.1,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.1,
+   "confidence": "medium",
+   "reasoning": "1能抽2，但本回合限再打1張"
+  },
+  "AllIsWell": {
+   "value": 2.0,
+   "value_upgraded": 2.5,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.5,
+   "confidence": "low",
+   "reasoning": "能力：每生成悲傷得4格檔，約3次"
+  },
+  "Archery": {
+   "value": 4.0,
+   "value_upgraded": 5.0,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 5.0,
+   "confidence": "medium",
+   "reasoning": "能力：每回合4瞄準，射擊頻率約0.65/回合"
+  },
+  "Compost": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 3.2,
+   "confidence": "low",
+   "reasoning": "多人限定：敵死全隊得1能"
+  },
+  "CoveringFire": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 4.5,
+   "value_multi_upgraded": 6.2,
+   "confidence": "low",
+   "reasoning": "多人限定：每次發射盟友8格檔"
+  },
+  "Enrapture": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 3.2,
+   "confidence": "medium",
+   "reasoning": "多人限定：給隊友6活力6拉伸"
+  },
+  "Ensemble": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 2.6,
+   "confidence": "low",
+   "reasoning": "多人限定：其他玩家下1張牌免費"
+  },
+  "SelfDeprecate": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 6.5,
+   "value_multi_upgraded": 9.0,
+   "confidence": "low",
+   "reasoning": "多人限定：自己1悲傷，盟友各2喜悅"
+  },
+  "Yoga": {
+   "value": 1.2,
+   "value_upgraded": 1.6,
+   "value_multi": 4.8,
+   "value_multi_upgraded": 6.4,
+   "confidence": "medium",
+   "reasoning": "全體玩家6拉伸；單人只有自己，4人約4倍"
+  },
+  "Ecstasy": {
+   "value": 3.0,
+   "value_upgraded": 3.4,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.4,
+   "confidence": "low",
+   "reasoning": "能力：每回合悲傷變喜悅，受悲傷供給限制"
+  },
+  "Ennui": {
+   "value": 3.6,
+   "value_upgraded": 4.8,
+   "value_multi": 3.6,
+   "value_multi_upgraded": 4.8,
+   "confidence": "medium",
+   "reasoning": "能力：每回合多抽2並得悲傷"
+  },
+  "ExplosiveArrows": {
+   "value": 2.6,
+   "value_upgraded": 3.4,
+   "value_multi": 2.6,
+   "value_multi_upgraded": 3.4,
+   "confidence": "low",
+   "reasoning": "能力：扎穿時全體6傷，約每回合0.7次"
+  },
+  "HiddenRoots": {
+   "value": 3.0,
+   "value_upgraded": 4.0,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 4.0,
+   "confidence": "medium",
+   "reasoning": "能力：每回合3拉伸"
+  },
+  "Honing": {
+   "value": 3.0,
+   "value_upgraded": 3.0,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.0,
+   "confidence": "low",
+   "reasoning": "能力：箭矢傷害+50%，約每回合0.65次射擊"
+  },
+  "Lullaby": {
+   "value": 1.5,
+   "value_upgraded": 2.2,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 2.2,
+   "confidence": "low",
+   "reasoning": "0費能力：集滿三旋律時得20格檔"
+  },
+  "LostLute": {
+   "value": 4.0,
+   "value_upgraded": 4.0,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 4.0,
+   "confidence": "low",
+   "reasoning": "能力：每獲得旋律打出抽牌堆頂"
+  },
+  "Motif": {
+   "value": 4.0,
+   "value_upgraded": 4.0,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 4.0,
+   "confidence": "medium",
+   "reasoning": "能力：每獲得旋律抽1，約1.5/回合"
+  },
+  "MythicForm": {
+   "value": 5.0,
+   "value_upgraded": 6.0,
+   "value_multi": 5.0,
+   "value_multi_upgraded": 6.0,
+   "confidence": "low",
+   "reasoning": "能力：每回合一張隨機塔羅牌"
+  },
+  "Quiver": {
+   "value": 3.5,
+   "value_upgraded": 5.5,
+   "value_multi": 3.5,
+   "value_multi_upgraded": 5.5,
+   "confidence": "medium",
+   "reasoning": "能力：額外箭矢，大幅提高發射牌可用率"
+  },
+  "SerratedArrows": {
+   "value": 2.2,
+   "value_upgraded": 3.3,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 3.3,
+   "confidence": "low",
+   "reasoning": "能力：扎穿敵人受攻擊+25%"
+  },
+  "Simpleton": {
+   "value": 2.6,
+   "value_upgraded": 2.6,
+   "value_multi": 2.6,
+   "value_multi_upgraded": 2.6,
+   "confidence": "low",
+   "reasoning": "能力：回合結束打出最低費牌"
+  },
+  "SongPath": {
+   "value": 2.4,
+   "value_upgraded": 3.4,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 3.4,
+   "confidence": "medium",
+   "reasoning": "能力：每獲得啾旋律5格檔"
+  },
+  "Tune": {
+   "value": 2.2,
+   "value_upgraded": 2.2,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 2.2,
+   "confidence": "low",
+   "reasoning": "能力：有叽時下張牌0費，約每回合0.6"
+  },
+  "ViolentChord": {
+   "value": 3.4,
+   "value_upgraded": 4.5,
+   "value_multi": 3.4,
+   "value_multi_upgraded": 4.5,
+   "confidence": "medium",
+   "reasoning": "能力：每獲得哇旋律全體9傷"
+  },
+  "Yah": {
+   "value": 2.2,
+   "value_upgraded": 4.4,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 4.4,
+   "confidence": "medium",
+   "reasoning": "能力：每回合首次鬆脫得1能，約0.5/回合"
+  }
+ }
+}

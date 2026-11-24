@@ -1,0 +1,737 @@
+{
+ "character": "Ironclad",
+ "source": "original",
+ "assumptions": [
+  "依指定能量單位，不扣費用與關鍵字",
+  "能力牌以第2回合打出、剩4～5回合生效計",
+  "起始遺物燃燒之血提供續航，失血連動有正面價值",
+  "MultiplayerOnly卡單人value為null"
+ ],
+ "mechanic_values": {
+  "消耗": "每張約0.3～0.5，視消耗連動",
+  "失血觸發": "每次可觸發Rupture/Inferno/TearAsunder，約0.3",
+  "易傷": "0.35/層，Cruelty/Dismantle等可放大"
+ },
+ "cards": {
+  "StrikeIronclad": {
+   "value": 1.0,
+   "value_upgraded": 1.5,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.5,
+   "confidence": "high",
+   "reasoning": "6/9傷害"
+  },
+  "DefendIronclad": {
+   "value": 1.0,
+   "value_upgraded": 1.6,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.6,
+   "confidence": "high",
+   "reasoning": "5/8格擋"
+  },
+  "Bash": {
+   "value": 2.0,
+   "value_upgraded": 2.6,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.6,
+   "confidence": "high",
+   "reasoning": "8傷+2易傷；升級10傷+3易傷"
+  },
+  "Anger": {
+   "value": 1.3,
+   "value_upgraded": 1.7,
+   "value_multi": 1.3,
+   "value_multi_upgraded": 1.7,
+   "confidence": "high",
+   "reasoning": "6傷並複製到棄牌堆"
+  },
+  "Armaments": {
+   "value": 1.4,
+   "value_upgraded": 2.0,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 2.0,
+   "confidence": "medium",
+   "reasoning": "5格擋+升級手牌1/全部"
+  },
+  "BodySlam": {
+   "value": 1.1,
+   "value_upgraded": 1.1,
+   "value_multi": 1.1,
+   "value_multi_upgraded": 1.1,
+   "confidence": "medium",
+   "reasoning": "依格擋傷害，典型約7"
+  },
+  "Breakthrough": {
+   "value": 1.4,
+   "value_upgraded": 1.9,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 1.9,
+   "confidence": "high",
+   "reasoning": "9全體傷害扣1血"
+  },
+  "Cinder": {
+   "value": 2.6,
+   "value_upgraded": 3.4,
+   "value_multi": 2.6,
+   "value_multi_upgraded": 3.4,
+   "confidence": "medium",
+   "reasoning": "18傷，隨機消耗1張略負面但有連動"
+  },
+  "Havoc": {
+   "value": 1.0,
+   "value_upgraded": 1.0,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.0,
+   "confidence": "low",
+   "reasoning": "打出抽牌堆頂牌並消耗"
+  },
+  "Headbutt": {
+   "value": 1.9,
+   "value_upgraded": 2.3,
+   "value_multi": 1.9,
+   "value_multi_upgraded": 2.3,
+   "confidence": "high",
+   "reasoning": "9傷+棄牌堆1張放回頂"
+  },
+  "IronWave": {
+   "value": 2.0,
+   "value_upgraded": 2.6,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.6,
+   "confidence": "high",
+   "reasoning": "5傷5格擋"
+  },
+  "MoltenFist": {
+   "value": 1.9,
+   "value_upgraded": 2.6,
+   "value_multi": 1.9,
+   "value_multi_upgraded": 2.6,
+   "confidence": "medium",
+   "reasoning": "10傷並翻倍易傷"
+  },
+  "PerfectedStrike": {
+   "value": 2.6,
+   "value_upgraded": 3.2,
+   "value_multi": 2.6,
+   "value_multi_upgraded": 3.2,
+   "confidence": "medium",
+   "reasoning": "6+每張打擊2傷，約5張打擊"
+  },
+  "PommelStrike": {
+   "value": 2.0,
+   "value_upgraded": 2.8,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.8,
+   "confidence": "high",
+   "reasoning": "9傷抽1/2"
+  },
+  "SetupStrike": {
+   "value": 2.2,
+   "value_upgraded": 2.8,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 2.8,
+   "confidence": "medium",
+   "reasoning": "7傷+本回合3力量"
+  },
+  "ShrugItOff": {
+   "value": 2.1,
+   "value_upgraded": 2.7,
+   "value_multi": 2.1,
+   "value_multi_upgraded": 2.7,
+   "confidence": "high",
+   "reasoning": "8格擋抽1"
+  },
+  "SwordBoomerang": {
+   "value": 1.4,
+   "value_upgraded": 1.9,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 1.9,
+   "confidence": "high",
+   "reasoning": "3x3隨機敵人"
+  },
+  "Taunt": {
+   "value": 1.6,
+   "value_upgraded": 2.0,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.0,
+   "confidence": "medium",
+   "reasoning": "6格擋+1易傷"
+  },
+  "Thunderclap": {
+   "value": 1.6,
+   "value_upgraded": 2.1,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.1,
+   "confidence": "high",
+   "reasoning": "4全體+1全體易傷"
+  },
+  "Tremble": {
+   "value": 1.05,
+   "value_upgraded": 1.4,
+   "value_multi": 1.05,
+   "value_multi_upgraded": 1.4,
+   "confidence": "medium",
+   "reasoning": "3/4易傷"
+  },
+  "TrueGrit": {
+   "value": 1.9,
+   "value_upgraded": 2.6,
+   "value_multi": 1.9,
+   "value_multi_upgraded": 2.6,
+   "confidence": "medium",
+   "reasoning": "7格擋+消耗1張"
+  },
+  "TwinStrike": {
+   "value": 1.7,
+   "value_upgraded": 2.3,
+   "value_multi": 1.7,
+   "value_multi_upgraded": 2.3,
+   "confidence": "high",
+   "reasoning": "5x2傷害"
+  },
+  "AshenStrike": {
+   "value": 1.8,
+   "value_upgraded": 2.3,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.3,
+   "confidence": "medium",
+   "reasoning": "6+3x消耗數，中期約2張"
+  },
+  "BattleTrance": {
+   "value": 1.5,
+   "value_upgraded": 2.0,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 2.0,
+   "confidence": "high",
+   "reasoning": "抽3/4，之後不能抽牌"
+  },
+  "Blaze": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 6.0,
+   "value_multi_upgraded": 7.2,
+   "confidence": "medium",
+   "reasoning": "僅多人：給隊友5點力量"
+  },
+  "BloodWall": {
+   "value": 2.8,
+   "value_upgraded": 3.4,
+   "value_multi": 2.8,
+   "value_multi_upgraded": 3.4,
+   "confidence": "medium",
+   "reasoning": "失血換大量格擋"
+  },
+  "Bloodletting": {
+   "value": 1.8,
+   "value_upgraded": 2.6,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.6,
+   "confidence": "high",
+   "reasoning": "失3血得2/3能量"
+  },
+  "Bludgeon": {
+   "value": 5.3,
+   "value_upgraded": 6.7,
+   "value_multi": 5.3,
+   "value_multi_upgraded": 6.7,
+   "confidence": "high",
+   "reasoning": "32/42傷害"
+  },
+  "Bully": {
+   "value": 1.3,
+   "value_upgraded": 1.6,
+   "value_multi": 1.3,
+   "value_multi_upgraded": 1.6,
+   "confidence": "medium",
+   "reasoning": "4+2x易傷，典型約2易傷"
+  },
+  "BurningPact": {
+   "value": 1.2,
+   "value_upgraded": 1.6,
+   "value_multi": 1.2,
+   "value_multi_upgraded": 1.6,
+   "confidence": "medium",
+   "reasoning": "消耗1抽2/3"
+  },
+  "Colossus": {
+   "value": 1.5,
+   "value_upgraded": 2.1,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 2.1,
+   "confidence": "medium",
+   "reasoning": "4格擋+易傷敵減傷50%"
+  },
+  "Cruelty": {
+   "value": 3.0,
+   "value_upgraded": 5.0,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 5.0,
+   "confidence": "low",
+   "reasoning": "易傷敵增傷25/50%整場"
+  },
+  "DarkEmbrace": {
+   "value": 3.0,
+   "value_upgraded": 3.8,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.8,
+   "confidence": "medium",
+   "reasoning": "每消耗抽1，視消耗量"
+  },
+  "DemonicShield": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.4,
+   "confidence": "medium",
+   "reasoning": "僅多人：把自身格擋複製給隊友"
+  },
+  "Dismantle": {
+   "value": 2.2,
+   "value_upgraded": 2.7,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 2.7,
+   "confidence": "medium",
+   "reasoning": "8傷，易傷則2次"
+  },
+  "DrumOfBattle": {
+   "value": 1.4,
+   "value_upgraded": 1.9,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 1.9,
+   "confidence": "medium",
+   "reasoning": "抽2，被消耗得2能量"
+  },
+  "EvilEye": {
+   "value": 2.2,
+   "value_upgraded": 2.8,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 2.8,
+   "confidence": "medium",
+   "reasoning": "8格擋，消耗過則翻倍"
+  },
+  "ExpectAFight": {
+   "value": 3.3,
+   "value_upgraded": 4.2,
+   "value_multi": 3.3,
+   "value_multi_upgraded": 4.2,
+   "confidence": "medium",
+   "reasoning": "15+5x力量格擋"
+  },
+  "Feed": {
+   "value": 3.5,
+   "value_upgraded": 4.2,
+   "value_multi": 3.5,
+   "value_multi_upgraded": 4.2,
+   "confidence": "medium",
+   "reasoning": "傷害並擊殺加最大生命"
+  },
+  "FeelNoPain": {
+   "value": 2.8,
+   "value_upgraded": 3.6,
+   "value_multi": 2.8,
+   "value_multi_upgraded": 3.6,
+   "confidence": "medium",
+   "reasoning": "每消耗得3/4格擋"
+  },
+  "FiendFire": {
+   "value": 4.5,
+   "value_upgraded": 5.5,
+   "value_multi": 4.5,
+   "value_multi_upgraded": 5.5,
+   "confidence": "medium",
+   "reasoning": "消耗手牌每張7/10傷"
+  },
+  "FightMe": {
+   "value": 2.4,
+   "value_upgraded": 3.0,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 3.0,
+   "confidence": "medium",
+   "reasoning": "5x2傷+3力量，敵+1力量"
+  },
+  "FlameBarrier": {
+   "value": 2.8,
+   "value_upgraded": 3.4,
+   "value_multi": 2.8,
+   "value_multi_upgraded": 3.4,
+   "confidence": "high",
+   "reasoning": "12格擋+反傷"
+  },
+  "ForgottenRitual": {
+   "value": 2.0,
+   "value_upgraded": 2.6,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.6,
+   "confidence": "medium",
+   "reasoning": "條件得3能量，期望觸發約0.65"
+  },
+  "Hellraiser": {
+   "value": 3.5,
+   "value_upgraded": 3.5,
+   "value_multi": 3.5,
+   "value_multi_upgraded": 3.5,
+   "confidence": "low",
+   "reasoning": "抽到打擊自動打出"
+  },
+  "Hemokinesis": {
+   "value": 2.6,
+   "value_upgraded": 3.3,
+   "value_multi": 2.6,
+   "value_multi_upgraded": 3.3,
+   "confidence": "high",
+   "reasoning": "失2血造成15/20傷"
+  },
+  "HowlFromBeyond": {
+   "value": 4.5,
+   "value_upgraded": 5.8,
+   "value_multi": 4.5,
+   "value_multi_upgraded": 5.8,
+   "confidence": "medium",
+   "reasoning": "18全體，在消耗牌堆時回合末重打"
+  },
+  "Impervious": {
+   "value": 6.0,
+   "value_upgraded": 8.0,
+   "value_multi": 6.0,
+   "value_multi_upgraded": 8.0,
+   "confidence": "high",
+   "reasoning": "30/40格擋"
+  },
+  "InfernalBlade": {
+   "value": 1.2,
+   "value_upgraded": 1.4,
+   "value_multi": 1.2,
+   "value_multi_upgraded": 1.4,
+   "confidence": "medium",
+   "reasoning": "生成隨機攻擊本回合0費"
+  },
+  "Inferno": {
+   "value": 3.0,
+   "value_upgraded": 4.2,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 4.2,
+   "confidence": "low",
+   "reasoning": "每回合失血觸發全體6/9傷"
+  },
+  "Inflame": {
+   "value": 2.4,
+   "value_upgraded": 3.6,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 3.6,
+   "confidence": "high",
+   "reasoning": "2/3永久力量"
+  },
+  "Juggernaut": {
+   "value": 4.0,
+   "value_upgraded": 5.0,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 5.0,
+   "confidence": "medium",
+   "reasoning": "每得格擋隨機敵5/7傷"
+  },
+  "Juggling": {
+   "value": 2.0,
+   "value_upgraded": 2.5,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.5,
+   "confidence": "low",
+   "reasoning": "每回合第3張攻擊複製"
+  },
+  "Mangle": {
+   "value": 5.0,
+   "value_upgraded": 6.0,
+   "value_multi": 5.0,
+   "value_multi_upgraded": 6.0,
+   "confidence": "medium",
+   "reasoning": "20傷+敵本回合-10力量"
+  },
+  "Midnight": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 12.0,
+   "value_multi_upgraded": 14.0,
+   "confidence": "low",
+   "reasoning": "僅多人：60傷，費用依全隊消耗遞減"
+  },
+  "NotYet": {
+   "value": 1.2,
+   "value_upgraded": 1.6,
+   "value_multi": 1.2,
+   "value_multi_upgraded": 1.6,
+   "confidence": "medium",
+   "reasoning": "回復10/13生命"
+  },
+  "Offering": {
+   "value": 4.0,
+   "value_upgraded": 5.0,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 5.0,
+   "confidence": "high",
+   "reasoning": "失6血得2能量抽3/5"
+  },
+  "OneTwoPunch": {
+   "value": 2.0,
+   "value_upgraded": 3.5,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 3.5,
+   "confidence": "medium",
+   "reasoning": "下1/2張攻擊重複"
+  },
+  "Outrage": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 3.5,
+   "value_multi_upgraded": 4.4,
+   "confidence": "low",
+   "reasoning": "僅多人：9傷並給所有人複製"
+  },
+  "PactsEnd": {
+   "value": 3.5,
+   "value_upgraded": 4.6,
+   "value_multi": 3.5,
+   "value_multi_upgraded": 4.6,
+   "confidence": "medium",
+   "reasoning": "消耗≥3張時18全體"
+  },
+  "Pillage": {
+   "value": 1.7,
+   "value_upgraded": 2.2,
+   "value_multi": 1.7,
+   "value_multi_upgraded": 2.2,
+   "confidence": "medium",
+   "reasoning": "6傷並抽到非攻擊牌"
+  },
+  "PrimalForce": {
+   "value": 2.5,
+   "value_upgraded": 3.5,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 3.5,
+   "confidence": "low",
+   "reasoning": "手中攻擊變化為巨石"
+  },
+  "Pyre": {
+   "value": 4.5,
+   "value_upgraded": 5.0,
+   "value_multi": 4.5,
+   "value_multi_upgraded": 5.0,
+   "confidence": "medium",
+   "reasoning": "每回合+1能量"
+  },
+  "Rage": {
+   "value": 1.8,
+   "value_upgraded": 2.4,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.4,
+   "confidence": "medium",
+   "reasoning": "本回合每攻擊得格擋"
+  },
+  "Rampage": {
+   "value": 2.0,
+   "value_upgraded": 2.6,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.6,
+   "confidence": "medium",
+   "reasoning": "傷害每次打出成長"
+  },
+  "Rupture": {
+   "value": 2.4,
+   "value_upgraded": 4.0,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 4.0,
+   "confidence": "low",
+   "reasoning": "失血時得1/2力量"
+  },
+  "SecondWind": {
+   "value": 2.4,
+   "value_upgraded": 3.0,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 3.0,
+   "confidence": "medium",
+   "reasoning": "消耗非攻擊牌各得格擋"
+  },
+  "Spite": {
+   "value": 1.7,
+   "value_upgraded": 2.0,
+   "value_multi": 1.7,
+   "value_multi_upgraded": 2.0,
+   "confidence": "medium",
+   "reasoning": "0費5x2傷害"
+  },
+  "Stampede": {
+   "value": 4.0,
+   "value_upgraded": 5.0,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 5.0,
+   "confidence": "low",
+   "reasoning": "回合結束自動打出手牌攻擊"
+  },
+  "Stoke": {
+   "value": 2.0,
+   "value_upgraded": 2.6,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.6,
+   "confidence": "low",
+   "reasoning": "消耗手牌換隨機牌"
+  },
+  "Stomp": {
+   "value": 2.8,
+   "value_upgraded": 3.4,
+   "value_multi": 2.8,
+   "value_multi_upgraded": 3.4,
+   "confidence": "medium",
+   "reasoning": "12全體，費用遞減"
+  },
+  "StoneArmor": {
+   "value": 4.5,
+   "value_upgraded": 6.0,
+   "value_multi": 4.5,
+   "value_multi_upgraded": 6.0,
+   "confidence": "medium",
+   "reasoning": "4/6覆甲"
+  },
+  "Tank": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 4.8,
+   "confidence": "low",
+   "reasoning": "僅多人：自身多承傷換隊友減半"
+  },
+  "TearAsunder": {
+   "value": 2.5,
+   "value_upgraded": 3.3,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 3.3,
+   "confidence": "medium",
+   "reasoning": "5/7傷x失血次數"
+  },
+  "Thrash": {
+   "value": 2.4,
+   "value_upgraded": 3.0,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 3.0,
+   "confidence": "medium",
+   "reasoning": "4x2+吞手牌攻擊傷害"
+  },
+  "Unmovable": {
+   "value": 3.5,
+   "value_upgraded": 4.5,
+   "value_multi": 3.5,
+   "value_multi_upgraded": 4.5,
+   "confidence": "low",
+   "reasoning": "每回合首次格擋翻倍"
+  },
+  "Unrelenting": {
+   "value": 3.0,
+   "value_upgraded": 4.0,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 4.0,
+   "confidence": "medium",
+   "reasoning": "14傷+下張攻擊0費"
+  },
+  "Uppercut": {
+   "value": 2.9,
+   "value_upgraded": 3.5,
+   "value_multi": 2.9,
+   "value_multi_upgraded": 3.5,
+   "confidence": "high",
+   "reasoning": "13傷+1虛弱1易傷"
+  },
+  "Vicious": {
+   "value": 2.5,
+   "value_upgraded": 4.0,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 4.0,
+   "confidence": "low",
+   "reasoning": "給易傷時抽牌"
+  },
+  "Whirlwind": {
+   "value": 2.8,
+   "value_upgraded": 3.7,
+   "value_multi": 2.8,
+   "value_multi_upgraded": 3.7,
+   "confidence": "high",
+   "reasoning": "X次全體5傷，約3能量"
+  },
+  "Aggression": {
+   "value": 3.0,
+   "value_upgraded": 3.5,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.5,
+   "confidence": "low",
+   "reasoning": "每回合取回攻擊並升級"
+  },
+  "Barricade": {
+   "value": 3.0,
+   "value_upgraded": 3.8,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.8,
+   "confidence": "medium",
+   "reasoning": "格擋保留，視牌組"
+  },
+  "Brand": {
+   "value": 1.8,
+   "value_upgraded": 3.0,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 3.0,
+   "confidence": "medium",
+   "reasoning": "失血消耗1得1/2永久力量"
+  },
+  "Break": {
+   "value": 5.0,
+   "value_upgraded": 7.0,
+   "value_multi": 5.0,
+   "value_multi_upgraded": 7.0,
+   "confidence": "high",
+   "reasoning": "20/30傷+5/7易傷"
+  },
+  "Cascade": {
+   "value": 3.0,
+   "value_upgraded": 3.7,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.7,
+   "confidence": "medium",
+   "reasoning": "打出抽牌堆頂X張"
+  },
+  "Conflagration": {
+   "value": 2.3,
+   "value_upgraded": 3.0,
+   "value_multi": 2.3,
+   "value_multi_upgraded": 3.0,
+   "confidence": "medium",
+   "reasoning": "2x4全體"
+  },
+  "Corruption": {
+   "value": 5.0,
+   "value_upgraded": 5.5,
+   "value_multi": 5.0,
+   "value_multi_upgraded": 5.5,
+   "confidence": "medium",
+   "reasoning": "技能0費但消耗"
+  },
+  "CrimsonMantle": {
+   "value": 5.0,
+   "value_upgraded": 7.0,
+   "value_multi": 5.0,
+   "value_multi_upgraded": 7.0,
+   "confidence": "medium",
+   "reasoning": "每回合失1血得7/10格擋"
+  },
+  "DemonForm": {
+   "value": 6.0,
+   "value_upgraded": 7.5,
+   "value_multi": 6.0,
+   "value_multi_upgraded": 7.5,
+   "confidence": "high",
+   "reasoning": "每回合+2/3力量"
+  },
+  "Dominate": {
+   "value": 1.4,
+   "value_upgraded": 1.9,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 1.9,
+   "confidence": "medium",
+   "reasoning": "給易傷並依層數得力量"
+  }
+ }
+}

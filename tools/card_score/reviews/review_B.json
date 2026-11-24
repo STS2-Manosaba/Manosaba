@@ -1,0 +1,425 @@
+{
+ "reviewer": "B",
+ "cards": {
+  "mod|Common|ConcentratedFire": {
+   "value": 1.67,
+   "value_multi": 1.67,
+   "reasoning": "2x5=10傷害"
+  },
+  "mod|Common|Dissolve": {
+   "value": 1.6,
+   "value_multi": 1.6,
+   "reasoning": "全體本回合-8力量，依敵人是否攻擊估"
+  },
+  "mod|Common|Suicide": {
+   "value": 0.9,
+   "value_multi": 0.9,
+   "reasoning": "20魔女化1.4扣自傷3"
+  },
+  "mod|Common|WardenCommand": {
+   "value": 3.0,
+   "value_multi": 3.0,
+   "reasoning": "處刑卡雙打，典型牌組每場約2次觸發"
+  },
+  "mod|HasumiLeia|DuoCombination": {
+   "value": null,
+   "value_multi": 3.2,
+   "reasoning": "雙方各4格檔＋隊友下張攻擊雙打"
+  },
+  "mod|HasumiLeia|StarSplash": {
+   "value": 1.5,
+   "value_multi": 1.5,
+   "reasoning": "1x8段=8傷害，多段吃力量"
+  },
+  "mod|HasumiLeia|StandOut": {
+   "value": null,
+   "value_multi": 4.0,
+   "reasoning": "16格檔＋嘲諷＋本回合減傷50%"
+  },
+  "mod|HasumiLeia|Projection": {
+   "value": 1.5,
+   "value_multi": 1.5,
+   "reasoning": "加入鑄矛，後續鍛造簡易長矛"
+  },
+  "mod|HikamiMeruru|QuickHeal": {
+   "value": 1.7,
+   "value_multi": 1.7,
+   "reasoning": "回復7＋5格檔"
+  },
+  "mod|HikamiMeruru|ShotsFired": {
+   "value": 1.67,
+   "value_multi": 1.67,
+   "reasoning": "10傷害"
+  },
+  "mod|HikamiMeruru|MeruruInfirmary": {
+   "value": 1.5,
+   "value_multi": 1.5,
+   "reasoning": "每回合產生回復半數受傷的藥水"
+  },
+  "mod|HikamiMeruru|PotionFactory": {
+   "value": 7.0,
+   "value_multi": 7.0,
+   "reasoning": "每回合2瓶隨機藥水，受欄位限制"
+  },
+  "mod|HoshoMago|TheLovers": {
+   "value": 1.0,
+   "value_multi": 1.0,
+   "reasoning": "對單敵25%吸血，約回10HP"
+  },
+  "mod|HoshoMago|TheEmperor": {
+   "value": 3.6,
+   "value_multi": 3.6,
+   "reasoning": "20傷害，偶有女皇1.5倍"
+  },
+  "mod|HoshoMago|TheHighPriestess": {
+   "value": 1.5,
+   "value_multi": 1.5,
+   "reasoning": "7格檔＋少量狀態牌加成"
+  },
+  "mod|HoshoMago|Strength": {
+   "value": 3.6,
+   "value_multi": 3.6,
+   "reasoning": "永久3力量"
+  },
+  "mod|JogasakiNoah|ComplementaryColor": {
+   "value": 1.2,
+   "value_multi": 1.2,
+   "reasoning": "生成互補色球並觸發被動1次"
+  },
+  "mod|JogasakiNoah|Hyakuren": {
+   "value": 2.5,
+   "value_multi": 2.5,
+   "reasoning": "選穿血/超新星＋血球被動+2"
+  },
+  "mod|JogasakiNoah|BloodDraw": {
+   "value": 2.2,
+   "value_multi": 2.2,
+   "reasoning": "失3HP，生成2血球"
+  },
+  "mod|JogasakiNoah|Shiou": {
+   "value": 2.0,
+   "value_multi": 2.0,
+   "reasoning": "8格檔＋血球加成"
+  },
+  "mod|KurobeNanoka|GunShot": {
+   "value": 1.4,
+   "value_multi": 1.4,
+   "reasoning": "10傷害但耗1子彈"
+  },
+  "mod|KurobeNanoka|Buttstroke": {
+   "value": 1.65,
+   "value_multi": 1.65,
+   "reasoning": "3傷＋虛弱1易傷1＋抽1"
+  },
+  "mod|KurobeNanoka|MysteriousJungler": {
+   "value": 3.0,
+   "value_multi": 3.0,
+   "reasoning": "每回合+1能量5次，扣2敏捷"
+  },
+  "mod|KurobeNanoka|ThreeSixtyNoScope": {
+   "value": 2.0,
+   "value_multi": 2.0,
+   "reasoning": "10傷＋抽1，耗子彈"
+  },
+  "mod|NatsumeAnan|Nandato": {
+   "value": 2.6,
+   "value_multi": 2.6,
+   "reasoning": "抽2＋費用x5格檔，耗言靈"
+  },
+  "mod|NatsumeAnan|BookOfGreatOldOnes": {
+   "value": 4.0,
+   "value_multi": 4.0,
+   "reasoning": "X費換成舊日支配者牌組，高風險"
+  },
+  "mod|NatsumeAnan|Nanigaiitai": {
+   "value": 2.5,
+   "value_multi": 2.5,
+   "reasoning": "全體8傷＋虛弱易傷，耗言靈"
+  },
+  "mod|NatsumeAnan|Jigaishiro": {
+   "value": 1.6,
+   "value_multi": 1.6,
+   "reasoning": "敵本回合-5力量並受5傷"
+  },
+  "mod|NikaidoHiro|Perjury": {
+   "value": 2.0,
+   "value_multi": 2.0,
+   "reasoning": "消耗至多2嫌疑換永久力量"
+  },
+  "mod|NikaidoHiro|WitchesSabbath": {
+   "value": 7.0,
+   "value_multi": 7.0,
+   "reasoning": "條件嚴苛，達成時50+全體不可擋傷害"
+  },
+  "mod|NikaidoHiro|Accomplice": {
+   "value": 4.0,
+   "value_multi": 4.0,
+   "reasoning": "每層嫌疑召喚7，約3層"
+  },
+  "mod|NikaidoHiro|GoodSleep": {
+   "value": 1.8,
+   "value_multi": 1.8,
+   "reasoning": "7格檔＋魔女化"
+  },
+  "mod|SaekiMiria|Fairness": {
+   "value": null,
+   "value_multi": 1.5,
+   "reasoning": "抽1＋與隊友平分生命"
+  },
+  "mod|SaekiMiria|Sabotage": {
+   "value": 1.3,
+   "value_multi": 1.3,
+   "reasoning": "4傷＋易傷1虛弱1"
+  },
+  "mod|SaekiMiria|Makeup": {
+   "value": 3.6,
+   "value_multi": 3.6,
+   "reasoning": "7覆甲約28格檔，厄運扣約10HP"
+  },
+  "mod|SaekiMiria|Friendly": {
+   "value": 2.0,
+   "value_multi": 2.0,
+   "reasoning": "攻擊傷害-20%，約省10HP"
+  },
+  "mod|SakurabaEma|Persuasion": {
+   "value": null,
+   "value_multi": 3.0,
+   "reasoning": "雙方下回合抽1＋1能量"
+  },
+  "mod|SakurabaEma|DArime": {
+   "value": 1.6,
+   "value_multi": 1.6,
+   "reasoning": "抽1，裁判牌連鎖13傷，期望約0.4次"
+  },
+  "mod|SakurabaEma|Omurice": {
+   "value": 1.3,
+   "value_multi": 1.3,
+   "reasoning": "回5＋4活力＋清狀態牌"
+  },
+  "mod|SakurabaEma|Fever": {
+   "value": 1.1,
+   "value_multi": 1.1,
+   "reasoning": "20魔女化扣自身虛弱"
+  },
+  "mod|SawatariCoco|CutieCatsHeadwear": {
+   "value": 1.0,
+   "value_multi": 1.0,
+   "reasoning": "虛弱1＋消耗1手牌＋直播時易傷"
+  },
+  "mod|SawatariCoco|PunkCatTop": {
+   "value": 2.5,
+   "value_multi": 2.5,
+   "reasoning": "5傷x(1+直播層數)約3段"
+  },
+  "mod|SawatariCoco|FlameBait": {
+   "value": 1.8,
+   "value_multi": 1.8,
+   "reasoning": "失2HP，10傷＋直播加成"
+  },
+  "mod|SawatariCoco|InfiniteMirror": {
+   "value": 1.5,
+   "value_multi": 1.5,
+   "reasoning": "直播層數翻倍，約多6傷"
+  },
+  "mod|ShitoAlisa|Flaming": {
+   "value": 1.8,
+   "value_multi": 1.8,
+   "reasoning": "全體4灼燒＋1火球環繞"
+  },
+  "mod|ShitoAlisa|FireSword": {
+   "value": 2.0,
+   "value_multi": 2.0,
+   "reasoning": "6傷＋5灼燒"
+  },
+  "mod|ShitoAlisa|Scorching": {
+   "value": 4.0,
+   "value_multi": 4.0,
+   "reasoning": "每回合全體1灼燒＋1火球，累積"
+  },
+  "mod|ShitoAlisa|YouAreWeakEma": {
+   "value": 1.8,
+   "value_multi": 1.8,
+   "reasoning": "5傷+3x火球層數約11"
+  },
+  "mod|TachibanaSherry|LeftPunch": {
+   "value": 2.2,
+   "value_multi": 2.2,
+   "reasoning": "6傷＋永久1力量"
+  },
+  "mod|TachibanaSherry|PrisonBreak": {
+   "value": 1.8,
+   "value_multi": 1.8,
+   "reasoning": "6傷＋抽1＋1疑點"
+  },
+  "mod|TachibanaSherry|HorsebackRiding": {
+   "value": 1.5,
+   "value_multi": 1.5,
+   "reasoning": "每回合1疑點約5次"
+  },
+  "mod|TachibanaSherry|SanFindsClue": {
+   "value": 4.0,
+   "value_multi": 4.0,
+   "reasoning": "全體12傷＋1力量，可減費"
+  },
+  "mod|TonoHanna|ToughItOut": {
+   "value": 2.0,
+   "value_multi": 2.0,
+   "reasoning": "13格檔扣2傷口"
+  },
+  "mod|TonoHanna|IceStrike": {
+   "value": 5.8,
+   "value_multi": 5.8,
+   "reasoning": "25+5x人偶收藏約35傷"
+  },
+  "mod|TonoHanna|RefuseMajo": {
+   "value": 3.5,
+   "value_multi": 3.5,
+   "reasoning": "手牌全變免費落石，失去魔女化"
+  },
+  "mod|TonoHanna|DevilsDice": {
+   "value": 0.8,
+   "value_multi": 0.8,
+   "reasoning": "敵本回合期望-3.5力量"
+  },
+  "original|Colorless|Rend": {
+   "value": 2.9,
+   "value_multi": 2.9,
+   "reasoning": "10+5x敵方能力數約17傷"
+  },
+  "original|Colorless|Fasten": {
+   "value": 3.2,
+   "value_multi": 3.2,
+   "reasoning": "防禦牌+4格檔，整場約16-20"
+  },
+  "original|Colorless|Entropy": {
+   "value": 2.5,
+   "value_multi": 2.5,
+   "reasoning": "每回合轉化手牌，期望中等"
+  },
+  "original|Colorless|Bolas": {
+   "value": 1.0,
+   "value_multi": 1.0,
+   "reasoning": "3傷並回手，可重複使用"
+  },
+  "original|Defect|Ignition": {
+   "value": null,
+   "value_multi": 2.0,
+   "reasoning": "給隊友一顆電漿球"
+  },
+  "original|Defect|SweepingBeam": {
+   "value": 1.9,
+   "value_multi": 1.9,
+   "reasoning": "全體6傷＋抽1"
+  },
+  "original|Defect|Subroutine": {
+   "value": 2.5,
+   "value_multi": 2.5,
+   "reasoning": "整場中等增益"
+  },
+  "original|Defect|Sunder": {
+   "value": 5.2,
+   "value_multi": 5.2,
+   "reasoning": "26傷，擊殺回3能量約3成"
+  },
+  "original|Ironclad|FiendFire": {
+   "value": 4.5,
+   "value_multi": 4.5,
+   "reasoning": "約消耗4張x7傷"
+  },
+  "original|Ironclad|Stoke": {
+   "value": 2.5,
+   "value_multi": 2.5,
+   "reasoning": "消耗手牌換等量升級隨機牌"
+  },
+  "original|Ironclad|Armaments": {
+   "value": 1.4,
+   "value_multi": 1.4,
+   "reasoning": "5格檔＋升級手牌1張"
+  },
+  "original|Ironclad|Juggernaut": {
+   "value": 6.0,
+   "value_multi": 6.0,
+   "reasoning": "每次得格檔打6，整場約36傷"
+  },
+  "original|Necrobinder|Unleash": {
+   "value": 1.5,
+   "value_multi": 1.5,
+   "reasoning": "6+骨頭HP約9傷"
+  },
+  "original|Necrobinder|DrainPower": {
+   "value": 2.3,
+   "value_multi": 2.3,
+   "reasoning": "10傷＋升級2張棄牌"
+  },
+  "original|Necrobinder|SleightOfFlesh": {
+   "value": 5.0,
+   "value_multi": 5.0,
+   "reasoning": "施加負面時打9，整場約5次"
+  },
+  "original|Necrobinder|Rattle": {
+   "value": 2.0,
+   "value_multi": 2.0,
+   "reasoning": "7傷x(1+本回合骨頭攻擊)"
+  },
+  "original|Regent|Bombardment": {
+   "value": 6.0,
+   "value_multi": 6.0,
+   "reasoning": "18傷且後續自動重打"
+  },
+  "original|Regent|DecisionsDecisions": {
+   "value": 3.9,
+   "value_multi": 3.9,
+   "reasoning": "抽3＋技能牌打3次"
+  },
+  "original|Regent|HiddenCache": {
+   "value": 2.0,
+   "value_multi": 2.0,
+   "reasoning": "1星＋下回合3星"
+  },
+  "original|Regent|MonarchsGaze": {
+   "value": 3.5,
+   "value_multi": 3.5,
+   "reasoning": "攻擊你的敵人持續失力量"
+  },
+  "original|Silent|BladeSymphony": {
+   "value": null,
+   "value_multi": 3.0,
+   "reasoning": "多人限定，給予刀刃類增益"
+  },
+  "original|Silent|TheHunt": {
+   "value": 1.8,
+   "value_multi": 1.8,
+   "reasoning": "10傷＋擊殺獎勵"
+  },
+  "original|Silent|Nightmare": {
+   "value": 4.5,
+   "value_multi": 4.5,
+   "reasoning": "下回合得3張複製"
+  },
+  "original|Silent|Prepared": {
+   "value": 0.6,
+   "value_multi": 0.6,
+   "reasoning": "抽1棄1"
+  },
+  "original-beta|Fool|WahSymphony": {
+   "value": 5.1,
+   "value_multi": 5.1,
+   "reasoning": "全體6+4x曲牌數約22傷"
+  },
+  "original-beta|Fool|ShowOff": {
+   "value": 1.2,
+   "value_multi": 1.2,
+   "reasoning": "5瞄準＋擊殺永久成長"
+  },
+  "original-beta|Fool|ChoBarbs": {
+   "value": 1.9,
+   "value_multi": 1.9,
+   "reasoning": "7格檔＋本回合3荊棘"
+  },
+  "original-beta|Fool|Ecstasy": {
+   "value": 3.0,
+   "value_multi": 3.0,
+   "reasoning": "每回合悲傷轉喜悅"
+  }
+ }
+}

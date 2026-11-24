@@ -1,0 +1,24 @@
+{
+  "character": "Common",
+  "assumptions": [
+    "v3隊友：多人平均2.5人隊（隊友1.5名）；指定角色隊友≈1.5/17≈0.088（18角色不放回）；單人此類效果為0",
+    "艾瑪裁判進度≥10 觸發率約12%（scratchpad/ema_progress_sim.py 推演），≥20 約1~2%"
+  ],
+  "mechanic_values": {
+    "魔女化": "每層約 0.07，超過 100 層有風險，大量疊層時遞減",
+    "暫時力量(HouseKeeping)": "每層 0.33，僅本回合",
+    "斬首(Guillotine)": "攻擊後目標生命低於門檻即 DoomKill；一般觸發率約 15-20%",
+    "Simple Spear 零件": "4 張不可打出、保留的零件洗入抽牌堆，全部進手牌後合成 0 費 50 傷 Simple Spear；預估戰鬥內合成率約 65%，期間佔手牌",
+    "裁判/罪證/嫌疑": "Ema 專屬體系，其他角色幾乎無價值"
+  },
+  "cards": {
+    "FutureOfPotions": {
+      "value": 2.65,
+      "value_upgraded": 4.1,
+      "confidence": "low",
+      "reasoning": "v3隊友+補血合併:回血採v3補血(0.28/血)；梅露露隊友免除5%即死機率由3/13改0.088（多人−0.23/−0.31）",
+      "value_multi": 2.77,
+      "value_multi_upgraded": 4.29
+    }
+  }
+}

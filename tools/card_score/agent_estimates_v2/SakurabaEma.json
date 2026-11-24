@@ -1,0 +1,414 @@
+{
+  "character": "SakurabaEma",
+  "source": "mod",
+  "assumptions": [
+    "單人、帶LegRing Lv1（魔女化獲得減半、搜查時間8張牌給rAwTell Owk）",
+    "裁判進度≥10 條件觸發率約30%",
+    "證物卡生成均值約1.0，提出證據約0.75",
+    "多人：4人隊、隊友一般Manosaba角色，特定角色隊友機率3/13，全隊效果按實際受益人數；多人限定卡單人計0",
+    "v2：野餐時間確認為1費(抽1+下回合1能)，淨值約0.5/回合；流血門檻隨人數提高，觸發傷害=100+15%最大生命；MultiplayerOnly卡單人填null"
+  ],
+  "mechanic_values": {
+    "魔女化": "每層0.07，經腿環減半約0.035",
+    "證物卡": "0費隨機，生成≈1.0",
+    "提出證據": "≈0.75",
+    "發言": "0費抽1+議論1，生成≈1.0",
+    "議論": "10層才給能，每層≈0.1",
+    "嫌疑": "艾瑪存活門檻20，每層−0.1風險",
+    "活體書頁": "生成≈1.3"
+  },
+  "cards": {
+    "StrikeSakurabaEma": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "6/9 傷害"
+    },
+    "DefendSakurabaEma": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "5/8 格擋"
+    },
+    "HirosPen": {
+      "value": 1.0,
+      "value_upgraded": 1.33,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.33,
+      "confidence": "medium",
+      "reasoning": "0費永恆：抽1+活力3/5（≈3/5傷）"
+    },
+    "PresentEvidence": {
+      "value": 0.75,
+      "value_upgraded": 0.85,
+      "value_multi": 0.75,
+      "value_multi_upgraded": 0.85,
+      "confidence": "low",
+      "reasoning": "0費自動打出圖鑑中一張證物（均值約0.75）；升級+1議論"
+    },
+    "SearchSakurabaEma": {
+      "value": 1.5,
+      "value_upgraded": 2.0,
+      "value_multi": 1.6,
+      "value_multi_upgraded": 2.1,
+      "confidence": "medium",
+      "reasoning": "抽1/2+隨機證物卡（0費≈生成價值1.0）"
+    },
+    "TraumaSakurabaEma": {
+      "value": 0.35,
+      "value_upgraded": 0.5,
+      "value_multi": 0.35,
+      "value_multi_upgraded": 0.5,
+      "confidence": "medium",
+      "reasoning": "10/15魔女化經腿環減半≈5/7.5層；推進殺死魔女的魔法門檻"
+    },
+    "TraumaTrueSakurabaEma": {
+      "value": 0.7,
+      "value_upgraded": 1.05,
+      "value_multi": 0.7,
+      "value_multi_upgraded": 1.05,
+      "confidence": "medium",
+      "reasoning": "20/30魔女化經減半≈10/15層，永恆"
+    },
+    "Agreement": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 4.5,
+      "value_multi_upgraded": 6.0,
+      "confidence": "medium",
+      "reasoning": "多人限定；多人：發言+雙方格擋6/9，議論加成"
+    },
+    "BookBite": {
+      "value": 2.35,
+      "value_upgraded": 3.05,
+      "value_multi": 2.35,
+      "value_multi_upgraded": 3.05,
+      "confidence": "medium",
+      "reasoning": "易傷3/5+活體書頁（0費2傷1易傷，滿3易傷回能）"
+    },
+    "EvidenceStrike": {
+      "value": 3.0,
+      "value_upgraded": 3.5,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.5,
+      "confidence": "medium",
+      "reasoning": "6/9傷+提出證據+活體書頁"
+    },
+    "Fever": {
+      "value": 0.4,
+      "value_upgraded": 0.75,
+      "value_multi": 0.4,
+      "value_multi_upgraded": 0.75,
+      "confidence": "medium",
+      "reasoning": "自身虛弱為負，20/30魔女化減半"
+    },
+    "Flop": {
+      "value": 1.7,
+      "value_upgraded": 2.7,
+      "value_multi": 1.8,
+      "value_multi_upgraded": 2.8,
+      "confidence": "high",
+      "reasoning": "2/3能量−2血−嫌疑風險；希羅隊友時額外給牌"
+    },
+    "Question": {
+      "value": 1.3,
+      "value_upgraded": 1.6,
+      "value_multi": 1.3,
+      "value_multi_upgraded": 1.6,
+      "confidence": "low",
+      "reasoning": "抽1+自動打出隨機證言；升級三選一"
+    },
+    "Rebuttal": {
+      "value": 2.6,
+      "value_upgraded": 3.3,
+      "value_multi": 2.6,
+      "value_multi_upgraded": 3.3,
+      "confidence": "medium",
+      "reasoning": "9/12傷+提出證據；裁判進度10時依圖鑑加傷（觸發約30%）"
+    },
+    "Sophistry": {
+      "value": 1.9,
+      "value_upgraded": 2.5,
+      "value_multi": 1.9,
+      "value_multi_upgraded": 2.5,
+      "confidence": "medium",
+      "reasoning": "9/12傷；進度10且有嫌疑時打兩次（約25%）"
+    },
+    "Strangle": {
+      "value": 2.5,
+      "value_upgraded": 3.4,
+      "value_multi": 2.5,
+      "value_multi_upgraded": 3.4,
+      "confidence": "medium",
+      "reasoning": "9/12傷+本回合後續每牌失2/3血（約3張）"
+    },
+    "TurnADeafEar": {
+      "value": 2.2,
+      "value_upgraded": 2.8,
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.8,
+      "confidence": "high",
+      "reasoning": "8/11格擋+虛弱2/3"
+    },
+    "BestFriendsGroup": {
+      "value": 2.3,
+      "value_upgraded": 2.3,
+      "value_multi": 3.9,
+      "value_multi_upgraded": 3.9,
+      "confidence": "medium",
+      "reasoning": "每回合給1費野餐時間(抽1+下回合1能)，扣其1費淨約0.5×4.5回合；升級降費；多人約0.7名指定隊友也獲得"
+    },
+    "Deliberation": {
+      "value": 0.8,
+      "value_upgraded": 1.0,
+      "value_multi": 0.8,
+      "value_multi_upgraded": 1.0,
+      "confidence": "medium",
+      "reasoning": "任意棄抽，升級去消耗"
+    },
+    "EndlessEvidence": {
+      "value": 4.5,
+      "value_upgraded": 5.5,
+      "value_multi": 5.0,
+      "value_multi_upgraded": 6.0,
+      "confidence": "medium",
+      "reasoning": "每回合一張隨機證物（≈1.0×4.5回合）；升級固有"
+    },
+    "EnoughRedTape": {
+      "value": 2.1,
+      "value_upgraded": 2.1,
+      "value_multi": 2.1,
+      "value_multi_upgraded": 2.1,
+      "confidence": "low",
+      "reasoning": "0費提出證據3次；升級去消耗"
+    },
+    "DeductionAfterDinner": {
+      "value": 2.8,
+      "value_upgraded": 2.8,
+      "value_multi": 2.8,
+      "value_multi_upgraded": 2.8,
+      "confidence": "low",
+      "reasoning": "豐盛的一餐(回復+活力，塞壞結局)+下回合2張發言；升級降費"
+    },
+    "WhatIsEmasMagic": {
+      "value": 4.0,
+      "value_upgraded": 4.0,
+      "value_multi": 4.0,
+      "value_multi_upgraded": 4.0,
+      "confidence": "medium",
+      "reasoning": "三選一，噴火魔法20傷+灼燒最佳；升級降費"
+    },
+    "InformationSharing": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 6.3,
+      "value_multi_upgraded": 7.4,
+      "confidence": "medium",
+      "reasoning": "8/11格擋+提出證據+選證物給自己；多人：隊友也得格擋與證物；MultiplayerOnly"
+    },
+    "FaceInCourt": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 6.5,
+      "value_multi_upgraded": 8.5,
+      "confidence": "medium",
+      "reasoning": "多人限定；多人：提出證據、雙方各3/4張發言、嫌疑"
+    },
+    "NanokaIsARobot": {
+      "value": 2.9,
+      "value_upgraded": 3.5,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.6,
+      "confidence": "high",
+      "reasoning": "10/13格擋+抽2+1嫌疑；奈葉香隊友得人工製品"
+    },
+    "ExhaustiveMethod": {
+      "value": 3.9,
+      "value_upgraded": 5.9,
+      "value_multi": 3.9,
+      "value_multi_upgraded": 5.9,
+      "confidence": "medium",
+      "reasoning": "20/30傷，進度≥10時每層+1/2傷（約30%觸發）"
+    },
+    "Persuasion": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 6.0,
+      "confidence": "high",
+      "reasoning": "多人限定；多人：雙方下回合抽1/2+1/2能量"
+    },
+    "RawTellOwk": {
+      "value": 1.5,
+      "value_upgraded": 2.0,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.0,
+      "confidence": "low",
+      "reasoning": "開啟審問：使裁判條件與罪證加傷生效；升級固有"
+    },
+    "ScorchingMedicineBottle": {
+      "value": 4.6,
+      "value_upgraded": 5.9,
+      "value_multi": 4.6,
+      "value_multi_upgraded": 5.9,
+      "confidence": "medium",
+      "reasoning": "15/20灼燒+發言−嫌疑"
+    },
+    "SillyLittleDog": {
+      "value": 1.4,
+      "value_upgraded": 1.6,
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.4,
+      "confidence": "low",
+      "reasoning": "每次受傷−1；回合末傷害需希羅相關條件，單人0"
+    },
+    "SmokeOutEvidence": {
+      "value": 0.6,
+      "value_upgraded": 0.8,
+      "value_multi": 0.6,
+      "value_multi_upgraded": 0.8,
+      "confidence": "medium",
+      "reasoning": "消耗2/3張牌瘦身+嫌疑"
+    },
+    "SuspiciousIWasntInvited": {
+      "value": 3.0,
+      "value_upgraded": 3.8,
+      "value_multi": 3.5,
+      "value_multi_upgraded": 4.3,
+      "confidence": "medium",
+      "reasoning": "10/13格擋+抽1；進度10依嫌疑加格擋"
+    },
+    "InformationNetwork": {
+      "value": 3.0,
+      "value_upgraded": 3.0,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.0,
+      "confidence": "low",
+      "reasoning": "每提出證據對隨機敵6傷，約3次×0.9；升級降費"
+    },
+    "JointInvestigation": {
+      "value": 3.0,
+      "value_upgraded": 3.5,
+      "value_multi": 12.0,
+      "value_multi_upgraded": 14.0,
+      "confidence": "high",
+      "reasoning": "抽2/3+2證物；多人4人全隊受益"
+    },
+    "JudgmentHour": {
+      "value": 2.4,
+      "value_upgraded": 3.0,
+      "value_multi": 2.4,
+      "value_multi_upgraded": 3.0,
+      "confidence": "low",
+      "reasoning": "三選一裁判牌+替抽牌堆5/7張附加裁判加速進度"
+    },
+    "Omurice": {
+      "value": 1.2,
+      "value_upgraded": 1.4,
+      "value_multi": 1.2,
+      "value_multi_upgraded": 1.4,
+      "confidence": "medium",
+      "reasoning": "回復5/7+活力4，清狀態"
+    },
+    "WitchHammer": {
+      "value": 3.2,
+      "value_upgraded": 4.0,
+      "value_multi": 3.2,
+      "value_multi_upgraded": 4.0,
+      "confidence": "medium",
+      "reasoning": "13/18傷+提出證據；進度10依減益額外段數"
+    },
+    "ValentineGift": {
+      "value": 4.0,
+      "value_upgraded": 4.6,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 1.8,
+      "confidence": "low",
+      "reasoning": "造成傷害附等量流血，達門檻觸發100+15%最大生命傷害；菁英/首領約多一次爆發，小怪常溢出；升級固有；多人門檻隨人數提高"
+    },
+    "Gluttony": {
+      "value": 3.0,
+      "value_upgraded": 3.5,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.5,
+      "confidence": "low",
+      "reasoning": "每回合消耗一手牌換力量1/敏捷1等，約4次"
+    },
+    "LaVIBavellabion": {
+      "value": 2.0,
+      "value_upgraded": 2.0,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.0,
+      "confidence": "low",
+      "reasoning": "每回合罪證+1、議論+1，裁判牌吃力量；升級降費"
+    },
+    "AccUhEartsIndictment": {
+      "value": 2.3,
+      "value_upgraded": 2.8,
+      "value_multi": 2.3,
+      "value_multi_upgraded": 2.8,
+      "confidence": "low",
+      "reasoning": "5/7傷+提出證據，進度10時依圖鑑多段"
+    },
+    "AccUhEartsRevelation": {
+      "value": 2.3,
+      "value_upgraded": 2.8,
+      "value_multi": 2.3,
+      "value_multi_upgraded": 2.8,
+      "confidence": "low",
+      "reasoning": "同起訴版，最終形態"
+    },
+    "RequestRetrial": {
+      "value": 1.5,
+      "value_upgraded": 1.8,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 1.8,
+      "confidence": "low",
+      "reasoning": "需10嫌疑，額外回合強但難達成"
+    },
+    "Scabbard": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.0,
+      "confidence": "medium",
+      "reasoning": "只影響隊友殺人衝動，單人0"
+    },
+    "DArime": {
+      "value": 0.5,
+      "value_upgraded": 0.6,
+      "value_multi": 0.5,
+      "value_multi_upgraded": 0.6,
+      "confidence": "low",
+      "reasoning": "需進度20，少觸發"
+    },
+    "PsychicPhotograph": {
+      "value": 3.0,
+      "value_upgraded": 3.5,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.5,
+      "confidence": "low",
+      "reasoning": "魔女化直升100大幅加傷並開殺魔女魔法，但結束回合"
+    },
+    "MagicToKillTheWitch": {
+      "value": 2.0,
+      "value_upgraded": 2.3,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.3,
+      "confidence": "low",
+      "reasoning": "全體虛弱1；魔女化100時獲特別的魔法（約20%）"
+    },
+    "WitchIslandTreasureMap": {
+      "value": 2.5,
+      "value_upgraded": 3.0,
+      "value_multi": 2.5,
+      "value_multi_upgraded": 3.0,
+      "confidence": "low",
+      "reasoning": "技能壞結局：週期性二選一壞結局牌"
+    }
+  }
+}

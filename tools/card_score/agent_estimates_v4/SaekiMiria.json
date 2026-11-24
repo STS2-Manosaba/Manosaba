@@ -1,0 +1,60 @@
+{
+  "character": "SaekiMiria",
+  "assumptions": [
+    "v2：逐張讀程式碼；MultiplayerOnly卡單人value=null",
+    "單人模式為主，MultiplayerOnly卡單人計0",
+    "戰鬥約6回合，能力第2回合打出",
+    "CabinetKey每回合1張隨機電影入抽牌堆，Lv4起升級，Lv3起50%卡帶石頭",
+    "多人：4人隊伍、3名一般Manosaba隊友，特定隊友機率約3/13，全隊效果按受益人數計"
+  ],
+  "mechanic_values": {
+    "電影牌": "0費消耗，抽1+效果，平均約1.25(升級1.95)，入手約1.65",
+    "小鑰匙": "每回合約0.9價值電影入抽牌堆",
+    "魔女化": "每層0.07",
+    "厄運": "每層每回合自傷約-0.1",
+    "回復": "每層約0.12/回合"
+  },
+  "source": "mod",
+  "cards": {
+    "SnsExchange": {
+      "value": 1.7,
+      "value_upgraded": 2.55,
+      "value_multi": 3.2,
+      "value_multi_upgraded": 4.8,
+      "confidence": "medium",
+      "reasoning": "v4: 程式碼 MultiplayerOnly 已註解掉，單人可用（data.json mp 欄可能過時）。自身10(15)魔女化0.7(1.05)；GetTeammatesOf 含自己，自己也抽2(3)≈1.0(1.5)；多人另1.5隊友各抽2(3)"
+    },
+    "Peacemaker": {
+      "value": 0.8,
+      "value_upgraded": 1.2,
+      "value_multi": 1.2,
+      "value_multi_upgraded": 1.8,
+      "confidence": "low",
+      "reasoning": "v4: 敵人每次獲得力量減2(3)；僅對會疊力量的敵人有效，平均約0.8/1.2；多人保護全隊×1.5"
+    },
+    "KeyEvidence": {
+      "value": 0.67,
+      "value_upgraded": 0.83,
+      "value_multi": 0.67,
+      "value_multi_upgraded": 0.83,
+      "confidence": "high",
+      "reasoning": "v4: Deprecated；4/5傷害"
+    },
+    "LawKnower": {
+      "value": 3.0,
+      "value_upgraded": 3.0,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.0,
+      "confidence": "low",
+      "reasoning": "v4: Deprecated；自身任何能力層數增加時獲等量格檔（魔女化每次+5~10層即大量格檔，負面增加也算），估每回合約4點×4回合；升級僅-1費"
+    },
+    "UnjustSentence": {
+      "value": 1.2,
+      "value_upgraded": 2.0,
+      "value_multi": 3.2,
+      "value_multi_upgraded": 4.0,
+      "confidence": "low",
+      "reasoning": "v4: Deprecated；目標受強化攻擊傷害×2至其回合結束，不疊乘。單人只翻倍剩餘能量的攻擊（2費剩1能量≈+6傷；升級1費剩2能量≈+12傷）；多人隊友攻擊也翻倍，約+2.0"
+    }
+  }
+}

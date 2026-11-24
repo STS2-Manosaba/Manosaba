@@ -1,0 +1,746 @@
+{
+ "character": "Necrobinder",
+ "source": "original",
+ "assumptions": [
+  "起始遺物每回合召喚少量奧斯提，奧斯提多數時間存活",
+  "戰鬥6回合，能力牌第2回合打出",
+  "典型牌組含3~6張靈魂/虛無牌",
+  "多人隊友為一般角色"
+ ],
+ "mechanic_values": {
+  "召喚1": "約0.18：奧斯提生命兼吸收傷害並增幅Unleash等",
+  "奧斯提傷害": "同一般傷害，存活率約90%",
+  "災厄1": "0.15，依處決期望",
+  "靈魂(抽牌堆)": "0費抽2消耗，入抽牌堆約0.45"
+ },
+ "cards": {
+  "Afterlife": {
+   "value": 1.1,
+   "value_upgraded": 1.6,
+   "value_multi": 1.1,
+   "value_multi_upgraded": 1.6,
+   "confidence": "medium",
+   "reasoning": "召喚6，約0.18/點"
+  },
+  "BansheesCry": {
+   "value": 7.7,
+   "value_upgraded": 7.7,
+   "value_multi": 7.7,
+   "value_multi_upgraded": 7.7,
+   "confidence": "medium",
+   "reasoning": "全體33傷≈7.7；費用降低另計，升級僅降費"
+  },
+  "BlightStrike": {
+   "value": 1.7,
+   "value_upgraded": 2.1,
+   "value_multi": 1.7,
+   "value_multi_upgraded": 2.1,
+   "confidence": "high",
+   "reasoning": "8傷+約8災厄"
+  },
+  "Bodyguard": {
+   "value": 0.9,
+   "value_upgraded": 1.25,
+   "value_multi": 0.9,
+   "value_multi_upgraded": 1.25,
+   "confidence": "high",
+   "reasoning": "召喚5"
+  },
+  "BoneShards": {
+   "value": 2.6,
+   "value_upgraded": 3.4,
+   "value_multi": 2.6,
+   "value_multi_upgraded": 3.4,
+   "confidence": "medium",
+   "reasoning": "奧斯提全體9傷+9格檔，但奧斯提死亡損失召喚值"
+  },
+  "BorrowedTime": {
+   "value": 2.6,
+   "value_upgraded": 3.6,
+   "value_multi": 2.6,
+   "value_multi_upgraded": 3.6,
+   "confidence": "medium",
+   "reasoning": "得4能但本回合全牌+1費，淨約2.6"
+  },
+  "Bury": {
+   "value": 8.7,
+   "value_upgraded": 10.5,
+   "value_multi": 8.7,
+   "value_multi_upgraded": 10.5,
+   "confidence": "high",
+   "reasoning": "52傷"
+  },
+  "Cacophony": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 4.2,
+   "confidence": "low",
+   "reasoning": "多人限定；全隊每抽33張打隨機敵66傷"
+  },
+  "Calcify": {
+   "value": 3.6,
+   "value_upgraded": 5.2,
+   "value_multi": 3.6,
+   "value_multi_upgraded": 5.2,
+   "confidence": "medium",
+   "reasoning": "奧斯提攻擊+4，整場約12次奧斯提攻擊"
+  },
+  "CallOfTheVoid": {
+   "value": 3.5,
+   "value_upgraded": 4.2,
+   "value_multi": 3.5,
+   "value_multi_upgraded": 4.2,
+   "confidence": "low",
+   "reasoning": "每回合隨機牌入手並獲虛無，約0.8/回合"
+  },
+  "CaptureSpirit": {
+   "value": 1.8,
+   "value_upgraded": 2.5,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.5,
+   "confidence": "medium",
+   "reasoning": "3直接失血+3張靈魂入抽牌堆"
+  },
+  "Cleanse": {
+   "value": 1.0,
+   "value_upgraded": 1.4,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.4,
+   "confidence": "medium",
+   "reasoning": "召喚3+消耗抽牌堆一張廢牌"
+  },
+  "Countdown": {
+   "value": 4.2,
+   "value_upgraded": 6.3,
+   "value_multi": 4.2,
+   "value_multi_upgraded": 6.3,
+   "confidence": "medium",
+   "reasoning": "每回合隨機敵6災厄，約4.5回合"
+  },
+  "DanseMacabre": {
+   "value": 3.0,
+   "value_upgraded": 4.5,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 4.5,
+   "confidence": "low",
+   "reasoning": "打2費以上牌得4格檔，約每回合0.7次"
+  },
+  "DeathMarch": {
+   "value": 2.0,
+   "value_upgraded": 2.6,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.6,
+   "confidence": "medium",
+   "reasoning": "8傷+回合中抽牌每張+4，期望約12傷"
+  },
+  "Deathbringer": {
+   "value": 4.7,
+   "value_upgraded": 5.8,
+   "value_multi": 4.7,
+   "value_multi_upgraded": 5.8,
+   "confidence": "medium",
+   "reasoning": "全體21災厄+1虛弱，×1.4"
+  },
+  "DeathsDoor": {
+   "value": 2.3,
+   "value_upgraded": 2.5,
+   "value_multi": 2.3,
+   "value_multi_upgraded": 2.5,
+   "confidence": "medium",
+   "reasoning": "6格檔，給過災厄時三倍，觸發率約60%"
+  },
+  "Debilitate": {
+   "value": 2.1,
+   "value_upgraded": 2.6,
+   "value_multi": 2.1,
+   "value_multi_upgraded": 2.6,
+   "confidence": "medium",
+   "reasoning": "10傷+易傷虛弱翻倍2回合，視有無debuff"
+  },
+  "DefendNecrobinder": {
+   "value": 1.0,
+   "value_upgraded": 1.6,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.6,
+   "confidence": "high",
+   "reasoning": "5格檔"
+  },
+  "Defile": {
+   "value": 2.2,
+   "value_upgraded": 2.8,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 2.8,
+   "confidence": "high",
+   "reasoning": "13傷"
+  },
+  "Defy": {
+   "value": 1.5,
+   "value_upgraded": 2.1,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 2.1,
+   "confidence": "high",
+   "reasoning": "6格檔+1虛弱"
+  },
+  "Delay": {
+   "value": 3.2,
+   "value_upgraded": 4.6,
+   "value_multi": 3.2,
+   "value_multi_upgraded": 4.6,
+   "confidence": "high",
+   "reasoning": "11格檔+下回合1能"
+  },
+  "Demesne": {
+   "value": 8.0,
+   "value_upgraded": 8.0,
+   "value_multi": 8.0,
+   "value_multi_upgraded": 8.0,
+   "confidence": "medium",
+   "reasoning": "每回合+1能+1抽，約4.5回合；升級降費"
+  },
+  "DevourLife": {
+   "value": 1.8,
+   "value_upgraded": 3.2,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 3.2,
+   "confidence": "low",
+   "reasoning": "每打靈魂召喚1，整場約8張靈魂"
+  },
+  "Dirge": {
+   "value": 2.4,
+   "value_upgraded": 3.2,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 3.2,
+   "confidence": "medium",
+   "reasoning": "X約2.5：召喚3×X+X張靈魂入抽牌堆"
+  },
+  "DrainPower": {
+   "value": 2.4,
+   "value_upgraded": 2.9,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 2.9,
+   "confidence": "medium",
+   "reasoning": "10傷+升級棄牌堆2張"
+  },
+  "Dredge": {
+   "value": 1.6,
+   "value_upgraded": 1.8,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 1.8,
+   "confidence": "medium",
+   "reasoning": "棄牌堆取3張入手，選擇性高"
+  },
+  "Eidolon": {
+   "value": 3.5,
+   "value_upgraded": 3.5,
+   "value_multi": 3.5,
+   "value_multi_upgraded": 3.5,
+   "confidence": "low",
+   "reasoning": "打出消耗堆所有虛無牌，平均約2~3張"
+  },
+  "EndOfDays": {
+   "value": 7.5,
+   "value_upgraded": 9.2,
+   "value_multi": 7.5,
+   "value_multi_upgraded": 9.2,
+   "confidence": "medium",
+   "reasoning": "全體29災厄並立即處決可擊殺者"
+  },
+  "EnfeeblingTouch": {
+   "value": 1.6,
+   "value_upgraded": 2.2,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.2,
+   "confidence": "medium",
+   "reasoning": "本回合敵-8力量，約減8~10傷"
+  },
+  "Eradicate": {
+   "value": 4.4,
+   "value_upgraded": 5.6,
+   "value_multi": 4.4,
+   "value_multi_upgraded": 5.6,
+   "confidence": "medium",
+   "reasoning": "X次11傷，X約2.4"
+  },
+  "Fear": {
+   "value": 1.5,
+   "value_upgraded": 2.2,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 2.2,
+   "confidence": "high",
+   "reasoning": "7傷+1易傷"
+  },
+  "Fetch": {
+   "value": 1.0,
+   "value_upgraded": 1.6,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.6,
+   "confidence": "high",
+   "reasoning": "奧斯提3傷+首次抽1"
+  },
+  "Flatten": {
+   "value": 2.0,
+   "value_upgraded": 2.7,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.7,
+   "confidence": "high",
+   "reasoning": "奧斯提12傷，常可0費"
+  },
+  "ForbiddenGrimoire": {
+   "value": 1.0,
+   "value_upgraded": 1.0,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.0,
+   "confidence": "low",
+   "reasoning": "戰後移除牌組一張，戰中無效"
+  },
+  "Friendship": {
+   "value": 3.0,
+   "value_upgraded": 3.6,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.6,
+   "confidence": "medium",
+   "reasoning": "-2力量換每回合+1能，約4.5回合"
+  },
+  "GlimpseBeyond": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 4.9,
+   "value_multi_upgraded": 6.5,
+   "confidence": "medium",
+   "reasoning": "多人限定；全隊各加3靈魂"
+  },
+  "GraveWarden": {
+   "value": 2.0,
+   "value_upgraded": 2.6,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.6,
+   "confidence": "high",
+   "reasoning": "8格檔+一張靈魂入抽牌堆"
+  },
+  "Graveblast": {
+   "value": 1.2,
+   "value_upgraded": 1.8,
+   "value_multi": 1.2,
+   "value_multi_upgraded": 1.8,
+   "confidence": "medium",
+   "reasoning": "4傷+棄牌堆取一張入手，升級去消耗"
+  },
+  "Hang": {
+   "value": 2.0,
+   "value_upgraded": 2.8,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.8,
+   "confidence": "medium",
+   "reasoning": "10傷並使吊殺對其傷害翻倍"
+  },
+  "Haunt": {
+   "value": 4.5,
+   "value_upgraded": 5.8,
+   "value_multi": 4.5,
+   "value_multi_upgraded": 5.8,
+   "confidence": "medium",
+   "reasoning": "每打靈魂隨機敵失7生命，整場約7張"
+  },
+  "HighFive": {
+   "value": 4.0,
+   "value_upgraded": 5.0,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 5.0,
+   "confidence": "high",
+   "reasoning": "奧斯提全體11傷+2易傷"
+  },
+  "Invoke": {
+   "value": 2.3,
+   "value_upgraded": 3.5,
+   "value_multi": 2.3,
+   "value_multi_upgraded": 3.5,
+   "confidence": "high",
+   "reasoning": "下回合召喚2+得2能"
+  },
+  "LegionOfBone": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.8,
+   "confidence": "medium",
+   "reasoning": "多人限定；全隊召喚6，非死靈隊友受益有限"
+  },
+  "Lethality": {
+   "value": 4.5,
+   "value_upgraded": 6.5,
+   "value_multi": 4.5,
+   "value_multi_upgraded": 6.5,
+   "confidence": "medium",
+   "reasoning": "每回合首攻+50%，約+4傷/回合"
+  },
+  "Melancholy": {
+   "value": 2.6,
+   "value_upgraded": 3.4,
+   "value_multi": 2.6,
+   "value_multi_upgraded": 3.4,
+   "confidence": "medium",
+   "reasoning": "13格檔，生物死亡降費"
+  },
+  "Misery": {
+   "value": 1.8,
+   "value_upgraded": 2.3,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.3,
+   "confidence": "medium",
+   "reasoning": "7傷並複製負面效果至其他敵人"
+  },
+  "NecroMastery": {
+   "value": 4.0,
+   "value_upgraded": 5.0,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 5.0,
+   "confidence": "medium",
+   "reasoning": "召喚5+奧斯提失血時全體失等量"
+  },
+  "NegativePulse": {
+   "value": 2.5,
+   "value_upgraded": 3.5,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 3.5,
+   "confidence": "high",
+   "reasoning": "5格檔+全體7災厄"
+  },
+  "Neurosurge": {
+   "value": 4.0,
+   "value_upgraded": 4.8,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 4.8,
+   "confidence": "medium",
+   "reasoning": "3能+抽2，代價每回合自身3災厄"
+  },
+  "NoEscape": {
+   "value": 3.0,
+   "value_upgraded": 3.8,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.8,
+   "confidence": "medium",
+   "reasoning": "10災厄+依現有災厄追加"
+  },
+  "Oblivion": {
+   "value": 2.0,
+   "value_upgraded": 2.7,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.7,
+   "confidence": "medium",
+   "reasoning": "後續每打一張給3災厄，約4張"
+  },
+  "Pagestorm": {
+   "value": 2.5,
+   "value_upgraded": 2.5,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 2.5,
+   "confidence": "low",
+   "reasoning": "抽到虛無牌時抽1，升級降費"
+  },
+  "Parse": {
+   "value": 1.5,
+   "value_upgraded": 2.0,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 2.0,
+   "confidence": "high",
+   "reasoning": "抽3"
+  },
+  "Poke": {
+   "value": 1.0,
+   "value_upgraded": 1.5,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.5,
+   "confidence": "high",
+   "reasoning": "奧斯提6傷"
+  },
+  "Protector": {
+   "value": 2.6,
+   "value_upgraded": 3.5,
+   "value_multi": 2.6,
+   "value_multi_upgraded": 3.5,
+   "confidence": "medium",
+   "reasoning": "奧斯提10+最大生命傷害，約16傷"
+  },
+  "PullAggro": {
+   "value": 2.1,
+   "value_upgraded": 2.8,
+   "value_multi": 2.1,
+   "value_multi_upgraded": 2.8,
+   "confidence": "high",
+   "reasoning": "召喚4+7格檔"
+  },
+  "PullFromBelow": {
+   "value": 2.0,
+   "value_upgraded": 2.7,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.7,
+   "confidence": "medium",
+   "reasoning": "每打過虛無牌1次5傷，期望約2.5次"
+  },
+  "Putrefy": {
+   "value": 1.3,
+   "value_upgraded": 2.0,
+   "value_multi": 1.3,
+   "value_multi_upgraded": 2.0,
+   "confidence": "high",
+   "reasoning": "2虛弱+2易傷"
+  },
+  "Rattle": {
+   "value": 1.8,
+   "value_upgraded": 2.3,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.3,
+   "confidence": "medium",
+   "reasoning": "奧斯提7傷，依本回合奧斯提攻擊多段"
+  },
+  "Reanimate": {
+   "value": 3.6,
+   "value_upgraded": 4.5,
+   "value_multi": 3.6,
+   "value_multi_upgraded": 4.5,
+   "confidence": "high",
+   "reasoning": "召喚20"
+  },
+  "Reap": {
+   "value": 4.5,
+   "value_upgraded": 5.5,
+   "value_multi": 4.5,
+   "value_multi_upgraded": 5.5,
+   "confidence": "high",
+   "reasoning": "27傷"
+  },
+  "ReaperForm": {
+   "value": 7.0,
+   "value_upgraded": 7.0,
+   "value_multi": 7.0,
+   "value_multi_upgraded": 7.0,
+   "confidence": "low",
+   "reasoning": "攻擊傷害同時給等量災厄，約40傷轉災厄；升級保留"
+  },
+  "Reave": {
+   "value": 2.1,
+   "value_upgraded": 2.6,
+   "value_multi": 2.1,
+   "value_multi_upgraded": 2.6,
+   "confidence": "high",
+   "reasoning": "10傷+靈魂入抽牌堆"
+  },
+  "RightHandHand": {
+   "value": 1.1,
+   "value_upgraded": 1.4,
+   "value_multi": 1.1,
+   "value_multi_upgraded": 1.4,
+   "confidence": "medium",
+   "reasoning": "奧斯提4傷，打2費牌時回手"
+  },
+  "Sacrifice": {
+   "value": 2.6,
+   "value_upgraded": 2.6,
+   "value_multi": 2.6,
+   "value_multi_upgraded": 2.6,
+   "confidence": "medium",
+   "reasoning": "犧牲奧斯提得3倍最大生命格檔，扣召喚損失"
+  },
+  "Scourge": {
+   "value": 2.5,
+   "value_upgraded": 3.2,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 3.2,
+   "confidence": "high",
+   "reasoning": "13災厄+抽1"
+  },
+  "SculptingStrike": {
+   "value": 1.7,
+   "value_upgraded": 2.2,
+   "value_multi": 1.7,
+   "value_multi_upgraded": 2.2,
+   "confidence": "high",
+   "reasoning": "9傷+為手牌加虛無"
+  },
+  "Seance": {
+   "value": 0.9,
+   "value_upgraded": 0.9,
+   "value_multi": 0.9,
+   "value_multi_upgraded": 0.9,
+   "confidence": "medium",
+   "reasoning": "抽牌堆一張轉為靈魂"
+  },
+  "SentryMode": {
+   "value": 5.0,
+   "value_upgraded": 5.0,
+   "value_multi": 5.0,
+   "value_multi_upgraded": 5.0,
+   "confidence": "low",
+   "reasoning": "每回合加一張掃蕩凝視，升級降費"
+  },
+  "Severance": {
+   "value": 3.3,
+   "value_upgraded": 4.1,
+   "value_multi": 3.3,
+   "value_multi_upgraded": 4.1,
+   "confidence": "high",
+   "reasoning": "13傷+三處各一張靈魂"
+  },
+  "SharedFate": {
+   "value": 1.0,
+   "value_upgraded": 1.3,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.3,
+   "confidence": "medium",
+   "reasoning": "自身-2力量換敵-2力量"
+  },
+  "Shroud": {
+   "value": 3.0,
+   "value_upgraded": 4.0,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 4.0,
+   "confidence": "medium",
+   "reasoning": "每次給災厄得3格檔，整場約5次"
+  },
+  "SicEm": {
+   "value": 1.5,
+   "value_upgraded": 1.8,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 1.8,
+   "confidence": "medium",
+   "reasoning": "奧斯提5傷，本回合奧斯提攻擊時召喚3"
+  },
+  "SleightOfFlesh": {
+   "value": 4.5,
+   "value_upgraded": 6.5,
+   "value_multi": 4.5,
+   "value_multi_upgraded": 6.5,
+   "confidence": "medium",
+   "reasoning": "給debuff時造成9傷，整場約3次"
+  },
+  "Snap": {
+   "value": 1.6,
+   "value_upgraded": 2.1,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.1,
+   "confidence": "high",
+   "reasoning": "奧斯提7傷+手牌一張保留"
+  },
+  "SoulStorm": {
+   "value": 2.5,
+   "value_upgraded": 3.3,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 3.3,
+   "confidence": "medium",
+   "reasoning": "9傷+消耗堆每張靈魂+4"
+  },
+  "Sow": {
+   "value": 1.9,
+   "value_upgraded": 2.6,
+   "value_multi": 1.9,
+   "value_multi_upgraded": 2.6,
+   "confidence": "high",
+   "reasoning": "全體8傷"
+  },
+  "SpiritOfAsh": {
+   "value": 2.8,
+   "value_upgraded": 3.5,
+   "value_multi": 2.8,
+   "value_multi_upgraded": 3.5,
+   "confidence": "low",
+   "reasoning": "打虛無牌得4格檔，整場約3.5次"
+  },
+  "Spur": {
+   "value": 1.4,
+   "value_upgraded": 2.0,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 2.0,
+   "confidence": "high",
+   "reasoning": "召喚3+奧斯提回5"
+  },
+  "Squeeze": {
+   "value": 5.6,
+   "value_upgraded": 6.8,
+   "value_multi": 5.6,
+   "value_multi_upgraded": 6.8,
+   "confidence": "medium",
+   "reasoning": "奧斯提25+每張奧斯提攻擊牌+5"
+  },
+  "StrikeNecrobinder": {
+   "value": 1.0,
+   "value_upgraded": 1.5,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.5,
+   "confidence": "high",
+   "reasoning": "6傷"
+  },
+  "TheScythe": {
+   "value": 2.2,
+   "value_upgraded": 2.4,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 2.4,
+   "confidence": "medium",
+   "reasoning": "13傷，永久成長"
+  },
+  "TimesUp": {
+   "value": 3.0,
+   "value_upgraded": 3.3,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.3,
+   "confidence": "medium",
+   "reasoning": "造成目標災厄層數傷害，約18"
+  },
+  "Transfigure": {
+   "value": 1.2,
+   "value_upgraded": 1.6,
+   "value_multi": 1.2,
+   "value_multi_upgraded": 1.6,
+   "confidence": "low",
+   "reasoning": "手牌一張獲重放但+1費"
+  },
+  "Undeath": {
+   "value": 1.4,
+   "value_upgraded": 1.8,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 1.8,
+   "confidence": "high",
+   "reasoning": "7格檔+複製到棄牌堆"
+  },
+  "Underworld": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.0,
+   "confidence": "low",
+   "reasoning": "多人限定；本回合隊友攻擊傷害轉災厄"
+  },
+  "Unleash": {
+   "value": 1.6,
+   "value_upgraded": 2.1,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.1,
+   "confidence": "high",
+   "reasoning": "奧斯提6+當前生命傷害"
+  },
+  "Veilpiercer": {
+   "value": 2.2,
+   "value_upgraded": 2.7,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 2.7,
+   "confidence": "medium",
+   "reasoning": "10傷+下張虛無牌0費"
+  },
+  "Soulbound": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 2.8,
+   "confidence": "low",
+   "reasoning": "多人限定；生成靈魂時盟友抽牌堆也加一張"
+  },
+  "Wisp": {
+   "value": 1.0,
+   "value_upgraded": 1.0,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.0,
+   "confidence": "high",
+   "reasoning": "得1能，升級保留"
+  }
+ }
+}

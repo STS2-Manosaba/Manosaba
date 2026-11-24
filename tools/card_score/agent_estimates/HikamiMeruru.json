@@ -1,0 +1,193 @@
+{
+  "character": "HikamiMeruru",
+  "assumptions": [
+    "單人模式；隊友向效果僅計自身部分，指定他人的分支價值為 0",
+    "PhotoOfTheGreatWitch 提供 +1 藥水欄位（約 4 格），欄位常接近滿，生成藥水約有 20% 溢出浪費",
+    "WitchesCauldron 每場戰鬥火力從 20 開始，使用或丟棄非催化劑藥水時，依火力百分比機率獲得催化劑",
+    "梅露露的傷害來源少，魔女化加傷價值偏低；戰鬥約 6 回合，能力牌第 2 回合打出",
+    "多人：4 人隊伍、隊友為一般 Manosaba 角色；全隊效果按 4 人受益計，溢出治療約打八折",
+    "多人：Incitement 給隊友 10/15 魔女化與 1 能量（約 1.7/2.05）；DrugDealer 全隊各 1 瓶基礎藥水；MeruruInfirmary 升級後給全隊；GrandHeal 全隊回 20 血並給隊友抑制力；QuickHeal 可補給最需要的隊友",
+    "多人：ShotsFired 有奈葉香隊友（機率約 3/13）時會對她造成 1 點傷害，略扣分；其餘卡與單人相同",
+    "多人：4 人隊伍、隊友為一般 Manosaba 角色；全隊效果按 4 人受益計，溢出治療約打八折",
+    "多人：Incitement 給隊友 10/15 魔女化與 1 能量（約 1.7/2.05）；DrugDealer 全隊各 1 瓶基礎藥水；MeruruInfirmary 升級後給全隊；GrandHeal 全隊回 20 血並給隊友抑制力；QuickHeal 可補給最需要的隊友",
+    "多人：ShotsFired 有奈葉香隊友（機率約 3/13）時會對她造成 1 點傷害，略扣分；其餘卡與單人相同"
+  ],
+  "mechanic_values": {
+    "隨機基礎藥水": "約 1.3 能量：原版基礎藥水多值 1.5～2，扣除欄位溢出與時機損失，另含約 20% 催化劑機率 +0.1",
+    "輕效藥水": "約 0.6 能量：止痛 2～5 血、5 格檔或暫時力量，單獨使用弱，但可作合成素材",
+    "催化劑": "約 0.7 能量：沒有直接效果，可與藥水合成高級藥水（強效格檔 24、強效能量 5 等）；累積 3 層 CatalystPower 可得殺死魔女的藥",
+    "火力": "每 10 點約 0.2 能量：0.1 機率 × 每戰約 3 次藥水使用 × 催化劑 0.7",
+    "回復生命": "依單位每點 0.12，戰鬥中溢出治療打七折",
+    "抑制力": "單人主要用於讓殺人衝動無效，價值低，每層約 0.05"
+  },
+  "cards": {
+    "StrikeHikamiMeruru": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "6/9 傷害，標準打擊",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5
+    },
+    "DefendHikamiMeruru": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "5/8 格檔，標準防禦",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6
+    },
+    "TraumaHikamiMeruru": {
+      "value": 0.5,
+      "value_upgraded": 0.75,
+      "confidence": "medium",
+      "reasoning": "10/15 魔女化；梅露露輸出低，加傷價值打折",
+      "value_multi": 0.5,
+      "value_multi_upgraded": 0.75
+    },
+    "AddFirewood": {
+      "value": 0.25,
+      "value_upgraded": 0.35,
+      "confidence": "medium",
+      "reasoning": "+10/15 火力，需靠後續藥水使用才換成催化劑；滿火力時改得催化劑",
+      "value_multi": 0.25,
+      "value_multi_upgraded": 0.35
+    },
+    "PotionSelect": {
+      "value": 1.5,
+      "value_upgraded": 2.2,
+      "confidence": "medium",
+      "reasoning": "選 2/3 瓶輕效藥水（每瓶約 0.6），附火力催化劑機率，但佔欄位",
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.2
+    },
+    "CollectPotions": {
+      "value": 2.2,
+      "value_upgraded": 3.1,
+      "confidence": "medium",
+      "reasoning": "隨機生成 2/3 瓶基礎藥水，受欄位上限限制，可配合合成與催化劑",
+      "value_multi": 2.2,
+      "value_multi_upgraded": 3.1
+    },
+    "DoubleSuicide": {
+      "value": 0.6,
+      "value_upgraded": 0.6,
+      "confidence": "low",
+      "reasoning": "敵人本回合每次受擊 +3 傷，但自身也受 +3，且雙方回復 15%/25% 生命，淨值低",
+      "value_multi": 0.6,
+      "value_multi_upgraded": 0.6
+    },
+    "Incitement": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "單人只能對自己：抽 2/3 張；隊友分支（魔女化與能量）單人為 0",
+      "value_multi": 1.7,
+      "value_multi_upgraded": 2.05
+    },
+    "ShotsFired": {
+      "value": 1.67,
+      "value_upgraded": 2.5,
+      "confidence": "high",
+      "reasoning": "10/15 傷害；對奈葉香特攻只在特定情境生效",
+      "value_multi": 1.6,
+      "value_multi_upgraded": 2.4
+    },
+    "CollectData": {
+      "value": 1.5,
+      "value_upgraded": 2.0,
+      "confidence": "high",
+      "reasoning": "抽 3/4 張",
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.0
+    },
+    "DrugDealer": {
+      "value": 1.3,
+      "value_upgraded": 1.65,
+      "confidence": "medium",
+      "reasoning": "單人只給自己 1 瓶基礎藥水；升級後有 50% 機率得催化劑",
+      "value_multi": 5.2,
+      "value_multi_upgraded": 5.55
+    },
+    "QuickHeal": {
+      "value": 1.9,
+      "value_upgraded": 2.5,
+      "confidence": "high",
+      "reasoning": "回復 5/7 血並獲得 7/10 格檔（可指定自己）",
+      "value_multi": 2.1,
+      "value_multi_upgraded": 2.75
+    },
+    "AutomatedPotionMix": {
+      "value": 4.0,
+      "value_upgraded": 4.6,
+      "confidence": "medium",
+      "reasoning": "每回合 2 瓶輕效藥水，約 4.5 回合；欄位溢出嚴重而打折；升級固有",
+      "value_multi": 4.0,
+      "value_multi_upgraded": 4.6
+    },
+    "PotionThrow": {
+      "value": 2.2,
+      "value_upgraded": 2.2,
+      "confidence": "low",
+      "reasoning": "丟棄藥水時每層對隨機敵人 6 傷，需主動丟棄；與石頭化連動強；升級 0 費",
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.2
+    },
+    "MeruruInfirmary": {
+      "value": 1.6,
+      "value_upgraded": 1.6,
+      "confidence": "medium",
+      "reasoning": "每回合產止痛藥（回復量為受傷一半）並觸發催化劑機率；升級改給全隊，單人無增益",
+      "value_multi": 1.6,
+      "value_multi_upgraded": 6.4
+    },
+    "PotionFactory": {
+      "value": 6.0,
+      "value_upgraded": 6.8,
+      "confidence": "medium",
+      "reasoning": "每回合 2 瓶隨機藥水，約 4.5 回合；受欄位限制約實用 5～6 瓶；升級固有",
+      "value_multi": 6.0,
+      "value_multi_upgraded": 6.8
+    },
+    "HikamiMeruruExaid": {
+      "value": 3.0,
+      "value_upgraded": 3.0,
+      "confidence": "low",
+      "reasoning": "魔女化直升 100（約 +84% 傷害）但立即結束回合；梅露露輸出低；升級降費",
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.0
+    },
+    "NanokaPuzzle": {
+      "value": 2.5,
+      "value_upgraded": 3.5,
+      "confidence": "low",
+      "reasoning": "消耗手牌，抽牌堆變 35/25 張垃圾加 5 部件，集齊即勝；長戰保底，但多回合空轉",
+      "value_multi": 2.5,
+      "value_multi_upgraded": 3.5
+    },
+    "PrimalPotionPower": {
+      "value": 0.8,
+      "value_upgraded": 0.8,
+      "confidence": "low",
+      "reasoning": "所有藥水變石頭，單獨使用為負；配藥水投擲可打出遞增的滾石 AoE；升級降費",
+      "value_multi": 0.8,
+      "value_multi_upgraded": 0.8
+    },
+    "WitchesCauldron": {
+      "value": 1.0,
+      "value_upgraded": 1.0,
+      "confidence": "medium",
+      "reasoning": "火力提升至 100，後續每瓶藥水必得催化劑（約 0.6×3，扣時機）；升級降費",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.0
+    },
+    "GrandHeal": {
+      "value": 2.6,
+      "value_upgraded": 2.6,
+      "confidence": "medium",
+      "reasoning": "回 20 血、消耗所有狀態牌、依魔女化給抑制力；單人多溢出治療；升級降費",
+      "value_multi": 8.0,
+      "value_multi_upgraded": 8.0
+    }
+  }
+}

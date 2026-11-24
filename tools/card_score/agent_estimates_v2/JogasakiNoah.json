@@ -1,0 +1,197 @@
+{
+  "character": "JogasakiNoah",
+  "assumptions": [
+    "單人、6回合戰鬥，起始遺物Lv1：6欄位、每回合開始隨機生成1顆8色顏料球",
+    "顏料球存活多回合；模擬得戰中隨機生成1球邊際價值≈1.44，紅藍黃(40/40/20)≈1.66",
+    "血球僅在牌組有血液操作牌時受未格擋傷害50%生成，層數≈受傷量(~9)；假設出牌時約50%有血球",
+    "魔女化微幅放大球數值，未額外計入",
+    "多人：4人隊伍、一般Manosaba隊友；僅審判牌有隊友向效果，其餘卡多人值同單人；部分顏料球激發可指向隊友但價值相近不另計",
+    "v2：顏料球對齊原版尺度（Chaos隨機1球=2.0含被動、Capacitor +2欄位=2.4、閃電球≈1.75）"
+  ],
+  "mechanic_values": {
+    "隨機顏料球(卡牌生成)": "≈1.4（Python模擬，含多回合被動與溢出激發）",
+    "紅藍黃顏料球": "≈1.6",
+    "ColorMix 種類加傷": "6欄位下平均+9傷害",
+    "血球加傷": "期望約+4.5傷害（50%持有×~9層）",
+    "魔女化100層": "顏料球數值約×1.84，但有過度魔女化風險"
+  },
+  "cards": {
+    "StrikeJogasakiNoah": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "6傷害，升級9"
+    },
+    "DefendJogasakiNoah": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "5格檔，升級8"
+    },
+    "TraumaJogasakiNoah": {
+      "value": 0.7,
+      "value_upgraded": 1.05,
+      "value_multi": 0.7,
+      "value_multi_upgraded": 1.05,
+      "confidence": "medium",
+      "reasoning": "10層魔女化，升級15層；微幅放大顏料球"
+    },
+    "Palette": {
+      "value": 2.4,
+      "value_upgraded": 2.8,
+      "value_multi": 2.4,
+      "value_multi_upgraded": 2.8,
+      "confidence": "medium",
+      "reasoning": "4格檔＋紅藍黃球(≈1.6)；升級6格檔"
+    },
+    "ColorMix": {
+      "value": 2.4,
+      "value_upgraded": 2.4,
+      "value_multi": 2.4,
+      "value_multi_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "模擬平均3~4色，5+9≈14傷害；升級僅降費"
+    },
+    "Confusion": {
+      "value": 2.9,
+      "value_upgraded": 4.1,
+      "value_multi": 2.9,
+      "value_multi_upgraded": 4.1,
+      "confidence": "medium",
+      "reasoning": "對照Chaos(1隨機球=2.0)，2顆含溢出遞減"
+    },
+    "ComplementaryColor": {
+      "value": 1.9,
+      "value_upgraded": 2.5,
+      "value_multi": 1.9,
+      "value_multi_upgraded": 2.5,
+      "confidence": "medium",
+      "reasoning": "生成互補色球(≈1.4)並立即觸發被動1次(≈0.55)；升級2次"
+    },
+    "InkPainting": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5,
+      "confidence": "medium",
+      "reasoning": "選白：抽2(升級3)，或黑：10/15魔女化，取較佳"
+    },
+    "PaintRefill": {
+      "value": 3.2,
+      "value_upgraded": 3.2,
+      "value_multi": 3.2,
+      "value_multi_upgraded": 3.2,
+      "confidence": "medium",
+      "reasoning": "模擬第2回合打出，每回合補滿欄位，總增益≈3.2；升級僅降費"
+    },
+    "ColorBlast": {
+      "value": 4.0,
+      "value_upgraded": 4.0,
+      "value_multi": 4.0,
+      "value_multi_upgraded": 4.0,
+      "confidence": "low",
+      "reasoning": "激發約4顆並重生，對照Rainbow/MultiCast尺度略下修"
+    },
+    "SpaceOut": {
+      "value": 6.0,
+      "value_upgraded": 6.0,
+      "value_multi": 6.0,
+      "value_multi_upgraded": 6.0,
+      "confidence": "low",
+      "reasoning": "對照Capacitor(+2欄位=2.4)，再加每回合多1球；原9.0高估"
+    },
+    "Zuma": {
+      "value": 6.0,
+      "value_upgraded": 6.0,
+      "value_multi": 6.0,
+      "value_multi_upgraded": 6.0,
+      "confidence": "low",
+      "reasoning": "7張縫隙調色實際約抽到3張且佔抽牌，扣除稀釋；原7.5偏高"
+    },
+    "Still": {
+      "value": 1.5,
+      "value_upgraded": 1.5,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 1.5,
+      "confidence": "low",
+      "reasoning": "最大能量-1代價大，換一隻普通怪友軍；精英/頭目不可用"
+    },
+    "JudgeJogasakiNoah": {
+      "value": 0.0,
+      "value_upgraded": 0.0,
+      "value_multi": 3.5,
+      "value_multi_upgraded": 3.5,
+      "confidence": "high",
+      "reasoning": "單人無隊友=0；多人時隊友0費打出使諾亞魔女化達100，顏料球約×1.8"
+    },
+    "Karibarai": {
+      "value": 2.1,
+      "value_upgraded": 2.75,
+      "value_multi": 2.1,
+      "value_multi_upgraded": 2.75,
+      "confidence": "medium",
+      "reasoning": "8傷+期望血球加傷4.5，消耗血球回3血"
+    },
+    "Kesseiseki": {
+      "value": 4.1,
+      "value_upgraded": 5.75,
+      "value_multi": 4.1,
+      "value_multi_upgraded": 5.75,
+      "confidence": "medium",
+      "reasoning": "20傷+期望血球加傷；升級30"
+    },
+    "Sekibaku": {
+      "value": 3.0,
+      "value_upgraded": 3.0,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.0,
+      "confidence": "low",
+      "reasoning": "需血球；目標本回合失去~9力量並回3血；升級降費"
+    },
+    "Hyakuren": {
+      "value": 5.4,
+      "value_upgraded": 7.7,
+      "value_multi": 5.4,
+      "value_multi_upgraded": 7.7,
+      "confidence": "low",
+      "reasoning": "選穿血(30傷)或超新星加入手牌，血球層數+2；升級衍伸卡與+3"
+    },
+    "BloodDraw": {
+      "value": 1.5,
+      "value_upgraded": 2.5,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.5,
+      "confidence": "low",
+      "reasoning": "失3血，生成2顆血球(供血液攻擊加傷及回血)；升級3顆"
+    },
+    "Ketsujin": {
+      "value": 0.8,
+      "value_upgraded": 1.2,
+      "value_multi": 0.8,
+      "value_multi_upgraded": 1.2,
+      "confidence": "low",
+      "reasoning": "血球層數+4(平均約1顆)，轉為下次血液攻擊加傷"
+    },
+    "Shiou": {
+      "value": 2.5,
+      "value_upgraded": 3.3,
+      "value_multi": 2.5,
+      "value_multi_upgraded": 3.3,
+      "confidence": "medium",
+      "reasoning": "8格檔+最高血球被動(不消耗)；升級12"
+    },
+    "Sekirinyakudou": {
+      "value": 3.0,
+      "value_upgraded": 3.0,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.0,
+      "confidence": "low",
+      "reasoning": "每回合激發2血球回6血並重生、層數成長，但遺物不再產顏料球；升級降費"
+    }
+  },
+  "source": "mod"
+}

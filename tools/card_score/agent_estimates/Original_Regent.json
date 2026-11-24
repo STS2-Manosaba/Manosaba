@@ -1,0 +1,748 @@
+{
+ "character": "Regent",
+ "source": "original",
+ "assumptions": [
+  "起始遗物DivineRight每场战斗开局3星",
+  "星≈0.5能量：以FallingStar（2星）≈2.0价值换算",
+  "君王之剑基础10伤，铸造1点≈+1伤，后续约挥砍1.2次",
+  "碎屑为负面填手牌",
+  "随机无色牌约1.0",
+  "能力牌按第2回合打出、剩4～5回合"
+ ],
+ "mechanic_values": {
+  "Stars": "每星≈0.5能量，按星费卡换算",
+  "Forge": "每点≈0.12（剑多次挥砍）",
+  "SovereignBlade": "首次铸造生成，基础10伤",
+  "Debris": "约-0.2，占手牌位"
+ },
+ "cards": {
+  "StrikeRegent": {
+   "value": 1.0,
+   "value_upgraded": 1.5,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.5,
+   "confidence": "high",
+   "reasoning": "6伤/升级9伤"
+  },
+  "DefendRegent": {
+   "value": 1.0,
+   "value_upgraded": 1.6,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.6,
+   "confidence": "high",
+   "reasoning": "5格挡/升级8"
+  },
+  "FallingStar": {
+   "value": 2.0,
+   "value_upgraded": 2.65,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.65,
+   "confidence": "high",
+   "reasoning": "8伤+1虚弱1易伤"
+  },
+  "Venerate": {
+   "value": 1.0,
+   "value_upgraded": 1.5,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.5,
+   "confidence": "high",
+   "reasoning": "2星≈1.0（星0.5）"
+  },
+  "AstralPulse": {
+   "value": 2.8,
+   "value_upgraded": 3.7,
+   "value_multi": 2.8,
+   "value_multi_upgraded": 3.7,
+   "confidence": "high",
+   "reasoning": "全体6伤×2：2×1.4"
+  },
+  "BeatIntoShape": {
+   "value": 1.3,
+   "value_upgraded": 1.75,
+   "value_multi": 1.3,
+   "value_multi_upgraded": 1.75,
+   "confidence": "medium",
+   "reasoning": "5伤+铸造约5～10（同回合多段命中加成）"
+  },
+  "Begone": {
+   "value": 0.9,
+   "value_upgraded": 1.2,
+   "value_multi": 0.9,
+   "value_multi_upgraded": 1.2,
+   "confidence": "low",
+   "reasoning": "将废牌转为仆从打击，按换牌差额估"
+  },
+  "BigBang": {
+   "value": 2.9,
+   "value_upgraded": 2.9,
+   "value_multi": 2.9,
+   "value_multi_upgraded": 2.9,
+   "confidence": "high",
+   "reasoning": "抽1+1能+1星+铸造5"
+  },
+  "BlackHole": {
+   "value": 3.2,
+   "value_upgraded": 4.2,
+   "value_multi": 3.2,
+   "value_multi_upgraded": 4.2,
+   "confidence": "low",
+   "reasoning": "每次得/花星全体3伤，整场约8次星变动"
+  },
+  "Bombardment": {
+   "value": 4.5,
+   "value_upgraded": 6.0,
+   "value_multi": 4.5,
+   "value_multi_upgraded": 6.0,
+   "confidence": "medium",
+   "reasoning": "18伤，消耗后每回合自动重打约1～2次"
+  },
+  "Bulwark": {
+   "value": 3.6,
+   "value_upgraded": 4.3,
+   "value_multi": 3.6,
+   "value_multi_upgraded": 4.3,
+   "confidence": "medium",
+   "reasoning": "12格挡+铸造10"
+  },
+  "BundleOfJoy": {
+   "value": 3.0,
+   "value_upgraded": 4.0,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 4.0,
+   "confidence": "medium",
+   "reasoning": "3张随机无色牌各约1.0"
+  },
+  "CelestialMight": {
+   "value": 3.0,
+   "value_upgraded": 3.5,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.5,
+   "confidence": "high",
+   "reasoning": "6伤×3"
+  },
+  "Charge": {
+   "value": 1.4,
+   "value_upgraded": 1.8,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 1.8,
+   "confidence": "low",
+   "reasoning": "抽牌堆2张变仆从俯冲"
+  },
+  "ChildOfTheStars": {
+   "value": 2.6,
+   "value_upgraded": 3.9,
+   "value_multi": 2.6,
+   "value_multi_upgraded": 3.9,
+   "confidence": "medium",
+   "reasoning": "每花1星得2格挡，整场约12星"
+  },
+  "CloakOfStars": {
+   "value": 1.4,
+   "value_upgraded": 2.0,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 2.0,
+   "confidence": "high",
+   "reasoning": "7格挡"
+  },
+  "CollisionCourse": {
+   "value": 1.75,
+   "value_upgraded": 2.4,
+   "value_multi": 1.75,
+   "value_multi_upgraded": 2.4,
+   "confidence": "high",
+   "reasoning": "10伤+塞碎屑（略负）"
+  },
+  "Comet": {
+   "value": 7.3,
+   "value_upgraded": 9.1,
+   "value_multi": 7.3,
+   "value_multi_upgraded": 9.1,
+   "confidence": "high",
+   "reasoning": "33伤+3虚弱3易伤"
+  },
+  "Conqueror": {
+   "value": 1.6,
+   "value_upgraded": 1.9,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 1.9,
+   "confidence": "medium",
+   "reasoning": "铸造3+君王之剑本回合双倍伤害"
+  },
+  "Constellation": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 2.3,
+   "value_multi_upgraded": 2.9,
+   "confidence": "high",
+   "reasoning": "多人专属：队友抽1+1能+9格挡"
+  },
+  "Convergence": {
+   "value": 1.8,
+   "value_upgraded": 2.3,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.3,
+   "confidence": "medium",
+   "reasoning": "保留手牌+下回合1能1星"
+  },
+  "CosmicIndifference": {
+   "value": 1.4,
+   "value_upgraded": 2.0,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 2.0,
+   "confidence": "medium",
+   "reasoning": "6格挡+弃牌堆一张置顶"
+  },
+  "CrashLanding": {
+   "value": 4.6,
+   "value_upgraded": 5.8,
+   "value_multi": 4.6,
+   "value_multi_upgraded": 5.8,
+   "confidence": "medium",
+   "reasoning": "全体21伤，碎屑填手为负面"
+  },
+  "CrescentSpear": {
+   "value": 2.2,
+   "value_upgraded": 2.6,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 2.6,
+   "confidence": "medium",
+   "reasoning": "8伤+每张星费卡+2，典型约5张"
+  },
+  "CrushUnder": {
+   "value": 2.2,
+   "value_upgraded": 2.6,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 2.6,
+   "confidence": "medium",
+   "reasoning": "全体8伤+减1力量（本回合）"
+  },
+  "DecisionsDecisions": {
+   "value": 4.5,
+   "value_upgraded": 5.2,
+   "value_multi": 4.5,
+   "value_multi_upgraded": 5.2,
+   "confidence": "medium",
+   "reasoning": "抽3+一张技能打出3次"
+  },
+  "Devastate": {
+   "value": 5.8,
+   "value_upgraded": 7.5,
+   "value_multi": 5.8,
+   "value_multi_upgraded": 7.5,
+   "confidence": "high",
+   "reasoning": "35伤"
+  },
+  "DyingStar": {
+   "value": 3.6,
+   "value_upgraded": 4.1,
+   "value_multi": 3.6,
+   "value_multi_upgraded": 4.1,
+   "confidence": "medium",
+   "reasoning": "全体9伤+本回合减9力量"
+  },
+  "ForegoneConclusion": {
+   "value": 1.5,
+   "value_upgraded": 2.0,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 2.0,
+   "confidence": "medium",
+   "reasoning": "下回合从抽牌堆挑2张入手"
+  },
+  "Furnace": {
+   "value": 3.0,
+   "value_upgraded": 4.2,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 4.2,
+   "confidence": "medium",
+   "reasoning": "每回合铸造5，约5回合"
+  },
+  "GammaBlast": {
+   "value": 3.4,
+   "value_upgraded": 4.2,
+   "value_multi": 3.4,
+   "value_multi_upgraded": 4.2,
+   "confidence": "high",
+   "reasoning": "13伤+2虚弱2易伤"
+  },
+  "GatherLight": {
+   "value": 2.1,
+   "value_upgraded": 2.7,
+   "value_multi": 2.1,
+   "value_multi_upgraded": 2.7,
+   "confidence": "high",
+   "reasoning": "8格挡+1星"
+  },
+  "Genesis": {
+   "value": 5.0,
+   "value_upgraded": 7.5,
+   "value_multi": 5.0,
+   "value_multi_upgraded": 7.5,
+   "confidence": "medium",
+   "reasoning": "每回合2星，约5回合"
+  },
+  "Glimmer": {
+   "value": 1.6,
+   "value_upgraded": 2.1,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.1,
+   "confidence": "medium",
+   "reasoning": "抽3放回1，净约抽2+排序"
+  },
+  "Glitterstream": {
+   "value": 3.2,
+   "value_upgraded": 3.9,
+   "value_multi": 3.2,
+   "value_multi_upgraded": 3.9,
+   "confidence": "high",
+   "reasoning": "11格挡+下回合5格挡"
+  },
+  "Glow": {
+   "value": 1.5,
+   "value_upgraded": 2.0,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 2.0,
+   "confidence": "high",
+   "reasoning": "1星+抽1+下回合抽1"
+  },
+  "Guards": {
+   "value": 1.8,
+   "value_upgraded": 2.3,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.3,
+   "confidence": "low",
+   "reasoning": "任意张手牌变仆从捐躯"
+  },
+  "GuidingStar": {
+   "value": 3.0,
+   "value_upgraded": 3.7,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.7,
+   "confidence": "high",
+   "reasoning": "12伤+下回合抽2"
+  },
+  "HammerTime": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 1.8,
+   "confidence": "low",
+   "reasoning": "多人专属：队友同步铸造，非君王队友价值低"
+  },
+  "HeavenlyDrill": {
+   "value": 2.8,
+   "value_upgraded": 3.5,
+   "value_multi": 2.8,
+   "value_multi_upgraded": 3.5,
+   "confidence": "medium",
+   "reasoning": "X次8伤，X约2～3，偶触发翻倍"
+  },
+  "Hegemony": {
+   "value": 3.5,
+   "value_upgraded": 4.0,
+   "value_multi": 3.5,
+   "value_multi_upgraded": 4.0,
+   "confidence": "high",
+   "reasoning": "15伤+下回合1能"
+  },
+  "HeirloomHammer": {
+   "value": 4.2,
+   "value_upgraded": 5.0,
+   "value_multi": 4.2,
+   "value_multi_upgraded": 5.0,
+   "confidence": "medium",
+   "reasoning": "20伤+复制一张无色牌"
+  },
+  "HiddenCache": {
+   "value": 1.0,
+   "value_upgraded": 1.5,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.5,
+   "confidence": "high",
+   "reasoning": "本回合1星+下回合1～2星"
+  },
+  "IAmInvincible": {
+   "value": 2.5,
+   "value_upgraded": 3.2,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 3.2,
+   "confidence": "medium",
+   "reasoning": "10格挡，偶有回合末置顶自动打出"
+  },
+  "KinglyKick": {
+   "value": 5.0,
+   "value_upgraded": 6.3,
+   "value_multi": 5.0,
+   "value_multi_upgraded": 6.3,
+   "confidence": "high",
+   "reasoning": "27伤，抽到减费"
+  },
+  "KinglyPunch": {
+   "value": 2.2,
+   "value_upgraded": 2.8,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 2.8,
+   "confidence": "medium",
+   "reasoning": "8伤，每抽到+4伤成长"
+  },
+  "KnockoutBlow": {
+   "value": 6.0,
+   "value_upgraded": 7.3,
+   "value_multi": 6.0,
+   "value_multi_upgraded": 7.3,
+   "confidence": "medium",
+   "reasoning": "30伤+击杀得5星（约50%）"
+  },
+  "KnowThyPlace": {
+   "value": 0.65,
+   "value_upgraded": 0.65,
+   "value_multi": 0.65,
+   "value_multi_upgraded": 0.65,
+   "confidence": "high",
+   "reasoning": "1虚弱+1易伤"
+  },
+  "Largesse": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.4,
+   "confidence": "high",
+   "reasoning": "多人专属：给队友一张随机无色牌"
+  },
+  "LunarBlast": {
+   "value": 1.3,
+   "value_upgraded": 1.6,
+   "value_multi": 1.3,
+   "value_multi_upgraded": 1.6,
+   "confidence": "medium",
+   "reasoning": "每张已打技能4伤一次，典型约2次"
+  },
+  "MakeItSo": {
+   "value": 1.5,
+   "value_upgraded": 2.0,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 2.0,
+   "confidence": "medium",
+   "reasoning": "6伤，技能多时回手重复"
+  },
+  "ManifestAuthority": {
+   "value": 2.4,
+   "value_upgraded": 2.8,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 2.8,
+   "confidence": "medium",
+   "reasoning": "7格挡+随机无色牌"
+  },
+  "MeteorShower": {
+   "value": 5.0,
+   "value_upgraded": 6.6,
+   "value_multi": 5.0,
+   "value_multi_upgraded": 6.6,
+   "confidence": "high",
+   "reasoning": "全体14伤+2虚弱2易伤"
+  },
+  "MonarchsGaze": {
+   "value": 3.2,
+   "value_upgraded": 3.2,
+   "value_multi": 3.2,
+   "value_multi_upgraded": 3.2,
+   "confidence": "low",
+   "reasoning": "每次攻击使目标本回合-1力量，整场"
+  },
+  "Monologue": {
+   "value": 1.3,
+   "value_upgraded": 1.3,
+   "value_multi": 1.3,
+   "value_multi_upgraded": 1.3,
+   "confidence": "medium",
+   "reasoning": "本回合每打一张牌+1力量，约+4"
+  },
+  "NeutronAegis": {
+   "value": 3.6,
+   "value_upgraded": 5.0,
+   "value_multi": 3.6,
+   "value_multi_upgraded": 5.0,
+   "confidence": "high",
+   "reasoning": "8层覆甲"
+  },
+  "Orbit": {
+   "value": 2.5,
+   "value_upgraded": 2.5,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 2.5,
+   "confidence": "medium",
+   "reasoning": "每花4能得1能，约4～5回合"
+  },
+  "PaleBlueDot": {
+   "value": 2.0,
+   "value_upgraded": 4.0,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 4.0,
+   "confidence": "low",
+   "reasoning": "一回合打≥5张则下回合抽1(2)"
+  },
+  "Parry": {
+   "value": 3.5,
+   "value_upgraded": 4.6,
+   "value_multi": 3.5,
+   "value_multi_upgraded": 4.6,
+   "confidence": "medium",
+   "reasoning": "君王之剑附带10格挡，约打5次"
+  },
+  "ParticleWall": {
+   "value": 1.8,
+   "value_upgraded": 2.4,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.4,
+   "confidence": "high",
+   "reasoning": "9格挡且回手可重复"
+  },
+  "Patter": {
+   "value": 2.2,
+   "value_upgraded": 2.7,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 2.7,
+   "confidence": "medium",
+   "reasoning": "8格挡+2活力"
+  },
+  "PhotonCut": {
+   "value": 2.0,
+   "value_upgraded": 2.7,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.7,
+   "confidence": "medium",
+   "reasoning": "10伤+抽1放回1"
+  },
+  "Plot": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 6.0,
+   "confidence": "high",
+   "reasoning": "多人专属：全队下回合抽2"
+  },
+  "PillarOfCreation": {
+   "value": 2.0,
+   "value_upgraded": 3.0,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 3.0,
+   "confidence": "low",
+   "reasoning": "每生成卡得2格挡，整场约5次"
+  },
+  "Prophesize": {
+   "value": 3.0,
+   "value_upgraded": 4.5,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 4.5,
+   "confidence": "high",
+   "reasoning": "抽6"
+  },
+  "Quasar": {
+   "value": 1.4,
+   "value_upgraded": 1.8,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 1.8,
+   "confidence": "medium",
+   "reasoning": "3选1无色牌"
+  },
+  "Radiate": {
+   "value": 1.6,
+   "value_upgraded": 2.1,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.1,
+   "confidence": "medium",
+   "reasoning": "本回合每得1星全体3伤，典型约3次"
+  },
+  "RefineBlade": {
+   "value": 2.0,
+   "value_upgraded": 2.5,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.5,
+   "confidence": "high",
+   "reasoning": "铸造8+下回合1能"
+  },
+  "Reflect": {
+   "value": 4.0,
+   "value_upgraded": 5.0,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 5.0,
+   "confidence": "medium",
+   "reasoning": "15格挡+反伤"
+  },
+  "Resonance": {
+   "value": 1.6,
+   "value_upgraded": 2.0,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.0,
+   "confidence": "medium",
+   "reasoning": "1永久力量+全体敌-1力量"
+  },
+  "RoyalGamble": {
+   "value": 4.5,
+   "value_upgraded": 4.5,
+   "value_multi": 4.5,
+   "value_multi_upgraded": 4.5,
+   "confidence": "high",
+   "reasoning": "得9星"
+  },
+  "Royalties": {
+   "value": 1.0,
+   "value_upgraded": 1.3,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.3,
+   "confidence": "low",
+   "reasoning": "战后30金币，战斗价值低"
+  },
+  "SeekingEdge": {
+   "value": 3.6,
+   "value_upgraded": 4.2,
+   "value_multi": 3.6,
+   "value_multi_upgraded": 4.2,
+   "confidence": "medium",
+   "reasoning": "铸造7+君王之剑全体化"
+  },
+  "SevenStars": {
+   "value": 8.2,
+   "value_upgraded": 9.0,
+   "value_multi": 8.2,
+   "value_multi_upgraded": 9.0,
+   "confidence": "high",
+   "reasoning": "全体7伤×7"
+  },
+  "ShiningStrike": {
+   "value": 2.3,
+   "value_upgraded": 2.8,
+   "value_multi": 2.3,
+   "value_multi_upgraded": 2.8,
+   "confidence": "high",
+   "reasoning": "8伤+2星，置顶循环"
+  },
+  "SolarStrike": {
+   "value": 2.0,
+   "value_upgraded": 2.3,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.3,
+   "confidence": "high",
+   "reasoning": "9伤+1星"
+  },
+  "SpectrumShift": {
+   "value": 4.0,
+   "value_upgraded": 4.0,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 4.0,
+   "confidence": "medium",
+   "reasoning": "每回合1张随机无色，约4张"
+  },
+  "SpoilsOfBattle": {
+   "value": 1.7,
+   "value_upgraded": 2.1,
+   "value_multi": 1.7,
+   "value_multi_upgraded": 2.1,
+   "confidence": "high",
+   "reasoning": "铸造6+抽2"
+  },
+  "Stardust": {
+   "value": 2.1,
+   "value_upgraded": 2.9,
+   "value_multi": 2.1,
+   "value_multi_upgraded": 2.9,
+   "confidence": "medium",
+   "reasoning": "X次随机5伤，X约3星"
+  },
+  "SummonForth": {
+   "value": 1.9,
+   "value_upgraded": 2.3,
+   "value_multi": 1.9,
+   "value_multi_upgraded": 2.3,
+   "confidence": "medium",
+   "reasoning": "君王之剑入手+铸造8"
+  },
+  "Supermassive": {
+   "value": 2.5,
+   "value_upgraded": 2.9,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 2.9,
+   "confidence": "medium",
+   "reasoning": "5伤+每生成牌+3，典型约6张"
+  },
+  "SwordSage": {
+   "value": 3.0,
+   "value_upgraded": 3.0,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.0,
+   "confidence": "low",
+   "reasoning": "君王之剑重放1，约4次"
+  },
+  "Terraforming": {
+   "value": 1.4,
+   "value_upgraded": 2.1,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 2.1,
+   "confidence": "high",
+   "reasoning": "7活力≈7伤"
+  },
+  "TheSealedThrone": {
+   "value": 5.0,
+   "value_upgraded": 5.0,
+   "value_multi": 5.0,
+   "value_multi_upgraded": 5.0,
+   "confidence": "medium",
+   "reasoning": "每打一张牌得1星，约15星"
+  },
+  "TheSmith": {
+   "value": 3.6,
+   "value_upgraded": 4.8,
+   "value_multi": 3.6,
+   "value_multi_upgraded": 4.8,
+   "confidence": "high",
+   "reasoning": "铸造30"
+  },
+  "Tutor": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 0.7,
+   "value_multi_upgraded": 0.7,
+   "confidence": "high",
+   "reasoning": "多人专属：队友从抽牌堆选1张入手"
+  },
+  "Tyranny": {
+   "value": 1.8,
+   "value_upgraded": 1.8,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 1.8,
+   "confidence": "low",
+   "reasoning": "每回合抽1消耗1，精简牌组"
+  },
+  "VoidForm": {
+   "value": 4.5,
+   "value_upgraded": 4.5,
+   "value_multi": 4.5,
+   "value_multi_upgraded": 4.5,
+   "confidence": "medium",
+   "reasoning": "每回合前2张免费，减结束回合"
+  },
+  "WroughtInWar": {
+   "value": 2.0,
+   "value_upgraded": 2.6,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.6,
+   "confidence": "high",
+   "reasoning": "7伤+铸造7"
+  },
+  "Alignment": {
+   "value": 2.0,
+   "value_upgraded": 3.0,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 3.0,
+   "confidence": "high",
+   "reasoning": "2星换2能"
+  },
+  "Arsenal": {
+   "value": 2.8,
+   "value_upgraded": 2.8,
+   "value_multi": 2.8,
+   "value_multi_upgraded": 2.8,
+   "confidence": "low",
+   "reasoning": "每生成牌+1力量，约3次"
+  }
+ }
+}

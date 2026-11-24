@@ -1,0 +1,374 @@
+{
+  "character": "TonoHanna",
+  "assumptions": [
+    "起始牌組：打擊x3、防禦x3、害羞一瞥、懷疑、節儉、心理創傷；HP 66；起始遺物羽扇。典型牌組含 3~5 張人偶牌與數張產生/消耗狀態牌的卡。",
+    "羽扇 Lv2 起擁有翱翔/漂浮/空島時傷害 x1.5；遺物升級會加入人偶牌。假設中期約 60% 機率已達 Lv2。",
+    "人偶收藏層數典型約 3；魔女化典型 10~40 層；單人模式，指定其他玩家的卡價值 0。",
+    "多人：4人隊伍、隊友為一般 Manosaba 角色；特定隊友條件乘約3/13；隊友受益不吃羽扇加傷。飛天掃帚=自身與隊友翱翔+雪莉條件；借來的刀=隊友抽牌+能量；表演服=隊友格檔；空島=全隊4人各約2層。其餘卡同單人。",
+    "v2：MultiplayerOnly 卡（BorrowedKnife、FlyingBroom、PerformanceDress、MiriaPuppet）單人 value 設 null；隊友受益不吃羽扇加傷。"
+  ],
+  "mechanic_values": {
+    "漂浮(1回合)": "約 1.1：攻擊傷害-20%（約0.5）+ 羽扇Lv2 傷害x1.5期望（約0.6）",
+    "翱翔(1回合)": "約 2.0：大幅減傷 + 羽扇加傷",
+    "空島(1層)": "約 1.9：減傷50% + 羽扇加傷",
+    "人偶牌打出": "額外約 0.2：累積收藏層數，連動冰擊、晚安、艾瑪/可可人偶能力",
+    "狀態牌": "產生一張約 -0.15（扣除節儉/緊急縫合/火柴女孩回收後）",
+    "魔女化": "每層約 0.07；設為100層約+0.8倍傷害",
+    "金幣": "戰鬥價值 0（僅羽扇Lv4 間接回能）"
+  },
+  "cards": {
+    "StrikeTonoHanna": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "6/9 傷害。",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5
+    },
+    "DefendTonoHanna": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "5/8 格檔。",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6
+    },
+    "ShyGlance": {
+      "value": 1.35,
+      "value_upgraded": 2.05,
+      "confidence": "high",
+      "reasoning": "全體4/7傷+全體1虛弱，x1.4。",
+      "value_multi": 1.35,
+      "value_multi_upgraded": 2.05
+    },
+    "Suspicion": {
+      "value": 0.9,
+      "value_upgraded": 1.85,
+      "confidence": "high",
+      "reasoning": "+1/2能量，附暈眩入棄牌堆但可被狀態連動回收。",
+      "value_multi": 0.9,
+      "value_multi_upgraded": 1.85
+    },
+    "Thrifty": {
+      "value": 1.6,
+      "value_upgraded": 1.8,
+      "confidence": "medium",
+      "reasoning": "6格檔，消耗手中狀態每張+2/3格檔，平均約0.7張。",
+      "value_multi": 1.6,
+      "value_multi_upgraded": 1.8
+    },
+    "TraumaTonoHanna": {
+      "value": 0.7,
+      "value_upgraded": 1.05,
+      "confidence": "medium",
+      "reasoning": "10/15層魔女化。",
+      "value_multi": 0.7,
+      "value_multi_upgraded": 1.05
+    },
+    "AngelsDice": {
+      "value": 1.4,
+      "value_upgraded": 2.1,
+      "confidence": "high",
+      "reasoning": "d6期望3.5，x2/x3格檔。",
+      "value_multi": 1.4,
+      "value_multi_upgraded": 2.1
+    },
+    "DevilsDice": {
+      "value": 1.0,
+      "value_upgraded": 1.8,
+      "confidence": "medium",
+      "reasoning": "敵人本回合失去約3.5力量；升級額外生成虛無天使骰子。",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.8
+    },
+    "AscensionElevator": {
+      "value": 1.6,
+      "value_upgraded": 2.35,
+      "confidence": "high",
+      "reasoning": "計算期望約9.9傷（升級14.3），雙電鰻自傷機率低。",
+      "value_multi": 1.6,
+      "value_multi_upgraded": 2.35
+    },
+    "DreamsInjuredWings": {
+      "value": 1.1,
+      "value_upgraded": 2.2,
+      "confidence": "medium",
+      "reasoning": "1/2回合漂浮，含羽扇加傷期望。",
+      "value_multi": 1.1,
+      "value_multi_upgraded": 2.2
+    },
+    "WitchIslandCanFly": {
+      "value": 2.5,
+      "value_upgraded": 3.1,
+      "confidence": "medium",
+      "reasoning": "7/10格檔+1回合漂浮。",
+      "value_multi": 2.5,
+      "value_multi_upgraded": 3.1
+    },
+    "HiroPuppet": {
+      "value": 1.4,
+      "value_upgraded": 1.8,
+      "confidence": "medium",
+      "reasoning": "0費6/8傷並複製到棄牌堆，人偶連動；升級吸血條件少見。",
+      "value_multi": 1.4,
+      "value_multi_upgraded": 1.8
+    },
+    "NanokaPuppet": {
+      "value": 2.4,
+      "value_upgraded": 2.9,
+      "confidence": "medium",
+      "reasoning": "6+2x人偶牌數（約4張）傷害，艾瑪條件格檔偶發。",
+      "value_multi": 2.4,
+      "value_multi_upgraded": 2.9
+    },
+    "NoahPuppet": {
+      "value": 1.6,
+      "value_upgraded": 2.1,
+      "confidence": "medium",
+      "reasoning": "7/9格檔+消耗一張（可清狀態），安安條件虛弱少見。",
+      "value_multi": 1.6,
+      "value_multi_upgraded": 2.1
+    },
+    "AnAnPuppet": {
+      "value": 1.9,
+      "value_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "全體本回合-6/8力量，約減8~10傷，諾亞條件格檔偶發。",
+      "value_multi": 1.9,
+      "value_multi_upgraded": 2.4
+    },
+    "SlipFall": {
+      "value": 1.1,
+      "value_upgraded": 1.4,
+      "confidence": "high",
+      "reasoning": "0費3/5傷+2易傷，附傷口但可被連動回收。",
+      "value_multi": 1.1,
+      "value_multi_upgraded": 1.4
+    },
+    "Sewing": {
+      "value": 1.5,
+      "value_upgraded": 1.7,
+      "confidence": "medium",
+      "reasoning": "6格檔並升級手中一張/所有人偶牌。",
+      "value_multi": 1.5,
+      "value_multi_upgraded": 1.7
+    },
+    "AlisaPuppet": {
+      "value": 2.6,
+      "value_upgraded": 3.8,
+      "confidence": "medium",
+      "reasoning": "10/15灼燒，艾瑪條件+3偶發。",
+      "value_multi": 2.6,
+      "value_multi_upgraded": 3.8
+    },
+    "CocoPuppet": {
+      "value": 1.1,
+      "value_upgraded": 1.5,
+      "confidence": "medium",
+      "reasoning": "能力：每打人偶牌+2/3格檔，剩餘回合約2~3次觸發。",
+      "value_multi": 1.1,
+      "value_multi_upgraded": 1.5
+    },
+    "EmaPuppet": {
+      "value": 4.2,
+      "value_upgraded": 5.4,
+      "confidence": "medium",
+      "reasoning": "能力：每打人偶牌全體9/12傷，約2.3次觸發，x1.4。 觸發次數下修至約2次（對照 Pyre/Demesne）。",
+      "value_multi": 4.2,
+      "value_multi_upgraded": 5.4
+    },
+    "FingerSupportLine": {
+      "value": 3.6,
+      "value_upgraded": 5.4,
+      "confidence": "low",
+      "reasoning": "X費每點0~16/24隨機格檔，以X≈2.3估；金幣不計。",
+      "value_multi": 3.6,
+      "value_multi_upgraded": 5.4
+    },
+    "FlyingBroom": {
+      "value": null,
+      "value_upgraded": null,
+      "confidence": "high",
+      "reasoning": "需指定另一名玩家，單人無法發揮，計0。",
+      "value_multi": 3.7,
+      "value_multi_upgraded": 3.7
+    },
+    "GiveHannaABeer": {
+      "value": 1.9,
+      "value_upgraded": 2.1,
+      "confidence": "medium",
+      "reasoning": "3d6約10.5傷；魔女化超門檻改用4~6骰約15傷。",
+      "value_multi": 1.9,
+      "value_multi_upgraded": 2.1
+    },
+    "LeiaPuppet": {
+      "value": 0.2,
+      "value_upgraded": 0.2,
+      "confidence": "high",
+      "reasoning": "僅戰後金幣，戰鬥價值只剩收藏層數。",
+      "value_multi": 0.2,
+      "value_multi_upgraded": 0.2
+    },
+    "LittleMatchGirl": {
+      "value": 1.4,
+      "value_upgraded": 2.0,
+      "confidence": "low",
+      "reasoning": "抽到狀態回2/3血，每回合約1張。",
+      "value_multi": 1.4,
+      "value_multi_upgraded": 2.0
+    },
+    "MargoPuppet": {
+      "value": 1.8,
+      "value_upgraded": 2.3,
+      "confidence": "low",
+      "reasoning": "每回合從棄牌堆拿一張人偶牌到手，依賴人偶密度。",
+      "value_multi": 1.8,
+      "value_multi_upgraded": 2.3
+    },
+    "MealWithReward": {
+      "value": 0.8,
+      "value_upgraded": 1.3,
+      "confidence": "high",
+      "reasoning": "0費抽2/3，附毒素狀態。",
+      "value_multi": 0.8,
+      "value_multi_upgraded": 1.3
+    },
+    "MiriaPuppet": {
+      "value": null,
+      "value_upgraded": null,
+      "confidence": "low",
+      "reasoning": "變化手牌最多2張為人偶牌，升級後一併升級。 MultiplayerOnly，單人卡池移除。",
+      "value_multi": 0.8,
+      "value_multi_upgraded": 1.3
+    },
+    "PerformanceDress": {
+      "value": null,
+      "value_upgraded": null,
+      "confidence": "high",
+      "reasoning": "只給另一名玩家格檔，單人0。",
+      "value_multi": 2.2,
+      "value_multi_upgraded": 3.2
+    },
+    "RiskDice": {
+      "value": 1.3,
+      "value_upgraded": 1.6,
+      "confidence": "medium",
+      "reasoning": "0費95%起3/4傷回手可連打，連打越多大凶自傷越高。",
+      "value_multi": 1.3,
+      "value_multi_upgraded": 1.6
+    },
+    "ToughItOut": {
+      "value": 2.2,
+      "value_upgraded": 3.0,
+      "confidence": "high",
+      "reasoning": "13/17格檔，2張傷口有連動可部分抵銷。",
+      "value_multi": 2.2,
+      "value_multi_upgraded": 3.0
+    },
+    "WaterWalk": {
+      "value": 2.7,
+      "value_upgraded": 3.8,
+      "confidence": "medium",
+      "reasoning": "1層緩衝+1/2回合漂浮。",
+      "value_multi": 2.7,
+      "value_multi_upgraded": 3.8
+    },
+    "BorrowedKnife": {
+      "value": null,
+      "value_upgraded": null,
+      "confidence": "high",
+      "reasoning": "效果給另一名玩家，單人0。",
+      "value_multi": 3.0,
+      "value_multi_upgraded": 4.5
+    },
+    "EmergencySuture": {
+      "value": 3.0,
+      "value_upgraded": 5.0,
+      "confidence": "medium",
+      "reasoning": "每張狀態全體4/7傷，典型約3張，x1.4。",
+      "value_multi": 3.0,
+      "value_multi_upgraded": 5.0
+    },
+    "EnergyInFridge": {
+      "value": 2.6,
+      "value_upgraded": 2.6,
+      "confidence": "medium",
+      "reasoning": "-2力量，每回合+1能量並保留能量，剩約4.5回合。",
+      "value_multi": 2.6,
+      "value_multi_upgraded": 2.6
+    },
+    "GoodnightYoungLady": {
+      "value": 0.6,
+      "value_upgraded": 0.6,
+      "confidence": "medium",
+      "reasoning": "回2+收藏層數血並結束回合，代價大。",
+      "value_multi": 0.6,
+      "value_multi_upgraded": 0.6
+    },
+    "HannaPuppet": {
+      "value": 2.2,
+      "value_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "1回合翱翔吃羽扇加傷，雪莉條件+2力量偶發。",
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.4
+    },
+    "HighSense": {
+      "value": 4.0,
+      "value_upgraded": 5.0,
+      "confidence": "low",
+      "reasoning": "每3回合可用翱翔+骰面+2，約用2次。",
+      "value_multi": 4.0,
+      "value_multi_upgraded": 5.0
+    },
+    "IceStrike": {
+      "value": 6.7,
+      "value_upgraded": 8.0,
+      "confidence": "medium",
+      "reasoning": "25/30傷+每收藏層5/6傷，約3層。",
+      "value_multi": 6.7,
+      "value_multi_upgraded": 8.0
+    },
+    "MeruruPuppet": {
+      "value": 1.0,
+      "value_upgraded": 1.3,
+      "confidence": "low",
+      "reasoning": "從消耗牌堆取回一張，早期常無好目標。",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.3
+    },
+    "RefuseMajo": {
+      "value": 3.0,
+      "value_upgraded": 3.0,
+      "confidence": "low",
+      "reasoning": "手牌全變免費落石並清空魔女化，損失加傷。",
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.0
+    },
+    "SherryPuppet": {
+      "value": 1.4,
+      "value_upgraded": 1.7,
+      "confidence": "low",
+      "reasoning": "下一張攻擊多打一次，漢娜條件給落石偶發。",
+      "value_multi": 1.4,
+      "value_multi_upgraded": 1.7
+    },
+    "SteelBallRun": {
+      "value": 4.5,
+      "value_upgraded": 4.5,
+      "confidence": "low",
+      "reasoning": "魔女化設為100層約+0.8倍傷害持續數回合，伴隨超量風險。",
+      "value_multi": 4.5,
+      "value_multi_upgraded": 4.5
+    },
+    "SkyIsland": {
+      "value": 4.0,
+      "value_upgraded": 4.0,
+      "confidence": "low",
+      "reasoning": "依魔女化給約2層空島，減傷50%並觸發羽扇加傷。 多人：隊友無羽扇加傷，每人約1.2，合計約7.5（原11.2偏高）。",
+      "value_multi": 7.5,
+      "value_multi_upgraded": 7.5
+    }
+  },
+  "source": "mod"
+}

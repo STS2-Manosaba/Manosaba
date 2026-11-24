@@ -1,0 +1,33 @@
+{
+  "character": "SakurabaEma",
+  "source": "mod",
+  "assumptions": [
+    "單人、帶LegRing Lv1（魔女化獲得減半、搜查時間8張牌給rAwTell Owk）",
+    "裁判進度≥10 條件觸發率約30%",
+    "證物卡生成均值約1.0，提出證據約0.75",
+    "多人：4人隊、隊友一般Manosaba角色，特定角色隊友機率3/13，全隊效果按實際受益人數；多人限定卡單人計0",
+    "v2：野餐時間確認為1費(抽1+下回合1能)，淨值約0.5/回合；流血門檻隨人數提高，觸發傷害=100+15%最大生命；MultiplayerOnly卡單人填null",
+    "v3補血：生命值跨戰鬥保留。戰鬥中一次性（消耗型）回血每點 0.28 能量（原始 0.33×溢補八五折），非消耗每場可重用卡每次打出每點 0.22（重複使用溢補較多）；分回合小額持續回血 0.22~0.25；多人可指定缺血隊友 0.26~0.28，全體回復按受益人數×八折"
+  ],
+  "mechanic_values": {
+    "回血": "一次性 0.28/點；可重用 0.22/點；舊 0.12×0.7≈0.084/點"
+  },
+  "cards": {
+    "Omurice": {
+      "value": 2.2,
+      "value_upgraded": 2.75,
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.75,
+      "confidence": "medium",
+      "reasoning": "v3補血: 消耗一次性回 5/7 血每點 0.28=1.4/1.96（舊約 0.4/0.6）+活力 4 與清狀態約 0.8"
+    },
+    "DeductionAfterDinner": {
+      "value": 3.4,
+      "value_upgraded": 3.4,
+      "value_multi": 3.4,
+      "value_multi_upgraded": 3.4,
+      "confidence": "medium",
+      "reasoning": "v3補血: 豐盛的一餐回 3 血每點 0.084→0.28，+0.6；活力、發言與壞結局代價不變"
+    }
+  }
+}

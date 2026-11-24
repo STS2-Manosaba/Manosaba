@@ -1,0 +1,388 @@
+{
+  "character": "SaekiMiria",
+  "assumptions": [
+    "v2：逐張讀程式碼；MultiplayerOnly卡單人value=null",
+    "單人模式為主，MultiplayerOnly卡單人計0",
+    "戰鬥約6回合，能力第2回合打出",
+    "CabinetKey每回合1張隨機電影入抽牌堆，Lv4起升級，Lv3起50%卡帶石頭",
+    "多人：4人隊伍、3名一般Manosaba隊友，特定隊友機率約3/13，全隊效果按受益人數計"
+  ],
+  "mechanic_values": {
+    "電影牌": "0費消耗，抽1+效果，平均約1.25(升級1.95)，入手約1.65",
+    "小鑰匙": "每回合約0.9價值電影入抽牌堆",
+    "魔女化": "每層0.07",
+    "厄運": "每層每回合自傷約-0.1",
+    "回復": "每層約0.12/回合"
+  },
+  "cards": {
+    "StrikeSaekiMiria": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "6/9傷害"
+    },
+    "DefendSaekiMiria": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "5/8格檔"
+    },
+    "Social": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 1.75,
+      "value_multi_upgraded": 2.85,
+      "confidence": "medium",
+      "reasoning": "限多人；自己與隊友各4(+3)格檔，安安加成×3/13"
+    },
+    "MindShard": {
+      "value": 1.4,
+      "value_upgraded": 1.9,
+      "value_multi": 1.4,
+      "value_multi_upgraded": 1.9,
+      "confidence": "medium",
+      "reasoning": "三選一他魔女攻擊牌且本回合0費，約0.4+攻擊牌價值"
+    },
+    "TraumaSaekiMiria": {
+      "value": 0.7,
+      "value_upgraded": 1.05,
+      "value_multi": 0.7,
+      "value_multi_upgraded": 1.05,
+      "confidence": "medium",
+      "reasoning": "10/15魔女化"
+    },
+    "Exchange": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 1.3,
+      "value_multi_upgraded": 1.7,
+      "confidence": "low",
+      "reasoning": "需隊友目標，單人無效；雙方各得對方牌組一張虛無消耗副本"
+    },
+    "BodySlam": {
+      "value": 1.5,
+      "value_upgraded": 1.7,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 1.7,
+      "confidence": "medium",
+      "reasoning": "格檔轉傷害約6-8，雙方易傷1抵銷部分"
+    },
+    "Clumsy": {
+      "value": 1.3,
+      "value_upgraded": 1.9,
+      "value_multi": 1.3,
+      "value_multi_upgraded": 1.9,
+      "confidence": "high",
+      "reasoning": "8/11格檔，扣自身虛弱2懲罰"
+    },
+    "CutterKnife": {
+      "value": 1.2,
+      "value_upgraded": 1.7,
+      "value_multi": 1.2,
+      "value_multi_upgraded": 1.7,
+      "confidence": "medium",
+      "reasoning": "程式碼：6(9)+回復層數傷害，平均回復約1層"
+    },
+    "NarehateFeeding": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6,
+      "confidence": "medium",
+      "reasoning": "9/12格檔，自身6層災厄負面約-0.8"
+    },
+    "PrisonMeal": {
+      "value": 0.4,
+      "value_upgraded": 0.6,
+      "value_multi": 0.4,
+      "value_multi_upgraded": 0.6,
+      "confidence": "medium",
+      "reasoning": "回復3與魔女化5，抵自身中毒3"
+    },
+    "Sabotage": {
+      "value": 1.3,
+      "value_upgraded": 1.7,
+      "value_multi": 1.3,
+      "value_multi_upgraded": 1.7,
+      "confidence": "high",
+      "reasoning": "4傷+易傷1+虛弱1"
+    },
+    "BombDefusalMaster": {
+      "value": 2.7,
+      "value_upgraded": 3.6,
+      "value_multi": 2.7,
+      "value_multi_upgraded": 3.6,
+      "confidence": "medium",
+      "reasoning": "X費(約3)：敵永久-X力量+X虛弱，升級X+1；每點-力量約0.6"
+    },
+    "BorrowYourBody": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.3,
+      "confidence": "low",
+      "reasoning": "限多人；借隊友力量一回合"
+    },
+    "CleanUp": {
+      "value": 1.1,
+      "value_upgraded": 1.6,
+      "value_multi": 1.1,
+      "value_multi_upgraded": 1.6,
+      "confidence": "medium",
+      "reasoning": "消耗一張爛牌(石頭/垃圾)+抽2/3"
+    },
+    "EvidenceLooting": {
+      "value": 1.5,
+      "value_upgraded": 2.0,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.0,
+      "confidence": "high",
+      "reasoning": "抽3/4"
+    },
+    "Fairness": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.3,
+      "confidence": "low",
+      "reasoning": "限多人；抽1並平分生命"
+    },
+    "FallGuy": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 1.8,
+      "value_multi_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "限多人；8/11格檔並吸收隊友減益"
+    },
+    "HeartStopper": {
+      "value": 2.0,
+      "value_upgraded": 2.6,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.6,
+      "confidence": "medium",
+      "reasoning": "每回合多抽1約5回合，灼燒自傷扣分"
+    },
+    "Makeup": {
+      "value": 2.0,
+      "value_upgraded": 2.5,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.5,
+      "confidence": "medium",
+      "reasoning": "覆甲7約3.2，厄運每回合自傷扣分"
+    },
+    "MiriaProtect": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.8,
+      "confidence": "high",
+      "reasoning": "限多人；給隊友11/14格檔"
+    },
+    "MovieInvitation": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 1.6,
+      "value_multi_upgraded": 1.8,
+      "confidence": "medium",
+      "reasoning": "限多人；隊友下回合也獲小鑰匙電影牌"
+    },
+    "MovieNoise": {
+      "value": 4.2,
+      "value_upgraded": 6.7,
+      "value_multi": 4.2,
+      "value_multi_upgraded": 6.7,
+      "confidence": "medium",
+      "reasoning": "能力：每打出電影牌對隨機敵5(8)傷，約1張/回合×5回合"
+    },
+    "MovieViewing": {
+      "value": 2.8,
+      "value_upgraded": 3.9,
+      "value_multi": 2.8,
+      "value_multi_upgraded": 3.9,
+      "confidence": "medium",
+      "reasoning": "2/3張電影牌入手，每張約1.4"
+    },
+    "Objection": {
+      "value": 1.9,
+      "value_upgraded": 2.5,
+      "value_multi": 1.9,
+      "value_multi_upgraded": 2.5,
+      "confidence": "medium",
+      "reasoning": "8/11格檔並反彈被擋傷害"
+    },
+    "PeaceMaker": {
+      "value": 1.5,
+      "value_upgraded": 2.0,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.0,
+      "confidence": "low",
+      "reasoning": "削減敵人力量成長，多數戰鬥效果有限"
+    },
+    "PepperRamen": {
+      "value": 0.6,
+      "value_upgraded": 1.1,
+      "value_multi": 0.6,
+      "value_multi_upgraded": 1.1,
+      "confidence": "low",
+      "reasoning": "回復3(5)扣自身中毒"
+    },
+    "ScapeGoat": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 2.6,
+      "value_multi_upgraded": 3.2,
+      "confidence": "medium",
+      "reasoning": "限多人；11格檔並替隊友擋傷"
+    },
+    "SNSExchange": {
+      "value": 1.7,
+      "value_upgraded": 2.4,
+      "value_multi": 3.4,
+      "value_multi_upgraded": 4.6,
+      "confidence": "medium",
+      "reasoning": "魔女化10+抽2(3)，多人時全隊4人抽牌"
+    },
+    "WalkingMisfortune": {
+      "value": 3.5,
+      "value_upgraded": 4.0,
+      "value_multi": 3.5,
+      "value_multi_upgraded": 4.0,
+      "confidence": "medium",
+      "reasoning": "每回合+1能量約4.5，厄運自傷扣分"
+    },
+    "AbsoluteCinema": {
+      "value": 2.5,
+      "value_upgraded": 3.75,
+      "value_multi": 2.5,
+      "value_multi_upgraded": 3.75,
+      "confidence": "medium",
+      "reasoning": "下一張電影牌額外重放2(3)次，每次約1.25"
+    },
+    "Aspiration": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.4,
+      "confidence": "medium",
+      "reasoning": "限多人；6格檔且隊友獲等同格檔"
+    },
+    "BalancedNutrition": {
+      "value": 1.0,
+      "value_upgraded": 1.0,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.0,
+      "confidence": "low",
+      "reasoning": "永久最大生命戰鬥內低值，中毒3扣分"
+    },
+    "CabinetExpansion": {
+      "value": 4.0,
+      "value_upgraded": 4.0,
+      "value_multi": 4.0,
+      "value_multi_upgraded": 4.0,
+      "confidence": "medium",
+      "reasoning": "每回合多1張電影入抽牌堆約0.9×4-5回合"
+    },
+    "Friendly": {
+      "value": 2.5,
+      "value_upgraded": 2.5,
+      "value_multi": 2.5,
+      "value_multi_upgraded": 2.5,
+      "confidence": "medium",
+      "reasoning": "整場攻擊減傷20%，固有"
+    },
+    "HitTweet": {
+      "value": 4.5,
+      "value_upgraded": 4.5,
+      "value_multi": 4.5,
+      "value_multi_upgraded": 4.5,
+      "confidence": "low",
+      "reasoning": "Miria：魔女化補到100；蕾亞+5力量；升級-1費"
+    },
+    "LifeConsultation": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 1.2,
+      "value_multi_upgraded": 1.6,
+      "confidence": "low",
+      "reasoning": "限多人；隊友回復層數×2生命"
+    },
+    "LuckTransfer": {
+      "value": 1.5,
+      "value_upgraded": 1.5,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 1.5,
+      "confidence": "low",
+      "reasoning": "自身負面×倍率施加敵人；升級僅-1費"
+    },
+    "MemorySharing": {
+      "value": 2.5,
+      "value_upgraded": 3.2,
+      "value_multi": 5.0,
+      "value_multi_upgraded": 6.4,
+      "confidence": "low",
+      "reasoning": "每回合得一張他角色牌；多人全隊受益"
+    },
+    "MindExpansion": {
+      "value": 3.5,
+      "value_upgraded": 4.5,
+      "value_multi": 3.5,
+      "value_multi_upgraded": 4.5,
+      "confidence": "low",
+      "reasoning": "每回合三選一他魔女能力牌入手"
+    },
+    "MindOverload": {
+      "value": 5.0,
+      "value_upgraded": 5.0,
+      "value_multi": 5.0,
+      "value_multi_upgraded": 5.0,
+      "confidence": "low",
+      "reasoning": "需魔女化100，自動打出10張能力牌，條件苛刻"
+    },
+    "MindSharing": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 3.5,
+      "value_multi_upgraded": 4.0,
+      "confidence": "low",
+      "reasoning": "限多人；全隊共享非攻擊能力"
+    },
+    "Slimification": {
+      "value": 2.0,
+      "value_upgraded": 2.4,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.4,
+      "confidence": "low",
+      "reasoning": "受未擋傷害獲回復，連動切割刀"
+    },
+    "TraumaSharing": {
+      "value": 1.2,
+      "value_upgraded": 1.2,
+      "value_multi": 1.2,
+      "value_multi_upgraded": 1.2,
+      "confidence": "low",
+      "reasoning": "目標負面複製到其他敵人；單體戰無效；升級僅-1費"
+    },
+    "UncleWriting": {
+      "value": 2.0,
+      "value_upgraded": 2.0,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.0,
+      "confidence": "high",
+      "reasoning": "1能量+抽2，固有"
+    },
+    "TheWayOut": {
+      "value": 8.0,
+      "value_upgraded": 8.0,
+      "value_multi": 8.0,
+      "value_multi_upgraded": 8.0,
+      "confidence": "low",
+      "reasoning": "回合結束直接勝利"
+    }
+  },
+  "source": "mod"
+}

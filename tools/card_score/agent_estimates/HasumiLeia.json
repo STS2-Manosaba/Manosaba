@@ -1,0 +1,423 @@
+{
+  "character": "HasumiLeia",
+  "assumptions": [
+    "單人模式；隊友相關效果計0",
+    "起始遺物 Rapier 以 Lv1~2（60~70%）估，敵人約70%回合攻擊、格檔約60%真正吸收攻擊",
+    "鑄矛（ForgeSpear）約55%機率在戰鬥中湊齊3零件打出簡易長矛（50傷0費）",
+    "二刀流（SecondSword）非預設常駐，僅透過儀禮之劍/樹枝/劍類遺物取得",
+    "能力牌假設第2回合打出、剩4~5回合",
+    "多人：4人隊伍、隊友為一般Manosaba角色；需特定角色（如DuoCombination的希羅）乘3/13",
+    "多人：AttractAttention以3隊友各省約4傷/回合計；TheCenter約每2回合被隊友指定一次；TheCenterOfTheWorldIs假設隊友多選蕾亞得4力量",
+    "多人：PrisonForTwo雙方每回合15魔女化，含溢出風險折價；LeiaProtect/StandOut替隊友擋傷另加約1.5~2"
+  ],
+  "mechanic_values": {
+    "Rapier格檔反擊": "每5格檔額外約0.2（5×0.65反擊×0.7攻擊率×0.6吸收≈1.4傷）",
+    "ForgeSpear": "約3.0：50傷×55%組成率≈4.6，扣零件佔手牌與抽牌稀釋",
+    "SimpleSpear": "50傷0費≈8.3",
+    "劍技": "連動 FinalAttack、SmoothMove、StrongSake；約45%卡為劍技",
+    "二刀流": "非二刀流劍技追加30%未強化傷害，約+0.3/張劍技",
+    "魔女化": "每層0.07"
+  },
+  "cards": {
+    "StrikeHasumiLeia": {
+      "value": 1.05,
+      "value_upgraded": 1.55,
+      "confidence": "high",
+      "reasoning": "6傷，劍技可觸發終結一擊等連動",
+      "value_multi": 1.05,
+      "value_multi_upgraded": 1.55
+    },
+    "DefendHasumiLeia": {
+      "value": 1.2,
+      "value_upgraded": 1.9,
+      "confidence": "high",
+      "reasoning": "5格檔加細劍反擊加成",
+      "value_multi": 1.2,
+      "value_multi_upgraded": 1.9
+    },
+    "Lunge": {
+      "value": 1.7,
+      "value_upgraded": 2.55,
+      "confidence": "high",
+      "reasoning": "8傷+1虛弱，劍技",
+      "value_multi": 1.7,
+      "value_multi_upgraded": 2.55
+    },
+    "Voiding": {
+      "value": 2.25,
+      "value_upgraded": 3.25,
+      "confidence": "high",
+      "reasoning": "8格檔+1易傷，格檔有反擊加成",
+      "value_multi": 2.25,
+      "value_multi_upgraded": 3.25
+    },
+    "TraumaHasumiLeia": {
+      "value": 0.7,
+      "value_upgraded": 1.05,
+      "confidence": "medium",
+      "reasoning": "10層魔女化，0費",
+      "value_multi": 0.7,
+      "value_multi_upgraded": 1.05
+    },
+    "Projection": {
+      "value": 2.4,
+      "value_upgraded": 2.4,
+      "confidence": "low",
+      "reasoning": "生成鑄矛（約3.0價值1費）；升級去消耗不計",
+      "value_multi": 2.4,
+      "value_multi_upgraded": 2.4
+    },
+    "AdvancedProjection": {
+      "value": 2.4,
+      "value_upgraded": 2.4,
+      "confidence": "low",
+      "reasoning": "0費生成鑄矛，升級去消耗不計",
+      "value_multi": 2.4,
+      "value_multi_upgraded": 2.4
+    },
+    "Dancing": {
+      "value": 2.9,
+      "value_upgraded": 3.6,
+      "confidence": "high",
+      "reasoning": "8格檔+下回合1能量",
+      "value_multi": 2.9,
+      "value_multi_upgraded": 3.6
+    },
+    "Shrug": {
+      "value": 2.4,
+      "value_upgraded": 3.1,
+      "confidence": "high",
+      "reasoning": "8格檔抽1",
+      "value_multi": 2.4,
+      "value_multi_upgraded": 3.1
+    },
+    "SlidingStep": {
+      "value": 1.2,
+      "value_upgraded": 1.65,
+      "confidence": "high",
+      "reasoning": "0費3格檔抽1",
+      "value_multi": 1.2,
+      "value_multi_upgraded": 1.65
+    },
+    "RapierTrick": {
+      "value": 1.7,
+      "value_upgraded": 2.2,
+      "confidence": "medium",
+      "reasoning": "抽3消耗1，消耗可清零件/狀態",
+      "value_multi": 1.7,
+      "value_multi_upgraded": 2.2
+    },
+    "FinalAttack": {
+      "value": 3.5,
+      "value_upgraded": 3.5,
+      "confidence": "low",
+      "reasoning": "4×3傷，打其他劍技時自動打出，常免費觸發；無升級效果",
+      "value_multi": 3.5,
+      "value_multi_upgraded": 3.5
+    },
+    "ParallelSting": {
+      "value": 1.45,
+      "value_upgraded": 2.1,
+      "confidence": "high",
+      "reasoning": "4×2傷，多段吃力量與二刀流",
+      "value_multi": 1.45,
+      "value_multi_upgraded": 2.1
+    },
+    "SweepingEdge": {
+      "value": 2.05,
+      "value_upgraded": 2.95,
+      "confidence": "high",
+      "reasoning": "全體7傷+全體虛弱，×1.4",
+      "value_multi": 2.05,
+      "value_multi_upgraded": 2.95
+    },
+    "Linear": {
+      "value": 2.2,
+      "value_upgraded": 2.7,
+      "confidence": "medium",
+      "reasoning": "8傷+隨機劍技入手（約0.85）",
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.7
+    },
+    "TourLive": {
+      "value": 0.3,
+      "value_upgraded": 0.45,
+      "confidence": "medium",
+      "reasoning": "戰鬥後10金幣，無戰鬥效果",
+      "value_multi": 0.3,
+      "value_multi_upgraded": 0.45
+    },
+    "TreeBranch": {
+      "value": 0.7,
+      "value_upgraded": 0.7,
+      "confidence": "low",
+      "reasoning": "本回合二刀流，劍技追加30%傷",
+      "value_multi": 0.7,
+      "value_multi_upgraded": 0.7
+    },
+    "Clusterphobia": {
+      "value": 1.4,
+      "value_upgraded": 2.1,
+      "confidence": "medium",
+      "reasoning": "20層魔女化",
+      "value_multi": 1.4,
+      "value_multi_upgraded": 2.1
+    },
+    "Comedian": {
+      "value": 2.0,
+      "value_upgraded": 2.15,
+      "confidence": "medium",
+      "reasoning": "8格檔+手中衍生/狀態牌（零件、鑄矛）加成",
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.15
+    },
+    "DuoCombination": {
+      "value": 0.95,
+      "value_upgraded": 1.55,
+      "confidence": "medium",
+      "reasoning": "單人選自己：4格檔+下一張攻擊打兩次",
+      "value_multi": 3.2,
+      "value_multi_upgraded": 4.4
+    },
+    "GuardBreak": {
+      "value": 1.9,
+      "value_upgraded": 2.4,
+      "confidence": "high",
+      "reasoning": "10傷移除格檔",
+      "value_multi": 1.9,
+      "value_multi_upgraded": 2.4
+    },
+    "Juggling": {
+      "value": 1.0,
+      "value_upgraded": 1.0,
+      "confidence": "medium",
+      "reasoning": "換牌約2張，品質提升有限",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.0
+    },
+    "LeiaProtect": {
+      "value": 2.4,
+      "value_upgraded": 3.0,
+      "confidence": "medium",
+      "reasoning": "11格檔，替隊友擋傷單人無用",
+      "value_multi": 4.4,
+      "value_multi_upgraded": 5.0
+    },
+    "PortableFletchingStation": {
+      "value": 1.0,
+      "value_upgraded": 1.0,
+      "confidence": "low",
+      "reasoning": "製作長矛時機率多一支，依賴長矛套路",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.0
+    },
+    "QuadruplePain": {
+      "value": 1.4,
+      "value_upgraded": 2.1,
+      "confidence": "high",
+      "reasoning": "2×4傷，多段吃力量/二刀流",
+      "value_multi": 1.4,
+      "value_multi_upgraded": 2.1
+    },
+    "RealisticActing": {
+      "value": 4.0,
+      "value_upgraded": 8.0,
+      "confidence": "medium",
+      "reasoning": "永久2敏捷，約4回合加細劍反擊",
+      "value_multi": 4.0,
+      "value_multi_upgraded": 8.0
+    },
+    "ShowOff": {
+      "value": 2.2,
+      "value_upgraded": 2.8,
+      "confidence": "medium",
+      "reasoning": "8格檔，格檔攻擊得暫時力量約1~2點",
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.8
+    },
+    "SmartSpear": {
+      "value": 1.2,
+      "value_upgraded": 1.8,
+      "confidence": "low",
+      "reasoning": "抽零件時拉其他零件，加速組矛",
+      "value_multi": 1.2,
+      "value_multi_upgraded": 1.8
+    },
+    "SmoothMove": {
+      "value": 3.0,
+      "value_upgraded": 6.0,
+      "confidence": "medium",
+      "reasoning": "每張劍技抽1，約1.5張/回合×4回合",
+      "value_multi": 3.0,
+      "value_multi_upgraded": 6.0
+    },
+    "SpearMastery": {
+      "value": 0.8,
+      "value_upgraded": 0.8,
+      "confidence": "low",
+      "reasoning": "簡易長矛升級，需長矛來源",
+      "value_multi": 0.8,
+      "value_multi_upgraded": 0.8
+    },
+    "StardustMirage": {
+      "value": 2.7,
+      "value_upgraded": 4.05,
+      "confidence": "medium",
+      "reasoning": "頂5張約2.2劍技，每張2×3傷",
+      "value_multi": 2.7,
+      "value_multi_upgraded": 4.05
+    },
+    "StrongSake": {
+      "value": 4.5,
+      "value_upgraded": 4.5,
+      "confidence": "medium",
+      "reasoning": "每張劍技下回合+1能量，約1.2/回合",
+      "value_multi": 4.5,
+      "value_multi_upgraded": 4.5
+    },
+    "TheCenter": {
+      "value": 0.0,
+      "value_upgraded": 0.0,
+      "confidence": "high",
+      "reasoning": "僅隊友指定你時觸發，單人0",
+      "value_multi": 2.5,
+      "value_multi_upgraded": 5.0
+    },
+    "AttractAttention": {
+      "value": -0.5,
+      "value_upgraded": -0.5,
+      "confidence": "medium",
+      "reasoning": "單人僅負面：受強化攻擊傷害加倍",
+      "value_multi": 6.0,
+      "value_multi_upgraded": 6.0
+    },
+    "CeremonialSword": {
+      "value": 3.5,
+      "value_upgraded": 4.7,
+      "confidence": "medium",
+      "reasoning": "2永久力量+二刀流（劍技+30%傷）",
+      "value_multi": 3.5,
+      "value_multi_upgraded": 4.7
+    },
+    "DefensiveStance": {
+      "value": 1.6,
+      "value_upgraded": 1.6,
+      "confidence": "medium",
+      "reasoning": "本回合格檔翻倍，約+8格檔與反擊",
+      "value_multi": 1.6,
+      "value_multi_upgraded": 1.6
+    },
+    "GateOfBabylon": {
+      "value": 5.0,
+      "value_upgraded": 5.5,
+      "confidence": "low",
+      "reasoning": "重打消耗堆所有簡易長矛，通常0~1支",
+      "value_multi": 5.0,
+      "value_multi_upgraded": 5.5
+    },
+    "IAmReborn": {
+      "value": 4.0,
+      "value_upgraded": 4.0,
+      "confidence": "low",
+      "reasoning": "棄手牌，下回合雙倍傷+多抽5",
+      "value_multi": 4.0,
+      "value_multi_upgraded": 4.0
+    },
+    "LookUfo": {
+      "value": 2.5,
+      "value_upgraded": 2.5,
+      "confidence": "medium",
+      "reasoning": "本回合目標攻擊傷害翻倍，需後續攻擊",
+      "value_multi": 2.5,
+      "value_multi_upgraded": 2.5
+    },
+    "Pride": {
+      "value": 6.8,
+      "value_upgraded": 9.0,
+      "confidence": "medium",
+      "reasoning": "30格檔（大量反擊）+王位戴冠入棄牌堆",
+      "value_multi": 6.8,
+      "value_multi_upgraded": 9.0
+    },
+    "PrisonForTwo": {
+      "value": 0.0,
+      "value_upgraded": 0.0,
+      "confidence": "medium",
+      "reasoning": "需隊友，單人無效",
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.5
+    },
+    "ShowYouTheUnseen": {
+      "value": 2.2,
+      "value_upgraded": 2.8,
+      "confidence": "low",
+      "reasoning": "X張0費8傷劍技衝刺入抽牌堆，X≈2",
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.8
+    },
+    "StandOut": {
+      "value": 4.4,
+      "value_upgraded": 5.8,
+      "confidence": "medium",
+      "reasoning": "16格檔+本回合減傷50%",
+      "value_multi": 5.9,
+      "value_multi_upgraded": 7.3
+    },
+    "StarburstStream": {
+      "value": 9.0,
+      "value_upgraded": 11.0,
+      "confidence": "low",
+      "reasoning": "16×(3+消耗數)傷，需二刀流且消耗手牌",
+      "value_multi": 9.0,
+      "value_multi_upgraded": 11.0
+    },
+    "StarSplash": {
+      "value": 1.4,
+      "value_upgraded": 2.7,
+      "confidence": "high",
+      "reasoning": "1×8傷，力量大幅放大",
+      "value_multi": 1.4,
+      "value_multi_upgraded": 2.7
+    },
+    "RapierMastery": {
+      "value": 3.1,
+      "value_upgraded": 6.2,
+      "confidence": "medium",
+      "reasoning": "細劍反擊多觸發1次，約4傷/回合",
+      "value_multi": 3.1,
+      "value_multi_upgraded": 6.2
+    },
+    "UnlimitedSpearWork": {
+      "value": 7.0,
+      "value_upgraded": 9.0,
+      "confidence": "low",
+      "reasoning": "每回合生成虛無鑄矛，需1費打出",
+      "value_multi": 7.0,
+      "value_multi_upgraded": 9.0
+    },
+    "TheCenterOfTheWorldIs": {
+      "value": 0.0,
+      "value_upgraded": 0.0,
+      "confidence": "medium",
+      "reasoning": "需隊友選擇，單人無效",
+      "value_multi": 4.8,
+      "value_multi_upgraded": 4.8
+    },
+    "Crowning": {
+      "value": 4.0,
+      "value_upgraded": 4.5,
+      "confidence": "low",
+      "reasoning": "本回合全敵失去99力量≈免疫攻擊回合",
+      "value_multi": 4.0,
+      "value_multi_upgraded": 4.5
+    },
+    "GazeGuiding": {
+      "value": 2.5,
+      "value_upgraded": 2.5,
+      "confidence": "low",
+      "reasoning": "目標本回合傷害降50%+，隨魔女化增加",
+      "value_multi": 2.5,
+      "value_multi_upgraded": 2.5
+    }
+  }
+}

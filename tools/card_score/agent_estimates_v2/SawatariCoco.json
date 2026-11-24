@@ -1,0 +1,352 @@
+{
+  "character": "SawatariCoco",
+  "assumptions": [
+    "單人模式；起始遺物約 Lv2：戰鬥開始 2 層躲藏、3 層直播模式；中後期約 Lv4 直播中每回合 +1 能量",
+    "典型回合處於直播模式的機率約 65%",
+    "場上粉絲數（敵人）典型約 1.5",
+    "裝備分數里程碑（3000 敏捷、6000 力量、10000 魔女化）每 1000 分約值 0.15；全套效果觸發率低（約 10%）",
+    "能力牌第 2 回合打出、剩約 4~5 回合",
+    "多人：4 人隊伍、隊友為一般 Manosaba 角色；value_multi 只額外計入隊友受益效果，其餘同單人",
+    "對全體玩家生效者按 4 人受益；粉絲只對施加者可可減力量，不計隊友",
+    "v2：以錨點卡尺度複核，多數沿用第一版"
+  ],
+  "mechanic_values": {
+    "躲藏": "每層每回合 1 格檔+1 魔女化≈0.27/回合，中途取得約剩 4 回合≈1.0/層",
+    "直播模式": "回合結束對隨機敵造成層數傷害後遞減；疊加在既有約 2 層上：2 層≈1.2、3 層≈2.0、5 層≈4.0（含粉絲與 Lv4 能量連動）",
+    "粉絲": "敵人對你攻擊力量 -1，持續整場，約 1.0/敵；遺物在直播中已自動給予，邊際價值偏低",
+    "魔女化": "0.07/層，超過 100 層有風險；I want to play a game 會快速推高",
+    "裝備分數": "每 1000 分約 0.15（里程碑分攤）",
+    "商品牌": "0 費虛無，花 5 金幣得永久力量/敏捷等，約 1.0~2.0/張"
+  },
+  "cards": {
+    "StrikeSawatariCoco": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "6/9 傷害",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5
+    },
+    "DefendSawatariCoco": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "5/8 格檔",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6
+    },
+    "ForMyOshi": {
+      "value": 2.7,
+      "value_upgraded": 3.4,
+      "confidence": "medium",
+      "reasoning": "8 傷害並生成 ON AIR（3 層直播）到手牌",
+      "value_multi": 2.7,
+      "value_multi_upgraded": 3.4
+    },
+    "TraumaSawatariCoco": {
+      "value": 0.7,
+      "value_upgraded": 1.05,
+      "confidence": "high",
+      "reasoning": "10/15 層魔女化",
+      "value_multi": 0.7,
+      "value_multi_upgraded": 1.05
+    },
+    "PhoneLiveStream": {
+      "value": 2.2,
+      "value_upgraded": 2.7,
+      "confidence": "medium",
+      "reasoning": "1 躲藏+2 直播模式，升級抽 1",
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.7
+    },
+    "OnAir": {
+      "value": 2.0,
+      "value_upgraded": 3.8,
+      "confidence": "medium",
+      "reasoning": "3/5 層直播模式，延長粉絲化與 Lv4 能量",
+      "value_multi": 2.0,
+      "value_multi_upgraded": 3.8
+    },
+    "FlameBait": {
+      "value": 3.5,
+      "value_upgraded": 4.3,
+      "confidence": "medium",
+      "reasoning": "失 2 血，10 傷，直播中+20（約 65% 觸發）",
+      "value_multi": 3.5,
+      "value_multi_upgraded": 4.3
+    },
+    "WithoutThinking": {
+      "value": 0.8,
+      "value_upgraded": 1.6,
+      "confidence": "medium",
+      "reasoning": "2 永久力量換 2/1 敏捷；可可格檔多靠躲藏，敏捷損失略輕",
+      "value_multi": 0.8,
+      "value_multi_upgraded": 1.6
+    },
+    "SharpTongue": {
+      "value": 3.2,
+      "value_upgraded": 3.6,
+      "confidence": "high",
+      "reasoning": "全體 5×2 傷害+2 虛弱",
+      "value_multi": 3.2,
+      "value_multi_upgraded": 3.6
+    },
+    "TalkTrash": {
+      "value": 2.2,
+      "value_upgraded": 2.7,
+      "confidence": "medium",
+      "reasoning": "全敵本回合 -6/-9 力量+1 躲藏",
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.7
+    },
+    "ShowerStream": {
+      "value": 4.0,
+      "value_upgraded": 5.0,
+      "confidence": "medium",
+      "reasoning": "直播限定，15/20 格檔+1 躲藏",
+      "value_multi": 4.0,
+      "value_multi_upgraded": 5.0
+    },
+    "TurnDefenseToOffense": {
+      "value": 1.2,
+      "value_upgraded": 1.2,
+      "confidence": "low",
+      "reasoning": "典型 3 躲藏換約 1.5 力量，扣除失去的躲藏收益",
+      "value_multi": 1.2,
+      "value_multi_upgraded": 1.2
+    },
+    "LucidDream": {
+      "value": 2.0,
+      "value_upgraded": 2.3,
+      "confidence": "low",
+      "reasoning": "免費打出棄牌堆一張牌，約一張平均卡價值",
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.3
+    },
+    "InfiniteMirror": {
+      "value": 2.0,
+      "value_upgraded": 2.0,
+      "confidence": "low",
+      "reasoning": "直播層數翻倍，典型 +3 層；升級僅降費",
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.0
+    },
+    "InmuKing": {
+      "value": 6.8,
+      "value_upgraded": 6.8,
+      "confidence": "medium",
+      "reasoning": "躲藏1+回14血+5 直播+14 魔女化；升級降費",
+      "value_multi": 6.8,
+      "value_multi_upgraded": 6.8
+    },
+    "EscapeWitchIsland": {
+      "value": 0.4,
+      "value_upgraded": 0.4,
+      "confidence": "low",
+      "reasoning": "需有魔女島監獄才能用，多數戰鬥無作用",
+      "value_multi": 0.4,
+      "value_multi_upgraded": 0.4
+    },
+    "SlayTheSpireIi": {
+      "value": 2.0,
+      "value_upgraded": 2.5,
+      "confidence": "low",
+      "reasoning": "挑牌入手、其餘本場消失，等同大量選擇性抽牌但削減牌組",
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.5
+    },
+    "FanService": {
+      "value": 3.0,
+      "value_upgraded": 3.0,
+      "confidence": "low",
+      "reasoning": "每 3 回合全敵粉絲化+粉絲數格檔/傷害，與遺物粉絲重疊",
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.0
+    },
+    "IGuessIHaveNoChoice": {
+      "value": 1.0,
+      "value_upgraded": 1.0,
+      "confidence": "low",
+      "reasoning": "1 層百寶袋補齊裝備套裝，需多件同系列",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.0
+    },
+    "OnlineShopping": {
+      "value": 4.0,
+      "value_upgraded": 4.0,
+      "confidence": "low",
+      "reasoning": "每回合選 1 張商品牌（花金幣換永久增益）入抽牌堆",
+      "value_multi": 4.0,
+      "value_multi_upgraded": 4.0
+    },
+    "ThanksForTheTip": {
+      "value": 0.3,
+      "value_upgraded": 0.5,
+      "confidence": "medium",
+      "reasoning": "只給金幣，戰鬥內無效",
+      "value_multi": 0.3,
+      "value_multi_upgraded": 0.5
+    },
+    "IWantToPlayAGame": {
+      "value": 4.0,
+      "value_upgraded": 4.0,
+      "confidence": "low",
+      "reasoning": "每回合 +30 魔女化大幅加傷，3 張解除牌可抽牌，150 層有接管風險",
+      "value_multi": 4.0,
+      "value_multi_upgraded": 4.0
+    },
+    "LetsPlayHideAndSeek": {
+      "value": 4.3,
+      "value_upgraded": 4.3,
+      "confidence": "low",
+      "reasoning": "20 魔女化+二選一（44 傷找到你/衣櫃無實體）入抽牌堆",
+      "value_multi": 4.3,
+      "value_multi_upgraded": 4.3
+    },
+    "TreeHollow": {
+      "value": 6.0,
+      "value_upgraded": 6.0,
+      "confidence": "low",
+      "reasoning": "25 格檔(5.0)+魔女化升至 100 層增傷，扣接管風險；v2 小幅下修",
+      "value_multi": 7.0,
+      "value_multi_upgraded": 7.0
+    },
+    "Clairvoyance": {
+      "value": 6.0,
+      "value_upgraded": 6.0,
+      "confidence": "low",
+      "reasoning": "依魔女化給千里眼，每回合依意圖給格檔/易傷/力量，遞減；v2：多人隊友受益下修，15 偏高",
+      "value_multi": 8.0,
+      "value_multi_upgraded": 8.0
+    },
+    "PunkCatHeadwear": {
+      "value": 1.3,
+      "value_upgraded": 1.3,
+      "confidence": "low",
+      "reasoning": "全體粉絲數傷害偏低+5000 裝備分",
+      "value_multi": 1.3,
+      "value_multi_upgraded": 1.3
+    },
+    "PunkCatTop": {
+      "value": 2.8,
+      "value_upgraded": 3.8,
+      "confidence": "medium",
+      "reasoning": "5/7 傷×(1+直播層數)，典型 3 段",
+      "value_multi": 2.8,
+      "value_multi_upgraded": 3.8
+    },
+    "PunkCatSkirt": {
+      "value": 2.4,
+      "value_upgraded": 2.8,
+      "confidence": "medium",
+      "reasoning": "8(+4 直播)傷+易傷+分數",
+      "value_multi": 2.4,
+      "value_multi_upgraded": 2.8
+    },
+    "PunkCatShoes": {
+      "value": 2.1,
+      "value_upgraded": 2.75,
+      "confidence": "medium",
+      "reasoning": "9/13(+4 直播)傷+1000 分",
+      "value_multi": 2.1,
+      "value_multi_upgraded": 2.75
+    },
+    "CybercatHeadwear": {
+      "value": 1.2,
+      "value_upgraded": 1.2,
+      "confidence": "low",
+      "reasoning": "粉絲數格檔偏低+5000 分；升級降費",
+      "value_multi": 2.4,
+      "value_multi_upgraded": 2.4
+    },
+    "CybercatTop": {
+      "value": 4.3,
+      "value_upgraded": 5.3,
+      "confidence": "medium",
+      "reasoning": "10/15 格檔+2 躲藏",
+      "value_multi": 4.3,
+      "value_multi_upgraded": 5.3
+    },
+    "CybercatSkirt": {
+      "value": 2.25,
+      "value_upgraded": 2.85,
+      "confidence": "medium",
+      "reasoning": "5/8+躲藏層數格檔，抽 1",
+      "value_multi": 2.25,
+      "value_multi_upgraded": 2.85
+    },
+    "CybercatShoes": {
+      "value": 2.4,
+      "value_upgraded": 3.2,
+      "confidence": "medium",
+      "reasoning": "8/12(+4 直播)格檔",
+      "value_multi": 2.4,
+      "value_multi_upgraded": 3.2
+    },
+    "MysteriousCatHeadwear": {
+      "value": 1.65,
+      "value_upgraded": 2.15,
+      "confidence": "medium",
+      "reasoning": "1 躲藏+抽 1/2",
+      "value_multi": 1.65,
+      "value_multi_upgraded": 2.15
+    },
+    "MysteriousCatTop": {
+      "value": 2.0,
+      "value_upgraded": 2.5,
+      "confidence": "medium",
+      "reasoning": "1 躲藏、消耗 1 手牌、抽 1/2",
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.5
+    },
+    "MysteriousCatPants": {
+      "value": 3.0,
+      "value_upgraded": 3.75,
+      "confidence": "low",
+      "reasoning": "每名粉絲抽 1(2)+1 能量，典型 1.5 粉絲",
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.75
+    },
+    "MysteriousCatShoes": {
+      "value": 0.95,
+      "value_upgraded": 1.15,
+      "confidence": "low",
+      "reasoning": "0 費，直播時 +1 能量",
+      "value_multi": 0.95,
+      "value_multi_upgraded": 1.15
+    },
+    "CutieCatsHeadwear": {
+      "value": 1.0,
+      "value_upgraded": 1.3,
+      "confidence": "medium",
+      "reasoning": "1/2 虛弱、消耗 1 手牌，直播加易傷",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.3
+    },
+    "CutieCatsTop": {
+      "value": 0.8,
+      "value_upgraded": 0.8,
+      "confidence": "medium",
+      "reasoning": "0 費 1 易傷+1 虛弱",
+      "value_multi": 0.8,
+      "value_multi_upgraded": 0.8
+    },
+    "CutieCatsPants": {
+      "value": 2.3,
+      "value_upgraded": 3.6,
+      "confidence": "medium",
+      "reasoning": "全體 3/5 中毒+3/5 灼燒",
+      "value_multi": 2.3,
+      "value_multi_upgraded": 3.6
+    },
+    "CutieCatsShoes": {
+      "value": 3.2,
+      "value_upgraded": 3.2,
+      "confidence": "low",
+      "reasoning": "暈眩攻擊意圖敵人約免一次攻擊+5000 分；升級降費",
+      "value_multi": 3.2,
+      "value_multi_upgraded": 3.2
+    }
+  },
+  "source": "mod"
+}

@@ -1,0 +1,221 @@
+{
+  "character": "ShitoAlisa",
+  "assumptions": [
+    "單人模式、戰鬥約6回合、能力牌第2回合打出",
+    "BurnPower 不遞減：每層於敵方回合開始造成等量傷害直到戰鬥結束，扣除過殺/早死後每層約0.4",
+    "LegIrons 中期約 Lv2：每層火球環繞額外給5魔女化；火球環繞每層吸收3點失血（上限12層）",
+    "平均火球環繞層數約3；燃燒標記卡在手牌中的機率中等，點火期望價值約0.3",
+    "多人：4人隊、隊友為一般Manosaba角色；敵人血量高、戰鬥較長，不遞減灼燒價值約+10~20%",
+    "本池無指定隊友或給予隊友的效果；ThisIsFine 也放大隊友施加的灼燒(×1.3)；FinalCountdown 在高血量戰鬥更難兌現(×0.8)",
+    "LetHeartBurn 僅多人：以約40點失血轉全體灼燒、自身瀕死風險及臨終訊息估值"
+  ],
+  "mechanic_values": {
+    "灼燒": "每層約0.4；不遞減，平均剩餘約3-4次觸發，扣除敵人早死與過殺",
+    "火球環繞": "每層約0.6：吸收3失血(~0.35)+LegIrons Lv2 5魔女化(~0.25)",
+    "燃燒標記(附加3)": "約0.5：被抽3次或點火歸零時免費自動打出並給1火球環繞，再重置",
+    "點火": "約0.3：需手牌有燃燒卡，歸零時免費打出該卡",
+    "魔女化": "每層0.07"
+  },
+  "cards": {
+    "StrikeShitoAlisa": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "6/9傷害",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5
+    },
+    "DefendShitoAlisa": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "5/8格檔",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6
+    },
+    "TraumaShitoAlisa": {
+      "value": 0.7,
+      "value_upgraded": 1.05,
+      "confidence": "high",
+      "reasoning": "10/15魔女化",
+      "value_multi": 0.7,
+      "value_multi_upgraded": 1.05
+    },
+    "EmberSpark": {
+      "value": 1.5,
+      "value_upgraded": 2.0,
+      "confidence": "medium",
+      "reasoning": "5格檔+替1/2張手牌附加燃燒3",
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.0
+    },
+    "Lighter": {
+      "value": 1.5,
+      "value_upgraded": 2.3,
+      "confidence": "medium",
+      "reasoning": "3/5不遞減灼燒+點火1張燃燒卡",
+      "value_multi": 1.68,
+      "value_multi_upgraded": 2.58
+    },
+    "BurnCap": {
+      "value": 2.6,
+      "value_upgraded": 3.4,
+      "confidence": "medium",
+      "reasoning": "5/7灼燒+1火球環繞(含LegIrons魔女化)",
+      "value_multi": 2.86,
+      "value_multi_upgraded": 3.74
+    },
+    "CounterViolence": {
+      "value": 1.9,
+      "value_upgraded": 2.7,
+      "confidence": "medium",
+      "reasoning": "8/12格檔+點火",
+      "value_multi": 1.9,
+      "value_multi_upgraded": 2.7
+    },
+    "FireSword": {
+      "value": 3.0,
+      "value_upgraded": 3.7,
+      "confidence": "medium",
+      "reasoning": "6傷+5灼燒；升級8傷+6灼燒",
+      "value_multi": 3.3,
+      "value_multi_upgraded": 4.07
+    },
+    "SnakeFire": {
+      "value": 3.3,
+      "value_upgraded": 3.8,
+      "confidence": "medium",
+      "reasoning": "7灼燒+附加燃燒3於1/2張手牌",
+      "value_multi": 3.7,
+      "value_multi_upgraded": 4.26
+    },
+    "DisasterGirl": {
+      "value": 4.2,
+      "value_upgraded": 6.6,
+      "confidence": "low",
+      "reasoning": "每施加5灼燒對隨機敵造成7/11傷，估約4~5次觸發",
+      "value_multi": 5.04,
+      "value_multi_upgraded": 7.92
+    },
+    "FinalCountdown": {
+      "value": 1.0,
+      "value_upgraded": 1.0,
+      "confidence": "low",
+      "reasoning": "自傷20，倒數20回合後強制勝利，燃燒歸零可加速；一般戰鬥難兌現",
+      "value_multi": 0.8,
+      "value_multi_upgraded": 0.8
+    },
+    "FireJudgementCourt": {
+      "value": 8.0,
+      "value_upgraded": 8.0,
+      "confidence": "medium",
+      "reasoning": "全體10灼燒+依魔女化/100額外立即引爆灼燒最多3次",
+      "value_multi": 9.6,
+      "value_multi_upgraded": 9.6
+    },
+    "FireOnFire": {
+      "value": 3.1,
+      "value_upgraded": 4.1,
+      "confidence": "medium",
+      "reasoning": "目標須已有灼燒(~80%)：9/12灼燒+點火",
+      "value_multi": 3.56,
+      "value_multi_upgraded": 4.71
+    },
+    "FireTornado": {
+      "value": 3.8,
+      "value_upgraded": 5.9,
+      "confidence": "medium",
+      "reasoning": "X=3：全體3/6傷×X次+全體X灼燒",
+      "value_multi": 4.18,
+      "value_multi_upgraded": 6.49
+    },
+    "Flaming": {
+      "value": 3.6,
+      "value_upgraded": 4.8,
+      "confidence": "medium",
+      "reasoning": "全體4/6灼燒+1火球；自帶燃燒2可免費重複打出",
+      "value_multi": 4.14,
+      "value_multi_upgraded": 5.52
+    },
+    "LetHeartBurn": {
+      "value": 0.0,
+      "value_upgraded": 0.0,
+      "confidence": "high",
+      "reasoning": "多人限定：HP降至1，失血(~40)轉全體灼燒，另給升級版臨終訊息；單人0",
+      "value_multi": 9.0,
+      "value_multi_upgraded": 9.0
+    },
+    "LoveFlame": {
+      "value": 0.3,
+      "value_upgraded": 1.3,
+      "confidence": "medium",
+      "reasoning": "消耗2火球環繞換1/2能量",
+      "value_multi": 0.3,
+      "value_multi_upgraded": 1.3
+    },
+    "MagicianRed": {
+      "value": 2.4,
+      "value_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "需並消耗4火球：20傷+暈眩一回合",
+      "value_multi": 2.4,
+      "value_multi_upgraded": 2.4
+    },
+    "RestrictionRelease": {
+      "value": 8.5,
+      "value_upgraded": 8.5,
+      "confidence": "low",
+      "reasoning": "消耗全部手牌，生成8張0費5傷火球；燃燒3可免費觸發",
+      "value_multi": 8.5,
+      "value_multi_upgraded": 8.5
+    },
+    "ScaldingTouch": {
+      "value": 4.5,
+      "value_upgraded": 6.6,
+      "confidence": "low",
+      "reasoning": "攻擊造成未格檔傷害時施加1/2灼燒+5魔女化，估7次",
+      "value_multi": 5.17,
+      "value_multi_upgraded": 7.59
+    },
+    "Scorching": {
+      "value": 4.6,
+      "value_upgraded": 8.5,
+      "confidence": "medium",
+      "reasoning": "每回合全體1/2累積不遞減灼燒+1/2火球環繞",
+      "value_multi": 5.52,
+      "value_multi_upgraded": 10.2
+    },
+    "SpreadBurn": {
+      "value": 2.5,
+      "value_upgraded": 2.9,
+      "confidence": "low",
+      "reasoning": "複製目標灼燒到其他敵人，單體戰無效；每擴散給1/2火球",
+      "value_multi": 2.88,
+      "value_multi_upgraded": 3.33
+    },
+    "SweepUp": {
+      "value": 1.6,
+      "value_upgraded": 2.1,
+      "confidence": "high",
+      "reasoning": "抽2/3+1火球環繞",
+      "value_multi": 1.6,
+      "value_multi_upgraded": 2.1
+    },
+    "ThisIsFine": {
+      "value": 5.3,
+      "value_upgraded": 8.5,
+      "confidence": "medium",
+      "reasoning": "敵人灼燒每回合額外觸發1/2次，不遞減灼燒下約翻倍",
+      "value_multi": 6.89,
+      "value_multi_upgraded": 11.05
+    },
+    "YouAreWeakEma": {
+      "value": 2.3,
+      "value_upgraded": 3.3,
+      "confidence": "medium",
+      "reasoning": "5+3/5×火球層數傷害，估3層",
+      "value_multi": 2.3,
+      "value_multi_upgraded": 3.3
+    }
+  }
+}

@@ -1,0 +1,417 @@
+<title>Manosaba 卡牌強度</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* 版面：頂部摘要 → 角色總覽長條圖 → 稀有度熱圖 → 卡牌清單；以「相對強度 1.00 = 原版同稀有度中位數」為唯一刻度 */
+:root {
+  --bg: #f3f5f7; --panel: #ffffff; --fg: #1b2430; --muted: #5d6b7a; --line: #d8dee5;
+  --accent: #0f7b78; --accent-soft: #d9efee;
+  --strong: #c2581b; --strong-soft: #fbe5d6; --weak: #2f62b5; --weak-soft: #dde7f7;
+  --mod: #0f7b78; --orig: #6b7685; --beta: #9a6a00;
+  --font-body: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif;
+  --font-display: "Space Grotesk", "Noto Sans TC", sans-serif;
+  --font-mono: "JetBrains Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11161c; --panel: #19212a; --fg: #e4e9ef; --muted: #93a1b0; --line: #2c3742;
+  --accent: #4fc3bd; --accent-soft: #163a3a; --strong: #f08a4b; --strong-soft: #3d2618;
+  --weak: #7fa8ee; --weak-soft: #1b2a44; --mod: #4fc3bd; --orig: #8f9aa8; --beta: #e0b24a; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #11161c; --panel: #19212a; --fg: #e4e9ef; --muted: #93a1b0; --line: #2c3742;
+  --accent: #4fc3bd; --accent-soft: #163a3a; --strong: #f08a4b; --strong-soft: #3d2618;
+  --weak: #7fa8ee; --weak-soft: #1b2a44; --mod: #4fc3bd; --orig: #8f9aa8; --beta: #e0b24a; color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 14px; line-height: 1.55; margin: 0 }
+.wrap { max-width: 1240px; margin: 0 auto; padding-block: 28px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 28px }
+h1, h2 { font-family: var(--font-display); text-wrap: balance; margin: 0 }
+h1 { font-size: 30px; letter-spacing: -.01em }
+h2 { font-size: 19px }
+.sub { color: var(--muted); max-width: 75ch; margin: 6px 0 0 }
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums }
+section { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 20px; display: grid; gap: 14px; min-width: 0 }
+.head { display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between }
+.controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden }
+.seg button { border: 0; background: transparent; color: var(--fg); padding: 6px 12px; font: inherit; cursor: pointer }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--panel) }
+.seg button:focus-visible, select:focus-visible, input:focus-visible, th button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+label.f { display: inline-flex; gap: 6px; align-items: center; color: var(--muted); font-size: 13px }
+select, input { font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px }
+input[type="number"] { width: 72px }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; color: var(--muted); font-size: 12px }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px }
+/* 長條圖 */
+.bars { display: grid; gap: 6px }
+.bar-row { display: grid; grid-template-columns: 150px 1fr 220px; gap: 10px; align-items: center }
+.bar-name { font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.bar-name small { color: var(--muted); font-weight: 400; margin-left: 4px }
+.track { position: relative; height: 18px; background: var(--bg); border-radius: 4px }
+.track .fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 4px }
+.track .ref { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--fg); opacity: .55 }
+.bar-meta { display: flex; gap: 10px; color: var(--muted); font-size: 12px; justify-content: flex-end }
+.bar-meta b { color: var(--fg); font-size: 14px }
+.axis { display: grid; grid-template-columns: 150px 1fr 220px; gap: 10px; color: var(--muted); font-size: 11px }
+.axis .ticks { position: relative; height: 14px }
+.axis .ticks span { position: absolute; transform: translateX(-50%) }
+/* 表格 */
+.scroll { overflow-x: auto; min-width: 0 }
+table { border-collapse: collapse; width: 100% }
+th, td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap }
+th { font-size: 12px; color: var(--muted); font-weight: 500; position: sticky; top: 0; background: var(--panel) }
+th button { all: unset; cursor: pointer }
+th button::after { content: attr(data-dir); margin-left: 3px; color: var(--accent) }
+td.r, th.r { text-align: right }
+tr.card-row { cursor: pointer }
+tr.card-row:hover td { background: var(--bg) }
+tr.detail td { white-space: normal; color: var(--muted); font-size: 13px; background: var(--bg); max-width: 0 }
+.why { color: var(--text, inherit); line-height: 1.7 }
+.why b { color: var(--text, inherit) }
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px 20px; margin-top: 6px }
+.why-grid ul { margin: 4px 0 0; padding-left: 18px }
+.why-notes { margin-top: 8px; padding-top: 6px; border-top: 1px dashed var(--line, #8884) }
+.heat td.cell { text-align: center; font-family: var(--font-mono); font-variant-numeric: tabular-nums; min-width: 78px }
+.heat td.cell small { display: block; color: var(--muted); font-size: 10px; font-family: var(--font-body) }
+.pill { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; border: 1px solid var(--line) }
+.pill.strong { background: var(--strong-soft); color: var(--strong); border-color: transparent }
+.pill.weak { background: var(--weak-soft); color: var(--weak); border-color: transparent }
+.pill.special { background: var(--accent-soft); color: var(--accent); border-color: transparent }
+.src { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px }
+.conf-low { color: var(--strong) } .conf-high { color: var(--accent) }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px }
+.stat { border-left: 3px solid var(--line); padding: 2px 0 2px 10px }
+.stat b { display: block; font-family: var(--font-mono); font-size: 20px }
+.stat span { color: var(--muted); font-size: 12px }
+.note { color: var(--muted); font-size: 12.5px; max-width: 90ch }
+.empty { color: var(--muted); padding: 20px; text-align: center }
+.findings { border-color: var(--accent) }
+.findings ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; max-width: 95ch }
+.findings h3 { font-family: var(--font-display); font-size: 15px; margin: 6px 0 0 }
+@media (max-width: 720px) {
+  .bar-row, .axis { grid-template-columns: 92px 1fr 64px }
+  .bar-meta span:not(.main) { display: none }
+}
+@media (prefers-reduced-motion: no-preference) { .track .fill { transition: width .25s ease } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Manosaba 卡牌強度</h1>
+    <p class="sub">每張卡的分數 = 效果價值（能量單位）× 關鍵字係數 ÷ 有效費用；相對強度 1.00 代表原版正式版同稀有度卡的中位數。模組與原版的能力牌、條件效果由各角色的分析 agent 估值，純數值卡由腳本自動計算。</p>
+  </header>
+
+  <section aria-labelledby="fd-title" class="findings">
+    <h2 id="fd-title">重點結論</h2>
+    __FINDINGS__
+  </section>
+
+  <section aria-labelledby="ov-title">
+    <div class="head">
+      <h2 id="ov-title">角色總覽</h2>
+      <div class="controls">
+        <div class="seg" role="group" aria-label="分數模式" id="mode">
+          <button type="button" data-mode="score" aria-pressed="true">合併</button>
+          <button type="button" data-mode="solo" aria-pressed="false">單人</button>
+          <button type="button" data-mode="multi" aria-pressed="false">多人</button>
+        </div>
+        <label class="f" for="thStrong">偏強門檻 ≥ <input id="thStrong" type="number" step="0.1" value="1.8"></label>
+        <label class="f" for="thWeak">偏弱門檻 ≤ <input id="thWeak" type="number" step="0.1" value="0.5"></label>
+        <label class="f" for="noLow"><input id="noLow" type="checkbox"> 排除 agent 低信心卡（角色總覽與分組比較）</label>
+      </div>
+    </div>
+    <div class="stats" id="stats"></div>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--mod)"></i>Manosaba 模組</span>
+      <span><i class="dot" style="background:var(--orig)"></i>原版正式版</span>
+      <span><i class="dot" style="background:var(--beta)"></i>原版 beta（愚者）</span>
+      <span>直線 = 原版中位數 1.00</span>
+    </div>
+    <div class="axis" aria-hidden="true"><span></span><div class="ticks" id="ticks"></div><span></span></div>
+    <div class="bars" id="bars"></div>
+    <p class="note">每位角色取卡牌相對強度的中位數（卡牌強度右偏，平均值會被少數強卡拉高）；不含 Ancient 特殊卡（魔女化 100 層後取得的卡、瑪格集齊後的「世界」）與精神創傷；瑪格的大阿爾克那以「普通＋罕見＋稀有」合併基準比較。多人限定卡不計入單人分數。點角色名可在下方卡牌清單篩選該角色。</p>
+  </section>
+
+  <section aria-labelledby="hm-title">
+    <div class="head">
+      <h2 id="hm-title">分組比較</h2>
+      <div class="seg" role="group" aria-label="分組方式" id="heatDim">
+        <button type="button" data-dim="bucket" aria-pressed="true">依稀有度</button>
+        <button type="button" data-dim="type" aria-pressed="false">依卡牌類型</button>
+      </div>
+    </div>
+    <p class="note">每格 = 該角色該組卡牌的相對強度中位數（下方小字為張數）；顏色以 1.00 為中心，橘色偏強、藍色偏弱。</p>
+    <div class="scroll"><table class="heat" id="heat"></table></div>
+  </section>
+
+  <section aria-labelledby="cards-title">
+    <div class="head">
+      <h2 id="cards-title">卡牌清單</h2>
+      <span class="note" id="cardCount"></span>
+    </div>
+    <div class="controls">
+      <label class="f" for="fSearch">搜尋 <input id="fSearch" type="search" placeholder="卡名或類別名"></label>
+      <label class="f" for="fSource">來源 <select id="fSource"><option value="">全部</option><option value="mod">模組</option><option value="original">原版</option><option value="original-beta">beta</option></select></label>
+      <label class="f" for="fPool">角色 <select id="fPool"><option value="">全部</option></select></label>
+      <label class="f" for="fRarity">稀有度 <select id="fRarity"><option value="">全部</option></select></label>
+      <label class="f" for="fFlag">標記 <select id="fFlag"><option value="">全部</option><option value="strong">偏強</option><option value="weak">偏弱</option><option value="special">Ancient 特殊</option><option value="mp">多人限定</option><option value="none">無法評分</option></select></label>
+      <label class="f" for="fConf">信心 <select id="fConf"><option value="">全部</option><option value="auto">腳本自動</option><option value="agent-high">agent 高</option><option value="agent-medium">agent 中</option><option value="agent-low">agent 低</option><option value="manual">需手動</option></select></label>
+    </div>
+    <div class="scroll"><table id="cards"></table></div>
+  </section>
+
+  <section aria-labelledby="cal-title">
+    <h2 id="cal-title">基準與校準</h2>
+    <div class="stats" id="calStats"></div>
+    <div class="scroll"><table id="baseTable"></table></div>
+    <h2 style="font-size:16px">交叉審核偏差修正</h2>
+    <p class="note">各卡池由不同 agent 估值，鬆緊不一。兩位審核員以同一把尺抽樣評分所有卡池，「審核值 ÷ 原估值」的中位數即該卡池的估值偏差（以原版正式版平均為 ×1.00）；樣本少時係數往 1 收斂，再套用到該卡池所有 agent 估值的卡。</p>
+    <div class="scroll"><table id="biasTable"></table></div>
+    <p class="note">有效費用與關鍵字係數由原版「腳本自動計算」的卡反推（假設原版多數卡強度相近）；消耗固定 ×0.85。類型係數讓原版攻擊／技能／能力三類的中位數一致。合併分數 = 單人 × 單人權重 + 多人 × 多人權重。權重與機制價值可在 tools/card_score/weights.json 調整後重跑 card_score.py 與 build_report.py。</p>
+  </section>
+</div>
+
+<script id="report-data" type="application/json">__REPORT_DATA__</script>
+<script>
+(() => {
+  const NAMES = {
+    Common: "共用", HasumiLeia: "蓮見蕾亞", HikamiMeruru: "冰上梅露露", HoshoMago: "寶生瑪格", JogasakiNoah: "城崎諾亞",
+    KurobeNanoka: "黑部奈葉香", NatsumeAnan: "夏目安安", NikaidoHiro: "二階堂希羅", SaekiMiria: "佐伯米莉亞",
+    SakurabaEma: "櫻羽艾瑪", SawatariCoco: "澤渡可可", ShitoAlisa: "紫藤亞里莎", TachibanaSherry: "橘雪莉", TonoHanna: "遠野漢娜",
+    Ironclad: "鐵甲戰士", Silent: "寂靜獵手", Defect: "故障機器人", Necrobinder: "縛亡者", Regent: "儲君", Colorless: "無色",
+    Fool: "愚者", Deprecated: "已停用"
+  };
+  const RARITY = { Basic: "基本", Common: "普通", Uncommon: "罕見", Rare: "稀有", Normal: "塔羅（一般）", Ancient: "Ancient" };
+  const BUCKETS = ["Basic", "Common", "Uncommon", "Rare", "Normal"];
+  const SRC_COLOR = { mod: "var(--mod)", original: "var(--orig)", "original-beta": "var(--beta)" };
+  const MODE_FIELD = { score: "relative", solo: "rel_solo", multi: "rel_multi" };
+  const MODE_SCORE = { score: "score", solo: "solo", multi: "multi" };
+  const $ = (id) => document.getElementById(id);
+  const fmt = (x, d = 2) => x == null ? "–" : Number(x).toFixed(d);
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem("cs-" + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+    set(k, v) { try { localStorage.setItem("cs-" + k, JSON.stringify(v)); } catch {} }
+  };
+  const state = { mode: store.get("mode", "score"), dim: store.get("dim", "bucket"), sort: store.get("sort", { key: "rel", dir: -1 }), open: new Set() };
+  let DATA = null;
+
+  const relOf = (c) => c[MODE_FIELD[state.mode]];
+  const thS = () => parseFloat($("thStrong").value) || 1.8;
+  const thW = () => parseFloat($("thWeak").value) || 0.5;
+  const flagOf = (c) => {
+    if (c.bucket === "Ancient") return "special";
+    const r = relOf(c);
+    if (r == null) return "none";
+    if (r >= thS()) return "strong";
+    if (r <= thW()) return "weak";
+    return "";
+  };
+  const counted = (c) => c.bucket !== "Ancient" && relOf(c) != null;
+  const mean = (xs) => xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : null;
+  const median = (xs) => { if (!xs.length) return null; const s = [...xs].sort((a, b) => a - b), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+  const heatColor = (v) => {
+    if (v == null) return "transparent";
+    const t = Math.max(-1, Math.min(1, Math.log2(v)));   // 0.5 → -1, 1 → 0, 2 → +1
+    const pct = Math.round(Math.abs(t) * 70);
+    return t >= 0 ? `color-mix(in srgb, var(--strong) ${pct}%, transparent)` : `color-mix(in srgb, var(--weak) ${pct}%, transparent)`;
+  };
+
+  function groups() {
+    const g = new Map();
+    for (const c of DATA.cards) {
+      if (c.pool === "Deprecated") continue;
+      if (state.noLow && c.confidence === "agent-low") continue;
+      const k = c.source + "|" + c.pool;
+      if (!g.has(k)) g.set(k, { source: c.source, pool: c.pool, cards: [] });
+      g.get(k).cards.push(c);
+    }
+    return [...g.values()];
+  }
+
+  function renderOverview() {
+    const rows = groups().map((g) => {
+      const cs = g.cards.filter(counted);
+      return { ...g, avg: median(cs.map(relOf)), n: cs.length,
+        strong: cs.filter((c) => relOf(c) >= thS()).length, weak: cs.filter((c) => relOf(c) <= thW()).length };
+    }).filter((r) => r.avg != null).sort((a, b) => b.avg - a.avg);
+    const max = Math.max(2, Math.ceil(Math.max(...rows.map((r) => r.avg)) * 2) / 2);
+    const pos = (v) => (v / max * 100).toFixed(2) + "%";
+    $("ticks").innerHTML = Array.from({ length: max * 2 + 1 }, (_, i) => i / 2)
+      .map((v) => `<span class="num" style="left:${pos(v)}">${v.toFixed(1)}</span>`).join("");
+    $("bars").innerHTML = rows.map((r) => `
+      <div class="bar-row">
+        <a class="bar-name" href="#cards-title" data-pool="${r.pool}" title="${esc(r.pool)}">${esc(NAMES[r.pool] || r.pool)}<small>${r.source === "mod" ? "" : r.source === "original" ? "原版" : "beta"}</small></a>
+        <div class="track"><div class="fill" style="width:${pos(r.avg)};background:${SRC_COLOR[r.source]}"></div><div class="ref" style="left:${pos(1)}"></div></div>
+        <div class="bar-meta"><span class="main"><b class="num">${fmt(r.avg)}</b></span><span class="num">${r.n} 張</span><span class="num" style="color:var(--strong)">強 ${r.strong}</span><span class="num" style="color:var(--weak)">弱 ${r.weak}</span></div>
+      </div>`).join("");
+    $("bars").querySelectorAll("a[data-pool]").forEach((a) => a.addEventListener("click", () => { $("fPool").value = a.dataset.pool; renderCards(); }));
+
+    const modR = rows.filter((r) => r.source === "mod" && r.pool !== "Common");
+    const oriR = rows.filter((r) => r.source === "original" && r.pool !== "Colorless");
+    const beta = rows.find((r) => r.source === "original-beta");
+    $("stats").innerHTML = [
+      ["模組角色（中位數的平均）", fmt(mean(modR.map((r) => r.avg))), `${modR.length} 位角色`],
+      ["原版角色（中位數的平均）", fmt(mean(oriR.map((r) => r.avg))), `${oriR.length} 位角色`],
+      ["愚者（beta）", fmt(beta?.avg), "不納入原版基準"],
+      ["最強模組角色", esc(NAMES[modR[0]?.pool] || "–"), fmt(modR[0]?.avg)],
+      ["最弱模組角色", esc(NAMES[modR.at(-1)?.pool] || "–"), fmt(modR.at(-1)?.avg)],
+    ].map(([k, v, s]) => `<div class="stat"><span>${k}</span><b>${v}</b><span class="num">${s}</span></div>`).join("");
+  }
+
+  const TYPES = { Attack: "攻擊", Skill: "技能", Power: "能力" };
+  function renderHeat() {
+    const byType = state.dim === "type";
+    document.querySelectorAll("#heatDim button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.dim === state.dim)));
+    const rows = groups().sort((a, b) => (a.source === b.source ? 0 : a.source === "mod" ? -1 : 1) || (NAMES[a.pool] || a.pool).localeCompare(NAMES[b.pool] || b.pool, "zh-Hant"));
+    const cols = byType ? Object.keys(TYPES) : BUCKETS;
+    const label = (k) => byType ? TYPES[k] : RARITY[k];
+    const head = `<tr><th>角色</th>${cols.map((b) => `<th class="r">${label(b)}</th>`).join("")}${byType ? "" : `<th class="r">Ancient（參考）</th>`}<th class="r">整體</th></tr>`;
+    const body = rows.map((g) => {
+      const cell = (cs) => { const v = median(cs.map(relOf)); return v == null ? `<td class="cell">–</td>` : `<td class="cell" style="background:${heatColor(v)}">${fmt(v)}<small>${cs.length} 張</small></td>`; };
+      const by = (k) => g.cards.filter((c) => (byType ? c.type === k && c.bucket !== "Ancient" : c.bucket === k) && relOf(c) != null);
+      const anc = g.cards.filter((c) => c.bucket === "Ancient" && relOf(c) != null);
+      return `<tr><td><i class="src" style="background:${SRC_COLOR[g.source]}"></i>${esc(NAMES[g.pool] || g.pool)}</td>${cols.map((k) => cell(by(k))).join("")}${byType ? "" : cell(anc)}${cell(g.cards.filter(counted))}</tr>`;
+    }).join("");
+    $("heat").innerHTML = `<thead>${head}</thead><tbody>${body}</tbody>`;
+  }
+
+  const COLS = [
+    ["pool", "角色"], ["title", "卡名"], ["rarity", "稀有度"], ["type", "類型"], ["cost", "費", "r"],
+    ["solo", "單人", "r"], ["multi", "多人", "r"], ["score", "合併", "r"], ["upg", "升級後", "r"],
+    ["rel", "相對強度", "r"], ["percentile", "百分位", "r"], ["confidence", "信心"], ["flag", "標記"]
+  ];
+  // ---- 比對依據：分數拆解＋同級原版對照卡 ----
+  const isRef = (c) => c.source === "original" && c.pool !== "Colorless" && c.relative != null && c.raw != null && c.bucket !== "Ancient" && c.bucket !== "Basic";
+  const sameBucket = (c, o) => c.bucket === "Normal" ? ["Common", "Uncommon", "Rare"].includes(o.bucket) : o.bucket === c.bucket;
+  const costKey = (x) => Math.min(Math.max(Number(x) || 0, 0), 3);
+  const ecOf = (cost) => { const e = DATA.calibration.eff_cost || {}; return e[String(costKey(cost))] ?? 1; };
+  const kwOf = (c) => c.keywords.reduce((m, k) => (k === "Exhaust" && c.type === "Power") ? m : m * ((DATA.calibration.kw_mult || {})[k] ?? 1), 1);
+  const refLine = (o) => `<li>${esc(o.title || o.name)} <span class="note">${esc(NAMES[o.pool] || o.pool)}・${RARITY[o.bucket]}・${o.cost} 費</span>：效果值 <b class="num">${fmt(o.raw)}</b>，相對 <b class="num">${fmt(o.relative)}</b></li>`;
+  function explain(c) {
+    if (c.score == null || c.raw == null) return `<div class="why"><b>比對依據</b>：此卡無法評分，沒有可比較的數值。</div>`;
+    const cal = DATA.calibration, base = (DATA.baseline[c.bucket] || {}).median;
+    const k = kwOf(c), ec = ecOf(c.cost), tf = (cal.type_factor || {})[c.type] ?? 1;
+    const rawS = c.mp === "MultiplayerOnly" ? null : c.raw, rawM = c.raw_multi ?? c.raw;
+    const refs = DATA.cards.filter((o) => isRef(o) && o.type === c.type && sameBucket(c, o));
+    const sameCost = refs.filter((o) => costKey(o.cost) === costKey(c.cost));
+    const pool = sameCost.length >= 3 ? sameCost : refs;
+    const typical = [...pool].sort((a, b) => Math.abs(a.relative - 1) - Math.abs(b.relative - 1)).slice(0, 3);
+    const medRaw = median(pool.map((o) => o.raw));
+    const near = [...pool].sort((a, b) => Math.abs(a.raw - (c.raw_multi ?? c.raw)) - Math.abs(b.raw - (c.raw_multi ?? c.raw))).slice(0, 2);
+    const r = relOf(c), reasons = [];
+    if (medRaw) {
+      const x = (c.mp === "MultiplayerOnly" ? rawM : c.raw) / medRaw;
+      if (x >= 1.4) reasons.push(`效果值是同費用同類型原版卡中位數（${fmt(medRaw)}）的 <b>${fmt(x)} 倍</b>`);
+      else if (x <= 0.7) reasons.push(`效果值只有同費用同類型原版卡中位數（${fmt(medRaw)}）的 <b>${fmt(x)} 倍</b>`);
+    }
+    if (costKey(c.cost) === 0 && r != null && r >= 1.3) reasons.push(`0 費卡的有效費用只算 ${fmt(ec)}，小效果也會得到高分`);
+    if (costKey(c.cost) === 3 && r != null && r <= 0.7) reasons.push(`3 費以上的有效費用為 ${fmt(ec)}（原版 3 費卡本身就很強），效果需要很大才能達標`);
+    if (rawS != null && c.raw_multi != null && c.raw_multi > c.raw * 1.3) reasons.push(`多人效果值 ${fmt(c.raw_multi)} 明顯高於單人 ${fmt(c.raw)}，合併分數被多人拉高`);
+    if (c.mp === "MultiplayerOnly") reasons.push("多人限定卡，只計多人分數");
+    if (k < 0.95) reasons.push(`關鍵字係數 ×${fmt(k)}（${esc(c.keywords.join("、"))}）`);
+    if (k > 1.05) reasons.push(`關鍵字加成 ×${fmt(k)}（${esc(c.keywords.join("、"))}）`);
+    if (c.confidence === "agent-low") reasons.push("估值信心低：效果值依賴牌組或局勢假設（見下方估值理由）");
+    if (!reasons.length) reasons.push("各項數值都接近同級原版卡");
+    const flow = `效果值 ${rawS != null ? `單人 <b class="num">${fmt(rawS)}</b>` : ""}${rawS != null && c.raw_multi != null ? "／" : ""}${c.raw_multi != null || rawS == null ? `多人 <b class="num">${fmt(rawM)}</b>` : ""}
+      × 關鍵字 <b class="num">${fmt(k)}</b> ÷ 有效費用 <b class="num">${fmt(ec)}</b>（${esc(c.cost)} 費）× 類型係數 <b class="num">${fmt(tf)}</b>
+      ＝ 分數 <b class="num">${fmt(c.score)}</b>；÷ 原版${RARITY[c.bucket] || c.bucket}中位數 <b class="num">${fmt(base)}</b> ＝ 相對強度 <b class="num">${fmt(c.relative)}</b>`;
+    return `<div class="why"><b>分數拆解</b>：${flow}
+      <div class="why-grid"><div><b>判讀</b><ul>${reasons.map((x) => `<li>${x}</li>`).join("")}</ul></div>
+      <div><b>同級原版典型卡</b>（相對強度最接近 1.0）<ul>${typical.map(refLine).join("") || "<li>無</li>"}</ul></div>
+      <div><b>效果值相近的原版卡</b><ul>${near.map(refLine).join("") || "<li>無</li>"}</ul></div></div></div>`;
+  }
+
+  function cardRows() {
+    const q = $("fSearch").value.trim().toLowerCase();
+    const f = { source: $("fSource").value, pool: $("fPool").value, rarity: $("fRarity").value, flag: $("fFlag").value, conf: $("fConf").value };
+    return DATA.cards.filter((c) => (!q || (c.title + " " + c.name).toLowerCase().includes(q))
+      && (!f.source || c.source === f.source) && (!f.pool || c.pool === f.pool)
+      && (!f.rarity || c.bucket === f.rarity || c.rarity === f.rarity)
+      && (!f.conf || c.confidence === f.conf)
+      && (!f.flag || (f.flag === "mp" ? c.mp === "MultiplayerOnly" : flagOf(c) === f.flag)));
+  }
+  function renderCards() {
+    const { key, dir } = state.sort;
+    const val = (c) => key === "rel" ? relOf(c) : key === "flag" ? flagOf(c) : key === "pool" ? (NAMES[c.pool] || c.pool) : key === "title" ? (c.title || c.name) : c[key];
+    const rows = cardRows().sort((a, b) => {
+      const x = val(a), y = val(b);
+      if (x == null && y == null) return 0; if (x == null) return 1; if (y == null) return -1;
+      return (typeof x === "number" && typeof y === "number" ? x - y : String(x).localeCompare(String(y), "zh-Hant")) * dir;
+    });
+    $("cardCount").textContent = `${rows.length} 張（點一列看分數拆解、原版對照卡與估值理由）`;
+    const head = `<tr>${COLS.map(([k, l, cls]) => `<th class="${cls || ""}"><button type="button" data-k="${k}" data-dir="${state.sort.key === k ? (dir > 0 ? "▲" : "▼") : ""}">${l}</button></th>`).join("")}</tr>`;
+    const FLAG = { strong: ["偏強", "strong"], weak: ["偏弱", "weak"], special: ["Ancient", "special"], none: ["無法評分", ""], "": ["", ""] };
+    const body = rows.length ? rows.map((c) => {
+      const id = c.source + ":" + c.pool + ":" + c.name;
+      const [fl, fc] = FLAG[flagOf(c)];
+      const conf = c.confidence.replace("agent-", "agent ");
+      const main = `<tr class="card-row" data-id="${esc(id)}">
+        <td><i class="src" style="background:${SRC_COLOR[c.source]}"></i>${esc(NAMES[c.pool] || c.pool)}</td>
+        <td>${esc(c.title || c.name)}${c.title ? ` <span class="note">${esc(c.name)}</span>` : ""}</td>
+        <td>${RARITY[c.bucket] || c.rarity}</td><td>${esc(c.type)}</td><td class="r num">${esc(c.cost)}</td>
+        <td class="r num">${c.mp === "MultiplayerOnly" ? '<span class="note">多人限定</span>' : fmt(c.solo)}</td>
+        <td class="r num">${fmt(c.multi)}</td><td class="r num">${fmt(c.score)}</td><td class="r num">${fmt(c.upg)}</td>
+        <td class="r num"><b>${fmt(relOf(c))}</b></td><td class="r num">${fmt(c.percentile, 0)}</td>
+        <td class="${c.confidence.endsWith("low") ? "conf-low" : c.confidence.endsWith("high") ? "conf-high" : ""}">${esc(conf)}</td>
+        <td>${fl ? `<span class="pill ${fc}">${fl}</span>` : ""}</td></tr>`;
+      const det = state.open.has(id) ? `<tr class="detail"><td colspan="${COLS.length}">${explain(c)}<div class="why-notes"><b>估值理由</b>：${esc(c.notes || "（無備註）")}${c.keywords.length ? `<br>關鍵字：${esc(c.keywords.join("、"))}` : ""}</div></td></tr>` : "";
+      return main + det;
+    }).join("") : `<tr><td colspan="${COLS.length}" class="empty">沒有符合篩選條件的卡。</td></tr>`;
+    $("cards").innerHTML = `<thead>${head}</thead><tbody>${body}</tbody>`;
+    $("cards").querySelectorAll("th button").forEach((b) => b.addEventListener("click", () => {
+      const k = b.dataset.k; state.sort = { key: k, dir: state.sort.key === k ? -state.sort.dir : -1 }; store.set("sort", state.sort); renderCards();
+    }));
+    $("cards").querySelectorAll("tr.card-row").forEach((tr) => tr.addEventListener("click", () => {
+      const id = tr.dataset.id; state.open.has(id) ? state.open.delete(id) : state.open.add(id); renderCards();
+    }));
+  }
+
+  function renderCal() {
+    const cal = DATA.calibration;
+    const [ws, wm] = cal.mode_weights;
+    const TYPE = { Attack: "攻擊", Skill: "技能", Power: "能力" };
+    $("calStats").innerHTML = [
+      ["有效費用 0 / 1 / 2 / 3+", ["0", "1", "2", "3"].map((k) => fmt(cal.eff_cost[k])).join(" / ")],
+      ["關鍵字係數", Object.entries(cal.kw_mult).map(([k, v]) => `${k} ×${fmt(v)}`).join("　")],
+      ["類型係數（原版校準）", Object.entries(cal.type_factor || {}).map(([k, v]) => `${TYPE[k] || k} ×${fmt(v)}`).join("　")],
+      ["合併權重", `單人 ${fmt(ws)}　多人 ${fmt(wm)}`],
+    ].map(([k, v]) => `<div class="stat"><span>${k}</span><b class="num" style="font-size:14px">${v}</b></div>`).join("");
+    const bias = Object.entries(cal.pool_bias || {}).sort((a, b) => b[1].factor - a[1].factor);
+    $("biasTable").innerHTML = bias.length ? `<thead><tr><th>卡池</th><th class="r">審核樣本</th><th class="r">量到的偏差</th><th class="r">套用係數</th></tr></thead><tbody>` +
+      bias.map(([k, b]) => { const [src, pool] = k.split("|");
+        return `<tr><td><i class="src" style="background:${SRC_COLOR[src]}"></i>${esc(NAMES[pool] || pool)}</td><td class="r num">${b.n}</td><td class="r num">×${fmt(b.raw)}</td><td class="r num"><b>×${fmt(b.factor)}</b></td></tr>`; }).join("") + "</tbody>"
+      : `<tbody><tr><td class="empty">尚未進行交叉審核。</td></tr></tbody>`;
+    const order = ["Basic", "Common", "Uncommon", "Rare", "Normal", "Ancient"];
+    $("baseTable").innerHTML = `<thead><tr><th>原版基準</th><th class="r">張數</th><th class="r">P10</th><th class="r">中位數（= 1.00）</th><th class="r">P90</th></tr></thead><tbody>` +
+      order.filter((k) => DATA.baseline[k]).map((k) => { const b = DATA.baseline[k];
+        return `<tr><td>${RARITY[k]}</td><td class="r num">${b.n}</td><td class="r num">${fmt(b.p10)}</td><td class="r num">${fmt(b.median)}</td><td class="r num">${fmt(b.p90)}</td></tr>`; }).join("") + "</tbody>";
+  }
+
+  function renderAll() {
+    document.querySelectorAll("#mode button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.mode === state.mode)));
+    renderOverview(); renderHeat(); renderCards();
+  }
+
+  function init(data) {
+    DATA = data;
+    const pools = [...new Set(data.cards.map((c) => c.pool))].sort((a, b) => (NAMES[a] || a).localeCompare(NAMES[b] || b, "zh-Hant"));
+    $("fPool").insertAdjacentHTML("beforeend", pools.map((p) => `<option value="${p}">${esc(NAMES[p] || p)}</option>`).join(""));
+    $("fRarity").insertAdjacentHTML("beforeend", [...BUCKETS, "Ancient"].map((r) => `<option value="${r}">${RARITY[r]}</option>`).join(""));
+    $("thStrong").value = store.get("thS", 1.8); $("thWeak").value = store.get("thW", 0.5);
+    document.querySelectorAll("#mode button").forEach((b) => b.addEventListener("click", () => { state.mode = b.dataset.mode; store.set("mode", state.mode); renderAll(); }));
+    document.querySelectorAll("#heatDim button").forEach((b) => b.addEventListener("click", () => { state.dim = b.dataset.dim; store.set("dim", state.dim); renderHeat(); }));
+    ["thStrong", "thWeak"].forEach((id) => $(id).addEventListener("input", () => { store.set(id === "thStrong" ? "thS" : "thW", parseFloat($(id).value)); renderAll(); }));
+    state.noLow = store.get("noLow", false) === true; $("noLow").checked = state.noLow;
+    $("noLow").addEventListener("change", () => { state.noLow = $("noLow").checked; store.set("noLow", state.noLow); renderOverview(); renderHeat(); });
+    ["fSearch", "fSource", "fPool", "fRarity", "fFlag", "fConf"].forEach((id) => $(id).addEventListener("input", renderCards));
+    renderCal(); renderAll();
+  }
+
+  try {
+    init(JSON.parse(document.getElementById("report-data").textContent));
+  } catch (e) {
+    document.querySelector(".wrap").insertAdjacentHTML("beforeend", `<section><p class="empty">報告資料讀取失敗（${esc(e.message)}）。請重新執行 build_report.py。</p></section>`);
+  }
+})();
+</script>

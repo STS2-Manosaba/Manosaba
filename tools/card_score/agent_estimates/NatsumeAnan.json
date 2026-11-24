@@ -1,0 +1,236 @@
+{
+  "character": "NatsumeAnan",
+  "assumptions": [
+    "單人模式；GetTeammatesOf 含自身，故洗腦對自己也給額外回合",
+    "Clipboard 等級 1：每回合 +1 言靈、每花 1 言靈得 3 格檔、開戰獲得體弱多病",
+    "起始牌組 3 打擊 3 防禦 + 創傷、靈光一閃、自害吧、教唆；典型牌組每回合言靈收入約 1.5~2",
+    "能力牌假設第 2 回合打出、剩 4.5 回合生效",
+    "古神之書衍生頁卡為 Ancient 稀有度但不在卡庫顯示，仍列出供參考（低信心）",
+    "多人：4 人隊伍、隊友為一般 Manosaba 角色；洗腦全隊 4 人各得額外回合；小說創作需諾亞隊友（機率約 3/13）召喚設定生物；克蘇魯頁升級同時給目標隊友與自己；教唆可挑隊友牌頂略增值；其餘卡多人與單人相同"
+  ],
+  "mechanic_values": {
+    "言靈（獲得）": "每點約 0.8~0.9：花費時遺物回 3 格檔(0.6) + 卡牌轉換盈餘約 0.3（天才想法 1 言靈≈1 能量、教唆、吵死了 X 傷害）；收入過剩時邊際遞減至約 0.65",
+    "言靈（消耗的機會成本）": "淨成本每點約 0.3 = 毛價值 0.9 − 遺物格檔回饋 0.6；卡牌 value 已扣除此淨成本",
+    "體弱多病": "接近中性偏正：狀態牌數量翻倍但複製品虛無+消耗，抽到狀態牌補抽 1 並回 1 血、狀態牌傷害減半；忍耐的暈眩幾乎無害",
+    "自殺(Jigai)": "敵人本回合 -N 力量（約擋 1.5 次攻擊）+ 敵方回合開始受 N 點無法格擋傷害",
+    "魔女化": "每層 0.07；心的 5 張自刎合計 100 層，接近風險線，打折計算"
+  },
+  "cards": {
+    "StrikeNatsumeAnan": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "6/9 傷害",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5
+    },
+    "DefendNatsumeAnan": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "5/8 格檔",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6
+    },
+    "TraumaNatsumeAnan": {
+      "value": 0.7,
+      "value_upgraded": 1.05,
+      "confidence": "medium",
+      "reasoning": "10/15 層魔女化",
+      "value_multi": 0.7,
+      "value_multi_upgraded": 1.05
+    },
+    "FlashOfInspiration": {
+      "value": 1.7,
+      "value_upgraded": 2.5,
+      "confidence": "medium",
+      "reasoning": "+2/3 言靈，每點約 0.85（含日後遺物格檔）",
+      "value_multi": 1.7,
+      "value_multi_upgraded": 2.5
+    },
+    "Instigate": {
+      "value": 0.9,
+      "value_upgraded": 1.4,
+      "confidence": "medium",
+      "reasoning": "1 言靈自動打出抽牌堆頂牌，約等於免費抽打一張；升級加下回合抽 1",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6
+    },
+    "Jigaishiro": {
+      "value": 1.9,
+      "value_upgraded": 3.0,
+      "confidence": "medium",
+      "reasoning": "1 言靈：敵 -5/-8 暫時力量減傷+敵方回合開始 5/8 傷害",
+      "value_multi": 1.9,
+      "value_multi_upgraded": 3.0
+    },
+    "Reading": {
+      "value": 1.3,
+      "value_upgraded": 2.1,
+      "confidence": "medium",
+      "reasoning": "+1/2 言靈並抽 1",
+      "value_multi": 1.3,
+      "value_multi_upgraded": 2.1
+    },
+    "Bocchan": {
+      "value": 4.5,
+      "value_upgraded": 6.0,
+      "confidence": "low",
+      "reasoning": "每回合 +2/3 言靈約 4.5 回合，收入過剩邊際遞減至每點約 0.65",
+      "value_multi": 4.5,
+      "value_multi_upgraded": 6.0
+    },
+    "Endurance": {
+      "value": 3.0,
+      "value_upgraded": 3.8,
+      "confidence": "medium",
+      "reasoning": "+4/5 言靈；暈眩經體弱多病變兩張但抽到即補抽回血，負面極小",
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.8
+    },
+    "GeniusIdea": {
+      "value": 1.4,
+      "value_upgraded": 2.4,
+      "confidence": "high",
+      "reasoning": "2 言靈換 2/3 能量，扣淨成本 0.6",
+      "value_multi": 1.4,
+      "value_multi_upgraded": 2.4
+    },
+    "Nandato": {
+      "value": 2.0,
+      "value_upgraded": 3.2,
+      "confidence": "medium",
+      "reasoning": "2 言靈：抽 2/3 張，依抽到牌費用每點 5 格檔（安安牌組多 0 費）",
+      "value_multi": 2.0,
+      "value_multi_upgraded": 3.2
+    },
+    "Nanigaiitai": {
+      "value": 2.2,
+      "value_upgraded": 3.6,
+      "confidence": "high",
+      "reasoning": "2 言靈：全體 8/10 傷害+虛弱易傷 1/2",
+      "value_multi": 2.2,
+      "value_multi_upgraded": 3.6
+    },
+    "NovelCreation": {
+      "value": 2.5,
+      "value_upgraded": 3.1,
+      "confidence": "medium",
+      "reasoning": "5 言靈換 3 能量+5/8 格檔；諾亞召喚單人無效",
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.6
+    },
+    "PaperMaking": {
+      "value": 1.8,
+      "value_upgraded": 2.6,
+      "confidence": "medium",
+      "reasoning": "消耗 1 張手牌(可清狀態牌)+2/3 言靈",
+      "value_multi": 1.8,
+      "value_multi_upgraded": 2.6
+    },
+    "Urusai": {
+      "value": 1.2,
+      "value_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "X 言靈(約 4)隨機 4/6 傷害 X 次，加遺物格檔，扣毛成本",
+      "value_multi": 1.2,
+      "value_multi_upgraded": 2.4
+    },
+    "Kokoro": {
+      "value": 4.0,
+      "value_upgraded": 4.0,
+      "confidence": "low",
+      "reasoning": "5 張 0 費抽 1 自刎（自傷免疫）各 20 魔女化，約抽到 4 張；接近 100 層打折",
+      "value_multi": 4.0,
+      "value_multi_upgraded": 4.0
+    },
+    "MovableTypePrinting": {
+      "value": 3.4,
+      "value_upgraded": 3.4,
+      "confidence": "medium",
+      "reasoning": "每花 3 能量 +1 言靈，約 4.5 言靈",
+      "value_multi": 3.4,
+      "value_multi_upgraded": 3.4
+    },
+    "Wagahaiwanekodearu": {
+      "value": 3.4,
+      "value_upgraded": 3.4,
+      "confidence": "medium",
+      "reasoning": "受攻擊 25% 完全閃避，約免 17 傷",
+      "value_multi": 3.4,
+      "value_multi_upgraded": 3.4
+    },
+    "BookOfGreatOldOnes": {
+      "value": 2.0,
+      "value_upgraded": 2.5,
+      "confidence": "low",
+      "reasoning": "換成強力古神牌組但花能量達 X 即死；需約 14 言靈才可能集齊秒殺",
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.5
+    },
+    "Brainwash": {
+      "value": 1.2,
+      "value_upgraded": 2.0,
+      "confidence": "low",
+      "reasoning": "自己獲得額外回合(~5)，但需 10~20 言靈，囤積成本高",
+      "value_multi": 16.0,
+      "value_multi_upgraded": 17.0
+    },
+    "PageAzathoth": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "confidence": "low",
+      "reasoning": "抽 2/3；七頁皆消耗時回合末直接勝利",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5
+    },
+    "PageNyarlathotep": {
+      "value": 2.5,
+      "value_upgraded": 3.5,
+      "confidence": "low",
+      "reasoning": "12/18 傷害+本回合目標受傷 +50%",
+      "value_multi": 2.5,
+      "value_multi_upgraded": 3.5
+    },
+    "PageShubNiggurath": {
+      "value": 2.6,
+      "value_upgraded": 3.8,
+      "confidence": "low",
+      "reasoning": "回 5/7 血+10/15 格檔",
+      "value_multi": 2.6,
+      "value_multi_upgraded": 3.8
+    },
+    "PageYogSothoth": {
+      "value": 4.0,
+      "value_upgraded": 4.0,
+      "confidence": "low",
+      "reasoning": "全體暈眩一回合",
+      "value_multi": 4.0,
+      "value_multi_upgraded": 4.0
+    },
+    "PageHastur": {
+      "value": 4.7,
+      "value_upgraded": 6.5,
+      "confidence": "low",
+      "reasoning": "全體 4 傷 5/7 次",
+      "value_multi": 4.7,
+      "value_multi_upgraded": 6.5
+    },
+    "PageCthugha": {
+      "value": 8.0,
+      "value_upgraded": 12.0,
+      "confidence": "low",
+      "reasoning": "25/35 傷，在消耗堆時每回合自動再打出",
+      "value_multi": 8.0,
+      "value_multi_upgraded": 12.0
+    },
+    "PageCthulhu": {
+      "value": 4.5,
+      "value_upgraded": 4.5,
+      "confidence": "low",
+      "reasoning": "每回合受傷上限 15 且每回合 +1 力量",
+      "value_multi": 4.5,
+      "value_multi_upgraded": 9.0
+    }
+  }
+}

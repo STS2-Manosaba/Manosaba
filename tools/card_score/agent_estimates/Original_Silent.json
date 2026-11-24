@@ -1,0 +1,745 @@
+{
+ "character": "Silent",
+ "source": "original",
+ "assumptions": [
+  "价值单位为能量，不扣费用、不计消耗/保留/固有",
+  "能力牌第2回合打出、战斗约6回合",
+  "典型牌组含中量小刀、丢弃与中毒",
+  "奇巧免费打出不额外计入"
+ ],
+ "mechanic_values": {
+  "小刀": "0费4伤，生成到手约0.5",
+  "奇巧": "被丢弃时免费打出，不计入",
+  "中毒": "每层0.22"
+ },
+ "cards": {
+  "StrikeSilent": {
+   "value": 1.0,
+   "value_upgraded": 1.5,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.5,
+   "confidence": "high",
+   "reasoning": "6伤/9伤"
+  },
+  "DefendSilent": {
+   "value": 1.0,
+   "value_upgraded": 1.6,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.6,
+   "confidence": "high",
+   "reasoning": "5格挡/8格挡"
+  },
+  "Neutralize": {
+   "value": 0.8,
+   "value_upgraded": 1.1,
+   "value_multi": 0.8,
+   "value_multi_upgraded": 1.1,
+   "confidence": "high",
+   "reasoning": "3伤+1虚弱；升级4伤+2虚弱"
+  },
+  "Survivor": {
+   "value": 1.8,
+   "value_upgraded": 2.4,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.4,
+   "confidence": "high",
+   "reasoning": "8格挡+丢弃1张，丢弃/奇巧协同约0.2"
+  },
+  "Abrasive": {
+   "value": 5.6,
+   "value_upgraded": 7.2,
+   "value_multi": 5.6,
+   "value_multi_upgraded": 7.2,
+   "confidence": "medium",
+   "reasoning": "永久1敏捷+4荆棘，约4-5回合受击多次；奇巧可免费"
+  },
+  "Accelerant": {
+   "value": 1.8,
+   "value_upgraded": 3.2,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 3.2,
+   "confidence": "low",
+   "reasoning": "中毒额外触发，依赖中毒牌组"
+  },
+  "Accuracy": {
+   "value": 2.6,
+   "value_upgraded": 3.9,
+   "value_multi": 2.6,
+   "value_multi_upgraded": 3.9,
+   "confidence": "medium",
+   "reasoning": "小刀+4(6)伤，约每回合1.5张小刀×4回合"
+  },
+  "Acrobatics": {
+   "value": 1.7,
+   "value_upgraded": 2.2,
+   "value_multi": 1.7,
+   "value_multi_upgraded": 2.2,
+   "confidence": "high",
+   "reasoning": "抽3(4)丢1，丢弃有协同"
+  },
+  "Adrenaline": {
+   "value": 2.0,
+   "value_upgraded": 2.5,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.5,
+   "confidence": "high",
+   "reasoning": "1(2)能量+抽2"
+  },
+  "Afterimage": {
+   "value": 3.2,
+   "value_upgraded": 3.2,
+   "value_multi": 3.2,
+   "value_multi_upgraded": 3.2,
+   "confidence": "medium",
+   "reasoning": "每打一牌1格挡，约4张/回合×5回合，固有"
+  },
+  "Anticipate": {
+   "value": 0.6,
+   "value_upgraded": 1.0,
+   "value_multi": 0.6,
+   "value_multi_upgraded": 1.0,
+   "confidence": "high",
+   "reasoning": "本回合2(4)敏捷，约1张格挡牌受益"
+  },
+  "Assassinate": {
+   "value": 2.0,
+   "value_upgraded": 2.6,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.6,
+   "confidence": "high",
+   "reasoning": "10(13)伤+1(2)易傷，固有"
+  },
+  "Backflip": {
+   "value": 2.0,
+   "value_upgraded": 2.6,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.6,
+   "confidence": "high",
+   "reasoning": "5(8)格挡+抽2"
+  },
+  "Backstab": {
+   "value": 1.8,
+   "value_upgraded": 2.5,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.5,
+   "confidence": "high",
+   "reasoning": "11(15)伤，固有"
+  },
+  "BladeOfInk": {
+   "value": 1.4,
+   "value_upgraded": 2.0,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 2.0,
+   "confidence": "medium",
+   "reasoning": "2(3)张墨影小刀到手"
+  },
+  "BladeDance": {
+   "value": 1.5,
+   "value_upgraded": 2.0,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 2.0,
+   "confidence": "high",
+   "reasoning": "3(4)张小刀到手，每张约0.5"
+  },
+  "BladeSymphony": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 3.5,
+   "value_multi_upgraded": 3.5,
+   "confidence": "medium",
+   "reasoning": "多人限定，4名玩家各获2小刀；升级仅降费"
+  },
+  "Blur": {
+   "value": 1.6,
+   "value_upgraded": 2.2,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.2,
+   "confidence": "high",
+   "reasoning": "5(8)格挡+下回合保留格挡约0.6"
+  },
+  "BouncingFlask": {
+   "value": 2.6,
+   "value_upgraded": 3.4,
+   "value_multi": 2.6,
+   "value_multi_upgraded": 3.4,
+   "confidence": "high",
+   "reasoning": "随机敌3(4)次各3毒，毒长效"
+  },
+  "BubbleBubble": {
+   "value": 1.7,
+   "value_upgraded": 2.3,
+   "value_multi": 1.7,
+   "value_multi_upgraded": 2.3,
+   "confidence": "medium",
+   "reasoning": "对中毒敌人9(12)毒，条件约85%"
+  },
+  "BulletTime": {
+   "value": 3.0,
+   "value_upgraded": 3.0,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.0,
+   "confidence": "medium",
+   "reasoning": "手牌全免费约省3能量，但禁抽"
+  },
+  "Burst": {
+   "value": 1.8,
+   "value_upgraded": 2.6,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.6,
+   "confidence": "medium",
+   "reasoning": "下1(2)张技能重复"
+  },
+  "CalculatedGamble": {
+   "value": 1.5,
+   "value_upgraded": 1.5,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 1.5,
+   "confidence": "medium",
+   "reasoning": "弃手重抽，搭配丢弃协同"
+  },
+  "CloakAndDagger": {
+   "value": 1.7,
+   "value_upgraded": 2.2,
+   "value_multi": 1.7,
+   "value_multi_upgraded": 2.2,
+   "confidence": "high",
+   "reasoning": "6格挡+1(2)小刀"
+  },
+  "CorrosiveWave": {
+   "value": 1.6,
+   "value_upgraded": 2.3,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.8,
+   "confidence": "low",
+   "reasoning": "本回合后续每抽一牌对全体2(3)毒，典型抽2-3张"
+  },
+  "Concoct": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.4,
+   "confidence": "low",
+   "reasoning": "多人限定，队友本回合未格挡伤害附3(4)毒"
+  },
+  "DaggerSpray": {
+   "value": 1.3,
+   "value_upgraded": 2.0,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.4,
+   "confidence": "high",
+   "reasoning": "全体4(6)×2"
+  },
+  "DaggerThrow": {
+   "value": 1.9,
+   "value_upgraded": 2.4,
+   "value_multi": 1.9,
+   "value_multi_upgraded": 2.4,
+   "confidence": "high",
+   "reasoning": "9(12)伤+抽1丢1"
+  },
+  "Dash": {
+   "value": 3.7,
+   "value_upgraded": 4.7,
+   "value_multi": 3.7,
+   "value_multi_upgraded": 4.7,
+   "confidence": "high",
+   "reasoning": "10伤+10格挡(各+3)"
+  },
+  "DeadlyPoison": {
+   "value": 1.2,
+   "value_upgraded": 1.6,
+   "value_multi": 1.2,
+   "value_multi_upgraded": 1.6,
+   "confidence": "high",
+   "reasoning": "5(7)毒"
+  },
+  "Deflect": {
+   "value": 0.8,
+   "value_upgraded": 1.4,
+   "value_multi": 0.8,
+   "value_multi_upgraded": 1.4,
+   "confidence": "high",
+   "reasoning": "4(7)格挡"
+  },
+  "DodgeAndRoll": {
+   "value": 1.6,
+   "value_upgraded": 2.4,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.4,
+   "confidence": "high",
+   "reasoning": "4(6)格挡+下回合同量"
+  },
+  "EchoingSlash": {
+   "value": 2.6,
+   "value_upgraded": 3.4,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.9,
+   "confidence": "medium",
+   "reasoning": "全体10(13)伤，斩杀可重复"
+  },
+  "Envenom": {
+   "value": 3.5,
+   "value_upgraded": 5.5,
+   "value_multi": 3.5,
+   "value_multi_upgraded": 5.5,
+   "confidence": "medium",
+   "reasoning": "攻击未被格挡附1(2)毒，小刀流强"
+  },
+  "EscapePlan": {
+   "value": 0.8,
+   "value_upgraded": 1.2,
+   "value_multi": 0.8,
+   "value_multi_upgraded": 1.2,
+   "confidence": "high",
+   "reasoning": "抽1，若为技能得3(5)格挡"
+  },
+  "Expertise": {
+   "value": 1.2,
+   "value_upgraded": 1.6,
+   "value_multi": 1.2,
+   "value_multi_upgraded": 1.6,
+   "confidence": "medium",
+   "reasoning": "抽2(3)并本回合保留"
+  },
+  "Expose": {
+   "value": 1.1,
+   "value_upgraded": 1.4,
+   "value_multi": 1.1,
+   "value_multi_upgraded": 1.4,
+   "confidence": "medium",
+   "reasoning": "2(3)易傷并移除格挡/人工制品"
+  },
+  "Fade": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 1.2,
+   "value_multi_upgraded": 1.8,
+   "confidence": "medium",
+   "reasoning": "多人限定，队友本回合6(9)敏捷"
+  },
+  "FanOfKnives": {
+   "value": 4.0,
+   "value_upgraded": 4.6,
+   "value_multi": 4.8,
+   "value_multi_upgraded": 5.5,
+   "confidence": "medium",
+   "reasoning": "4(5)小刀+小刀改为全体"
+  },
+  "Finisher": {
+   "value": 1.8,
+   "value_upgraded": 2.4,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.4,
+   "confidence": "medium",
+   "reasoning": "本回合每张已打攻击6(8)伤，约2次"
+  },
+  "Flanking": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 3.5,
+   "value_multi_upgraded": 4.0,
+   "confidence": "medium",
+   "reasoning": "多人限定，其他玩家对目标攻击伤害翻倍"
+  },
+  "Flechettes": {
+   "value": 1.7,
+   "value_upgraded": 2.3,
+   "value_multi": 1.7,
+   "value_multi_upgraded": 2.3,
+   "confidence": "medium",
+   "reasoning": "手中每张技能5(7)伤，约2张"
+  },
+  "FlickFlack": {
+   "value": 1.2,
+   "value_upgraded": 1.5,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.0,
+   "confidence": "high",
+   "reasoning": "全体7(9)伤，奇巧"
+  },
+  "Sidestep": {
+   "value": 1.0,
+   "value_upgraded": 2.0,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 2.0,
+   "confidence": "high",
+   "reasoning": "下回合1(2)能量"
+  },
+  "Footwork": {
+   "value": 4.5,
+   "value_upgraded": 6.5,
+   "value_multi": 4.5,
+   "value_multi_upgraded": 6.5,
+   "confidence": "high",
+   "reasoning": "永久2(3)敏捷，4-5回合"
+  },
+  "GrandFinale": {
+   "value": 7.0,
+   "value_upgraded": 9.0,
+   "value_multi": 7.0,
+   "value_multi_upgraded": 9.0,
+   "confidence": "medium",
+   "reasoning": "全体60(75)伤，需抽牌堆为空，期望约50%"
+  },
+  "HandTrick": {
+   "value": 1.6,
+   "value_upgraded": 2.2,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.2,
+   "confidence": "medium",
+   "reasoning": "7(10)格挡+奇巧"
+  },
+  "Haze": {
+   "value": 2.4,
+   "value_upgraded": 3.0,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 3.0,
+   "confidence": "medium",
+   "reasoning": "全体中毒+虚弱"
+  },
+  "HiddenDaggers": {
+   "value": 1.2,
+   "value_upgraded": 1.5,
+   "value_multi": 1.2,
+   "value_multi_upgraded": 1.5,
+   "confidence": "medium",
+   "reasoning": "丢2+2小刀(升级小刀+)，丢弃协同"
+  },
+  "InfiniteBlades": {
+   "value": 2.4,
+   "value_upgraded": 2.4,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 2.4,
+   "confidence": "high",
+   "reasoning": "每回合1小刀约0.5×5回合，固有"
+  },
+  "KnifeTrap": {
+   "value": 2.5,
+   "value_upgraded": 3.2,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 3.2,
+   "confidence": "low",
+   "reasoning": "打出消耗堆所有小刀，中盘约5张"
+  },
+  "LeadingStrike": {
+   "value": 1.4,
+   "value_upgraded": 1.9,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 1.9,
+   "confidence": "high",
+   "reasoning": "3(6)伤+2小刀"
+  },
+  "LegSweep": {
+   "value": 2.8,
+   "value_upgraded": 3.6,
+   "value_multi": 2.8,
+   "value_multi_upgraded": 3.6,
+   "confidence": "high",
+   "reasoning": "11(14)格挡+2(3)虚弱"
+  },
+  "Malaise": {
+   "value": 2.5,
+   "value_upgraded": 3.2,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 3.2,
+   "confidence": "medium",
+   "reasoning": "X失去力量+X虚弱，X约3"
+  },
+  "MasterPlanner": {
+   "value": 3.0,
+   "value_upgraded": 3.0,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.0,
+   "confidence": "low",
+   "reasoning": "技能获奇巧，需丢弃源"
+  },
+  "MementoMori": {
+   "value": 1.8,
+   "value_upgraded": 2.3,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.3,
+   "confidence": "medium",
+   "reasoning": "9(10)伤+本回合每丢一张4(6)伤"
+  },
+  "Mirage": {
+   "value": 2.0,
+   "value_upgraded": 2.6,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.6,
+   "confidence": "low",
+   "reasoning": "格挡=全体毒总和，约10"
+  },
+  "Murder": {
+   "value": 4.0,
+   "value_upgraded": 4.0,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 4.0,
+   "confidence": "medium",
+   "reasoning": "伤害=本场抽牌数，中盘约25；升级降费"
+  },
+  "Nightmare": {
+   "value": 4.0,
+   "value_upgraded": 4.0,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 4.0,
+   "confidence": "medium",
+   "reasoning": "下回合3份复制，约1.3×3；升级降费"
+  },
+  "NoxiousFumes": {
+   "value": 4.0,
+   "value_upgraded": 5.5,
+   "value_multi": 5.0,
+   "value_multi_upgraded": 6.5,
+   "confidence": "high",
+   "reasoning": "每回合全体2(3)毒，多敌放大"
+  },
+  "Outbreak": {
+   "value": 3.8,
+   "value_upgraded": 5.5,
+   "value_multi": 4.5,
+   "value_multi_upgraded": 6.4,
+   "confidence": "medium",
+   "reasoning": "全体中毒大量"
+  },
+  "PhantomBlades": {
+   "value": 2.5,
+   "value_upgraded": 3.6,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 3.6,
+   "confidence": "medium",
+   "reasoning": "小刀保留+每回合首刀+9(12)伤"
+  },
+  "PiercingWail": {
+   "value": 1.8,
+   "value_upgraded": 2.2,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 2.7,
+   "confidence": "high",
+   "reasoning": "全体本回合-6(8)力量"
+  },
+  "Pinpoint": {
+   "value": 2.5,
+   "value_upgraded": 3.2,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 3.2,
+   "confidence": "medium",
+   "reasoning": "15(19)伤"
+  },
+  "PoisonedStab": {
+   "value": 1.6,
+   "value_upgraded": 2.1,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.1,
+   "confidence": "high",
+   "reasoning": "6伤+3毒"
+  },
+  "Pounce": {
+   "value": 3.0,
+   "value_upgraded": 4.0,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 4.0,
+   "confidence": "high",
+   "reasoning": "14(20)伤+下张技能免费"
+  },
+  "PreciseCut": {
+   "value": 1.5,
+   "value_upgraded": 2.0,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 2.0,
+   "confidence": "medium",
+   "reasoning": "13伤-手牌数×2，约9伤"
+  },
+  "Predator": {
+   "value": 3.5,
+   "value_upgraded": 4.3,
+   "value_multi": 3.5,
+   "value_multi_upgraded": 4.3,
+   "confidence": "high",
+   "reasoning": "15(20)伤+下回合抽2"
+  },
+  "Prepared": {
+   "value": 0.7,
+   "value_upgraded": 1.2,
+   "value_multi": 0.7,
+   "value_multi_upgraded": 1.2,
+   "confidence": "high",
+   "reasoning": "抽1丢1(2/2)"
+  },
+  "Reflex": {
+   "value": 1.0,
+   "value_upgraded": 1.5,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.5,
+   "confidence": "high",
+   "reasoning": "抽2(3)，多靠被丢弃奇巧免费"
+  },
+  "Ricochet": {
+   "value": 1.8,
+   "value_upgraded": 2.4,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.4,
+   "confidence": "high",
+   "reasoning": "随机3×4(5)，奇巧"
+  },
+  "SerpentForm": {
+   "value": 6.0,
+   "value_upgraded": 8.0,
+   "value_multi": 6.0,
+   "value_multi_upgraded": 8.0,
+   "confidence": "medium",
+   "reasoning": "每打一张对随机敌4(6)伤"
+  },
+  "ShadowStep": {
+   "value": 2.5,
+   "value_upgraded": 2.8,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 2.8,
+   "confidence": "low",
+   "reasoning": "丢光手牌，下回合攻击翻倍"
+  },
+  "Shadowmeld": {
+   "value": 1.4,
+   "value_upgraded": 1.7,
+   "value_multi": 1.4,
+   "value_multi_upgraded": 1.7,
+   "confidence": "low",
+   "reasoning": "本回合格挡翻倍"
+  },
+  "Skewer": {
+   "value": 1.3,
+   "value_upgraded": 1.8,
+   "value_multi": 1.3,
+   "value_multi_upgraded": 1.8,
+   "confidence": "high",
+   "reasoning": "8(11)伤"
+  },
+  "Slice": {
+   "value": 1.0,
+   "value_upgraded": 1.5,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.5,
+   "confidence": "high",
+   "reasoning": "6(9)伤"
+  },
+  "Snakebite": {
+   "value": 1.5,
+   "value_upgraded": 2.2,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 2.2,
+   "confidence": "high",
+   "reasoning": "7(10)毒"
+  },
+  "Sneaky": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 5.0,
+   "value_multi_upgraded": 7.0,
+   "confidence": "medium",
+   "reasoning": "多人限定，其他玩家攻击时获1(2)格挡"
+  },
+  "Speedster": {
+   "value": 3.0,
+   "value_upgraded": 3.0,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 4.0,
+   "confidence": "low",
+   "reasoning": "回合中抽牌对全体伤害"
+  },
+  "StormOfSteel": {
+   "value": 2.4,
+   "value_upgraded": 3.0,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 3.0,
+   "confidence": "medium",
+   "reasoning": "丢手牌换等量小刀，约4张"
+  },
+  "Strangle": {
+   "value": 2.3,
+   "value_upgraded": 2.8,
+   "value_multi": 2.3,
+   "value_multi_upgraded": 2.8,
+   "confidence": "high",
+   "reasoning": "8伤+本回合每牌2失血"
+  },
+  "SuckerPunch": {
+   "value": 1.6,
+   "value_upgraded": 2.1,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.1,
+   "confidence": "high",
+   "reasoning": "8伤+1虚弱"
+  },
+  "Suppress": {
+   "value": 2.7,
+   "value_upgraded": 4.2,
+   "value_multi": 2.7,
+   "value_multi_upgraded": 4.2,
+   "confidence": "high",
+   "reasoning": "11(17)伤+3虚弱，固有"
+  },
+  "Tactician": {
+   "value": 1.0,
+   "value_upgraded": 2.0,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 2.0,
+   "confidence": "high",
+   "reasoning": "被丢弃时获1(2)能量"
+  },
+  "TheHunt": {
+   "value": 2.2,
+   "value_upgraded": 3.0,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 3.0,
+   "confidence": "medium",
+   "reasoning": "10(15)伤，斩杀额外卡牌奖励"
+  },
+  "ToolsOfTheTrade": {
+   "value": 2.5,
+   "value_upgraded": 2.5,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 2.5,
+   "confidence": "medium",
+   "reasoning": "每回合抽1丢1；升级降费"
+  },
+  "Tracking": {
+   "value": 3.0,
+   "value_upgraded": 3.0,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.0,
+   "confidence": "low",
+   "reasoning": "虚弱敌人受攻击伤害+50%"
+  },
+  "Untouchable": {
+   "value": 1.5,
+   "value_upgraded": 2.1,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 2.1,
+   "confidence": "high",
+   "reasoning": "6(9)格挡，奇巧"
+  },
+  "UpMySleeve": {
+   "value": 1.5,
+   "value_upgraded": 1.9,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 1.9,
+   "confidence": "medium",
+   "reasoning": "3(4)小刀，打出后降费"
+  },
+  "WellLaidPlans": {
+   "value": 2.5,
+   "value_upgraded": 2.5,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 2.5,
+   "confidence": "low",
+   "reasoning": "回合末不丢手牌，弹性"
+  },
+  "WraithForm": {
+   "value": 5.0,
+   "value_upgraded": 6.0,
+   "value_multi": 5.0,
+   "value_multi_upgraded": 6.0,
+   "confidence": "medium",
+   "reasoning": "2(3)无实体，每回合失去敏捷"
+  }
+ }
+}

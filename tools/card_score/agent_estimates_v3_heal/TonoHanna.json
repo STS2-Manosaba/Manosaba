@@ -1,0 +1,33 @@
+{
+  "character": "TonoHanna",
+  "source": "mod",
+  "assumptions": [
+    "起始牌組：打擊x3、防禦x3、害羞一瞥、懷疑、節儉、心理創傷；HP 66；起始遺物羽扇。典型牌組含 3~5 張人偶牌與數張產生/消耗狀態牌的卡。",
+    "羽扇 Lv2 起擁有翱翔/漂浮/空島時傷害 x1.5；遺物升級會加入人偶牌。假設中期約 60% 機率已達 Lv2。",
+    "人偶收藏層數典型約 3；魔女化典型 10~40 層；單人模式，指定其他玩家的卡價值 0。",
+    "多人：4人隊伍、隊友為一般 Manosaba 角色；特定隊友條件乘約3/13；隊友受益不吃羽扇加傷。飛天掃帚=自身與隊友翱翔+雪莉條件；借來的刀=隊友抽牌+能量；表演服=隊友格檔；空島=全隊4人各約2層。其餘卡同單人。",
+    "v2：MultiplayerOnly 卡（BorrowedKnife、FlyingBroom、PerformanceDress、MiriaPuppet）單人 value 設 null；隊友受益不吃羽扇加傷。",
+    "v3補血：生命值跨戰鬥保留。戰鬥中一次性（消耗型）回血每點 0.28 能量（原始 0.33×溢補八五折），非消耗每場可重用卡每次打出每點 0.22（重複使用溢補較多）；分回合小額持續回血 0.22~0.25；多人可指定缺血隊友 0.26~0.28，全體回復按受益人數×八折"
+  ],
+  "mechanic_values": {
+    "回血": "一次性 0.28/點；可重用 0.22/點；舊 0.12×0.7≈0.084/點"
+  },
+  "cards": {
+    "GoodnightYoungLady": {
+      "value": 1.6,
+      "value_upgraded": 1.6,
+      "value_multi": 1.6,
+      "value_multi_upgraded": 1.6,
+      "confidence": "low",
+      "reasoning": "v3補血: 消耗回 2+收藏層數約 6 血，每點 +0.18 → +1.0；結束回合代價不變；升級降費"
+    },
+    "LittleMatchGirl": {
+      "value": 2.25,
+      "value_upgraded": 3.4,
+      "value_multi": 2.25,
+      "value_multi_upgraded": 3.4,
+      "confidence": "low",
+      "reasoning": "v3補血: 抽到狀態回 2/3 血，約 4.5 次=9/13.5 血，小額分次溢補少每點 0.25（舊約 0.15）"
+    }
+  }
+}

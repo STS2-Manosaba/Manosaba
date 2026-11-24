@@ -1,0 +1,10 @@
+{
+  "_comment": "手動指定無法從程式碼自動判斷的卡。key 為 C# 類別名稱。options：多選一，mode=max（玩家自選，取最佳）或 expected（依 p 機率加權）。vars：直接取代數值。",
+  "_example": {
+    "options": [
+      { "p": 0.5, "vars": { "Damage": 10 } },
+      { "p": 0.5, "vars": { "Block": 10 } }
+    ],
+    "mode": "expected"
+  }
+}

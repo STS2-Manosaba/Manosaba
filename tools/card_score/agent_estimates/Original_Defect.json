@@ -1,0 +1,748 @@
+{
+ "character": "Defect",
+ "source": "original",
+ "assumptions": [
+  "起始遗物破损核心开局生成闪电；3栏位；每回合约1.1颗球生成，模拟6回合",
+  "能力牌第2回合打出，剩约4回合",
+  "不扣费用与关键词",
+  "多人：仅多人卡与全队效果按受益人数调整"
+ ],
+ "mechanic_values": {
+  "闪电球": "≈1.75：模拟每球约2.25次被动、61%被激发，随机目标×0.9",
+  "冰霜球": "≈1.5：2.25次2格挡被动+61%激发5格挡",
+  "黑暗球": "≈1.95：成长后激发约18伤×61%，单体",
+  "等离子球": "≈2.6：回合开始1能量×约1.8次+激发2能量，折扣能量浪费",
+  "玻璃球": "≈2.3：AOE递减被动4/3/…+激发两倍剩余值",
+  "集中1": "1.4（规则）；本回合集中按约0.6次被动/点"
+ },
+ "cards": {
+  "AdaptiveStrike": {
+   "value": 3.3,
+   "value_upgraded": 4.13,
+   "value_multi": 3.3,
+   "value_multi_upgraded": 4.13,
+   "confidence": "medium",
+   "reasoning": "18伤；弃牌堆0费复制品约再打一次部分价值"
+  },
+  "AllForOne": {
+   "value": 2.67,
+   "value_upgraded": 3.33,
+   "value_multi": 2.67,
+   "value_multi_upgraded": 3.33,
+   "confidence": "medium",
+   "reasoning": "10伤，回收弃牌堆0费牌约2张"
+  },
+  "BallLightning": {
+   "value": 2.92,
+   "value_upgraded": 3.42,
+   "value_multi": 2.92,
+   "value_multi_upgraded": 3.42,
+   "confidence": "high",
+   "reasoning": "7伤+闪电球"
+  },
+  "Barrage": {
+   "value": 2.16,
+   "value_upgraded": 3.04,
+   "value_multi": 2.16,
+   "value_multi_upgraded": 3.04,
+   "confidence": "medium",
+   "reasoning": "平均约2.6颗球的多段伤害"
+  },
+  "BeamCell": {
+   "value": 0.85,
+   "value_upgraded": 1.37,
+   "value_multi": 0.85,
+   "value_multi_upgraded": 1.37,
+   "confidence": "high",
+   "reasoning": "3伤+1易伤（升级4伤2易伤）"
+  },
+  "BiasedCognition": {
+   "value": 5.0,
+   "value_upgraded": 6.2,
+   "value_multi": 5.0,
+   "value_multi_upgraded": 6.2,
+   "confidence": "medium",
+   "reasoning": "4集中前期强、逐回合衰减，约净+8集中·回合"
+  },
+  "BoostAway": {
+   "value": 1.0,
+   "value_upgraded": 1.6,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.6,
+   "confidence": "high",
+   "reasoning": "6格挡，塞晕眩扣约0.2"
+  },
+  "BootSequence": {
+   "value": 2.0,
+   "value_upgraded": 2.6,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.6,
+   "confidence": "high",
+   "reasoning": "10格挡（固有不计）"
+  },
+  "Buffer": {
+   "value": 2.5,
+   "value_upgraded": 4.0,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 4.0,
+   "confidence": "medium",
+   "reasoning": "挡1次生命损失约15伤"
+  },
+  "BulkUp": {
+   "value": 4.0,
+   "value_upgraded": 6.0,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 6.0,
+   "confidence": "low",
+   "reasoning": "失去栏位约-1.6，换2力量2敏捷"
+  },
+  "Capacitor": {
+   "value": 2.4,
+   "value_upgraded": 3.4,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 3.4,
+   "confidence": "low",
+   "reasoning": "2栏位让球多存活、减少被挤出"
+  },
+  "Chaos": {
+   "value": 2.0,
+   "value_upgraded": 4.0,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 4.0,
+   "confidence": "medium",
+   "reasoning": "随机球期望约2.0"
+  },
+  "ChargeBattery": {
+   "value": 2.4,
+   "value_upgraded": 3.0,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 3.0,
+   "confidence": "high",
+   "reasoning": "7格挡+下回合1能量"
+  },
+  "Chill": {
+   "value": 2.4,
+   "value_upgraded": 2.4,
+   "value_multi": 2.4,
+   "value_multi_upgraded": 2.4,
+   "confidence": "medium",
+   "reasoning": "按敌人数(约1.6)生成冰霜"
+  },
+  "Claw": {
+   "value": 1.0,
+   "value_upgraded": 1.34,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.34,
+   "confidence": "medium",
+   "reasoning": "3伤，爪击成长约+0.5"
+  },
+  "ColdSnap": {
+   "value": 2.5,
+   "value_upgraded": 3.0,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 3.0,
+   "confidence": "high",
+   "reasoning": "6伤+冰霜球"
+  },
+  "Compact": {
+   "value": 1.6,
+   "value_upgraded": 2.0,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.0,
+   "confidence": "low",
+   "reasoning": "6格挡；状态牌转燃料平均约0.4"
+  },
+  "CompileDriver": {
+   "value": 2.07,
+   "value_upgraded": 2.57,
+   "value_multi": 2.07,
+   "value_multi_upgraded": 2.57,
+   "confidence": "medium",
+   "reasoning": "7伤，约1.8种球抽牌"
+  },
+  "ConsumingShadow": {
+   "value": 6.9,
+   "value_upgraded": 8.85,
+   "value_multi": 6.9,
+   "value_multi_upgraded": 8.85,
+   "confidence": "low",
+   "reasoning": "2黑暗+每回合末激发左侧球约+0.75×4"
+  },
+  "Coolant": {
+   "value": 3.0,
+   "value_upgraded": 5.0,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 5.0,
+   "confidence": "medium",
+   "reasoning": "每回合约1.6种球×2格挡×4回合"
+  },
+  "Coolheaded": {
+   "value": 2.0,
+   "value_upgraded": 2.5,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.5,
+   "confidence": "high",
+   "reasoning": "冰霜球+抽1"
+  },
+  "CreativeAi": {
+   "value": 6.0,
+   "value_upgraded": 6.0,
+   "value_multi": 6.0,
+   "value_multi_upgraded": 6.0,
+   "confidence": "low",
+   "reasoning": "每回合1张随机能力牌约1.5×4"
+  },
+  "Darkness": {
+   "value": 3.15,
+   "value_upgraded": 4.35,
+   "value_multi": 3.15,
+   "value_multi_upgraded": 4.35,
+   "confidence": "medium",
+   "reasoning": "黑暗球+触发既有黑暗被动"
+  },
+  "DefendDefect": {
+   "value": 1.0,
+   "value_upgraded": 1.6,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.6,
+   "confidence": "high",
+   "reasoning": "5格挡"
+  },
+  "Defragment": {
+   "value": 5.6,
+   "value_upgraded": 8.4,
+   "value_multi": 5.6,
+   "value_multi_upgraded": 8.4,
+   "confidence": "medium",
+   "reasoning": "1集中×4回合，球多时更高"
+  },
+  "DoubleEnergy": {
+   "value": 1.5,
+   "value_upgraded": 1.5,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 1.5,
+   "confidence": "medium",
+   "reasoning": "打出时剩约1.5能量翻倍"
+  },
+  "Dualcast": {
+   "value": 2.66,
+   "value_upgraded": 2.66,
+   "value_multi": 2.66,
+   "value_multi_upgraded": 2.66,
+   "confidence": "high",
+   "reasoning": "闪电激发两次约16伤"
+  },
+  "EchoForm": {
+   "value": 6.0,
+   "value_upgraded": 6.0,
+   "value_multi": 6.0,
+   "value_multi_upgraded": 6.0,
+   "confidence": "medium",
+   "reasoning": "每回合首张牌重复约1.5×4"
+  },
+  "EnergySurge": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 8.0,
+   "value_multi_upgraded": 12.0,
+   "confidence": "high",
+   "reasoning": "仅多人；全队各2能量"
+  },
+  "Feral": {
+   "value": 3.0,
+   "value_upgraded": 3.0,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.0,
+   "confidence": "low",
+   "reasoning": "0费攻击回手，依赖牌组约每回合0.7"
+  },
+  "FightThrough": {
+   "value": 2.2,
+   "value_upgraded": 3.0,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 3.0,
+   "confidence": "high",
+   "reasoning": "13格挡，2伤口扣约0.4"
+  },
+  "FlakCannon": {
+   "value": 3.3,
+   "value_upgraded": 4.4,
+   "value_multi": 3.3,
+   "value_multi_upgraded": 4.4,
+   "confidence": "low",
+   "reasoning": "平均约2.5状态牌，随机多段并清废"
+  },
+  "FocusedStrike": {
+   "value": 2.1,
+   "value_upgraded": 2.73,
+   "value_multi": 2.1,
+   "value_multi_upgraded": 2.73,
+   "confidence": "medium",
+   "reasoning": "9伤+本回合集中"
+  },
+  "Ftl": {
+   "value": 1.23,
+   "value_upgraded": 1.4,
+   "value_multi": 1.23,
+   "value_multi_upgraded": 1.4,
+   "confidence": "high",
+   "reasoning": "5伤，约80%抽1"
+  },
+  "Fusion": {
+   "value": 2.6,
+   "value_upgraded": 2.6,
+   "value_multi": 2.6,
+   "value_multi_upgraded": 2.6,
+   "confidence": "medium",
+   "reasoning": "等离子球"
+  },
+  "GeneticAlgorithm": {
+   "value": 1.6,
+   "value_upgraded": 1.9,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 1.9,
+   "confidence": "low",
+   "reasoning": "格挡随场次成长，平均约8格挡"
+  },
+  "Glacier": {
+   "value": 4.2,
+   "value_upgraded": 4.8,
+   "value_multi": 4.2,
+   "value_multi_upgraded": 4.8,
+   "confidence": "high",
+   "reasoning": "6格挡+2冰霜"
+  },
+  "Glasswork": {
+   "value": 3.3,
+   "value_upgraded": 3.9,
+   "value_multi": 3.3,
+   "value_multi_upgraded": 3.9,
+   "confidence": "medium",
+   "reasoning": "5格挡+玻璃球"
+  },
+  "GoForTheEyes": {
+   "value": 0.7,
+   "value_upgraded": 0.97,
+   "value_multi": 0.7,
+   "value_multi_upgraded": 0.97,
+   "confidence": "high",
+   "reasoning": "3伤，约65%攻击意图给虚弱"
+  },
+  "GunkUp": {
+   "value": 1.8,
+   "value_upgraded": 2.3,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.3,
+   "confidence": "high",
+   "reasoning": "4×3伤，塞黏液"
+  },
+  "Hailstorm": {
+   "value": 2.7,
+   "value_upgraded": 4.5,
+   "value_multi": 2.7,
+   "value_multi_upgraded": 4.5,
+   "confidence": "medium",
+   "reasoning": "有冰霜时每回合AOE伤约80%触发"
+  },
+  "HelixDrill": {
+   "value": 1.25,
+   "value_upgraded": 2.08,
+   "value_multi": 1.25,
+   "value_multi_upgraded": 2.08,
+   "confidence": "medium",
+   "reasoning": "本回合约用2.5其他能量"
+  },
+  "Hibernate": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 5.0,
+   "value_multi_upgraded": 7.0,
+   "confidence": "high",
+   "reasoning": "仅多人；冰霜给全队格挡"
+  },
+  "Hologram": {
+   "value": 1.6,
+   "value_upgraded": 2.0,
+   "value_multi": 1.6,
+   "value_multi_upgraded": 2.0,
+   "confidence": "medium",
+   "reasoning": "3格挡+回收弃牌堆好牌"
+  },
+  "Hotfix": {
+   "value": 1.14,
+   "value_upgraded": 1.98,
+   "value_multi": 1.14,
+   "value_multi_upgraded": 1.98,
+   "confidence": "low",
+   "reasoning": "本回合集中，被动约0.6次/点"
+  },
+  "Hyperbeam": {
+   "value": 4.8,
+   "value_upgraded": 6.2,
+   "value_multi": 4.8,
+   "value_multi_upgraded": 6.2,
+   "confidence": "high",
+   "reasoning": "24AOE，失3集中本回合"
+  },
+  "IceLance": {
+   "value": 7.67,
+   "value_upgraded": 8.5,
+   "value_multi": 7.67,
+   "value_multi_upgraded": 8.5,
+   "confidence": "high",
+   "reasoning": "19伤+3冰霜"
+  },
+  "Ignition": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 2.86,
+   "value_multi_upgraded": 2.86,
+   "confidence": "high",
+   "reasoning": "仅多人；给队友等离子"
+  },
+  "ImitationLearning": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 6.0,
+   "confidence": "low",
+   "reasoning": "仅多人；复制队友能力牌"
+  },
+  "Iteration": {
+   "value": 2.0,
+   "value_upgraded": 4.0,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 4.0,
+   "confidence": "low",
+   "reasoning": "每回合首次抽到状态牌抽牌，约50%触发"
+  },
+  "Leap": {
+   "value": 1.8,
+   "value_upgraded": 2.4,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 2.4,
+   "confidence": "high",
+   "reasoning": "9格挡"
+  },
+  "LightningRod": {
+   "value": 3.95,
+   "value_upgraded": 4.55,
+   "value_multi": 3.95,
+   "value_multi_upgraded": 4.55,
+   "confidence": "medium",
+   "reasoning": "4格挡+后续回合闪电"
+  },
+  "Loop": {
+   "value": 2.5,
+   "value_upgraded": 5.0,
+   "value_multi": 2.5,
+   "value_multi_upgraded": 5.0,
+   "confidence": "medium",
+   "reasoning": "每回合触发最右被动约0.6×4"
+  },
+  "MachineLearning": {
+   "value": 2.0,
+   "value_upgraded": 2.0,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 2.0,
+   "confidence": "high",
+   "reasoning": "每回合多抽1×4"
+  },
+  "MeteorStrike": {
+   "value": 11.8,
+   "value_upgraded": 12.8,
+   "value_multi": 11.8,
+   "value_multi_upgraded": 12.8,
+   "confidence": "high",
+   "reasoning": "24伤+3等离子"
+  },
+  "Modded": {
+   "value": 1.7,
+   "value_upgraded": 2.8,
+   "value_multi": 1.7,
+   "value_multi_upgraded": 2.8,
+   "confidence": "low",
+   "reasoning": "1栏位+抽1，自身涨费"
+  },
+  "MomentumStrike": {
+   "value": 2.13,
+   "value_upgraded": 2.8,
+   "value_multi": 2.13,
+   "value_multi_upgraded": 2.8,
+   "confidence": "high",
+   "reasoning": "11伤后续变0费"
+  },
+  "MultiCast": {
+   "value": 2.2,
+   "value_upgraded": 3.5,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 3.5,
+   "confidence": "medium",
+   "reasoning": "X≈2.5次激发最右球"
+  },
+  "Null": {
+   "value": 4.22,
+   "value_upgraded": 4.72,
+   "value_multi": 4.22,
+   "value_multi_upgraded": 4.72,
+   "confidence": "high",
+   "reasoning": "10伤+2虚弱+黑暗"
+  },
+  "OneForAll": {
+   "value": null,
+   "value_upgraded": null,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 4.5,
+   "confidence": "low",
+   "reasoning": "仅多人；全队0费攻击加伤"
+  },
+  "Overclock": {
+   "value": 0.8,
+   "value_upgraded": 1.3,
+   "value_multi": 0.8,
+   "value_multi_upgraded": 1.3,
+   "confidence": "high",
+   "reasoning": "抽2，灼伤扣"
+  },
+  "Quadcast": {
+   "value": 5.32,
+   "value_upgraded": 5.32,
+   "value_multi": 5.32,
+   "value_multi_upgraded": 5.32,
+   "confidence": "high",
+   "reasoning": "激发闪电4次约32伤"
+  },
+  "Rainbow": {
+   "value": 5.2,
+   "value_upgraded": 5.2,
+   "value_multi": 5.2,
+   "value_multi_upgraded": 5.2,
+   "confidence": "high",
+   "reasoning": "三颗球"
+  },
+  "Reboot": {
+   "value": 2.0,
+   "value_upgraded": 3.0,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 3.0,
+   "confidence": "medium",
+   "reasoning": "重洗抽4"
+  },
+  "Refract": {
+   "value": 7.93,
+   "value_upgraded": 8.93,
+   "value_multi": 7.93,
+   "value_multi_upgraded": 8.93,
+   "confidence": "medium",
+   "reasoning": "10×2伤+2玻璃"
+  },
+  "RocketPunch": {
+   "value": 3.0,
+   "value_upgraded": 3.63,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.63,
+   "confidence": "medium",
+   "reasoning": "13伤抽1，常降费"
+  },
+  "Scavenge": {
+   "value": 2.2,
+   "value_upgraded": 3.2,
+   "value_multi": 2.2,
+   "value_multi_upgraded": 3.2,
+   "confidence": "high",
+   "reasoning": "下回合2能量，消耗废牌"
+  },
+  "Scrape": {
+   "value": 2.17,
+   "value_upgraded": 2.97,
+   "value_multi": 2.17,
+   "value_multi_upgraded": 2.97,
+   "confidence": "medium",
+   "reasoning": "7伤，抽4留0费约2张"
+  },
+  "ShadowShield": {
+   "value": 4.15,
+   "value_upgraded": 4.95,
+   "value_multi": 4.15,
+   "value_multi_upgraded": 4.95,
+   "confidence": "high",
+   "reasoning": "11格挡+黑暗"
+  },
+  "Shatter": {
+   "value": 4.84,
+   "value_upgraded": 5.76,
+   "value_multi": 4.84,
+   "value_multi_upgraded": 5.76,
+   "confidence": "medium",
+   "reasoning": "7AOE+全部球激发两次"
+  },
+  "SignalBoost": {
+   "value": 1.8,
+   "value_upgraded": 1.8,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 1.8,
+   "confidence": "low",
+   "reasoning": "下一能力牌额外一次"
+  },
+  "Skim": {
+   "value": 1.5,
+   "value_upgraded": 2.0,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 2.0,
+   "confidence": "high",
+   "reasoning": "抽3"
+  },
+  "Smokestack": {
+   "value": 2.0,
+   "value_upgraded": 3.5,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 3.5,
+   "confidence": "low",
+   "reasoning": "状态牌AOE伤，依赖量"
+  },
+  "Spinner": {
+   "value": 5.52,
+   "value_upgraded": 7.82,
+   "value_multi": 5.52,
+   "value_multi_upgraded": 7.82,
+   "confidence": "low",
+   "reasoning": "每回合玻璃球，受栏位挤压折扣"
+  },
+  "Storm": {
+   "value": 1.8,
+   "value_upgraded": 3.0,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 3.0,
+   "confidence": "low",
+   "reasoning": "每张能力牌一闪电，约1.2张后续"
+  },
+  "StrikeDefect": {
+   "value": 1.0,
+   "value_upgraded": 1.5,
+   "value_multi": 1.0,
+   "value_multi_upgraded": 1.5,
+   "confidence": "high",
+   "reasoning": "6伤"
+  },
+  "Subroutine": {
+   "value": 1.5,
+   "value_upgraded": 1.5,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 1.5,
+   "confidence": "low",
+   "reasoning": "后续能力牌返能"
+  },
+  "Sunder": {
+   "value": 5.53,
+   "value_upgraded": 7.17,
+   "value_multi": 5.53,
+   "value_multi_upgraded": 7.17,
+   "confidence": "medium",
+   "reasoning": "26伤，约40%击杀返3能"
+  },
+  "Supercritical": {
+   "value": 4.0,
+   "value_upgraded": 6.0,
+   "value_multi": 4.0,
+   "value_multi_upgraded": 6.0,
+   "confidence": "high",
+   "reasoning": "4能量"
+  },
+  "SweepingBeam": {
+   "value": 1.9,
+   "value_upgraded": 2.6,
+   "value_multi": 1.9,
+   "value_multi_upgraded": 2.6,
+   "confidence": "high",
+   "reasoning": "6AOE+抽1"
+  },
+  "Synchronize": {
+   "value": 1.81,
+   "value_upgraded": 3.32,
+   "value_multi": 1.81,
+   "value_multi_upgraded": 3.32,
+   "confidence": "low",
+   "reasoning": "约1.8种球本回合集中"
+  },
+  "Synthesis": {
+   "value": 3.33,
+   "value_upgraded": 4.33,
+   "value_multi": 3.33,
+   "value_multi_upgraded": 4.33,
+   "confidence": "medium",
+   "reasoning": "14伤+下一能力0费"
+  },
+  "Tempest": {
+   "value": 3.94,
+   "value_upgraded": 5.51,
+   "value_multi": 3.94,
+   "value_multi_upgraded": 5.51,
+   "confidence": "medium",
+   "reasoning": "X≈2.5闪电"
+  },
+  "TeslaCoil": {
+   "value": 1.5,
+   "value_upgraded": 2.67,
+   "value_multi": 1.5,
+   "value_multi_upgraded": 2.67,
+   "confidence": "medium",
+   "reasoning": "3伤+指定触发闪电被动约2颗"
+  },
+  "Thunder": {
+   "value": 2.0,
+   "value_upgraded": 3.5,
+   "value_multi": 2.0,
+   "value_multi_upgraded": 3.5,
+   "confidence": "low",
+   "reasoning": "每次闪电激发+3伤约4次"
+  },
+  "TrashToTreasure": {
+   "value": 3.0,
+   "value_upgraded": 3.0,
+   "value_multi": 3.0,
+   "value_multi_upgraded": 3.0,
+   "confidence": "low",
+   "reasoning": "每张状态牌随机球，依赖量"
+  },
+  "Turbo": {
+   "value": 1.7,
+   "value_upgraded": 2.7,
+   "value_multi": 1.7,
+   "value_multi_upgraded": 2.7,
+   "confidence": "high",
+   "reasoning": "2能量，虚空扣"
+  },
+  "Uproar": {
+   "value": 3.3,
+   "value_upgraded": 3.97,
+   "value_multi": 3.3,
+   "value_multi_upgraded": 3.97,
+   "confidence": "medium",
+   "reasoning": "6×2伤+免费打抽牌堆攻击"
+  },
+  "Voltaic": {
+   "value": 5.6,
+   "value_upgraded": 5.6,
+   "value_multi": 5.6,
+   "value_multi_upgraded": 5.6,
+   "confidence": "low",
+   "reasoning": "中盘约4闪电"
+  },
+  "WhiteNoise": {
+   "value": 1.8,
+   "value_upgraded": 1.8,
+   "value_multi": 1.8,
+   "value_multi_upgraded": 1.8,
+   "confidence": "low",
+   "reasoning": "随机免费能力牌"
+  },
+  "Zap": {
+   "value": 1.75,
+   "value_upgraded": 1.75,
+   "value_multi": 1.75,
+   "value_multi_upgraded": 1.75,
+   "confidence": "high",
+   "reasoning": "闪电球"
+  }
+ }
+}

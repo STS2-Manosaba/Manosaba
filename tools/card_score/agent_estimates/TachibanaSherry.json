@@ -1,0 +1,342 @@
+{
+  "character": "TachibanaSherry",
+  "assumptions": [
+    "單人模式、帶 MagnifyingGlass Lv1：戰鬥開始 1 力量與 1 層調查時刻，每回合 +1，約第 4～5 回合首次觸發神探當賞（持續 2 回合）",
+    "神探當賞條件在典型牌組下期望觸發率約 35%（疑點牌多時更高）",
+    "力量在此角色兼具遺物減傷（每點 5%，上限 30%），永久力量 1 估 1.4",
+    "遺物每回合清空魔女化，魔女化幾乎無價值，≥100 魔女化條件需 GiveItATry 等配合",
+    "多人限定（指定隊友、漢娜連動）效果單人計 0",
+    "多人欄位：4 人隊伍、隊友為一般 Manosaba 角色；需特定角色隊友時乘約 3/13",
+    "隊友魔女化約 0.07/層（隊友沒有放大鏡清空）；沒有隊友向效果的卡 value_multi 等於 value"
+  ],
+  "mechanic_values": {
+    "力量(永久)": "1.4：原版 1.2 + 遺物減傷",
+    "疑點": "約 0.3/層：每 5 層換 1 力量(1.4)+1 層調查時刻(~0.3)，調查時刻觸發時清空疑點造成等量隨機傷害",
+    "調查時刻": "約 0.3/層：提早神探當賞與觸發傷害",
+    "神探當賞": "啟用約 35% 回合；條件 +2 力量 ≈ 1.0，+1 力量 ≈ 0.5；另每獲得力量 +1 格檔",
+    "魔女化": "≈0：遺物回合開始清空",
+    "左右拳": "各自獲得 1 永久力量，基本牌即附 1.4 價值"
+  },
+  "cards": {
+    "StrikeTachibanaSherry": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "6 傷害",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5
+    },
+    "DefendTachibanaSherry": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "5 格檔",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6
+    },
+    "LeftPunch": {
+      "value": 2.4,
+      "value_upgraded": 2.9,
+      "confidence": "high",
+      "reasoning": "6 傷害 + 1 永久力量（含遺物減傷）",
+      "value_multi": 2.4,
+      "value_multi_upgraded": 2.9
+    },
+    "RightPunch": {
+      "value": 2.3,
+      "value_upgraded": 3.0,
+      "confidence": "high",
+      "reasoning": "4 全體傷害(×1.4)+1 永久力量",
+      "value_multi": 2.3,
+      "value_multi_upgraded": 3.0
+    },
+    "MurderCase": {
+      "value": 1.3,
+      "value_upgraded": 1.9,
+      "confidence": "high",
+      "reasoning": "6 傷害 + 1 疑點；升級 8 傷 2 疑點",
+      "value_multi": 1.3,
+      "value_multi_upgraded": 1.9
+    },
+    "PrisonBreak": {
+      "value": 1.8,
+      "value_upgraded": 2.3,
+      "confidence": "high",
+      "reasoning": "6 傷害+抽 1+1 疑點",
+      "value_multi": 1.8,
+      "value_multi_upgraded": 2.3
+    },
+    "Cotton": {
+      "value": 0.8,
+      "value_upgraded": 1.1,
+      "confidence": "medium",
+      "reasoning": "2 疑點+消耗手牌（清廢牌小正值）",
+      "value_multi": 0.8,
+      "value_multi_upgraded": 1.1
+    },
+    "BigInvestigation": {
+      "value": 1.6,
+      "value_upgraded": 2.0,
+      "confidence": "medium",
+      "reasoning": "1 易傷+1 疑點+神探當賞時 2 力量(期望 1.0)",
+      "value_multi": 1.6,
+      "value_multi_upgraded": 2.0
+    },
+    "MasterKey": {
+      "value": 2.4,
+      "value_upgraded": 2.9,
+      "confidence": "medium",
+      "reasoning": "5 格檔+壞掉的鎖(0 費抽 2)≈1.4+條件 1 力量",
+      "value_multi": 2.4,
+      "value_multi_upgraded": 2.9
+    },
+    "TrustingLeap": {
+      "value": 0.7,
+      "value_upgraded": 1.5,
+      "confidence": "medium",
+      "reasoning": "2 能量但失 2 永久力量，僅爆發回合合算",
+      "value_multi": 0.7,
+      "value_multi_upgraded": 1.5
+    },
+    "Achuba": {
+      "value": 1.8,
+      "value_upgraded": 1.8,
+      "confidence": "low",
+      "reasoning": "1 力量+扳手腕：力量多半高於敵人，敵受傷+20%；鎖定目標有代價",
+      "value_multi": 1.8,
+      "value_multi_upgraded": 1.8
+    },
+    "BerserkerSoul": {
+      "value": 2.6,
+      "value_upgraded": 3.0,
+      "confidence": "low",
+      "reasoning": "棄手牌後連續免費打出抽到的攻擊，期望 2～3 張扣棄牌損失",
+      "value_multi": 2.6,
+      "value_multi_upgraded": 3.0
+    },
+    "Crossbow": {
+      "value": 2.8,
+      "value_upgraded": 3.8,
+      "confidence": "medium",
+      "reasoning": "壞掉的十字弩(0 費+2 能量)≈2.4+1 力量",
+      "value_multi": 2.8,
+      "value_multi_upgraded": 3.8
+    },
+    "DontRush": {
+      "value": 1.9,
+      "value_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "敵本回合 -7 力量+條件 2 力量",
+      "value_multi": 1.9,
+      "value_multi_upgraded": 2.4
+    },
+    "FryFryFry": {
+      "value": 0.8,
+      "value_upgraded": 1.2,
+      "confidence": "low",
+      "reasoning": "回復 2+疑點數生命，戰鬥內價值低",
+      "value_multi": 0.8,
+      "value_multi_upgraded": 1.2
+    },
+    "GoodMorningSherry": {
+      "value": 2.9,
+      "value_upgraded": 3.7,
+      "confidence": "medium",
+      "reasoning": "15 傷，自傷 2；神探當賞時再 +5",
+      "value_multi": 2.9,
+      "value_multi_upgraded": 3.7
+    },
+    "HorsebackRiding": {
+      "value": 1.5,
+      "value_upgraded": 1.9,
+      "confidence": "medium",
+      "reasoning": "能力：每回合 1 疑點；多人漢娜隊友(約 3/13)得翱翔",
+      "value_multi": 1.7,
+      "value_multi_upgraded": 2.1
+    },
+    "IceCube": {
+      "value": 1.9,
+      "value_upgraded": 3.0,
+      "confidence": "medium",
+      "reasoning": "加入冰球(0 費 6+傷)≈1.4+條件 2 力量",
+      "value_multi": 1.9,
+      "value_multi_upgraded": 3.0
+    },
+    "Ignite": {
+      "value": 4.2,
+      "value_upgraded": 5.4,
+      "confidence": "high",
+      "reasoning": "11 全體傷害+2 全體灼燒+1 永久力量",
+      "value_multi": 4.2,
+      "value_multi_upgraded": 5.4
+    },
+    "IsekaiElevator": {
+      "value": 0.4,
+      "value_upgraded": 0.6,
+      "confidence": "medium",
+      "reasoning": "單人僅 2 疑點並自傷；多人隊友 +20 魔女化約 1.4",
+      "value_multi": 2.0,
+      "value_multi_upgraded": 3.0
+    },
+    "KyuMiraclePartners": {
+      "value": 3.3,
+      "value_upgraded": 4.2,
+      "confidence": "low",
+      "reasoning": "14 全體傷害；9 費僅神探當賞時免費，可打出率低",
+      "value_multi": 3.3,
+      "value_multi_upgraded": 4.2
+    },
+    "LittleFairy": {
+      "value": 1.5,
+      "value_upgraded": 1.5,
+      "confidence": "low",
+      "reasoning": "每 5 力量 1 能量，剩餘回合約獲 5～7 力量",
+      "value_multi": 1.5,
+      "value_multi_upgraded": 1.5
+    },
+    "RokuBraveFace": {
+      "value": 3.3,
+      "value_upgraded": 4.6,
+      "confidence": "low",
+      "reasoning": "24 傷害；6 費需先打出三！找到線索！才免費",
+      "value_multi": 3.3,
+      "value_multi_upgraded": 4.6
+    },
+    "SanFindsClue": {
+      "value": 3.4,
+      "value_upgraded": 4.1,
+      "confidence": "medium",
+      "reasoning": "12 全體傷害+1 力量，疑點牌可減費",
+      "value_multi": 3.4,
+      "value_multi_upgraded": 4.1
+    },
+    "SixSeven": {
+      "value": 1.4,
+      "value_upgraded": 1.4,
+      "confidence": "high",
+      "reasoning": "期望：67% 1 力量為主，另有覆甲 7 等",
+      "value_multi": 1.4,
+      "value_multi_upgraded": 1.4
+    },
+    "Surrender": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "confidence": "medium",
+      "reasoning": "13 格檔但失 2 永久力量",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6
+    },
+    "TruthIsOnlyOne": {
+      "value": 2.0,
+      "value_upgraded": 2.8,
+      "confidence": "medium",
+      "reasoning": "4 疑點+每層疑點 1 格檔(約 4～6)",
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.8
+    },
+    "UnsteadyLegs": {
+      "value": 2.6,
+      "value_upgraded": 3.9,
+      "confidence": "high",
+      "reasoning": "2 永久力量，自傷 2",
+      "value_multi": 2.6,
+      "value_multi_upgraded": 3.9
+    },
+    "WhatDoYouMean": {
+      "value": 1.4,
+      "value_upgraded": 1.7,
+      "confidence": "medium",
+      "reasoning": "1 虛弱+消耗一張手牌+條件 2 力量",
+      "value_multi": 1.4,
+      "value_multi_upgraded": 1.7
+    },
+    "YouAreThis": {
+      "value": 4.6,
+      "value_upgraded": 6.3,
+      "confidence": "high",
+      "reasoning": "3 永久力量+2 疑點",
+      "value_multi": 4.6,
+      "value_multi_upgraded": 6.3
+    },
+    "BurnTheHouseDown": {
+      "value": 4.0,
+      "value_upgraded": 5.7,
+      "confidence": "medium",
+      "reasoning": "20+消耗牌數(約 4)傷害",
+      "value_multi": 4.0,
+      "value_multi_upgraded": 5.7
+    },
+    "DateTime": {
+      "value": 0.5,
+      "value_upgraded": 0.5,
+      "confidence": "low",
+      "reasoning": "回復 5+力量 生命，戰鬥內價值低",
+      "value_multi": 0.5,
+      "value_multi_upgraded": 0.5
+    },
+    "DirtyEhe": {
+      "value": 2.5,
+      "value_upgraded": 3.6,
+      "confidence": "low",
+      "reasoning": "能力：10 荊棘整場，自傷並自身易傷",
+      "value_multi": 2.5,
+      "value_multi_upgraded": 3.6
+    },
+    "DoublePunch": {
+      "value": 3.0,
+      "value_upgraded": 4.0,
+      "confidence": "medium",
+      "reasoning": "5 傷×(1+力量,上限 6 次)，典型力量 3～4",
+      "value_multi": 3.0,
+      "value_multi_upgraded": 4.0
+    },
+    "GiveItATry": {
+      "value": 1.3,
+      "value_upgraded": 1.3,
+      "confidence": "low",
+      "reasoning": "補至 100 魔女化，遺物每回合清空；與 SuperPunch 連動",
+      "value_multi": 1.3,
+      "value_multi_upgraded": 1.3
+    },
+    "HangingKill": {
+      "value": 1.9,
+      "value_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "10 傷害；吊殺牌加倍，單張效益有限",
+      "value_multi": 1.9,
+      "value_multi_upgraded": 2.4
+    },
+    "LifelongFriend": {
+      "value": 0.0,
+      "value_upgraded": 0.0,
+      "confidence": "high",
+      "reasoning": "單人 0；多人雙方每回合得免費落石、-20 魔女化，有連帶死亡風險",
+      "value_multi": 4.5,
+      "value_multi_upgraded": 5.0
+    },
+    "QuickWit": {
+      "value": 3.5,
+      "value_upgraded": 4.0,
+      "confidence": "low",
+      "reasoning": "每回合隨機力量敏捷疑點，神探當賞時取最大值",
+      "value_multi": 3.5,
+      "value_multi_upgraded": 4.0
+    },
+    "SearchAnalyzeSolve": {
+      "value": 3.0,
+      "value_upgraded": 3.5,
+      "confidence": "low",
+      "reasoning": "每 3 回合選事件牌自動打出，約 2 次",
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.5
+    },
+    "SuperPunch": {
+      "value": 1.9,
+      "value_upgraded": 2.6,
+      "confidence": "low",
+      "reasoning": "8 全體傷害；≥100 魔女化才額外 15 傷與 5 力量，遺物下難達成",
+      "value_multi": 1.9,
+      "value_multi_upgraded": 2.6
+    }
+  }
+}

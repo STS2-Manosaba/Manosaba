@@ -1,0 +1,307 @@
+{
+  "character": "Common",
+  "assumptions": [
+    "單人模式、一般 Manosaba 角色、戰鬥約 6 回合，能力牌第 2 回合打出",
+    "X 費卡以 X=3 估計",
+    "MultiplayerOnly 卡的隊友效果單人計 0；只計自身可得部分",
+    "敵人平均每回合對玩家造成約 10 點攻擊（含被格擋），約 1.3 次攻擊段數",
+    "多人欄位：4 人隊伍、隊友為一般 Manosaba 角色；特定角色在隊機率約 3/13；全隊效果按受益人數計"
+  ],
+  "mechanic_values": {
+    "魔女化": "每層約 0.07，超過 100 層有風險，大量疊層時遞減",
+    "暫時力量(HouseKeeping)": "每層 0.33，僅本回合",
+    "斬首(Guillotine)": "攻擊後目標生命低於門檻即 DoomKill；一般觸發率約 15-20%",
+    "Simple Spear 零件": "4 張不可打出、保留的零件洗入抽牌堆，全部進手牌後合成 0 費 50 傷 Simple Spear；預估戰鬥內合成率約 65%，期間佔手牌",
+    "裁判/罪證/嫌疑": "Ema 專屬體系，其他角色幾乎無價值"
+  },
+  "cards": {
+    "Counterargument": {
+      "value": 2.9,
+      "value_upgraded": 3.9,
+      "confidence": "medium",
+      "reasoning": "11 點無力量加成傷害，加 1 張發言（抽1+議論）；議論加傷非 Ema 時幾乎不觸發",
+      "value_multi": 2.9,
+      "value_multi_upgraded": 3.9
+    },
+    "WitchLanguageMastery": {
+      "value": 12.0,
+      "value_upgraded": 12.0,
+      "confidence": "low",
+      "reasoning": "受到的傷害含格擋都 ×2 讓全體敵人失去生命，4-5 回合約 80+ 點，受敵人血量折減；升級只降費",
+      "value_multi": 12.0,
+      "value_multi_upgraded": 12.0
+    },
+    "Alibi": {
+      "value": 1.1,
+      "value_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "抽 2 張；減 2 層嫌疑只對有嫌疑機制的角色有用",
+      "value_multi": 1.1,
+      "value_multi_upgraded": 1.6
+    },
+    "Boulders": {
+      "value": 3.33,
+      "value_upgraded": 5.0,
+      "confidence": "high",
+      "reasoning": "20/30 點單體傷害，處刑卡",
+      "value_multi": 3.33,
+      "value_multi_upgraded": 5.0
+    },
+    "Bullseye": {
+      "value": 1.87,
+      "value_upgraded": 2.72,
+      "confidence": "high",
+      "reasoning": "7 傷 + 2 易傷；升級 10 傷 + 3 易傷",
+      "value_multi": 1.87,
+      "value_multi_upgraded": 2.72
+    },
+    "ConcentratedFire": {
+      "value": 1.75,
+      "value_upgraded": 2.5,
+      "confidence": "high",
+      "reasoning": "2×5 段=10 傷，多段吃力量加成略加分；升級 7 段",
+      "value_multi": 1.75,
+      "value_multi_upgraded": 2.5
+    },
+    "CulpritVerdict": {
+      "value": 0.3,
+      "value_upgraded": 0.4,
+      "confidence": "low",
+      "reasoning": "第5回合起可用；無罪證時所有存活實體並列最高，敵人也獲真兇（攻擊+2），非 Ema 常為負面",
+      "value_multi": 0.3,
+      "value_multi_upgraded": 0.4
+    },
+    "DeathPendulum": {
+      "value": 1.4,
+      "value_upgraded": 2.33,
+      "confidence": "medium",
+      "reasoning": "全體 3 傷×手中技能數（期望約 2）；升級 5 傷",
+      "value_multi": 1.4,
+      "value_multi_upgraded": 2.33
+    },
+    "Dissolve": {
+      "value": 2.3,
+      "value_upgraded": 3.3,
+      "confidence": "medium",
+      "reasoning": "全體敵人本回合 -8 力量，約抵銷 10 點傷害×1.4，非攻擊回合折減",
+      "value_multi": 2.3,
+      "value_multi_upgraded": 3.3
+    },
+    "DriftApart": {
+      "value": 2.0,
+      "value_upgraded": 3.0,
+      "confidence": "medium",
+      "reasoning": "多人限定；力量給隊友單人計 0，只計自身永久 2/3 敏捷；多人：隊友獲 2/3 永久力量",
+      "value_multi": 4.4,
+      "value_multi_upgraded": 6.6
+    },
+    "Electrocution": {
+      "value": 4.5,
+      "value_upgraded": 6.75,
+      "confidence": "medium",
+      "reasoning": "X=3 時 3 段 10 傷打隨機敵人（×0.9）；升級每段 15",
+      "value_multi": 4.5,
+      "value_multi_upgraded": 6.75
+    },
+    "FortuneTelling": {
+      "value": 1.2,
+      "value_upgraded": 1.8,
+      "confidence": "high",
+      "reasoning": "從抽牌堆挑 2/3 張進手牌，優於純抽牌",
+      "value_multi": 1.2,
+      "value_multi_upgraded": 1.8
+    },
+    "FutureOfPotions": {
+      "value": 2.0,
+      "value_upgraded": 3.3,
+      "confidence": "low",
+      "reasoning": "20 傷+回復20%傷害，但無梅露露時 5% 機率自身生命歸零，風險大幅扣分；多人：約 3/13 機率有梅露露免除即死風險",
+      "value_multi": 2.37,
+      "value_multi_upgraded": 3.8
+    },
+    "Gallows": {
+      "value": 4.17,
+      "value_upgraded": 4.17,
+      "confidence": "high",
+      "reasoning": "25 點傷害並無視敵人傷害上限；升級只降 1 費",
+      "value_multi": 4.17,
+      "value_multi_upgraded": 4.17
+    },
+    "Guillotine": {
+      "value": 2.9,
+      "value_upgraded": 3.9,
+      "confidence": "medium",
+      "reasoning": "14 傷，命中後生命低於 10% 即斬殺（死刑宣告+5%）；升級 18 傷、門檻 15%",
+      "value_multi": 2.9,
+      "value_multi_upgraded": 3.9
+    },
+    "GuiltConclusive": {
+      "value": 0.2,
+      "value_upgraded": 0.2,
+      "confidence": "medium",
+      "reasoning": "罪證與嫌疑互換，只有 Ema 體系有意義；升級降為 0 費",
+      "value_multi": 0.2,
+      "value_multi_upgraded": 0.2
+    },
+    "GuiltQuestion": {
+      "value": 0.0,
+      "value_upgraded": 0.0,
+      "confidence": "high",
+      "reasoning": "多人限定，只給隊友加牌，單人價值為 0；多人：隊友手牌加 2 張嫌疑類衍生卡",
+      "value_multi": 0.8,
+      "value_multi_upgraded": 0.8
+    },
+    "Hotpot": {
+      "value": 1.63,
+      "value_upgraded": 2.57,
+      "confidence": "high",
+      "reasoning": "全體 7/11 傷",
+      "value_multi": 1.63,
+      "value_multi_upgraded": 2.57
+    },
+    "HouseKeeping": {
+      "value": 1.32,
+      "value_upgraded": 1.98,
+      "confidence": "high",
+      "reasoning": "本回合 4/6 暫時力量",
+      "value_multi": 1.32,
+      "value_multi_upgraded": 1.98
+    },
+    "Immolation": {
+      "value": 3.6,
+      "value_upgraded": 4.55,
+      "confidence": "medium",
+      "reasoning": "全體 8 傷 + 全體 5 灼燒；升級 12 傷",
+      "value_multi": 3.6,
+      "value_multi_upgraded": 4.55
+    },
+    "Inhibition": {
+      "value": 0.0,
+      "value_upgraded": 0.0,
+      "confidence": "medium",
+      "reasoning": "多人限定，抑制殺人衝動，單人無效果；多人：0 費使隊友殺人衝動失效",
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.0
+    },
+    "IronMaiden": {
+      "value": 2.8,
+      "value_upgraded": 3.47,
+      "confidence": "high",
+      "reasoning": "9 傷 + 2 虛弱 + 2 易傷；升級 13 傷",
+      "value_multi": 2.8,
+      "value_multi_upgraded": 3.47
+    },
+    "OpeningStatement": {
+      "value": 2.0,
+      "value_upgraded": 2.6,
+      "confidence": "high",
+      "reasoning": "10/13 格檔（固有、消耗另計）",
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.6
+    },
+    "PicnicTime": {
+      "value": 1.5,
+      "value_upgraded": 2.5,
+      "confidence": "high",
+      "reasoning": "抽 1 + 下回合 1/2 能量",
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.5
+    },
+    "PiercingDeathSpear": {
+      "value": 2.33,
+      "value_upgraded": 3.33,
+      "confidence": "high",
+      "reasoning": "11/17 傷 + 抽 1",
+      "value_multi": 2.33,
+      "value_multi_upgraded": 3.33
+    },
+    "Prepare": {
+      "value": 1.4,
+      "value_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "下回合 2/3 能量，代價棄 2 張手牌",
+      "value_multi": 1.4,
+      "value_multi_upgraded": 2.4
+    },
+    "Prison": {
+      "value": 3.0,
+      "value_upgraded": 4.0,
+      "confidence": "low",
+      "reasoning": "每回合開始得 10/15 魔女化，4-5 回合約 45/65 層；後段接近 100 層風險，遞減",
+      "value_multi": 3.0,
+      "value_multi_upgraded": 4.0
+    },
+    "Suicide": {
+      "value": 1.1,
+      "value_upgraded": 1.8,
+      "confidence": "medium",
+      "reasoning": "自傷 3 換 20/30 魔女化",
+      "value_multi": 1.1,
+      "value_multi_upgraded": 1.8
+    },
+    "TrialStart": {
+      "value": 0.6,
+      "value_upgraded": 1.0,
+      "confidence": "low",
+      "reasoning": "多人限定；替全隊加投票牌到抽牌堆，單人只計自身部分；多人：4 名玩家各得投票牌",
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.8
+    },
+    "Wall": {
+      "value": 2.5,
+      "value_upgraded": 2.5,
+      "confidence": "low",
+      "reasoning": "未格擋攻擊轉為等量活力，需要先受傷；升級只降費",
+      "value_multi": 2.5,
+      "value_multi_upgraded": 2.5
+    },
+    "WardenCommand": {
+      "value": 4.5,
+      "value_upgraded": 5.5,
+      "confidence": "low",
+      "reasoning": "處刑卡重複打出，依牌組處刑卡密度變化大；升級固有多 1 回合",
+      "value_multi": 4.5,
+      "value_multi_upgraded": 5.5
+    },
+    "WitchIslandExpedition": {
+      "value": 2.0,
+      "value_upgraded": 2.5,
+      "confidence": "low",
+      "reasoning": "Beta；怪物攻擊 3 倍，QTE 成功可擋下整段；極度依賴操作，期望值不穩",
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.5
+    },
+    "WorldVanquisher": {
+      "value": 0.6,
+      "value_upgraded": 1.1,
+      "confidence": "medium",
+      "reasoning": "0 費抽 1/2；全場魔女化達每玩家 250 才強制勝利，一般極難達成；多人：門檻變為 250×4 魔女化",
+      "value_multi": 0.5,
+      "value_multi_upgraded": 1.0
+    },
+    "YukiBackflip": {
+      "value": 2.0,
+      "value_upgraded": 2.6,
+      "confidence": "high",
+      "reasoning": "5/8 格檔 + 抽 2",
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.6
+    },
+    "ForgeSpear": {
+      "value": 4.5,
+      "value_upgraded": 5.0,
+      "confidence": "low",
+      "reasoning": "零件洗入抽牌堆，湊齊後合成 50 傷 0 費長槍；合成率約 65%、佔手牌；升級不消耗",
+      "value_multi": 4.5,
+      "value_multi_upgraded": 5.0
+    },
+    "SimpleSpear": {
+      "value": 8.33,
+      "value_upgraded": 12.5,
+      "confidence": "high",
+      "reasoning": "Ancient 衍生，50/75 點傷害，只能由鍛造長槍取得",
+      "value_multi": 8.33,
+      "value_multi_upgraded": 12.5
+    }
+  }
+}

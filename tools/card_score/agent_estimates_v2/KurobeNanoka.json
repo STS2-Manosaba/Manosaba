@@ -1,0 +1,325 @@
+{
+  "character": "KurobeNanoka",
+  "assumptions": [
+    "單人；典型牌組約3-4張槍擊牌",
+    "戰鬥6回合，能力牌第2回合打出",
+    "子彈每回合+1，約第4回合因Ribbon+精神創傷達100魔女化後+2",
+    "精準以 1+Amount/100 乘下一槍傷害，下一槍基底約12",
+    "多人：4人隊伍，3名隊友為一般Manosaba角色，各自牌組約含1張自身精神創傷",
+    "多人：子彈與看守為各玩家獨立；無隊友向效果的卡 value_multi 等於單人值",
+    "v2：看守初始10HP，承接所有未格擋傷害，首次未格擋傷害才召喚，平均在場約2回合"
+  ],
+  "mechanic_values": {
+    "子彈": "約0.6能量/發：槍擊10傷對比打擊6傷的溢價，且每回合僅補1發，常態稀缺；100魔女化後稍降",
+    "精準": "每1%約0.017（12傷基底×1%/6），需有子彈開槍才兌現",
+    "魔女化": "0.07/層，另含達100層增子彈收益",
+    "看守": "Ribbon首次未格擋傷害召喚，約60%戰鬥中存活2-3回合"
+  },
+  "cards": {
+    "StrikeKurobeNanoka": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "6/9 傷害"
+    },
+    "DefendKurobeNanoka": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "5/8 格檔"
+    },
+    "GunShot": {
+      "value": 1.07,
+      "value_upgraded": 1.73,
+      "value_multi": 1.07,
+      "value_multi_upgraded": 1.73,
+      "confidence": "high",
+      "reasoning": "10/14 傷害(1.67/2.33)扣子彈0.6"
+    },
+    "TraumaKurobeNanoka": {
+      "value": 0.8,
+      "value_upgraded": 1.15,
+      "value_multi": 0.8,
+      "value_multi_upgraded": 1.15,
+      "confidence": "medium",
+      "reasoning": "10/15 魔女化，助推100層補2發子彈"
+    },
+    "Aim": {
+      "value": 1.2,
+      "value_upgraded": 2.0,
+      "value_multi": 1.2,
+      "value_multi_upgraded": 2.0,
+      "confidence": "medium",
+      "reasoning": "下一槍+60%/100%，約12傷基底"
+    },
+    "WarningShot": {
+      "value": 1.8,
+      "value_upgraded": 2.3,
+      "value_multi": 1.8,
+      "value_multi_upgraded": 2.3,
+      "confidence": "medium",
+      "reasoning": "全體本回合-8/-11力量減傷+30%精準，扣子彈"
+    },
+    "Snipe": {
+      "value": 2.6,
+      "value_upgraded": 3.5,
+      "value_multi": 2.6,
+      "value_multi_upgraded": 3.5,
+      "confidence": "medium",
+      "reasoning": "固有確保首回合加成，約22/30傷扣子彈"
+    },
+    "RecoilShot": {
+      "value": 3.4,
+      "value_upgraded": 4.7,
+      "value_multi": 3.4,
+      "value_multi_upgraded": 4.7,
+      "confidence": "high",
+      "reasoning": "6傷+15格檔(升8+20)扣子彈"
+    },
+    "Cooking": {
+      "value": 1.4,
+      "value_upgraded": 1.95,
+      "value_multi": 1.4,
+      "value_multi_upgraded": 1.95,
+      "confidence": "medium",
+      "reasoning": "6/9格檔，狀態牌轉餅乾偶發"
+    },
+    "TakeCover": {
+      "value": 2.0,
+      "value_upgraded": 2.6,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.6,
+      "confidence": "high",
+      "reasoning": "7/10格檔+30%精準(約0.6)"
+    },
+    "SorryIMissed": {
+      "value": 1.9,
+      "value_upgraded": 2.7,
+      "value_multi": 1.9,
+      "value_multi_upgraded": 2.7,
+      "confidence": "medium",
+      "reasoning": "花1子彈換下一槍+150%/200%"
+    },
+    "SteadyShot": {
+      "value": 2.0,
+      "value_upgraded": 4.0,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 4.0,
+      "confidence": "medium",
+      "reasoning": "約5.5次槍擊，累積加傷約12/24"
+    },
+    "WeakeningShot": {
+      "value": 1.67,
+      "value_upgraded": 2.63,
+      "value_multi": 1.67,
+      "value_multi_upgraded": 2.63,
+      "confidence": "high",
+      "reasoning": "10傷+2虛弱(升14+3)扣子彈"
+    },
+    "WoundShot": {
+      "value": 1.77,
+      "value_upgraded": 2.78,
+      "value_multi": 1.77,
+      "value_multi_upgraded": 2.78,
+      "confidence": "high",
+      "reasoning": "10傷+2易傷(升14+3)扣子彈"
+    },
+    "TrapSetting": {
+      "value": 2.7,
+      "value_upgraded": 2.7,
+      "value_multi": 2.7,
+      "value_multi_upgraded": 2.7,
+      "confidence": "medium",
+      "reasoning": "下回合約1.5槍傷害翻倍，需存子彈；升級僅降費"
+    },
+    "RelicSearch": {
+      "value": 1.5,
+      "value_upgraded": 1.5,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 1.5,
+      "confidence": "low",
+      "reasoning": "戰鬥結束50%得遺物(升級降費)，戰內無效果；以戰外價值粗估"
+    },
+    "SurppressiveShooting": {
+      "value": 2.7,
+      "value_upgraded": 2.7,
+      "value_multi": 2.7,
+      "value_multi_upgraded": 2.7,
+      "confidence": "medium",
+      "reasoning": "4x3傷+暈眩約2.5，扣3子彈1.8；升級降費"
+    },
+    "DarkSight": {
+      "value": 2.5,
+      "value_upgraded": 2.5,
+      "value_multi": 2.5,
+      "value_multi_upgraded": 2.5,
+      "confidence": "medium",
+      "reasoning": "免疫本回合攻擊約3，但棄手並結束回合"
+    },
+    "ThreeSixtyNoScope": {
+      "value": 1.57,
+      "value_upgraded": 2.23,
+      "value_multi": 1.57,
+      "value_multi_upgraded": 2.23,
+      "confidence": "high",
+      "reasoning": "0費10/14傷+抽1扣子彈"
+    },
+    "BouncingShot": {
+      "value": 1.9,
+      "value_upgraded": 2.6,
+      "value_multi": 1.9,
+      "value_multi_upgraded": 2.6,
+      "confidence": "medium",
+      "reasoning": "主目標10/14，多敵彈射期望約+5傷"
+    },
+    "HallucinationMagic": {
+      "value": 1.5,
+      "value_upgraded": 1.5,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 1.5,
+      "confidence": "low",
+      "reasoning": "排序牌堆頂+抽1，隨魔女化張數增加"
+    },
+    "TraumaReveal": {
+      "value": 0.0,
+      "value_upgraded": 0.0,
+      "value_multi": 3.8,
+      "value_multi_upgraded": 5.7,
+      "confidence": "high",
+      "reasoning": "只對隊友生效，單人無效"
+    },
+    "MysteriousJungler": {
+      "value": 2.5,
+      "value_upgraded": 3.5,
+      "value_multi": 2.5,
+      "value_multi_upgraded": 3.5,
+      "confidence": "medium",
+      "reasoning": "每回合+1能量x4.5減-2/-1敏捷"
+    },
+    "JailerRegeneration": {
+      "value": 3.2,
+      "value_upgraded": 3.2,
+      "value_multi": 3.2,
+      "value_multi_upgraded": 3.2,
+      "confidence": "medium",
+      "reasoning": "每回合回看守10HP，看守僅10HP故每回合回滿≈10HP替身盾；約4回合×5吸收≈20HP；升級降費"
+    },
+    "EscapeRoute": {
+      "value": 2.2,
+      "value_upgraded": 2.8,
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.8,
+      "confidence": "high",
+      "reasoning": "下回合11/14格檔"
+    },
+    "EnvironmentExplore": {
+      "value": 1.9,
+      "value_upgraded": 2.4,
+      "value_multi": 1.9,
+      "value_multi_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "抽2/3，平均棄0.8槍擊換下回合抽+能量"
+    },
+    "Reload": {
+      "value": 0.8,
+      "value_upgraded": 1.0,
+      "value_multi": 0.8,
+      "value_multi_upgraded": 1.0,
+      "confidence": "medium",
+      "reasoning": "0費洗手牌，升級保留"
+    },
+    "Buttstroke": {
+      "value": 1.65,
+      "value_upgraded": 2.3,
+      "value_multi": 1.65,
+      "value_multi_upgraded": 2.3,
+      "confidence": "high",
+      "reasoning": "3傷+1虛1易+抽1(升2/2)"
+    },
+    "Camping": {
+      "value": 0.8,
+      "value_upgraded": 0.8,
+      "value_multi": 0.8,
+      "value_multi_upgraded": 0.8,
+      "confidence": "medium",
+      "reasoning": "下回合槍擊不消耗精準，約多兌現1次精準≈1.5，但整回合無法格擋≈-0.7；升級降費"
+    },
+    "DeckShot": {
+      "value": 0.1,
+      "value_upgraded": 0.2,
+      "value_multi": 0.1,
+      "value_multi_upgraded": 0.2,
+      "confidence": "medium",
+      "reasoning": "消耗抽牌堆頂3張薄牌，但耗子彈"
+    },
+    "EmergencyBlock": {
+      "value": 2.2,
+      "value_upgraded": 2.8,
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.8,
+      "confidence": "medium",
+      "reasoning": "5/8格檔+隨機打出棄牌堆攻擊並消耗"
+    },
+    "MyTurnToProtect": {
+      "value": 1.3,
+      "value_upgraded": 1.9,
+      "value_multi": 1.3,
+      "value_multi_upgraded": 1.9,
+      "confidence": "medium",
+      "reasoning": "6/9格檔，看守低血翻倍偶發"
+    },
+    "NanokaSearch": {
+      "value": 4.0,
+      "value_upgraded": 5.0,
+      "value_multi": 4.0,
+      "value_multi_upgraded": 5.0,
+      "confidence": "high",
+      "reasoning": "下回合+3/4能量+抽2"
+    },
+    "BestInfoMagic": {
+      "value": 0.5,
+      "value_upgraded": 0.5,
+      "value_multi": 1.2,
+      "value_multi_upgraded": 1.2,
+      "confidence": "low",
+      "reasoning": "僅顯示牌堆頂資訊"
+    },
+    "BurningWound": {
+      "value": 4.0,
+      "value_upgraded": 4.0,
+      "value_multi": 4.0,
+      "value_multi_upgraded": 4.0,
+      "confidence": "medium",
+      "reasoning": "槍擊未格擋傷30%灼燒(每發約3)，約5發累積灼燒，總傷約24；升級保留"
+    },
+    "ActingCool": {
+      "value": 1.5,
+      "value_upgraded": 2.2,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.2,
+      "confidence": "medium",
+      "reasoning": "看守在場時每回合40/60精準(≈0.7/1.0)，約2回合在場且需開槍"
+    },
+    "WardenAttack": {
+      "value": 3.8,
+      "value_upgraded": 5.7,
+      "value_multi": 3.8,
+      "value_multi_upgraded": 5.7,
+      "confidence": "medium",
+      "reasoning": "看守在場每回合全體10/15(≈2.3/3.5)，看守10HP且需先被召喚，平均在場約1.6回合"
+    },
+    "GushaGusha1": {
+      "value": 5.0,
+      "value_upgraded": 5.3,
+      "value_multi": 5.0,
+      "value_multi_upgraded": 5.3,
+      "confidence": "medium",
+      "reasoning": "1力敏並串接2、3階，總計可達6力6敏"
+    }
+  },
+  "source": "mod"
+}

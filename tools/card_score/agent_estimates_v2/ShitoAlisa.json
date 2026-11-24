@@ -1,0 +1,223 @@
+{
+  "character": "ShitoAlisa",
+  "assumptions": [
+    "單人模式、戰鬥約6回合、能力牌第2回合打出",
+    "BurnPower 不遞減：每層於敵方回合開始造成等量傷害直到戰鬥結束，扣除過殺/早死後每層約0.4",
+    "LegIrons 中期約 Lv2：每層火球環繞額外給5魔女化；火球環繞每層吸收3點失血（上限12層）",
+    "平均火球環繞層數約3；燃燒標記卡在手牌中的機率中等，點火期望價值約0.3",
+    "多人：4人隊、隊友為一般Manosaba角色；敵人血量高、戰鬥較長，不遞減灼燒價值約+10~20%",
+    "本池無指定隊友或給予隊友的效果；ThisIsFine 也放大隊友施加的灼燒(×1.3)；FinalCountdown 在高血量戰鬥更難兌現(×0.8)",
+    "LetHeartBurn 僅多人：以約40點失血轉全體灼燒、自身瀕死風險及臨終訊息估值",
+    "v2：灼燒與原版中毒(0.22/層)同尺度，不遞減但受過殺/早死，每層改為約0.26（原0.4）"
+  ],
+  "mechanic_values": {
+    "灼燒": "每層約0.26；對齊DeadlyPoison 5毒=1.2",
+    "火球環繞": "每層約0.6：吸收3失血(~0.35)+LegIrons Lv2 5魔女化(~0.25)",
+    "燃燒標記(附加3)": "約0.5：被抽3次或點火歸零時免費自動打出並給1火球環繞，再重置",
+    "點火": "約0.3：需手牌有燃燒卡，歸零時免費打出該卡",
+    "魔女化": "每層0.07"
+  },
+  "cards": {
+    "StrikeShitoAlisa": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "6/9傷害",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5
+    },
+    "DefendShitoAlisa": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "5/8格檔",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6
+    },
+    "TraumaShitoAlisa": {
+      "value": 0.7,
+      "value_upgraded": 1.05,
+      "confidence": "high",
+      "reasoning": "10/15魔女化",
+      "value_multi": 0.7,
+      "value_multi_upgraded": 1.05
+    },
+    "EmberSpark": {
+      "value": 1.5,
+      "value_upgraded": 2.0,
+      "confidence": "medium",
+      "reasoning": "5格檔+替1/2張手牌附加燃燒3",
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.0
+    },
+    "Lighter": {
+      "value": 1.1,
+      "value_upgraded": 1.6,
+      "confidence": "medium",
+      "reasoning": "3/5不遞減灼燒+點火1張燃燒卡；v2灼燒每層0.26對齊中毒",
+      "value_multi": 1.23,
+      "value_multi_upgraded": 1.79
+    },
+    "BurnCap": {
+      "value": 1.9,
+      "value_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "5/7灼燒+1火球環繞(含LegIrons魔女化)；v2灼燒每層0.26對齊中毒",
+      "value_multi": 2.09,
+      "value_multi_upgraded": 2.64
+    },
+    "CounterViolence": {
+      "value": 1.9,
+      "value_upgraded": 2.7,
+      "confidence": "medium",
+      "reasoning": "8/12格檔+點火",
+      "value_multi": 1.9,
+      "value_multi_upgraded": 2.7
+    },
+    "FireSword": {
+      "value": 2.3,
+      "value_upgraded": 2.9,
+      "confidence": "medium",
+      "reasoning": "6傷+5灼燒；升級8傷+6灼燒；v2灼燒每層0.26對齊中毒",
+      "value_multi": 2.53,
+      "value_multi_upgraded": 3.19
+    },
+    "SnakeFire": {
+      "value": 2.3,
+      "value_upgraded": 2.6,
+      "confidence": "medium",
+      "reasoning": "7灼燒+附加燃燒3於1/2張手牌；v2灼燒每層0.26對齊中毒",
+      "value_multi": 2.58,
+      "value_multi_upgraded": 2.91
+    },
+    "DisasterGirl": {
+      "value": 4.0,
+      "value_upgraded": 6.2,
+      "confidence": "low",
+      "reasoning": "每施加5灼燒對隨機敵造成7/11傷，估約4~5次觸發；v2灼燒每層0.26對齊中毒",
+      "value_multi": 4.8,
+      "value_multi_upgraded": 7.44
+    },
+    "FinalCountdown": {
+      "value": 1.0,
+      "value_upgraded": 1.0,
+      "confidence": "low",
+      "reasoning": "自傷20，倒數20回合後強制勝利，燃燒歸零可加速；一般戰鬥難兌現",
+      "value_multi": 0.8,
+      "value_multi_upgraded": 0.8
+    },
+    "FireJudgementCourt": {
+      "value": 6.0,
+      "value_upgraded": 6.0,
+      "confidence": "medium",
+      "reasoning": "全體10灼燒+依魔女化/100額外立即引爆灼燒最多3次；v2灼燒每層0.26對齊中毒",
+      "value_multi": 7.2,
+      "value_multi_upgraded": 7.2
+    },
+    "FireOnFire": {
+      "value": 2.3,
+      "value_upgraded": 3.0,
+      "confidence": "medium",
+      "reasoning": "目標須已有灼燒(~80%)：9/12灼燒+點火；v2灼燒每層0.26對齊中毒",
+      "value_multi": 2.64,
+      "value_multi_upgraded": 3.45
+    },
+    "FireTornado": {
+      "value": 3.5,
+      "value_upgraded": 5.5,
+      "confidence": "medium",
+      "reasoning": "X=3：全體3/6傷×X次+全體X灼燒；v2灼燒每層0.26對齊中毒",
+      "value_multi": 3.85,
+      "value_multi_upgraded": 6.05
+    },
+    "Flaming": {
+      "value": 2.8,
+      "value_upgraded": 3.6,
+      "confidence": "medium",
+      "reasoning": "全體4/6灼燒+1火球；自帶燃燒2可免費重複打出；v2灼燒每層0.26對齊中毒",
+      "value_multi": 3.22,
+      "value_multi_upgraded": 4.14
+    },
+    "LetHeartBurn": {
+      "value": null,
+      "value_upgraded": null,
+      "confidence": "high",
+      "reasoning": "多人限定：HP降至1，失血(~40)轉全體灼燒，另給升級版臨終訊息；單人0",
+      "value_multi": 7.0,
+      "value_multi_upgraded": 7.0
+    },
+    "LoveFlame": {
+      "value": 0.3,
+      "value_upgraded": 1.3,
+      "confidence": "medium",
+      "reasoning": "消耗2火球環繞換1/2能量",
+      "value_multi": 0.3,
+      "value_multi_upgraded": 1.3
+    },
+    "MagicianRed": {
+      "value": 2.4,
+      "value_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "需並消耗4火球：20傷+暈眩一回合",
+      "value_multi": 2.4,
+      "value_multi_upgraded": 2.4
+    },
+    "RestrictionRelease": {
+      "value": 8.5,
+      "value_upgraded": 8.5,
+      "confidence": "low",
+      "reasoning": "消耗全部手牌，生成8張0費5傷火球；燃燒3可免費觸發",
+      "value_multi": 8.5,
+      "value_multi_upgraded": 8.5
+    },
+    "ScaldingTouch": {
+      "value": 3.8,
+      "value_upgraded": 5.5,
+      "confidence": "low",
+      "reasoning": "攻擊造成未格檔傷害時施加1/2灼燒+5魔女化，估7次；v2灼燒每層0.26對齊中毒",
+      "value_multi": 4.37,
+      "value_multi_upgraded": 6.33
+    },
+    "Scorching": {
+      "value": 3.6,
+      "value_upgraded": 6.6,
+      "confidence": "medium",
+      "reasoning": "每回合全體1/2累積不遞減灼燒+1/2火球環繞；v2灼燒每層0.26對齊中毒",
+      "value_multi": 4.32,
+      "value_multi_upgraded": 7.92
+    },
+    "SpreadBurn": {
+      "value": 1.8,
+      "value_upgraded": 2.1,
+      "confidence": "low",
+      "reasoning": "複製目標灼燒到其他敵人，單體戰無效；每擴散給1/2火球；v2灼燒每層0.26對齊中毒",
+      "value_multi": 2.07,
+      "value_multi_upgraded": 2.41
+    },
+    "SweepUp": {
+      "value": 1.6,
+      "value_upgraded": 2.1,
+      "confidence": "high",
+      "reasoning": "抽2/3+1火球環繞",
+      "value_multi": 1.6,
+      "value_multi_upgraded": 2.1
+    },
+    "ThisIsFine": {
+      "value": 3.8,
+      "value_upgraded": 6.0,
+      "confidence": "medium",
+      "reasoning": "敵人灼燒每回合額外觸發1/2次，不遞減灼燒下約翻倍；v2灼燒每層0.26對齊中毒",
+      "value_multi": 4.94,
+      "value_multi_upgraded": 7.8
+    },
+    "YouAreWeakEma": {
+      "value": 2.3,
+      "value_upgraded": 3.3,
+      "confidence": "medium",
+      "reasoning": "5+3/5×火球層數傷害，估3層",
+      "value_multi": 2.3,
+      "value_multi_upgraded": 3.3
+    }
+  },
+  "source": "mod"
+}

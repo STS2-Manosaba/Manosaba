@@ -1,0 +1,28 @@
+{
+  "character": "Common",
+  "assumptions": [
+    "單人模式、一般 Manosaba 角色、戰鬥約 6 回合，能力牌第 2 回合打出",
+    "X 費卡以 X=3 估計",
+    "MultiplayerOnly 卡的隊友效果單人計 0；只計自身可得部分",
+    "敵人平均每回合對玩家造成約 10 點攻擊（含被格擋），約 1.3 次攻擊段數",
+    "多人欄位：4 人隊伍、隊友為一般 Manosaba 角色；特定角色在隊機率約 3/13；全隊效果按受益人數計",
+    "v2：以 anchors.md 原版錨點核對，多數 v1 估值與錨點一致而保留"
+  ],
+  "mechanic_values": {
+    "魔女化": "每層約 0.07，超過 100 層有風險，大量疊層時遞減",
+    "暫時力量(HouseKeeping)": "每層 0.33，僅本回合",
+    "斬首(Guillotine)": "攻擊後目標生命低於門檻即 DoomKill；一般觸發率約 15-20%",
+    "Simple Spear 零件": "4 張不可打出、保留的零件洗入抽牌堆，全部進手牌後合成 0 費 50 傷 Simple Spear；預估戰鬥內合成率約 65%，期間佔手牌",
+    "裁判/罪證/嫌疑": "Ema 專屬體系，其他角色幾乎無價值"
+  },
+  "cards": {
+    "GuiltQuestion": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 0.5,
+      "value_multi_upgraded": 0.5,
+      "confidence": "medium",
+      "reasoning": "v4: MultiplayerOnly 單人 null。指定隊友手牌得2張罪證嫌疑（虛無消耗狀態，留手回合末+1罪證；打出需1能量再轉給別人）。罪證本身惰性，只在罪犯判決（第5/3回合後）決定真犯人（+1能量、+2攻防、受傷+2）或圖書館審判戰時有用，且與敵人罪證競爭。升級僅-1費，效果值不變"
+    }
+  }
+}

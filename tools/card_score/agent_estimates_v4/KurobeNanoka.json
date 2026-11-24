@@ -1,0 +1,53 @@
+{
+  "character": "KurobeNanoka",
+  "assumptions": [
+    "單人；典型牌組約3-4張槍擊牌",
+    "戰鬥6回合，能力牌第2回合打出",
+    "子彈每回合+1，約第4回合因Ribbon+精神創傷達100魔女化後+2",
+    "精準以 1+Amount/100 乘下一槍傷害，下一槍基底約12",
+    "多人：4人隊伍，3名隊友為一般Manosaba角色，各自牌組約含1張自身精神創傷",
+    "多人：子彈與看守為各玩家獨立；無隊友向效果的卡 value_multi 等於單人值",
+    "v2：看守初始10HP，承接所有未格擋傷害，首次未格擋傷害才召喚，平均在場約2回合"
+  ],
+  "mechanic_values": {
+    "子彈": "約0.6能量/發：槍擊10傷對比打擊6傷的溢價，且每回合僅補1發，常態稀缺；100魔女化後稍降",
+    "精準": "每1%約0.017（12傷基底×1%/6），需有子彈開槍才兌現",
+    "魔女化": "0.07/層，另含達100層增子彈收益",
+    "看守": "Ribbon首次未格擋傷害召喚，約60%戰鬥中存活2-3回合"
+  },
+  "source": "mod",
+  "cards": {
+    "TraumaReveal": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 2.3,
+      "value_multi_upgraded": 3.4,
+      "confidence": "medium",
+      "reasoning": "v4: MultiplayerOnly 單人 null。GetTeammatesOf 含自己：奈葉香自身精神創傷必觸發（約0.8/次，牌組仍有該牌約90%）；隊友對應表僅10角色（不含 Ema/Coco/原版），每隊友命中期望約 9×0.088≈0.79 人；(0.9+0.79)×每次約0.7×重複2(升級3) ≈2.3/3.4"
+    },
+    "DyingMessage": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 3.0,
+      "confidence": "low",
+      "reasoning": "v4: MultiplayerOnly 單人 null。自殺換其他隊友（排除自己，平均1.5人）下回合+2能量+抽3(升5)，約1.5×3.5≈5.3；扣除本場自身後續貢獻全失，淨值約2.0/3.0"
+    },
+    "GushaGusha2": {
+      "value": 4.0,
+      "value_upgraded": 4.0,
+      "value_multi": 4.0,
+      "value_multi_upgraded": 4.0,
+      "confidence": "medium",
+      "reasoning": "v4: GushaGusha1 衍生（約第3回合）：+2力+2敏（剩餘回合較少約3.3）並將3階置頂，鏈值約0.7；無升級"
+    },
+    "GushaGusha3": {
+      "value": 4.2,
+      "value_upgraded": 4.2,
+      "value_multi": 4.2,
+      "value_multi_upgraded": 4.2,
+      "confidence": "medium",
+      "reasoning": "v4: 鏈末端，約第4回合 +3力+3敏，剩2-3回合；無升級"
+    }
+  }
+}

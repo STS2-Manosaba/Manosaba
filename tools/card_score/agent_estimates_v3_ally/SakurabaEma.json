@@ -1,0 +1,107 @@
+{
+  "character": "SakurabaEma",
+  "source": "mod",
+  "assumptions": [
+    "v3隊友：多人平均2.5人隊（隊友1.5名）；指定角色隊友≈1.5/17≈0.088（18角色不放回）；單人此類效果為0",
+    "艾瑪裁判進度≥10 觸發率約12%（scratchpad/ema_progress_sim.py 推演），≥20 約1~2%"
+  ],
+  "mechanic_values": {
+    "魔女化": "每層0.07，經腿環減半約0.035",
+    "證物卡": "0費隨機，生成≈1.0",
+    "提出證據": "≈0.75",
+    "發言": "0費抽1+議論1，生成≈1.0",
+    "議論": "10層才給能，每層≈0.1",
+    "嫌疑": "艾瑪存活門檻20，每層−0.1風險",
+    "活體書頁": "生成≈1.3"
+  },
+  "cards": {
+    "BestFriendsGroup": {
+      "value": 2.3,
+      "value_upgraded": 2.3,
+      "value_multi": 3.2,
+      "value_multi_upgraded": 3.2,
+      "confidence": "medium",
+      "reasoning": "v3隊友:特定隊友機率=1.5名隊友/17≈0.088（2.5人隊；單人0）；雪莉/漢娜/梅露露三人之一，期望受益隊友=1.5×3/17≈0.26名×每名約3.3（免費野餐時間每回合）≈+0.9；v2按0.7名"
+    },
+    "NanokaIsARobot": {
+      "value": 2.9,
+      "value_upgraded": 3.5,
+      "value_multi": 2.95,
+      "value_multi_upgraded": 3.55,
+      "confidence": "high",
+      "reasoning": "v3隊友:特定隊友機率=1.5名隊友/17≈0.088（2.5人隊；單人0）；奈葉香得1人工製品約0.5×0.088≈+0.05"
+    },
+    "SillyLittleDog": {
+      "value": 1.4,
+      "value_upgraded": 1.6,
+      "value_multi": 1.55,
+      "value_multi_upgraded": 1.75,
+      "confidence": "low",
+      "reasoning": "v3隊友:特定隊友機率=1.5名隊友/17≈0.088（2.5人隊；單人0）；回合末5傷還需希羅隊友場上有艾瑪狗（約60%），5傷≈0.8/回合×3.5回合×0.053≈+0.15；v2約+0.8"
+    },
+    "JointInvestigation": {
+      "value": 3.0,
+      "value_upgraded": 3.5,
+      "value_multi": 7.5,
+      "value_multi_upgraded": 8.8,
+      "confidence": "high",
+      "reasoning": "v3隊友:v3隊友:2.5人隊即隊友1.5名（v2按4人隊3名），每名隊友抽2/3+2證物約3.0/3.5"
+    },
+    "Rebuttal": {
+      "value": 2.4,
+      "value_upgraded": 3.0,
+      "value_multi": 2.4,
+      "value_multi_upgraded": 3.0,
+      "confidence": "medium",
+      "reasoning": "v3隊友:裁判進度≥10：審問只由 RawTellOwk 開啟（腿環搜查打8/6/4張後給予），之後每張裁判牌+1；回合推演觸發率約12%（v2用30%），≥20約1~2%；9/12傷+提出證據≈2.25/2.75，進度加傷全觸發約1.2/1.8×0.12"
+    },
+    "Sophistry": {
+      "value": 1.65,
+      "value_upgraded": 2.2,
+      "value_multi": 1.65,
+      "value_multi_upgraded": 2.2,
+      "confidence": "medium",
+      "reasoning": "v3隊友:裁判進度≥10：審問只由 RawTellOwk 開啟（腿環搜查打8/6/4張後給予），之後每張裁判牌+1；回合推演觸發率約12%（v2用30%），≥20約1~2%；另需自身有嫌疑，打兩次觸發約10%（v2 25%）"
+    },
+    "ExhaustiveMethod": {
+      "value": 3.55,
+      "value_upgraded": 5.35,
+      "value_multi": 3.55,
+      "value_multi_upgraded": 5.35,
+      "confidence": "medium",
+      "reasoning": "v3隊友:裁判進度≥10：審問只由 RawTellOwk 開啟（腿環搜查打8/6/4張後給予），之後每張裁判牌+1；回合推演觸發率約12%（v2用30%），≥20約1~2%；20/30傷基礎，進度≥10每層+1/2傷全觸發約2/3能×0.12"
+    },
+    "SuspiciousIWasntInvited": {
+      "value": 2.8,
+      "value_upgraded": 3.55,
+      "value_multi": 3.3,
+      "value_multi_upgraded": 4.05,
+      "confidence": "medium",
+      "reasoning": "v3隊友:裁判進度≥10：審問只由 RawTellOwk 開啟（腿環搜查打8/6/4張後給予），之後每張裁判牌+1；回合推演觸發率約12%（v2用30%），≥20約1~2%；10/13格擋+抽1，依嫌疑加格擋按12%"
+    },
+    "WitchHammer": {
+      "value": 3.05,
+      "value_upgraded": 3.85,
+      "value_multi": 3.05,
+      "value_multi_upgraded": 3.85,
+      "confidence": "medium",
+      "reasoning": "v3隊友:裁判進度≥10：審問只由 RawTellOwk 開啟（腿環搜查打8/6/4張後給予），之後每張裁判牌+1；回合推演觸發率約12%（v2用30%），≥20約1~2%；13/18傷+提出證據，減益額外段數按12%"
+    },
+    "AccUhEartsIndictment": {
+      "value": 1.9,
+      "value_upgraded": 2.3,
+      "value_multi": 1.9,
+      "value_multi_upgraded": 2.3,
+      "confidence": "low",
+      "reasoning": "v3隊友:裁判進度≥10：審問只由 RawTellOwk 開啟（腿環搜查打8/6/4張後給予），之後每張裁判牌+1；回合推演觸發率約12%（v2用30%），≥20約1~2%；5/7傷+提出證據≈1.6/1.95，依圖鑑多段按12%"
+    },
+    "AccUhEartsRevelation": {
+      "value": 1.9,
+      "value_upgraded": 2.3,
+      "value_multi": 1.9,
+      "value_multi_upgraded": 2.3,
+      "confidence": "low",
+      "reasoning": "v3隊友:裁判進度≥10：審問只由 RawTellOwk 開啟（腿環搜查打8/6/4張後給予），之後每張裁判牌+1；回合推演觸發率約12%（v2用30%），≥20約1~2%；同起訴版"
+    }
+  }
+}

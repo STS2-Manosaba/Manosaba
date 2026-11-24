@@ -1,0 +1,214 @@
+{
+  "character": "NikaidoHiro",
+  "assumptions": [
+    "單人模式、帶起始遺物希羅的鋼筆；起始牌組 4 打擊/2 防禦/創傷/艾瑪x2/威嚇",
+    "典型牌組每場累積嫌疑約 6~12 層，平均場上約 6 層（鋼筆每次攻擊約 +1.5 傷）",
+    "櫻羽艾瑪？典型生命約 8~14（多張召喚疊加），會吸收未格擋傷害",
+    "戰鬥約 6 回合，能力牌第 2 回合打出；架式切換每回合約 1 次",
+    "多人：4人隊伍、隊友為一般Manosaba角色；敵人血量隨人數提高，單體數值不變；隊友死亡每場約0.3次"
+  ],
+  "mechanic_values": {
+    "嫌疑": "每層約 +0.2：鋼筆每4層每次攻擊+1傷，剩餘約10次攻擊；>10層（艾瑪存活>20）塞壞結局，高層邊際轉負",
+    "召喚(櫻羽艾瑪？)": "每點約 0.17：類似可延續的格檔，並放大艾瑪攻擊牌與提高壞結局門檻",
+    "魔女化": "每層 0.07；希羅有大量來源，>100層有風險",
+    "上段架式": "攻擊+20%、格檔-20%，約 +0.3/張",
+    "下段架式": "格檔+20%、攻擊-20%，約 +0.2/張",
+    "中段架式": "無數值，僅為流轉/切換觸發，約 +0.1"
+  },
+  "cards": {
+    "StrikeNikaidoHiro": {
+      "value": 1.25,
+      "value_upgraded": 1.75,
+      "confidence": "high",
+      "reasoning": "6傷加鋼筆嫌疑加成約1.5傷",
+      "value_multi": 1.25,
+      "value_multi_upgraded": 1.75
+    },
+    "DefendNikaidoHiro": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "標準5格檔",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6
+    },
+    "TraumaNikaidoHiro": {
+      "value": 0.7,
+      "value_upgraded": 1.05,
+      "confidence": "medium",
+      "reasoning": "10層魔女化，0費純增傷曲線",
+      "value_multi": 0.7,
+      "value_multi_upgraded": 1.05
+    },
+    "EmaNikaidoHiro": {
+      "value": 1.55,
+      "value_upgraded": 1.9,
+      "confidence": "medium",
+      "reasoning": "召喚5（約0.85）加10魔女化，並提高壞結局門檻",
+      "value_multi": 1.55,
+      "value_multi_upgraded": 1.9
+    },
+    "Intimidate": {
+      "value": 0.7,
+      "value_upgraded": 1.0,
+      "confidence": "medium",
+      "reasoning": "1虛弱加2嫌疑（鋼筆增傷），嫌疑過高時有壞結局風險",
+      "value_multi": 0.7,
+      "value_multi_upgraded": 1.0
+    },
+    "StrikeChi": {
+      "value": 2.2,
+      "value_upgraded": 3.0,
+      "confidence": "medium",
+      "reasoning": "4傷4擋抽1並進下段，格檔+20%；流轉觸發加值",
+      "value_multi": 2.2,
+      "value_multi_upgraded": 3.0
+    },
+    "StrikeJin": {
+      "value": 2.5,
+      "value_upgraded": 3.2,
+      "confidence": "medium",
+      "reasoning": "8傷抽2並進中段架式，主要為切換架式觸發",
+      "value_multi": 2.5,
+      "value_multi_upgraded": 3.2
+    },
+    "StrikeTen": {
+      "value": 2.9,
+      "value_upgraded": 4.0,
+      "confidence": "medium",
+      "reasoning": "12傷抽1並進上段，傷害+20%，解鎖無想劍",
+      "value_multi": 2.9,
+      "value_multi_upgraded": 4.0
+    },
+    "GoodSleep": {
+      "value": 1.75,
+      "value_upgraded": 2.5,
+      "confidence": "high",
+      "reasoning": "7格檔加5魔女化",
+      "value_multi": 1.75,
+      "value_multi_upgraded": 2.5
+    },
+    "WellSleep": {
+      "value": 1.4,
+      "value_upgraded": 2.0,
+      "confidence": "medium",
+      "reasoning": "5格檔加2嫌疑，嫌疑供鋼筆與偽證/論破消耗",
+      "value_multi": 1.4,
+      "value_multi_upgraded": 2.0
+    },
+    "EmaDogRush": {
+      "value": 2.3,
+      "value_upgraded": 2.8,
+      "confidence": "medium",
+      "reasoning": "召喚4後艾瑪造成其當前生命傷害，典型約9傷",
+      "value_multi": 2.3,
+      "value_multi_upgraded": 2.8
+    },
+    "BathroomTalk": {
+      "value": 1.75,
+      "value_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "召喚8加2嫌疑，艾瑪存活時壞結局門檻20",
+      "value_multi": 1.75,
+      "value_multi_upgraded": 2.4
+    },
+    "EmaDogBite": {
+      "value": 3.5,
+      "value_upgraded": 5.0,
+      "confidence": "medium",
+      "reasoning": "艾瑪以當前生命傷害打2次，典型10生命約20傷；需先有召喚",
+      "value_multi": 3.5,
+      "value_multi_upgraded": 5.0
+    },
+    "EmaDogAttack": {
+      "value": 5.0,
+      "value_upgraded": 5.0,
+      "confidence": "low",
+      "reasoning": "每回合末艾瑪對隨機敵造成其生命傷害，約10傷×4回合×0.9，艾瑪死亡則失效",
+      "value_multi": 5.0,
+      "value_multi_upgraded": 5.0
+    },
+    "Perjury": {
+      "value": 2.2,
+      "value_upgraded": 3.0,
+      "confidence": "medium",
+      "reasoning": "嫌疑轉永久力量2，但失去鋼筆加成約0.5傷/次",
+      "value_multi": 2.2,
+      "value_multi_upgraded": 3.0
+    },
+    "RonpaNikaidoHiro": {
+      "value": 2.7,
+      "value_upgraded": 3.6,
+      "confidence": "medium",
+      "reasoning": "10傷+消耗一半嫌疑每層6傷，典型6層→約28傷但損失鋼筆加成",
+      "value_multi": 2.7,
+      "value_multi_upgraded": 3.6
+    },
+    "SeveringSpin": {
+      "value": 3.3,
+      "value_upgraded": 4.3,
+      "confidence": "medium",
+      "reasoning": "全體3×4傷加5擋並隨機切換架式，觸發流轉",
+      "value_multi": 3.3,
+      "value_multi_upgraded": 4.3
+    },
+    "Flux": {
+      "value": 3.5,
+      "value_upgraded": 3.5,
+      "confidence": "low",
+      "reasoning": "切換架式回1能量，架式牌密度中等時每回合約0.8次觸發",
+      "value_multi": 3.5,
+      "value_multi_upgraded": 3.5
+    },
+    "Accomplice": {
+      "value": 2.4,
+      "value_upgraded": 3.3,
+      "confidence": "low",
+      "reasoning": "消耗全嫌疑每層召喚7，典型5層約35召喚，但失去鋼筆加成",
+      "value_multi": 2.4,
+      "value_multi_upgraded": 3.3
+    },
+    "LaboursOfHiro": {
+      "value": 3.0,
+      "value_upgraded": 3.3,
+      "confidence": "low",
+      "reasoning": "每攻擊牌按費用×10魔女化，約120層魔女化總量；隊友死亡力量單人幾乎無；過百有風險",
+      "value_multi": 4.5,
+      "value_multi_upgraded": 4.8,
+      "reasoning_multi": "全隊攻擊牌都給魔女化，約4倍來源易過百；友軍死亡+3力量期望約0.3次"
+    },
+    "LifeSentence": {
+      "value": 3.2,
+      "value_upgraded": 4.6,
+      "confidence": "low",
+      "reasoning": "回合末獲嫌疑×2格檔，6層約12擋×4回合",
+      "value_multi": 3.2,
+      "value_multi_upgraded": 4.6
+    },
+    "MusouKen": {
+      "value": 3.5,
+      "value_upgraded": 4.0,
+      "confidence": "low",
+      "reasoning": "需上段，結束回合減傷50%並反擊50+受傷值，犧牲本回合剩餘出牌",
+      "value_multi": 3.5,
+      "value_multi_upgraded": 4.0
+    },
+    "WitchesSabbath": {
+      "value": 3.0,
+      "value_upgraded": 5.0,
+      "confidence": "low",
+      "reasoning": "需100魔女化，全體無視格檔約(50+嫌疑×5)×2傷，觸發率約四成",
+      "value_multi": 1.8,
+      "value_multi_upgraded": 3.0,
+      "reasoning_multi": "需全員皆≥100魔女化，觸發率降至約兩成五"
+    },
+    "DeathLoop": {
+      "value": 2.5,
+      "value_upgraded": 2.5,
+      "confidence": "low",
+      "reasoning": "50魔女化加死亡時依魔女化回血，保命價值條件性高",
+      "value_multi": 2.5,
+      "value_multi_upgraded": 2.5
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "character": "SaekiMiria",
+  "source": "mod",
+  "assumptions": [
+    "v2：逐張讀程式碼；MultiplayerOnly卡單人value=null",
+    "單人模式為主，MultiplayerOnly卡單人計0",
+    "戰鬥約6回合，能力第2回合打出",
+    "CabinetKey每回合1張隨機電影入抽牌堆，Lv4起升級，Lv3起50%卡帶石頭",
+    "多人：4人隊伍、3名一般Manosaba隊友，特定隊友機率約3/13，全隊效果按受益人數計",
+    "v3補血：生命值跨戰鬥保留。戰鬥中一次性（消耗型）回血每點 0.28 能量（原始 0.33×溢補八五折），非消耗每場可重用卡每次打出每點 0.22（重複使用溢補較多）；分回合小額持續回血 0.22~0.25；多人可指定缺血隊友 0.26~0.28，全體回復按受益人數×八折"
+  ],
+  "mechanic_values": {
+    "回血": "一次性 0.28/點；可重用 0.22/點；舊 0.12×0.7≈0.084/點"
+  },
+  "cards": {
+    "PepperRamen": {
+      "value": 1.05,
+      "value_upgraded": 1.7,
+      "value_multi": 1.05,
+      "value_multi_upgraded": 1.7,
+      "confidence": "low",
+      "reasoning": "v3補血: 回復 3(6) 對自身中毒 1(3)，淨回血約 +3(+4)，分回合小額每點 0.25，+0.45/+0.6"
+    },
+    "Slimification": {
+      "value": 3.1,
+      "value_upgraded": 3.5,
+      "value_multi": 3.1,
+      "value_multi_upgraded": 3.5,
+      "confidence": "low",
+      "reasoning": "v3補血: 受未擋傷害獲回復，估本場約 8 血，持續回血每點 +0.14 → +1.1；切割刀連動不變"
+    },
+    "LifeConsultation": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.6,
+      "confidence": "low",
+      "reasoning": "v3補血: 限多人；隊友回復層數×2 約 8 血，指定缺血隊友每點 0.28（舊約 0.15），+1.0；單人 null"
+    }
+  }
+}
