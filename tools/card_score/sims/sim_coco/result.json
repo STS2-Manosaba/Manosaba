@@ -1,0 +1,2708 @@
+{
+ "live": {
+  "stats": {
+   "Clairvoyance:at_fans_combat": [
+    1.152,
+    0.6
+   ],
+   "Clairvoyance:at_hiding": [
+    7.12,
+    3.7
+   ],
+   "Clairvoyance:at_layers": [
+    9.203,
+    4.8
+   ],
+   "Clairvoyance:at_live": [
+    0.998,
+    0.5
+   ],
+   "Clairvoyance:at_majoka": [
+    59.424,
+    30.8
+   ],
+   "Clairvoyance:at_total_fans": [
+    47.641,
+    24.7
+   ],
+   "Clairvoyance:at_turn": [
+    5.36,
+    2.8
+   ],
+   "Clairvoyance:plays": [
+    1.0,
+    0.5
+   ],
+   "Clairvoyance:rl": [
+    4.552,
+    2.4
+   ],
+   "Clairvoyance:stacks": [
+    5.434,
+    2.9
+   ],
+   "Defend:at_fans_combat": [
+    1.089,
+    2.4
+   ],
+   "Defend:at_hiding": [
+    6.16,
+    13.6
+   ],
+   "Defend:at_layers": [
+    7.955,
+    17.6
+   ],
+   "Defend:at_live": [
+    0.988,
+    2.2
+   ],
+   "Defend:at_majoka": [
+    39.941,
+    88.1
+   ],
+   "Defend:at_total_fans": [
+    41.219,
+    91.0
+   ],
+   "Defend:at_turn": [
+    3.928,
+    8.7
+   ],
+   "Defend:plays": [
+    1.0,
+    2.2
+   ],
+   "Defend:rl": [
+    4.202,
+    9.3
+   ],
+   "FlameBait:at_fans_combat": [
+    0.987,
+    3.2
+   ],
+   "FlameBait:at_hiding": [
+    6.045,
+    19.4
+   ],
+   "FlameBait:at_layers": [
+    7.457,
+    23.9
+   ],
+   "FlameBait:at_live": [
+    0.995,
+    3.2
+   ],
+   "FlameBait:at_majoka": [
+    48.385,
+    155.1
+   ],
+   "FlameBait:at_total_fans": [
+    37.603,
+    120.5
+   ],
+   "FlameBait:at_turn": [
+    4.759,
+    15.3
+   ],
+   "FlameBait:layers": [
+    7.567,
+    25.1
+   ],
+   "FlameBait:live": [
+    0.995,
+    3.3
+   ],
+   "FlameBait:plays": [
+    1.0,
+    3.2
+   ],
+   "FlameBait:rl": [
+    3.995,
+    12.8
+   ],
+   "ForMyOshi:at_fans_combat": [
+    1.069,
+    1.5
+   ],
+   "ForMyOshi:at_hiding": [
+    6.137,
+    8.5
+   ],
+   "ForMyOshi:at_layers": [
+    6.778,
+    9.4
+   ],
+   "ForMyOshi:at_live": [
+    0.986,
+    1.4
+   ],
+   "ForMyOshi:at_majoka": [
+    47.711,
+    66.0
+   ],
+   "ForMyOshi:at_total_fans": [
+    37.955,
+    52.5
+   ],
+   "ForMyOshi:at_turn": [
+    4.677,
+    6.5
+   ],
+   "ForMyOshi:plays": [
+    1.0,
+    1.4
+   ],
+   "ForMyOshi:rl": [
+    4.011,
+    5.5
+   ],
+   "InfiniteMirror:added": [
+    5.234,
+    3.6
+   ],
+   "InfiniteMirror:at_fans_combat": [
+    1.09,
+    0.7
+   ],
+   "InfiniteMirror:at_hiding": [
+    5.452,
+    3.6
+   ],
+   "InfiniteMirror:at_layers": [
+    5.104,
+    3.4
+   ],
+   "InfiniteMirror:at_live": [
+    1.0,
+    0.7
+   ],
+   "InfiniteMirror:at_majoka": [
+    27.971,
+    18.7
+   ],
+   "InfiniteMirror:at_total_fans": [
+    38.986,
+    26.0
+   ],
+   "InfiniteMirror:at_turn": [
+    3.055,
+    2.0
+   ],
+   "InfiniteMirror:plays": [
+    1.0,
+    0.7
+   ],
+   "InfiniteMirror:rl": [
+    4.106,
+    2.7
+   ],
+   "LucidDream:at_fans_combat": [
+    1.105,
+    1.3
+   ],
+   "LucidDream:at_hiding": [
+    6.266,
+    7.2
+   ],
+   "LucidDream:at_layers": [
+    8.024,
+    9.3
+   ],
+   "LucidDream:at_live": [
+    0.993,
+    1.1
+   ],
+   "LucidDream:at_majoka": [
+    48.074,
+    55.5
+   ],
+   "LucidDream:at_total_fans": [
+    39.051,
+    45.0
+   ],
+   "LucidDream:at_turn": [
+    4.617,
+    5.3
+   ],
+   "LucidDream:empty": [
+    1.0,
+    0.0
+   ],
+   "LucidDream:picked_cost": [
+    1.169,
+    1.4
+   ],
+   "LucidDream:picked_v": [
+    3.74,
+    4.5
+   ],
+   "LucidDream:plays": [
+    1.0,
+    1.2
+   ],
+   "LucidDream:rl": [
+    4.078,
+    4.7
+   ],
+   "MysteriousCatPants:at_fans_combat": [
+    1.129,
+    1.5
+   ],
+   "MysteriousCatPants:at_hiding": [
+    6.151,
+    7.9
+   ],
+   "MysteriousCatPants:at_layers": [
+    7.342,
+    9.4
+   ],
+   "MysteriousCatPants:at_live": [
+    0.993,
+    1.3
+   ],
+   "MysteriousCatPants:at_majoka": [
+    44.888,
+    57.6
+   ],
+   "MysteriousCatPants:at_total_fans": [
+    38.369,
+    49.3
+   ],
+   "MysteriousCatPants:at_turn": [
+    4.752,
+    6.1
+   ],
+   "MysteriousCatPants:fans": [
+    1.128,
+    1.5
+   ],
+   "MysteriousCatPants:plays": [
+    1.0,
+    1.3
+   ],
+   "MysteriousCatPants:rl": [
+    4.035,
+    5.2
+   ],
+   "MysteriousCatShoes:at_fans_combat": [
+    1.049,
+    0.9
+   ],
+   "MysteriousCatShoes:at_hiding": [
+    4.783,
+    4.1
+   ],
+   "MysteriousCatShoes:at_layers": [
+    4.931,
+    4.3
+   ],
+   "MysteriousCatShoes:at_live": [
+    0.991,
+    0.9
+   ],
+   "MysteriousCatShoes:at_majoka": [
+    19.481,
+    16.8
+   ],
+   "MysteriousCatShoes:at_total_fans": [
+    35.948,
+    31.0
+   ],
+   "MysteriousCatShoes:at_turn": [
+    2.418,
+    2.1
+   ],
+   "MysteriousCatShoes:live": [
+    1.0,
+    0.9
+   ],
+   "MysteriousCatShoes:plays": [
+    1.0,
+    0.9
+   ],
+   "MysteriousCatShoes:rl": [
+    3.915,
+    3.4
+   ],
+   "OnAir:at_fans_combat": [
+    1.117,
+    2.0
+   ],
+   "OnAir:at_hiding": [
+    6.092,
+    11.0
+   ],
+   "OnAir:at_layers": [
+    6.248,
+    11.3
+   ],
+   "OnAir:at_live": [
+    0.969,
+    1.7
+   ],
+   "OnAir:at_majoka": [
+    42.593,
+    76.7
+   ],
+   "OnAir:at_total_fans": [
+    38.823,
+    69.9
+   ],
+   "OnAir:at_turn": [
+    4.169,
+    7.5
+   ],
+   "OnAir:plays": [
+    1.0,
+    1.8
+   ],
+   "OnAir:rl": [
+    4.067,
+    7.3
+   ],
+   "PhoneLiveStream:at_fans_combat": [
+    1.076,
+    1.4
+   ],
+   "PhoneLiveStream:at_hiding": [
+    5.833,
+    7.7
+   ],
+   "PhoneLiveStream:at_layers": [
+    6.727,
+    8.9
+   ],
+   "PhoneLiveStream:at_live": [
+    0.986,
+    1.3
+   ],
+   "PhoneLiveStream:at_majoka": [
+    47.76,
+    63.0
+   ],
+   "PhoneLiveStream:at_total_fans": [
+    38.21,
+    50.4
+   ],
+   "PhoneLiveStream:at_turn": [
+    4.635,
+    6.1
+   ],
+   "PhoneLiveStream:plays": [
+    1.0,
+    1.3
+   ],
+   "PhoneLiveStream:rl": [
+    4.027,
+    5.3
+   ],
+   "PunkCatShoes:at_fans_combat": [
+    1.085,
+    1.4
+   ],
+   "PunkCatShoes:at_hiding": [
+    6.323,
+    8.0
+   ],
+   "PunkCatShoes:at_layers": [
+    7.85,
+    9.9
+   ],
+   "PunkCatShoes:at_live": [
+    0.993,
+    1.2
+   ],
+   "PunkCatShoes:at_majoka": [
+    48.409,
+    60.9
+   ],
+   "PunkCatShoes:at_total_fans": [
+    38.573,
+    48.5
+   ],
+   "PunkCatShoes:at_turn": [
+    4.644,
+    5.8
+   ],
+   "PunkCatShoes:layers": [
+    7.939,
+    10.4
+   ],
+   "PunkCatShoes:live": [
+    0.993,
+    1.3
+   ],
+   "PunkCatShoes:plays": [
+    1.0,
+    1.3
+   ],
+   "PunkCatShoes:rl": [
+    4.046,
+    5.1
+   ],
+   "PunkCatTop:at_fans_combat": [
+    1.004,
+    1.5
+   ],
+   "PunkCatTop:at_hiding": [
+    6.067,
+    8.9
+   ],
+   "PunkCatTop:at_layers": [
+    7.346,
+    10.8
+   ],
+   "PunkCatTop:at_live": [
+    0.995,
+    1.5
+   ],
+   "PunkCatTop:at_majoka": [
+    44.997,
+    66.2
+   ],
+   "PunkCatTop:at_total_fans": [
+    37.575,
+    55.3
+   ],
+   "PunkCatTop:at_turn": [
+    4.715,
+    6.9
+   ],
+   "PunkCatTop:hits": [
+    8.45,
+    12.9
+   ],
+   "PunkCatTop:plays": [
+    1.0,
+    1.5
+   ],
+   "PunkCatTop:rl": [
+    3.993,
+    5.9
+   ],
+   "SharpTongue:at_fans_combat": [
+    1.007,
+    1.4
+   ],
+   "SharpTongue:at_hiding": [
+    6.136,
+    8.2
+   ],
+   "SharpTongue:at_layers": [
+    7.501,
+    10.1
+   ],
+   "SharpTongue:at_live": [
+    0.985,
+    1.3
+   ],
+   "SharpTongue:at_majoka": [
+    47.293,
+    63.5
+   ],
+   "SharpTongue:at_total_fans": [
+    38.313,
+    51.5
+   ],
+   "SharpTongue:at_turn": [
+    4.628,
+    6.2
+   ],
+   "SharpTongue:plays": [
+    1.0,
+    1.3
+   ],
+   "SharpTongue:rl": [
+    4.036,
+    5.4
+   ],
+   "ShowerStream:at_fans_combat": [
+    1.054,
+    1.7
+   ],
+   "ShowerStream:at_hiding": [
+    5.935,
+    9.5
+   ],
+   "ShowerStream:at_layers": [
+    7.737,
+    12.4
+   ],
+   "ShowerStream:at_live": [
+    1.0,
+    1.6
+   ],
+   "ShowerStream:at_majoka": [
+    47.2,
+    75.6
+   ],
+   "ShowerStream:at_total_fans": [
+    38.213,
+    61.2
+   ],
+   "ShowerStream:at_turn": [
+    4.655,
+    7.5
+   ],
+   "ShowerStream:layers": [
+    7.826,
+    12.9
+   ],
+   "ShowerStream:live": [
+    1.0,
+    1.7
+   ],
+   "ShowerStream:plays": [
+    1.0,
+    1.6
+   ],
+   "ShowerStream:rl": [
+    4.029,
+    6.5
+   ],
+   "SimultaneousViewing:at_fans_combat": [
+    1.084,
+    0.9
+   ],
+   "SimultaneousViewing:at_hiding": [
+    6.52,
+    5.4
+   ],
+   "SimultaneousViewing:at_layers": [
+    8.549,
+    7.0
+   ],
+   "SimultaneousViewing:at_live": [
+    1.0,
+    0.8
+   ],
+   "SimultaneousViewing:at_majoka": [
+    48.881,
+    40.2
+   ],
+   "SimultaneousViewing:at_total_fans": [
+    40.47,
+    33.2
+   ],
+   "SimultaneousViewing:at_turn": [
+    4.672,
+    3.8
+   ],
+   "SimultaneousViewing:layers": [
+    8.549,
+    7.0
+   ],
+   "SimultaneousViewing:live": [
+    1.0,
+    0.8
+   ],
+   "SimultaneousViewing:plays": [
+    1.0,
+    0.8
+   ],
+   "SimultaneousViewing:replay_v": [
+    2.044,
+    1.7
+   ],
+   "SimultaneousViewing:rl": [
+    4.173,
+    3.4
+   ],
+   "Strike:at_fans_combat": [
+    1.094,
+    1.9
+   ],
+   "Strike:at_hiding": [
+    6.629,
+    11.4
+   ],
+   "Strike:at_layers": [
+    8.469,
+    14.6
+   ],
+   "Strike:at_live": [
+    0.992,
+    1.7
+   ],
+   "Strike:at_majoka": [
+    47.124,
+    81.1
+   ],
+   "Strike:at_total_fans": [
+    41.134,
+    70.8
+   ],
+   "Strike:at_turn": [
+    4.487,
+    7.7
+   ],
+   "Strike:plays": [
+    1.0,
+    1.7
+   ],
+   "Strike:rl": [
+    4.217,
+    7.3
+   ],
+   "Trauma:at_fans_combat": [
+    1.135,
+    1.6
+   ],
+   "Trauma:at_hiding": [
+    6.458,
+    9.2
+   ],
+   "Trauma:at_layers": [
+    8.954,
+    12.8
+   ],
+   "Trauma:at_live": [
+    0.993,
+    1.4
+   ],
+   "Trauma:at_majoka": [
+    45.633,
+    65.2
+   ],
+   "Trauma:at_total_fans": [
+    37.561,
+    53.6
+   ],
+   "Trauma:at_turn": [
+    4.714,
+    6.7
+   ],
+   "Trauma:plays": [
+    1.0,
+    1.4
+   ],
+   "Trauma:rl": [
+    3.98,
+    5.7
+   ],
+   "_fans_per_fight": [
+    1.645,
+    1.6
+   ],
+   "_fight": [
+    1.0,
+    1.0
+   ],
+   "_fight_len": [
+    5.706,
+    5.7
+   ],
+   "_lv4_energy": [
+    1.0,
+    3.8
+   ],
+   "_majoka100": [
+    1.0,
+    0.2
+   ],
+   "_milestone10000": [
+    1.0,
+    0.7
+   ],
+   "_milestone3000": [
+    1.0,
+    0.9
+   ],
+   "_milestone6000": [
+    1.0,
+    0.9
+   ],
+   "_turn_live_sum": [
+    6.749,
+    38.5
+   ],
+   "_turns": [
+    1.0,
+    5.7
+   ],
+   "_turns_live": [
+    0.981,
+    5.6
+   ]
+  },
+  "out_per_fight": 64.34985203906301
+ },
+ "hide": {
+  "stats": {
+   "Clairvoyance:at_fans_combat": [
+    1.056,
+    1.1
+   ],
+   "Clairvoyance:at_hiding": [
+    5.849,
+    5.9
+   ],
+   "Clairvoyance:at_layers": [
+    4.847,
+    4.9
+   ],
+   "Clairvoyance:at_live": [
+    0.957,
+    1.0
+   ],
+   "Clairvoyance:at_majoka": [
+    127.785,
+    128.1
+   ],
+   "Clairvoyance:at_total_fans": [
+    35.612,
+    35.7
+   ],
+   "Clairvoyance:at_turn": [
+    4.525,
+    4.5
+   ],
+   "Clairvoyance:plays": [
+    1.0,
+    1.0
+   ],
+   "Clairvoyance:rl": [
+    4.05,
+    4.1
+   ],
+   "Clairvoyance:stacks": [
+    9.061,
+    9.1
+   ],
+   "CybercatShoes:at_fans_combat": [
+    0.884,
+    0.7
+   ],
+   "CybercatShoes:at_hiding": [
+    6.363,
+    5.0
+   ],
+   "CybercatShoes:at_layers": [
+    5.371,
+    4.2
+   ],
+   "CybercatShoes:at_live": [
+    0.963,
+    0.8
+   ],
+   "CybercatShoes:at_majoka": [
+    118.657,
+    92.5
+   ],
+   "CybercatShoes:at_total_fans": [
+    37.661,
+    29.4
+   ],
+   "CybercatShoes:at_turn": [
+    4.781,
+    3.7
+   ],
+   "CybercatShoes:layers": [
+    5.371,
+    4.2
+   ],
+   "CybercatShoes:live": [
+    0.963,
+    0.8
+   ],
+   "CybercatShoes:plays": [
+    1.0,
+    0.8
+   ],
+   "CybercatShoes:rl": [
+    4.171,
+    3.3
+   ],
+   "CybercatSkirt:at_fans_combat": [
+    0.889,
+    0.7
+   ],
+   "CybercatSkirt:at_hiding": [
+    6.456,
+    5.0
+   ],
+   "CybercatSkirt:at_layers": [
+    5.4,
+    4.2
+   ],
+   "CybercatSkirt:at_live": [
+    0.964,
+    0.7
+   ],
+   "CybercatSkirt:at_majoka": [
+    119.642,
+    92.6
+   ],
+   "CybercatSkirt:at_total_fans": [
+    37.835,
+    29.3
+   ],
+   "CybercatSkirt:at_turn": [
+    4.824,
+    3.7
+   ],
+   "CybercatSkirt:hiding": [
+    6.456,
+    5.0
+   ],
+   "CybercatSkirt:plays": [
+    1.0,
+    0.8
+   ],
+   "CybercatSkirt:rl": [
+    4.181,
+    3.2
+   ],
+   "CybercatTop:at_fans_combat": [
+    0.883,
+    1.1
+   ],
+   "CybercatTop:at_hiding": [
+    5.907,
+    7.7
+   ],
+   "CybercatTop:at_layers": [
+    5.508,
+    7.2
+   ],
+   "CybercatTop:at_live": [
+    0.967,
+    1.3
+   ],
+   "CybercatTop:at_majoka": [
+    126.997,
+    164.9
+   ],
+   "CybercatTop:at_total_fans": [
+    36.415,
+    47.3
+   ],
+   "CybercatTop:at_turn": [
+    5.28,
+    6.9
+   ],
+   "CybercatTop:plays": [
+    1.0,
+    1.3
+   ],
+   "CybercatTop:rl": [
+    4.092,
+    5.3
+   ],
+   "Defend:at_fans_combat": [
+    0.911,
+    1.1
+   ],
+   "Defend:at_hiding": [
+    6.705,
+    8.3
+   ],
+   "Defend:at_layers": [
+    5.714,
+    7.1
+   ],
+   "Defend:at_live": [
+    0.975,
+    1.2
+   ],
+   "Defend:at_majoka": [
+    118.343,
+    147.3
+   ],
+   "Defend:at_total_fans": [
+    40.426,
+    50.3
+   ],
+   "Defend:at_turn": [
+    4.709,
+    5.9
+   ],
+   "Defend:plays": [
+    1.0,
+    1.2
+   ],
+   "Defend:rl": [
+    4.342,
+    5.4
+   ],
+   "ForMyOshi:at_fans_combat": [
+    0.88,
+    1.1
+   ],
+   "ForMyOshi:at_hiding": [
+    6.531,
+    8.0
+   ],
+   "ForMyOshi:at_layers": [
+    4.799,
+    5.9
+   ],
+   "ForMyOshi:at_live": [
+    0.957,
+    1.2
+   ],
+   "ForMyOshi:at_majoka": [
+    125.86,
+    154.8
+   ],
+   "ForMyOshi:at_total_fans": [
+    36.02,
+    44.3
+   ],
+   "ForMyOshi:at_turn": [
+    5.121,
+    6.3
+   ],
+   "ForMyOshi:plays": [
+    1.0,
+    1.2
+   ],
+   "ForMyOshi:rl": [
+    4.077,
+    5.0
+   ],
+   "FoundYou:at_fans_combat": [
+    1.047,
+    0.6
+   ],
+   "FoundYou:at_hiding": [
+    7.51,
+    4.1
+   ],
+   "FoundYou:at_layers": [
+    5.998,
+    3.3
+   ],
+   "FoundYou:at_live": [
+    0.946,
+    0.5
+   ],
+   "FoundYou:at_majoka": [
+    201.283,
+    109.9
+   ],
+   "FoundYou:at_total_fans": [
+    38.713,
+    21.1
+   ],
+   "FoundYou:at_turn": [
+    7.816,
+    4.3
+   ],
+   "FoundYou:played": [
+    1.0,
+    0.5
+   ],
+   "FoundYou:plays": [
+    1.0,
+    0.5
+   ],
+   "FoundYou:rl": [
+    4.206,
+    2.3
+   ],
+   "HideInWardrobe:at_fans_combat": [
+    1.13,
+    0.1
+   ],
+   "HideInWardrobe:at_hiding": [
+    5.317,
+    0.3
+   ],
+   "HideInWardrobe:at_layers": [
+    4.3,
+    0.3
+   ],
+   "HideInWardrobe:at_live": [
+    0.976,
+    0.1
+   ],
+   "HideInWardrobe:at_majoka": [
+    58.167,
+    3.5
+   ],
+   "HideInWardrobe:at_total_fans": [
+    38.178,
+    2.3
+   ],
+   "HideInWardrobe:at_turn": [
+    3.185,
+    0.2
+   ],
+   "HideInWardrobe:played": [
+    1.0,
+    0.1
+   ],
+   "HideInWardrobe:plays": [
+    1.0,
+    0.1
+   ],
+   "HideInWardrobe:rl": [
+    4.178,
+    0.2
+   ],
+   "IWantToPlayAGame:at_fans_combat": [
+    0.784,
+    0.6
+   ],
+   "IWantToPlayAGame:at_hiding": [
+    5.422,
+    4.1
+   ],
+   "IWantToPlayAGame:at_layers": [
+    4.275,
+    3.2
+   ],
+   "IWantToPlayAGame:at_live": [
+    0.963,
+    0.7
+   ],
+   "IWantToPlayAGame:at_majoka": [
+    70.896,
+    53.8
+   ],
+   "IWantToPlayAGame:at_total_fans": [
+    34.275,
+    26.0
+   ],
+   "IWantToPlayAGame:at_turn": [
+    2.79,
+    2.1
+   ],
+   "IWantToPlayAGame:plays": [
+    1.0,
+    0.8
+   ],
+   "IWantToPlayAGame:rl": [
+    4.002,
+    3.0
+   ],
+   "InmuKing:at_fans_combat": [
+    0.784,
+    0.5
+   ],
+   "InmuKing:at_hiding": [
+    4.874,
+    3.3
+   ],
+   "InmuKing:at_layers": [
+    2.594,
+    1.8
+   ],
+   "InmuKing:at_live": [
+    0.908,
+    0.6
+   ],
+   "InmuKing:at_majoka": [
+    73.236,
+    50.2
+   ],
+   "InmuKing:at_total_fans": [
+    33.882,
+    23.2
+   ],
+   "InmuKing:at_turn": [
+    2.983,
+    2.0
+   ],
+   "InmuKing:plays": [
+    1.0,
+    0.7
+   ],
+   "InmuKing:rl": [
+    3.969,
+    2.7
+   ],
+   "LetsPlayHideAndSeek:at_fans_combat": [
+    0.902,
+    1.0
+   ],
+   "LetsPlayHideAndSeek:at_hiding": [
+    6.345,
+    7.1
+   ],
+   "LetsPlayHideAndSeek:at_layers": [
+    5.265,
+    5.9
+   ],
+   "LetsPlayHideAndSeek:at_live": [
+    0.973,
+    1.1
+   ],
+   "LetsPlayHideAndSeek:at_majoka": [
+    121.597,
+    135.9
+   ],
+   "LetsPlayHideAndSeek:at_total_fans": [
+    36.111,
+    40.4
+   ],
+   "LetsPlayHideAndSeek:at_turn": [
+    5.115,
+    5.7
+   ],
+   "LetsPlayHideAndSeek:pick_found": [
+    0.736,
+    0.8
+   ],
+   "LetsPlayHideAndSeek:plays": [
+    1.0,
+    1.1
+   ],
+   "LetsPlayHideAndSeek:rl": [
+    4.082,
+    4.6
+   ],
+   "LucidDream:at_fans_combat": [
+    0.938,
+    0.9
+   ],
+   "LucidDream:at_hiding": [
+    6.423,
+    6.1
+   ],
+   "LucidDream:at_layers": [
+    5.561,
+    5.3
+   ],
+   "LucidDream:at_live": [
+    0.976,
+    0.9
+   ],
+   "LucidDream:at_majoka": [
+    132.047,
+    126.3
+   ],
+   "LucidDream:at_total_fans": [
+    36.331,
+    34.7
+   ],
+   "LucidDream:at_turn": [
+    5.323,
+    5.1
+   ],
+   "LucidDream:empty": [
+    1.0,
+    0.0
+   ],
+   "LucidDream:picked_cost": [
+    1.365,
+    1.3
+   ],
+   "LucidDream:picked_v": [
+    4.102,
+    3.9
+   ],
+   "LucidDream:plays": [
+    1.0,
+    1.0
+   ],
+   "LucidDream:rl": [
+    4.093,
+    3.9
+   ],
+   "MysteriousCatHeadwear:at_fans_combat": [
+    0.891,
+    0.8
+   ],
+   "MysteriousCatHeadwear:at_hiding": [
+    6.503,
+    5.6
+   ],
+   "MysteriousCatHeadwear:at_layers": [
+    5.921,
+    5.1
+   ],
+   "MysteriousCatHeadwear:at_live": [
+    0.975,
+    0.8
+   ],
+   "MysteriousCatHeadwear:at_majoka": [
+    131.899,
+    112.8
+   ],
+   "MysteriousCatHeadwear:at_total_fans": [
+    36.556,
+    31.3
+   ],
+   "MysteriousCatHeadwear:at_turn": [
+    5.248,
+    4.5
+   ],
+   "MysteriousCatHeadwear:plays": [
+    1.0,
+    0.9
+   ],
+   "MysteriousCatHeadwear:rl": [
+    4.116,
+    3.5
+   ],
+   "OnAir:at_fans_combat": [
+    1.06,
+    1.0
+   ],
+   "OnAir:at_hiding": [
+    7.041,
+    6.5
+   ],
+   "OnAir:at_layers": [
+    5.315,
+    4.9
+   ],
+   "OnAir:at_live": [
+    0.941,
+    0.9
+   ],
+   "OnAir:at_majoka": [
+    147.997,
+    135.8
+   ],
+   "OnAir:at_total_fans": [
+    37.409,
+    34.3
+   ],
+   "OnAir:at_turn": [
+    6.123,
+    5.6
+   ],
+   "OnAir:plays": [
+    1.0,
+    0.9
+   ],
+   "OnAir:rl": [
+    4.141,
+    3.8
+   ],
+   "PhoneLiveStream:at_fans_combat": [
+    0.899,
+    1.0
+   ],
+   "PhoneLiveStream:at_hiding": [
+    6.056,
+    6.5
+   ],
+   "PhoneLiveStream:at_layers": [
+    4.828,
+    5.2
+   ],
+   "PhoneLiveStream:at_live": [
+    0.956,
+    1.0
+   ],
+   "PhoneLiveStream:at_majoka": [
+    129.234,
+    138.7
+   ],
+   "PhoneLiveStream:at_total_fans": [
+    36.131,
+    38.8
+   ],
+   "PhoneLiveStream:at_turn": [
+    5.172,
+    5.6
+   ],
+   "PhoneLiveStream:plays": [
+    1.0,
+    1.1
+   ],
+   "PhoneLiveStream:rl": [
+    4.081,
+    4.4
+   ],
+   "PlayWhatGame:at_fans_combat": [
+    1.096,
+    1.8
+   ],
+   "PlayWhatGame:at_hiding": [
+    6.092,
+    10.2
+   ],
+   "PlayWhatGame:at_layers": [
+    5.372,
+    9.0
+   ],
+   "PlayWhatGame:at_live": [
+    0.959,
+    1.6
+   ],
+   "PlayWhatGame:at_majoka": [
+    135.627,
+    226.7
+   ],
+   "PlayWhatGame:at_total_fans": [
+    35.495,
+    59.3
+   ],
+   "PlayWhatGame:at_turn": [
+    4.32,
+    7.2
+   ],
+   "PlayWhatGame:plays": [
+    1.0,
+    1.7
+   ],
+   "PlayWhatGame:rl": [
+    4.038,
+    6.7
+   ],
+   "ShowerStream:at_fans_combat": [
+    0.877,
+    0.9
+   ],
+   "ShowerStream:at_hiding": [
+    6.376,
+    6.8
+   ],
+   "ShowerStream:at_layers": [
+    5.768,
+    6.2
+   ],
+   "ShowerStream:at_live": [
+    1.0,
+    1.1
+   ],
+   "ShowerStream:at_majoka": [
+    124.569,
+    133.1
+   ],
+   "ShowerStream:at_total_fans": [
+    37.205,
+    39.8
+   ],
+   "ShowerStream:at_turn": [
+    5.104,
+    5.5
+   ],
+   "ShowerStream:layers": [
+    5.768,
+    6.2
+   ],
+   "ShowerStream:live": [
+    1.0,
+    1.1
+   ],
+   "ShowerStream:plays": [
+    1.0,
+    1.1
+   ],
+   "ShowerStream:rl": [
+    4.156,
+    4.4
+   ],
+   "Strike:at_fans_combat": [
+    0.925,
+    1.7
+   ],
+   "Strike:at_hiding": [
+    7.342,
+    13.6
+   ],
+   "Strike:at_layers": [
+    5.941,
+    11.0
+   ],
+   "Strike:at_live": [
+    0.974,
+    1.8
+   ],
+   "Strike:at_majoka": [
+    134.949,
+    249.8
+   ],
+   "Strike:at_total_fans": [
+    37.186,
+    68.8
+   ],
+   "Strike:at_turn": [
+    5.331,
+    9.9
+   ],
+   "Strike:plays": [
+    1.0,
+    1.9
+   ],
+   "Strike:rl": [
+    4.163,
+    7.7
+   ],
+   "TalkTrash:at_fans_combat": [
+    0.855,
+    0.4
+   ],
+   "TalkTrash:at_hiding": [
+    5.515,
+    2.6
+   ],
+   "TalkTrash:at_layers": [
+    4.677,
+    2.2
+   ],
+   "TalkTrash:at_live": [
+    0.96,
+    0.5
+   ],
+   "TalkTrash:at_majoka": [
+    89.749,
+    42.9
+   ],
+   "TalkTrash:at_total_fans": [
+    36.672,
+    17.5
+   ],
+   "TalkTrash:at_turn": [
+    3.418,
+    1.6
+   ],
+   "TalkTrash:plays": [
+    1.0,
+    0.5
+   ],
+   "TalkTrash:rl": [
+    4.129,
+    2.0
+   ],
+   "Trauma:at_fans_combat": [
+    0.958,
+    1.3
+   ],
+   "Trauma:at_hiding": [
+    6.57,
+    8.9
+   ],
+   "Trauma:at_layers": [
+    6.033,
+    8.2
+   ],
+   "Trauma:at_live": [
+    0.977,
+    1.3
+   ],
+   "Trauma:at_majoka": [
+    121.628,
+    164.6
+   ],
+   "Trauma:at_total_fans": [
+    34.75,
+    47.0
+   ],
+   "Trauma:at_turn": [
+    4.759,
+    6.4
+   ],
+   "Trauma:plays": [
+    1.0,
+    1.4
+   ],
+   "Trauma:rl": [
+    3.989,
+    5.4
+   ],
+   "TreeHollow:at_fans_combat": [
+    0.734,
+    0.5
+   ],
+   "TreeHollow:at_hiding": [
+    4.736,
+    3.5
+   ],
+   "TreeHollow:at_layers": [
+    4.102,
+    3.0
+   ],
+   "TreeHollow:at_live": [
+    0.97,
+    0.7
+   ],
+   "TreeHollow:at_majoka": [
+    30.431,
+    22.3
+   ],
+   "TreeHollow:at_total_fans": [
+    32.734,
+    24.0
+   ],
+   "TreeHollow:at_turn": [
+    2.348,
+    1.7
+   ],
+   "TreeHollow:majoka_before": [
+    30.431,
+    22.3
+   ],
+   "TreeHollow:mult_gain": [
+    0.666,
+    0.5
+   ],
+   "TreeHollow:plays": [
+    1.0,
+    0.7
+   ],
+   "TreeHollow:rl": [
+    3.908,
+    2.9
+   ],
+   "TreeHollow:turns_left": [
+    3.809,
+    2.8
+   ],
+   "TurnDefenseToOffense:at_fans_combat": [
+    0.901,
+    0.3
+   ],
+   "TurnDefenseToOffense:at_hiding": [
+    7.493,
+    2.7
+   ],
+   "TurnDefenseToOffense:at_layers": [
+    4.395,
+    1.6
+   ],
+   "TurnDefenseToOffense:at_live": [
+    0.979,
+    0.4
+   ],
+   "TurnDefenseToOffense:at_majoka": [
+    89.71,
+    32.7
+   ],
+   "TurnDefenseToOffense:at_total_fans": [
+    37.688,
+    13.7
+   ],
+   "TurnDefenseToOffense:at_turn": [
+    3.389,
+    1.2
+   ],
+   "TurnDefenseToOffense:hiding": [
+    7.493,
+    2.7
+   ],
+   "TurnDefenseToOffense:plays": [
+    1.0,
+    0.4
+   ],
+   "TurnDefenseToOffense:rl": [
+    4.211,
+    1.5
+   ],
+   "TurnDefenseToOffense:str": [
+    3.495,
+    1.3
+   ],
+   "TurnDefenseToOffense:turns_left": [
+    5.055,
+    1.8
+   ],
+   "_fans_per_fight": [
+    1.546,
+    1.5
+   ],
+   "_fight": [
+    1.0,
+    1.0
+   ],
+   "_fight_len": [
+    5.689,
+    5.7
+   ],
+   "_lv4_energy": [
+    1.0,
+    3.7
+   ],
+   "_majoka100": [
+    1.0,
+    0.8
+   ],
+   "_milestone3000": [
+    1.0,
+    0.7
+   ],
+   "_milestone6000": [
+    1.0,
+    0.2
+   ],
+   "_takeover": [
+    1.0,
+    0.2
+   ],
+   "_turn_live_sum": [
+    4.491,
+    25.5
+   ],
+   "_turns": [
+    1.0,
+    5.7
+   ],
+   "_turns_live": [
+    0.948,
+    5.4
+   ]
+  },
+  "out_per_fight": 28.066082065730477
+ },
+ "equip": {
+  "stats": {
+   "Clairvoyance:at_fans_combat": [
+    1.102,
+    0.3
+   ],
+   "Clairvoyance:at_hiding": [
+    6.484,
+    1.9
+   ],
+   "Clairvoyance:at_layers": [
+    2.453,
+    0.7
+   ],
+   "Clairvoyance:at_live": [
+    0.826,
+    0.2
+   ],
+   "Clairvoyance:at_majoka": [
+    71.094,
+    20.5
+   ],
+   "Clairvoyance:at_total_fans": [
+    48.499,
+    14.0
+   ],
+   "Clairvoyance:at_turn": [
+    6.893,
+    2.0
+   ],
+   "Clairvoyance:plays": [
+    1.0,
+    0.3
+   ],
+   "Clairvoyance:rl": [
+    4.634,
+    1.3
+   ],
+   "Clairvoyance:stacks": [
+    6.61,
+    1.9
+   ],
+   "CutieCatsShoes:at_fans_combat": [
+    1.006,
+    0.5
+   ],
+   "CutieCatsShoes:at_hiding": [
+    4.588,
+    2.4
+   ],
+   "CutieCatsShoes:at_layers": [
+    2.43,
+    1.3
+   ],
+   "CutieCatsShoes:at_live": [
+    0.888,
+    0.5
+   ],
+   "CutieCatsShoes:at_majoka": [
+    28.622,
+    15.1
+   ],
+   "CutieCatsShoes:at_total_fans": [
+    34.731,
+    18.4
+   ],
+   "CutieCatsShoes:at_turn": [
+    3.371,
+    1.8
+   ],
+   "CutieCatsShoes:hit": [
+    0.987,
+    0.5
+   ],
+   "CutieCatsShoes:plays": [
+    1.0,
+    0.5
+   ],
+   "CutieCatsShoes:prevent": [
+    11.931,
+    6.2
+   ],
+   "CutieCatsShoes:rl": [
+    3.898,
+    2.1
+   ],
+   "CybercatHeadwear:at_fans_combat": [
+    1.02,
+    0.5
+   ],
+   "CybercatHeadwear:at_hiding": [
+    5.421,
+    2.4
+   ],
+   "CybercatHeadwear:at_layers": [
+    2.594,
+    1.2
+   ],
+   "CybercatHeadwear:at_live": [
+    0.882,
+    0.4
+   ],
+   "CybercatHeadwear:at_majoka": [
+    45.387,
+    20.2
+   ],
+   "CybercatHeadwear:at_total_fans": [
+    41.716,
+    18.5
+   ],
+   "CybercatHeadwear:at_turn": [
+    4.878,
+    2.2
+   ],
+   "CybercatHeadwear:fans": [
+    41.716,
+    18.5
+   ],
+   "CybercatHeadwear:plays": [
+    1.0,
+    0.4
+   ],
+   "CybercatHeadwear:rl": [
+    4.261,
+    1.9
+   ],
+   "Defend:at_fans_combat": [
+    1.077,
+    2.3
+   ],
+   "Defend:at_hiding": [
+    5.338,
+    11.2
+   ],
+   "Defend:at_layers": [
+    3.132,
+    6.6
+   ],
+   "Defend:at_live": [
+    0.919,
+    1.9
+   ],
+   "Defend:at_majoka": [
+    44.664,
+    93.8
+   ],
+   "Defend:at_total_fans": [
+    37.548,
+    78.8
+   ],
+   "Defend:at_turn": [
+    4.754,
+    10.0
+   ],
+   "Defend:plays": [
+    1.0,
+    2.1
+   ],
+   "Defend:rl": [
+    4.046,
+    8.5
+   ],
+   "FanService:at_fans_combat": [
+    0.899,
+    0.7
+   ],
+   "FanService:at_hiding": [
+    4.469,
+    3.3
+   ],
+   "FanService:at_layers": [
+    2.536,
+    1.9
+   ],
+   "FanService:at_live": [
+    0.908,
+    0.7
+   ],
+   "FanService:at_majoka": [
+    24.739,
+    18.1
+   ],
+   "FanService:at_total_fans": [
+    34.326,
+    25.1
+   ],
+   "FanService:at_turn": [
+    2.828,
+    2.1
+   ],
+   "FanService:fans_by_skill": [
+    1.0,
+    0.1
+   ],
+   "FanService:plays": [
+    1.0,
+    0.7
+   ],
+   "FanService:rl": [
+    3.889,
+    2.8
+   ],
+   "FanService:skill_uses": [
+    1.0,
+    1.1
+   ],
+   "FanService:skill_v": [
+    7.061,
+    8.0
+   ],
+   "FanService:total_fans_at_use": [
+    36.41,
+    41.1
+   ],
+   "ForMyOshi:at_fans_combat": [
+    1.014,
+    1.2
+   ],
+   "ForMyOshi:at_hiding": [
+    5.197,
+    6.1
+   ],
+   "ForMyOshi:at_layers": [
+    2.186,
+    2.6
+   ],
+   "ForMyOshi:at_live": [
+    0.844,
+    1.0
+   ],
+   "ForMyOshi:at_majoka": [
+    44.343,
+    52.4
+   ],
+   "ForMyOshi:at_total_fans": [
+    37.068,
+    43.8
+   ],
+   "ForMyOshi:at_turn": [
+    4.758,
+    5.6
+   ],
+   "ForMyOshi:plays": [
+    1.0,
+    1.2
+   ],
+   "ForMyOshi:rl": [
+    4.024,
+    4.8
+   ],
+   "IGuessIHaveNoChoice:at_fans_combat": [
+    1.018,
+    0.3
+   ],
+   "IGuessIHaveNoChoice:at_hiding": [
+    5.234,
+    1.6
+   ],
+   "IGuessIHaveNoChoice:at_layers": [
+    2.87,
+    0.9
+   ],
+   "IGuessIHaveNoChoice:at_live": [
+    0.906,
+    0.3
+   ],
+   "IGuessIHaveNoChoice:at_majoka": [
+    40.055,
+    12.6
+   ],
+   "IGuessIHaveNoChoice:at_total_fans": [
+    37.664,
+    11.8
+   ],
+   "IGuessIHaveNoChoice:at_turn": [
+    4.32,
+    1.4
+   ],
+   "IGuessIHaveNoChoice:plays": [
+    1.0,
+    0.3
+   ],
+   "IGuessIHaveNoChoice:rl": [
+    4.07,
+    1.3
+   ],
+   "MysteriousCatPants:at_fans_combat": [
+    1.145,
+    1.2
+   ],
+   "MysteriousCatPants:at_hiding": [
+    5.225,
+    5.5
+   ],
+   "MysteriousCatPants:at_layers": [
+    2.62,
+    2.8
+   ],
+   "MysteriousCatPants:at_live": [
+    0.891,
+    0.9
+   ],
+   "MysteriousCatPants:at_majoka": [
+    43.615,
+    46.0
+   ],
+   "MysteriousCatPants:at_total_fans": [
+    37.588,
+    39.7
+   ],
+   "MysteriousCatPants:at_turn": [
+    4.883,
+    5.2
+   ],
+   "MysteriousCatPants:fans": [
+    1.145,
+    1.2
+   ],
+   "MysteriousCatPants:plays": [
+    1.0,
+    1.1
+   ],
+   "MysteriousCatPants:rl": [
+    4.053,
+    4.3
+   ],
+   "MysteriousCatTop:at_fans_combat": [
+    1.047,
+    0.7
+   ],
+   "MysteriousCatTop:at_hiding": [
+    5.193,
+    3.5
+   ],
+   "MysteriousCatTop:at_layers": [
+    3.11,
+    2.1
+   ],
+   "MysteriousCatTop:at_live": [
+    0.908,
+    0.6
+   ],
+   "MysteriousCatTop:at_majoka": [
+    46.353,
+    31.5
+   ],
+   "MysteriousCatTop:at_total_fans": [
+    37.332,
+    25.4
+   ],
+   "MysteriousCatTop:at_turn": [
+    4.917,
+    3.3
+   ],
+   "MysteriousCatTop:plays": [
+    1.0,
+    0.7
+   ],
+   "MysteriousCatTop:rl": [
+    4.041,
+    2.8
+   ],
+   "NiceOutfit:at_fans_combat": [
+    1.081,
+    2.4
+   ],
+   "NiceOutfit:at_hiding": [
+    5.821,
+    12.8
+   ],
+   "NiceOutfit:at_layers": [
+    2.164,
+    4.8
+   ],
+   "NiceOutfit:at_live": [
+    0.758,
+    1.7
+   ],
+   "NiceOutfit:at_majoka": [
+    69.535,
+    153.4
+   ],
+   "NiceOutfit:at_total_fans": [
+    37.166,
+    82.0
+   ],
+   "NiceOutfit:at_turn": [
+    7.39,
+    16.3
+   ],
+   "NiceOutfit:plays": [
+    1.0,
+    2.2
+   ],
+   "NiceOutfit:rl": [
+    3.992,
+    8.8
+   ],
+   "OnAir:at_fans_combat": [
+    1.107,
+    0.9
+   ],
+   "OnAir:at_hiding": [
+    5.558,
+    4.7
+   ],
+   "OnAir:at_layers": [
+    2.208,
+    1.9
+   ],
+   "OnAir:at_live": [
+    0.746,
+    0.6
+   ],
+   "OnAir:at_majoka": [
+    54.423,
+    46.0
+   ],
+   "OnAir:at_total_fans": [
+    37.163,
+    31.4
+   ],
+   "OnAir:at_turn": [
+    5.75,
+    4.9
+   ],
+   "OnAir:plays": [
+    1.0,
+    0.8
+   ],
+   "OnAir:rl": [
+    4.014,
+    3.4
+   ],
+   "OnlineShopping:at_fans_combat": [
+    0.974,
+    0.7
+   ],
+   "OnlineShopping:at_hiding": [
+    4.473,
+    3.0
+   ],
+   "OnlineShopping:at_layers": [
+    2.473,
+    1.7
+   ],
+   "OnlineShopping:at_live": [
+    0.896,
+    0.6
+   ],
+   "OnlineShopping:at_majoka": [
+    26.694,
+    18.1
+   ],
+   "OnlineShopping:at_total_fans": [
+    34.233,
+    23.3
+   ],
+   "OnlineShopping:at_turn": [
+    3.02,
+    2.1
+   ],
+   "OnlineShopping:bought": [
+    1.0,
+    2.2
+   ],
+   "OnlineShopping:plays": [
+    1.0,
+    0.7
+   ],
+   "OnlineShopping:rl": [
+    3.871,
+    2.6
+   ],
+   "OnlineShopping:turns_left": [
+    3.109,
+    6.9
+   ],
+   "PhoneLiveStream:at_fans_combat": [
+    1.049,
+    1.1
+   ],
+   "PhoneLiveStream:at_hiding": [
+    4.941,
+    5.1
+   ],
+   "PhoneLiveStream:at_layers": [
+    2.322,
+    2.4
+   ],
+   "PhoneLiveStream:at_live": [
+    0.853,
+    0.9
+   ],
+   "PhoneLiveStream:at_majoka": [
+    44.844,
+    46.0
+   ],
+   "PhoneLiveStream:at_total_fans": [
+    37.132,
+    38.1
+   ],
+   "PhoneLiveStream:at_turn": [
+    4.798,
+    4.9
+   ],
+   "PhoneLiveStream:plays": [
+    1.0,
+    1.0
+   ],
+   "PhoneLiveStream:rl": [
+    4.026,
+    4.1
+   ],
+   "PunkCatHeadwear:at_fans_combat": [
+    0.958,
+    0.9
+   ],
+   "PunkCatHeadwear:at_hiding": [
+    5.484,
+    5.2
+   ],
+   "PunkCatHeadwear:at_layers": [
+    2.588,
+    2.4
+   ],
+   "PunkCatHeadwear:at_live": [
+    0.891,
+    0.8
+   ],
+   "PunkCatHeadwear:at_majoka": [
+    42.987,
+    40.4
+   ],
+   "PunkCatHeadwear:at_total_fans": [
+    43.159,
+    40.6
+   ],
+   "PunkCatHeadwear:at_turn": [
+    4.499,
+    4.2
+   ],
+   "PunkCatHeadwear:enemies": [
+    1.337,
+    1.3
+   ],
+   "PunkCatHeadwear:fans": [
+    43.159,
+    40.6
+   ],
+   "PunkCatHeadwear:plays": [
+    1.0,
+    0.9
+   ],
+   "PunkCatHeadwear:rl": [
+    4.407,
+    4.1
+   ],
+   "PunkCatShoes:at_fans_combat": [
+    1.047,
+    1.0
+   ],
+   "PunkCatShoes:at_hiding": [
+    5.376,
+    5.3
+   ],
+   "PunkCatShoes:at_layers": [
+    3.038,
+    3.0
+   ],
+   "PunkCatShoes:at_live": [
+    0.923,
+    0.9
+   ],
+   "PunkCatShoes:at_majoka": [
+    45.666,
+    44.7
+   ],
+   "PunkCatShoes:at_total_fans": [
+    37.192,
+    36.4
+   ],
+   "PunkCatShoes:at_turn": [
+    4.844,
+    4.7
+   ],
+   "PunkCatShoes:layers": [
+    3.038,
+    3.0
+   ],
+   "PunkCatShoes:live": [
+    0.923,
+    0.9
+   ],
+   "PunkCatShoes:plays": [
+    1.0,
+    1.0
+   ],
+   "PunkCatShoes:rl": [
+    4.03,
+    3.9
+   ],
+   "PunkCatSkirt:at_fans_combat": [
+    1.035,
+    1.1
+   ],
+   "PunkCatSkirt:at_hiding": [
+    5.186,
+    5.8
+   ],
+   "PunkCatSkirt:at_layers": [
+    2.717,
+    3.0
+   ],
+   "PunkCatSkirt:at_live": [
+    0.902,
+    1.0
+   ],
+   "PunkCatSkirt:at_majoka": [
+    44.881,
+    49.8
+   ],
+   "PunkCatSkirt:at_total_fans": [
+    37.156,
+    41.3
+   ],
+   "PunkCatSkirt:at_turn": [
+    4.758,
+    5.3
+   ],
+   "PunkCatSkirt:layers": [
+    2.717,
+    3.0
+   ],
+   "PunkCatSkirt:live": [
+    0.902,
+    1.0
+   ],
+   "PunkCatSkirt:plays": [
+    1.0,
+    1.1
+   ],
+   "PunkCatSkirt:rl": [
+    4.029,
+    4.5
+   ],
+   "PunkCatTop:at_fans_combat": [
+    0.982,
+    1.2
+   ],
+   "PunkCatTop:at_hiding": [
+    5.174,
+    6.3
+   ],
+   "PunkCatTop:at_layers": [
+    2.885,
+    3.5
+   ],
+   "PunkCatTop:at_live": [
+    0.959,
+    1.2
+   ],
+   "PunkCatTop:at_majoka": [
+    40.184,
+    49.3
+   ],
+   "PunkCatTop:at_total_fans": [
+    36.733,
+    45.0
+   ],
+   "PunkCatTop:at_turn": [
+    4.6,
+    5.6
+   ],
+   "PunkCatTop:hits": [
+    3.885,
+    4.8
+   ],
+   "PunkCatTop:plays": [
+    1.0,
+    1.2
+   ],
+   "PunkCatTop:rl": [
+    4.015,
+    4.9
+   ],
+   "SlayTheSpireIi:at_fans_combat": [
+    1.044,
+    0.0
+   ],
+   "SlayTheSpireIi:at_hiding": [
+    6.406,
+    0.2
+   ],
+   "SlayTheSpireIi:at_layers": [
+    3.011,
+    0.1
+   ],
+   "SlayTheSpireIi:at_live": [
+    0.962,
+    0.0
+   ],
+   "SlayTheSpireIi:at_majoka": [
+    66.219,
+    1.8
+   ],
+   "SlayTheSpireIi:at_total_fans": [
+    45.235,
+    1.2
+   ],
+   "SlayTheSpireIi:at_turn": [
+    6.622,
+    0.2
+   ],
+   "SlayTheSpireIi:pile": [
+    19.686,
+    0.5
+   ],
+   "SlayTheSpireIi:plays": [
+    1.0,
+    0.0
+   ],
+   "SlayTheSpireIi:rl": [
+    4.513,
+    0.1
+   ],
+   "Strike:at_fans_combat": [
+    1.058,
+    1.5
+   ],
+   "Strike:at_hiding": [
+    5.574,
+    8.1
+   ],
+   "Strike:at_layers": [
+    3.103,
+    4.5
+   ],
+   "Strike:at_live": [
+    0.919,
+    1.3
+   ],
+   "Strike:at_majoka": [
+    48.267,
+    70.6
+   ],
+   "Strike:at_total_fans": [
+    37.907,
+    55.4
+   ],
+   "Strike:at_turn": [
+    5.074,
+    7.4
+   ],
+   "Strike:plays": [
+    1.0,
+    1.5
+   ],
+   "Strike:rl": [
+    4.076,
+    6.0
+   ],
+   "Trauma:at_fans_combat": [
+    1.113,
+    1.4
+   ],
+   "Trauma:at_hiding": [
+    5.239,
+    6.7
+   ],
+   "Trauma:at_layers": [
+    3.112,
+    4.0
+   ],
+   "Trauma:at_live": [
+    0.911,
+    1.2
+   ],
+   "Trauma:at_majoka": [
+    38.743,
+    49.4
+   ],
+   "Trauma:at_total_fans": [
+    35.998,
+    45.9
+   ],
+   "Trauma:at_turn": [
+    4.415,
+    5.6
+   ],
+   "Trauma:plays": [
+    1.0,
+    1.3
+   ],
+   "Trauma:rl": [
+    3.952,
+    5.0
+   ],
+   "_fans_per_fight": [
+    1.615,
+    1.6
+   ],
+   "_fight": [
+    1.0,
+    1.0
+   ],
+   "_fight_len": [
+    5.715,
+    5.7
+   ],
+   "_lv4_energy": [
+    1.0,
+    3.3
+   ],
+   "_majoka100": [
+    1.0,
+    0.1
+   ],
+   "_milestone10000": [
+    1.0,
+    0.8
+   ],
+   "_milestone3000": [
+    1.0,
+    1.0
+   ],
+   "_milestone6000": [
+    1.0,
+    0.9
+   ],
+   "_pocket_fill": [
+    1.0,
+    0.2
+   ],
+   "_pocket_fill_pieces": [
+    1.0,
+    0.2
+   ],
+   "_set_Punk": [
+    1.0,
+    0.3
+   ],
+   "_turn_live_sum": [
+    2.375,
+    13.6
+   ],
+   "_turns": [
+    1.0,
+    5.7
+   ],
+   "_turns_live": [
+    0.846,
+    4.8
+   ]
+  },
+  "out_per_fight": 47.76293115382933
+ },
+ "marginal": {
+  "live:FlameBait": {
+   "delta_per_fight": 4.792,
+   "plays_per_fight": 3.164,
+   "value_per_play_raw": 1.514
+  },
+  "live:ForMyOshi": {
+   "delta_per_fight": 7.282,
+   "plays_per_fight": 1.366,
+   "value_per_play_raw": 5.331
+  },
+  "live:InfiniteMirror": {
+   "delta_per_fight": 8.501,
+   "plays_per_fight": 0.661,
+   "value_per_play_raw": 12.869
+  },
+  "live:LucidDream": {
+   "delta_per_fight": 3.201,
+   "plays_per_fight": 1.138,
+   "value_per_play_raw": 2.814
+  },
+  "live:MysteriousCatPants": {
+   "delta_per_fight": 8.803,
+   "plays_per_fight": 1.269,
+   "value_per_play_raw": 6.934
+  },
+  "live:MysteriousCatShoes": {
+   "delta_per_fight": 2.999,
+   "plays_per_fight": 0.861,
+   "value_per_play_raw": 3.484
+  },
+  "live:OnAir": {
+   "delta_per_fight": 8.394,
+   "plays_per_fight": 1.783,
+   "value_per_play_raw": 4.709
+  },
+  "live:PhoneLiveStream": {
+   "delta_per_fight": 8.003,
+   "plays_per_fight": 1.301,
+   "value_per_play_raw": 6.15
+  },
+  "live:PunkCatShoes": {
+   "delta_per_fight": 0.029,
+   "plays_per_fight": 1.245,
+   "value_per_play_raw": 0.023
+  },
+  "live:PunkCatTop": {
+   "delta_per_fight": 21.549,
+   "plays_per_fight": 1.456,
+   "value_per_play_raw": 14.801
+  },
+  "live:SharpTongue": {
+   "delta_per_fight": -4.298,
+   "plays_per_fight": 1.34,
+   "value_per_play_raw": -3.206
+  },
+  "live:ShowerStream": {
+   "delta_per_fight": -0.974,
+   "plays_per_fight": 1.577,
+   "value_per_play_raw": -0.617
+  },
+  "live:SimultaneousViewing": {
+   "delta_per_fight": 4.203,
+   "plays_per_fight": 0.806,
+   "value_per_play_raw": 5.212
+  },
+  "hide:CybercatShoes": {
+   "delta_per_fight": -0.226,
+   "plays_per_fight": 0.778,
+   "value_per_play_raw": -0.291
+  },
+  "hide:CybercatSkirt": {
+   "delta_per_fight": 0.061,
+   "plays_per_fight": 0.765,
+   "value_per_play_raw": 0.08
+  },
+  "hide:CybercatTop": {
+   "delta_per_fight": 0.298,
+   "plays_per_fight": 1.295,
+   "value_per_play_raw": 0.23
+  },
+  "hide:ForMyOshi": {
+   "delta_per_fight": 2.868,
+   "plays_per_fight": 1.219,
+   "value_per_play_raw": 2.354
+  },
+  "hide:IWantToPlayAGame": {
+   "delta_per_fight": 0.181,
+   "plays_per_fight": 0.758,
+   "value_per_play_raw": 0.239
+  },
+  "hide:InmuKing": {
+   "delta_per_fight": 1.424,
+   "plays_per_fight": 0.685,
+   "value_per_play_raw": 2.081
+  },
+  "hide:LetsPlayHideAndSeek": {
+   "delta_per_fight": 10.224,
+   "plays_per_fight": 1.107,
+   "value_per_play_raw": 9.239
+  },
+  "hide:LucidDream": {
+   "delta_per_fight": 0.194,
+   "plays_per_fight": 0.951,
+   "value_per_play_raw": 0.204
+  },
+  "hide:MysteriousCatHeadwear": {
+   "delta_per_fight": -0.568,
+   "plays_per_fight": 0.847,
+   "value_per_play_raw": -0.67
+  },
+  "hide:PhoneLiveStream": {
+   "delta_per_fight": 0.327,
+   "plays_per_fight": 1.069,
+   "value_per_play_raw": 0.306
+  },
+  "hide:ShowerStream": {
+   "delta_per_fight": -0.73,
+   "plays_per_fight": 1.06,
+   "value_per_play_raw": -0.688
+  },
+  "hide:TalkTrash": {
+   "delta_per_fight": -0.212,
+   "plays_per_fight": 0.474,
+   "value_per_play_raw": -0.446
+  },
+  "hide:TreeHollow": {
+   "delta_per_fight": 3.556,
+   "plays_per_fight": 0.735,
+   "value_per_play_raw": 4.838
+  },
+  "hide:TurnDefenseToOffense": {
+   "delta_per_fight": -0.337,
+   "plays_per_fight": 0.359,
+   "value_per_play_raw": -0.94
+  },
+  "equip:CutieCatsShoes": {
+   "delta_per_fight": -1.344,
+   "plays_per_fight": 0.535,
+   "value_per_play_raw": -2.513
+  },
+  "equip:CybercatHeadwear": {
+   "delta_per_fight": -1.508,
+   "plays_per_fight": 0.45,
+   "value_per_play_raw": -3.355
+  },
+  "equip:FanService": {
+   "delta_per_fight": 3.825,
+   "plays_per_fight": 0.73,
+   "value_per_play_raw": 5.24
+  },
+  "equip:ForMyOshi": {
+   "delta_per_fight": 8.891,
+   "plays_per_fight": 1.176,
+   "value_per_play_raw": 7.559
+  },
+  "equip:IGuessIHaveNoChoice": {
+   "delta_per_fight": 0.633,
+   "plays_per_fight": 0.316,
+   "value_per_play_raw": 2.005
+  },
+  "equip:MysteriousCatPants": {
+   "delta_per_fight": 2.986,
+   "plays_per_fight": 1.062,
+   "value_per_play_raw": 2.813
+  },
+  "equip:MysteriousCatTop": {
+   "delta_per_fight": -0.14,
+   "plays_per_fight": 0.675,
+   "value_per_play_raw": -0.208
+  },
+  "equip:OnlineShopping": {
+   "delta_per_fight": 0.66,
+   "plays_per_fight": 0.679,
+   "value_per_play_raw": 0.972
+  },
+  "equip:PhoneLiveStream": {
+   "delta_per_fight": 7.218,
+   "plays_per_fight": 1.022,
+   "value_per_play_raw": 7.066
+  },
+  "equip:PunkCatHeadwear": {
+   "delta_per_fight": 5.724,
+   "plays_per_fight": 0.932,
+   "value_per_play_raw": 6.142
+  },
+  "equip:PunkCatShoes": {
+   "delta_per_fight": 1.303,
+   "plays_per_fight": 0.974,
+   "value_per_play_raw": 1.338
+  },
+  "equip:PunkCatSkirt": {
+   "delta_per_fight": 3.728,
+   "plays_per_fight": 1.113,
+   "value_per_play_raw": 3.35
+  },
+  "equip:PunkCatTop": {
+   "delta_per_fight": 11.422,
+   "plays_per_fight": 1.226,
+   "value_per_play_raw": 9.316
+  },
+  "equip:SlayTheSpireIi": {
+   "delta_per_fight": 1.934,
+   "plays_per_fight": 0.026,
+   "value_per_play_raw": 73.273
+  }
+ }
+}

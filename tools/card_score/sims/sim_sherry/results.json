@@ -1,0 +1,852 @@
+{
+ "baseline": {
+  "clue": {
+   "len_by": {
+    "hallway": 3.92,
+    "elite": 6.3,
+    "boss": 8.09
+   },
+   "reward_turn_frac": 0.298,
+   "reward_triggers_per_fight": 1.17,
+   "first_reward_turn": 3.78,
+   "p_any_reward": 0.926,
+   "str_end": 8.55,
+   "str_gained": 7.55,
+   "inv_dmg": 8.73,
+   "death": 0.0801
+  },
+  "strength": {
+   "len_by": {
+    "hallway": 3.18,
+    "elite": 4.96,
+    "boss": 7.06
+   },
+   "reward_turn_frac": 0.146,
+   "reward_triggers_per_fight": 0.43,
+   "first_reward_turn": 4.89,
+   "p_any_reward": 0.423,
+   "str_end": 7.91,
+   "str_gained": 6.91,
+   "inv_dmg": 1.16,
+   "death": 0.077
+  },
+  "combo": {
+   "len_by": {
+    "hallway": 3.45,
+    "elite": 5.56,
+    "boss": 8.12
+   },
+   "reward_turn_frac": 0.241,
+   "reward_triggers_per_fight": 0.84,
+   "first_reward_turn": 4.03,
+   "p_any_reward": 0.708,
+   "str_end": 8.82,
+   "str_gained": 7.82,
+   "inv_dmg": 5.5,
+   "death": 0.0777
+  }
+ },
+ "probe": {
+  "KyuMiraclePartners": {
+   "clue": {
+    "plays_per_fight": 0.502,
+    "avg_reward": 1.0,
+    "avg_str": 6.38,
+    "avg_clue": 1.629,
+    "avg_turn": 4.903,
+    "avg_cost_paid": 0.0,
+    "kyu_dmg": 10.568,
+    "probe_stuck": 1.118,
+    "len": 5.303,
+    "reward_turn_frac": 0.297
+   },
+   "strength": {
+    "plays_per_fight": 0.163,
+    "avg_reward": 1.0,
+    "avg_str": 8.106,
+    "avg_clue": 0.265,
+    "avg_turn": 5.338,
+    "avg_cost_paid": 0.0,
+    "kyu_dmg": 3.381,
+    "probe_stuck": 1.011,
+    "len": 4.44,
+    "reward_turn_frac": 0.15
+   },
+   "combo": {
+    "plays_per_fight": 0.368,
+    "avg_reward": 1.0,
+    "avg_str": 7.826,
+    "avg_clue": 0.6,
+    "avg_turn": 5.001,
+    "avg_cost_paid": 0.0,
+    "kyu_dmg": 8.054,
+    "probe_stuck": 1.14,
+    "len": 4.885,
+    "reward_turn_frac": 0.241
+   }
+  },
+  "RokuBraveFace": {
+   "clue": {
+    "plays_per_fight": 0.0,
+    "avg_reward": 0.0,
+    "avg_str": 0.0,
+    "avg_clue": 0.0,
+    "avg_turn": 0.0,
+    "avg_cost_paid": 0.0,
+    "probe_stuck": 1.638,
+    "len": 5.467,
+    "reward_turn_frac": 0.301
+   },
+   "strength": {
+    "plays_per_fight": 0.0,
+    "avg_reward": 0.0,
+    "avg_str": 0.0,
+    "avg_clue": 0.0,
+    "avg_turn": 0.0,
+    "avg_cost_paid": 0.0,
+    "probe_stuck": 1.175,
+    "len": 4.465,
+    "reward_turn_frac": 0.152
+   },
+   "combo": {
+    "plays_per_fight": 1.216,
+    "avg_reward": 0.315,
+    "avg_str": 6.515,
+    "avg_clue": 2.518,
+    "avg_turn": 4.089,
+    "avg_cost_paid": 0.0,
+    "roku_dmg": 31.899,
+    "probe_stuck": 1.531,
+    "len": 4.792,
+    "reward_turn_frac": 0.233
+   }
+  },
+  "LittleFairy": {
+   "clue": {
+    "plays_per_fight": 0.143,
+    "avg_reward": 0.093,
+    "avg_str": 2.266,
+    "avg_clue": 2.319,
+    "avg_turn": 2.035,
+    "avg_cost_paid": 2.0,
+    "fairy_energy": 0.129,
+    "len": 5.477,
+    "reward_turn_frac": 0.304
+   },
+   "strength": {
+    "plays_per_fight": 0.12,
+    "avg_reward": 0.07,
+    "avg_str": 4.806,
+    "avg_clue": 1.077,
+    "avg_turn": 2.522,
+    "avg_cost_paid": 2.0,
+    "fairy_energy": 0.042,
+    "len": 4.487,
+    "reward_turn_frac": 0.154
+   },
+   "combo": {
+    "plays_per_fight": 0.125,
+    "avg_reward": 0.114,
+    "avg_str": 3.421,
+    "avg_clue": 2.284,
+    "avg_turn": 2.211,
+    "avg_cost_paid": 2.0,
+    "fairy_energy": 0.094,
+    "len": 4.984,
+    "reward_turn_frac": 0.244
+   }
+  },
+  "QuickWit": {
+   "clue": {
+    "plays_per_fight": 0.372,
+    "avg_reward": 0.106,
+    "avg_str": 2.787,
+    "avg_clue": 2.808,
+    "avg_turn": 2.368,
+    "avg_cost_paid": 2.0,
+    "qw_str": 1.238,
+    "qw_dex": 1.221,
+    "qw_hp": 1.223,
+    "qw_clue": 1.844,
+    "qw_turns": 1.225,
+    "qw_maxroll": 0.611,
+    "len": 5.551,
+    "reward_turn_frac": 0.319
+   },
+   "strength": {
+    "plays_per_fight": 0.273,
+    "avg_reward": 0.073,
+    "avg_str": 4.067,
+    "avg_clue": 0.885,
+    "avg_turn": 2.394,
+    "avg_cost_paid": 2.0,
+    "qw_str": 0.407,
+    "qw_dex": 0.403,
+    "qw_hp": 0.403,
+    "qw_clue": 0.885,
+    "qw_turns": 0.682,
+    "qw_maxroll": 0.2,
+    "len": 4.542,
+    "reward_turn_frac": 0.166
+   },
+   "combo": {
+    "plays_per_fight": 0.304,
+    "avg_reward": 0.08,
+    "avg_str": 3.578,
+    "avg_clue": 2.001,
+    "avg_turn": 2.241,
+    "avg_cost_paid": 2.0,
+    "qw_str": 0.742,
+    "qw_dex": 0.747,
+    "qw_hp": 0.747,
+    "qw_clue": 1.285,
+    "qw_turns": 0.909,
+    "qw_maxroll": 0.372,
+    "len": 5.024,
+    "reward_turn_frac": 0.257
+   }
+  },
+  "QuickWit+": {
+   "clue": {
+    "plays_per_fight": 0.501,
+    "avg_reward": 0.041,
+    "avg_str": 1.726,
+    "avg_clue": 0.391,
+    "avg_turn": 1.314,
+    "avg_cost_paid": 2.0,
+    "qw_str": 1.731,
+    "qw_dex": 1.726,
+    "qw_hp": 1.705,
+    "qw_clue": 3.078,
+    "qw_turns": 2.207,
+    "qw_maxroll": 0.865,
+    "len": 5.54,
+    "reward_turn_frac": 0.321
+   },
+   "strength": {
+    "plays_per_fight": 0.382,
+    "avg_reward": 0.05,
+    "avg_str": 1.893,
+    "avg_clue": 0.139,
+    "avg_turn": 1.279,
+    "avg_cost_paid": 2.0,
+    "qw_str": 0.685,
+    "qw_dex": 0.696,
+    "qw_hp": 0.678,
+    "qw_clue": 1.762,
+    "qw_turns": 1.412,
+    "qw_maxroll": 0.343,
+    "len": 4.583,
+    "reward_turn_frac": 0.179
+   },
+   "combo": {
+    "plays_per_fight": 0.454,
+    "avg_reward": 0.036,
+    "avg_str": 2.012,
+    "avg_clue": 0.229,
+    "avg_turn": 1.257,
+    "avg_cost_paid": 2.0,
+    "qw_str": 1.219,
+    "qw_dex": 1.238,
+    "qw_hp": 1.2,
+    "qw_clue": 2.41,
+    "qw_turns": 1.799,
+    "qw_maxroll": 0.605,
+    "len": 4.979,
+    "reward_turn_frac": 0.263
+   }
+  },
+  "SearchAnalyzeSolve": {
+   "clue": {
+    "plays_per_fight": 0.906,
+    "avg_reward": 0.108,
+    "avg_str": 2.48,
+    "avg_clue": 2.559,
+    "avg_turn": 2.238,
+    "avg_cost_paid": 1.0,
+    "sas_uses": 1.283,
+    "sas_val": 1.492,
+    "len": 5.496,
+    "reward_turn_frac": 0.301
+   },
+   "strength": {
+    "plays_per_fight": 0.821,
+    "avg_reward": 0.011,
+    "avg_str": 3.526,
+    "avg_clue": 0.969,
+    "avg_turn": 2.256,
+    "avg_cost_paid": 1.0,
+    "sas_uses": 0.98,
+    "sas_val": 1.174,
+    "len": 4.551,
+    "reward_turn_frac": 0.156
+   },
+   "combo": {
+    "plays_per_fight": 0.857,
+    "avg_reward": 0.069,
+    "avg_str": 3.188,
+    "avg_clue": 2.168,
+    "avg_turn": 2.193,
+    "avg_cost_paid": 1.0,
+    "sas_uses": 1.161,
+    "sas_val": 1.405,
+    "len": 5.06,
+    "reward_turn_frac": 0.241
+   }
+  },
+  "SearchAnalyzeSolve+": {
+   "clue": {
+    "plays_per_fight": 0.999,
+    "avg_reward": 0.0,
+    "avg_str": 1.111,
+    "avg_clue": 0.0,
+    "avg_turn": 1.001,
+    "avg_cost_paid": 1.0,
+    "sas_uses": 1.725,
+    "sas_val": 2.01,
+    "len": 5.498,
+    "reward_turn_frac": 0.298
+   },
+   "strength": {
+    "plays_per_fight": 0.954,
+    "avg_reward": 0.005,
+    "avg_str": 1.206,
+    "avg_clue": 0.004,
+    "avg_turn": 1.024,
+    "avg_cost_paid": 1.0,
+    "sas_uses": 1.398,
+    "sas_val": 1.648,
+    "len": 4.54,
+    "reward_turn_frac": 0.154
+   },
+   "combo": {
+    "plays_per_fight": 0.969,
+    "avg_reward": 0.0,
+    "avg_str": 1.122,
+    "avg_clue": 0.001,
+    "avg_turn": 1.002,
+    "avg_cost_paid": 1.0,
+    "sas_uses": 1.619,
+    "sas_val": 1.913,
+    "len": 5.108,
+    "reward_turn_frac": 0.24
+   }
+  },
+  "GiveItATry": {
+   "clue": {
+    "plays_per_fight": 0.052,
+    "avg_reward": 0.111,
+    "avg_str": 2.822,
+    "avg_clue": 2.303,
+    "avg_turn": 2.568,
+    "avg_cost_paid": 3.0,
+    "gat_majoka100": 0.052,
+    "sp_plays": 0.06,
+    "sp_big": 0.049,
+    "sp_dmg": 2.355,
+    "len": 5.383,
+    "reward_turn_frac": 0.298
+   },
+   "strength": {
+    "plays_per_fight": 0.052,
+    "avg_reward": 0.125,
+    "avg_str": 5.044,
+    "avg_clue": 1.079,
+    "avg_turn": 3.016,
+    "avg_cost_paid": 3.0,
+    "gat_majoka100": 0.052,
+    "sp_plays": 0.047,
+    "sp_big": 0.044,
+    "sp_dmg": 1.478,
+    "len": 4.433,
+    "reward_turn_frac": 0.152
+   },
+   "combo": {
+    "plays_per_fight": 0.039,
+    "avg_reward": 0.105,
+    "avg_str": 3.527,
+    "avg_clue": 1.546,
+    "avg_turn": 2.564,
+    "avg_cost_paid": 3.0,
+    "gat_majoka100": 0.039,
+    "sp_plays": 0.044,
+    "sp_big": 0.035,
+    "sp_dmg": 1.58,
+    "len": 4.928,
+    "reward_turn_frac": 0.24
+   }
+  },
+  "BerserkerSoul": {
+   "clue": {
+    "plays_per_fight": 0.011,
+    "avg_reward": 0.268,
+    "avg_str": 3.679,
+    "avg_clue": 4.69,
+    "avg_turn": 2.986,
+    "avg_cost_paid": 2.0,
+    "bs_chain": 0.01,
+    "bs_dmg": 0.07,
+    "len": 5.465,
+    "reward_turn_frac": 0.301
+   },
+   "strength": {
+    "plays_per_fight": 0.012,
+    "avg_reward": 0.113,
+    "avg_str": 6.584,
+    "avg_clue": 1.45,
+    "avg_turn": 3.343,
+    "avg_cost_paid": 2.0,
+    "bs_chain": 0.013,
+    "bs_dmg": 0.098,
+    "len": 4.456,
+    "reward_turn_frac": 0.152
+   },
+   "combo": {
+    "plays_per_fight": 0.011,
+    "avg_reward": 0.184,
+    "avg_str": 5.204,
+    "avg_clue": 4.707,
+    "avg_turn": 3.146,
+    "avg_cost_paid": 2.0,
+    "bs_chain": 0.012,
+    "bs_dmg": 0.096,
+    "len": 4.956,
+    "reward_turn_frac": 0.241
+   }
+  },
+  "Achuba": {
+   "clue": {
+    "plays_per_fight": 0.018,
+    "avg_reward": 0.365,
+    "avg_str": 4.669,
+    "avg_clue": 4.249,
+    "avg_turn": 3.503,
+    "avg_cost_paid": 2.0,
+    "achuba_bonus": 0.093,
+    "len": 5.473,
+    "reward_turn_frac": 0.302
+   },
+   "strength": {
+    "plays_per_fight": 0.03,
+    "avg_reward": 0.093,
+    "avg_str": 6.27,
+    "avg_clue": 1.454,
+    "avg_turn": 3.228,
+    "avg_cost_paid": 2.0,
+    "achuba_bonus": 0.149,
+    "len": 4.474,
+    "reward_turn_frac": 0.153
+   },
+   "combo": {
+    "plays_per_fight": 0.015,
+    "avg_reward": 0.268,
+    "avg_str": 5.618,
+    "avg_clue": 3.91,
+    "avg_turn": 3.384,
+    "avg_cost_paid": 2.0,
+    "achuba_bonus": 0.086,
+    "len": 4.967,
+    "reward_turn_frac": 0.242
+   }
+  },
+  "DirtyEhe": {
+   "clue": {
+    "plays_per_fight": 0.001,
+    "avg_reward": 0.593,
+    "avg_str": 3.815,
+    "avg_clue": 3.0,
+    "avg_turn": 3.481,
+    "avg_cost_paid": 3.0,
+    "thorns_dmg": 0.011,
+    "len": 5.467,
+    "reward_turn_frac": 0.301
+   },
+   "strength": {
+    "plays_per_fight": 0.007,
+    "avg_reward": 0.053,
+    "avg_str": 6.819,
+    "avg_clue": 1.511,
+    "avg_turn": 3.479,
+    "avg_cost_paid": 3.0,
+    "thorns_dmg": 0.037,
+    "len": 4.463,
+    "reward_turn_frac": 0.153
+   },
+   "combo": {
+    "plays_per_fight": 0.001,
+    "avg_reward": 0.391,
+    "avg_str": 5.217,
+    "avg_clue": 2.565,
+    "avg_turn": 3.348,
+    "avg_cost_paid": 3.0,
+    "thorns_dmg": 0.003,
+    "len": 4.962,
+    "reward_turn_frac": 0.241
+   }
+  },
+  "DoublePunch": {
+   "clue": {
+    "plays_per_fight": 1.218,
+    "avg_reward": 0.265,
+    "avg_str": 4.202,
+    "avg_clue": 2.926,
+    "avg_turn": 3.426,
+    "avg_cost_paid": 1.0,
+    "dp_hits": 5.089,
+    "dp_dmg": 44.436,
+    "len": 4.959,
+    "reward_turn_frac": 0.275
+   },
+   "strength": {
+    "plays_per_fight": 1.889,
+    "avg_reward": 0.14,
+    "avg_str": 4.486,
+    "avg_clue": 0.931,
+    "avg_turn": 2.911,
+    "avg_cost_paid": 1.0,
+    "dp_hits": 8.691,
+    "dp_dmg": 72.527,
+    "len": 4.124,
+    "reward_turn_frac": 0.126
+   },
+   "combo": {
+    "plays_per_fight": 1.108,
+    "avg_reward": 0.21,
+    "avg_str": 4.849,
+    "avg_clue": 2.088,
+    "avg_turn": 3.263,
+    "avg_cost_paid": 1.0,
+    "dp_hits": 5.144,
+    "dp_dmg": 46.592,
+    "len": 4.539,
+    "reward_turn_frac": 0.209
+   }
+  },
+  "DateTime": {
+   "clue": {
+    "plays_per_fight": 0.0,
+    "avg_reward": 1.0,
+    "avg_str": 4.0,
+    "avg_clue": 3.0,
+    "avg_turn": 4.0,
+    "avg_cost_paid": 3.0,
+    "heal": 0.0,
+    "len": 5.467,
+    "reward_turn_frac": 0.301
+   },
+   "strength": {
+    "plays_per_fight": 0.001,
+    "avg_reward": 0.471,
+    "avg_str": 7.0,
+    "avg_clue": 1.0,
+    "avg_turn": 4.176,
+    "avg_cost_paid": 3.0,
+    "heal": 0.007,
+    "len": 4.465,
+    "reward_turn_frac": 0.153
+   },
+   "combo": {
+    "plays_per_fight": 0.0,
+    "avg_reward": 0.667,
+    "avg_str": 4.667,
+    "avg_clue": 2.0,
+    "avg_turn": 3.333,
+    "avg_cost_paid": 3.0,
+    "heal": 0.001,
+    "len": 4.96,
+    "reward_turn_frac": 0.241
+   }
+  },
+  "FryFryFry": {
+   "clue": {
+    "plays_per_fight": 0.043,
+    "avg_reward": 0.289,
+    "avg_str": 4.078,
+    "avg_clue": 4.798,
+    "avg_turn": 2.992,
+    "avg_cost_paid": 1.0,
+    "heal": 0.291,
+    "len": 5.453,
+    "reward_turn_frac": 0.302
+   },
+   "strength": {
+    "plays_per_fight": 0.08,
+    "avg_reward": 0.087,
+    "avg_str": 5.515,
+    "avg_clue": 1.249,
+    "avg_turn": 2.795,
+    "avg_cost_paid": 1.0,
+    "heal": 0.26,
+    "len": 4.488,
+    "reward_turn_frac": 0.154
+   },
+   "combo": {
+    "plays_per_fight": 0.054,
+    "avg_reward": 0.192,
+    "avg_str": 5.572,
+    "avg_clue": 4.271,
+    "avg_turn": 3.109,
+    "avg_cost_paid": 1.0,
+    "heal": 0.34,
+    "len": 4.976,
+    "reward_turn_frac": 0.242
+   }
+  },
+  "BigInvestigation": {
+   "clue": {
+    "plays_per_fight": 0.871,
+    "avg_reward": 0.885,
+    "avg_str": 6.036,
+    "avg_clue": 2.093,
+    "avg_turn": 4.355,
+    "avg_cost_paid": 1.0,
+    "len": 5.459,
+    "reward_turn_frac": 0.301
+   },
+   "strength": {
+    "plays_per_fight": 0.251,
+    "avg_reward": 0.657,
+    "avg_str": 7.204,
+    "avg_clue": 0.723,
+    "avg_turn": 4.401,
+    "avg_cost_paid": 1.0,
+    "len": 4.486,
+    "reward_turn_frac": 0.154
+   },
+   "combo": {
+    "plays_per_fight": 0.381,
+    "avg_reward": 0.826,
+    "avg_str": 7.315,
+    "avg_clue": 1.331,
+    "avg_turn": 4.359,
+    "avg_cost_paid": 1.0,
+    "len": 4.977,
+    "reward_turn_frac": 0.246
+   }
+  },
+  "DontRush": {
+   "clue": {
+    "plays_per_fight": 0.898,
+    "avg_reward": 0.507,
+    "avg_str": 4.041,
+    "avg_clue": 2.059,
+    "avg_turn": 3.284,
+    "avg_cost_paid": 1.0,
+    "len": 5.46,
+    "reward_turn_frac": 0.3
+   },
+   "strength": {
+    "plays_per_fight": 0.318,
+    "avg_reward": 0.185,
+    "avg_str": 4.896,
+    "avg_clue": 1.004,
+    "avg_turn": 2.75,
+    "avg_cost_paid": 1.0,
+    "len": 4.489,
+    "reward_turn_frac": 0.152
+   },
+   "combo": {
+    "plays_per_fight": 0.326,
+    "avg_reward": 0.393,
+    "avg_str": 4.924,
+    "avg_clue": 1.735,
+    "avg_turn": 3.067,
+    "avg_cost_paid": 1.0,
+    "len": 5.0,
+    "reward_turn_frac": 0.243
+   }
+  },
+  "IceCube": {
+   "clue": {
+    "plays_per_fight": 1.096,
+    "avg_reward": 0.794,
+    "avg_str": 5.583,
+    "avg_clue": 2.272,
+    "avg_turn": 4.293,
+    "avg_cost_paid": 1.0,
+    "len": 5.386,
+    "reward_turn_frac": 0.295
+   },
+   "strength": {
+    "plays_per_fight": 0.287,
+    "avg_reward": 0.586,
+    "avg_str": 6.923,
+    "avg_clue": 0.744,
+    "avg_turn": 4.206,
+    "avg_cost_paid": 1.0,
+    "len": 4.447,
+    "reward_turn_frac": 0.152
+   },
+   "combo": {
+    "plays_per_fight": 0.89,
+    "avg_reward": 0.751,
+    "avg_str": 6.809,
+    "avg_clue": 1.522,
+    "avg_turn": 4.235,
+    "avg_cost_paid": 1.0,
+    "len": 4.918,
+    "reward_turn_frac": 0.239
+   }
+  },
+  "WhatDoYouMean": {
+   "clue": {
+    "plays_per_fight": 0.473,
+    "avg_reward": 0.87,
+    "avg_str": 5.932,
+    "avg_clue": 2.043,
+    "avg_turn": 4.348,
+    "avg_cost_paid": 1.0,
+    "len": 5.508,
+    "reward_turn_frac": 0.3
+   },
+   "strength": {
+    "plays_per_fight": 0.25,
+    "avg_reward": 0.66,
+    "avg_str": 7.206,
+    "avg_clue": 0.699,
+    "avg_turn": 4.409,
+    "avg_cost_paid": 1.0,
+    "len": 4.527,
+    "reward_turn_frac": 0.155
+   },
+   "combo": {
+    "plays_per_fight": 0.375,
+    "avg_reward": 0.821,
+    "avg_str": 7.286,
+    "avg_clue": 1.34,
+    "avg_turn": 4.351,
+    "avg_cost_paid": 1.0,
+    "len": 5.018,
+    "reward_turn_frac": 0.242
+   }
+  },
+  "MasterKey": {
+   "clue": {
+    "plays_per_fight": 2.441,
+    "avg_reward": 0.379,
+    "avg_str": 4.4,
+    "avg_clue": 2.651,
+    "avg_turn": 3.385,
+    "avg_cost_paid": 1.0,
+    "len": 5.612,
+    "reward_turn_frac": 0.304
+   },
+   "strength": {
+    "plays_per_fight": 0.889,
+    "avg_reward": 0.176,
+    "avg_str": 4.868,
+    "avg_clue": 0.971,
+    "avg_turn": 2.984,
+    "avg_cost_paid": 1.0,
+    "len": 4.598,
+    "reward_turn_frac": 0.156
+   },
+   "combo": {
+    "plays_per_fight": 2.091,
+    "avg_reward": 0.345,
+    "avg_str": 5.554,
+    "avg_clue": 1.874,
+    "avg_turn": 3.313,
+    "avg_cost_paid": 1.0,
+    "len": 5.116,
+    "reward_turn_frac": 0.245
+   }
+  },
+  "GoodMorningSherry": {
+   "clue": {
+    "plays_per_fight": 2.388,
+    "avg_reward": 0.252,
+    "avg_str": 3.921,
+    "avg_clue": 2.752,
+    "avg_turn": 3.289,
+    "avg_cost_paid": 1.0,
+    "len": 5.084,
+    "reward_turn_frac": 0.274
+   },
+   "strength": {
+    "plays_per_fight": 1.749,
+    "avg_reward": 0.146,
+    "avg_str": 4.18,
+    "avg_clue": 0.823,
+    "avg_turn": 2.885,
+    "avg_cost_paid": 1.0,
+    "len": 4.271,
+    "reward_turn_frac": 0.148
+   },
+   "combo": {
+    "plays_per_fight": 1.145,
+    "avg_reward": 0.207,
+    "avg_str": 4.576,
+    "avg_clue": 1.937,
+    "avg_turn": 3.193,
+    "avg_cost_paid": 1.0,
+    "len": 4.749,
+    "reward_turn_frac": 0.223
+   }
+  },
+  "SanFindsClue": {
+   "clue": {
+    "plays_per_fight": 0.974,
+    "avg_reward": 0.279,
+    "avg_str": 4.627,
+    "avg_clue": 3.65,
+    "avg_turn": 3.419,
+    "avg_cost_paid": 1.531,
+    "len": 5.169,
+    "reward_turn_frac": 0.273
+   },
+   "strength": {
+    "plays_per_fight": 0.301,
+    "avg_reward": 0.079,
+    "avg_str": 4.019,
+    "avg_clue": 1.264,
+    "avg_turn": 2.473,
+    "avg_cost_paid": 2.354,
+    "len": 4.411,
+    "reward_turn_frac": 0.152
+   },
+   "combo": {
+    "plays_per_fight": 1.261,
+    "avg_reward": 0.13,
+    "avg_str": 4.332,
+    "avg_clue": 3.297,
+    "avg_turn": 2.665,
+    "avg_cost_paid": 1.508,
+    "len": 4.7,
+    "reward_turn_frac": 0.221
+   }
+  },
+  "TruthIsOnlyOne": {
+   "clue": {
+    "plays_per_fight": 1.902,
+    "avg_reward": 0.121,
+    "avg_str": 4.184,
+    "avg_clue": 3.572,
+    "avg_turn": 3.112,
+    "avg_cost_paid": 1.0,
+    "len": 5.447,
+    "reward_turn_frac": 0.309
+   },
+   "strength": {
+    "plays_per_fight": 0.7,
+    "avg_reward": 0.091,
+    "avg_str": 5.019,
+    "avg_clue": 1.346,
+    "avg_turn": 2.793,
+    "avg_cost_paid": 1.0,
+    "len": 4.53,
+    "reward_turn_frac": 0.193
+   },
+   "combo": {
+    "plays_per_fight": 1.597,
+    "avg_reward": 0.102,
+    "avg_str": 4.937,
+    "avg_clue": 2.911,
+    "avg_turn": 2.958,
+    "avg_cost_paid": 1.0,
+    "len": 4.919,
+    "reward_turn_frac": 0.256
+   }
+  }
+ }
+}
