@@ -18,7 +18,7 @@ public sealed class ScorchingMedicineBottle : EmaTrialCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<SusPower>(1m),
-        new PowerVar<BurnPower>(15m),
+        new PowerVar<BurnPower>(6m),
         new CardsVar(1),
     ];
 
@@ -48,5 +48,5 @@ public sealed class ScorchingMedicineBottle : EmaTrialCard
         CardCmd.PreviewCardPileAdd(result);
     }
 
-    protected override void OnUpgrade() => DynamicVars["BurnPower"].UpgradeValueBy(5m);
+    protected override void OnUpgrade() => DynamicVars["BurnPower"].UpgradeValueBy(3m);
 }

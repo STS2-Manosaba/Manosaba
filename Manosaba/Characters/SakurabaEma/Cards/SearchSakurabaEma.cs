@@ -29,7 +29,7 @@ public sealed class SearchSakurabaEma : PathCustomCardModel
     {
         _ = cardPlay;
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
-        await WitchEncyclopediaState.GenerateRandomEvidence(Owner);
+        await WitchEncyclopediaState.GenerateRandomEvidence(Owner, IsUpgraded);
     }
 
     protected override void OnUpgrade() => DynamicVars.Cards.UpgradeValueBy(1m);

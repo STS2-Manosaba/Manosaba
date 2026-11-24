@@ -19,12 +19,14 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class EndlessEvidence : PathCustomCardModel
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<EndlessEvidencePower>(1m)];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<EndlessEvidencePower>(1), WitchEncyclopediaState.HoverTip];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [IsUpgraded ? HoverTipFactory.FromPower<UpgradedEndlessEvidencePower>(1) : HoverTipFactory.FromPower<EndlessEvidencePower>(1), WitchEncyclopediaState.HoverTip];
     public EndlessEvidence() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self, true) { }
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
-        => await CommonActions.Apply<EndlessEvidencePower>(context, Owner.Creature, this, 1m);
-    protected override void OnUpgrade() => AddKeyword(CardKeyword.Innate);
+    {
+        if (IsUpgraded) await CommonActions.Apply<UpgradedEndlessEvidencePower>(context, Owner.Creature, this, 1);
+        else await CommonActions.Apply<EndlessEvidencePower>(context, Owner.Creature, this, 1);
+    }
+    protected override void OnUpgrade() { }
 }
 
 [Pool(typeof(SakurabaEmaCardPool))]

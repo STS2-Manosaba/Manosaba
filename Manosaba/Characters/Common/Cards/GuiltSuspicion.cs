@@ -13,14 +13,12 @@ namespace Manosaba.Characters.Common.Cards;
 [Pool(typeof(TokenCardPool))]
 public sealed class GuiltSuspicion : PathCustomCardModel
 {
-    // Intentionally has no upgrade, as requested. It can still affect a solo hand at turn end.
-    public override int MaxUpgradeLevel => 0;
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
     public override bool HasTurnEndInHandEffect => true;
     public override bool CanBeGeneratedInCombat => false;
     public override bool CanBeGeneratedByModifiers => false;
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust, CardKeyword.Ethereal];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<GuiltPower>(1m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<GuiltPower>(2m)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<GuiltPower>()];
 
     public GuiltSuspicion() : base(1, CardType.Status, CardRarity.Token, TargetType.AnyAlly, true) { }
@@ -30,7 +28,9 @@ public sealed class GuiltSuspicion : PathCustomCardModel
         if (cardPlay.Target?.Player is not { } teammate || CombatState is not { } combat)
             return;
 
-        await CardPileCmd.AddGeneratedCardToCombat(combat.CreateCard<GuiltSuspicion>(teammate), PileType.Hand, teammate);
+        var suspicion = combat.CreateCard<GuiltSuspicion>(teammate);
+        if (IsUpgraded) CardCmd.Upgrade(suspicion);
+        await CardPileCmd.AddGeneratedCardToCombat(suspicion, PileType.Hand, teammate);
     }
 
     protected override async Task OnTurnEndInHand(PlayerChoiceContext choiceContext)

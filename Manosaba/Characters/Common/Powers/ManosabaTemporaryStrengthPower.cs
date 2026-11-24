@@ -1,10 +1,3 @@
-using BaseLib.Utils;
-using Manosaba.Extensions;
-using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.Entities.Powers;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
@@ -12,46 +5,8 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace Manosaba.Characters.Common.Powers;
 
-public abstract class ManosabaTemporaryStrengthPower : PathCustomPowerModel, ITemporaryPower
+public abstract class ManosabaTemporaryStrengthPower : ManosabaTemporaryStatPower<StrengthPower>
 {
-    private bool _shouldIgnoreNextInstance;
-
-    public override PowerType Type
-    {
-        get
-        {
-            if (!IsPositive)
-            {
-                return PowerType.Debuff;
-            }
-
-            return PowerType.Buff;
-        }
-    }
-
-    public override PowerStackType StackType => PowerStackType.Counter;
-
-    public abstract AbstractModel? OriginModel { get; }
-
-    AbstractModel ITemporaryPower.OriginModel => OriginModel ?? InternallyAppliedPower;
-
-    public PowerModel InternallyAppliedPower => ModelDb.Power<StrengthPower>();
-
-    protected virtual bool IsPositive => true;
-
-    private int Sign
-    {
-        get
-        {
-            if (!IsPositive)
-            {
-                return -1;
-            }
-
-            return 1;
-        }
-    }
-
     public override LocString Title
     {
         get
@@ -136,47 +91,4 @@ public abstract class ManosabaTemporaryStrengthPower : PathCustomPowerModel, ITe
             return list;
         }
     }
-
-    public void IgnoreNextInstance()
-    {
-        _shouldIgnoreNextInstance = true;
-    }
-
-    public override async Task BeforeApplied(Creature target, decimal amount, Creature? applier, CardModel? cardSource)
-    {
-        if (_shouldIgnoreNextInstance)
-        {
-            _shouldIgnoreNextInstance = false;
-        }
-        else
-        {
-            await CommonActions.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), target, cardSource, (decimal)Sign * amount);
-        }
-    }
-
-    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
-    {
-        if (!(amount == (decimal)base.Amount) && power == this)
-        {
-            if (_shouldIgnoreNextInstance)
-            {
-                _shouldIgnoreNextInstance = false;
-            }
-            else
-            {
-                await CommonActions.Apply<StrengthPower>(choiceContext, base.Owner, cardSource, (decimal)Sign * amount);
-            }
-        }
-    }
-
-    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> creatures)
-    {
-        if (side == base.Owner.Side)
-        {
-            Flash();
-            await PowerCmd.Remove(this);
-            await CommonActions.Apply<StrengthPower>(choiceContext, base.Owner, null, -Sign * base.Amount);
-        }
-    }
 }
-

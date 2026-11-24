@@ -21,7 +21,7 @@ public sealed class NanokaIsARobot : EmaTrialCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(10m, ValueProp.Move),
+        new BlockVar(8m, ValueProp.Move),
         new CardsVar(2),
         new PowerVar<SusPower>(1m),
         new PowerVar<ArtifactPower>(1m),

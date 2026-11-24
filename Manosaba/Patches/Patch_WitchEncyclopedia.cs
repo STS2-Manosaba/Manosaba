@@ -1,4 +1,5 @@
 using Godot;
+using MegaCrit.Sts2.Core.Hooks;
 using HarmonyLib;
 using manosaba.Characters.SakurabaEma.Cards;
 using manosaba.Characters.SakurabaEma.Combat;
@@ -152,8 +153,11 @@ public static class Patch_CardPileCmd_Add_WitchEncyclopedia
         var results = new List<CardPileAddResult>();
         foreach (var card in cards)
         {
-            if (pile.Cards.Any(existing => existing.Id == card.Id && existing != card))
+            if (pile.Cards.FirstOrDefault(existing => existing.Id == card.Id && existing != card) is { } stored)
             {
+                // Preserve the stored model and its position when merging duplicates.
+                if (card.IsUpgraded && !stored.IsUpgraded)
+                    CardCmd.Upgrade(stored);
                 var oldPile = card.Pile;
                 card.RemoveFromCurrentPile();
                 RemoveTableNode(card, oldPile);
@@ -197,5 +201,30 @@ public static class Patch_CardPileCmd_Add_WitchEncyclopedia
             ui.Hand.Remove(card);
         node.GetParent()?.RemoveChild(node);
         node.QueueFree();
+    }
+}
+
+[HarmonyPatch(typeof(Hook), nameof(Hook.ShouldPlay))]
+public static class Patch_WitchEncyclopedia_PlayLimit
+{
+    [HarmonyPostfix]
+    private static void Postfix(CardModel card, ref AbstractModel? preventer, ref bool __result)
+    {
+        if (__result && WitchEncyclopediaState.ShouldStore(card) && WitchEncyclopediaState.RemainingUses(card) == 0)
+        {
+            preventer = card;
+            __result = false;
+        }
+    }
+}
+
+[HarmonyPatch(typeof(Hook), nameof(Hook.ModifyCardPlayCount))]
+public static class Patch_WitchEncyclopedia_ReplayLimit
+{
+    [HarmonyPostfix]
+    private static void Postfix(CardModel card, ref int __result)
+    {
+        if (WitchEncyclopediaState.ShouldStore(card))
+            __result = Math.Min(__result, WitchEncyclopediaState.RemainingUses(card));
     }
 }

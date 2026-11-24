@@ -11,14 +11,28 @@ using MegaCrit.Sts2.Core.Rewards;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.ValueProps;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Commands;
 
 namespace Manosaba.Characters.Common.Relics;
 
-[Pool(typeof(EventRelicPool))]
-public sealed class LibraryMagnifyingGlass : PathCustomRelicModel
+public abstract class LibraryGuiltRelic : PathCustomRelicModel
 {
     public override RelicRarity Rarity => RelicRarity.Event;
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("PerStack", 2), new DynamicVar("Cap", 20)];
+
+    public override async Task AfterPlayerTurnStart(PlayerChoiceContext context, Player player)
+    {
+        if (player != Owner) return;
+        Flash();
+        await PowerCmd.Apply<GuiltPower>(context, Owner.Creature, 1, Owner.Creature, null);
+    }
+}
+
+[Pool(typeof(EventRelicPool))]
+public sealed class LibraryMagnifyingGlass : LibraryGuiltRelic
+{
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("PerStack", 1), new DynamicVar("Cap", 5)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [HoverTipFactory.FromPower<GuiltPower>(), HoverTipFactory.Static(StaticHoverTip.Block)];
     private decimal Bonus => Math.Min(DynamicVars["Cap"].BaseValue,
@@ -32,9 +46,8 @@ public sealed class LibraryMagnifyingGlass : PathCustomRelicModel
 }
 
 [Pool(typeof(EventRelicPool))]
-public sealed class LibraryHannaDoll : PathCustomRelicModel
+public sealed class LibraryHannaDoll : LibraryGuiltRelic
 {
-    public override RelicRarity Rarity => RelicRarity.Event;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("PerStack", 3), new DynamicVar("Cap", 30)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<GuiltPower>()];
 

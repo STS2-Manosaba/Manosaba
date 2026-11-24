@@ -1,5 +1,5 @@
 using BaseLib.Utils;
-using Manosaba.Characters.Common;
+using Manosaba.Characters.Common.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -14,8 +14,8 @@ public sealed class GuardTestimony : TestimonyCardBase
 {
     protected override IEnumerable<DynamicVar> TestimonyVars => [new PowerVar<StrengthPower>(2m)];
 
-    protected override IEnumerable<IHoverTip> TestimonyExtraHoverTips => [HoverTipFactory.FromPower<StrengthPower>()];
+    protected override IEnumerable<IHoverTip> TestimonyExtraHoverTips => [HoverTipFactory.FromPower<FleetingStrengthPower>()];
 
     protected override async Task OnAfterTestimony(PlayerChoiceContext choiceContext) =>
-        await CommonActions.Apply<StrengthPower>(choiceContext, Owner.Creature, this, DynamicVars["StrengthPower"].BaseValue);
+        await CommonActions.Apply<FleetingStrengthPower>(choiceContext, Owner.Creature, this, DynamicVars["StrengthPower"].BaseValue);
 }

@@ -1,6 +1,6 @@
 using BaseLib.Utils;
-using Manosaba.Characters.Common;
 using Manosaba.Characters.Common.Cards;
+using Manosaba.Characters.Common.Powers;
 using Manosaba.Characters.Common.Overrides;
 using Manosaba.Extensions;
 using manosaba.Characters.SakurabaEma.Combat;
@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -20,59 +21,62 @@ public abstract class EvidenceCard : PathCustomCardModel
     public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Evidence];
     public override bool CanBeGeneratedInCombat => false;
     public override bool CanBeGeneratedByModifiers => false;
-    public override int MaxUpgradeLevel => 0;
     protected virtual IEnumerable<IHoverTip> EvidenceHoverTips => [];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromKeyword(ManosabaKeywords.Evidence), WitchEncyclopediaState.HoverTip, ..EvidenceHoverTips];
 
     protected EvidenceCard(CardType type, TargetType target) : base(0, type, CardRarity.Token, target, true) { }
     protected override MegaCrit.Sts2.Core.Entities.Cards.CardLocation GetResultLocationForCardPlay() => new(Owner, WitchEncyclopediaState.PileType, MegaCrit.Sts2.Core.Entities.Cards.CardPilePosition.Bottom);
-    // Evidence has no upgrade effects by design; it is a reusable generated token.
     protected override void OnUpgrade() { }
 }
 
 [Pool(typeof(TokenCardPool))]
-public sealed class BrokenCrossbowEvidence : EvidenceCard
+public sealed class BrokenCrossbowEvidence : SearchEvidenceCard
 {
-    public override string PortraitPath => "res://Manosaba/images/cards/broken_crossbow_evidence.png";
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4m, ValueProp.Move)];
-    public BrokenCrossbowEvidence() : base(CardType.Attack, TargetType.AnyEnemy) { }
-    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    public BrokenCrossbowEvidence() : base(CardType.Attack) { }
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+        [new DamageVar(5, ValueProp.Move), new PowerVar<FleetingStrengthPower>(1)];
+    protected override IEnumerable<IHoverTip> EvidenceHoverTips => [HoverTipFactory.FromPower<FleetingStrengthPower>()];
+    protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
-        if (cardPlay.Target is { } target)
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this, cardPlay).Targeting(target).Execute(choiceContext);
+        await Hit(context, RandomEnemy(), play);
+        await Apply<FleetingStrengthPower>(context, Owner.Creature, DynamicVars["FleetingStrengthPower"].BaseValue);
+    }
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Damage.UpgradeValueBy(3);
+        DynamicVars["FleetingStrengthPower"].UpgradeValueBy(1);
     }
 }
 
 [Pool(typeof(TokenCardPool))]
-public sealed class NoahsButterflyDrawing : EvidenceCard
+public sealed class NoahsButterflyDrawing : SearchEvidenceCard
 {
-    public override string PortraitPath => "res://Manosaba/images/cards/noahs_butterfly_drawing.png";
     public override bool GainsBlock => true;
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(3m, ValueProp.Move)];
-    public NoahsButterflyDrawing() : base(CardType.Skill, TargetType.Self) { }
-    protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay) => CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+        [new BlockVar(4, ValueProp.Move), new PowerVar<FleetingDexterityPower>(1)];
+    protected override IEnumerable<IHoverTip> EvidenceHoverTips => [HoverTipFactory.FromPower<FleetingDexterityPower>()];
+    protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
+    {
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play);
+        await Apply<FleetingDexterityPower>(context, Owner.Creature, DynamicVars["FleetingDexterityPower"].BaseValue);
+    }
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Block.UpgradeValueBy(2);
+        DynamicVars["FleetingDexterityPower"].UpgradeValueBy(1);
+    }
 }
 
 [Pool(typeof(TokenCardPool))]
-public sealed class WitchIslandPrisonBlueprint : EvidenceCard
+public sealed class WitchIslandPrisonBlueprint : SearchEvidenceCard
 {
-    public override string PortraitPath => "res://Manosaba/images/cards/witch_island_prison_blueprint.png";
-    protected override IEnumerable<IHoverTip> EvidenceHoverTips => [HoverTipFactory.FromCard<HouseKeeping>(), HoverTipFactory.FromKeyword(CardKeyword.Exhaust), HoverTipFactory.FromPower<GuiltPower>()];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<GuiltPower>(1m)];
-    // The self effect remains useful in solo; the optional Sherry bonus must also be
-    // available there, so this card intentionally has no multiplayer-only constraint.
-    public WitchIslandPrisonBlueprint() : base(CardType.Skill, TargetType.Self) { }
-    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    protected override IEnumerable<IHoverTip> EvidenceHoverTips =>
+        [HoverTipFactory.FromCard<HouseKeeping>(), HoverTipFactory.FromPower<GuiltPower>()];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<GuiltPower>(1)];
+    protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
     {
-        if (CombatState is not { } combat)
-            return;
-        var housekeeping = combat.CreateCard<HouseKeeping>(Owner);
-        CardCmd.ApplyKeyword(housekeeping, CardKeyword.Exhaust);
-        await CardCmd.AutoPlay(choiceContext, housekeeping, null);
-        var sherry = combat.Players.Where(player => player.Creature.IsAlive &&
-                player.Character.Id.Entry.EndsWith("TACHIBANA_SHERRY", StringComparison.OrdinalIgnoreCase))
-            .OrderBy(player => player.NetId).FirstOrDefault();
-        if (sherry != null)
-            await CommonActions.Apply<GuiltPower>(choiceContext, sherry.Creature, this, DynamicVars["GuiltPower"].BaseValue);
+        await GenerateAndPlay(context, ModelDb.Card<HouseKeeping>());
+        await BuffMatches<GuiltPower>(context, "tachibana_sherry", DynamicVars["GuiltPower"].BaseValue);
     }
+    protected override void OnUpgrade() => DynamicVars["GuiltPower"].UpgradeValueBy(1);
 }

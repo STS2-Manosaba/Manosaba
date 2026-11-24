@@ -6,23 +6,29 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 
 internal static class TestimonyCardHelper
 {
-    internal static List<CardModel> CreateAll(ICombatState combatState, Player owner) =>
+    private static readonly Type[] Types =
     [
-        combatState.CreateCard<SakurabaEmaTestimony>(owner),
-        combatState.CreateCard<NikaidoHiroTestimony>(owner),
-        combatState.CreateCard<NatsumeAnanTestimony>(owner),
-        combatState.CreateCard<JogasakiNoahTestimony>(owner),
-        combatState.CreateCard<HasumiLeiaTestimony>(owner),
-        combatState.CreateCard<SaekiMiriaTestimony>(owner),
-        combatState.CreateCard<HoshoMagoTestimony>(owner),
-        combatState.CreateCard<KurobeNanokaTestimony>(owner),
-        combatState.CreateCard<ShitoAlisaTestimony>(owner),
-        combatState.CreateCard<TachibanaSherryTestimony>(owner),
-        combatState.CreateCard<TonoHannaTestimony>(owner),
-        combatState.CreateCard<SawatariCocoTestimony>(owner),
-        combatState.CreateCard<HikamiMeruruTestimony>(owner),
-        combatState.CreateCard<WardenTestimony>(owner),
-        combatState.CreateCard<GuardTestimony>(owner),
-        combatState.CreateCard<GrandWitchTestimony>(owner),
+        typeof(SakurabaEmaTestimony),
+        typeof(NikaidoHiroTestimony),
+        typeof(NatsumeAnanTestimony),
+        typeof(JogasakiNoahTestimony),
+        typeof(HasumiLeiaTestimony),
+        typeof(SaekiMiriaTestimony),
+        typeof(HoshoMagoTestimony),
+        typeof(KurobeNanokaTestimony),
+        typeof(ShitoAlisaTestimony),
+        typeof(TachibanaSherryTestimony),
+        typeof(TonoHannaTestimony),
+        typeof(SawatariCocoTestimony),
+        typeof(HikamiMeruruTestimony),
+        typeof(WardenTestimony),
+        typeof(GuardTestimony),
+        typeof(GrandWitchTestimony),
     ];
+
+    internal static CardModel CreateRandom(ICombatState combat, Player owner)
+    {
+        Type selected = Types[owner.RunState.Rng.CombatCardSelection.NextInt(Types.Length)];
+        return combat.CreateCard(ModelDb.GetById<CardModel>(ModelDb.GetId(selected)), owner);
+    }
 }

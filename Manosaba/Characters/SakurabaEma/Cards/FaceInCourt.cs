@@ -19,7 +19,7 @@ public sealed class FaceInCourt : EmaTrialCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<SusPower>(1m),
-        new CardsVar(3),
+        new CardsVar(2),
     ];
 
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips =>

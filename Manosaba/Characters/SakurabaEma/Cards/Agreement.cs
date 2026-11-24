@@ -22,7 +22,7 @@ public sealed class Agreement : EmaTrialCard
     protected override bool HasProgressEffect => true;
     private sealed class TargetArgumentBlockVar : BlockVar
     {
-        public TargetArgumentBlockVar() : base(6m, ValueProp.Move)
+        public TargetArgumentBlockVar() : base(5m, ValueProp.Move)
         {
         }
 

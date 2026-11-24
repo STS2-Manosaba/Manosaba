@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 
 namespace manosaba.Characters.SakurabaEma.Powers;
@@ -21,6 +22,22 @@ public sealed class SearchTimePower : PathCustomPowerModel
     public override bool AllowNegative => false;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("RequiredCards", 8m)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<RawTellOwk>()];
+
+    public override LocString Description => DescribeThreshold(DynamicVars["RequiredCards"].IntValue);
+
+    private LocString DescribeThreshold(int requiredCards)
+    {
+        var description = new LocString("powers", SmartDescriptionLocKey);
+        description.Add("RequiredCards", requiredCards);
+        description.Add("Amount", Amount);
+        return description;
+    }
+
+    internal static HoverTip RequirementHoverTip(int requiredCards)
+    {
+        var power = ModelDb.Power<SearchTimePower>();
+        return new HoverTip(power, power.DescribeThreshold(requiredCards).GetFormattedText(), false);
+    }
 
     internal void StartSearch(int requiredCards)
     {

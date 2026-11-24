@@ -18,7 +18,6 @@ public sealed class Question : EmaTrialCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(1),
-        new DynamicVar("Options", 3m),
     ];
 
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [HoverTipFactory.FromKeyword(ManosabaKeywords.Testimony)];
@@ -38,32 +37,10 @@ public sealed class Question : EmaTrialCard
         await EmaTrialPresentation.Play(this);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
 
-        List<CardModel> testimonyCards = TestimonyCardHelper.CreateAll(CombatState, Owner)
-            .OrderBy(_ => Owner.RunState.Rng.CombatCardSelection.NextInt(int.MaxValue))
-            .ToList();
-
-        CardModel? selected = IsUpgraded
-            ? await CardSelectCmd.FromChooseACardScreen(choiceContext, testimonyCards.Take(DynamicVars["Options"].IntValue).ToList(), Owner)
-            : testimonyCards.FirstOrDefault();
-
-        if (selected == null)
-        {
-            return;
-        }
-
-        CardPileAddResult result = await WitchEncyclopediaState.AddForImmediatePlay(selected, Owner);
-        CardCmd.PreviewCardPileAdd(result);
-        if (!result.success || selected.HasBeenRemovedFromState) return;
-        try
-        {
-            await CardCmd.AutoPlay(choiceContext, selected, Owner.Creature);
-        }
-        finally
-        {
-            if (!selected.HasBeenRemovedFromState && WitchEncyclopediaState.Get(Owner) is { } encyclopedia && selected.Pile != encyclopedia.Pile)
-                await CardPileCmd.Add(selected, encyclopedia.Pile, skipVisuals: true);
-        }
+        CardModel testimony = TestimonyCardHelper.CreateRandom(CombatState, Owner);
+        if (IsUpgraded) CardCmd.Upgrade(testimony);
+        CardCmd.PreviewCardPileAdd(await EmaCardGeneration.Add(testimony, PileType.Hand, Owner));
     }
 
-    protected override void OnUpgrade() { }
+    protected override void OnUpgrade() => DynamicVars.Cards.UpgradeValueBy(1);
 }

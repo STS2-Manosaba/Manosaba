@@ -21,7 +21,7 @@ public sealed class InformationSharing : EmaTrialCard
     protected override bool HasProgressEffect => true;
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
     public override bool GainsBlock => true;
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new TrialBlockVar(8m), new CardsVar(1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new TrialBlockVar(5m), new CardsVar(1)];
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [WitchEncyclopediaState.HoverTip, HoverTipFactory.FromCard<PresentEvidence>()];
     public InformationSharing() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyPlayer, true) { }
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay play)
@@ -83,7 +83,7 @@ public sealed class JointInvestigation : PathCustomCardModel
         foreach (var player in players) await CardPileCmd.Draw(context, DynamicVars.Cards.IntValue, player);
         foreach (var player in players)
             for (int i = 0; i < DynamicVars["Evidence"].IntValue; i++)
-                await WitchEncyclopediaState.GenerateRandomEvidence(player);
+                await WitchEncyclopediaState.GenerateRandomEvidence(player, IsUpgraded);
     }
     protected override void OnUpgrade() => DynamicVars.Cards.UpgradeValueBy(1m);
 }

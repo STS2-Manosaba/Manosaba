@@ -17,7 +17,7 @@ public sealed class SuspiciousIWasntInvited : EmaTrialCard
     protected override bool HasProgressEffect => true;
     public override bool GainsBlock => true;
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new BlockVar(10m, ValueProp.Move), new DynamicVar("AllyBlock", 3m), new CardsVar(1), new PowerVar<SusPower>(1m)];
+        [new BlockVar(8m, ValueProp.Move), new DynamicVar("AllyBlock", 3m), new CardsVar(1), new PowerVar<SusPower>(1m)];
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [HoverTipFactory.FromPower<SusPower>()];
     public SuspiciousIWasntInvited() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyPlayer, true) { }
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

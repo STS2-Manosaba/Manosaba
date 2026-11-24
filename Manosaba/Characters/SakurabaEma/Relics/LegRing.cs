@@ -45,7 +45,7 @@ public sealed class LegRing : LevelingPathCustomRelicModel, Manosaba.Compatibili
     protected override int MaxRelicLevel => 5;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        [..base.ExtraHoverTips, HoverTipFactory.FromPower<SearchTimePower>(), HoverTipFactory.FromCard<RawTellOwk>(),
+        [..base.ExtraHoverTips, SearchTimePower.RequirementHoverTip(GetSearchCardRequirement(RelicLevel)), HoverTipFactory.FromCard<RawTellOwk>(),
             HoverTipFactory.FromPower<InterrogationStartPower>(), HoverTipFactory.FromPower<GuiltPower>(),
             HoverTipFactory.FromCard<Rebuttal>(), HoverTipFactory.FromCard<Question>(), HoverTipFactory.FromCard<Agreement>()];
 

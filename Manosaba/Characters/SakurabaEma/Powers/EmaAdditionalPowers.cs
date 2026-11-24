@@ -11,8 +11,9 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace manosaba.Characters.SakurabaEma.Powers;
 
-public sealed class EndlessEvidencePower : PathCustomPowerModel
+public class EndlessEvidencePower : PathCustomPowerModel
 {
+    protected virtual bool GeneratesUpgradedEvidence => false;
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [WitchEncyclopediaState.HoverTip];
@@ -20,8 +21,16 @@ public sealed class EndlessEvidencePower : PathCustomPowerModel
     {
         if (player != Owner.Player) return;
         Flash();
-        for (int i = 0; i < Amount; i++) await WitchEncyclopediaState.GenerateRandomEvidence(player);
+        for (int i = 0; i < Amount; i++) await WitchEncyclopediaState.GenerateRandomEvidence(player, GeneratesUpgradedEvidence);
     }
+}
+
+public sealed class UpgradedEndlessEvidencePower : EndlessEvidencePower
+{
+    protected override bool GeneratesUpgradedEvidence => true;
+    public override string CustomPackedIconPath => ModelDb.Power<EndlessEvidencePower>().CustomPackedIconPath;
+    public override string CustomBigIconPath => CustomPackedIconPath;
+    public override string CustomBigBetaIconPath => CustomPackedIconPath;
 }
 
 public sealed class AfterDinnerStatementPower : PathCustomPowerModel

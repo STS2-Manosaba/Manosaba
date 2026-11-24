@@ -67,7 +67,7 @@ public sealed class Rebuttal : EmaTrialCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new EncyclopediaDamageVar(),
-        new DynamicVar("DamagePerCard", 2m),
+        new DynamicVar("DamagePerCard", 1m),
     ];
 
     protected override IEnumerable<IHoverTip> TrialExtraHoverTips => [WitchEncyclopediaState.HoverTip, HoverTipFactory.FromCard<PresentEvidence>()];

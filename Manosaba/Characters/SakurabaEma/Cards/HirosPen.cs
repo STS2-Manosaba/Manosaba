@@ -15,7 +15,7 @@ namespace manosaba.Characters.SakurabaEma.Cards;
 [Pool(typeof(SakurabaEmaCardPool))]
 public sealed class HirosPen : PathCustomCardModel
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Evidence, CardKeyword.Eternal];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Evidence, CardKeyword.Eternal, CardKeyword.Innate];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

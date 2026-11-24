@@ -25,7 +25,7 @@ public abstract class TestimonyCardBase : PathCustomCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(1),
-        new PowerVar<GuiltPower>(2m),
+        new PowerVar<GuiltPower>(1m),
         ..TestimonyVars,
     ];
 
@@ -61,9 +61,7 @@ public abstract class TestimonyCardBase : PathCustomCardModel
         return Task.CompletedTask;
     }
 
-    protected override void OnUpgrade()
-    {
-    }
+    protected override void OnUpgrade() => DynamicVars["GuiltPower"].UpgradeValueBy(1);
 }
 
 public abstract class CharacterTestimonyCardBase : TestimonyCardBase

@@ -1,5 +1,6 @@
 using System.Runtime.CompilerServices;
 using System.Threading;
+using MegaCrit.Sts2.Core.Combat;
 using BaseLib.Utils;
 using BaseLib.Patches.Content;
 using manosaba.Characters.SakurabaEma.Cards;
@@ -38,6 +39,17 @@ public sealed class WitchEncyclopediaState
     public static bool ShouldStore(CardModel card) =>
         card.Keywords.Contains(ManosabaKeywords.Evidence) || card.Keywords.Contains(ManosabaKeywords.Testimony);
 
+    internal static int RemainingUses(CardModel card)
+    {
+        var owner = card.Owner.Creature;
+        // Reserve the whole replay series when it starts so nested plays respect the same limit.
+        int used = CombatManager.Instance.History.CardPlaysStarted
+            .Where(entry => entry.Actor == owner && entry.CardPlay.Card.Id == card.Id &&
+                entry.CardPlay.IsFirstInSeries && entry.HappenedThisTurn(owner.CombatState))
+            .Sum(entry => entry.CardPlay.PlayCount);
+        return Math.Max(0, (card.IsUpgraded ? 5 : 3) - used);
+    }
+
     internal static bool ShouldCaptureFromHand(CardModel card) => ShouldStore(card) && card != ImmediatePlayCard.Value;
 
     // Defer only this generated card's capture until autoplay resolves. Other evidence
@@ -58,13 +70,14 @@ public sealed class WitchEncyclopediaState
         Func<Task>? beforeResolve = null)
     {
         var state = Get(owner);
-        if (state == null || state.Pile.IsEmpty)
+        var choices = state?.Pile.Cards.Where(card => RemainingUses(card) > 0).ToList();
+        if (state == null || choices == null || choices.Count == 0)
         {
             if (beforeResolve != null) await beforeResolve();
             return null;
         }
         var prefs = new CardSelectorPrefs(prompt, 1);
-        var selected = (await CardSelectCmd.FromSimpleGrid(choiceContext, state.Pile.Cards.ToList(), owner, prefs)).FirstOrDefault();
+        var selected = (await CardSelectCmd.FromSimpleGrid(choiceContext, choices, owner, prefs)).FirstOrDefault();
         if (selected == null)
             return null;
         // The calling card supplies its own presentation. Other evidence callers have no callback.
@@ -83,7 +96,7 @@ public sealed class WitchEncyclopediaState
             await network.AfterPresentEvidence(choiceContext);
         return selected;
     }
-    public static async Task GenerateRandomEvidence(Player player)
+    public static async Task GenerateRandomEvidence(Player player, bool upgraded = false)
     {
         if (player.Creature.CombatState is not { } combat)
             return;
@@ -91,6 +104,7 @@ public sealed class WitchEncyclopediaState
         Type selected = options[player.RunState.Rng.CombatCardSelection.NextInt(options.Length)];
         CardModel canonical = ModelDb.GetById<CardModel>(ModelDb.GetId(selected));
         CardModel card = combat.CreateCard(canonical, player);
+        if (upgraded) CardCmd.Upgrade(card);
         // Use the same entry point as other card generation. The pile patch captures it
         // before hand capacity is checked, including when the hand already has ten cards.
         CardPileAddResult result = await EmaCardGeneration.Add(card, MegaCrit.Sts2.Core.Entities.Cards.PileType.Hand, player);

@@ -40,9 +40,9 @@
   "MANOSABA-TRIAL.title": "裁判",
   "MANOSABA-TRIAL.description": "若没有[gold]法的恶魔[/gold]，此牌不受[gold]力量[/gold]、[gold]魔女化[/gold]等能力影响。攻击伤害仍可获得[gold]审问开始[/gold]场地的[gold]罪证[/gold]加成。",
   "MANOSABA-EVIDENCE.title": "证物卡",
-  "MANOSABA-EVIDENCE.description": "加入手牌时自动收纳至[gold]魔女图监[/gold]。同名证物只保留一张，打出後返回图监。",
+  "MANOSABA-EVIDENCE.description": "加入手牌时自动收纳至[gold]魔女图鉴[/gold]，打出后返回图鉴。同名牌优先保留升级版。每种牌每回合最多打出 3 次，升级后为 5 次。",
   "MANOSABA-TESTIMONY.title": "证言卡",
-  "MANOSABA-TESTIMONY.description": "加入手牌时自动收纳至[gold]魔女图监[/gold]，同名卡只保留一张，打出後返回图监。\n包含下列卡牌：\n[gold]樱羽艾玛的证言[/gold]\n[gold]二阶堂希罗的证言[/gold]\n[gold]夏目安安的证言[/gold]\n[gold]城崎诺亚的证言[/gold]\n[gold]莲见蕾雅的证言[/gold]\n[gold]佐伯米莉亚的证言[/gold]\n[gold]宝生玛格的证言[/gold]\n[gold]黑部奈叶香的证言[/gold]\n[gold]紫藤亚里沙的证言[/gold]\n[gold]橘雪莉的证言[/gold]\n[gold]远野汉娜的证言[/gold]\n[gold]泽渡可可的证言[/gold]\n[gold]冰上梅露露的证言[/gold]\n[gold]典狱长的证言[/gold]\n[gold]看守的证言[/gold]\n[gold]大魔女的证言[/gold]",
+  "MANOSABA-TESTIMONY.description": "加入手牌时自动收纳至[gold]魔女图鉴[/gold]，打出后返回图鉴。同名牌优先保留升级版。每种牌每回合最多打出 3 次，升级后为 5 次。\n包含下列卡牌：\n[gold]樱羽艾玛的证言[/gold]\n[gold]二阶堂希罗的证言[/gold]\n[gold]夏目安安的证言[/gold]\n[gold]城崎诺亚的证言[/gold]\n[gold]莲见蕾雅的证言[/gold]\n[gold]佐伯米莉亚的证言[/gold]\n[gold]宝生玛格的证言[/gold]\n[gold]黑部奈叶香的证言[/gold]\n[gold]紫藤亚里沙的证言[/gold]\n[gold]橘雪莉的证言[/gold]\n[gold]远野汉娜的证言[/gold]\n[gold]泽渡可可的证言[/gold]\n[gold]冰上梅露露的证言[/gold]\n[gold]典狱长的证言[/gold]\n[gold]看守的证言[/gold]\n[gold]大魔女的证言[/gold]",
   "MANOSABA-FLOATING.title": "漂浮",
   "MANOSABA-FLOATING.description": "拥有[gold]漂浮[/gold]时，受到攻击造成的伤害减少 20%。"
 }
