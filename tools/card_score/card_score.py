@@ -483,7 +483,7 @@ def load_agent_estimates() -> dict[str, dict]:
     """讀取 subagent 對各角色卡牌的估計（agent_estimates/*.json）。"""
     out = {}
     files = []
-    for d in (AGENT_DIR, AGENT_DIR_V2, HERE / "agent_estimates_v3_heal", HERE / "agent_estimates_v3_ally", HERE / "agent_estimates_v4"):
+    for d in (AGENT_DIR, AGENT_DIR_V2, HERE / "agent_estimates_v3_heal", HERE / "agent_estimates_v3_ally", HERE / "agent_estimates_v4", HERE / "agent_estimates_v5_sim"):
         # v2（以錨點卡重估）覆蓋 v1；v3（補血重估、特定隊友機率）再覆蓋；ally 最後套用
         if d.exists():
             files += sorted(d.glob("*.json"))
@@ -723,25 +723,17 @@ def percentile(sorted_vals: list[float], x: float) -> float:
     return 100.0 * (below + 0.5 * equal) / len(sorted_vals)
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--base", type=Path, default=DEFAULT_BASE)
-    ap.add_argument("--out", type=Path, default=HERE / "output")
-    ap.add_argument("--weights", type=Path, default=HERE / "weights.json")
-    ap.add_argument("--beta", type=Path, default=DEFAULT_BETA)
-    args = ap.parse_args()
-    w = json.loads(args.weights.read_text(encoding="utf-8"))
-    AGENT_EST.update(load_agent_estimates())
-
+def load_inputs(base: Path = DEFAULT_BASE, beta: Path = DEFAULT_BETA) -> dict:
+    """讀取並解析所有卡牌（與權重無關的部分）；evaluate 會複製後再評分，可重複使用。"""
+    if not AGENT_EST:
+        AGENT_EST.update(load_agent_estimates())
     keep = SCORED_RARITIES + ["Ancient"]
-    orig = [c for c in load_original(args.base) if c.rarity in keep]
+    orig = [c for c in load_original(base) if c.rarity in keep]
     # beta 版新角色（愚者）：列入比較，但不納入原版基準
-    if args.beta.exists():
-        orig += [c for c in load_original(args.beta, BETA_POOLS, "original-beta") if c.rarity in keep]
+    if beta.exists():
+        orig += [c for c in load_original(beta, BETA_POOLS, "original-beta") if c.rarity in keep]
     all_mod = load_mod(MOD_CHAR_DIR)  # 含 Token，供生成卡查價值
-    # 精神創傷（Trauma*）為各角色共通的起始魔女化卡，刻意設計為負面，不列入比較
-    mod = [c for c in all_mod if c.rarity in keep and not c.name.startswith("Trauma")]
-    for c in orig + mod:
+    for c in orig + all_mod:
         c.bucket = c.rarity
         # 瑪格的大阿爾克那等同一般卡（由塔羅牌組取代卡牌獎勵）；只有集齊後的「世界」才是真正的 Ancient
         if c.pool == "HoshoMago" and c.rarity == "Ancient" and c.name != "TheWorld":
@@ -749,13 +741,45 @@ def main():
     titles = {}
     if MOD_LOC.exists():
         titles = json.loads(MOD_LOC.read_text(encoding="utf-8"))
-    temp_powers = load_temp_powers([args.base / "Powers", MOD_CHAR_DIR])
+    temp_powers = load_temp_powers([base / "Powers", MOD_CHAR_DIR])
     ov_path = HERE / "card_overrides.json"
     overrides = json.loads(ov_path.read_text(encoding="utf-8")) if ov_path.exists() else {}
     overrides = {k: v for k, v in overrides.items() if not k.startswith("_")}
     for c in orig + all_mod:
-        analyze_onplay(c, temp_powers)
-        score(c, w, overrides)
+        analyze_onplay(c, temp_powers)   # 只依程式碼，與權重無關
+    otitles = {}
+    for src, b in (("original", base), ("original-beta", beta)):
+        loc = b.parents[2] / "localization" / "zht" / "cards.json"
+        if loc.exists():
+            otitles[src] = json.loads(loc.read_text(encoding="utf-8"))
+    return {"orig": orig, "all_mod": all_mod, "titles": titles, "otitles": otitles,
+            "overrides": overrides, "keep": keep}
+
+
+CARD_NOISE: dict[tuple, float] = {}   # 不確定性分析：(source, pool, name) → 估值乘法雜訊（預設空＝不變）
+
+
+def score_noisy(card: Card, w: dict, overrides: dict):
+    score(card, w, overrides)
+    nz = CARD_NOISE.get((card.source, card.pool, card.name))
+    if nz is not None:
+        for attr in ("raw", "raw_upg", "raw_multi", "raw_multi_upg"):
+            if getattr(card, attr) is not None:
+                setattr(card, attr, getattr(card, attr) * nz)
+
+
+def evaluate(w: dict, inp: dict) -> dict:
+    """以權重 w 對 load_inputs 的卡牌（複製）跑完整評分流程，不寫檔。"""
+    import copy
+    global GEN_RESOLVER
+    GEN_RESOLVER = None
+    keep, overrides, titles = inp["keep"], inp["overrides"], inp["titles"]
+    orig = copy.deepcopy(inp["orig"])
+    all_mod = copy.deepcopy(inp["all_mod"])
+    # 精神創傷（Trauma*）為各角色共通的起始魔女化卡，刻意設計為負面，不列入比較
+    mod = [c for c in all_mod if c.rarity in keep and not c.name.startswith("Trauma")]
+    for c in orig + all_mod:
+        score_noisy(c, w, overrides)
         apply_turn_model(c)
     cal = calibrate(orig, w)
     cal["turn_model"] = turn_model.factors()
@@ -763,24 +787,20 @@ def main():
     for c in orig + all_mod:
         finalize(c, cal)
     # 第二階段：生成卡牌的價值依被生成卡計算（先算被生成卡，再重算生成者）
-    global GEN_RESOLVER
     GEN_RESOLVER = make_gen_resolver(all_mod, cal)
     for c in all_mod:
         if any(k.startswith("gen:") for k in c.vars) and c.raw is not None:
-            score(c, w, overrides)
+            score_noisy(c, w, overrides)
             apply_turn_model(c)
             finalize(c, cal)
         if c.source == "mod":
             key = "MANOSABA-" + re.sub(r"(?<!^)(?=[A-Z])", "_", c.name).upper() + ".title"
             c.title = titles.get(key, "")
     # 原版卡名：取官方繁中本地化（beta 卡取 beta 版）
-    for src, base in (("original", args.base), ("original-beta", args.beta)):
-        loc = base.parents[2] / "localization" / "zht" / "cards.json"
-        if loc.exists():
-            otitles = json.loads(loc.read_text(encoding="utf-8"))
-            for c in orig:
-                if c.source == src:
-                    c.title = otitles.get(re.sub(r"(?<!^)(?=[A-Z])", "_", c.name).upper() + ".title", "")
+    for src, otitles in inp["otitles"].items():
+        for c in orig:
+            if c.source == src:
+                c.title = otitles.get(re.sub(r"(?<!^)(?=[A-Z])", "_", c.name).upper() + ".title", "")
 
     # 原版基準（只用可評分且非 manual 的卡）
     baseline = build_baseline(orig)
@@ -815,6 +835,22 @@ def main():
             c.verdict = "可能過弱"
         else:
             c.verdict = "正常"
+    return {"orig": orig, "mod": mod, "all_mod": all_mod, "baseline": baseline, "cal": cal}
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--base", type=Path, default=DEFAULT_BASE)
+    ap.add_argument("--out", type=Path, default=HERE / "output")
+    ap.add_argument("--weights", type=Path, default=HERE / "weights.json")
+    ap.add_argument("--beta", type=Path, default=DEFAULT_BETA)
+    args = ap.parse_args()
+    w = json.loads(args.weights.read_text(encoding="utf-8"))
+    AGENT_EST.update(load_agent_estimates())
+    inp = load_inputs(args.base, args.beta)
+    keep = inp["keep"]
+    res = evaluate(w, inp)
+    orig, mod, baseline, cal = res["orig"], res["mod"], res["baseline"], res["cal"]
 
     args.out.mkdir(parents=True, exist_ok=True)
     cols = ["source", "pool", "name", "title", "rarity", "type", "cost", "target", "score", "score_solo", "score_multi", "score_upg",

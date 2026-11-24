@@ -1,0 +1,232 @@
+{
+  "character": "SawatariCoco",
+  "assumptions": [
+    "單人蒙地卡羅模擬（sim_coco/sim.py），每原型 3000 局完整冒險×39 場（每幕 10 一般+2 菁英+1 首領），重要性權重 1/2/3",
+    "遺物等級依程式碼經驗表（0/2/7/15/30；一般 1、菁英 2、首領 3）：Lv1 僅躲藏 1，Lv2 起戰鬥開始 3 層直播，Lv4 直播中每回合 +1 能量；約一幕結束達 Lv4",
+    "戰鬥長度沿用 turn_model Gamma（4/6.5/10 回合）；敵人數 1~3，依序排程死亡；每敵每回合 65% 攻擊、15% 減益、20% 其他",
+    "每回合 5 抽、3 能量；直播回合結束對隨機敵造成層數傷害後 -1；直播中造成傷害使敵成為粉絲；TotalFanCount 為整局累計（每場約 +1.6，打出時平均約 37~43）",
+    "牌組原型：直播型、躲藏/魔女化型、裝備/粉絲型（起始牌組+12 張可可卡），貪婪出牌；魔女化傷害倍率用 MajokaPower Hill 曲線",
+    "結果：直播模式回合比例 85~98%（舊假設 65%），打出時直播層數 2.4~7.5",
+    "換算：6 傷=1 能量、5 點避免失血=1 能量；邊際模擬（換成空白卡）雜訊大，只作交叉參考",
+    "多人：value_multi 沿用 v2 規則，只額外計入隊友受益"
+  ],
+  "mechanic_values": {
+    "躲藏": "每層每回合 1 格檔+1 魔女化≈0.27/回合，中途取得約剩 4 回合≈1.0/層",
+    "直播模式": "回合結束對隨機敵造成層數傷害後遞減；疊加在既有約 2 層上：2 層≈1.2、3 層≈2.0、5 層≈4.0（含粉絲與 Lv4 能量連動）",
+    "粉絲": "敵人對你攻擊力量 -1，持續整場，約 1.0/敵；遺物在直播中已自動給予，邊際價值偏低",
+    "魔女化": "0.07/層，超過 100 層有風險；I want to play a game 會快速推高",
+    "裝備分數": "每 1000 分約 0.15（里程碑分攤）",
+    "商品牌": "0 費虛無，花 5 金幣得永久力量/敏捷等，約 1.0~2.0/張"
+  },
+  "source": "mod",
+  "cards": {
+    "FlameBait": {
+      "value": 4.2,
+      "value_upgraded": 5.0,
+      "value_multi": 4.2,
+      "value_multi_upgraded": 5.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出時處於直播模式 85~99%（三牌組加權約 90%，舊假設 65%）；10+20×0.9=28 傷≈4.7，扣失 2 血 0.4"
+    },
+    "ShowerStream": {
+      "value": 4.0,
+      "value_upgraded": 5.0,
+      "value_multi": 4.0,
+      "value_multi_upgraded": 5.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 僅直播可打；模擬直播回合比例 85~98%，抽到時幾乎都可打；15/20 格檔+1 躲藏，維持原值"
+    },
+    "PunkCatTop": {
+      "value": 4.0,
+      "value_upgraded": 5.4,
+      "value_multi": 4.0,
+      "value_multi_upgraded": 5.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 段數=1+直播層數：裝備型牌組平均 3.9 段、直播型 8.5 段；取典型 4 段×5/7 傷=20/28 傷+5000 分 0.75"
+    },
+    "PunkCatSkirt": {
+      "value": 2.6,
+      "value_upgraded": 3.0,
+      "value_multi": 2.6,
+      "value_multi_upgraded": 3.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出時直播 90%；8+4×0.9=11.6 傷+1/2 易傷+2000 分"
+    },
+    "PunkCatShoes": {
+      "value": 2.25,
+      "value_upgraded": 2.9,
+      "value_multi": 2.25,
+      "value_multi_upgraded": 2.9,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出時直播 92%；9(13)+3.6 傷+1000 分"
+    },
+    "CybercatShoes": {
+      "value": 2.6,
+      "value_upgraded": 3.4,
+      "value_multi": 2.6,
+      "value_multi_upgraded": 3.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出時直播 90~96%；8(12)+3.6 格檔+2000 分"
+    },
+    "CybercatSkirt": {
+      "value": 2.75,
+      "value_upgraded": 3.35,
+      "value_multi": 2.75,
+      "value_multi_upgraded": 3.35,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出時躲藏平均 6.5 層（遺物 Lv4~5 本身 4~5 層）；5(8)+約 5.5 格檔+抽 1+1000 分"
+    },
+    "CutieCatsHeadwear": {
+      "value": 1.1,
+      "value_upgraded": 1.4,
+      "value_multi": 1.1,
+      "value_multi_upgraded": 1.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出時直播約 90%，追加易傷幾乎必定觸發；1/2 虛弱+消耗 1 手牌+易傷"
+    },
+    "SimultaneousViewing": {
+      "value": 1.9,
+      "value_upgraded": 3.6,
+      "value_multi": 1.9,
+      "value_multi_upgraded": 3.6,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 僅直播可打，直播回合 85~98%；抽到的牌平均靜態價值約 2.0，重播約 +1.5、抽牌 0.5，×可打率 0.95（v4 抽 1/2 結構保留）"
+    },
+    "InfiniteMirror": {
+      "value": 2.8,
+      "value_upgraded": 2.8,
+      "value_multi": 2.8,
+      "value_multi_upgraded": 2.8,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出時平均直播 5.1 層、翻倍增加 5.2 層（直播型）；裝備/起始型約 2.5 層。剩約 4 回合截斷後回合結束傷害增加約 10~20，並延長直播連動；升級僅降費"
+    },
+    "LucidDream": {
+      "value": 3.0,
+      "value_upgraded": 3.3,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.3,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 棄牌堆幾乎不為空；選出的牌平均靜態價值 3.7~4.1、費用 1.2~1.4（免費打出），扣靜態表偏高後約 3.0；升級保留"
+    },
+    "TurnDefenseToOffense": {
+      "value": 0.6,
+      "value_upgraded": 0.6,
+      "value_multi": 0.6,
+      "value_multi_upgraded": 0.6,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出時躲藏平均 7.5 層→3.5 力量、剩約 5 回合；失去每回合 7.5 格檔+7.5 魔女化，淨值低；邊際模擬為負（約 -0.9/次，雜訊大）"
+    },
+    "TreeHollow": {
+      "value": 6.5,
+      "value_upgraded": 6.5,
+      "value_multi": 7.0,
+      "value_multi_upgraded": 7.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出前魔女化平均 30→補到 100，傷害倍率 +0.67、剩約 3.8 回合；25 格檔 5.0；同時觸發千里眼入手；邊際模擬每次約 +4.8（未計費用）"
+    },
+    "Clairvoyance": {
+      "value": 5.5,
+      "value_upgraded": 5.5,
+      "value_multi": 8.0,
+      "value_multi_upgraded": 8.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出時層數：躲藏型平均 9.1、其他 5.4~6.6；每回合每敵依意圖（攻擊 65%→5 格檔、減益 15%→易傷、其他→+1 力量），約 1.3 敵、剩約 4 回合≈每回合 1.2，力量累積另計；多人沿用 v2"
+    },
+    "PunkCatHeadwear": {
+      "value": 6.5,
+      "value_upgraded": 6.5,
+      "value_multi": 6.5,
+      "value_multi_upgraded": 6.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 粉絲數為整局累計 TotalFanCount：每場約 +1.6，打出時平均 43（一幕約 10、三幕約 55），平均 1.34 敵→約 50 傷，扣溢傷與前期粉絲少的折扣；+2000 分"
+    },
+    "CybercatHeadwear": {
+      "value": 3.75,
+      "value_upgraded": 3.75,
+      "value_multi": 9.0,
+      "value_multi_upgraded": 9.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 累計粉絲平均 42，格檔遠超單回合來襲（約 10~20），有效約 15 格檔=3.0+5000 分 0.75；多人：全體玩家各得同量格檔，3 名隊友各約 1.75 有效"
+    },
+    "FanService": {
+      "value": 6.5,
+      "value_upgraded": 8.0,
+      "value_multi": 6.5,
+      "value_multi_upgraded": 8.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 技能每 3 回合一次，使用時累計粉絲平均 36，每次取格檔/全敵傷害較佳者約 7.1；每次打出平均約 1.5~2 次使用，扣溢傷約 6.5；升級固有多約 1 次"
+    },
+    "MysteriousCatPants": {
+      "value": 2.45,
+      "value_upgraded": 3.0,
+      "value_multi": 2.45,
+      "value_multi_upgraded": 3.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出時本場粉絲（存活敵）平均 1.13（舊假設 1.5）；每名抽 1(2)+1 能量≈1.5(2.0)/名+5000 分 0.75"
+    },
+    "MysteriousCatShoes": {
+      "value": 1.2,
+      "value_upgraded": 1.4,
+      "value_multi": 1.2,
+      "value_multi_upgraded": 1.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出時直播 90~99%；+1 能量×0.92+2000 分 0.3；升級不消耗"
+    },
+    "CutieCatsShoes": {
+      "value": 3.15,
+      "value_upgraded": 3.15,
+      "value_multi": 3.15,
+      "value_multi_upgraded": 3.15,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 選攻擊意圖目標時命中 99%（敵攻擊意圖率 65%，貪婪策略等待時機），平均阻止約 12 傷=2.4+5000 分 0.75；升級降費"
+    },
+    "IWantToPlayAGame": {
+      "value": 3.5,
+      "value_upgraded": 3.5,
+      "value_multi": 3.5,
+      "value_multi_upgraded": 3.5,
+      "confidence": "low",
+      "reasoning": "v5模擬: 打出時魔女化平均 71，之後每回合 +30，攻擊倍率約 1.4→2.5；接管 0.2 次/場；3 張玩什麼遊戲會解除能力。價值高度依攻擊密度，邊際模擬雜訊大"
+    },
+    "LetsPlayHideAndSeek": {
+      "value": 5.0,
+      "value_upgraded": 5.5,
+      "value_multi": 5.0,
+      "value_multi_upgraded": 5.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出時魔女化平均 122，74% 選找到你，約 45% 的打出最終兌現 44 傷（魔女化倍率約 1.8~2.4）；+20 魔女化；邊際模擬每次約 +9（高魔女化牌組，取保守）"
+    },
+    "OnlineShopping": {
+      "value": 3.5,
+      "value_upgraded": 4.5,
+      "value_multi": 3.5,
+      "value_multi_upgraded": 4.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 每次打出平均產生並買下約 3.1 張商品牌（模擬一律選好衣服 +1 力量 +1 敏捷，僅本場），買入時剩約 3.1 回合，每張約 1.2；每場花約 15 金幣；升級固有"
+    },
+    "IGuessIHaveNoChoice": {
+      "value": 1.8,
+      "value_upgraded": 2.0,
+      "value_multi": 1.8,
+      "value_multi_upgraded": 2.0,
+      "confidence": "low",
+      "reasoning": "v5模擬: 全龐克牌組中約 65% 的打出補齊 1 件並完成套裝（+5 力量），套裝完成 0.3 次/場；一般牌組同系列件數少，依牌組大幅變動"
+    },
+    "SlayTheSpireIi": {
+      "value": 2.0,
+      "value_upgraded": 2.5,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.5,
+      "confidence": "low",
+      "reasoning": "v5模擬: 貪婪策略幾乎不打出（0.03 次/場），模擬無法評估取捨，沿用 v2"
+    },
+    "EscapeWitchIsland": {
+      "value": 0.7,
+      "value_upgraded": 0.7,
+      "value_multi": 0.7,
+      "value_multi_upgraded": 0.7,
+      "confidence": "low",
+      "reasoning": "v5模擬: 模擬未建模監獄來源，沿用 v3補血：僅有監獄時可用，回血量=監獄層數，每點 0.28"
+    }
+  }
+}

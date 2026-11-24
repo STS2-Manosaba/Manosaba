@@ -9,6 +9,9 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 data = json.loads((HERE / "output" / "data.json").read_text(encoding="utf-8"))
+up = HERE / "output" / "uncertainty.json"   # uncertainty.py 的蒙地卡羅結果（可選）
+if up.exists():
+    data["uncertainty"] = json.loads(up.read_text(encoding="utf-8"))
 payload = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 tpl = (HERE / "report_template.html").read_text(encoding="utf-8")
 fp = HERE / "findings.html"   # 人工撰寫的重點結論（HTML 片段）

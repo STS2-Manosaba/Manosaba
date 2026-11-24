@@ -1,0 +1,184 @@
+{
+  "character": "TachibanaSherry",
+  "assumptions": [
+    "v5模擬：scratchpad/sim_sherry/sim.py 簡化戰鬥，每原型每卡 20000 場；每回合抽 5、3 能量，貪婪啟發式出牌（價值/費用最高者），無手牌保留判斷",
+    "資源規則照程式碼：放大鏡 Lv1 起始 1 力量、調查時刻每回合開始 +1 進度，疑點每滿 5 層 +1 力量 +1 進度；進度滿 5 時以疑點傷害隨機敵、清空疑點、神探當賞 +2（每回合結束 -1）；回合開始清空魔女化；力量每點減傷 5%(上限 30%)",
+    "三：3−本回合疑點(上限 3)；六：本場打過三後 0 費（PlayedSanThisTurnPower 整場保留）；九：神探當賞時 0 費否則 9 費；魔女化 100 時傷害倍率 1.84x 並首次給予超級拳",
+    "牌組原型：起始 10 張（4 打擊 3 防禦 左拳 右拳 殺人事件）+ 疑點型/力量型/三六九連段型各 9~10 張代表卡",
+    "敵人：一般 72%(總血 55~80、1~3 隻)、菁英 20%(140~175)、首領 8%(440~520)，傷害隨回合線性成長；回合長度 3.2~3.9/5.0~6.3/7.1~8.1（短於 turn_model 首領 10 回合）；統計以重要性 1/2/3 加權",
+    "結果：首次神探當賞第 3.8(疑點型)~4.9(力量型) 回合，每場觸發 0.43~1.17 次，啟用回合比例 15%~30%（取 0.27 作條件卡啟用率，舊假設 35%）；戰末力量 7.9~8.8；單人雪莉只能靠 GiveItATry 達魔女化 100",
+    "v3 修正保留：一次性回血 0.28/血；特定隊友機率 0.088；HorsebackRiding 沿用 v3_ally；未列出的卡沿用 v2/v3",
+    "多人欄位：除 GiveItATry（殺人衝動波及隊友）外無隊友向效果，value_multi 等於 value"
+  ],
+  "mechanic_values": {
+    "力量(永久)": "1.2（與 Inflame 錨點一致）",
+    "疑點": "約 0.3/層",
+    "神探當賞": "啟用回合比例 疑點型 0.30/連段型 0.24/力量型 0.15，條件卡取 0.27；首次觸發約第 4 回合；條件 +2 力量 ≈ 0.65",
+    "魔女化": "≈0；GiveItATry 當回合 100 層傷害 ×1.84",
+    "九/六": "九抽到後打出率約 30%；六在含三牌組抽到後 44% 免費、無三 0%",
+    "小仙子": "每場約 0.67 能量"
+  },
+  "cards": {
+    "Achuba": {
+      "value": 2.0,
+      "value_upgraded": 2.0,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 扳手腕後對鎖定敵人增傷 20%，每次打出後續額外約 5.3 傷(0.9)+1 力量(1.2)；雪莉力量幾乎恆高於敵人，鎖定目標代價 -0.1；升級僅降費"
+    },
+    "BerserkerSoul": {
+      "value": 1.5,
+      "value_upgraded": 1.8,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 1.8,
+      "confidence": "low",
+      "reasoning": "v5模擬: 貪婪策略極少打出無法直接量測；以模擬牌組攻擊牌比例 0.55~0.63 解析，期望連打 1.2~1.7 張(≈1.7)扣捨棄剩餘手牌約 -0.3；升級保留 +0.3"
+    },
+    "KyuMiraclePartners": {
+      "value": 1.1,
+      "value_upgraded": 1.4,
+      "value_multi": 1.1,
+      "value_multi_upgraded": 1.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 九只在神探當賞時可打出(0 費)；抽到後實際打出率 疑點型 40%/連段型 31%/力量型 15%，均約 30%；14 全體傷 3.3×0.3 − 未打出死牌 0.7×0.3；升級 18 傷"
+    },
+    "RokuBraveFace": {
+      "value": 1.4,
+      "value_upgraded": 2.2,
+      "value_multi": 1.4,
+      "value_multi_upgraded": 2.2,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 六需本場打過三才 0 費；含三的連段牌組中每次抽到可打出率 44%(每場 1.2 次、場均 32 傷)，無三的牌組 0%(6 費打不出)；24 傷 4.0×0.44 − 死牌 0.17，再依約八成牌組會配三折算；升級 34 傷"
+    },
+    "LittleFairy": {
+      "value": 0.8,
+      "value_upgraded": 0.8,
+      "value_multi": 0.8,
+      "value_multi_upgraded": 0.8,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 每場打出後剩餘回合累積力量僅換得 0.35~0.9 能量(均約 0.67)：雪莉單場獲得力量 6.9~7.8(含放大鏡起始 1)，且多在打出前取得；升級降費不計入 value"
+    },
+    "QuickWit": {
+      "value": 3.3,
+      "value_upgraded": 3.7,
+      "value_multi": 3.3,
+      "value_multi_upgraded": 3.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 每回合效果無神探當賞時期望 0 力量/0 敏捷/0 生命/1 疑點，有神探當賞時取最大 +2/+2/+2/+2；打出後期望 1.5~3.3 力量、同量敏捷、4 疑點，最大值回合比例 29%~50%；逐回合取得折 0.6；升級固有使力量期望增至 1.8~3.5"
+    },
+    "SearchAnalyzeSolve": {
+      "value": 1.6,
+      "value_upgraded": 1.9,
+      "value_multi": 1.6,
+      "value_multi_upgraded": 1.9,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 技能冷卻 3 回合，每場實際發動 1.2~1.4 次(固有 1.5~1.7 次)；二選一事件牌期望價值約 1.16/次(假設各事件價值：漢娜冰箱 1 能量、大拳頭 +5 暫時力量依手上攻擊牌、梅露露回 10 血、等價交換等負面避開)"
+    },
+    "GiveItATry": {
+      "value": 3.0,
+      "value_upgraded": 3.6,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.1,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出後本回合魔女化 100(傷害倍率 1.84x)；首次取得超級拳時模擬中 94% 當回合打出強化超級拳(場均約 45 全體傷+5 力量)，此後超級拳已在牌組，同回合在手機率約 0.3×(額外約 34 傷+5 力量≈10)；3 費後通常無剩餘能量吃倍率，升級剩 1 能量 +0.6；多人魔女化 100 觸發殺人衝動傷害隊友 -1.5"
+    },
+    "SuperPunch": {
+      "value": 2.8,
+      "value_upgraded": 3.4,
+      "value_multi": 2.8,
+      "value_multi_upgraded": 3.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 0 費 8 全體傷(1.9)；只能經由 GiveItATry 取得故必同牌組，估每次打出時同回合魔女化≥100 機率約 0.12，額外 15 傷×1.84 倍率與 5 力量(≈10)期望 +0.9；升級 11 基礎傷"
+    },
+    "DirtyEhe": {
+      "value": 3.5,
+      "value_upgraded": 5.0,
+      "value_multi": 3.5,
+      "value_multi_upgraded": 5.0,
+      "confidence": "low",
+      "reasoning": "v5模擬: 貪婪策略幾乎不打出，改解析：10 荊棘×每敵方回合約 1.5 段攻擊，打出後剩餘約 3 回合、受敵血量上限約 25~35 傷(≈5)，扣自傷 2 與一回合自身易傷(約 -1.0)與 3 費能力卡延遲；敵人段數非程式碼可確認"
+    },
+    "DoublePunch": {
+      "value": 4.2,
+      "value_upgraded": 5.6,
+      "value_multi": 4.2,
+      "value_multi_upgraded": 5.6,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 模擬打出時力量 4.2~4.8，平均 4.2~4.6 段，基礎 5×4.5 段≈22.5 傷(3.75)+力量乘段數的增益部分 0.5；升級 7 傷/段"
+    },
+    "DateTime": {
+      "value": 2.6,
+      "value_upgraded": 2.8,
+      "value_multi": 2.6,
+      "value_multi_upgraded": 2.8,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 沿用 v3 一次性回血 0.28/血；模擬中期(第 3~4 回合)力量約 4~5，回復 5+力量≈9.5 血(2.6)；放大鏡清空魔女化幾乎恆滿足無魔女化條件；升級保留 +0.2"
+    },
+    "FryFryFry": {
+      "value": 1.6,
+      "value_upgraded": 2.4,
+      "value_multi": 1.6,
+      "value_multi_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 沿用 v3 一次性回血 0.28/血；模擬打出時疑點 疑點型 4.8/連段型 4.3/力量型 1.2(調查時刻會清空疑點)，回復約 5.5 血；升級 +3 回復≈8.5 血"
+    },
+    "BigInvestigation": {
+      "value": 1.3,
+      "value_upgraded": 1.7,
+      "value_multi": 1.3,
+      "value_multi_upgraded": 1.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 神探當賞啟用回合比例 疑點型 30%/連段型 24%/力量型 15%，無保留時打出時啟用率取 0.27；1 易傷+1 疑點(0.3)+0.27×(2 力量 2.4+格檔)≈0.7"
+    },
+    "MasterKey": {
+      "value": 2.2,
+      "value_upgraded": 2.7,
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 條件 1 力量改用啟用率 0.27(原假設 0.35 且力量 1.4)；5 格檔+壞掉的鎖抽 2"
+    },
+    "DontRush": {
+      "value": 1.55,
+      "value_upgraded": 2.05,
+      "value_multi": 1.55,
+      "value_multi_upgraded": 2.05,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 條件 2 力量改用啟用率 0.27≈0.65(原約 1.0)；敵本回合 -7 力量"
+    },
+    "IceCube": {
+      "value": 1.55,
+      "value_upgraded": 2.65,
+      "value_multi": 1.55,
+      "value_multi_upgraded": 2.65,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 條件 2 力量改用啟用率 0.27≈0.65；冰球 0 費 6+傷"
+    },
+    "WhatDoYouMean": {
+      "value": 1.05,
+      "value_upgraded": 1.35,
+      "value_multi": 1.05,
+      "value_multi_upgraded": 1.35,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 條件 2 力量改用啟用率 0.27≈0.65；1 虛弱+消耗手牌"
+    },
+    "GoodMorningSherry": {
+      "value": 2.8,
+      "value_upgraded": 3.6,
+      "value_multi": 2.8,
+      "value_multi_upgraded": 3.6,
+      "confidence": "medium",
+      "reasoning": "v5模擬: +5 傷條件在自然打出時啟用率 15%~25%，期望 +0.17(原 0.3)；15 傷自傷 2"
+    },
+    "TruthIsOnlyOne": {
+      "value": 2.2,
+      "value_upgraded": 2.9,
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.9,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 模擬打出前疑點 1.3~3.6，+4 後約 7 格檔(1.4)+4 疑點(1.2) 扣溢擋；升級 +2 疑點同時 +2 格檔"
+    }
+  },
+  "source": "mod"
+}
