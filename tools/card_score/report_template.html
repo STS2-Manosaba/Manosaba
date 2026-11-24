@@ -100,6 +100,7 @@ td.namecell { white-space: normal; min-width: 14em }
 @media (max-width: 720px) {
   .bar-row, .axis { grid-template-columns: 92px 1fr 64px }
   .bar-meta .rng { display: none }
+  .bar-meta .alt { display: none }
   .bar-meta span:not(.main) { display: none }
 }
 @media (prefers-reduced-motion: no-preference) { .track .fill { transition: width .25s ease } }
@@ -124,6 +125,10 @@ td.namecell { white-space: normal; min-width: 14em }
           <button type="button" data-mode="score" aria-pressed="true">合併</button>
           <button type="button" data-mode="solo" aria-pressed="false">單人</button>
           <button type="button" data-mode="multi" aria-pressed="false">多人</button>
+        </div>
+        <div class="seg" role="group" aria-label="統計方式" id="agg">
+          <button type="button" data-agg="median" aria-pressed="true">中位數</button>
+          <button type="button" data-agg="mean" aria-pressed="false">平均</button>
         </div>
         <label class="f" for="thStrong">偏強門檻 ≥ <input id="thStrong" type="number" step="0.1" value="1.8"></label>
         <label class="f" for="thWeak">偏弱門檻 ≤ <input id="thWeak" type="number" step="0.1" value="0.5"></label>
@@ -213,7 +218,9 @@ td.namecell { white-space: normal; min-width: 14em }
     get(k, d) { try { const v = localStorage.getItem("cs-" + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
     set(k, v) { try { localStorage.setItem("cs-" + k, JSON.stringify(v)); } catch {} }
   };
-  const state = { mode: store.get("mode", "score"), dim: store.get("dim", "bucket"), sort: store.get("sort", { key: "rel", dir: -1 }), open: new Set() };
+  const state = { mode: store.get("mode", "score"), dim: store.get("dim", "bucket"), sort: store.get("sort", { key: "rel", dir: -1 }), open: new Set(), agg: store.get("agg", "median") };
+  const aggOf = (xs) => state.agg === "mean" ? mean(xs) : median(xs);
+  const aggName = () => state.agg === "mean" ? "平均" : "中位數";
   let DATA = null;
 
   const relOf = (c) => c[MODE_FIELD[state.mode]];
@@ -279,7 +286,8 @@ td.namecell { white-space: normal; min-width: 14em }
   function renderOverview() {
     const rows = groups().map((g) => {
       const cs = g.cards.filter(counted);
-      return { ...g, avg: median(cs.map(relOf)), n: cs.length, u: uPool(g.source, g.pool),
+      const xs = cs.map(relOf);
+      return { ...g, avg: aggOf(xs), med: median(xs), mn: mean(xs), n: cs.length, u: state.agg === "median" ? uPool(g.source, g.pool) : null,
         strong: cs.filter((c) => relOf(c) >= thS()).length, weak: cs.filter((c) => relOf(c) <= thW()).length };
     }).filter((r) => r.avg != null).sort((a, b) => b.avg - a.avg);
     const max = Math.max(2, Math.ceil(Math.max(...rows.map((r) => Math.max(r.avg, r.u ? r.u[2] : 0))) * 2) / 2);
@@ -290,7 +298,7 @@ td.namecell { white-space: normal; min-width: 14em }
       <div class="bar-row"${r.u ? ` data-tip="1" title="${esc(tipOf(r))}"` : ""}>
         <a class="bar-name" href="#cards-title" data-pool="${r.pool}" title="${esc(r.pool)}">${esc(NAMES[r.pool] || r.pool)}<small>${r.source === "mod" ? "" : r.source === "original" ? "原版" : "beta"}</small></a>
         <div class="track"><div class="fill" style="width:${pos(r.avg)};background:${SRC_COLOR[r.source]}"></div><div class="ref" style="left:${pos(1)}"></div>${r.u ? `<div class="err" style="left:${pos(r.u[0])};width:calc(${pos(r.u[2])} - ${pos(r.u[0])})"></div>` : ""}</div>
-        <div class="bar-meta"><span class="main"><b class="num">${fmt(r.avg)}</b></span>${r.u ? `<span class="num rng">${fmt(r.u[0])}~${fmt(r.u[2])}</span>` : ""}<span class="num">${r.n} 張</span><span class="num" style="color:var(--strong)">強 ${r.strong}</span><span class="num" style="color:var(--weak)">弱 ${r.weak}</span></div>
+        <div class="bar-meta"><span class="main"><b class="num">${fmt(r.avg)}</b></span><span class="num alt">${state.agg === "mean" ? "中位" : "平均"} ${fmt(state.agg === "mean" ? r.med : r.mn)}</span>${r.u ? `<span class="num rng">${fmt(r.u[0])}~${fmt(r.u[2])}</span>` : ""}<span class="num">${r.n} 張</span><span class="num" style="color:var(--strong)">強 ${r.strong}</span><span class="num" style="color:var(--weak)">弱 ${r.weak}</span></div>
       </div>`).join("");
     $("bars").querySelectorAll("a[data-pool]").forEach((a) => a.addEventListener("click", () => { $("fPool").value = a.dataset.pool; renderCards(); }));
 
@@ -298,8 +306,8 @@ td.namecell { white-space: normal; min-width: 14em }
     const oriR = rows.filter((r) => r.source === "original" && r.pool !== "Colorless");
     const beta = rows.find((r) => r.source === "original-beta");
     $("stats").innerHTML = [
-      ["模組角色（中位數的平均）", fmt(mean(modR.map((r) => r.avg))), `${modR.length} 位角色`],
-      ["原版角色（中位數的平均）", fmt(mean(oriR.map((r) => r.avg))), `${oriR.length} 位角色`],
+      [`模組角色（${aggName()}的平均）`, fmt(mean(modR.map((r) => r.avg))), `${modR.length} 位角色`],
+      [`原版角色（${aggName()}的平均）`, fmt(mean(oriR.map((r) => r.avg))), `${oriR.length} 位角色`],
       ["愚者（beta）", fmt(beta?.avg), "不納入原版基準"],
       ["最強模組角色", esc(NAMES[modR[0]?.pool] || "–"), fmt(modR[0]?.avg)],
       ["最弱模組角色", esc(NAMES[modR.at(-1)?.pool] || "–"), fmt(modR.at(-1)?.avg)],
@@ -315,7 +323,7 @@ td.namecell { white-space: normal; min-width: 14em }
     const label = (k) => byType ? TYPES[k] : RARITY[k];
     const head = `<tr><th>角色</th>${cols.map((b) => `<th class="r">${label(b)}</th>`).join("")}${byType ? "" : `<th class="r">Ancient（參考）</th>`}<th class="r">整體</th></tr>`;
     const body = rows.map((g) => {
-      const cell = (cs) => { const v = median(cs.map(relOf)); return v == null ? `<td class="cell">–</td>` : `<td class="cell" style="background:${heatColor(v)}">${fmt(v)}<small>${cs.length} 張</small></td>`; };
+      const cell = (cs) => { const xs = cs.map(relOf), v = aggOf(xs); if (v == null) return `<td class="cell">–</td>`; const o = state.agg === "mean" ? median(xs) : mean(xs); return `<td class="cell" style="background:${heatColor(v)}" title="中位數 ${fmt(median(xs))}／平均 ${fmt(mean(xs))}">${fmt(v)}<small>${state.agg === "mean" ? "中位" : "平均"} ${fmt(o)}・${cs.length} 張</small></td>`; };
       const by = (k) => g.cards.filter((c) => (byType ? c.type === k && c.bucket !== "Ancient" : c.bucket === k) && relOf(c) != null);
       const anc = g.cards.filter((c) => c.bucket === "Ancient" && relOf(c) != null);
       return `<tr><td><i class="src" style="background:${SRC_COLOR[g.source]}"></i>${esc(NAMES[g.pool] || g.pool)}</td>${cols.map((k) => cell(by(k))).join("")}${byType ? "" : cell(anc)}${cell(g.cards.filter(counted))}</tr>`;
@@ -439,6 +447,7 @@ td.namecell { white-space: normal; min-width: 14em }
 
   function renderAll() {
     document.querySelectorAll("#mode button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.mode === state.mode)));
+    document.querySelectorAll("#agg button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.agg === state.agg)));
     renderOverview(); renderHeat(); renderCards();
   }
 
@@ -451,6 +460,7 @@ td.namecell { white-space: normal; min-width: 14em }
     document.querySelectorAll("#mode button").forEach((b) => b.addEventListener("click", () => { state.mode = b.dataset.mode; store.set("mode", state.mode); renderAll(); }));
     document.querySelectorAll("#heatDim button").forEach((b) => b.addEventListener("click", () => { state.dim = b.dataset.dim; store.set("dim", state.dim); renderHeat(); }));
     ["thStrong", "thWeak"].forEach((id) => $(id).addEventListener("input", () => { store.set(id === "thStrong" ? "thS" : "thW", parseFloat($(id).value)); renderAll(); }));
+    document.querySelectorAll("#agg button").forEach((b) => b.addEventListener("click", () => { state.agg = b.dataset.agg; store.set("agg", state.agg); renderAll(); }));
     state.noLow = store.get("noLow", false) === true; $("noLow").checked = state.noLow;
     $("noLow").addEventListener("change", () => { state.noLow = $("noLow").checked; store.set("noLow", state.noLow); renderOverview(); renderHeat(); });
     ["fSearch", "fSource", "fPool", "fRarity", "fFlag", "fConf"].forEach((id) => $(id).addEventListener("input", renderCards));

@@ -1,4 +1,4 @@
-﻿"""共用卡池（Common）簡化戰鬥蒙地卡羅模型（v5）。規則依 Manosaba/Characters/Common 原始碼：
+"""共用卡池（Common）簡化戰鬥蒙地卡羅模型（v5）。規則依 Manosaba/Characters/Common 原始碼：
 - 處刑卡＝帶 ManosabaKeywords.Execution 的卡（ExecutionCardHelper）；共用池 13 張（含典獄長命令本身）。
 - 典獄長命令 WardenCommandPower(Counter)：自己打出處刑卡時 playCount += Amount（每層多打 1 次）。升級＝固有。
 - 魔女語精通 WitchLanguageMasteryPower：擁有者受到傷害（TotalDamage＝被格擋+未格擋）後，
@@ -25,6 +25,8 @@ ENC = {  # 比例, 總血量, 敵人數, 每回合總傷害基礎, 每回合成�
 }
 
 # name: (cost, type)
+WLM_MULT = 1   # 魔女語精通每層反傷倍率（平衡調整後 1 倍，舊版 2 倍）
+
 CARDS = {
     "Strike": (1, "A"), "Defend": (1, "S"), "Punch": (1, "A"), "MurderCase": (1, "S"),
     "Trauma": (1, "S"), "Live": (1, "P"), "Oshi": (1, "S"), "Search": (0, "S"), "Present": (1, "S"), "Pen": (1, "A"),
@@ -35,7 +37,7 @@ CARDS = {
     "Suicide": (1, "S"), "Gallows": (3, "A"), "ConcentratedFire": (1, "A"), "Dissolve": (1, "S"),
     "WardenCommand": (2, "P"),
     # 其他探針
-    "WitchLanguageMastery": (1, "P"), "Prison": (1, "P"), "Wall": (2, "P"), "ForgeSpear": (1, "S"),
+    "WitchLanguageMastery": (2, "P"),  # 平衡調整：2 費（升級 1 費） "Prison": (1, "P"), "Wall": (2, "P"), "ForgeSpear": (1, "S"),
     "WitchIslandExpedition": (0, "P"), "SimpleSpear": (0, "A"), "Part": (99, "X"),
 }
 EXEC = {"Hotpot", "Bullseye", "Boulders", "PiercingDeathSpear", "IronMaiden", "Guillotine", "Immolation",
@@ -335,7 +337,7 @@ class Combat:
         if self.wall and move and unb > 0:
             self.vigor += unb; self.st["vigor_gain"] += unb
         if self.wlm and dmg > 0:
-            loss = dmg * 2 * self.wlm
+            loss = dmg * WLM_MULT * self.wlm
             for e in self.alive():
                 r = min(e.hp, loss); e.hp -= r; self.st["wlm_dmg"] += r; self.st["dmg"] += r
 

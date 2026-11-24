@@ -25,12 +25,12 @@
       "value_multi_upgraded": 3.9
     },
     "WitchLanguageMastery": {
-      "value": 8.2,
-      "value_upgraded": 8.2,
-      "value_multi": 8.2,
-      "value_multi_upgraded": 8.2,
+      "value": 6.0,
+      "value_upgraded": 6.0,
+      "value_multi": 6.0,
+      "value_multi_upgraded": 6.0,
       "confidence": "medium",
-      "reasoning": "v5模擬:打出率 0.96、平均第 2.2 回合；反傷（含被格擋傷害×2，扣除敵人溢出）每場 43(雪莉)/53(可可)/49(艾瑪)，約 48/6≈8.0，折算每次打出 8.2；另使戰鬥縮短約 2.5 回合、少受約 25 血（已大致由反傷計入不重複加）。升級僅 0 費，效果同。v2 的 11 高估（未計戰鬥提早結束後受擊次數減少）；relative 仍偏高屬設計強度問題"
+      "reasoning": "模擬（2 費、升級 1 費、反傷 1 倍）：打出率 0.94、平均第 2.2 回合；反傷（含被格擋傷害，扣除敵人溢出）每場 33(雪莉)/40(可可)/36(艾瑪)，約 36/6≈6.0；另使戰鬥縮短約 1～2 回合、每場少受約 14 血（已大致由反傷計入不重複加）。升級僅降費，效果相同"
     },
     "Alibi": {
       "value": 1.1,
