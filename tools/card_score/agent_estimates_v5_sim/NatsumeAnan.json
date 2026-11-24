@@ -1,0 +1,227 @@
+{
+  "character": "NatsumeAnan",
+  "source": "mod",
+  "assumptions": [
+    "v5模擬：tools/card_score/sims/sim_anan/sim.py（drive.py/analyze.py/pages.py），3 原型 × 每變體 20000 場，共同隨機數（同種子）比較「原卡 vs 同能量費、0 言靈的空白卡」取得每次打出的邊際價值；每回合抽 5、3 能量，貪婪優先序出牌，持有洗腦且言靈不足時保留言靈",
+    "資源規則照程式碼：言靈每場從 0 開始、回合間保留；Clipboard 每回合 +1（Lv1）/+2（Lv2~3）/+3（Lv4~5），經驗 0/2/7/15/30（一般 1、菁英 2、首領 3）→ 整局 39 場中第 1~2 場 +1、第 3~13 場 +2、第 14 場起 +3（v2 假設全程 +1，是主要修正來源）；以卡牌費用花言靈每點 3 格檔（自動打出不花、不給）；體弱多病照程式碼（狀態牌複製、抽到補抽+回 1 血）；魔女化 Hill 曲線，>=100 時牌組沒有洗腦魔法則加入牌組與手牌",
+    "敵人：一般/菁英/首領 72%/20%/8%（整局序列抽樣），長度 Gamma 平均 4/6.5/10 回合，1~3 隻依序排程死亡，每敵每回合 65% 攻擊（基礎 7/13/17 × 幕倍率 1/1.35/1.7），重要性 1/2/3 加權",
+    "牌組原型：起始 10 張（3 打擊 3 防禦 創傷 靈光一閃 自害吧 教唆）+ engine（少爺、活字印刷、閱讀×2、忍耐、造紙、天才想法、小說創作、說什麼、什麼啊）/ kokoro（心、洗腦、少爺、閱讀、忍耐、小說創作、天才想法、說什麼、什麼啊、吾輩是貓）/ balanced（說什麼×2、什麼啊、天才想法、自害吧、吾輩是貓、閱讀、打擊、防禦）",
+    "結果：回合開始平均言靈存量 engine 16.7 / kokoro 11.8 / balanced 4.5；戰末未花言靈 21.1 / 12.4 / 2.8（花費率 54%/65%/87%）。+1 言靈邊際（模型單位，第 1 回合/第 3 回合）engine 0.17/0.00、kokoro 0.40/0.22、balanced 0.63/0.16；同模型 +1 能量（第 1 回合）0.30/0.55/0.34。言靈每點價值由 v2 0.85 下修為約 0.45（引擎牌組近 0.1、少言靈來源牌組約 0.6）；花費言靈的淨機會成本約 0.1~0.2/點",
+    "模型校準：Clipboard 格檔每場 60~85 點，其中 54~63 點溢出浪費，使模擬中防禦邊際只有 0.01~0.2；格檔類數值仍以錨點（5 格檔=1）計並打折計入溢出，不直接用模擬絕對值。傷害邊際（打擊 1.2~2.1，含易傷/魔女化加成）可信度較高",
+    "條件/可用率（使用者規則 1~3）：條件或費用門檻的達成率以模擬『抽到後打出率』乘入期望值；洗腦抽到後打出率 13%（kokoro）~25%（engine），心的魔女化 100 達成率 63~67%（第 2.6 回合左右），自害吧目標當回合有攻擊 57%，小說創作抽到後可付 5 言靈 78~87%，天才想法 73~95%",
+    "古神頁卡：pages.py 子模擬（第 2~4 回合以理智 6~20 換成 24 張古神牌組）；克圖格亞每次打出後平均再自動打出 2.7~2.95 次；克蘇魯之呼喚為 Single 疊加，重複打出無效（實際每場打出 1.0~2.1 張）；阿撒托斯全頁勝利率 <0.3%",
+    "保留：v3_heal 回血 0.28/點（一次性）、0.22/點（可重用/體弱多病回血）；v3_ally 多人 2.5 人、指定隊友（諾亞）機率 0.088；本池無 v4 條目。X 費卡（吵死了 Urusai、舊日支配者召喚書 BookOfGreatOldOnes）不在本檔處理",
+    "多人欄位：除教唆、小說創作、洗腦、克蘇魯頁外多人與單人相同"
+  ],
+  "mechanic_values": {
+    "言靈（獲得）": "每點約 0.45（engine 型 ~0.1、少言靈來源型 ~0.6）；Clipboard Lv4 起每回合 +3，回合開始存量 4.5~16.7",
+    "言靈（消耗機會成本）": "淨約 0.1~0.2/點（花費時 3 格檔回饋，但 54~63 點/場溢出）",
+    "體弱多病": "抽到狀態牌補抽 + 回 1 血（0.22/點），每場約 1.8 次（有忍耐時）",
+    "自殺(Jigai)": "必中 N 無法格擋傷害；力量 −N 只在目標當回合攻擊時有效（57%）",
+    "魔女化": "心加入後 63~67% 場次達 100 層（傷害 ×1.84 並永久獲得洗腦魔法）",
+    "洗腦額外回合": "約 24 傷 ≈ 4.0；抽到後打出率 13~25%",
+    "克圖格亞": "每次打出後再自動打出 2.7~2.95 次"
+  },
+  "cards": {
+    "StrikeNatsumeAnan": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "v5模擬: 沿用 v2（6/9 傷）；模擬邊際 1.2~2.1 含說什麼易傷/魔女化加成"
+    },
+    "DefendNatsumeAnan": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "v5模擬: 沿用 v2（5/8 格檔）；模擬因 Clipboard 格檔大量溢出邊際僅 0.01~0.2，屬模型低傷害偏差，不採用"
+    },
+    "TraumaNatsumeAnan": {
+      "value": 0.7,
+      "value_upgraded": 1.05,
+      "value_multi": 0.7,
+      "value_multi_upgraded": 1.05,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 10/15 魔女化；模擬邊際 engine 0.12 / balanced 0.21 / kokoro 0.74（加速心達 100 層與洗腦減費），沿用 v2"
+    },
+    "FlashOfInspiration": {
+      "value": 1.0,
+      "value_upgraded": 1.4,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: +2/3 言靈 × 每點約 0.45（Clipboard Lv4 每回合已 +3，回合開始存量 4.5~16.7，花費率 54~87%）；模擬每次打出 engine −0.1 / kokoro 0.41 / balanced 0.84；v2 1.7 下修"
+    },
+    "Instigate": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "value_multi": 1.1,
+      "value_multi_upgraded": 1.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 1 言靈自動打出抽牌堆頂 1 張（不花能量/言靈、無 Clipboard 格檔），頂牌約 30% 打擊/防禦；抽到後打出率 87~99%，模擬每次打出 0.61~1.15；升級下回合抽 1 +0.5；多人可挑隊友牌頂 +0.1~0.2"
+    },
+    "Jigaishiro": {
+      "value": 1.4,
+      "value_upgraded": 2.2,
+      "value_multi": 1.4,
+      "value_multi_upgraded": 2.2,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 條件折算：目標當回合有攻擊意圖僅 57%（模擬 jigai_on_attacker/打出）；每次必中 5/8 無法格擋傷害（0.83/1.33）+ 力量 −5/−8 × 0.57 × 減傷落到格檔後約 60% ≈ 0.5/0.8；1 言靈成本淨約 0.1（花費時回 3 格檔）。模擬 0.75~0.95/次；v2 1.9/3.0（假設恆擋 1.5 次攻擊）下修"
+    },
+    "Reading": {
+      "value": 1.1,
+      "value_upgraded": 1.55,
+      "value_multi": 1.1,
+      "value_multi_upgraded": 1.55,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 抽 1（約 0.65）+1/2 言靈 × 0.45；模擬每次打出 0.49（engine）~1.02（balanced）；v2 1.3/2.1 下修"
+    },
+    "Bocchan": {
+      "value": 2.4,
+      "value_upgraded": 3.2,
+      "value_multi": 2.4,
+      "value_multi_upgraded": 3.2,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 每回合 +2/3 言靈 × 平均剩餘約 4.5 回合 ≈ 9/13.5 言靈，但 Clipboard Lv4 每回合已 +3 致溢出：模擬整場邊際 engine 0.05（言靈過剩）/ kokoro 1.96；以每點約 0.27 計（混合原型）；v2 5.0/6.8（假設遺物僅 +1/回合）大幅下修"
+    },
+    "Endurance": {
+      "value": 2.0,
+      "value_upgraded": 2.4,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: +4/5 言靈 × 0.45 =1.8/2.25；附加：暈眩經體弱多病變 2 張、抽到各補抽並回 1 血（場內抽到約 0.5 次 × 2 × 0.22 ≈ +0.2，不佔手牌）；模擬每次打出 engine 0.31 / kokoro 1.02；v2 3.0/3.8 下修"
+    },
+    "GeniusIdea": {
+      "value": 1.3,
+      "value_upgraded": 1.9,
+      "value_multi": 1.3,
+      "value_multi_upgraded": 1.9,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 2 言靈換 2/3 能量；可用率：手上有可用能量的牌才打出（抽到後打出 73~95%），多出能量實際利用約 0.6（同模型 +1 能量僅 0.3~0.55）；+2 言靈花費回 6 格檔但多溢出；淨約 1.3/1.9（v2 1.4/2.4）"
+    },
+    "Nandato": {
+      "value": 2.0,
+      "value_upgraded": 3.0,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 3.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 抽 2/3（約 1.3/1.95）+ 依抽到牌費每點 5 格檔，模擬平均每次 7.0 格檔 × 溢出折扣 0.5 ≈ 0.7；抽到後打出 89~99%；模擬每次打出 1.1~1.67；沿用 v2 2.0，升級 3.2→3.0"
+    },
+    "Nanigaiitai": {
+      "value": 2.3,
+      "value_upgraded": 3.4,
+      "value_multi": 2.3,
+      "value_multi_upgraded": 3.4,
+      "confidence": "high",
+      "reasoning": "v5模擬: 全體 8/10 傷 + 全體虛弱/易傷 1/2；模擬每次打出 2.5~3.8（易傷放大同回合後續攻擊），抽到後打出 85~98%；沿用 v2"
+    },
+    "NovelCreation": {
+      "value": 1.6,
+      "value_upgraded": 1.9,
+      "value_multi": 1.8,
+      "value_multi_upgraded": 2.1,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 條件：需 5 言靈，抽到後可打出 78~87%；3 能量實際利用約 0.6 → 1.8 + 5/8 格檔 ×0.5 溢出折扣 0.5/0.8 − 5 言靈淨成本約 0.6，×可用率 0.83 ≈ 1.4/1.7；模擬每次打出 0.2~0.66；多人保留 v3_ally 諾亞隊友 0.088 × 設定卡 2.2 ≈ +0.2；v2 2.5/3.1 下修"
+    },
+    "PaperMaking": {
+      "value": 1.2,
+      "value_upgraded": 1.65,
+      "value_multi": 1.2,
+      "value_multi_upgraded": 1.65,
+      "confidence": "medium",
+      "reasoning": "v5模擬: +2/3 言靈 × 0.45 + 消耗 1 張手牌（優先暈眩/創傷，約 0.3）；模擬在 engine 牌組會消耗打擊致 −0.5，在少言靈牌組較好；v2 1.8/2.6 下修"
+    },
+    "Kokoro": {
+      "value": 5.5,
+      "value_upgraded": 5.5,
+      "value_multi": 5.5,
+      "value_multi_upgraded": 5.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 條件達成率已乘入：5 張 0 費自刎歸天（抽 1、自傷被心免疫、+20 魔女化），加入後該場魔女化達 100 的機率 63~67%（平均第 2.6 回合後），之後傷害 ×1.84；附加：首次 100 層將洗腦魔法永久加入牌組並放入手牌。模擬每次打出 4.9（balanced）/5.3（engine）/6.2~6.8（kokoro）；v2 4.0 上修。升級僅費用 3→2"
+    },
+    "MovableTypePrinting": {
+      "value": 2.0,
+      "value_upgraded": 2.0,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 每花 3 能量 +1 言靈：每回合約 3~4 能量（含天才想法/小說創作）→ 約 1.2 言靈/回合 × 4.5 回合 ≈ 5 言靈 × 0.45；engine 模擬邊際 0.02（言靈溢出）；v2 3.4 下修。升級僅費用 2→1"
+    },
+    "Wagahaiwanekodearu": {
+      "value": 2.6,
+      "value_upgraded": 2.6,
+      "value_multi": 2.6,
+      "value_multi_upgraded": 2.6,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 每次攻擊命中 25% 完全閃避（含退回格檔）；模擬每場閃避 7.7~8.1 點攻擊傷害（打出後），模型敵傷偏低約 1.5 倍校正 → 約 12 傷 ≈ 2.4~2.6；v2 3.4（17 傷）下修。升級僅費用 2→1"
+    },
+    "Brainwash": {
+      "value": 1.0,
+      "value_upgraded": 1.2,
+      "value_multi": 3.5,
+      "value_multi_upgraded": 3.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 可用率折算：0 能量 20 言靈（每 10 魔女化 −1，上限 10/15）；抽到後打出率 engine 25% / kokoro 13%（多在第 7 回合後），額外回合平均 24 傷 ≈ 4.0，扣 10~20 言靈機會成本（溢出時近 0）≈ 淨 3~4 × 可用率 0.25~0.3 ≈ 1.0；保留言靈的貪婪策略使模擬邊際為負（−0.85/場），實戰應較好。升級上限 15 只在魔女化 >100 有用（模擬 +0.07/場）。多人：2.5 人各得額外回合 ≈ 11 − 言靈成本 ≈ 10 × 可用率 0.35 ≈ 3.5（v2 13/14 未乘可用率）"
+    },
+    "PageAzathoth": {
+      "value": 1.2,
+      "value_upgraded": 1.7,
+      "value_multi": 1.2,
+      "value_multi_upgraded": 1.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 抽 2/3；全 7 種頁消耗勝利條件在子模擬中達成率 <0.3%（理智 6~20），幾乎不計；v2 1.0/1.5 小幅上修"
+    },
+    "PageNyarlathotep": {
+      "value": 2.5,
+      "value_upgraded": 3.5,
+      "value_multi": 2.5,
+      "value_multi_upgraded": 3.5,
+      "confidence": "low",
+      "reasoning": "v5模擬: 12/18 傷 + 本回合目標受傷 +50%；子模擬每場 1.1~2.4 次，多與其他攻擊頁同回合；沿用 v2"
+    },
+    "PageShubNiggurath": {
+      "value": 3.4,
+      "value_upgraded": 4.95,
+      "value_multi": 3.4,
+      "value_multi_upgraded": 4.95,
+      "confidence": "low",
+      "reasoning": "v5模擬: 保留 v3_heal：一次性回 5/7 血 ×0.28 + 10/15 格檔"
+    },
+    "PageYogSothoth": {
+      "value": 4.0,
+      "value_upgraded": 4.0,
+      "value_multi": 4.0,
+      "value_multi_upgraded": 4.0,
+      "confidence": "low",
+      "reasoning": "v5模擬: 全體暈眩：子模擬於來襲傷害 ≥12 時打出，每次阻止約 21 點攻擊；未達條件時打出價值低，平均約 4.0（v2 4.5）"
+    },
+    "PageHastur": {
+      "value": 4.7,
+      "value_upgraded": 6.5,
+      "value_multi": 4.7,
+      "value_multi_upgraded": 6.5,
+      "confidence": "low",
+      "reasoning": "v5模擬: 全體 4×5/7；沿用 v2"
+    },
+    "PageCthugha": {
+      "value": 12.0,
+      "value_upgraded": 17.0,
+      "value_multi": 12.0,
+      "value_multi_upgraded": 17.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 25/35 傷，消耗後每個玩家回合開始自動打出：子模擬每次打出後平均再自動打出 2.7~2.95 次 → 約 95 傷 ≈ 15.8；3 能量與理智門檻使抽到後常無法打出，乘可用率約 0.75 → 12/17；v2 8/12 上修"
+    },
+    "PageCthulhu": {
+      "value": 2.8,
+      "value_upgraded": 2.8,
+      "value_multi": 3.8,
+      "value_multi_upgraded": 6.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 克蘇魯之呼喚為 Single 疊加：首張每場約擋 7 點超過 15 的失血（1.4）+ 每回合 +1 力量（剩約 3 回合 ≈ 3.0）≈ 4.4，但子模擬每場打出 1.0~2.1 張、後續重複打出無效 → 平均約 2.8；單人升級對自己無額外效果。多人可分給 2.5 人隊伍中未持有者，升級同時給自己（v2 4.5/9.0 未計重複無效）"
+    }
+  }
+}

@@ -8,7 +8,8 @@
     "你做得很好：每場約擊殺1.5隻非爪牙，第5場起≥5層（創傷轉真版、殺死魔女的魔法入牌組），第9場起13層；魔女化倍率=(50+10×層數)%",
     "裁判進度：審問開始後每張裁判牌（含提出證據、證言不是）+1；打出當下≥10的比例55%（A40%/B48%/C80%），整場達10為90%；≥20 打出時20%、整場49%；審問開始回合1為88%",
     "證物進手即收入圖鑑，提出證據自動打出最佳一張並放回；證言(抽1+罪證2)留在圖鑑可被重複提出，使罪證每場累積到約25層；每層罪證後續平均吃到7.8段裁判攻擊（含Lv5×2）→每層約0.8能量（含溢傷折扣）",
-    "裁判攻擊本身的罪證加成視為環境（同力量不計入攻擊卡），只計入罪證來源卡；多人數值沿用 v3_ally（2.5人隊、特定隊友0.088）與 v3_heal（回血0.28/點）"
+    "裁判攻擊本身的罪證加成視為環境（同力量不計入攻擊卡），只計入罪證來源卡；多人數值沿用 v3_ally（2.5人隊、特定隊友0.088）與 v3_heal（回血0.28/點）",
+    "v5複查：條件型效果一律乘模擬達成率；只在少見狀況可用的卡乘抽到時可用機率；提出證據依『有證言來源』75%加權（起始牌組無質問時每次僅0.98）；罪證每層0.8不變"
   ],
   "mechanic_values": {
     "魔女化": "倍率隨你做得很好層數，前4場≈70%，之後≈150~180%；≥100於43%場次出現",
@@ -25,28 +26,28 @@
   },
   "cards": {
     "PresentEvidence": {
-      "value": 1.9,
-      "value_upgraded": 2.0,
-      "value_multi": 1.9,
-      "value_multi_upgraded": 2.0,
+      "value": 1.8,
+      "value_upgraded": 1.9,
+      "value_multi": 1.8,
+      "value_multi_upgraded": 1.9,
       "confidence": "medium",
-      "reasoning": "v5模擬:提出證據每次平均1.96（圖鑑空7.4%；有證言時幾乎都選證言=抽1+罪證2，罪證每層0.8）；升級+1議論，但議論達10僅2.6%場次，約+0.1"
+      "reasoning": "v5模擬:每次值=0.75×2.1+0.25×0.98再乘(1−空圖鑑7%)；無質問的起始牌組模擬僅0.98；升級+1議論但達10層僅2.6%→+0.1"
     },
     "Question": {
-      "value": 3.0,
-      "value_upgraded": 3.5,
-      "value_multi": 3.0,
-      "value_multi_upgraded": 3.5,
+      "value": 2.9,
+      "value_upgraded": 3.2,
+      "value_multi": 2.9,
+      "value_multi_upgraded": 3.2,
       "confidence": "medium",
-      "reasoning": "v5模擬:抽1＋自動打出證言（抽1+罪證2≈2.1，艾瑪/守衛證言額外≈+0.15）＋證言留在圖鑑使之後提出證據可重複選它（約+0.3）＋裁判進度+1；升級三選一可挑守衛（力量2）/艾瑪（發言），約+0.5"
+      "reasoning": "v5模擬:抽1(0.5)＋自動打出證言：抽1+罪證2(0.8/層)≈2.1，艾瑪證言給發言1/16、守衛力量2但裁判攻擊不吃力量→額外≈+0.05；證言留圖鑑的選項值+0.3；升級三選一可挑守衛/艾瑪≈+0.3"
     },
     "EnoughRedTape": {
-      "value": 4.1,
-      "value_upgraded": 4.1,
-      "value_multi": 4.1,
-      "value_multi_upgraded": 4.1,
+      "value": 4.0,
+      "value_upgraded": 4.0,
+      "value_multi": 4.0,
+      "value_multi_upgraded": 4.0,
       "confidence": "medium",
-      "reasoning": "v5模擬:0費3次提出證據；打出時平均回合2、圖鑑僅2.8張（空8%），每次約1.5→4.1；升級去消耗不改單次價值"
+      "reasoning": "v5模擬:0費提出證據×3：模擬打出時平均第2回合、圖鑑2.8張，每次約1.3（證言來源率75%）→3.9，本身裁判+1進度≈+0.1；升級去消耗不改單次值"
     },
     "RawTellOwk": {
       "value": 2.2,
@@ -57,12 +58,12 @@
       "reasoning": "v5模擬:牌組內第二張生效時+10進度：C型牌組打出時進度≥10比例80%（無此卡A/B約40~48%），約+0.35就緒率×每場約4張進度效果牌×每次就緒加成≈1.5；升級固有提早約+0.5"
     },
     "Rebuttal": {
-      "value": 5.0,
-      "value_upgraded": 6.3,
-      "value_multi": 5.0,
-      "value_multi_upgraded": 6.3,
+      "value": 4.75,
+      "value_upgraded": 6.0,
+      "value_multi": 4.75,
+      "value_multi_upgraded": 6.0,
       "confidence": "medium",
-      "reasoning": "v5模擬:9/12傷(1.5/2.0)+提出證據1.9；就緒時+2/+3傷×圖鑑張數，E[張數×就緒]=4.36→+1.45/+2.2；罪證加成屬環境不計（進度≥10於打出時55%、整場達10為90%；≥20打出時20%、整場49%）"
+      "reasoning": "v5模擬:9/12傷1.5/2.0＋提出證據1.8（有證言來源的牌組/腿環Lv3選質問約75%時每次2.1，否則僅0.98；圖鑑空7%）；就緒加傷2/3×圖鑑張數只在進度≥10時成立，E[就緒×張數]=4.36（已乘就緒率55%）→+1.45/+2.2"
     },
     "Sophistry": {
       "value": 1.85,
@@ -113,12 +114,12 @@
       "reasoning": "v5模擬:同起訴版但上限10段，期望約3.4段；13場後才轉化，時點偏後期圖鑑更大，未單獨模擬"
     },
     "DArime": {
-      "value": 0.45,
-      "value_upgraded": 0.75,
-      "value_multi": 0.45,
-      "value_multi_upgraded": 0.75,
+      "value": 0.3,
+      "value_upgraded": 0.7,
+      "value_multi": 0.3,
+      "value_multi_upgraded": 0.7,
       "confidence": "medium",
-      "reasoning": "v5模擬:需進度≥20：打出時20%、整場49%；升級保留可等到20；連抽裁判牌期望約0.7段×13傷並消耗之"
+      "reasoning": "v5模擬:需進度≥20：抽到時可用20%；連抽裁判牌期望0.7段×13傷≈1.5（並消耗被抽到的裁判牌）→0.3；升級保留，抽到後整場達20約45%→0.7"
     },
     "InformationNetwork": {
       "value": 5.0,
@@ -129,12 +130,12 @@
       "reasoning": "v5模擬:每次提出證據隨機敵6傷；每場提出證據11.2次，第1輪打出後剩約60%≈6.5次×6傷×0.85溢傷折扣；升級僅降費"
     },
     "JudgmentHour": {
-      "value": 5.0,
-      "value_upgraded": 6.2,
-      "value_multi": 5.0,
-      "value_multi_upgraded": 6.2,
+      "value": 3.0,
+      "value_upgraded": 3.7,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.7,
       "confidence": "low",
-      "reasoning": "v5模擬:三選一裁判牌≈2.5（可抽到反駁約5）；抽牌堆5/7張附加裁判：每張後續打出+1進度，附加裁判的攻擊吃罪證（打出時平均罪證≈18.6，折半計）；未直接模擬"
+      "reasoning": "v5模擬:三選一裁判牌≈2.5（升級選項已升級+0.5）；抽牌堆5/7張附加裁判：每張後續打出+1進度（就緒率已55%，邊際≈0.1/張）；附加後攻擊變不吃力量，罪證加成屬環境不計"
     },
     "LaVIBavellabion": {
       "value": 2.6,
@@ -153,12 +154,12 @@
       "reasoning": "v5模擬:抽1/2+隨機證物：證物平均單次值0.56，但圖鑑已有證言時很少被選，邊際≈0.7（含反駁/控訴的圖鑑張數加成）"
     },
     "EvidenceStrike": {
-      "value": 4.15,
-      "value_upgraded": 4.65,
-      "value_multi": 4.15,
-      "value_multi_upgraded": 4.65,
+      "value": 3.6,
+      "value_upgraded": 4.1,
+      "value_multi": 3.6,
+      "value_multi_upgraded": 4.1,
       "confidence": "medium",
-      "reasoning": "v5模擬:6/9傷+提出證據1.9+活體書頁1.3"
+      "reasoning": "v5模擬:6/9傷1.0/1.5＋提出證據1.8（有證言來源的牌組/腿環Lv3選質問約75%時每次2.1，否則僅0.98；圖鑑空7%）＋活體書頁：2傷(+使用次數)＋易傷1≈0.7，目標易傷≥3才回1能（約10%）+0.1"
     },
     "EndlessEvidence": {
       "value": 2.8,
@@ -171,10 +172,10 @@
     "JointInvestigation": {
       "value": 2.2,
       "value_upgraded": 2.7,
-      "value_multi": 6.7,
-      "value_multi_upgraded": 8.0,
+      "value_multi": 3.7,
+      "value_multi_upgraded": 4.95,
       "confidence": "medium",
-      "reasoning": "v5模擬:抽2/3+2證物（邊際0.6×2）；多人沿用v3（2.5人隊，隊友1.5名）結構，只下修自身證物部分"
+      "reasoning": "v5模擬:抽2/3＋2證物（圖鑑邊際0.6×2）；多人：隊友1.5名各抽2/3，但其證物被收入他們自己的圖鑑、非艾瑪隊友無法提出≈0→每名1.0/1.5（v3按3.0/3.5）"
     },
     "TraumaSakurabaEma": {
       "value": 0.5,
@@ -209,28 +210,28 @@
       "reasoning": "v5模擬:層數≥5自動入牌組；全體虛弱1+魔女化/25；魔女化≥100於43%場次出現（v2按20%），持牌等待可觸發特別的魔法；特別的魔法效果未模擬"
     },
     "RequestRetrial": {
-      "value": 0.8,
-      "value_upgraded": 1.0,
-      "value_multi": 0.8,
-      "value_multi_upgraded": 1.0,
+      "value": 0.2,
+      "value_upgraded": 0.35,
+      "value_multi": 0.2,
+      "value_multi_upgraded": 0.35,
       "confidence": "medium",
-      "reasoning": "v5模擬:需10嫌疑：模擬中嫌疑來源（證言/證物/可疑）每次+1，打出時嫌疑平均<1.5，≥10幾乎不發生；需專門堆嫌疑牌組"
+      "reasoning": "v5模擬:需自身嫌疑≥10：模擬中嫌疑來源每次+1，抽到時≥10約3%→額外回合≈3.5×0.03≈0.1；升級保留可等待→+0.15"
     },
     "InformationSharing": {
       "value": null,
       "value_upgraded": null,
-      "value_multi": 6.8,
-      "value_multi_upgraded": 8.2,
+      "value_multi": 6.5,
+      "value_multi_upgraded": 9.0,
       "confidence": "medium",
-      "reasoning": "v5模擬:多人限定；就緒55%（v2按30%）時雙方各得1/2張虛無提出證據，+0.5/+0.8"
+      "reasoning": "v5模擬:多人限定：提出證據1.8＋雙方8/11格擋(各1.6/2.2)＋該證物複製給隊友（非艾瑪隊友多無提出手段≈0.2）＋就緒55%時雙方各1/2張虛無提出證據（艾瑪1.8、隊友≈0.6）→+1.3/+2.6"
     },
     "SillyLittleDog": {
-      "value": 1.4,
-      "value_upgraded": 1.6,
-      "value_multi": 1.55,
-      "value_multi_upgraded": 1.75,
-      "confidence": "low",
-      "reasoning": "v5模擬:模擬未涵蓋此卡主要機制（受傷減免／希羅艾瑪狗；保留v3_ally特定隊友0.088），沿用前版數值"
+      "value": 1.35,
+      "value_upgraded": 1.65,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 1.8,
+      "confidence": "medium",
+      "reasoning": "v5模擬:艾瑪每次受擊−1傷：敵人每回合約1.5段×剩4.5回合≈6.8傷≈1.35格擋能量；升級固有+0.3；回合末5傷需希羅隊友的艾瑪狗，多人保留v3_ally 0.088→+0.15"
     },
     "ValentineGift": {
       "value": 4.0,
@@ -238,31 +239,71 @@
       "value_multi": 1.5,
       "value_multi_upgraded": 1.8,
       "confidence": "low",
-      "reasoning": "v5模擬:模擬未涵蓋此卡主要機制（流血門檻爆發），沿用前版數值"
+      "reasoning": "v5模擬:流血門檻=10%最大生命+100×人數、觸發=15%+100：一般戰(重要性加權53%)敵人血量多低於門檻≈0；菁英約一半觸發一次、首領一次（約137傷）→加權≈4.0；升級固有+0.6；多人門檻隨人數提高沿用1.5/1.8"
     },
     "Gluttony": {
-      "value": 3.0,
-      "value_upgraded": 3.5,
-      "value_multi": 3.0,
-      "value_multi_upgraded": 3.5,
+      "value": 1.8,
+      "value_upgraded": 2.3,
+      "value_multi": 1.8,
+      "value_multi_upgraded": 2.3,
       "confidence": "low",
-      "reasoning": "v5模擬:模擬未涵蓋此卡主要機制（每回合消耗手牌換屬性），沿用前版數值"
+      "reasoning": "v5模擬:每回合消耗手牌1張：技能→敏捷1、攻擊→力量1（裁判攻擊不吃力量，約0.6）、能力→魔女化10；剩約4回合、永久屬性平均只吃到剩餘一半回合→每次≈0.45；升級固有+1次"
     },
     "PsychicPhotograph": {
-      "value": 3.0,
-      "value_upgraded": 3.5,
-      "value_multi": 3.0,
-      "value_multi_upgraded": 3.5,
+      "value": 2.6,
+      "value_upgraded": 2.6,
+      "value_multi": 2.6,
+      "value_multi_upgraded": 2.6,
       "confidence": "low",
-      "reasoning": "v5模擬:模擬未涵蓋此卡主要機制（魔女化100與結束回合的取捨），沿用前版數值"
+      "reasoning": "v5模擬:不受腿環倍率直接補到100魔女化：打出時平均已約30層→+70層×0.05≈3.5，但43%場次本來就會自然到100→邊際≈2.8；打出即結束回合−0.2；升級僅降費不加值"
     },
     "WitchIslandTreasureMap": {
       "value": 2.5,
-      "value_upgraded": 3.0,
+      "value_upgraded": 2.5,
       "value_multi": 2.5,
-      "value_multi_upgraded": 3.0,
+      "value_multi_upgraded": 2.5,
       "confidence": "low",
-      "reasoning": "v5模擬:模擬未涵蓋此卡主要機制（壞結局技能），沿用前版數值"
+      "reasoning": "v5模擬:僅艾瑪可打出；技能壞結局冷卻3回合（重複打出縮短），剩約4回合≈1~2次；壞結局牌效果未模擬；升級僅降費，不加單次值"
+    },
+    "Agreement": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 4.2,
+      "confidence": "medium",
+      "reasoning": "v5模擬:多人限定：發言(抽1+議論1+進度≈0.6)＋雙方6/9格擋(各1.2/1.8)；+3/4×目標議論需就緒且隊友有議論，非艾瑪隊友議論≈0→條件項≈0（舊值按滿足條件）"
+    },
+    "FaceInCourt": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 5.2,
+      "value_multi_upgraded": 6.2,
+      "confidence": "medium",
+      "reasoning": "v5模擬:多人限定：提出證據1.8＋自身與隊友各1/2嫌疑(−0.03~0.05/層)＋雙方各3/4張發言（艾瑪0.6、隊友0.55/張）"
+    },
+    "DeductionAfterDinner": {
+      "value": 2.6,
+      "value_upgraded": 2.6,
+      "value_multi": 2.6,
+      "value_multi_upgraded": 2.6,
+      "confidence": "low",
+      "reasoning": "v5模擬:豐盛的一餐：回3血×0.28＋活力4(0.68)≈1.5，但打出會開始壞結局（代價未量化，扣0.1）；下回合2張發言各0.6；升級僅降費。v3_heal的3.4高估"
+    },
+    "Deliberation": {
+      "value": 0.9,
+      "value_upgraded": 1.0,
+      "value_multi": 0.9,
+      "value_multi_upgraded": 1.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬:棄任意張再抽等量，平均換約2.5張×0.3＋裁判進度+1(0.1)；升級去消耗"
+    },
+    "ScorchingMedicineBottle": {
+      "value": 4.3,
+      "value_upgraded": 5.55,
+      "value_multi": 4.3,
+      "value_multi_upgraded": 5.55,
+      "confidence": "medium",
+      "reasoning": "v5模擬:灼燒15/20×0.25＋發言0.6−自身嫌疑1(0.03)；裁判牌+1進度。v2的4.6/5.9略高"
     }
   }
 }

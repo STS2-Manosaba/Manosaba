@@ -1,0 +1,242 @@
+{
+  "character": "HoshoMago",
+  "source": "mod",
+  "assumptions": [
+    "單人蒙地卡羅（sims/sim_mago/sim.py）：三原型各 1000 局×30 場（每幕 7 一般+2 菁英+1 首領），重要性 1/2/3，共 9 萬場",
+    "冒險：起始 3 打 3 防+創傷+解夢+1 隨機塔羅；TarotDeck 經驗 0/2/7/15/30 每升一級給 1 張未擁有塔羅；每場獎勵 3 張不重複塔羅；集齊 21 種得世界",
+    "原型：收藏型（只拿新種類，商店再買 1）、精簡型（只拿靜態值≥2.4 的新種類並刪 2 張基本牌/幕）、全拿型（每次拿最強，可重複）",
+    "戰鬥：每回合抽 5、能量 3；敵人總血 66/185/520×幕倍率 1/1.5/2.1，65% 攻擊、其餘加力量或施加減益；回合數 3.5～3.8/4.9～5.4/6.4～8.0；貪婪出牌",
+    "魔女化依 MajokaPower Hill 曲線（166.6, 1.8365, 最大×4），≥100 取得回音；加傷依魔女化來源比例歸屬",
+    "換算：6 傷=1、有效格擋 5=1（模擬格擋卡有效率約 0.45，評分時以名目值為準）、回血一次性 0.28/可重用 0.22（保留 v3補血）",
+    "條件效果（世界、皇帝/女皇、日月星、死神災厄等）一律乘模擬達成率；低機率可用卡（正義、審判、節制）乘以實際打出率",
+    "多人沿用 v2 規則（4 人、隊友受益按人數），死神/惡魔對隊友的負面效果扣分"
+  ],
+  "mechanic_values": {
+    "魔女化": "模擬約 0.08/層（Hill 曲線前段凸）；魔術師平均 57～96 層",
+    "塔羅連動": "模擬『牌組有X』達成率 22～88%，遠高於 v2 假設 35%",
+    "重放": "每次重放 ≈ 抽牌堆隨機牌價值約 1.1",
+    "無實體": "1 層 ≈ 2.5（抵擋一整回合傷害）",
+    "災厄": "每層 0.15，全體 ×1.4",
+    "戀人": "回血續航，25% 約 0.5",
+    "世界": "收藏型擁有率 30%、約第 21 場集齊",
+    "回血": "一次性 0.28/點；可重用 0.22/點"
+  },
+  "cards": {
+    "StrikeHoshoMago": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "v5模擬: 6/9 傷；模擬每次 0.94（溢傷少量），維持"
+    },
+    "DefendHoshoMago": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "v5模擬: 5/8 格擋；模擬有效格擋僅 0.44～0.46（作為格擋類換算基準：名目值/有效值≈2.2）"
+    },
+    "TraumaHoshoMago": {
+      "value": 0.8,
+      "value_upgraded": 1.2,
+      "value_multi": 0.8,
+      "value_multi_upgraded": 1.2,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 0 費 10/15 魔女化；模擬經 Hill 曲線加傷每次 0.73～1.0（約 0.08/層），並推進 100 層取得回音"
+    },
+    "DreamInterpretation": {
+      "value": 1.8,
+      "value_upgraded": 2.1,
+      "value_multi": 1.8,
+      "value_multi_upgraded": 2.1,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 0 費三選一塔羅（不含世界），模擬選中卡靜態均值 3.2，扣其平均費用約 1.3 → 淨約 1.9；未升級附消耗、升級不消耗可隨洗牌再用 +0.3"
+    },
+    "Echoes": {
+      "value": 3.0,
+      "value_upgraded": 3.0,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 僅在魔女化達 100 時取得（各原型擁有率 38～62%）；打出時魔女化均值 61～80，重放 +3.0～3.4 次，實際用到約 3 次，每次 2.3～4.0；升級僅降費"
+    },
+    "TheFool": {
+      "value": 1.6,
+      "value_upgraded": 2.0,
+      "value_multi": 1.6,
+      "value_multi_upgraded": 2.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 條件型：有世界(10能量+5抽)僅收藏型 36%、其他 ~0%。無世界時 +2 能量實際用到 1.2～1.5；三原型加權每次 1.0～3.1→取 1.8，再扣下回合自動出牌（耳語耳環式、順序非最佳）約 15%；升級 +1 能量 +0.4"
+    },
+    "TheMagician": {
+      "value": 5.0,
+      "value_upgraded": 6.5,
+      "value_multi": 5.0,
+      "value_multi_upgraded": 6.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 塔羅種類 9.7～17.1 → 57～96 魔女化；模擬魔女化加傷歸屬每次 5.2～12.7（收藏型高估於大血量模型），取保守 5.0；升級 7 層/種 +30%；唯一、消耗"
+    },
+    "TheHighPriestess": {
+      "value": 1.7,
+      "value_upgraded": 2.1,
+      "value_multi": 1.7,
+      "value_multi_upgraded": 2.1,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 7(9) 格擋；手上狀態牌僅 0.05～0.09 張（4 格/張+消耗幾乎不觸發）；模擬有效 0.82～0.90 ÷ 有效係數 0.45 ≈ 1.9，維持 v2"
+    },
+    "TheEmpress": {
+      "value": 2.8,
+      "value_upgraded": 3.6,
+      "value_multi": 2.8,
+      "value_multi_upgraded": 3.6,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 有皇帝機率 79～88%（+3/+4.5 傷）；模擬每次 3.6～4.0，含吸血 7.6～8.4 血×0.28≈2.2（保留 v3 回血 0.28/血）；力量/魔女化加傷已歸他卡；保守取 2.8，升級 9+4.5"
+    },
+    "TheEmperor": {
+      "value": 4.2,
+      "value_upgraded": 6.0,
+      "value_multi": 4.2,
+      "value_multi_upgraded": 6.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 有女皇機率 22～74%（三原型）；模擬每次 4.0～4.6；升級 30(+15)"
+    },
+    "TheHierophant": {
+      "value": 2.6,
+      "value_upgraded": 3.4,
+      "value_multi": 2.6,
+      "value_multi_upgraded": 3.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 附加效果補計：全體 2 易傷配高魔女化/力量，模擬易傷加傷+虛弱減傷每次 3.0～5.0，扣消耗手牌 -0.25；原 v2 1.6 低估，取 2.6，升級 3 層"
+    },
+    "TheLovers": {
+      "value": 1.1,
+      "value_upgraded": 1.3,
+      "value_multi": 1.1,
+      "value_multi_upgraded": 1.3,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 程式碼：TheLoversPower 在敵方回合結束即移除，只對本回合有效（v3 以整場 12 血計為高估）。模擬每次回血 5.0～6.4×0.22≈1.0～1.6（有惡魔 35%）；升級 0 費 +0.2"
+    },
+    "TheChariot": {
+      "value": 3.2,
+      "value_upgraded": 4.6,
+      "value_multi": 3.2,
+      "value_multi_upgraded": 4.6,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 有力量卡 70～82%（+1 段）；模擬每次 3.2～3.4；升級 +2 段"
+    },
+    "Strength": {
+      "value": 3.6,
+      "value_upgraded": 6.0,
+      "value_multi": 3.6,
+      "value_multi_upgraded": 6.0,
+      "confidence": "high",
+      "reasoning": "v5模擬: 模擬 2.6～3.6（受剩餘回合限制），維持 v2"
+    },
+    "TheHermit": {
+      "value": 2.2,
+      "value_upgraded": 2.5,
+      "value_multi": 2.7,
+      "value_multi_upgraded": 3.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 1 層無實體僅擋一回合，模擬減傷每次 1.0～1.2（敵方 65% 攻擊、已有格擋重疊）；略下修；多人：月亮+女祭司同時擁有約 20% 才給隊友"
+    },
+    "WheelOfFortune": {
+      "value": 2.0,
+      "value_upgraded": 2.6,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.6,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 放回 0.7～0.9 張後抽 4(+1 有倒吊人 20～60%)，淨抽約 4.8；模擬估 1.4（換手價值保守），取 2.0"
+    },
+    "Justice": {
+      "value": 0.3,
+      "value_upgraded": 0.4,
+      "value_multi": 0.6,
+      "value_multi_upgraded": 0.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 低機率可用：抑制力只壓制殺人衝動（傷害隊友），單人無效；僅在手有狀態牌或配節制(+3格/張)時才打，每場僅 0.05～0.11 次，每次 0.4～0.65；多人時魔女化≥100 機率 14～50% 才有意義"
+    },
+    "TheHangedMan": {
+      "value": 1.2,
+      "value_upgraded": 1.7,
+      "value_multi": 1.2,
+      "value_multi_upgraded": 1.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: -2(-3) 敵人力量；模擬僅 0.4～0.5（模型敵人單段攻擊），對照 Disarm 錨點折衷下修"
+    },
+    "Death": {
+      "value": 3.5,
+      "value_upgraded": 5.0,
+      "value_multi": 2.9,
+      "value_multi_upgraded": 4.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 全體 20(30) 災厄、有魔術師(66～79%)再+50%；非消耗可重複疊加，模擬每次 3.4～4.6（災厄斬殺）；自身 5 災厄，多人波及全隊"
+    },
+    "Temperance": {
+      "value": 0.7,
+      "value_upgraded": 0.7,
+      "value_multi": 0.7,
+      "value_multi_upgraded": 0.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: relative<0.5 檢查：3 費能力只給戰鬥結束 30 金（約 0.3）；有正義(19～64%)+10 格擋；模擬每次 0.4～0.7，幾乎不被打出（0.04～0.09 次/場）；升級僅降費"
+    },
+    "TheDevil": {
+      "value": 4.0,
+      "value_upgraded": 4.6,
+      "value_multi": 2.8,
+      "value_multi_upgraded": 3.3,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 三選一：非首領時『賜予試煉』全場降至 50% 血（選中率 50～60%），淨值 12～14（模型血量偏大，保守折半）；其餘選覺醒狂氣；注意自身也被降血（平均失 3～9 血）。升級移除消耗 +0.6；多人隊友也被降血"
+    },
+    "TheTower": {
+      "value": 2.3,
+      "value_upgraded": 3.1,
+      "value_multi": 2.3,
+      "value_multi_upgraded": 3.1,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 全體 9(12) 傷+禁增益；有死神 61～80% 加 10 災厄；模擬每次 2.0～2.1"
+    },
+    "TheStar": {
+      "value": 3.8,
+      "value_upgraded": 5.0,
+      "value_multi": 4.8,
+      "value_multi_upgraded": 6.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 16(20) 格擋（日月星齊 13～64% 時×2）+ 本回合受擊全額反彈 13～15 傷；模擬 3.7～4.2"
+    },
+    "TheMoon": {
+      "value": 2.6,
+      "value_upgraded": 3.6,
+      "value_multi": 2.6,
+      "value_multi_upgraded": 3.6,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 條件型：靠死神/高塔災厄，打出時目標平均 40～46 層（含 0）→ 5+0.25×層 ≈ 15 傷；模擬每次 3.6～4.1，取 2.6（災厄堆疊依賴死神重複打出）；升級 40%"
+    },
+    "TheSun": {
+      "value": 3.0,
+      "value_upgraded": 3.6,
+      "value_multi": 4.4,
+      "value_multi_upgraded": 5.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: +1 最大能量，剩約 3.8～4.2 回合但實際用到的額外能量每次 2.35～2.7；升級固有 +0.6；多人需日月星齊（約 36%）才全隊"
+    },
+    "Judgement": {
+      "value": 0.7,
+      "value_upgraded": 0.9,
+      "value_multi": 0.7,
+      "value_multi_upgraded": 0.9,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 低機率可用：需 ≥2(升級≥1) 個減益才值得打，打出時每次回 1.2～2.4 能量（三連齊 ×2 罕見），但每場僅 0.17～0.39 次（抽到可用約 25%）→ 期望約 0.6～0.7；relative<0.5 屬實"
+    },
+    "TheWorld": {
+      "value": 5.0,
+      "value_upgraded": 5.0,
+      "value_multi": 5.0,
+      "value_multi_upgraded": 5.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 特殊：集齊 21 種才入手（收藏型第 ~21 場、擁有率 30%；其他原型 0～0.5%）。持有時每場以 7.5% 機率在抽牌堆空時直接勝利（平均省下 68 血≈11），每場期望約 5；另可 2 費全卡升級。升級僅降費"
+    }
+  }
+}

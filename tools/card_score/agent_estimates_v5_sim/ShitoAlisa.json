@@ -1,0 +1,216 @@
+{
+  "character": "ShitoAlisa",
+  "assumptions": [
+    "v5模擬：sims/sim_alisa/sim.py 簡化戰鬥，基準每原型 30000 場、每探針卡每原型 8000 場；每回合抽 5、3 能量、手牌上限 10，貪婪啟發式（價值/費用最高者）",
+    "資源規則照程式碼：灼燒於敵方回合開始造成等同層數的無法格擋傷害、觸發 1+ThisIsFine 次、不遞減；火球環繞上限 12，每層吸收 3 失血；燃燒每抽到/點火 -1，歸零 +1 火球、自動打出並重設；魔女化為攻擊倍率曲線，100 時給 FireJudgementCourt",
+    "腳鐐等級依一局進度抽樣 Lv1 15%/Lv2 30%/Lv3 25%/Lv4 20%/Lv5 10%：開戰 Lv 層火球，Lv2+ 每層火球 +5 魔女化，Lv4+ 回合末回復=火球層數",
+    "牌組原型：起始 10 張（4打擊 3防禦 創傷 餘燼火花 打火機）+ 灼燒堆疊型/火球環繞型/燃燒點火型各 10 張代表卡",
+    "敵人：一般 72%(總血 62~92、1~3 隻)、菁英 20%(165~205、1~2 隻)、首領 8%(380~440)；傷害隨回合線性成長；模擬回合長度 一般3.7~4.5/菁英5.0~7.2/首領6.9~9.9；統計以重要性 1/2/3 加權",
+    "灼燒實測：每層施加後兌現傷害(已扣過殺) 一般1.4~1.6/菁英2.8~3.2/首領4.5~5.5，重要性加權整體2.8~3.2、各卡來源2.4~3.7；扣延遲傷害折扣取每層3傷=0.5能量（v2 0.26 偏低）",
+    "火球環繞實測：每獲得1層平均實際吸收1.8~2.2失血(≈0.4)+Lv2以上5魔女化(≈0.38)，取0.75；回合末平均火球1.7~2.1層",
+    "條件/低機率卡一律乘上模擬量到的「抽到時可用率」，不可用時計0（MagicianRed、LoveFlame、SpreadBurn、RestrictionRelease、FireOnFire、FinalCountdown）",
+    "多人欄位：灼燒類卡多人戰鬥較長 ×1.12，其餘等同單人；LetHeartBurn 為 MultiplayerOnly，value=null、多人值沿用 v2；FireTornado 為 X 費卡未處理（另有 agent）"
+  ],
+  "mechanic_values": {
+    "灼燒": "每層約0.5（實測兌現2.8~3.2傷，重要性加權）",
+    "火球環繞": "每層約0.75（吸收約2失血+Lv2魔女化）",
+    "燃燒標記(附加3)": "被附加卡每次附加僅0.06~0.19次自動打出（需再抽到3次），約0.35",
+    "點火": "成功率8%~63%依牌組，期望0.3~0.4",
+    "魔女化": "每層0.09（pool override）"
+  },
+  "cards": {
+    "StrikeShitoAlisa": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "v5模擬: 未變動；6/9傷"
+    },
+    "DefendShitoAlisa": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "v5模擬: 未變動；5/8格檔"
+    },
+    "TraumaShitoAlisa": {
+      "value": 0.7,
+      "value_upgraded": 1.05,
+      "value_multi": 0.7,
+      "value_multi_upgraded": 1.05,
+      "confidence": "high",
+      "reasoning": "v5模擬: 未變動；10/15魔女化(場末魔女化均45~66，攻擊倍率約1.2~1.4)"
+    },
+    "Lighter": {
+      "value": 1.9,
+      "value_upgraded": 2.9,
+      "value_multi": 2.13,
+      "value_multi_upgraded": 3.25,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 3/5灼燒×每層實際0.5(此卡灼燒每層兌現3.0~3.7傷)；點火成功率 燃燒型63%/灼燒型56%/火球型34%，每次打出觸發自動打出0.05~0.29次，點火期望≈0.4"
+    },
+    "BurnCap": {
+      "value": 3.2,
+      "value_upgraded": 4.2,
+      "value_multi": 3.58,
+      "value_multi_upgraded": 4.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 5/7灼燒(每層兌現2.9~3.6傷→0.5)+1火球環繞(每層實吸收1.8~2.2失血≈0.4，Lv2+ 85%機率+5魔女化≈0.38，合≈0.75)"
+    },
+    "CounterViolence": {
+      "value": 1.9,
+      "value_upgraded": 2.7,
+      "value_multi": 1.9,
+      "value_multi_upgraded": 2.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 8/12格檔；點火成功率 燃燒型44%/灼燒型35%/火球型13%，觸發自動打出0.03~0.25次/打出，點火期望≈0.3"
+    },
+    "FireSword": {
+      "value": 3.5,
+      "value_upgraded": 4.3,
+      "value_multi": 3.92,
+      "value_multi_upgraded": 4.82,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 6/8傷(1.0/1.33)+5/6灼燒(每層兌現2.6~3.3傷→0.5)"
+    },
+    "SnakeFire": {
+      "value": 3.85,
+      "value_upgraded": 3.95,
+      "value_multi": 4.31,
+      "value_multi_upgraded": 4.42,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 7灼燒(每層兌現2.7~3.3傷)=3.5；附加燃燒後該卡平均僅0.04~0.14次自動打出/打出(需再抽3次)，≈0.25；保留+0.1；升級改附加2張僅+0.1(自動打出0.05~0.16次)，請確認升級是否過弱"
+    },
+    "EmberSpark": {
+      "value": 1.35,
+      "value_upgraded": 1.45,
+      "value_multi": 1.35,
+      "value_multi_upgraded": 1.45,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 5格檔=1.0；附加燃燒3後被附加卡每次打出僅帶來0.06(灼燒型)~0.17(燃燒型)次自動打出，×(卡值+火球)≈0.35；升級附加2張只到0.07~0.19次(+0.1)，v2 升級2.0高估"
+    },
+    "FireOnFire": {
+      "value": 4.0,
+      "value_upgraded": 5.1,
+      "value_multi": 4.48,
+      "value_multi_upgraded": 5.71,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 條件(目標已有灼燒)下抽到後打出率85%~93%，取0.9；9/12灼燒(每層兌現2.4~2.8傷→0.44)+點火(成功率8%~35%，≈0.4)，(4.0+0.4)×0.9"
+    },
+    "Flaming": {
+      "value": 4.5,
+      "value_upgraded": 5.6,
+      "value_multi": 5.04,
+      "value_multi_upgraded": 6.27,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 3費但96%的打出來自燃燒2歸零的免費自動打出(每抽到0.51~0.70次打出)；每次打出全體4/6灼燒共5.7/7.4層(每層兌現2.5~2.9傷→0.45)+1火球≈3.3/4.1，再加免費打出節省能量約1.2~1.5"
+    },
+    "Scorching": {
+      "value": 3.5,
+      "value_upgraded": 5.2,
+      "value_multi": 3.92,
+      "value_multi_upgraded": 5.82,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 平均第2.4~2.6回合打出；每場剩餘回合施加3~9層灼燒、兌現7.5~10傷(1.25~1.7)+2.4~3.7層火球(每層≈0.6~0.75)；升級兌現10~15傷+3.4~6.2層火球(火球上限與吸收飽和打折)"
+    },
+    "DisasterGirl": {
+      "value": 4.5,
+      "value_upgraded": 6.4,
+      "value_multi": 5.04,
+      "value_multi_upgraded": 7.17,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 每施加5灼燒觸發7/11傷；打出後每場觸發3.2~5.2次，邊際傷害22(火球型)/24(灼燒型第二張)/36(燃燒型)；升級31~50傷"
+    },
+    "ThisIsFine": {
+      "value": 5.0,
+      "value_upgraded": 7.2,
+      "value_multi": 5.6,
+      "value_multi_upgraded": 8.06,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 額外灼燒觸發傷害(已扣過殺)每場邊際23(灼燒型第二張)~54(燃燒型)；戰鬥縮短 一般0.45/菁英1.1/首領1.9回合，以縮短回合≈3.5~4能量+少失血估5.0；升級額外76傷、縮短0.7/1.7/3.0回合"
+    },
+    "ScaldingTouch": {
+      "value": 2.4,
+      "value_upgraded": 3.3,
+      "value_multi": 2.69,
+      "value_multi_upgraded": 3.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 依牌組攻擊數，打出後每場未格擋攻擊命中1.0(灼燒型)~3.2(火球型)次；每次打出兌現灼燒4.3~9.5傷(0.7~1.6)+魔女化8.6~23層(×0.09)，平均≈2.4；升級灼燒翻倍≈3.3；v2 估7次命中過高"
+    },
+    "SpreadBurn": {
+      "value": 1.0,
+      "value_upgraded": 1.2,
+      "value_multi": 1.12,
+      "value_multi_upgraded": 1.34,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 低機率可用：需多敵且目標有灼燒，抽到時打出率僅13%~29%(取0.2)；打出時擴散約14層兌現18~21傷(≈3.3)+1.2火球(0.9)≈4.4，×0.2，未打出計0；升級火球加倍+0.2"
+    },
+    "SweepUp": {
+      "value": 1.75,
+      "value_upgraded": 2.25,
+      "value_multi": 1.75,
+      "value_multi_upgraded": 2.25,
+      "confidence": "high",
+      "reasoning": "v5模擬: 抽2/3(1.0/1.5)+1火球環繞(實吸收約2失血+Lv2魔女化≈0.75)"
+    },
+    "LoveFlame": {
+      "value": 0.15,
+      "value_upgraded": 0.5,
+      "value_multi": 0.15,
+      "value_multi_upgraded": 0.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 需≥2火球：手上時可用率30%~41%，抽到後打出率29%~45%(取0.37)；-2火球(失去吸收約0.8，魔女化已於獲得時計入)換1/2能量，(1-0.8)/(2-0.8)×0.37"
+    },
+    "MagicianRed": {
+      "value": 0.3,
+      "value_upgraded": 0.35,
+      "value_multi": 0.3,
+      "value_multi_upgraded": 0.35,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 低機率可用：需≥4火球，手上時可用率僅8%~11%，抽到後打出率2%~4%(三原型回合末平均火球1.7~2.1)；打出時20傷(含魔女化≈21)+暈眩一回合−4火球≈3.4，×0.05加上偶爾配Scorching+；升級降費不改可用率；v2 2.4 為滿足條件數值"
+    },
+    "YouAreWeakEma": {
+      "value": 2.05,
+      "value_upgraded": 2.8,
+      "value_multi": 2.05,
+      "value_multi_upgraded": 2.8,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出時平均火球2.0~2.2層，實際傷害12.1~12.5(含魔女化)；升級每層+2"
+    },
+    "RestrictionRelease": {
+      "value": 1.5,
+      "value_upgraded": 1.7,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 1.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 5費基本不可手動打出，幾乎全靠燃燒3歸零自動打出：抽到後打出率18%(灼燒型)~35%(燃燒型)，每場0.2~0.46次；打出時8顆火球造成約42傷(7.0)−消耗手牌0.5~1.1張≈5.5，×0.27，未打出計0；升級移除消耗每場0.21~0.51次(+0.2)；v2 8.5 為滿足條件數值"
+    },
+    "FinalCountdown": {
+      "value": 0.1,
+      "value_upgraded": 0.1,
+      "value_multi": 0.08,
+      "value_multi_upgraded": 0.08,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 倒數20回合(每場燃燒歸零僅0.15~1.6次可加速)，模擬首領戰平均9~10回合，倒數勝利率0%；打出只付20自傷(火球可吸收部分)，實質死牌；升級降費不改變"
+    },
+    "FireJudgementCourt": {
+      "value": 8.5,
+      "value_upgraded": 8.5,
+      "value_multi": 9.52,
+      "value_multi_upgraded": 9.52,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 全體10灼燒，每次打出施加約15層(多敵)兌現約46傷(7.7)；打出時魔女化僅23~31，額外引爆0.2~0.5次(1.1~2.0)；魔女化100取得率0.5%~17%；升級降費值不變"
+    },
+    "LetHeartBurn": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 7.0,
+      "value_multi_upgraded": 7.0,
+      "confidence": "high",
+      "reasoning": "v5模擬: 多人限定未模擬，沿用 v2；多人限定：HP降至1，失血(~40)轉全體灼燒，另給升級版臨終訊息；單人0"
+    }
+  },
+  "source": "mod"
+}

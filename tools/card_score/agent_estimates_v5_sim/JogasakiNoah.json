@@ -1,0 +1,207 @@
+{
+  "character": "JogasakiNoah",
+  "assumptions": [
+    "單人蒙地卡羅模擬（sim_noah/sim.py），3原型（顏料型、祖瑪型、血型＝起始牌組+12~13張）各20000場統計+3000次分支探針，重要性權重1/2/3",
+    "戰鬥序列每幕10一般+2菁英+1首領；遺物經驗0/2/7/15/30：Lv1~2 6欄1球/回合、Lv3~4 7欄2球、Lv5 8欄3球；打出時Lv5佔37~41%",
+    "戰鬥長度turn_model Gamma(4/6.5/10)；敵1~3隻排程死亡，65%攻擊；中毒遞減、灼燒(本模組)不遞減、末日於玩家回合結束判定",
+    "充能球規則照程式碼：滿欄先激發最前；黃白黑回合開始被動、其餘回合結束；數值受魔女化Hill曲線與floor；祖瑪三連以2/4/8倍激發並抽牌",
+    "血球：牌組有血液操作卡時受未格擋傷害50%生成(層數=傷害)，回合結束+1層，激發回3血",
+    "探針：第1~4回合出牌前複製狀態，免費執行卡效果與否的差值（6傷/5血=1能量，回血0.28）；雜訊大者改用分析值並註明",
+    "多人：顏料球藍/黃/白/黑激發會複製給隨機隊友，value_multi加Δ激發×0.31（0.5×0.74×0.85）；其他沿用v2/v4"
+  ],
+  "mechanic_values": {
+    "隨機顏料球(卡牌生成)": "≈1.5（欄位常滿，邊際≈1次額外激發+新球被動）",
+    "回合開始平均球數/色數": "顏料型6.5/4.4、祖瑪型6.1/3.9、血型5.8/2.2",
+    "ColorMix打出時色數": "5.4/4.6/3.0",
+    "血球": "血型牌組每場遺物生成2.2顆；血液攻擊打出時有血球89~95%、平均加傷7.9",
+    "祖瑪": "每場2.3次三連消、連鎖罕見",
+    "放空八色勝利": "打出後4.8%"
+  },
+  "source": "mod",
+  "cards": {
+    "StrikeJogasakiNoah": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "v5模擬: 6傷，升級9；探針=1.00(校準點)"
+    },
+    "DefendJogasakiNoah": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "v5模擬: 5格檔，升級8；維持基準"
+    },
+    "TraumaJogasakiNoah": {
+      "value": 1.0,
+      "value_upgraded": 1.4,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出時魔女化平均8~32；10層使卡牌傷害約+8%（每場卡牌傷害約12能量）；顏料球數值有floor，需魔女化≥55才由3升為4，球幾乎不受益；探針2.3~2.8雜訊大，取1.0/1.4"
+    },
+    "Palette": {
+      "value": 2.4,
+      "value_upgraded": 2.8,
+      "value_multi": 2.7,
+      "value_multi_upgraded": 3.1,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 4/6格檔+紅藍黃球；探針2.35/2.40/1.55（三牌組），隨機球邊際≈1.5（欄位多半已滿，邊際≈多1次激發）；多人：激發中藍/黃有一半會複製給隨機隊友，Δ激發1.1×0.31"
+    },
+    "ColorMix": {
+      "value": 3.8,
+      "value_upgraded": 3.8,
+      "value_multi": 3.8,
+      "value_multi_upgraded": 3.8,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出時顏料球種類：顏料型5.4色、祖瑪型4.6色、血型3.0色；基礎傷害36/24/15×魔女化1.30/1.21/1.04；探針（抽到即打）4.1/3.2/2.0，貪婪等到≥5色再打略高，加權約3.8（舊2.4）；遺物Lv5有8欄+每回合3球，6色以上50傷害頻繁，見設計疑點；升級僅降費"
+    },
+    "Confusion": {
+      "value": 3.1,
+      "value_upgraded": 4.4,
+      "value_multi": 3.6,
+      "value_multi_upgraded": 5.6,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 2/3顆8色隨機球；探針2.1/3.9/3.7（升級6.1/7.3/5.7，雜訊大下修）；欄位常滿，每顆≈1次額外激發+新球被動；多人Δ激發1.7/3.8×0.31"
+    },
+    "ComplementaryColor": {
+      "value": 2.3,
+      "value_upgraded": 3.0,
+      "value_multi": 2.6,
+      "value_multi_upgraded": 3.3,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 最後一顆球幾乎必存在(空佇列0.1%)；生成互補色並立即觸發被動1/2次；探針3.6/2.5/2.2、升級3.5/4.2/2.6，取2.3/3.0；多人Δ激發≈1.0×0.31"
+    },
+    "InkPainting": {
+      "value": 2.6,
+      "value_upgraded": 3.2,
+      "value_multi": 2.7,
+      "value_multi_upgraded": 3.3,
+      "confidence": "medium",
+      "reasoning": "v5模擬: v2漏計次要效果：衍伸卡除抽2(3)/10(15)魔女化外，還會生成白/黑顏料球(≈1.2~1.5)；白=球+抽2≈2.9、黑=黑球+10魔女化≈1.5，策略約40%選黑；探針3.3/6.6(雜訊)，取2.6/3.2"
+    },
+    "PaintRefill": {
+      "value": 2.8,
+      "value_upgraded": 2.8,
+      "value_multi": 3.5,
+      "value_multi_upgraded": 3.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 實測補球僅0.45~0.72顆/回合（遺物+卡牌使欄位多半已滿），約4回合剩餘×0.6顆×1.2≈2.9；探針2.0/2.5/4.5；多人Δ激發2.0~4.5×0.31"
+    },
+    "ColorBlast": {
+      "value": 7.0,
+      "value_upgraded": 7.0,
+      "value_multi": 9.0,
+      "value_multi_upgraded": 9.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出時平均8.8顆球（顏料型含放空）；全部激發後再生成同數量新球；探針7.4/8.3/7.7、Δ激發5~7（舊4.0低估）；多人：激發的藍/黃/白/黑各複製給隨機隊友，+≈2.0；升級僅降費"
+    },
+    "SpaceOut": {
+      "value": 6.0,
+      "value_upgraded": 6.0,
+      "value_multi": 6.5,
+      "value_multi_upgraded": 6.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬: +2欄位＋每回合多1顆隨機球；八色齊全直接勝利：打出後該場觸發率僅4.8%（每場3.8%），勝利價值計入但極小；探針雜訊極大(0.2~12.4)，以分析值6.0；多人Δ激發≈1.5×0.31"
+    },
+    "Zuma": {
+      "value": 6.5,
+      "value_upgraded": 6.5,
+      "value_multi": 8.5,
+      "value_multi_upgraded": 8.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出後該場平均2.7次三連消（每次3.0顆、連鎖≥2僅0.07次/場），每顆以2倍激發並抽1；7張縫隙調色佔抽牌但各為4格檔+球；探針7.6(顏料型)/4.8(祖瑪型重複)；多人Δ激發6~12×0.31"
+    },
+    "Still": {
+      "value": 2.4,
+      "value_upgraded": 2.4,
+      "value_multi": 2.4,
+      "value_multi_upgraded": 2.4,
+      "confidence": "low",
+      "reasoning": "v5模擬: 依重要性權重，一般戰鬥佔59%：複製目標為友軍，剩約2回合、每回合約6傷≈2.0；菁英/首領(41%)僅返還3能量（=費用，等同空牌，計3.0）；程式碼實際未扣最大能量（與描述不符，見疑點）；升級後菁英/首領淨+1能量"
+    },
+    "JudgeJogasakiNoah": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 3.5,
+      "value_multi_upgraded": 3.5,
+      "confidence": "high",
+      "reasoning": "v5模擬: MultiplayerOnly→單人null；多人沿用v2：隊友0費打出使諾亞魔女化達100，顏料球×1.84"
+    },
+    "LiquidManipulation": {
+      "value": 4.0,
+      "value_upgraded": 4.0,
+      "value_multi": 9.0,
+      "value_multi_upgraded": 9.0,
+      "confidence": "low",
+      "reasoning": "v5模擬: 保留v4：全隊獲10+20×min(魔女化/100,1)層失血吸收；模擬打出時魔女化約20~45，與v4假設40相近，維持"
+    },
+    "Karibarai": {
+      "value": 2.0,
+      "value_upgraded": 2.7,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 血型牌組打出時有血球90%、平均加傷7.9並回3血；但消耗共用血球，探針1.5/3.4（含機會成本），分析2.7，取2.0/2.7"
+    },
+    "Kesseiseki": {
+      "value": 3.8,
+      "value_upgraded": 5.9,
+      "value_multi": 3.8,
+      "value_multi_upgraded": 5.9,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 有血球95%、加傷7.9；探針3.55/6.13，20(30)+7.9傷+回3血扣血球機會成本"
+    },
+    "Sekibaku": {
+      "value": 1.1,
+      "value_upgraded": 1.1,
+      "value_multi": 1.1,
+      "value_multi_upgraded": 1.1,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 條件型：需持有血球（血型牌組可打率約90%，其他牌組多半不可打）；目標暫時力量-7.6，只在敵人攻擊意圖(65%)時有效≈1.0+回3血0.84-消耗血球≈1.2，×可打率0.9；探針≈0；舊3.0高估；升級僅降費"
+    },
+    "Hyakuren": {
+      "value": 5.4,
+      "value_upgraded": 8.0,
+      "value_multi": 5.4,
+      "value_multi_upgraded": 8.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 單敵選穿血30(45)傷，打出時有血球82%、加傷約7→約6.2，扣衍伸卡1費=5.2，另血球層數+2(3)；多敵選超新星；探針5.2/10.8；維持5.4/升級8.0"
+    },
+    "BloodDraw": {
+      "value": 1.3,
+      "value_upgraded": 2.4,
+      "value_multi": 1.3,
+      "value_multi_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 失3血(-0.6)，生成2(3)顆3層血球，且自傷有50%觸發遺物再生成血球；探針1.29/2.47；血球會擠掉顏料球(Δ激發3~6)"
+    },
+    "Ketsujin": {
+      "value": 0.8,
+      "value_upgraded": 1.4,
+      "value_multi": 0.8,
+      "value_multi_upgraded": 1.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 條件型：需場上血球；貪婪僅在≥2顆時打出(平均4.6顆)；探針(抽到即打)0.82/1.45，已含無血球=0的情況"
+    },
+    "Shiou": {
+      "value": 2.0,
+      "value_upgraded": 2.8,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.8,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 8(12)格檔+最高血球被動（打出時有血球68%、平均+5.2格檔）並回3血；會消耗血球(機會成本約0.7)；模擬敵傷偏低使探針格檔價值近0，改用分析值"
+    },
+    "Sekirinyakudou": {
+      "value": 1.5,
+      "value_upgraded": 1.5,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 1.5,
+      "confidence": "low",
+      "reasoning": "v5模擬: 回合結束激發2顆血球(回6血≈1.7/回合)並重生，但遺物/補充改產血球，失去每回合1~3顆顏料球(Lv5時損失大)、ColorMix失效；探針1.2；舊3.0下修"
+    }
+  }
+}

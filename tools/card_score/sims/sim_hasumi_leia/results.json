@@ -1,0 +1,2615 @@
+{
+ "baseline": {
+  "sword": {
+   "reflect": 36.239,
+   "sword_plays": 10.78,
+   "taken": 26.481,
+   "len": 5.906,
+   "deaths": 0.174,
+   "death": 0.1741,
+   "len_by": {
+    "hallway": 3.51,
+    "elite": 7.19,
+    "boss": 11.17
+   },
+   "taken_by": {
+    "hallway": 3.6,
+    "elite": 31.2,
+    "boss": 89.5
+   }
+  },
+  "parry": {
+   "reflect": 73.615,
+   "sword_plays": 9.433,
+   "showoff_str": 1.775,
+   "taken": 14.215,
+   "len": 7.392,
+   "deaths": 0.027,
+   "death": 0.0272,
+   "len_by": {
+    "hallway": 4.19,
+    "elite": 7.5,
+    "boss": 17.16
+   },
+   "taken_by": {
+    "hallway": 1.5,
+    "elite": 11.8,
+    "boss": 57.9
+   }
+  },
+  "spear": {
+   "reflect": 30.106,
+   "spears": 2.127,
+   "spear_dmg": 69.488,
+   "spear_plays": 2.051,
+   "forges": 2.509,
+   "first_spear_turn": 3.631,
+   "spear_fights": 0.994,
+   "sword_plays": 4.412,
+   "taken": 30.012,
+   "len": 5.756,
+   "deaths": 0.169,
+   "death": 0.1695,
+   "len_by": {
+    "hallway": 4.25,
+    "elite": 5.57,
+    "boss": 10.72
+   },
+   "taken_by": {
+    "hallway": 10.5,
+    "elite": 31.6,
+    "boss": 87.4
+   }
+  }
+ },
+ "probe": {
+  "Projection": {
+   "sword": {
+    "reflect": 32.192,
+    "spears": 0.766,
+    "spear_dmg": 23.761,
+    "spear_plays": 0.766,
+    "forges": 0.936,
+    "first_spear_turn": 3.429,
+    "spear_fights": 0.766,
+    "sword_plays": 8.881,
+    "probe_plays": 0.948,
+    "probe_turn": 2.147,
+    "taken": 29.287,
+    "len": 5.887,
+    "deaths": 0.183,
+    "death": 0.183,
+    "len_by": {
+     "hallway": 3.96,
+     "elite": 6.52,
+     "boss": 10.53
+    },
+    "taken_by": {
+     "hallway": 6.3,
+     "elite": 33.9,
+     "boss": 89.2
+    }
+   },
+   "parry": {
+    "reflect": 64.732,
+    "spears": 0.864,
+    "spear_dmg": 27.761,
+    "spear_plays": 0.864,
+    "forges": 0.949,
+    "first_spear_turn": 3.757,
+    "spear_fights": 0.864,
+    "sword_plays": 7.287,
+    "showoff_str": 1.453,
+    "probe_plays": 0.984,
+    "probe_turn": 2.232,
+    "taken": 16.934,
+    "len": 7.082,
+    "deaths": 0.027,
+    "death": 0.0266,
+    "len_by": {
+     "hallway": 4.26,
+     "elite": 6.82,
+     "boss": 16.14
+    },
+    "taken_by": {
+     "hallway": 4.0,
+     "elite": 15.7,
+     "boss": 58.5
+    }
+   },
+   "spear": {
+    "reflect": 25.876,
+    "spears": 2.468,
+    "spear_dmg": 79.734,
+    "spear_plays": 2.319,
+    "forges": 3.056,
+    "first_spear_turn": 3.73,
+    "spear_fights": 0.998,
+    "sword_plays": 3.643,
+    "probe_plays": 2.511,
+    "probe_turn": 6.13,
+    "taken": 32.682,
+    "len": 5.736,
+    "deaths": 0.169,
+    "death": 0.1687,
+    "len_by": {
+     "hallway": 4.47,
+     "elite": 5.67,
+     "boss": 9.77
+    },
+    "taken_by": {
+     "hallway": 13.3,
+     "elite": 36.2,
+     "boss": 86.6
+    }
+   }
+  },
+  "AdvancedProjection": {
+   "sword": {
+    "reflect": 32.144,
+    "spears": 0.719,
+    "spear_dmg": 22.455,
+    "spear_plays": 0.719,
+    "forges": 0.951,
+    "first_spear_turn": 3.165,
+    "spear_fights": 0.719,
+    "sword_plays": 9.238,
+    "probe_plays": 0.952,
+    "probe_turn": 2.142,
+    "taken": 27.498,
+    "len": 5.705,
+    "deaths": 0.177,
+    "death": 0.1769,
+    "len_by": {
+     "hallway": 3.74,
+     "elite": 6.26,
+     "boss": 10.62
+    },
+    "taken_by": {
+     "hallway": 5.0,
+     "elite": 30.7,
+     "boss": 89.3
+    }
+   },
+   "parry": {
+    "reflect": 64.992,
+    "spears": 0.902,
+    "spear_dmg": 27.567,
+    "spear_plays": 0.902,
+    "forges": 0.984,
+    "first_spear_turn": 3.702,
+    "spear_fights": 0.902,
+    "sword_plays": 7.511,
+    "showoff_str": 1.489,
+    "probe_plays": 0.99,
+    "probe_turn": 2.211,
+    "taken": 15.439,
+    "len": 6.948,
+    "deaths": 0.023,
+    "death": 0.0227,
+    "len_by": {
+     "hallway": 4.08,
+     "elite": 6.55,
+     "boss": 15.97
+    },
+    "taken_by": {
+     "hallway": 2.6,
+     "elite": 13.8,
+     "boss": 55.6
+    }
+   },
+   "spear": {
+    "reflect": 26.649,
+    "spears": 2.511,
+    "spear_dmg": 81.342,
+    "spear_plays": 2.343,
+    "forges": 3.18,
+    "first_spear_turn": 3.685,
+    "spear_fights": 0.996,
+    "sword_plays": 3.885,
+    "probe_plays": 1.852,
+    "probe_turn": 4.338,
+    "taken": 32.348,
+    "len": 5.724,
+    "deaths": 0.176,
+    "death": 0.1762,
+    "len_by": {
+     "hallway": 4.38,
+     "elite": 5.56,
+     "boss": 9.88
+    },
+    "taken_by": {
+     "hallway": 12.3,
+     "elite": 34.6,
+     "boss": 86.8
+    }
+   }
+  },
+  "FinalAttack": {
+   "sword": {
+    "reflect": 32.677,
+    "fa_auto": 1.532,
+    "fa_manual": 0.015,
+    "fa_dmg": 18.356,
+    "sword_plays": 11.44,
+    "probe_plays": 1.547,
+    "probe_turn": 0.059,
+    "taken": 25.864,
+    "len": 5.551,
+    "deaths": 0.181,
+    "death": 0.1808,
+    "len_by": {
+     "hallway": 3.2,
+     "elite": 6.45,
+     "boss": 10.91
+    },
+    "taken_by": {
+     "hallway": 3.1,
+     "elite": 27.3,
+     "boss": 89.5
+    }
+   },
+   "parry": {
+    "reflect": 62.894,
+    "fa_auto": 1.589,
+    "fa_manual": 0.095,
+    "fa_dmg": 20.8,
+    "sword_plays": 10.024,
+    "showoff_str": 1.501,
+    "probe_plays": 1.684,
+    "probe_turn": 0.433,
+    "taken": 13.263,
+    "len": 6.701,
+    "deaths": 0.017,
+    "death": 0.0174,
+    "len_by": {
+     "hallway": 3.78,
+     "elite": 6.81,
+     "boss": 15.62
+    },
+    "taken_by": {
+     "hallway": 1.3,
+     "elite": 11.8,
+     "boss": 53.0
+    }
+   },
+   "spear": {
+    "reflect": 27.914,
+    "spears": 1.966,
+    "spear_dmg": 64.213,
+    "spear_plays": 1.876,
+    "forges": 2.435,
+    "first_spear_turn": 3.707,
+    "spear_fights": 0.975,
+    "fa_auto": 0.767,
+    "fa_manual": 0.074,
+    "fa_dmg": 10.122,
+    "sword_plays": 5.136,
+    "probe_plays": 0.841,
+    "probe_turn": 0.295,
+    "taken": 29.604,
+    "len": 5.644,
+    "deaths": 0.165,
+    "death": 0.1647,
+    "len_by": {
+     "hallway": 4.2,
+     "elite": 5.57,
+     "boss": 10.28
+    },
+    "taken_by": {
+     "hallway": 9.8,
+     "elite": 32.1,
+     "boss": 87.1
+    }
+   }
+  },
+  "TreeBranch": {
+   "sword": {
+    "reflect": 34.945,
+    "branch_extra": 6.106,
+    "ss_extra": 6.106,
+    "sword_plays": 10.587,
+    "probe_plays": 0.953,
+    "probe_turn": 2.15,
+    "taken": 26.935,
+    "len": 5.799,
+    "deaths": 0.18,
+    "death": 0.1801,
+    "len_by": {
+     "hallway": 3.34,
+     "elite": 6.93,
+     "boss": 11.04
+    },
+    "taken_by": {
+     "hallway": 3.4,
+     "elite": 30.3,
+     "boss": 89.4
+    }
+   },
+   "parry": {
+    "reflect": 73.765,
+    "branch_extra": 3.365,
+    "ss_extra": 3.365,
+    "sword_plays": 9.364,
+    "showoff_str": 1.758,
+    "probe_plays": 0.99,
+    "probe_turn": 2.209,
+    "taken": 15.112,
+    "len": 7.434,
+    "deaths": 0.031,
+    "death": 0.0311,
+    "len_by": {
+     "hallway": 4.12,
+     "elite": 7.47,
+     "boss": 17.15
+    },
+    "taken_by": {
+     "hallway": 1.6,
+     "elite": 12.8,
+     "boss": 58.8
+    }
+   },
+   "spear": {
+    "reflect": 29.426,
+    "spears": 2.064,
+    "spear_dmg": 67.079,
+    "spear_plays": 1.97,
+    "forges": 2.486,
+    "first_spear_turn": 3.741,
+    "spear_fights": 0.99,
+    "branch_extra": 2.087,
+    "ss_extra": 2.087,
+    "sword_plays": 4.455,
+    "probe_plays": 0.904,
+    "probe_turn": 2.078,
+    "taken": 30.465,
+    "len": 5.772,
+    "deaths": 0.169,
+    "death": 0.1686,
+    "len_by": {
+     "hallway": 4.31,
+     "elite": 5.61,
+     "boss": 10.62
+    },
+    "taken_by": {
+     "hallway": 10.8,
+     "elite": 33.1,
+     "boss": 87.5
+    }
+   }
+  },
+  "PortableFletchingStation": {
+   "sword": {
+    "reflect": 37.546,
+    "sword_plays": 10.569,
+    "probe_plays": 0.948,
+    "probe_turn": 2.149,
+    "taken": 29.04,
+    "len": 6.178,
+    "deaths": 0.185,
+    "death": 0.1845,
+    "len_by": {
+     "hallway": 3.78,
+     "elite": 7.52,
+     "boss": 11.07
+    },
+    "taken_by": {
+     "hallway": 4.6,
+     "elite": 35.8,
+     "boss": 89.5
+    }
+   },
+   "parry": {
+    "reflect": 77.292,
+    "sword_plays": 9.256,
+    "showoff_str": 1.8,
+    "probe_plays": 0.985,
+    "probe_turn": 2.215,
+    "taken": 16.57,
+    "len": 7.742,
+    "deaths": 0.038,
+    "death": 0.0377,
+    "len_by": {
+     "hallway": 4.44,
+     "elite": 7.78,
+     "boss": 17.34
+    },
+    "taken_by": {
+     "hallway": 2.3,
+     "elite": 14.8,
+     "boss": 61.3
+    }
+   },
+   "spear": {
+    "reflect": 27.182,
+    "spears": 2.723,
+    "spear_dmg": 82.145,
+    "spear_plays": 2.363,
+    "forges": 2.398,
+    "pfs_bonus": 0.749,
+    "first_spear_turn": 3.814,
+    "spear_fights": 0.994,
+    "sword_plays": 3.851,
+    "probe_plays": 0.859,
+    "probe_turn": 2.009,
+    "taken": 29.886,
+    "len": 5.581,
+    "deaths": 0.135,
+    "death": 0.1351,
+    "len_by": {
+     "hallway": 4.31,
+     "elite": 5.34,
+     "boss": 10.04
+    },
+    "taken_by": {
+     "hallway": 11.9,
+     "elite": 32.3,
+     "boss": 82.4
+    }
+   }
+  },
+  "SmartSpear": {
+   "sword": {
+    "reflect": 37.382,
+    "sword_plays": 10.597,
+    "probe_plays": 0.949,
+    "probe_turn": 2.151,
+    "taken": 28.964,
+    "len": 6.186,
+    "deaths": 0.185,
+    "death": 0.1848,
+    "len_by": {
+     "hallway": 3.77,
+     "elite": 7.51,
+     "boss": 11.09
+    },
+    "taken_by": {
+     "hallway": 4.6,
+     "elite": 35.4,
+     "boss": 89.4
+    }
+   },
+   "parry": {
+    "reflect": 76.503,
+    "sword_plays": 9.202,
+    "showoff_str": 1.779,
+    "probe_plays": 0.986,
+    "probe_turn": 2.206,
+    "taken": 16.338,
+    "len": 7.693,
+    "deaths": 0.035,
+    "death": 0.0353,
+    "len_by": {
+     "hallway": 4.44,
+     "elite": 7.78,
+     "boss": 17.35
+    },
+    "taken_by": {
+     "hallway": 2.3,
+     "elite": 14.9,
+     "boss": 61.0
+    }
+   },
+   "spear": {
+    "reflect": 30.734,
+    "spears": 2.2,
+    "spear_dmg": 71.399,
+    "spear_plays": 2.092,
+    "forges": 2.45,
+    "smart_pull": 2.047,
+    "first_spear_turn": 3.556,
+    "spear_fights": 0.991,
+    "sword_plays": 4.35,
+    "probe_plays": 0.874,
+    "probe_turn": 2.045,
+    "taken": 30.266,
+    "len": 5.773,
+    "deaths": 0.17,
+    "death": 0.1705,
+    "len_by": {
+     "hallway": 4.18,
+     "elite": 5.53,
+     "boss": 10.98
+    },
+    "taken_by": {
+     "hallway": 11.1,
+     "elite": 31.0,
+     "boss": 87.0
+    }
+   }
+  },
+  "SmartSpear+": {
+   "sword": {
+    "reflect": 37.255,
+    "sword_plays": 10.582,
+    "probe_plays": 0.948,
+    "probe_turn": 2.145,
+    "taken": 28.932,
+    "len": 6.173,
+    "deaths": 0.185,
+    "death": 0.1848,
+    "len_by": {
+     "hallway": 3.77,
+     "elite": 7.5,
+     "boss": 11.08
+    },
+    "taken_by": {
+     "hallway": 4.6,
+     "elite": 35.6,
+     "boss": 89.4
+    }
+   },
+   "parry": {
+    "reflect": 76.158,
+    "sword_plays": 9.194,
+    "showoff_str": 1.767,
+    "probe_plays": 0.984,
+    "probe_turn": 2.22,
+    "taken": 16.143,
+    "len": 7.667,
+    "deaths": 0.035,
+    "death": 0.0351,
+    "len_by": {
+     "hallway": 4.42,
+     "elite": 7.78,
+     "boss": 17.32
+    },
+    "taken_by": {
+     "hallway": 2.3,
+     "elite": 14.5,
+     "boss": 60.9
+    }
+   },
+   "spear": {
+    "reflect": 30.531,
+    "spears": 2.266,
+    "spear_dmg": 73.606,
+    "spear_plays": 2.168,
+    "forges": 2.47,
+    "smart_pull": 2.669,
+    "first_spear_turn": 3.419,
+    "spear_fights": 0.995,
+    "sword_plays": 4.206,
+    "probe_plays": 0.782,
+    "probe_turn": 1.987,
+    "taken": 29.821,
+    "len": 5.668,
+    "deaths": 0.169,
+    "death": 0.169,
+    "len_by": {
+     "hallway": 4.06,
+     "elite": 5.35,
+     "boss": 11.04
+    },
+    "taken_by": {
+     "hallway": 10.8,
+     "elite": 29.8,
+     "boss": 86.9
+    }
+   }
+  },
+  "SpearMastery": {
+   "sword": {
+    "reflect": 37.331,
+    "sword_plays": 10.58,
+    "probe_plays": 0.948,
+    "probe_turn": 2.144,
+    "taken": 28.908,
+    "len": 6.178,
+    "deaths": 0.184,
+    "death": 0.1844,
+    "len_by": {
+     "hallway": 3.77,
+     "elite": 7.5,
+     "boss": 11.08
+    },
+    "taken_by": {
+     "hallway": 4.6,
+     "elite": 35.5,
+     "boss": 89.4
+    }
+   },
+   "parry": {
+    "reflect": 75.583,
+    "sword_plays": 9.168,
+    "showoff_str": 1.752,
+    "probe_plays": 0.985,
+    "probe_turn": 2.216,
+    "taken": 16.081,
+    "len": 7.637,
+    "deaths": 0.036,
+    "death": 0.0358,
+    "len_by": {
+     "hallway": 4.43,
+     "elite": 7.77,
+     "boss": 17.31
+    },
+    "taken_by": {
+     "hallway": 2.3,
+     "elite": 14.5,
+     "boss": 61.3
+    }
+   },
+   "spear": {
+    "reflect": 27.47,
+    "spears": 2.015,
+    "spear_dmg": 81.645,
+    "spear_plays": 1.903,
+    "forges": 2.402,
+    "first_spear_turn": 3.799,
+    "spear_fights": 0.994,
+    "sword_plays": 3.906,
+    "probe_plays": 0.869,
+    "probe_turn": 2.047,
+    "taken": 29.887,
+    "len": 5.642,
+    "deaths": 0.146,
+    "death": 0.1464,
+    "len_by": {
+     "hallway": 4.44,
+     "elite": 5.23,
+     "boss": 10.21
+    },
+    "taken_by": {
+     "hallway": 12.2,
+     "elite": 30.8,
+     "boss": 84.6
+    }
+   }
+  },
+  "GateOfBabylon": {
+   "sword": {
+    "reflect": 36.35,
+    "sword_plays": 10.814,
+    "taken": 27.285,
+    "len": 5.959,
+    "deaths": 0.177,
+    "death": 0.1768,
+    "len_by": {
+     "hallway": 3.57,
+     "elite": 7.24,
+     "boss": 11.02
+    },
+    "taken_by": {
+     "hallway": 3.8,
+     "elite": 32.6,
+     "boss": 89.1
+    }
+   },
+   "parry": {
+    "reflect": 72.143,
+    "sword_plays": 9.305,
+    "showoff_str": 1.727,
+    "taken": 14.413,
+    "len": 7.383,
+    "deaths": 0.03,
+    "death": 0.0302,
+    "len_by": {
+     "hallway": 4.27,
+     "elite": 7.6,
+     "boss": 17.25
+    },
+    "taken_by": {
+     "hallway": 1.7,
+     "elite": 12.8,
+     "boss": 59.3
+    }
+   },
+   "spear": {
+    "reflect": 23.452,
+    "spears": 1.971,
+    "spear_dmg": 63.54,
+    "spear_plays": 1.881,
+    "forges": 2.442,
+    "first_spear_turn": 3.751,
+    "spear_fights": 0.993,
+    "sword_plays": 3.402,
+    "gate_n": 0.861,
+    "gate_dmg": 35.209,
+    "probe_plays": 0.482,
+    "probe_turn": 2.508,
+    "taken": 27.559,
+    "len": 5.313,
+    "deaths": 0.072,
+    "death": 0.072,
+    "len_by": {
+     "hallway": 4.29,
+     "elite": 5.28,
+     "boss": 8.37
+    },
+    "taken_by": {
+     "hallway": 10.9,
+     "elite": 31.4,
+     "boss": 69.8
+    }
+   }
+  },
+  "UnlimitedSpearWork": {
+   "sword": {
+    "reflect": 25.675,
+    "spears": 1.617,
+    "spear_dmg": 58.036,
+    "spear_plays": 1.497,
+    "forges": 2.644,
+    "first_spear_turn": 3.484,
+    "spear_fights": 0.686,
+    "sword_plays": 6.726,
+    "probe_plays": 0.948,
+    "probe_turn": 2.152,
+    "taken": 28.442,
+    "len": 5.482,
+    "deaths": 0.149,
+    "death": 0.1486,
+    "len_by": {
+     "hallway": 4.01,
+     "elite": 6.15,
+     "boss": 8.81
+    },
+    "taken_by": {
+     "hallway": 6.0,
+     "elite": 34.9,
+     "boss": 85.7
+    }
+   },
+   "parry": {
+    "reflect": 41.101,
+    "spears": 2.072,
+    "spear_dmg": 73.301,
+    "spear_plays": 1.942,
+    "forges": 2.937,
+    "first_spear_turn": 3.709,
+    "spear_fights": 0.776,
+    "sword_plays": 4.608,
+    "showoff_str": 0.866,
+    "probe_plays": 0.982,
+    "probe_turn": 2.228,
+    "taken": 17.79,
+    "len": 5.953,
+    "deaths": 0.025,
+    "death": 0.0251,
+    "len_by": {
+     "hallway": 4.41,
+     "elite": 6.1,
+     "boss": 10.35
+    },
+    "taken_by": {
+     "hallway": 3.3,
+     "elite": 19.2,
+     "boss": 58.8
+    }
+   },
+   "spear": {
+    "reflect": 21.356,
+    "spears": 2.822,
+    "spear_dmg": 93.673,
+    "spear_plays": 2.625,
+    "forges": 4.188,
+    "first_spear_turn": 3.806,
+    "spear_fights": 0.996,
+    "sword_plays": 2.883,
+    "probe_plays": 0.777,
+    "probe_turn": 1.966,
+    "taken": 33.324,
+    "len": 5.571,
+    "deaths": 0.142,
+    "death": 0.1422,
+    "len_by": {
+     "hallway": 4.55,
+     "elite": 5.76,
+     "boss": 8.36
+    },
+    "taken_by": {
+     "hallway": 13.8,
+     "elite": 38.5,
+     "boss": 83.7
+    }
+   }
+  },
+  "UnlimitedSpearWork+": {
+   "sword": {
+    "reflect": 22.264,
+    "spears": 2.388,
+    "spear_dmg": 78.818,
+    "spear_plays": 2.164,
+    "forges": 3.484,
+    "first_spear_turn": 3.959,
+    "spear_fights": 0.945,
+    "sword_plays": 5.242,
+    "probe_plays": 0.999,
+    "probe_turn": 1.002,
+    "taken": 29.157,
+    "len": 5.334,
+    "deaths": 0.143,
+    "death": 0.1432,
+    "len_by": {
+     "hallway": 4.28,
+     "elite": 5.42,
+     "boss": 8.35
+    },
+    "taken_by": {
+     "hallway": 8.7,
+     "elite": 32.9,
+     "boss": 84.3
+    }
+   },
+   "parry": {
+    "reflect": 35.818,
+    "spears": 2.733,
+    "spear_dmg": 88.339,
+    "spear_plays": 2.478,
+    "forges": 3.64,
+    "first_spear_turn": 4.017,
+    "spear_fights": 0.982,
+    "sword_plays": 3.458,
+    "showoff_str": 0.665,
+    "probe_plays": 0.999,
+    "probe_turn": 1.012,
+    "taken": 19.451,
+    "len": 5.681,
+    "deaths": 0.022,
+    "death": 0.0215,
+    "len_by": {
+     "hallway": 4.4,
+     "elite": 5.4,
+     "boss": 9.95
+    },
+    "taken_by": {
+     "hallway": 5.4,
+     "elite": 20.9,
+     "boss": 58.9
+    }
+   },
+   "spear": {
+    "reflect": 18.629,
+    "spears": 3.105,
+    "spear_dmg": 102.393,
+    "spear_plays": 2.861,
+    "forges": 5.128,
+    "first_spear_turn": 3.809,
+    "spear_fights": 0.998,
+    "sword_plays": 2.276,
+    "probe_plays": 0.897,
+    "probe_turn": 1.018,
+    "taken": 35.344,
+    "len": 5.523,
+    "deaths": 0.147,
+    "death": 0.1466,
+    "len_by": {
+     "hallway": 4.64,
+     "elite": 5.66,
+     "boss": 7.9
+    },
+    "taken_by": {
+     "hallway": 16.4,
+     "elite": 40.2,
+     "boss": 83.4
+    }
+   }
+  },
+  "IAmReborn": {
+   "sword": {
+    "reflect": 35.957,
+    "sword_plays": 10.747,
+    "reborn_turn_dmg": 2.295,
+    "probe_plays": 0.103,
+    "probe_turn": 0.435,
+    "taken": 28.085,
+    "len": 6.004,
+    "deaths": 0.18,
+    "death": 0.1803,
+    "len_by": {
+     "hallway": 3.61,
+     "elite": 7.29,
+     "boss": 10.94
+    },
+    "taken_by": {
+     "hallway": 4.0,
+     "elite": 33.9,
+     "boss": 89.6
+    }
+   },
+   "parry": {
+    "reflect": 73.329,
+    "sword_plays": 9.298,
+    "reborn_turn_dmg": 4.375,
+    "showoff_str": 1.711,
+    "probe_plays": 0.201,
+    "probe_turn": 0.868,
+    "taken": 16.412,
+    "len": 7.553,
+    "deaths": 0.049,
+    "death": 0.0491,
+    "len_by": {
+     "hallway": 4.29,
+     "elite": 7.62,
+     "boss": 17.3
+    },
+    "taken_by": {
+     "hallway": 1.8,
+     "elite": 13.9,
+     "boss": 64.8
+    }
+   },
+   "spear": {
+    "reflect": 29.649,
+    "spears": 2.091,
+    "spear_dmg": 69.194,
+    "spear_plays": 2.004,
+    "forges": 2.516,
+    "first_spear_turn": 3.756,
+    "spear_fights": 0.991,
+    "sword_plays": 4.44,
+    "reborn_turn_dmg": 3.081,
+    "probe_plays": 0.098,
+    "probe_turn": 0.411,
+    "taken": 31.5,
+    "len": 5.86,
+    "deaths": 0.179,
+    "death": 0.1786,
+    "len_by": {
+     "hallway": 4.39,
+     "elite": 5.72,
+     "boss": 10.4
+    },
+    "taken_by": {
+     "hallway": 11.1,
+     "elite": 33.8,
+     "boss": 87.4
+    }
+   }
+  },
+  "Pride": {
+   "sword": {
+    "reflect": 40.901,
+    "sword_plays": 10.566,
+    "crown_prevent_raw": 4.78,
+    "crown_block_before": 0.935,
+    "probe_plays": 0.688,
+    "probe_turn": 2.088,
+    "taken": 24.822,
+    "len": 6.306,
+    "deaths": 0.174,
+    "death": 0.174,
+    "len_by": {
+     "hallway": 3.64,
+     "elite": 7.44,
+     "boss": 12.49
+    },
+    "taken_by": {
+     "hallway": 2.9,
+     "elite": 25.8,
+     "boss": 90.0
+    }
+   },
+   "parry": {
+    "reflect": 77.802,
+    "sword_plays": 9.152,
+    "crown_prevent_raw": 5.761,
+    "crown_block_before": 2.534,
+    "showoff_str": 1.709,
+    "probe_plays": 0.654,
+    "probe_turn": 2.228,
+    "taken": 14.499,
+    "len": 7.874,
+    "deaths": 0.038,
+    "death": 0.0383,
+    "len_by": {
+     "hallway": 4.35,
+     "elite": 7.89,
+     "boss": 18.36
+    },
+    "taken_by": {
+     "hallway": 1.3,
+     "elite": 10.3,
+     "boss": 60.9
+    }
+   },
+   "spear": {
+    "reflect": 34.987,
+    "spears": 2.071,
+    "spear_dmg": 67.629,
+    "spear_plays": 1.979,
+    "forges": 2.479,
+    "first_spear_turn": 3.773,
+    "spear_fights": 0.99,
+    "sword_plays": 4.528,
+    "crown_prevent_raw": 3.487,
+    "crown_block_before": 0.642,
+    "probe_plays": 0.535,
+    "probe_turn": 1.64,
+    "taken": 28.309,
+    "len": 6.136,
+    "deaths": 0.165,
+    "death": 0.1651,
+    "len_by": {
+     "hallway": 4.38,
+     "elite": 5.67,
+     "boss": 12.29
+    },
+    "taken_by": {
+     "hallway": 9.6,
+     "elite": 27.1,
+     "boss": 87.6
+    }
+   }
+  },
+  "Crowning": {
+   "sword": {
+    "reflect": 36.16,
+    "sword_plays": 10.914,
+    "crown_prevent_raw": 7.321,
+    "crown_block_before": 1.499,
+    "probe_plays": 0.374,
+    "probe_turn": 1.673,
+    "taken": 27.045,
+    "len": 6.325,
+    "deaths": 0.18,
+    "death": 0.1796,
+    "len_by": {
+     "hallway": 3.63,
+     "elite": 7.7,
+     "boss": 11.99
+    },
+    "taken_by": {
+     "hallway": 3.6,
+     "elite": 31.1,
+     "boss": 89.4
+    }
+   },
+   "parry": {
+    "reflect": 76.283,
+    "sword_plays": 9.442,
+    "crown_prevent_raw": 7.604,
+    "crown_block_before": 3.79,
+    "showoff_str": 1.788,
+    "probe_plays": 0.361,
+    "probe_turn": 2.109,
+    "taken": 15.855,
+    "len": 7.959,
+    "deaths": 0.042,
+    "death": 0.0425,
+    "len_by": {
+     "hallway": 4.36,
+     "elite": 8.05,
+     "boss": 18.24
+    },
+    "taken_by": {
+     "hallway": 1.6,
+     "elite": 12.3,
+     "boss": 62.9
+    }
+   },
+   "spear": {
+    "reflect": 29.905,
+    "spears": 2.129,
+    "spear_dmg": 69.387,
+    "spear_plays": 2.042,
+    "forges": 2.522,
+    "first_spear_turn": 3.764,
+    "spear_fights": 0.994,
+    "sword_plays": 4.546,
+    "crown_prevent_raw": 5.373,
+    "crown_block_before": 0.96,
+    "probe_plays": 0.275,
+    "probe_turn": 1.31,
+    "taken": 30.122,
+    "len": 6.06,
+    "deaths": 0.171,
+    "death": 0.1715,
+    "len_by": {
+     "hallway": 4.41,
+     "elite": 5.79,
+     "boss": 11.55
+    },
+    "taken_by": {
+     "hallway": 10.6,
+     "elite": 31.2,
+     "boss": 87.6
+    }
+   }
+  },
+  "GazeGuiding": {
+   "sword": {
+    "reflect": 37.856,
+    "sword_plays": 11.031,
+    "gaze_red": 7.711,
+    "gaze_unc": 11.419,
+    "probe_plays": 0.646,
+    "probe_turn": 4.211,
+    "taken": 27.059,
+    "len": 6.363,
+    "deaths": 0.176,
+    "death": 0.176,
+    "len_by": {
+     "hallway": 3.58,
+     "elite": 7.5,
+     "boss": 12.86
+    },
+    "taken_by": {
+     "hallway": 3.8,
+     "elite": 31.4,
+     "boss": 90.0
+    }
+   },
+   "parry": {
+    "reflect": 74.113,
+    "sword_plays": 9.348,
+    "gaze_red": 10.771,
+    "gaze_unc": 13.34,
+    "showoff_str": 1.883,
+    "probe_plays": 0.578,
+    "probe_turn": 6.488,
+    "taken": 14.542,
+    "len": 7.84,
+    "deaths": 0.031,
+    "death": 0.0307,
+    "len_by": {
+     "hallway": 4.3,
+     "elite": 7.81,
+     "boss": 19.1
+    },
+    "taken_by": {
+     "hallway": 1.7,
+     "elite": 12.7,
+     "boss": 58.4
+    }
+   },
+   "spear": {
+    "reflect": 31.789,
+    "spears": 2.101,
+    "spear_dmg": 68.281,
+    "spear_plays": 2.009,
+    "forges": 2.507,
+    "first_spear_turn": 3.766,
+    "spear_fights": 0.988,
+    "sword_plays": 4.721,
+    "gaze_red": 6.999,
+    "gaze_unc": 10.227,
+    "probe_plays": 0.552,
+    "probe_turn": 3.963,
+    "taken": 30.21,
+    "len": 6.217,
+    "deaths": 0.159,
+    "death": 0.1587,
+    "len_by": {
+     "hallway": 4.4,
+     "elite": 5.8,
+     "boss": 12.64
+    },
+    "taken_by": {
+     "hallway": 10.9,
+     "elite": 32.3,
+     "boss": 86.9
+    }
+   }
+  },
+  "RapierMastery": {
+   "sword": {
+    "reflect": 61.649,
+    "mastery_reflect": 25.573,
+    "sword_plays": 9.472,
+    "probe_plays": 0.948,
+    "probe_turn": 2.146,
+    "taken": 26.144,
+    "len": 5.72,
+    "deaths": 0.171,
+    "death": 0.1705,
+    "len_by": {
+     "hallway": 3.48,
+     "elite": 6.3,
+     "boss": 11.34
+    },
+    "taken_by": {
+     "hallway": 4.2,
+     "elite": 27.8,
+     "boss": 87.9
+    }
+   },
+   "parry": {
+    "reflect": 95.066,
+    "mastery_reflect": 39.825,
+    "sword_plays": 6.977,
+    "showoff_str": 1.425,
+    "probe_plays": 0.983,
+    "probe_turn": 2.234,
+    "taken": 8.962,
+    "len": 6.002,
+    "deaths": 0.0,
+    "death": 0.0003,
+    "len_by": {
+     "hallway": 3.88,
+     "elite": 6.16,
+     "boss": 12.27
+    },
+    "taken_by": {
+     "hallway": 2.1,
+     "elite": 11.1,
+     "boss": 26.5
+    }
+   },
+   "spear": {
+    "reflect": 45.681,
+    "mastery_reflect": 16.597,
+    "spears": 1.976,
+    "spear_dmg": 65.403,
+    "spear_plays": 1.893,
+    "forges": 2.446,
+    "first_spear_turn": 3.71,
+    "spear_fights": 0.97,
+    "sword_plays": 3.972,
+    "probe_plays": 0.779,
+    "probe_turn": 1.972,
+    "taken": 30.624,
+    "len": 5.71,
+    "deaths": 0.146,
+    "death": 0.1461,
+    "len_by": {
+     "hallway": 4.27,
+     "elite": 5.52,
+     "boss": 10.38
+    },
+    "taken_by": {
+     "hallway": 11.4,
+     "elite": 33.5,
+     "boss": 83.9
+    }
+   }
+  },
+  "RapierMastery+": {
+   "sword": {
+    "reflect": 78.155,
+    "mastery_reflect": 44.526,
+    "sword_plays": 8.581,
+    "probe_plays": 0.949,
+    "probe_turn": 2.158,
+    "taken": 22.979,
+    "len": 5.283,
+    "deaths": 0.104,
+    "death": 0.1037,
+    "len_by": {
+     "hallway": 3.28,
+     "elite": 5.54,
+     "boss": 10.87
+    },
+    "taken_by": {
+     "hallway": 4.0,
+     "elite": 24.0,
+     "boss": 78.3
+    }
+   },
+   "parry": {
+    "reflect": 106.143,
+    "mastery_reflect": 60.211,
+    "sword_plays": 5.864,
+    "showoff_str": 1.24,
+    "probe_plays": 0.983,
+    "probe_turn": 2.218,
+    "taken": 7.098,
+    "len": 5.169,
+    "deaths": 0.0,
+    "death": 0.0001,
+    "len_by": {
+     "hallway": 3.55,
+     "elite": 5.29,
+     "boss": 9.76
+    },
+    "taken_by": {
+     "hallway": 1.9,
+     "elite": 9.7,
+     "boss": 18.2
+    }
+   },
+   "spear": {
+    "reflect": 64.251,
+    "mastery_reflect": 35.672,
+    "spears": 1.645,
+    "spear_dmg": 55.488,
+    "spear_plays": 1.581,
+    "forges": 2.155,
+    "first_spear_turn": 3.427,
+    "spear_fights": 0.883,
+    "sword_plays": 3.667,
+    "probe_plays": 0.886,
+    "probe_turn": 2.064,
+    "taken": 26.548,
+    "len": 5.372,
+    "deaths": 0.085,
+    "death": 0.0846,
+    "len_by": {
+     "hallway": 3.97,
+     "elite": 5.26,
+     "boss": 9.81
+    },
+    "taken_by": {
+     "hallway": 9.4,
+     "elite": 28.9,
+     "boss": 74.6
+    }
+   }
+  },
+  "SmoothMove": {
+   "sword": {
+    "reflect": 41.222,
+    "sword_plays": 10.687,
+    "smooth_draw": 8.092,
+    "probe_plays": 0.947,
+    "probe_turn": 2.139,
+    "taken": 27.224,
+    "len": 6.242,
+    "deaths": 0.179,
+    "death": 0.1794,
+    "len_by": {
+     "hallway": 3.7,
+     "elite": 7.25,
+     "boss": 11.98
+    },
+    "taken_by": {
+     "hallway": 4.2,
+     "elite": 30.6,
+     "boss": 88.8
+    }
+   },
+   "parry": {
+    "reflect": 74.889,
+    "sword_plays": 9.394,
+    "smooth_draw": 7.736,
+    "showoff_str": 1.792,
+    "probe_plays": 0.983,
+    "probe_turn": 2.217,
+    "taken": 12.777,
+    "len": 7.452,
+    "deaths": 0.009,
+    "death": 0.0087,
+    "len_by": {
+     "hallway": 4.29,
+     "elite": 7.46,
+     "boss": 16.89
+    },
+    "taken_by": {
+     "hallway": 2.2,
+     "elite": 12.4,
+     "boss": 45.0
+    }
+   },
+   "spear": {
+    "reflect": 31.572,
+    "spears": 2.139,
+    "spear_dmg": 70.514,
+    "spear_plays": 2.057,
+    "forges": 2.474,
+    "first_spear_turn": 3.657,
+    "spear_fights": 0.996,
+    "sword_plays": 4.486,
+    "smooth_draw": 3.257,
+    "probe_plays": 0.873,
+    "probe_turn": 2.04,
+    "taken": 30.406,
+    "len": 5.879,
+    "deaths": 0.16,
+    "death": 0.1596,
+    "len_by": {
+     "hallway": 4.28,
+     "elite": 5.61,
+     "boss": 11.17
+    },
+    "taken_by": {
+     "hallway": 11.5,
+     "elite": 31.9,
+     "boss": 85.1
+    }
+   }
+  },
+  "SmoothMove+": {
+   "sword": {
+    "reflect": 43.642,
+    "sword_plays": 10.73,
+    "smooth_draw": 16.282,
+    "probe_plays": 0.949,
+    "probe_turn": 2.143,
+    "taken": 25.934,
+    "len": 6.301,
+    "deaths": 0.17,
+    "death": 0.1699,
+    "len_by": {
+     "hallway": 3.68,
+     "elite": 7.11,
+     "boss": 12.65
+    },
+    "taken_by": {
+     "hallway": 3.9,
+     "elite": 28.0,
+     "boss": 86.7
+    }
+   },
+   "parry": {
+    "reflect": 71.362,
+    "sword_plays": 9.598,
+    "smooth_draw": 15.82,
+    "showoff_str": 1.746,
+    "probe_plays": 0.984,
+    "probe_turn": 2.228,
+    "taken": 10.518,
+    "len": 7.201,
+    "deaths": 0.003,
+    "death": 0.003,
+    "len_by": {
+     "hallway": 4.21,
+     "elite": 7.23,
+     "boss": 16.25
+    },
+    "taken_by": {
+     "hallway": 2.1,
+     "elite": 11.3,
+     "boss": 34.6
+    }
+   },
+   "spear": {
+    "reflect": 33.233,
+    "spears": 2.155,
+    "spear_dmg": 70.719,
+    "spear_plays": 2.073,
+    "forges": 2.471,
+    "first_spear_turn": 3.565,
+    "spear_fights": 0.995,
+    "sword_plays": 4.542,
+    "smooth_draw": 6.675,
+    "probe_plays": 0.883,
+    "probe_turn": 2.067,
+    "taken": 29.197,
+    "len": 5.856,
+    "deaths": 0.145,
+    "death": 0.1453,
+    "len_by": {
+     "hallway": 4.19,
+     "elite": 5.45,
+     "boss": 11.65
+    },
+    "taken_by": {
+     "hallway": 11.2,
+     "elite": 29.6,
+     "boss": 83.5
+    }
+   }
+  },
+  "StrongSake": {
+   "sword": {
+    "reflect": 35.958,
+    "sword_plays": 10.949,
+    "sake_energy": 0.559,
+    "probe_plays": 0.081,
+    "probe_turn": 0.303,
+    "taken": 28.068,
+    "len": 6.002,
+    "deaths": 0.18,
+    "death": 0.1799,
+    "len_by": {
+     "hallway": 3.61,
+     "elite": 7.3,
+     "boss": 10.93
+    },
+    "taken_by": {
+     "hallway": 4.0,
+     "elite": 33.9,
+     "boss": 89.5
+    }
+   },
+   "parry": {
+    "reflect": 75.297,
+    "sword_plays": 9.615,
+    "sake_energy": 0.498,
+    "showoff_str": 1.768,
+    "probe_plays": 0.088,
+    "probe_turn": 0.382,
+    "taken": 17.024,
+    "len": 7.661,
+    "deaths": 0.061,
+    "death": 0.0608,
+    "len_by": {
+     "hallway": 4.32,
+     "elite": 7.7,
+     "boss": 17.21
+    },
+    "taken_by": {
+     "hallway": 1.7,
+     "elite": 13.8,
+     "boss": 66.1
+    }
+   },
+   "spear": {
+    "reflect": 29.357,
+    "spears": 2.115,
+    "spear_dmg": 68.922,
+    "spear_plays": 2.022,
+    "forges": 2.516,
+    "first_spear_turn": 3.749,
+    "spear_fights": 0.994,
+    "sword_plays": 4.503,
+    "sake_energy": 0.213,
+    "probe_plays": 0.051,
+    "probe_turn": 0.205,
+    "taken": 31.255,
+    "len": 5.83,
+    "deaths": 0.17,
+    "death": 0.1703,
+    "len_by": {
+     "hallway": 4.39,
+     "elite": 5.72,
+     "boss": 10.38
+    },
+    "taken_by": {
+     "hallway": 11.3,
+     "elite": 33.6,
+     "boss": 87.4
+    }
+   }
+  },
+  "StardustMirage": {
+   "sword": {
+    "reflect": 35.268,
+    "sword_plays": 10.525,
+    "sdm_k": 1.48,
+    "sdm_dmg": 9.345,
+    "probe_plays": 0.437,
+    "probe_turn": 1.905,
+    "taken": 27.971,
+    "len": 5.876,
+    "deaths": 0.188,
+    "death": 0.1878,
+    "len_by": {
+     "hallway": 3.48,
+     "elite": 7.07,
+     "boss": 10.8
+    },
+    "taken_by": {
+     "hallway": 3.7,
+     "elite": 32.7,
+     "boss": 89.2
+    }
+   },
+   "parry": {
+    "reflect": 72.775,
+    "sword_plays": 9.477,
+    "sdm_k": 0.738,
+    "sdm_dmg": 5.225,
+    "showoff_str": 1.688,
+    "probe_plays": 0.318,
+    "probe_turn": 1.79,
+    "taken": 16.659,
+    "len": 7.452,
+    "deaths": 0.052,
+    "death": 0.0522,
+    "len_by": {
+     "hallway": 4.19,
+     "elite": 7.54,
+     "boss": 17.01
+    },
+    "taken_by": {
+     "hallway": 1.7,
+     "elite": 13.5,
+     "boss": 66.6
+    }
+   },
+   "spear": {
+    "reflect": 28.965,
+    "spears": 2.092,
+    "spear_dmg": 68.113,
+    "spear_plays": 1.998,
+    "forges": 2.502,
+    "first_spear_turn": 3.747,
+    "spear_fights": 0.992,
+    "sword_plays": 4.58,
+    "sdm_k": 0.34,
+    "sdm_dmg": 2.132,
+    "probe_plays": 0.185,
+    "probe_turn": 0.892,
+    "taken": 31.066,
+    "len": 5.799,
+    "deaths": 0.176,
+    "death": 0.1765,
+    "len_by": {
+     "hallway": 4.35,
+     "elite": 5.66,
+     "boss": 10.36
+    },
+    "taken_by": {
+     "hallway": 10.9,
+     "elite": 33.4,
+     "boss": 87.8
+    }
+   }
+  },
+  "Linear": {
+   "sword": {
+    "reflect": 33.753,
+    "sword_plays": 11.025,
+    "linear_gen_playable": 1.842,
+    "linear_gen_dead": 0.18,
+    "probe_plays": 2.022,
+    "probe_turn": 4.706,
+    "taken": 27.286,
+    "len": 5.78,
+    "deaths": 0.178,
+    "death": 0.178,
+    "len_by": {
+     "hallway": 3.42,
+     "elite": 7.04,
+     "boss": 10.8
+    },
+    "taken_by": {
+     "hallway": 3.8,
+     "elite": 32.4,
+     "boss": 89.5
+    }
+   },
+   "parry": {
+    "reflect": 70.062,
+    "sword_plays": 10.117,
+    "showoff_str": 1.585,
+    "linear_gen_playable": 0.949,
+    "linear_gen_dead": 0.098,
+    "probe_plays": 1.047,
+    "probe_turn": 2.528,
+    "taken": 16.592,
+    "len": 7.272,
+    "deaths": 0.045,
+    "death": 0.0449,
+    "len_by": {
+     "hallway": 3.94,
+     "elite": 7.29,
+     "boss": 16.65
+    },
+    "taken_by": {
+     "hallway": 1.8,
+     "elite": 14.0,
+     "boss": 62.4
+    }
+   },
+   "spear": {
+    "reflect": 27.661,
+    "spears": 2.008,
+    "spear_dmg": 65.79,
+    "spear_plays": 1.917,
+    "forges": 2.465,
+    "first_spear_turn": 3.755,
+    "spear_fights": 0.98,
+    "sword_plays": 5.055,
+    "linear_gen_playable": 0.727,
+    "linear_gen_dead": 0.071,
+    "probe_plays": 0.798,
+    "probe_turn": 2.14,
+    "taken": 31.005,
+    "len": 5.696,
+    "deaths": 0.172,
+    "death": 0.1715,
+    "len_by": {
+     "hallway": 4.27,
+     "elite": 5.61,
+     "boss": 10.17
+    },
+    "taken_by": {
+     "hallway": 10.9,
+     "elite": 33.5,
+     "boss": 87.5
+    }
+   }
+  },
+  "Comedian": {
+   "sword": {
+    "reflect": 42.517,
+    "sword_plays": 10.69,
+    "probe_plays": 1.195,
+    "probe_turn": 5.719,
+    "taken": 26.329,
+    "len": 6.198,
+    "deaths": 0.187,
+    "death": 0.1871,
+    "len_by": {
+     "hallway": 3.56,
+     "elite": 7.27,
+     "boss": 12.02
+    },
+    "taken_by": {
+     "hallway": 3.0,
+     "elite": 28.1,
+     "boss": 89.5
+    }
+   },
+   "parry": {
+    "reflect": 79.318,
+    "sword_plays": 9.252,
+    "showoff_str": 1.836,
+    "probe_plays": 2.933,
+    "probe_turn": 19.673,
+    "taken": 13.748,
+    "len": 7.689,
+    "deaths": 0.022,
+    "death": 0.0223,
+    "len_by": {
+     "hallway": 4.29,
+     "elite": 7.66,
+     "boss": 17.52
+    },
+    "taken_by": {
+     "hallway": 1.3,
+     "elite": 11.1,
+     "boss": 53.8
+    }
+   },
+   "spear": {
+    "reflect": 35.621,
+    "spears": 2.087,
+    "spear_dmg": 68.423,
+    "spear_plays": 1.999,
+    "forges": 2.496,
+    "first_spear_turn": 3.759,
+    "spear_fights": 0.992,
+    "sword_plays": 4.477,
+    "com_parts": 0.573,
+    "probe_plays": 0.949,
+    "probe_turn": 4.761,
+    "taken": 29.294,
+    "len": 6.023,
+    "deaths": 0.173,
+    "death": 0.1731,
+    "len_by": {
+     "hallway": 4.35,
+     "elite": 5.63,
+     "boss": 11.58
+    },
+    "taken_by": {
+     "hallway": 9.6,
+     "elite": 29.6,
+     "boss": 86.9
+    }
+   }
+  },
+  "CeremonialSword": {
+   "sword": {
+    "reflect": 21.369,
+    "ss_extra": 26.023,
+    "sword_plays": 8.593,
+    "probe_plays": 0.949,
+    "probe_turn": 2.147,
+    "taken": 22.992,
+    "len": 4.641,
+    "deaths": 0.105,
+    "death": 0.1053,
+    "len_by": {
+     "hallway": 3.03,
+     "elite": 4.89,
+     "boss": 8.99
+    },
+    "taken_by": {
+     "hallway": 3.8,
+     "elite": 24.0,
+     "boss": 78.2
+    }
+   },
+   "parry": {
+    "reflect": 53.974,
+    "ss_extra": 20.228,
+    "sword_plays": 8.095,
+    "showoff_str": 1.26,
+    "probe_plays": 0.987,
+    "probe_turn": 2.203,
+    "taken": 14.045,
+    "len": 6.291,
+    "deaths": 0.006,
+    "death": 0.006,
+    "len_by": {
+     "hallway": 3.78,
+     "elite": 6.32,
+     "boss": 13.74
+    },
+    "taken_by": {
+     "hallway": 2.4,
+     "elite": 14.6,
+     "boss": 48.1
+    }
+   },
+   "spear": {
+    "reflect": 24.394,
+    "spears": 1.845,
+    "spear_dmg": 62.61,
+    "spear_plays": 1.765,
+    "forges": 2.341,
+    "first_spear_turn": 3.717,
+    "spear_fights": 0.951,
+    "ss_extra": 10.76,
+    "sword_plays": 4.517,
+    "probe_plays": 0.885,
+    "probe_turn": 2.04,
+    "taken": 31.166,
+    "len": 5.501,
+    "deaths": 0.155,
+    "death": 0.1554,
+    "len_by": {
+     "hallway": 4.21,
+     "elite": 5.47,
+     "boss": 9.44
+    },
+    "taken_by": {
+     "hallway": 11.5,
+     "elite": 34.0,
+     "boss": 85.6
+    }
+   }
+  },
+  "DefensiveStance": {
+   "sword": {
+    "reflect": 36.703,
+    "sword_plays": 10.803,
+    "shadow_extra": 1.342,
+    "probe_plays": 0.161,
+    "probe_turn": 0.731,
+    "taken": 27.715,
+    "len": 5.999,
+    "deaths": 0.182,
+    "death": 0.1819,
+    "len_by": {
+     "hallway": 3.57,
+     "elite": 7.32,
+     "boss": 11.05
+    },
+    "taken_by": {
+     "hallway": 3.8,
+     "elite": 33.1,
+     "boss": 89.5
+    }
+   },
+   "parry": {
+    "reflect": 75.755,
+    "sword_plays": 9.573,
+    "shadow_extra": 1.219,
+    "showoff_str": 1.766,
+    "probe_plays": 0.121,
+    "probe_turn": 0.425,
+    "taken": 17.408,
+    "len": 7.685,
+    "deaths": 0.062,
+    "death": 0.062,
+    "len_by": {
+     "hallway": 4.3,
+     "elite": 7.73,
+     "boss": 17.32
+    },
+    "taken_by": {
+     "hallway": 1.7,
+     "elite": 13.8,
+     "boss": 68.0
+    }
+   },
+   "spear": {
+    "reflect": 30.158,
+    "spears": 2.097,
+    "spear_dmg": 68.537,
+    "spear_plays": 2.007,
+    "forges": 2.508,
+    "first_spear_turn": 3.777,
+    "spear_fights": 0.989,
+    "sword_plays": 4.522,
+    "shadow_extra": 0.656,
+    "probe_plays": 0.075,
+    "probe_turn": 0.368,
+    "taken": 31.552,
+    "len": 5.893,
+    "deaths": 0.18,
+    "death": 0.1796,
+    "len_by": {
+     "hallway": 4.39,
+     "elite": 5.76,
+     "boss": 10.53
+    },
+    "taken_by": {
+     "hallway": 11.2,
+     "elite": 34.0,
+     "boss": 87.7
+    }
+   }
+  },
+  "ShowOff": {
+   "sword": {
+    "reflect": 40.9,
+    "sword_plays": 10.493,
+    "showoff_str": 0.886,
+    "probe_plays": 1.204,
+    "probe_turn": 5.607,
+    "taken": 25.272,
+    "len": 6.043,
+    "deaths": 0.177,
+    "death": 0.1773,
+    "len_by": {
+     "hallway": 3.5,
+     "elite": 7.11,
+     "boss": 11.84
+    },
+    "taken_by": {
+     "hallway": 2.8,
+     "elite": 27.0,
+     "boss": 89.1
+    }
+   },
+   "parry": {
+    "reflect": 78.049,
+    "sword_plays": 9.13,
+    "showoff_str": 3.08,
+    "probe_plays": 3.382,
+    "probe_turn": 21.703,
+    "taken": 13.452,
+    "len": 7.611,
+    "deaths": 0.022,
+    "death": 0.0216,
+    "len_by": {
+     "hallway": 4.27,
+     "elite": 7.61,
+     "boss": 17.33
+    },
+    "taken_by": {
+     "hallway": 1.3,
+     "elite": 10.9,
+     "boss": 52.9
+    }
+   },
+   "spear": {
+    "reflect": 34.971,
+    "spears": 2.074,
+    "spear_dmg": 68.214,
+    "spear_plays": 1.99,
+    "forges": 2.49,
+    "first_spear_turn": 3.752,
+    "spear_fights": 0.991,
+    "sword_plays": 4.464,
+    "showoff_str": 0.734,
+    "probe_plays": 0.947,
+    "probe_turn": 4.596,
+    "taken": 29.346,
+    "len": 5.994,
+    "deaths": 0.172,
+    "death": 0.1716,
+    "len_by": {
+     "hallway": 4.35,
+     "elite": 5.65,
+     "boss": 11.41
+    },
+    "taken_by": {
+     "hallway": 9.7,
+     "elite": 29.6,
+     "boss": 86.7
+    }
+   }
+  },
+  "RealisticActing": {
+   "sword": {
+    "reflect": 47.016,
+    "sword_plays": 10.971,
+    "probe_plays": 0.946,
+    "probe_turn": 2.137,
+    "taken": 25.29,
+    "len": 6.423,
+    "deaths": 0.167,
+    "death": 0.1674,
+    "len_by": {
+     "hallway": 3.73,
+     "elite": 7.2,
+     "boss": 13.24
+    },
+    "taken_by": {
+     "hallway": 3.7,
+     "elite": 26.5,
+     "boss": 88.1
+    }
+   },
+   "parry": {
+    "reflect": 75.79,
+    "sword_plays": 9.347,
+    "showoff_str": 1.808,
+    "probe_plays": 1.97,
+    "probe_turn": 4.444,
+    "taken": 9.577,
+    "len": 7.441,
+    "deaths": 0.001,
+    "death": 0.0013,
+    "len_by": {
+     "hallway": 4.42,
+     "elite": 7.6,
+     "boss": 16.5
+    },
+    "taken_by": {
+     "hallway": 1.9,
+     "elite": 10.7,
+     "boss": 31.2
+    }
+   },
+   "spear": {
+    "reflect": 38.281,
+    "spears": 2.071,
+    "spear_dmg": 67.977,
+    "spear_plays": 1.987,
+    "forges": 2.463,
+    "first_spear_turn": 3.796,
+    "spear_fights": 0.992,
+    "sword_plays": 4.68,
+    "probe_plays": 0.884,
+    "probe_turn": 2.06,
+    "taken": 29.015,
+    "len": 6.22,
+    "deaths": 0.125,
+    "death": 0.1249,
+    "len_by": {
+     "hallway": 4.43,
+     "elite": 5.8,
+     "boss": 12.47
+    },
+    "taken_by": {
+     "hallway": 11.0,
+     "elite": 30.9,
+     "boss": 81.4
+    }
+   }
+  },
+  "Strike": {
+   "sword": {
+    "reflect": 35.346,
+    "sword_plays": 11.023,
+    "probe_plays": 2.143,
+    "probe_turn": 9.302,
+    "taken": 27.771,
+    "len": 5.911,
+    "deaths": 0.181,
+    "death": 0.1813,
+    "len_by": {
+     "hallway": 3.52,
+     "elite": 7.21,
+     "boss": 10.82
+    },
+    "taken_by": {
+     "hallway": 3.9,
+     "elite": 33.0,
+     "boss": 89.4
+    }
+   },
+   "parry": {
+    "reflect": 73.405,
+    "sword_plays": 10.091,
+    "showoff_str": 1.673,
+    "probe_plays": 4.429,
+    "probe_turn": 24.357,
+    "taken": 16.775,
+    "len": 7.491,
+    "deaths": 0.051,
+    "death": 0.0508,
+    "len_by": {
+     "hallway": 4.13,
+     "elite": 7.52,
+     "boss": 17.11
+    },
+    "taken_by": {
+     "hallway": 1.6,
+     "elite": 13.4,
+     "boss": 65.8
+    }
+   },
+   "spear": {
+    "reflect": 29.234,
+    "spears": 2.052,
+    "spear_dmg": 66.804,
+    "spear_plays": 1.958,
+    "forges": 2.482,
+    "first_spear_turn": 3.759,
+    "spear_fights": 0.985,
+    "sword_plays": 4.792,
+    "probe_plays": 1.948,
+    "probe_turn": 8.476,
+    "taken": 31.084,
+    "len": 5.793,
+    "deaths": 0.175,
+    "death": 0.1751,
+    "len_by": {
+     "hallway": 4.35,
+     "elite": 5.73,
+     "boss": 10.29
+    },
+    "taken_by": {
+     "hallway": 11.0,
+     "elite": 33.7,
+     "boss": 87.8
+    }
+   }
+  },
+  "Defend": {
+   "sword": {
+    "reflect": 39.313,
+    "sword_plays": 10.498,
+    "probe_plays": 4.362,
+    "probe_turn": 20.914,
+    "taken": 26.963,
+    "len": 6.092,
+    "deaths": 0.18,
+    "death": 0.1805,
+    "len_by": {
+     "hallway": 3.57,
+     "elite": 7.39,
+     "boss": 11.41
+    },
+    "taken_by": {
+     "hallway": 3.4,
+     "elite": 31.4,
+     "boss": 89.2
+    }
+   },
+   "parry": {
+    "reflect": 77.709,
+    "sword_plays": 9.116,
+    "showoff_str": 1.781,
+    "probe_plays": 4.66,
+    "probe_turn": 33.653,
+    "taken": 14.9,
+    "len": 7.651,
+    "deaths": 0.036,
+    "death": 0.0356,
+    "len_by": {
+     "hallway": 4.3,
+     "elite": 7.74,
+     "boss": 17.61
+    },
+    "taken_by": {
+     "hallway": 1.4,
+     "elite": 12.2,
+     "boss": 60.1
+    }
+   },
+   "spear": {
+    "reflect": 32.214,
+    "spears": 2.107,
+    "spear_dmg": 69.03,
+    "spear_plays": 2.014,
+    "forges": 2.509,
+    "first_spear_turn": 3.77,
+    "spear_fights": 0.993,
+    "sword_plays": 4.381,
+    "probe_plays": 3.298,
+    "probe_turn": 15.498,
+    "taken": 30.563,
+    "len": 5.933,
+    "deaths": 0.178,
+    "death": 0.1778,
+    "len_by": {
+     "hallway": 4.38,
+     "elite": 5.71,
+     "boss": 10.87
+    },
+    "taken_by": {
+     "hallway": 10.5,
+     "elite": 31.8,
+     "boss": 87.5
+    }
+   }
+  }
+ },
+ "level": {
+  "sword": {
+   "1": {
+    "reflect": 24.301,
+    "sword_plays": 11.55,
+    "taken": 28.357,
+    "len": 6.094,
+    "deaths": 0.177,
+    "death": 0.177,
+    "len_by": {
+     "hallway": 3.69,
+     "elite": 7.75,
+     "boss": 10.72
+    },
+    "taken_by": {
+     "hallway": 4.0,
+     "elite": 36.8,
+     "boss": 89.1
+    }
+   },
+   "3": {
+    "reflect": 33.385,
+    "sword_plays": 11.045,
+    "taken": 27.299,
+    "len": 6.028,
+    "deaths": 0.177,
+    "death": 0.1765,
+    "len_by": {
+     "hallway": 3.57,
+     "elite": 7.37,
+     "boss": 11.15
+    },
+    "taken_by": {
+     "hallway": 3.6,
+     "elite": 32.5,
+     "boss": 89.5
+    }
+   },
+   "5": {
+    "reflect": 40.005,
+    "sword_plays": 10.568,
+    "taken": 26.425,
+    "len": 5.846,
+    "deaths": 0.178,
+    "death": 0.1776,
+    "len_by": {
+     "hallway": 3.45,
+     "elite": 6.97,
+     "boss": 11.2
+    },
+    "taken_by": {
+     "hallway": 3.3,
+     "elite": 30.4,
+     "boss": 89.2
+    }
+   }
+  },
+  "parry": {
+   "1": {
+    "reflect": 59.511,
+    "sword_plays": 10.859,
+    "showoff_str": 1.95,
+    "taken": 19.526,
+    "len": 8.334,
+    "deaths": 0.127,
+    "death": 0.1266,
+    "len_by": {
+     "hallway": 4.53,
+     "elite": 8.58,
+     "boss": 19.36
+    },
+    "taken_by": {
+     "hallway": 1.8,
+     "elite": 14.5,
+     "boss": 81.5
+    }
+   },
+   "3": {
+    "reflect": 69.835,
+    "sword_plays": 9.898,
+    "showoff_str": 1.849,
+    "taken": 15.651,
+    "len": 7.718,
+    "deaths": 0.046,
+    "death": 0.0461,
+    "len_by": {
+     "hallway": 4.3,
+     "elite": 7.86,
+     "boss": 18.09
+    },
+    "taken_by": {
+     "hallway": 1.5,
+     "elite": 12.0,
+     "boss": 65.7
+    }
+   },
+   "5": {
+    "reflect": 79.072,
+    "sword_plays": 9.105,
+    "showoff_str": 1.756,
+    "taken": 13.32,
+    "len": 7.191,
+    "deaths": 0.011,
+    "death": 0.0115,
+    "len_by": {
+     "hallway": 4.1,
+     "elite": 7.17,
+     "boss": 16.3
+    },
+    "taken_by": {
+     "hallway": 1.4,
+     "elite": 11.3,
+     "boss": 51.4
+    }
+   }
+  },
+  "spear": {
+   "1": {
+    "reflect": 18.913,
+    "spears": 2.232,
+    "spear_dmg": 72.951,
+    "spear_plays": 2.157,
+    "forges": 2.594,
+    "first_spear_turn": 3.634,
+    "spear_fights": 0.998,
+    "sword_plays": 4.766,
+    "taken": 32.299,
+    "len": 5.818,
+    "deaths": 0.182,
+    "death": 0.1818,
+    "len_by": {
+     "hallway": 4.38,
+     "elite": 5.73,
+     "boss": 10.24
+    },
+    "taken_by": {
+     "hallway": 12.3,
+     "elite": 34.9,
+     "boss": 87.8
+    }
+   },
+   "3": {
+    "reflect": 26.422,
+    "spears": 2.166,
+    "spear_dmg": 70.723,
+    "spear_plays": 2.093,
+    "forges": 2.549,
+    "first_spear_turn": 3.634,
+    "spear_fights": 0.995,
+    "sword_plays": 4.47,
+    "taken": 30.872,
+    "len": 5.761,
+    "deaths": 0.171,
+    "death": 0.1714,
+    "len_by": {
+     "hallway": 4.29,
+     "elite": 5.64,
+     "boss": 10.5
+    },
+    "taken_by": {
+     "hallway": 11.2,
+     "elite": 33.1,
+     "boss": 87.6
+    }
+   },
+   "5": {
+    "reflect": 33.527,
+    "spears": 2.092,
+    "spear_dmg": 69.17,
+    "spear_plays": 2.018,
+    "forges": 2.488,
+    "first_spear_turn": 3.629,
+    "spear_fights": 0.99,
+    "sword_plays": 4.369,
+    "taken": 29.569,
+    "len": 5.762,
+    "deaths": 0.17,
+    "death": 0.1695,
+    "len_by": {
+     "hallway": 4.22,
+     "elite": 5.48,
+     "boss": 10.93
+    },
+    "taken_by": {
+     "hallway": 10.0,
+     "elite": 30.3,
+     "boss": 87.6
+    }
+   }
+  }
+ },
+ "starburst": {
+  "sword+CeremonialSword": {
+   "reflect": 17.563,
+   "ss_extra": 17.604,
+   "sword_plays": 7.348,
+   "sb_dmg": 41.236,
+   "sb_k": 1.411,
+   "probe_plays": 0.364,
+   "probe_turn": 1.731,
+   "taken": 19.564,
+   "len": 4.291,
+   "deaths": 0.033,
+   "death": 0.033,
+   "len_by": {
+    "hallway": 3.1,
+    "elite": 4.6,
+    "boss": 7.36
+   },
+   "taken_by": {
+    "hallway": 4.0,
+    "elite": 22.7,
+    "boss": 61.2
+   }
+  },
+  "parry+CeremonialSword": {
+   "reflect": 33.904,
+   "ss_extra": 10.634,
+   "sword_plays": 5.958,
+   "sb_dmg": 57.859,
+   "sb_k": 2.042,
+   "showoff_str": 0.842,
+   "probe_plays": 0.528,
+   "probe_turn": 2.725,
+   "taken": 11.895,
+   "len": 5.034,
+   "deaths": 0.0,
+   "death": 0.0004,
+   "len_by": {
+    "hallway": 3.8,
+    "elite": 5.37,
+    "boss": 8.21
+   },
+   "taken_by": {
+    "hallway": 2.6,
+    "elite": 14.3,
+    "boss": 35.9
+   }
+  },
+  "spear+CeremonialSword": {
+   "reflect": 19.842,
+   "spears": 1.639,
+   "spear_dmg": 52.629,
+   "spear_plays": 1.559,
+   "forges": 2.227,
+   "first_spear_turn": 3.551,
+   "spear_fights": 0.895,
+   "ss_extra": 6.644,
+   "sword_plays": 3.859,
+   "sb_dmg": 36.946,
+   "sb_k": 1.306,
+   "probe_plays": 0.337,
+   "probe_turn": 1.69,
+   "taken": 28.398,
+   "len": 5.141,
+   "deaths": 0.08,
+   "death": 0.0796,
+   "len_by": {
+    "hallway": 4.23,
+    "elite": 5.11,
+    "boss": 7.9
+   },
+   "taken_by": {
+    "hallway": 11.8,
+    "elite": 32.3,
+    "boss": 71.4
+   }
+  },
+  "sword+TreeBranch": {
+   "reflect": 32.058,
+   "branch_extra": 5.131,
+   "ss_extra": 5.131,
+   "sword_plays": 10.152,
+   "sb_dmg": 9.171,
+   "sb_k": 0.347,
+   "probe_plays": 0.119,
+   "probe_turn": 0.257,
+   "taken": 27.094,
+   "len": 5.637,
+   "deaths": 0.182,
+   "death": 0.1821,
+   "len_by": {
+    "hallway": 3.33,
+    "elite": 6.66,
+    "boss": 10.66
+   },
+   "taken_by": {
+    "hallway": 3.7,
+    "elite": 30.2,
+    "boss": 89.5
+   }
+  },
+  "parry+TreeBranch": {
+   "reflect": 68.124,
+   "branch_extra": 2.842,
+   "ss_extra": 2.842,
+   "sword_plays": 8.797,
+   "sb_dmg": 10.094,
+   "sb_k": 0.379,
+   "showoff_str": 1.602,
+   "probe_plays": 0.131,
+   "probe_turn": 0.288,
+   "taken": 17.001,
+   "len": 7.185,
+   "deaths": 0.059,
+   "death": 0.059,
+   "len_by": {
+    "hallway": 4.06,
+    "elite": 7.21,
+    "boss": 16.63
+   },
+   "taken_by": {
+    "hallway": 1.9,
+    "elite": 14.4,
+    "boss": 67.1
+   }
+  },
+  "spear+TreeBranch": {
+   "reflect": 27.981,
+   "spears": 1.944,
+   "spear_dmg": 62.388,
+   "spear_plays": 1.85,
+   "forges": 2.4,
+   "first_spear_turn": 3.787,
+   "spear_fights": 0.958,
+   "branch_extra": 1.826,
+   "ss_extra": 1.826,
+   "sword_plays": 4.464,
+   "sb_dmg": 7.231,
+   "sb_k": 0.283,
+   "probe_plays": 0.095,
+   "probe_turn": 0.205,
+   "taken": 31.411,
+   "len": 5.757,
+   "deaths": 0.179,
+   "death": 0.179,
+   "len_by": {
+    "hallway": 4.33,
+    "elite": 5.65,
+    "boss": 10.15
+   },
+   "taken_by": {
+    "hallway": 11.1,
+    "elite": 34.0,
+    "boss": 87.6
+   }
+  },
+  "relic": {
+   "sword": {
+    "reflect": 14.917,
+    "ss_extra": 20.62,
+    "sword_plays": 6.675,
+    "sb_dmg": 70.708,
+    "sb_k": 3.111,
+    "probe_plays": 0.793,
+    "probe_turn": 2.778,
+    "taken": 18.019,
+    "len": 3.893,
+    "deaths": 0.041,
+    "death": 0.0412,
+    "len_by": {
+     "hallway": 2.57,
+     "elite": 3.97,
+     "boss": 7.59
+    },
+    "taken_by": {
+     "hallway": 2.6,
+     "elite": 17.5,
+     "boss": 63.4
+    }
+   },
+   "parry": {
+    "reflect": 26.085,
+    "ss_extra": 11.733,
+    "sword_plays": 5.335,
+    "sb_dmg": 81.56,
+    "sb_k": 3.497,
+    "showoff_str": 0.705,
+    "probe_plays": 0.896,
+    "probe_turn": 3.196,
+    "taken": 11.2,
+    "len": 4.346,
+    "deaths": 0.0,
+    "death": 0.0004,
+    "len_by": {
+     "hallway": 3.11,
+     "elite": 4.48,
+     "boss": 7.77
+    },
+    "taken_by": {
+     "hallway": 1.4,
+     "elite": 11.6,
+     "boss": 39.3
+    }
+   },
+   "spear": {
+    "reflect": 16.839,
+    "spears": 1.262,
+    "spear_dmg": 35.76,
+    "spear_plays": 1.188,
+    "forges": 1.95,
+    "first_spear_turn": 3.161,
+    "spear_fights": 0.804,
+    "ss_extra": 8.786,
+    "sword_plays": 3.735,
+    "sb_dmg": 65.931,
+    "sb_k": 2.902,
+    "probe_plays": 0.727,
+    "probe_turn": 2.536,
+    "taken": 24.556,
+    "len": 4.647,
+    "deaths": 0.071,
+    "death": 0.0708,
+    "len_by": {
+     "hallway": 3.64,
+     "elite": 4.54,
+     "boss": 7.74
+    },
+    "taken_by": {
+     "hallway": 9.1,
+     "elite": 23.9,
+     "boss": 70.4
+    }
+   }
+  }
+ }
+}

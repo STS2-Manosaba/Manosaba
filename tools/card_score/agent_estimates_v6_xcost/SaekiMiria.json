@@ -1,0 +1,26 @@
+{
+  "source": "mod",
+  "pool": "SaekiMiria",
+  "cards": {
+    "BombDefusalMaster": {
+      "value_by_x": {
+        "0": 0.0,
+        "1": 0.85,
+        "2": 1.7,
+        "3": 2.55,
+        "4": 3.4,
+        "5": 4.25
+      },
+      "value_by_x_upgraded": {
+        "0": 0.85,
+        "1": 1.7,
+        "2": 2.55,
+        "3": 3.4,
+        "4": 4.25,
+        "5": 5.1
+      },
+      "confidence": "medium",
+      "reasoning": "v6 X費: 同Malaise：敵-X力量+X虛弱（升級X+1），消耗"
+    }
+  }
+}

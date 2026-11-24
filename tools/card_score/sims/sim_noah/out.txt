@@ -1,0 +1,522 @@
+{
+ "paint": {
+  "arch": "paint",
+  "fights": 20000.0,
+  "avg_len": 4.89925,
+  "relic_lv_hist": {
+   "1": 0.05035,
+   "2": 0.1022,
+   "3": 0.17835,
+   "4": 0.28555,
+   "5": 0.38355
+  },
+  "stats": {
+   "avg_orbs_turnstart": 6.54,
+   "avg_colors_turnstart": 4.399,
+   "avg_majoka_turnstart": 21.92,
+   "colormix_colors": 5.379,
+   "colormix_basedmg": 36.153,
+   "colormix_majmult": 1.296,
+   "colorblast_orbs": 8.771,
+   "blood_attack_has_orb": null,
+   "blood_attack_bonus": null,
+   "shiou_bonus": null,
+   "sekibaku_bonus": null,
+   "ketsujin_orbs": null,
+   "relic_blood_per_fight": 0.0,
+   "zuma_runs_per_fight": 0.0,
+   "zuma_orbs_per_run": null,
+   "zuma_combo2_per_fight": 0.0,
+   "spaceout_win_per_fight": 0.038,
+   "spaceout_win_given_played": 0.048,
+   "refill_orbs_per_turn": 0.448,
+   "doom_kills_per_fight": 0.81,
+   "ink_black_share": 0.398,
+   "hp_lost_per_fight": 11.276,
+   "complementary_empty": 0.0,
+   "plays_per_fight_PaintRefill": 0.851,
+   "colors_at_PaintRefill": 4.15,
+   "maj_at_PaintRefill": 7.8,
+   "plays_per_fight_Palette": 2.431,
+   "colors_at_Palette": 4.88,
+   "maj_at_Palette": 42.1,
+   "plays_per_fight_SpaceOut": 0.787,
+   "colors_at_SpaceOut": 4.16,
+   "maj_at_SpaceOut": 11.7,
+   "plays_per_fight_Trauma": 1.678,
+   "colors_at_Trauma": 4.86,
+   "maj_at_Trauma": 31.4,
+   "plays_per_fight_Defend": 2.584,
+   "colors_at_Defend": 4.91,
+   "maj_at_Defend": 46.1,
+   "plays_per_fight_InkPainting": 1.109,
+   "colors_at_InkPainting": 4.96,
+   "maj_at_InkPainting": 40.3,
+   "plays_per_fight_ColorMix": 2.623,
+   "colors_at_ColorMix": 5.38,
+   "maj_at_ColorMix": 44.0,
+   "plays_per_fight_Confusion": 1.432,
+   "colors_at_Confusion": 5.26,
+   "maj_at_Confusion": 54.4,
+   "plays_per_fight_GAtk": 1.326,
+   "colors_at_GAtk": 5.24,
+   "maj_at_GAtk": 57.1,
+   "plays_per_fight_ColorBlast": 0.765,
+   "colors_at_ColorBlast": 5.45,
+   "maj_at_ColorBlast": 48.1,
+   "plays_per_fight_Complementary": 2.186,
+   "colors_at_Complementary": 4.98,
+   "maj_at_Complementary": 43.3,
+   "plays_per_fight_Strike": 1.99,
+   "colors_at_Strike": 5.23,
+   "maj_at_Strike": 57.0,
+   "plays_per_fight_GBlk": 0.864,
+   "colors_at_GBlk": 4.92,
+   "maj_at_GBlk": 46.2
+  },
+  "probes": {
+   "Palette": {
+    "value": 2.347,
+    "d_evokes": 1.075
+   },
+   "Palette+": {
+    "value": 2.651,
+    "d_evokes": 1.064
+   },
+   "ColorMix": {
+    "value": 4.127,
+    "d_evokes": 0.0
+   },
+   "Confusion": {
+    "value": 2.148,
+    "d_evokes": 1.743
+   },
+   "Confusion+": {
+    "value": 6.135,
+    "d_evokes": 5.028
+   },
+   "Complementary": {
+    "value": 3.625,
+    "d_evokes": 1.055
+   },
+   "Complementary+": {
+    "value": 3.451,
+    "d_evokes": 1.022
+   },
+   "InkPainting": {
+    "value": 3.307,
+    "d_evokes": 0.322
+   },
+   "InkPainting+": {
+    "value": 7.023,
+    "d_evokes": 0.519
+   },
+   "PaintRefill": {
+    "value": 1.957,
+    "d_evokes": 2.043
+   },
+   "ColorBlast": {
+    "value": 7.35,
+    "d_evokes": 7.051
+   },
+   "SpaceOut": {
+    "value": 0.234,
+    "d_evokes": -0.078
+   },
+   "Zuma": {
+    "value": 7.589,
+    "d_evokes": 11.756
+   },
+   "Trauma": {
+    "value": 2.323,
+    "d_evokes": -0.286
+   },
+   "Trauma+": {
+    "value": 6.512,
+    "d_evokes": -0.377
+   },
+   "Strike": {
+    "value": 1.01,
+    "d_evokes": 0.0
+   },
+   "Strike+": {
+    "value": 3.238,
+    "d_evokes": 0.0
+   },
+   "Defend": {
+    "value": 0.341,
+    "d_evokes": -0.016
+   },
+   "Defend+": {
+    "value": 0.378,
+    "d_evokes": 0.119
+   },
+   "_orb_rand": {
+    "value": -0.602,
+    "d_evokes": 0.377
+   },
+   "_orb_rby": {
+    "value": 1.958,
+    "d_evokes": 1.034
+   }
+  }
+ },
+ "zuma": {
+  "arch": "zuma",
+  "fights": 20000.0,
+  "avg_len": 4.86555,
+  "relic_lv_hist": {
+   "1": 0.0519,
+   "2": 0.1054,
+   "3": 0.18005,
+   "4": 0.27845,
+   "5": 0.3842
+  },
+  "stats": {
+   "avg_orbs_turnstart": 6.144,
+   "avg_colors_turnstart": 3.927,
+   "avg_majoka_turnstart": 19.772,
+   "colormix_colors": 4.551,
+   "colormix_basedmg": 24.262,
+   "colormix_majmult": 1.208,
+   "colorblast_orbs": null,
+   "blood_attack_has_orb": null,
+   "blood_attack_bonus": null,
+   "shiou_bonus": null,
+   "sekibaku_bonus": null,
+   "ketsujin_orbs": null,
+   "relic_blood_per_fight": 0.0,
+   "zuma_runs_per_fight": 2.27,
+   "zuma_orbs_per_run": 3.004,
+   "zuma_combo2_per_fight": 0.073,
+   "spaceout_win_per_fight": 0.0,
+   "spaceout_win_given_played": null,
+   "refill_orbs_per_turn": 0.723,
+   "doom_kills_per_fight": 0.628,
+   "ink_black_share": 0.459,
+   "hp_lost_per_fight": 7.993,
+   "complementary_empty": 0.001,
+   "plays_per_fight_Zuma": 0.828,
+   "colors_at_Zuma": 4.09,
+   "maj_at_Zuma": 9.0,
+   "plays_per_fight_Strike": 2.045,
+   "colors_at_Strike": 4.52,
+   "maj_at_Strike": 40.1,
+   "plays_per_fight_PaletteGap": 5.551,
+   "colors_at_PaletteGap": 4.47,
+   "maj_at_PaletteGap": 40.5,
+   "plays_per_fight_Palette": 2.349,
+   "colors_at_Palette": 4.08,
+   "maj_at_Palette": 29.5,
+   "plays_per_fight_Confusion": 0.796,
+   "colors_at_Confusion": 4.26,
+   "maj_at_Confusion": 39.3,
+   "plays_per_fight_Trauma": 1.474,
+   "colors_at_Trauma": 3.98,
+   "maj_at_Trauma": 23.0,
+   "plays_per_fight_Complementary": 2.181,
+   "colors_at_Complementary": 3.94,
+   "maj_at_Complementary": 32.6,
+   "plays_per_fight_InkPainting": 1.096,
+   "colors_at_InkPainting": 3.89,
+   "maj_at_InkPainting": 29.7,
+   "plays_per_fight_Defend": 2.398,
+   "colors_at_Defend": 4.22,
+   "maj_at_Defend": 33.2,
+   "plays_per_fight_GBlk": 1.616,
+   "colors_at_GBlk": 4.21,
+   "maj_at_GBlk": 33.3,
+   "plays_per_fight_GAtk": 2.035,
+   "colors_at_GAtk": 4.51,
+   "maj_at_GAtk": 40.0,
+   "plays_per_fight_PaintRefill": 0.783,
+   "colors_at_PaintRefill": 3.76,
+   "maj_at_PaintRefill": 8.2,
+   "plays_per_fight_ColorMix": 2.31,
+   "colors_at_ColorMix": 4.55,
+   "maj_at_ColorMix": 33.9
+  },
+  "probes": {
+   "Palette": {
+    "value": 2.395,
+    "d_evokes": 1.229
+   },
+   "Palette+": {
+    "value": 2.135,
+    "d_evokes": 1.176
+   },
+   "ColorMix": {
+    "value": 3.248,
+    "d_evokes": 0.0
+   },
+   "Confusion": {
+    "value": 3.932,
+    "d_evokes": 1.735
+   },
+   "Confusion+": {
+    "value": 7.301,
+    "d_evokes": 3.78
+   },
+   "Complementary": {
+    "value": 2.542,
+    "d_evokes": 0.801
+   },
+   "Complementary+": {
+    "value": 4.211,
+    "d_evokes": 0.465
+   },
+   "InkPainting": {
+    "value": 6.593,
+    "d_evokes": 1.18
+   },
+   "InkPainting+": {
+    "value": 9.255,
+    "d_evokes": 1.18
+   },
+   "PaintRefill": {
+    "value": 2.509,
+    "d_evokes": 2.227
+   },
+   "ColorBlast": {
+    "value": 8.32,
+    "d_evokes": 6.002
+   },
+   "SpaceOut": {
+    "value": 12.384,
+    "d_evokes": 2.53
+   },
+   "Zuma": {
+    "value": 4.782,
+    "d_evokes": 5.804
+   },
+   "Trauma": {
+    "value": 2.828,
+    "d_evokes": -0.007
+   },
+   "Trauma+": {
+    "value": 8.751,
+    "d_evokes": 0.112
+   },
+   "Strike": {
+    "value": 1.005,
+    "d_evokes": 0.0
+   },
+   "Strike+": {
+    "value": 3.178,
+    "d_evokes": 0.0
+   },
+   "_orb_rand": {
+    "value": 2.055,
+    "d_evokes": 1.068
+   },
+   "PaletteGap": {
+    "value": 1.975,
+    "d_evokes": 1.292
+   }
+  }
+ },
+ "blood": {
+  "arch": "blood",
+  "fights": 20000.0,
+  "avg_len": 4.89025,
+  "relic_lv_hist": {
+   "1": 0.0491,
+   "2": 0.1059,
+   "3": 0.17505,
+   "4": 0.28095,
+   "5": 0.389
+  },
+  "stats": {
+   "avg_orbs_turnstart": 5.804,
+   "avg_colors_turnstart": 2.206,
+   "avg_majoka_turnstart": 10.658,
+   "colormix_colors": 3.047,
+   "colormix_basedmg": 14.864,
+   "colormix_majmult": 1.042,
+   "colorblast_orbs": null,
+   "blood_attack_has_orb": 0.893,
+   "blood_attack_bonus": 7.921,
+   "shiou_bonus": 5.17,
+   "sekibaku_bonus": 7.616,
+   "ketsujin_orbs": 4.637,
+   "relic_blood_per_fight": 2.159,
+   "zuma_runs_per_fight": 0.0,
+   "zuma_orbs_per_run": null,
+   "zuma_combo2_per_fight": 0.0,
+   "spaceout_win_per_fight": 0.0,
+   "spaceout_win_given_played": null,
+   "refill_orbs_per_turn": 0.0,
+   "doom_kills_per_fight": 0.348,
+   "ink_black_share": null,
+   "hp_lost_per_fight": 26.55,
+   "complementary_empty": null,
+   "plays_per_fight_Palette": 1.474,
+   "colors_at_Palette": 1.86,
+   "maj_at_Palette": 14.0,
+   "plays_per_fight_Shiou": 0.778,
+   "bloodpresent_Shiou": 0.685,
+   "colors_at_Shiou": 2.17,
+   "maj_at_Shiou": 13.1,
+   "plays_per_fight_Strike": 1.162,
+   "colors_at_Strike": 2.18,
+   "maj_at_Strike": 13.5,
+   "plays_per_fight_ColorMix": 0.38,
+   "colors_at_ColorMix": 3.05,
+   "maj_at_ColorMix": 12.8,
+   "plays_per_fight_Karibarai": 1.708,
+   "bloodpresent_Karibarai": 0.907,
+   "colors_at_Karibarai": 1.7,
+   "maj_at_Karibarai": 15.6,
+   "plays_per_fight_GBlk": 0.384,
+   "colors_at_GBlk": 2.21,
+   "maj_at_GBlk": 13.2,
+   "plays_per_fight_Defend": 1.15,
+   "colors_at_Defend": 2.18,
+   "maj_at_Defend": 13.3,
+   "plays_per_fight_Hyakuren": 1.075,
+   "bloodpresent_Hyakuren": 0.739,
+   "colors_at_Hyakuren": 2.06,
+   "maj_at_Hyakuren": 13.8,
+   "plays_per_fight_PiercingBlood": 0.75,
+   "bloodpresent_PiercingBlood": 0.824,
+   "colors_at_PiercingBlood": 1.85,
+   "maj_at_PiercingBlood": 16.7,
+   "plays_per_fight_BloodDraw": 1.567,
+   "bloodpresent_BloodDraw": 0.716,
+   "colors_at_BloodDraw": 2.16,
+   "maj_at_BloodDraw": 14.1,
+   "plays_per_fight_GAtk": 0.382,
+   "colors_at_GAtk": 2.21,
+   "maj_at_GAtk": 13.2,
+   "plays_per_fight_Trauma": 1.197,
+   "colors_at_Trauma": 2.23,
+   "maj_at_Trauma": 8.1,
+   "plays_per_fight_Sekirin": 0.817,
+   "bloodpresent_Sekirin": 0.444,
+   "colors_at_Sekirin": 3.44,
+   "maj_at_Sekirin": 5.7,
+   "plays_per_fight_SuperNova": 0.287,
+   "bloodpresent_SuperNova": 0.529,
+   "colors_at_SuperNova": 2.33,
+   "maj_at_SuperNova": 7.4,
+   "plays_per_fight_Ketsujin": 0.35,
+   "bloodpresent_Ketsujin": 0.954,
+   "colors_at_Ketsujin": 1.61,
+   "maj_at_Ketsujin": 17.8,
+   "plays_per_fight_Sekibaku": 0.24,
+   "bloodpresent_Sekibaku": 1.0,
+   "colors_at_Sekibaku": 1.69,
+   "maj_at_Sekibaku": 17.0,
+   "plays_per_fight_Kesseiseki": 0.449,
+   "bloodpresent_Kesseiseki": 0.953,
+   "colors_at_Kesseiseki": 1.68,
+   "maj_at_Kesseiseki": 17.3
+  },
+  "probes": {
+   "Karibarai": {
+    "value": 1.535,
+    "d_evokes": -0.097
+   },
+   "Karibarai+": {
+    "value": 3.439,
+    "d_evokes": -0.097
+   },
+   "Kesseiseki": {
+    "value": 3.551,
+    "d_evokes": -0.097
+   },
+   "Kesseiseki+": {
+    "value": 6.134,
+    "d_evokes": -0.097
+   },
+   "Sekibaku": {
+    "value": -0.289,
+    "d_evokes": -0.15
+   },
+   "Hyakuren": {
+    "value": 5.162,
+    "d_evokes": -0.255
+   },
+   "Hyakuren+": {
+    "value": 10.818,
+    "d_evokes": -0.269
+   },
+   "BloodDraw": {
+    "value": 1.29,
+    "d_evokes": 3.127
+   },
+   "BloodDraw+": {
+    "value": 2.468,
+    "d_evokes": 5.801
+   },
+   "Ketsujin": {
+    "value": 0.822,
+    "d_evokes": 0.001
+   },
+   "Ketsujin+": {
+    "value": 1.447,
+    "d_evokes": -0.004
+   },
+   "Shiou": {
+    "value": 0.196,
+    "d_evokes": -0.26
+   },
+   "Shiou+": {
+    "value": 0.366,
+    "d_evokes": -0.354
+   },
+   "Sekirin": {
+    "value": 1.187,
+    "d_evokes": 1.835
+   },
+   "Palette": {
+    "value": 1.547,
+    "d_evokes": 0.852
+   },
+   "Palette+": {
+    "value": 1.694,
+    "d_evokes": 0.796
+   },
+   "ColorMix": {
+    "value": 1.984,
+    "d_evokes": 0.0
+   },
+   "Confusion": {
+    "value": 3.723,
+    "d_evokes": 1.962
+   },
+   "Confusion+": {
+    "value": 5.715,
+    "d_evokes": 2.925
+   },
+   "Complementary": {
+    "value": 2.176,
+    "d_evokes": 0.975
+   },
+   "Complementary+": {
+    "value": 2.557,
+    "d_evokes": 1.01
+   },
+   "PaintRefill": {
+    "value": 4.489,
+    "d_evokes": 4.495
+   },
+   "ColorBlast": {
+    "value": 7.725,
+    "d_evokes": 4.935
+   },
+   "Strike": {
+    "value": 1.001,
+    "d_evokes": 0.0
+   },
+   "Strike+": {
+    "value": 2.04,
+    "d_evokes": 0.0
+   },
+   "_orb_rand": {
+    "value": 1.845,
+    "d_evokes": 0.899
+   }
+  }
+ }
+}

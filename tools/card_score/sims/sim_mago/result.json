@@ -1,0 +1,559 @@
+{
+ "collect": {
+  "cards": {
+   "Death": {
+    "per_play": 3.412,
+    "plays_per_owned_fight": 1.54,
+    "own_rate": 0.797
+   },
+   "DefendHoshoMago": {
+    "per_play": 0.439,
+    "plays_per_owned_fight": 1.44,
+    "own_rate": 1.0
+   },
+   "DreamInterpretation": {
+    "per_play": 0.0,
+    "plays_per_owned_fight": 1.63,
+    "own_rate": 1.0
+   },
+   "Echoes": {
+    "per_play": 2.703,
+    "plays_per_owned_fight": 0.71,
+    "own_rate": 0.622
+   },
+   "Judgement": {
+    "per_play": 2.67,
+    "plays_per_owned_fight": 0.28,
+    "own_rate": 0.647
+   },
+   "Justice": {
+    "per_play": 0.65,
+    "plays_per_owned_fight": 0.11,
+    "own_rate": 0.641
+   },
+   "Strength": {
+    "per_play": 3.6,
+    "plays_per_owned_fight": 1.08,
+    "own_rate": 0.81
+   },
+   "StrikeHoshoMago": {
+    "per_play": 0.937,
+    "plays_per_owned_fight": 1.71,
+    "own_rate": 0.833
+   },
+   "Temperance": {
+    "per_play": 0.707,
+    "plays_per_owned_fight": 0.09,
+    "own_rate": 0.622
+   },
+   "TheChariot": {
+    "per_play": 3.318,
+    "plays_per_owned_fight": 0.78,
+    "own_rate": 0.788
+   },
+   "TheDevil": {
+    "per_play": 7.963,
+    "plays_per_owned_fight": 0.71,
+    "own_rate": 0.714
+   },
+   "TheEmperor": {
+    "per_play": 4.644,
+    "plays_per_owned_fight": 1.08,
+    "own_rate": 0.831
+   },
+   "TheEmpress": {
+    "per_play": 3.984,
+    "plays_per_owned_fight": 1.35,
+    "own_rate": 0.746
+   },
+   "TheFool": {
+    "per_play": 3.147,
+    "plays_per_owned_fight": 1.03,
+    "own_rate": 0.726
+   },
+   "TheHangedMan": {
+    "per_play": 0.416,
+    "plays_per_owned_fight": 0.85,
+    "own_rate": 0.671
+   },
+   "TheHermit": {
+    "per_play": 1.038,
+    "plays_per_owned_fight": 0.83,
+    "own_rate": 0.776
+   },
+   "TheHierophant": {
+    "per_play": 4.998,
+    "plays_per_owned_fight": 0.86,
+    "own_rate": 0.693
+   },
+   "TheHighPriestess": {
+    "per_play": 0.815,
+    "plays_per_owned_fight": 0.65,
+    "own_rate": 0.7
+   },
+   "TheLovers": {
+    "per_play": 1.625,
+    "plays_per_owned_fight": 1.14,
+    "own_rate": 0.67
+   },
+   "TheMagician": {
+    "per_play": 12.741,
+    "plays_per_owned_fight": 0.98,
+    "own_rate": 0.773
+   },
+   "TheMoon": {
+    "per_play": 4.009,
+    "plays_per_owned_fight": 0.95,
+    "own_rate": 0.666
+   },
+   "TheStar": {
+    "per_play": 3.7,
+    "plays_per_owned_fight": 0.91,
+    "own_rate": 0.817
+   },
+   "TheSun": {
+    "per_play": 2.7,
+    "plays_per_owned_fight": 1.11,
+    "own_rate": 0.838
+   },
+   "TheTower": {
+    "per_play": 2.056,
+    "plays_per_owned_fight": 0.47,
+    "own_rate": 0.776
+   },
+   "TheWorld": {
+    "per_play": 71.197,
+    "plays_per_owned_fight": 0.07,
+    "own_rate": 0.298
+   },
+   "TraumaHoshoMago": {
+    "per_play": 1.014,
+    "plays_per_owned_fight": 1.62,
+    "own_rate": 1.0
+   },
+   "WheelOfFortune": {
+    "per_play": 1.405,
+    "plays_per_owned_fight": 1.24,
+    "own_rate": 0.761
+   }
+  },
+  "obs": {
+   "chariot_syn": 0.815,
+   "death_boss": 0.219,
+   "death_elite": 0.164,
+   "death_hallway": 0.056,
+   "death_magician": 0.794,
+   "deck_size": 22.882,
+   "devil_bestow_enemyhp": 90.343,
+   "devil_bestow_net": 12.441,
+   "devil_bestow_selfloss": 9.342,
+   "devil_choice_bestow": 0.495,
+   "devil_enemy_madness_trigger": 1.0,
+   "doom_kill": 1.0,
+   "dream_pick_static": 3.207,
+   "echo_gained_in_fight": 1.0,
+   "echo_majoka_at_play": 79.932,
+   "echo_replay_add": 3.394,
+   "echo_target_replays_used": 3.222,
+   "emperor_syn": 0.74,
+   "empress_heal": 8.358,
+   "empress_syn": 0.875,
+   "fight_turns_boss": 8.036,
+   "fight_turns_elite": 5.423,
+   "fight_turns_hallway": 3.786,
+   "final_kinds": 20.998,
+   "final_world": 0.998,
+   "fool_energy_used": 2.922,
+   "fool_world": 0.363,
+   "judgement_energy": 2.43,
+   "justice_exhausted": 2.769,
+   "justice_temp": 0.887,
+   "kinds": 15.462,
+   "lovers_heal": 6.373,
+   "magician_kinds": 17.122,
+   "magician_majoka": 96.079,
+   "maj_end": 90.597,
+   "maj_ge100": 0.495,
+   "moon_stacks": 46.158,
+   "own_sms": 1.0,
+   "priestess_status": 0.054,
+   "star_reflect": 13.018,
+   "star_sms": 0.639,
+   "sun_turns_left": 4.033,
+   "tower_death": 0.797,
+   "wheel_back": 0.719,
+   "wheel_net_draw": 4.832,
+   "world_floor": 20.73,
+   "world_win": 0.075,
+   "world_win_remhp_e": 67.865,
+   "world_win_turn": 5.046
+  },
+  "fights": 30000
+ },
+ "lean": {
+  "cards": {
+   "Death": {
+    "per_play": 4.617,
+    "plays_per_owned_fight": 1.88,
+    "own_rate": 0.735
+   },
+   "DefendHoshoMago": {
+    "per_play": 0.462,
+    "plays_per_owned_fight": 1.71,
+    "own_rate": 0.833
+   },
+   "DreamInterpretation": {
+    "per_play": 0.0,
+    "plays_per_owned_fight": 1.98,
+    "own_rate": 1.0
+   },
+   "Echoes": {
+    "per_play": 3.999,
+    "plays_per_owned_fight": 0.63,
+    "own_rate": 0.461
+   },
+   "Judgement": {
+    "per_play": 1.426,
+    "plays_per_owned_fight": 0.39,
+    "own_rate": 0.207
+   },
+   "Justice": {
+    "per_play": 0.409,
+    "plays_per_owned_fight": 0.08,
+    "own_rate": 0.223
+   },
+   "Strength": {
+    "per_play": 3.18,
+    "plays_per_owned_fight": 1.15,
+    "own_rate": 0.766
+   },
+   "StrikeHoshoMago": {
+    "per_play": 0.936,
+    "plays_per_owned_fight": 2.56,
+    "own_rate": 0.5
+   },
+   "Temperance": {
+    "per_play": 0.396,
+    "plays_per_owned_fight": 0.06,
+    "own_rate": 0.186
+   },
+   "TheChariot": {
+    "per_play": 3.404,
+    "plays_per_owned_fight": 0.73,
+    "own_rate": 0.718
+   },
+   "TheDevil": {
+    "per_play": 8.745,
+    "plays_per_owned_fight": 0.89,
+    "own_rate": 0.197
+   },
+   "TheEmperor": {
+    "per_play": 4.051,
+    "plays_per_owned_fight": 1.14,
+    "own_rate": 0.758
+   },
+   "TheEmpress": {
+    "per_play": 4.037,
+    "plays_per_owned_fight": 2.23,
+    "own_rate": 0.184
+   },
+   "TheFool": {
+    "per_play": 1.186,
+    "plays_per_owned_fight": 1.39,
+    "own_rate": 0.2
+   },
+   "TheHangedMan": {
+    "per_play": 0.536,
+    "plays_per_owned_fight": 0.92,
+    "own_rate": 0.212
+   },
+   "TheHermit": {
+    "per_play": 1.178,
+    "plays_per_owned_fight": 0.83,
+    "own_rate": 0.693
+   },
+   "TheHierophant": {
+    "per_play": 3.033,
+    "plays_per_owned_fight": 1.19,
+    "own_rate": 0.216
+   },
+   "TheHighPriestess": {
+    "per_play": 0.901,
+    "plays_per_owned_fight": 0.92,
+    "own_rate": 0.19
+   },
+   "TheLovers": {
+    "per_play": 1.0,
+    "plays_per_owned_fight": 1.76,
+    "own_rate": 0.213
+   },
+   "TheMagician": {
+    "per_play": 5.183,
+    "plays_per_owned_fight": 1.03,
+    "own_rate": 0.706
+   },
+   "TheMoon": {
+    "per_play": 4.092,
+    "plays_per_owned_fight": 1.14,
+    "own_rate": 0.19
+   },
+   "TheStar": {
+    "per_play": 4.248,
+    "plays_per_owned_fight": 1.07,
+    "own_rate": 0.742
+   },
+   "TheSun": {
+    "per_play": 2.419,
+    "plays_per_owned_fight": 1.2,
+    "own_rate": 0.764
+   },
+   "TheTower": {
+    "per_play": 2.074,
+    "plays_per_owned_fight": 0.43,
+    "own_rate": 0.681
+   },
+   "TraumaHoshoMago": {
+    "per_play": 0.81,
+    "plays_per_owned_fight": 1.98,
+    "own_rate": 1.0
+   },
+   "WheelOfFortune": {
+    "per_play": 1.394,
+    "plays_per_owned_fight": 1.77,
+    "own_rate": 0.206
+   }
+  },
+  "obs": {
+   "chariot_syn": 0.696,
+   "death_boss": 0.571,
+   "death_elite": 0.36,
+   "death_hallway": 0.162,
+   "death_magician": 0.706,
+   "deck_size": 14.448,
+   "devil_bestow_enemyhp": 87.584,
+   "devil_bestow_net": 13.661,
+   "devil_bestow_selfloss": 3.344,
+   "devil_choice_bestow": 0.6,
+   "devil_enemy_madness_trigger": 1.0,
+   "doom_kill": 1.0,
+   "dream_pick_static": 3.206,
+   "echo_gained_in_fight": 1.0,
+   "echo_majoka_at_play": 68.744,
+   "echo_replay_add": 3.285,
+   "echo_target_replays_used": 3.138,
+   "emperor_syn": 0.223,
+   "empress_heal": 8.189,
+   "empress_syn": 0.79,
+   "fight_turns_boss": 6.399,
+   "fight_turns_elite": 5.027,
+   "fight_turns_hallway": 3.502,
+   "final_kinds": 12.284,
+   "final_world": 0.0,
+   "fool_energy_used": 1.477,
+   "fool_world": 0.0,
+   "judgement_energy": 1.242,
+   "justice_exhausted": 1.903,
+   "justice_temp": 0.452,
+   "kinds": 8.987,
+   "lovers_heal": 4.958,
+   "magician_kinds": 9.745,
+   "magician_majoka": 56.892,
+   "maj_end": 62.743,
+   "maj_ge100": 0.178,
+   "moon_stacks": 44.357,
+   "own_sms": 1.0,
+   "priestess_status": 0.085,
+   "star_reflect": 15.103,
+   "star_sms": 0.125,
+   "sun_turns_left": 4.168,
+   "tower_death": 0.612,
+   "wheel_back": 0.888,
+   "wheel_net_draw": 4.755
+  },
+  "fights": 30000
+ },
+ "greedy": {
+  "cards": {
+   "Death": {
+    "per_play": 4.056,
+    "plays_per_owned_fight": 1.77,
+    "own_rate": 0.766
+   },
+   "DefendHoshoMago": {
+    "per_play": 0.455,
+    "plays_per_owned_fight": 1.05,
+    "own_rate": 1.0
+   },
+   "DreamInterpretation": {
+    "per_play": 0.0,
+    "plays_per_owned_fight": 1.26,
+    "own_rate": 1.0
+   },
+   "Echoes": {
+    "per_play": 2.303,
+    "plays_per_owned_fight": 0.45,
+    "own_rate": 0.382
+   },
+   "Judgement": {
+    "per_play": 1.835,
+    "plays_per_owned_fight": 0.17,
+    "own_rate": 0.346
+   },
+   "Justice": {
+    "per_play": 0.661,
+    "plays_per_owned_fight": 0.05,
+    "own_rate": 0.32
+   },
+   "Strength": {
+    "per_play": 2.567,
+    "plays_per_owned_fight": 1.62,
+    "own_rate": 0.791
+   },
+   "StrikeHoshoMago": {
+    "per_play": 0.94,
+    "plays_per_owned_fight": 1.59,
+    "own_rate": 0.833
+   },
+   "Temperance": {
+    "per_play": 0.491,
+    "plays_per_owned_fight": 0.04,
+    "own_rate": 0.346
+   },
+   "TheChariot": {
+    "per_play": 3.185,
+    "plays_per_owned_fight": 0.62,
+    "own_rate": 0.73
+   },
+   "TheDevil": {
+    "per_play": 7.27,
+    "plays_per_owned_fight": 0.61,
+    "own_rate": 0.498
+   },
+   "TheEmperor": {
+    "per_play": 4.336,
+    "plays_per_owned_fight": 1.13,
+    "own_rate": 0.809
+   },
+   "TheEmpress": {
+    "per_play": 3.631,
+    "plays_per_owned_fight": 1.25,
+    "own_rate": 0.591
+   },
+   "TheFool": {
+    "per_play": 1.028,
+    "plays_per_owned_fight": 0.85,
+    "own_rate": 0.529
+   },
+   "TheHangedMan": {
+    "per_play": 0.434,
+    "plays_per_owned_fight": 0.72,
+    "own_rate": 0.398
+   },
+   "TheHermit": {
+    "per_play": 1.24,
+    "plays_per_owned_fight": 0.85,
+    "own_rate": 0.671
+   },
+   "TheHierophant": {
+    "per_play": 2.983,
+    "plays_per_owned_fight": 0.62,
+    "own_rate": 0.418
+   },
+   "TheHighPriestess": {
+    "per_play": 0.845,
+    "plays_per_owned_fight": 0.47,
+    "own_rate": 0.461
+   },
+   "TheLovers": {
+    "per_play": 0.986,
+    "plays_per_owned_fight": 0.79,
+    "own_rate": 0.352
+   },
+   "TheMagician": {
+    "per_play": 6.717,
+    "plays_per_owned_fight": 0.75,
+    "own_rate": 0.682
+   },
+   "TheMoon": {
+    "per_play": 3.646,
+    "plays_per_owned_fight": 0.57,
+    "own_rate": 0.368
+   },
+   "TheStar": {
+    "per_play": 3.938,
+    "plays_per_owned_fight": 1.04,
+    "own_rate": 0.761
+   },
+   "TheSun": {
+    "per_play": 2.352,
+    "plays_per_owned_fight": 1.64,
+    "own_rate": 0.822
+   },
+   "TheTower": {
+    "per_play": 1.967,
+    "plays_per_owned_fight": 0.35,
+    "own_rate": 0.65
+   },
+   "TraumaHoshoMago": {
+    "per_play": 0.725,
+    "plays_per_owned_fight": 1.26,
+    "own_rate": 1.0
+   },
+   "WheelOfFortune": {
+    "per_play": 1.374,
+    "plays_per_owned_fight": 1.11,
+    "own_rate": 0.607
+   }
+  },
+  "obs": {
+   "chariot_syn": 0.705,
+   "death_boss": 0.581,
+   "death_elite": 0.378,
+   "death_hallway": 0.173,
+   "death_magician": 0.663,
+   "deck_size": 27.311,
+   "devil_bestow_enemyhp": 84.008,
+   "devil_bestow_net": 12.589,
+   "devil_bestow_selfloss": 5.045,
+   "devil_choice_bestow": 0.538,
+   "devil_enemy_madness_trigger": 1.0,
+   "doom_kill": 1.0,
+   "dream_pick_static": 3.203,
+   "echo_gained_in_fight": 1.0,
+   "echo_majoka_at_play": 61.05,
+   "echo_replay_add": 3.006,
+   "echo_target_replays_used": 2.926,
+   "emperor_syn": 0.584,
+   "empress_heal": 7.616,
+   "empress_syn": 0.807,
+   "fight_turns_boss": 6.448,
+   "fight_turns_elite": 4.89,
+   "fight_turns_hallway": 3.558,
+   "final_kinds": 17.276,
+   "final_world": 0.005,
+   "fool_energy_used": 1.242,
+   "fool_world": 0.001,
+   "judgement_energy": 1.628,
+   "justice_exhausted": 2.448,
+   "justice_temp": 0.743,
+   "kinds": 11.916,
+   "lovers_heal": 5.376,
+   "magician_kinds": 12.277,
+   "magician_majoka": 67.076,
+   "maj_end": 47.275,
+   "maj_ge100": 0.136,
+   "moon_stacks": 40.493,
+   "own_sms": 1.0,
+   "priestess_status": 0.054,
+   "star_reflect": 13.513,
+   "star_sms": 0.309,
+   "sun_turns_left": 3.797,
+   "tower_death": 0.659,
+   "wheel_back": 0.944,
+   "wheel_net_draw": 4.697,
+   "world_floor": 26.0,
+   "world_win": 0.0
+  },
+  "fights": 30000
+ }
+}

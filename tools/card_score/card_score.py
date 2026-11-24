@@ -94,6 +94,9 @@ class Card:
     raw_upg: float | None = None
     raw_multi: float | None = None  # 多人模式效果價值（無 agent 估計時等於 raw）
     raw_multi_upg: float | None = None
+    x_tables: dict = field(default_factory=dict)   # X 費卡：{"solo"/"upg"/"multi"/"multi_upg": {X: 價值}}
+    x_ec: float | None = None                      # X 費卡的期望有效費用
+    desc: str = ""                                 # 本地化效果文字（已代入數值）
     score_solo: float | None = None
     score_multi: float | None = None
     kw_upg: set[str] = field(default_factory=set)
@@ -122,6 +125,63 @@ def resolve_arg(arg: str, body: str, file_text: str) -> str:
     m = re.search(rf"const\s+\w+\s+{re.escape(arg)}\s*=\s*([^;]+);", body) or \
         re.search(rf"const\s+\w+\s+{re.escape(arg)}\s*=\s*([^;]+);", file_text)
     return m.group(1).strip() if m else arg
+
+
+VERSION_TAG_RE = re.compile(r"(?:^|(?<=[；;。，,\s]))v\d+[^:：；;]{0,12}[:：]\s*")
+
+
+def clean_note(text) -> str:
+    """估值理由只保留最終說明：去掉 v2/v3/v5 等版本標記與「舊值／原值／較 vN」等歷程描述。"""
+    s = VERSION_TAG_RE.sub("", str(text or ""))
+    s = re.sub(r"[（(][^（）()]*(?:v\d|舊|原值|原本|先前|之前)[^（）()]*[）)]", "", s)
+    parts = re.split(r"[；;]", s)
+    keep = [x.strip() for x in parts if x.strip() and not re.search(
+        r"(?:v\d|舊值|原值|原估|原本|較\s*v|先前|複查|由\s*low|升為\s*medium|覆蓋|沿用|由[^，。]*改)", x)]
+    return "；".join(keep)
+
+
+DESC_VAR_RE = re.compile(r"new\s+(?:PowerVar<(\w+)>|(\w*)Var)\s*\(([^()]*)\)")
+
+
+def render_desc(card: "Card", text: str) -> str:
+    """把本地化描述代入程式碼中的數值：{Damage:diff()} → 9，{IfUpgraded:show:A|B} → B（未升級），移除 [gold] 等標籤。"""
+    if not text:
+        return ""
+    vals: dict[str, str] = {}
+    m = re.search(r"CanonicalVars\s*=>(.*?);\s*\n", card.body, re.S)
+    for vm in DESC_VAR_RE.finditer(m.group(1) if m else ""):
+        power, plain, args = vm.group(1), vm.group(2), vm.group(3)
+        parts = [p.strip() for p in args.split(",")]
+        name = power or (plain or "")
+        num = None
+        for p in parts:
+            if p.startswith('"'):
+                if not power:
+                    name = p.strip('"')
+            elif NUM_RE.match(p) and num is None:
+                num = p.rstrip("m")
+        if name and num is not None:
+            vals[name] = num
+            if name.endswith("Power"):
+                vals.setdefault(name[:-5], num)
+
+    def inner(s: str) -> str:
+        prev = None
+        while prev != s:
+            prev = s
+            # 條件格式器取「未升級／非戰鬥」分支
+            s = re.sub(r"\{(IfUpgraded|InCombat|\w+):(?:show:)?([^{}|]*)\|([^{}]*)\}", lambda m: m.group(3), s)
+            s = re.sub(r"\{(IfUpgraded|InCombat):[^{}|]*\}", "", s)
+            s = re.sub(r"\{(\w+):energyIcons\(\)\}", lambda m: f"{vals.get(m.group(1), m.group(1))} 能量", s)
+            s = re.sub(r"\{energyPrefix[^{}]*\}|\{\w+:energyPrefix\([^{}]*\)\}", "", s)
+            s = re.sub(r"\{singleStarIcon[^{}]*\}", "★", s)
+            s = re.sub(r"\{Calculated\w*(?::[^{}]*)?\}", "（依當下數值）", s)
+            s = re.sub(r"\{(\w+)(?::[^{}|]*)?\}", lambda m: vals.get(m.group(1), "X" if m.group(1) in ("X", "Repeat") else f"〔{m.group(1)}〕"), s)
+        return s
+
+    out = inner(text)
+    out = re.sub(r"\[/?\w+\]", "", out)
+    return re.sub(r"\n{2,}", "\n", out).strip()
 
 
 def parse_vars(body: str, card: Card):
@@ -483,7 +543,7 @@ def load_agent_estimates() -> dict[str, dict]:
     """讀取 subagent 對各角色卡牌的估計（agent_estimates/*.json）。"""
     out = {}
     files = []
-    for d in (AGENT_DIR, AGENT_DIR_V2, HERE / "agent_estimates_v3_heal", HERE / "agent_estimates_v3_ally", HERE / "agent_estimates_v4", HERE / "agent_estimates_v5_sim"):
+    for d in (AGENT_DIR, AGENT_DIR_V2, HERE / "agent_estimates_v3_heal", HERE / "agent_estimates_v3_ally", HERE / "agent_estimates_v4", HERE / "agent_estimates_v5_sim", HERE / "agent_estimates_v6_xcost"):
         # v2（以錨點卡重估）覆蓋 v1；v3（補血重估、特定隊友機率）再覆蓋；ally 最後套用
         if d.exists():
             files += sorted(d.glob("*.json"))
@@ -500,12 +560,22 @@ def load_agent_estimates() -> dict[str, dict]:
                 if not isinstance(est, dict):
                     continue
                 num = lambda x: isinstance(x, (int, float))
-                if num(est.get("value")) or (est.get("value") is None and num(est.get("value_multi"))):
+                if num(est.get("value")) or (est.get("value") is None and num(est.get("value_multi"))) \
+                        or isinstance(est.get("value_by_x"), dict) or isinstance(est.get("value_multi_by_x"), dict):
                     out[(src, name)] = {**est, "_file": f.name}
     return out
 
 
 AGENT_EST: dict[tuple, dict] = {}
+
+# X 費卡打出時花費能量的分佈（基礎 3 能量，偶有額外能量或先打其他牌；可在 weights.json 的 x_cost_distribution 覆寫）
+X_DIST: dict[int, float] = {0: 0.05, 1: 0.15, 2: 0.30, 3: 0.35, 4: 0.15}
+try:
+    _xd = json.loads((Path(__file__).resolve().parent / "weights.json").read_text(encoding="utf-8")).get("x_cost_distribution")
+    if _xd:
+        X_DIST = {int(k): float(v) for k, v in _xd.items() if not str(k).startswith("_")}
+except Exception:
+    pass
 
 PER_TURN_RE = re.compile(r"每回合|每\s*\d\s*回合|回合(開始|末|結束)|[×x]\s*\d+(\.\d+)?\s*回合|約\s*\d+(\.\d+)?\s*(~|-|～)?\s*\d*\s*回合")
 ASSUMED_RE = re.compile(r"(\d+(?:\.\d+)?)\s*回合")
@@ -536,7 +606,7 @@ def apply_turn_model(card: Card):
         card.raw_multi *= solo_turns / assumed
     if getattr(card, "raw_multi_upg", None) is not None:
         card.raw_multi_upg *= upg_turns / assumed
-    card.notes.append(f"回合模型：{assumed:g}→{solo_turns:g} 回合")
+    card.notes.append(f"持續效果以期望剩餘 {solo_turns:g} 回合計")
 
 
 def score(card: Card, w: dict, overrides: dict | None = None):
@@ -544,12 +614,40 @@ def score(card: Card, w: dict, overrides: dict | None = None):
     override_value = apply_overrides(card, overrides or {}, w)
     classify(card, w)
     est = AGENT_EST.get(("mod" if card.source == "mod" else "original", card.name))
+    if est and override_value is None and card.x_cost and isinstance(est.get("value_by_x"), dict):
+        # X 費卡：agent 給出各 X 值的效果價值，依 X 分佈取期望（finalize 以期望有效費用換算）
+        card.confidence = f"agent-{est.get('confidence', 'medium')}"
+        card.unknown = []
+        card.kw_upg = (card.keywords | card.upg_add_kw) - card.upg_rem_kw
+        dist = X_DIST
+        tabs = {"solo": est.get("value_by_x"), "upg": est.get("value_by_x_upgraded") or est.get("value_by_x"),
+                "multi": est.get("value_multi_by_x"), "multi_upg": est.get("value_multi_by_x_upgraded") or est.get("value_multi_by_x")}
+        card.x_tables = {k: {int(x): float(v) for x, v in t.items() if v is not None} for k, t in tabs.items() if isinstance(t, dict)}
+        evx = lambda t: sum(p * t.get(x, 0.0) for x, p in dist.items())
+        if est.get("value_by_x") is None or all(v is None for v in est["value_by_x"].values()):
+            card.mp_constraint = "MultiplayerOnly"
+            card.x_tables["solo"] = card.x_tables.get("multi", {})
+            card.x_tables["upg"] = card.x_tables.get("multi_upg", card.x_tables["solo"])
+        card.raw, card.raw_upg = evx(card.x_tables["solo"]), evx(card.x_tables["upg"])
+        if "multi" in card.x_tables:
+            card.raw_multi = evx(card.x_tables["multi"])
+            card.raw_multi_upg = evx(card.x_tables.get("multi_upg", card.x_tables["multi"]))
+        card.cost = card.cost_upg = 1   # 佔位；實際以 x_ec 計算
+        if est.get("reasoning"):
+            card.notes.append("X 費期望：" + clean_note(est["reasoning"]))
+        return
     if est and override_value is None and card.confidence in ("manual", "partial") \
             and card.cost is not None and not card.x_cost and card.cost >= 0:
         card.confidence = f"agent-{est.get('confidence', 'medium')}"
         card.unknown = []
         card.kw_upg = (card.keywords | card.upg_add_kw) - card.upg_rem_kw
         card.cost_upg = max(card.cost + card.upg_cost, 0)
+        if isinstance(est.get("effective_cost"), (int, float)):
+            # 實付費用與印刷費用不同（例如神探當賞時 0 費）；value 已乘上可打出機率
+            card.notes.append(f"實付費用 {est['effective_cost']:g}（印刷 {card.cost}）")
+            card.printed_cost = card.cost
+            card.cost = est["effective_cost"]
+            card.cost_upg = est.get("effective_cost_upgraded", max(card.cost + card.upg_cost, 0))
         solo = est.get("value")
         if solo is None:  # 多人限定卡：單人不存在，以多人值暫代（finalize 會排除單人分數）
             card.mp_constraint = "MultiplayerOnly"
@@ -562,7 +660,7 @@ def score(card: Card, w: dict, overrides: dict | None = None):
             card.raw_multi = float(est["value_multi"])
             card.raw_multi_upg = float(est.get("value_multi_upgraded", est["value_multi"]))
         if est.get("reasoning"):
-            card.notes.append("agent：" + str(est["reasoning"])[:160])
+            card.notes.append(clean_note(est["reasoning"]))
         return
     if override_value is not None:
         card.confidence = "manual-set"
@@ -603,7 +701,12 @@ def calibrate(orig: list[Card], w: dict) -> dict:
     eff_cost[1] = 1.0
 
     def ec(cost):
-        return eff_cost[min(cost, 3)]
+        # 允許非整數（agent 給的實付費用，例如條件減費卡），以相鄰整數費用線性內插
+        c = min(max(float(cost), 0.0), 3.0)
+        lo = int(c)
+        if lo >= 3 or c == lo:
+            return eff_cost[lo]
+        return eff_cost[lo] + (eff_cost[lo + 1] - eff_cost[lo]) * (c - lo)
 
     plain_per = statistics.median([c.raw / ec(c.cost) for c in plain])
     kw_mult, kw_n = {}, {}
@@ -641,6 +744,14 @@ def finalize(card: Card, cal: dict):
     rmu = card.raw_upg if card.raw_multi_upg is None else card.raw_multi_upg
     k, ku = mult(card.keywords), mult(card.kw_upg)
     ec, ecu = cal["ec"](card.cost), cal["ec"](card.cost_upg)
+    if card.x_tables:
+        def x_ec(t):
+            # 期望有效費用 = Σp·v ÷ Σp·(v / ec(X))，使 分數 = 期望價值 ÷ x_ec = Σp·(v / ec(X))
+            num = sum(p * t.get(x, 0.0) for x, p in X_DIST.items())
+            den = sum(p * t.get(x, 0.0) / cal["ec"](x) for x, p in X_DIST.items())
+            return num / den if den > 0 else 1.0
+        ec, ecu = x_ec(card.x_tables["solo"]), x_ec(card.x_tables["upg"])
+        card.x_ec = ec
     card.value = card.raw * k
     card.score_solo = card.value / ec
     card.score_multi = rm * k / ec
@@ -794,13 +905,16 @@ def evaluate(w: dict, inp: dict) -> dict:
             apply_turn_model(c)
             finalize(c, cal)
         if c.source == "mod":
-            key = "MANOSABA-" + re.sub(r"(?<!^)(?=[A-Z])", "_", c.name).upper() + ".title"
-            c.title = titles.get(key, "")
+            key = "MANOSABA-" + re.sub(r"(?<!^)(?=[A-Z])", "_", c.name).upper()
+            c.title = titles.get(key + ".title", "")
+            c.desc = render_desc(c, titles.get(key + ".description", ""))
     # 原版卡名：取官方繁中本地化（beta 卡取 beta 版）
     for src, otitles in inp["otitles"].items():
         for c in orig:
             if c.source == src:
-                c.title = otitles.get(re.sub(r"(?<!^)(?=[A-Z])", "_", c.name).upper() + ".title", "")
+                key = re.sub(r"(?<!^)(?=[A-Z])", "_", c.name).upper()
+                c.title = otitles.get(key + ".title", "")
+                c.desc = render_desc(c, otitles.get(key + ".description", ""))
 
     # 原版基準（只用可評分且非 manual 的卡）
     baseline = build_baseline(orig)
@@ -890,13 +1004,17 @@ def main():
         "cards": [{
             "source": c.source, "pool": c.pool, "name": c.name, "title": c.title, "rarity": c.rarity,
             "bucket": c.bucket, "type": c.type, "cost": "X" if c.x_cost else c.cost,
+            "x_ec": r2(c.x_ec) if c.x_ec else None,
+            "printed_cost": getattr(c, "printed_cost", None),
+            "desc": c.desc,
+            "x_table": c.x_tables.get("solo") or None,
             "score": r2(c.score), "solo": r2(c.score_solo), "multi": r2(c.score_multi), "upg": r2(c.score_upg),
             "relative": r2(c.relative),
             "rel_solo": r2(c.score_solo / statistics.median(baseline[c.bucket])) if c.score_solo is not None and c.relative is not None and baseline.get(c.bucket) else None,
             "rel_multi": r2(c.score_multi / statistics.median(baseline[c.bucket])) if c.score_multi is not None and c.relative is not None and baseline.get(c.bucket) else None,
             "percentile": r2(c.percentile), "verdict": c.verdict, "confidence": c.confidence,
             "raw": r2(c.raw), "raw_upg": r2(c.raw_upg), "raw_multi": r2(c.raw_multi),
-            "mp": c.mp_constraint, "keywords": sorted(c.keywords), "notes": " / ".join(c.notes),
+            "mp": c.mp_constraint, "keywords": sorted(c.keywords), "notes": " / ".join(n for n in c.notes if n),
         } for c in orig + mod],
     }
     (args.out / "data.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")

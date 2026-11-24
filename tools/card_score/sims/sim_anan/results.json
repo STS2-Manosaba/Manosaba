@@ -1,0 +1,540 @@
+{
+ "engine": {
+  "base_value": 7.81,
+  "turns": 5.738,
+  "q_spent": 24.457,
+  "q_left_end": 21.094,
+  "q_bank_start": 95.908,
+  "extra_turns": 0.005,
+  "majoka100": 0.005,
+  "bw_granted": 0.005,
+  "sickly_heal": 1.889,
+  "jigai_dmg": 8.042,
+  "jigai_str_prevented_raw": 7.052,
+  "cat_dodged": 0.0,
+  "block_used": 31.918,
+  "block_wasted": 63.031,
+  "hp_lost": 7.687,
+  "dealt": 53.592,
+  "q_bank_avg_turnstart": 16.72,
+  "q_income_cards": 22.89,
+  "q_spend_frac": 0.537,
+  "delta+1q_t1": 0.174,
+  "delta+1q_t3": 0.003,
+  "delta+1e_t1": 0.295,
+  "cards": {
+   "Instigate": {
+    "copies": 1,
+    "drawn": 2.032,
+    "played": 2.014,
+    "play_per_draw": 0.991,
+    "delta_per_fight": 1.229,
+    "value_per_play": 0.611
+   },
+   "Endurance": {
+    "copies": 1,
+    "drawn": 2.018,
+    "played": 1.737,
+    "play_per_draw": 0.861,
+    "delta_per_fight": 0.531,
+    "value_per_play": 0.306
+   },
+   "Flash": {
+    "copies": 1,
+    "drawn": 1.999,
+    "played": 1.728,
+    "play_per_draw": 0.865,
+    "delta_per_fight": -0.184,
+    "value_per_play": -0.106
+   },
+   "Defend": {
+    "copies": 3,
+    "drawn": 1.9,
+    "played": 1.321,
+    "play_per_draw": 0.695,
+    "delta_per_fight": 0.017,
+    "value_per_play": 0.013
+   },
+   "Bocchan": {
+    "copies": 1,
+    "drawn": 0.904,
+    "played": 0.889,
+    "play_per_draw": 0.984,
+    "delta_per_fight": 0.043,
+    "value_per_play": 0.048
+   },
+   "NovelCreation": {
+    "copies": 1,
+    "drawn": 2.051,
+    "played": 1.78,
+    "play_per_draw": 0.868,
+    "delta_per_fight": 1.182,
+    "value_per_play": 0.664
+   },
+   "MovableTypePrinting": {
+    "copies": 1,
+    "drawn": 0.909,
+    "played": 0.884,
+    "play_per_draw": 0.973,
+    "delta_per_fight": 0.014,
+    "value_per_play": 0.016
+   },
+   "GeniusIdea": {
+    "copies": 1,
+    "drawn": 2.016,
+    "played": 1.916,
+    "play_per_draw": 0.95,
+    "delta_per_fight": 0.593,
+    "value_per_play": 0.309
+   },
+   "Trauma": {
+    "copies": 1,
+    "drawn": 2.059,
+    "played": 2.059,
+    "play_per_draw": 1.0,
+    "delta_per_fight": 0.236,
+    "value_per_play": 0.115
+   },
+   "Nandato": {
+    "copies": 1,
+    "drawn": 1.858,
+    "played": 1.843,
+    "play_per_draw": 0.992,
+    "delta_per_fight": 2.034,
+    "value_per_play": 1.103
+   },
+   "Jigaishiro": {
+    "copies": 1,
+    "drawn": 2.025,
+    "played": 1.998,
+    "play_per_draw": 0.987,
+    "delta_per_fight": 1.891,
+    "value_per_play": 0.946
+   },
+   "Strike": {
+    "copies": 3,
+    "drawn": 1.686,
+    "played": 1.005,
+    "play_per_draw": 0.596,
+    "delta_per_fight": 1.203,
+    "value_per_play": 1.197
+   },
+   "PaperMaking": {
+    "copies": 1,
+    "drawn": 2.019,
+    "played": 1.757,
+    "play_per_draw": 0.87,
+    "delta_per_fight": -0.899,
+    "value_per_play": -0.512
+   },
+   "Nanigaiitai": {
+    "copies": 1,
+    "drawn": 2.036,
+    "played": 1.989,
+    "play_per_draw": 0.977,
+    "delta_per_fight": 4.937,
+    "value_per_play": 2.482
+   },
+   "Reading": {
+    "copies": 2,
+    "drawn": 1.921,
+    "played": 1.872,
+    "play_per_draw": 0.975,
+    "delta_per_fight": 0.922,
+    "value_per_play": 0.492
+   }
+  },
+  "misc": {
+   "bw_granted": 0.005,
+   "bw_majoka": 0.486,
+   "bw_turn": 0.101,
+   "extra_turn_dmg": 0.058,
+   "genius_energy": 4.066,
+   "inst_auto:Bocchan": 0.045,
+   "inst_auto:Dazed": 0.112,
+   "inst_auto:Defend": 0.315,
+   "inst_auto:Endurance": 0.11,
+   "inst_auto:Flash": 0.118,
+   "inst_auto:GeniusIdea": 0.117,
+   "inst_auto:Jigaishiro": 0.116,
+   "inst_auto:MovableTypePrinting": 0.047,
+   "inst_auto:Nandato": 0.098,
+   "inst_auto:Nanigaiitai": 0.111,
+   "inst_auto:NovelCreation": 0.112,
+   "inst_auto:PaperMaking": 0.114,
+   "inst_auto:Reading": 0.212,
+   "inst_auto:Strike": 0.274,
+   "inst_auto:Trauma": 0.112,
+   "jigai_on_attacker": 1.14,
+   "majoka100_turn": 0.101,
+   "nandato_block": 12.942,
+   "novel_energy": 5.677,
+   "paper_exhaust:Dazed": 0.556,
+   "paper_exhaust:Defend": 0.304,
+   "paper_exhaust:Strike": 0.828
+  },
+  "add_Kokoro": {
+   "played": 0.804,
+   "drawn": 0.975,
+   "delta_per_fight": 4.279,
+   "value_per_play": 5.324,
+   "majoka100": 0.632,
+   "bw_granted": 0.632,
+   "extra_turns": 0.307,
+   "bw_played": 0.29
+  },
+  "add_Brainwash": {
+   "played": 0.356,
+   "drawn": 1.421,
+   "delta_per_fight": -0.847,
+   "value_per_play": -2.38,
+   "majoka100": 0.005,
+   "bw_granted": 0.0,
+   "extra_turns": 0.427,
+   "bw_played": 0.356
+  }
+ },
+ "kokoro": {
+  "base_value": 13.204,
+  "turns": 6.009,
+  "q_spent": 23.122,
+  "q_left_end": 12.396,
+  "q_bank_start": 70.781,
+  "extra_turns": 0.276,
+  "majoka100": 0.631,
+  "bw_granted": 0.0,
+  "sickly_heal": 1.772,
+  "jigai_dmg": 6.637,
+  "jigai_str_prevented_raw": 5.754,
+  "cat_dodged": 7.652,
+  "block_used": 22.979,
+  "block_wasted": 55.736,
+  "hp_lost": 11.083,
+  "dealt": 90.186,
+  "q_bank_avg_turnstart": 11.78,
+  "q_income_cards": 12.16,
+  "q_spend_frac": 0.651,
+  "delta+1q_t1": 0.402,
+  "delta+1q_t3": 0.222,
+  "delta+1e_t1": 0.549,
+  "deltabw_cap15": 0.065,
+  "cards": {
+   "Brainwash": {
+    "copies": 1,
+    "drawn": 1.553,
+    "played": 0.204,
+    "play_per_draw": 0.131,
+    "delta_per_fight": -0.847,
+    "value_per_play": -4.152
+   },
+   "Bocchan": {
+    "copies": 1,
+    "drawn": 0.927,
+    "played": 0.854,
+    "play_per_draw": 0.922,
+    "delta_per_fight": 1.67,
+    "value_per_play": 1.955
+   },
+   "GeniusIdea": {
+    "copies": 1,
+    "drawn": 1.941,
+    "played": 1.589,
+    "play_per_draw": 0.819,
+    "delta_per_fight": 0.636,
+    "value_per_play": 0.4
+   },
+   "Endurance": {
+    "copies": 1,
+    "drawn": 1.935,
+    "played": 1.65,
+    "play_per_draw": 0.853,
+    "delta_per_fight": 1.678,
+    "value_per_play": 1.017
+   },
+   "Instigate": {
+    "copies": 1,
+    "drawn": 1.953,
+    "played": 1.691,
+    "play_per_draw": 0.866,
+    "delta_per_fight": 1.941,
+    "value_per_play": 1.148
+   },
+   "Jigaishiro": {
+    "copies": 1,
+    "drawn": 1.932,
+    "played": 1.654,
+    "play_per_draw": 0.856,
+    "delta_per_fight": 1.334,
+    "value_per_play": 0.807
+   },
+   "Flash": {
+    "copies": 1,
+    "drawn": 1.925,
+    "played": 1.642,
+    "play_per_draw": 0.853,
+    "delta_per_fight": 0.675,
+    "value_per_play": 0.411
+   },
+   "Defend": {
+    "copies": 3,
+    "drawn": 1.929,
+    "played": 1.388,
+    "play_per_draw": 0.719,
+    "delta_per_fight": 0.291,
+    "value_per_play": 0.21
+   },
+   "Nandato": {
+    "copies": 1,
+    "drawn": 1.806,
+    "played": 1.598,
+    "play_per_draw": 0.885,
+    "delta_per_fight": 2.661,
+    "value_per_play": 1.665
+   },
+   "Kokoro": {
+    "copies": 1,
+    "drawn": 0.978,
+    "played": 0.811,
+    "play_per_draw": 0.829,
+    "delta_per_fight": 5.551,
+    "value_per_play": 6.846
+   },
+   "Reading": {
+    "copies": 1,
+    "drawn": 1.869,
+    "played": 1.696,
+    "play_per_draw": 0.907,
+    "delta_per_fight": 1.624,
+    "value_per_play": 0.958
+   },
+   "Strike": {
+    "copies": 3,
+    "drawn": 1.931,
+    "played": 1.471,
+    "play_per_draw": 0.762,
+    "delta_per_fight": 3.1,
+    "value_per_play": 2.107
+   },
+   "Wagahaiwanekodearu": {
+    "copies": 1,
+    "drawn": 0.929,
+    "played": 0.852,
+    "play_per_draw": 0.917,
+    "delta_per_fight": 0.584,
+    "value_per_play": 0.686
+   },
+   "Nanigaiitai": {
+    "copies": 1,
+    "drawn": 1.966,
+    "played": 1.665,
+    "play_per_draw": 0.847,
+    "delta_per_fight": 6.306,
+    "value_per_play": 3.786
+   },
+   "Trauma": {
+    "copies": 1,
+    "drawn": 1.998,
+    "played": 1.998,
+    "play_per_draw": 1.0,
+    "delta_per_fight": 1.471,
+    "value_per_play": 0.736
+   },
+   "NovelCreation": {
+    "copies": 1,
+    "drawn": 2.014,
+    "played": 1.571,
+    "play_per_draw": 0.78,
+    "delta_per_fight": 0.307,
+    "value_per_play": 0.195
+   }
+  },
+  "misc": {
+   "bw_majoka": 22.746,
+   "bw_turn": 1.501,
+   "extra_turn_dmg": 6.698,
+   "genius_energy": 3.351,
+   "inst_auto:Bocchan": 0.027,
+   "inst_auto:Brainwash": 0.072,
+   "inst_auto:Dazed": 0.104,
+   "inst_auto:Defend": 0.265,
+   "inst_auto:Endurance": 0.082,
+   "inst_auto:Flash": 0.087,
+   "inst_auto:GeniusIdea": 0.086,
+   "inst_auto:Jigaishiro": 0.093,
+   "inst_auto:Kokoro": 0.035,
+   "inst_auto:KokoroSuicide": 0.112,
+   "inst_auto:Nandato": 0.09,
+   "inst_auto:Nanigaiitai": 0.085,
+   "inst_auto:NovelCreation": 0.095,
+   "inst_auto:Reading": 0.08,
+   "inst_auto:Strike": 0.258,
+   "inst_auto:Trauma": 0.092,
+   "inst_auto:Wagahaiwanekodearu": 0.028,
+   "jigai_on_attacker": 0.925,
+   "majoka100_turn": 2.587,
+   "nandato_block": 10.251,
+   "novel_energy": 4.996
+  },
+  "kokoro_no_bw_deck": {
+   "played": 0.819,
+   "delta": 5.097,
+   "value_per_play": 6.226,
+   "majoka100": 0.673,
+   "bw_played": 0.187
+  }
+ },
+ "balanced": {
+  "base_value": 16.317,
+  "turns": 5.733,
+  "q_spent": 17.898,
+  "q_left_end": 2.773,
+  "q_bank_start": 26.002,
+  "extra_turns": 0.0,
+  "majoka100": 0.002,
+  "bw_granted": 0.002,
+  "sickly_heal": 0.0,
+  "jigai_dmg": 13.438,
+  "jigai_str_prevented_raw": 11.308,
+  "cat_dodged": 6.915,
+  "block_used": 22.629,
+  "block_wasted": 53.619,
+  "hp_lost": 4.249,
+  "dealt": 103.0,
+  "q_bank_avg_turnstart": 4.54,
+  "q_income_cards": 5.51,
+  "q_spend_frac": 0.866,
+  "delta+1q_t1": 0.632,
+  "delta+1q_t3": 0.158,
+  "delta+1e_t1": 0.34,
+  "cards": {
+   "GeniusIdea": {
+    "copies": 1,
+    "drawn": 1.845,
+    "played": 1.35,
+    "play_per_draw": 0.731,
+    "delta_per_fight": 0.091,
+    "value_per_play": 0.068
+   },
+   "Defend": {
+    "copies": 4,
+    "drawn": 1.839,
+    "played": 1.29,
+    "play_per_draw": 0.702,
+    "delta_per_fight": 0.245,
+    "value_per_play": 0.19
+   },
+   "Instigate": {
+    "copies": 1,
+    "drawn": 1.885,
+    "played": 1.761,
+    "play_per_draw": 0.934,
+    "delta_per_fight": 1.635,
+    "value_per_play": 0.928
+   },
+   "Nanigaiitai": {
+    "copies": 2,
+    "drawn": 1.903,
+    "played": 1.677,
+    "play_per_draw": 0.881,
+    "delta_per_fight": 4.161,
+    "value_per_play": 2.482
+   },
+   "Trauma": {
+    "copies": 1,
+    "drawn": 1.911,
+    "played": 1.911,
+    "play_per_draw": 1.0,
+    "delta_per_fight": 0.397,
+    "value_per_play": 0.208
+   },
+   "Strike": {
+    "copies": 4,
+    "drawn": 1.838,
+    "played": 1.538,
+    "play_per_draw": 0.836,
+    "delta_per_fight": 2.112,
+    "value_per_play": 1.373
+   },
+   "Flash": {
+    "copies": 1,
+    "drawn": 1.841,
+    "played": 1.729,
+    "play_per_draw": 0.939,
+    "delta_per_fight": 1.452,
+    "value_per_play": 0.84
+   },
+   "Jigaishiro": {
+    "copies": 2,
+    "drawn": 1.871,
+    "played": 1.664,
+    "play_per_draw": 0.889,
+    "delta_per_fight": 1.253,
+    "value_per_play": 0.753
+   },
+   "Reading": {
+    "copies": 1,
+    "drawn": 1.766,
+    "played": 1.766,
+    "play_per_draw": 1.0,
+    "delta_per_fight": 1.798,
+    "value_per_play": 1.018
+   },
+   "Nandato": {
+    "copies": 1,
+    "drawn": 1.736,
+    "played": 1.701,
+    "play_per_draw": 0.98,
+    "delta_per_fight": 2.066,
+    "value_per_play": 1.215
+   },
+   "Wagahaiwanekodearu": {
+    "copies": 1,
+    "drawn": 0.894,
+    "played": 0.894,
+    "play_per_draw": 1.0,
+    "delta_per_fight": 0.405,
+    "value_per_play": 0.453
+   }
+  },
+  "misc": {
+   "bw_granted": 0.002,
+   "bw_majoka": 0.014,
+   "bw_turn": 0.004,
+   "extra_turn_dmg": 0.005,
+   "genius_energy": 2.903,
+   "inst_auto:Defend": 0.407,
+   "inst_auto:Flash": 0.096,
+   "inst_auto:GeniusIdea": 0.102,
+   "inst_auto:Jigaishiro": 0.197,
+   "inst_auto:Nandato": 0.101,
+   "inst_auto:Nanigaiitai": 0.207,
+   "inst_auto:Reading": 0.098,
+   "inst_auto:Strike": 0.401,
+   "inst_auto:Trauma": 0.105,
+   "inst_auto:Wagahaiwanekodearu": 0.048,
+   "jigai_on_attacker": 1.909,
+   "majoka100_turn": 0.041,
+   "nandato_block": 11.126
+  },
+  "add_Kokoro": {
+   "played": 0.824,
+   "drawn": 0.949,
+   "delta_per_fight": 4.003,
+   "value_per_play": 4.855,
+   "majoka100": 0.647,
+   "bw_granted": 0.647,
+   "extra_turns": 0.037,
+   "bw_played": 0.007
+  },
+  "add_Brainwash": {
+   "played": 0.026,
+   "drawn": 1.637,
+   "delta_per_fight": -3.467,
+   "value_per_play": -132.128,
+   "majoka100": 0.0,
+   "bw_granted": 0.0,
+   "extra_turns": 0.111,
+   "bw_played": 0.026
+  }
+ }
+}

@@ -74,6 +74,8 @@ tr.card-row { cursor: pointer }
 tr.card-row:hover td { background: var(--bg) }
 tr.detail td { white-space: normal; color: var(--muted); font-size: 13px; background: var(--bg); max-width: 0 }
 .why { color: var(--text, inherit); line-height: 1.7 }
+.desc { white-space: pre-line; font-size: 12px; line-height: 1.5; color: var(--muted); margin-top: 2px; max-width: 34em }
+td.namecell { white-space: normal; min-width: 14em }
 .why b { color: var(--text, inherit) }
 .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px 20px; margin-top: 6px }
 .why-grid ul { margin: 4px 0 0; padding-left: 18px }
@@ -332,11 +334,11 @@ tr.detail td { white-space: normal; color: var(--muted); font-size: 13px; backgr
   const costKey = (x) => Math.min(Math.max(Number(x) || 0, 0), 3);
   const ecOf = (cost) => { const e = DATA.calibration.eff_cost || {}; return e[String(costKey(cost))] ?? 1; };
   const kwOf = (c) => c.keywords.reduce((m, k) => (k === "Exhaust" && c.type === "Power") ? m : m * ((DATA.calibration.kw_mult || {})[k] ?? 1), 1);
-  const refLine = (o) => `<li>${esc(o.title || o.name)} <span class="note">${esc(NAMES[o.pool] || o.pool)}・${RARITY[o.bucket]}・${o.cost} 費</span>：效果值 <b class="num">${fmt(o.raw)}</b>，相對 <b class="num">${fmt(o.relative)}</b></li>`;
+  const refLine = (o) => `<li>${esc(o.title || o.name)} <span class="note">${esc(NAMES[o.pool] || o.pool)}・${RARITY[o.bucket]}・${o.cost} 費</span>：效果值 <b class="num">${fmt(o.raw)}</b>，相對 <b class="num">${fmt(o.relative)}</b>${o.desc ? `<div class="desc">${esc(o.desc)}</div>` : ""}</li>`;
   function explain(c) {
     if (c.score == null || c.raw == null) return `<div class="why"><b>比對依據</b>：此卡無法評分，沒有可比較的數值。</div>`;
     const cal = DATA.calibration, base = (DATA.baseline[c.bucket] || {}).median;
-    const k = kwOf(c), ec = ecOf(c.cost), tf = (cal.type_factor || {})[c.type] ?? 1;
+    const k = kwOf(c), ec = c.x_ec ?? ecOf(c.cost), tf = (cal.type_factor || {})[c.type] ?? 1;
     const rawS = c.mp === "MultiplayerOnly" ? null : c.raw, rawM = c.raw_multi ?? c.raw;
     const refs = DATA.cards.filter((o) => isRef(o) && o.type === c.type && sameBucket(c, o));
     const sameCost = refs.filter((o) => costKey(o.cost) === costKey(c.cost));
@@ -395,8 +397,8 @@ tr.detail td { white-space: normal; color: var(--muted); font-size: 13px; backgr
       const conf = c.confidence.replace("agent-", "agent ");
       const main = `<tr class="card-row" data-id="${esc(id)}">
         <td><i class="src" style="background:${SRC_COLOR[c.source]}"></i>${esc(NAMES[c.pool] || c.pool)}</td>
-        <td>${esc(c.title || c.name)}${c.title ? ` <span class="note">${esc(c.name)}</span>` : ""}</td>
-        <td>${RARITY[c.bucket] || c.rarity}</td><td>${esc(c.type)}</td><td class="r num">${esc(c.cost)}</td>
+        <td class="namecell">${esc(c.title || c.name)}${c.title ? ` <span class="note">${esc(c.name)}</span>` : ""}${c.desc ? `<div class="desc">${esc(c.desc)}</div>` : ""}</td>
+        <td>${RARITY[c.bucket] || c.rarity}</td><td>${esc(c.type)}</td><td class="r num">${c.printed_cost != null ? `${esc(c.printed_cost)}<small class="note">→${esc(c.cost)}</small>` : esc(c.cost)}</td>
         <td class="r num">${c.mp === "MultiplayerOnly" ? '<span class="note">多人限定</span>' : fmt(c.solo)}</td>
         <td class="r num">${fmt(c.multi)}</td><td class="r num">${fmt(c.score)}</td><td class="r num">${fmt(c.upg)}</td>
         <td class="r num"><b>${fmt(relOf(c))}</b></td><td class="r num">${fmt(c.percentile, 0)}</td>

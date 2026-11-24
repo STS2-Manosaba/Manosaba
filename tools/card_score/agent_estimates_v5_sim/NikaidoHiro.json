@@ -1,0 +1,217 @@
+{
+  "character": "NikaidoHiro",
+  "assumptions": [
+    "v5模擬：sims/sim_hiro/sim.py 簡化戰鬥，每原型每卡 10000 場 × 3 原型（含升級版共 6 組）；每回合抽 5、3 能量，貪婪啟發式（分數/費用最高者），無計劃型出牌",
+    "資源規則照程式碼：鋼筆 Lv1~4 抽樣（30/30/25/15%），戰鬥開始中段，強化攻擊每段 +嫌疑/4，生命<50% +Lv×10%、<20% +Lv×20%；上段攻×1.2 擋×0.8、下段攻×0.8 擋×1.2；心流於架式間切換 +1 能量",
+    "嫌疑：玩家回合開始 >10（艾瑪存活 >20）加入 BadEnd（回合末在手 5 傷）；魔女化倍率 1+3·s^1.8365/(s^1.8365+166.6^1.8365)，每 100 層 1 殺人衝動（攻擊傷害打艾瑪），首達 100 給死亡循環",
+    "艾瑪：召喚時存活加最大生命，死亡則以該量復活；希羅未格擋傷害整筆轉給艾瑪，溢出不回流（假設）；艾瑪攻擊不吃希羅力量/架式/鋼筆",
+    "牌組原型：起始 10 張（4 打擊 2 防禦 創傷 艾瑪×2 威嚇）+ 嫌疑型/艾瑪型/架式型各 9 張",
+    "敵人：一般 72%(總血 55~80、1~3 隻)、菁英 20%(140~175)、首領 8%(440~520)，傷害隨回合線性成長 ×0.6；回合長度 嫌疑型 4.6/7.6/8.7、艾瑪型 4.0/6.2/11.9、架式型 3.7/7.1/7.5；以重要性 1/2/3 加權",
+    "結果：每段鋼筆嫌疑加成 嫌疑型 0.45、艾瑪型 0.89、架式型 0.02 傷；回合末平均嫌疑 2.2/3.4/0.1；壞結局每場 0~0.03 次；艾瑪吸收 14/47/3 傷；魔女化戰末 26~31，含勞動時達 100 僅 5% 場次",
+    "條件型/低機率卡依模擬的條件達成率與抽到時可用率乘入期望值，不可用時計 0；v3_heal/v3_ally/v4 無本池條目，未模擬卡沿用 v2",
+    "多人欄位：除勞動（任何人攻擊都給魔女化）與魔女安息儀式（需全員 ≥100）外與單人相同"
+  ],
+  "mechanic_values": {
+    "嫌疑": "每層約 0.15~0.2：鋼筆每層每段 +0.25 傷，主要價值在供破論/偽證/共犯/無期徒刑；實測嫌疑很少超過 10",
+    "召喚(櫻羽艾瑪)": "每點約 0.15（利用率 60~76%），艾瑪型牌組召喚過量時降至 0.12",
+    "魔女化": "20~30 層區間每 10 層約 +6~12% 攻擊；100 層實際罕見",
+    "上段/下段/中段": "上段約 +0.2/張；下段約 +0.15；中段為心流觸發",
+    "心流": "架式型每場約 2.2 能量（每次打出約 3.6）"
+  },
+  "cards": {
+    "StrikeNikaidoHiro": {
+      "value": 1.25,
+      "value_upgraded": 1.75,
+      "value_multi": 1.25,
+      "value_multi_upgraded": 1.75,
+      "confidence": "high",
+      "reasoning": "v5模擬: 未模擬，沿用 v2：6傷加鋼筆嫌疑加成約1.5傷"
+    },
+    "DefendNikaidoHiro": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "v5模擬: 未模擬，沿用 v2：標準5格檔"
+    },
+    "TraumaNikaidoHiro": {
+      "value": 0.45,
+      "value_upgraded": 0.6,
+      "value_multi": 0.45,
+      "value_multi_upgraded": 0.6,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 10 魔女化；模擬戰末魔女化 25~31，在 20~30 層區間每 +10 層約 +6~12% 攻擊倍率，剩餘攻擊約 40 傷 → 約 2.4 傷；0 費可重複；10 層本身倍率僅 +1.7%"
+    },
+    "EmaNikaidoHiro": {
+      "value": 1.1,
+      "value_upgraded": 1.4,
+      "value_multi": 1.1,
+      "value_multi_upgraded": 1.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 召喚 5＋10 魔女化；模擬召喚利用率（艾瑪吸收/召喚總量）嫌疑型 76%、艾瑪型 60%，召喚每點約 0.15；艾瑪存活時嫌疑壞結局門檻 10→20"
+    },
+    "Intimidate": {
+      "value": 0.7,
+      "value_upgraded": 1.0,
+      "value_multi": 0.7,
+      "value_multi_upgraded": 1.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 1 虛弱(約少受 2.5 傷 0.5)＋2 嫌疑；鋼筆每層嫌疑每段 +0.25 傷，嫌疑型平均每段鋼筆加成 0.45~0.49 傷；嫌疑型壞結局每場 0.001 次幾乎不觸發；升級 2 虛弱"
+    },
+    "StrikeChi": {
+      "value": 2.2,
+      "value_upgraded": 3.0,
+      "value_multi": 2.2,
+      "value_multi_upgraded": 3.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 實測 4.4~5.9 傷（下段 ×0.8）＋4 格檔×1.2＋抽 1＋進下段；架式型每場打出 4.8 次；升級 8 格檔"
+    },
+    "StrikeJin": {
+      "value": 2.7,
+      "value_upgraded": 3.3,
+      "value_multi": 2.7,
+      "value_multi_upgraded": 3.3,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 實測 8.8~9.7 傷 1.55＋抽 2 1.0＋回中段（心流觸發）0.1；升級 12.4~13.3 傷"
+    },
+    "StrikeTen": {
+      "value": 2.9,
+      "value_upgraded": 3.8,
+      "value_multi": 2.9,
+      "value_multi_upgraded": 3.8,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 實測每次 12.7~13.8 傷 2.2＋抽 1 0.5＋上段（後續攻擊 ×1.2、格檔 ×0.8）約 0.2；升級 18 基礎實測 18.3~19.2 傷"
+    },
+    "GoodSleep": {
+      "value": 1.75,
+      "value_upgraded": 2.5,
+      "value_multi": 1.75,
+      "value_multi_upgraded": 2.5,
+      "confidence": "high",
+      "reasoning": "v5模擬: 7 格檔＋5 魔女化；架式型每場 1.6 次；與 v2 一致"
+    },
+    "WellSleep": {
+      "value": 1.4,
+      "value_upgraded": 2.0,
+      "value_multi": 1.4,
+      "value_multi_upgraded": 2.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 5 格檔＋2 嫌疑；嫌疑型每場打出 3.2 次，嫌疑主要供破論/偽證/共犯/無期徒刑消耗；升級 +3 格檔"
+    },
+    "EmaDogRush": {
+      "value": 2.1,
+      "value_upgraded": 2.7,
+      "value_multi": 2.1,
+      "value_multi_upgraded": 2.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 實測傷害 嫌疑型 6.3/艾瑪型 13.8/架式型 4.4（艾瑪當前生命），加召喚 4 約 0.6；升級召喚 6 同時增傷"
+    },
+    "BathroomTalk": {
+      "value": 1.75,
+      "value_upgraded": 2.35,
+      "value_multi": 1.75,
+      "value_multi_upgraded": 2.35,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 召喚 8 約 1.2（每點 0.15）＋2 嫌疑 0.3＋門檻 20；嫌疑型加入後每場少失 4.5 血；升級召喚 12"
+    },
+    "EmaDogBite": {
+      "value": 2.2,
+      "value_upgraded": 2.8,
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.8,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 條件：艾瑪存活才可打出；艾瑪型每場 0.69 次、每次 32.6 傷，嫌疑型 0.14 次(16 傷)、架式型 0.015 次；抽到時可用率 艾瑪型約 55%、嫌疑型約 11%，不可用時 0；升級 3 段 艾瑪型 39 傷"
+    },
+    "EmaDogAttack": {
+      "value": 6.0,
+      "value_upgraded": 7.0,
+      "value_multi": 6.0,
+      "value_multi_upgraded": 7.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 條件：艾瑪存活才可打出；艾瑪型每場打出 0.99 次（平均第 2.1 回合）、每場回合末艾瑪造成 70 傷(≈11.7)，嫌疑型 0.63 次每場 7.1 傷、架式型 0.29 次 1.5 傷；艾瑪死亡後能力保留、復活即恢復；以艾瑪向牌組加權約 6；升級 0 費 +1"
+    },
+    "Perjury": {
+      "value": 1.5,
+      "value_upgraded": 1.8,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 1.8,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 條件：需有嫌疑；嫌疑型/艾瑪型每場打出 2.7/1.6 次、平均轉換 1.9~2.0 層，架式型僅 0.09 次（幾乎無嫌疑）；2 永久力量約剩 5 段攻擊 10 傷，扣鋼筆 2 嫌疑×0.25×5 段 2.5 傷 → 約 1.25，可重複打出加值；升級最多轉 3 但實測平均 2.1~2.5"
+    },
+    "RonpaNikaidoHiro": {
+      "value": 3.0,
+      "value_upgraded": 3.4,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 實測每次傷害 嫌疑型 16.8/艾瑪型 21.0/架式型 11.5（打出時平均嫌疑僅 1.3/3.0/0.04），消耗 0.75~1.6 嫌疑；條件高傷需高嫌疑，以實測達成值計；舊值 3.8 以 3 層嫌疑假設偏高；升級 20.5/25.0/15.9 傷"
+    },
+    "SeveringSpin": {
+      "value": 3.8,
+      "value_upgraded": 4.5,
+      "value_multi": 3.8,
+      "value_multi_upgraded": 4.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 全體 3×4（鋼筆/架式逐段加成）實測每次 18~24 傷(多敵)＋5 格檔 1.0＋隨機切換架式（心流 +1 能量）；升級 5 段 21~29 傷＋7 格檔"
+    },
+    "Flux": {
+      "value": 3.0,
+      "value_upgraded": 4.0,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 4.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 架式型每場切換 8 次、心流每場給 2.2 能量（打出約第 2.4 回合，每次打出約 3.6 能量）；嫌疑/艾瑪型無架式卡時 0；以含架式卡 85% 計；升級降為 1 費（v2 未計升級差異）"
+    },
+    "Accomplice": {
+      "value": 3.4,
+      "value_upgraded": 4.4,
+      "value_multi": 3.4,
+      "value_multi_upgraded": 4.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 條件：需嫌疑；艾瑪型每場 1.08 次、平均消耗 5.5 層 → 召喚約 38；嫌疑型因嫌疑多被破論先消耗僅 0.19 次（平均 4.3 層）；召喚邊際遞減（艾瑪型戰末艾瑪 32 生命）取 0.12/點，扣鋼筆損失約 1.0；升級每次召喚 10"
+    },
+    "LaboursOfHiro": {
+      "value": 1.2,
+      "value_upgraded": 1.6,
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.6,
+      "confidence": "low",
+      "reasoning": "v5模擬: 每次打出後本場攻擊牌累積約 47 魔女化，達 100 層僅 5% 場次；中段魔女化約 +15% 攻擊倍率 × 剩餘約 40 傷 → 約 1.0；100 層後殺人衝動會打艾瑪(艾瑪型每場 0.54 傷)；升級固有提前約 1 回合",
+      "reasoning_multi": "多人：LaboursOfHiroPower 對任何人打出的攻擊牌都給希羅魔女化（未檢查出牌者），約 2.5 倍來源易達 100，同時殺人衝動會打隊友與艾瑪"
+    },
+    "LifeSentence": {
+      "value": 3.2,
+      "value_upgraded": 4.6,
+      "value_multi": 3.2,
+      "value_multi_upgraded": 4.6,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 每場格檔 嫌疑型 18.5(每次打出 23.6)/艾瑪型 16.3(每次 36)/架式型 0.3；回合末格檔利用率取 0.8；條件依賴嫌疑，架式型近 0，跨原型平均≈3.2；升級 ×3 實測嫌疑型 28.9/場"
+    },
+    "MusouKen": {
+      "value": 1.5,
+      "value_upgraded": 1.8,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 1.8,
+      "confidence": "low",
+      "reasoning": "v5模擬: 條件：需上段且 3 能量並結束回合；架式型抽到時可用約 5%（貪婪），預估有規劃時約 20%；成功時反擊實測約 39 傷＋減半受傷約 2 能量，扣犧牲整回合；未能使用時 0；升級反擊 +25(×1.2)"
+    },
+    "WitchesSabbath": {
+      "value": 0.6,
+      "value_upgraded": 0.8,
+      "value_multi": 0.4,
+      "value_multi_upgraded": 0.55,
+      "confidence": "low",
+      "reasoning": "v5模擬: 條件：需 ≥100 魔女化；牌組含勞動時可打出場次僅 3~5%（第 6.4~9.3 回合），抽到時可用率約 4%，可用時全體 79~101 傷(≈15)；不可用為 0 費廢牌；無勞動時幾近 0；升級基礎 70 → 98~115 傷；多人需全員 ≥100，但魔女化總量計全場",
+      "reasoning_multi": "需全部存活玩家 ≥100 魔女化，觸發率更低；傷害以全場魔女化總量計"
+    },
+    "DeathLoop": {
+      "value": 2.0,
+      "value_upgraded": 3.0,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 3.0,
+      "confidence": "low",
+      "reasoning": "v5模擬: 魔法牌：只在首次達 100 魔女化時加入；模擬 3 費版貪婪幾乎不打，升級 2 費每場 0.01~0.06 次；+50 魔女化(100→150 約 +30% 攻擊倍率)＋一次免死回滿血(魔女化≥100)；永恆；升級降費 +1"
+    }
+  }
+}

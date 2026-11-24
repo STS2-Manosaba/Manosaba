@@ -1,0 +1,309 @@
+{
+  "character": "Common",
+  "assumptions": [
+    "v5模擬：sims/sim_common/sim.py，每情境 6000 場；每回合抽 5、3 能量、手牌上限 10，貪婪啟發式（即時價值/費用）",
+    "宿主：雪莉(4打3防+2拳+殺人事件、起始 1 力量、回合開始清空魔女化)、可可(3打4防+3技)、艾瑪(3打3防+5張)，各加 6 張通用中期卡與 k 張隨機共用處刑卡（預設 k=2）",
+    "敵人：一般 72%(總血 50~72、1~3 隻)、菁英 20%(105~130)、首領 8%(220~260)；每回合總攻擊 7/10/12 起線性成長、分兩段；模擬回合 3.6~4.5/6.1~7.7/11~14；重要性 1/2/3 加權",
+    "魔女化倍率依 MajokaPower Hill 曲線，傷害取整；單人無隊友，殺人衝動無害；魔法卡不計值（僅以達 100 機率小幅加值）",
+    "使用者規則：條件型效果乘模擬達成率；逐卡核對附加效果；低機率可用卡乘可用機率",
+    "v3_heal/v3_ally/v4 修正保留；MultiplayerOnly 卡 value=null；X 費（Electrocution）未處理沿用 v2"
+  ],
+  "mechanic_values": {
+    "魔女化": "每層約 0.07，超過 100 層有風險，大量疊層時遞減",
+    "暫時力量(HouseKeeping)": "每層 0.33，僅本回合",
+    "斬首(Guillotine)": "攻擊後目標生命低於門檻即 DoomKill；一般觸發率約 15-20%",
+    "Simple Spear 零件": "4 張不可打出、保留的零件洗入抽牌堆，全部進手牌後合成 0 費 50 傷 Simple Spear；預估戰鬥內合成率約 65%，期間佔手牌",
+    "裁判/罪證/嫌疑": "Ema 專屬體系，其他角色幾乎無價值"
+  },
+  "cards": {
+    "Counterargument": {
+      "value": 2.9,
+      "value_upgraded": 3.9,
+      "confidence": "medium",
+      "reasoning": "11 點無力量加成傷害，加 1 張發言（抽1+議論）；議論加傷非 Ema 時幾乎不觸發",
+      "value_multi": 2.9,
+      "value_multi_upgraded": 3.9
+    },
+    "WitchLanguageMastery": {
+      "value": 8.2,
+      "value_upgraded": 8.2,
+      "value_multi": 8.2,
+      "value_multi_upgraded": 8.2,
+      "confidence": "medium",
+      "reasoning": "v5模擬:打出率 0.96、平均第 2.2 回合；反傷（含被格擋傷害×2，扣除敵人溢出）每場 43(雪莉)/53(可可)/49(艾瑪)，約 48/6≈8.0，折算每次打出 8.2；另使戰鬥縮短約 2.5 回合、少受約 25 血（已大致由反傷計入不重複加）。升級僅 0 費，效果同。v2 的 11 高估（未計戰鬥提早結束後受擊次數減少）；relative 仍偏高屬設計強度問題"
+    },
+    "Alibi": {
+      "value": 1.1,
+      "value_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "抽 2 張；減 2 層嫌疑只對有嫌疑機制的角色有用",
+      "value_multi": 1.1,
+      "value_multi_upgraded": 1.6
+    },
+    "Boulders": {
+      "value": 3.33,
+      "value_upgraded": 5.0,
+      "confidence": "high",
+      "reasoning": "20/30 點單體傷害，處刑卡",
+      "value_multi": 3.33,
+      "value_multi_upgraded": 5.0
+    },
+    "Bullseye": {
+      "value": 1.87,
+      "value_upgraded": 2.72,
+      "confidence": "high",
+      "reasoning": "7 傷 + 2 易傷；升級 10 傷 + 3 易傷",
+      "value_multi": 1.87,
+      "value_multi_upgraded": 2.72
+    },
+    "ConcentratedFire": {
+      "value": 1.75,
+      "value_upgraded": 2.5,
+      "confidence": "high",
+      "reasoning": "2×5 段=10 傷，多段吃力量加成略加分；升級 7 段",
+      "value_multi": 1.75,
+      "value_multi_upgraded": 2.5
+    },
+    "CulpritVerdict": {
+      "value": 0.1,
+      "value_upgraded": 0.25,
+      "value_multi": 0.1,
+      "value_multi_upgraded": 0.25,
+      "confidence": "low",
+      "reasoning": "v5模擬:低機率可用：需第 5 回合（升級第 3 回合）後才能打出，模擬戰鬥加權平均 5.7~7 回合、一般戰約 4 回合，抽到時可打出約 40%（升級約 70%）；非 Ema 罪證體系時真兇常落在敵人（攻擊+2）。可用時價值 ~0.3，乘可用率"
+    },
+    "DeathPendulum": {
+      "value": 1.5,
+      "value_upgraded": 2.5,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬:打出時手中技能數平均 2.2(雪莉)~2.5(可可/艾瑪)，全體 3 傷×2.4 段、平均存活敵人加權約 ×1.3 ≈9.4 傷 → 1.5；升級 5 傷 → 2.5"
+    },
+    "Dissolve": {
+      "value": 2.3,
+      "value_upgraded": 3.3,
+      "confidence": "medium",
+      "reasoning": "全體敵人本回合 -8 力量，約抵銷 10 點傷害×1.4，非攻擊回合折減",
+      "value_multi": 2.3,
+      "value_multi_upgraded": 3.3
+    },
+    "DriftApart": {
+      "value": null,
+      "value_upgraded": null,
+      "confidence": "medium",
+      "reasoning": "v5模擬:MultiplayerOnly，單人 value=null；多人欄位沿用。多人限定；力量給隊友單人計 0，只計自身永久 2/3 敏捷；多人：隊友獲 2/3 永久力量",
+      "value_multi": 4.4,
+      "value_multi_upgraded": 6.6
+    },
+    "Electrocution": {
+      "value": 4.5,
+      "value_upgraded": 6.75,
+      "confidence": "medium",
+      "reasoning": "X=3 時 3 段 10 傷打隨機敵人（×0.9）；升級每段 15",
+      "value_multi": 4.5,
+      "value_multi_upgraded": 6.75
+    },
+    "FortuneTelling": {
+      "value": 1.2,
+      "value_upgraded": 1.8,
+      "confidence": "high",
+      "reasoning": "從抽牌堆挑 2/3 張進手牌，優於純抽牌",
+      "value_multi": 1.2,
+      "value_multi_upgraded": 1.8
+    },
+    "FutureOfPotions": {
+      "value": 2.65,
+      "value_upgraded": 4.1,
+      "confidence": "low",
+      "reasoning": "v3隊友+補血合併:回血採v3補血(0.28/血)；梅露露隊友免除5%即死機率由3/13改0.088（多人−0.23/−0.31）",
+      "value_multi": 2.77,
+      "value_multi_upgraded": 4.29
+    },
+    "Gallows": {
+      "value": 4.17,
+      "value_upgraded": 4.17,
+      "confidence": "high",
+      "reasoning": "25 點傷害並無視敵人傷害上限；升級只降 1 費",
+      "value_multi": 4.17,
+      "value_multi_upgraded": 4.17
+    },
+    "Guillotine": {
+      "value": 2.5,
+      "value_upgraded": 3.2,
+      "value_multi": 2.5,
+      "value_multi_upgraded": 3.2,
+      "confidence": "medium",
+      "reasoning": "v5模擬:14 傷≈2.33；斬首觸發率每次打出 10~11%（貪婪選目標），每次斬首省下約 7 血≈+0.1；升級 18 傷、門檻 15%：觸發率 16%、省 8 血≈+0.2 → 3.2。v2 2.9/3.9 高估斬首"
+    },
+    "GuiltConclusive": {
+      "value": 0.2,
+      "value_upgraded": 0.2,
+      "confidence": "medium",
+      "reasoning": "罪證與嫌疑互換，只有 Ema 體系有意義；升級降為 0 費",
+      "value_multi": 0.2,
+      "value_multi_upgraded": 0.2
+    },
+    "GuiltQuestion": {
+      "value": null,
+      "value_upgraded": null,
+      "value_multi": 0.5,
+      "value_multi_upgraded": 0.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬:MultiplayerOnly，單人 value=null；多人欄位沿用。v4: MultiplayerOnly 單人 null。指定隊友手牌得2張罪證嫌疑（虛無消耗狀態，留手回合末+1罪證；打出需1能量再轉給別人）。罪證本身惰性，只在罪犯判決（第5/3回合後）決定真犯人（+1能量、+2攻防、受傷+2）或圖書館審判戰時有用，且與敵人罪證競爭。升級僅-1費，效果值不變"
+    },
+    "Hotpot": {
+      "value": 1.63,
+      "value_upgraded": 2.57,
+      "confidence": "high",
+      "reasoning": "全體 7/11 傷",
+      "value_multi": 1.63,
+      "value_multi_upgraded": 2.57
+    },
+    "HouseKeeping": {
+      "value": 1.32,
+      "value_upgraded": 1.98,
+      "confidence": "high",
+      "reasoning": "本回合 4/6 暫時力量",
+      "value_multi": 1.32,
+      "value_multi_upgraded": 1.98
+    },
+    "Immolation": {
+      "value": 3.6,
+      "value_upgraded": 4.55,
+      "confidence": "medium",
+      "reasoning": "全體 8 傷 + 全體 5 灼燒；升級 12 傷",
+      "value_multi": 3.6,
+      "value_multi_upgraded": 4.55
+    },
+    "Inhibition": {
+      "value": null,
+      "value_upgraded": null,
+      "confidence": "medium",
+      "reasoning": "v5模擬:MultiplayerOnly，單人 value=null；多人欄位沿用。多人限定，抑制殺人衝動，單人無效果；多人：0 費使隊友殺人衝動失效",
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.0
+    },
+    "IronMaiden": {
+      "value": 2.8,
+      "value_upgraded": 3.47,
+      "confidence": "high",
+      "reasoning": "9 傷 + 2 虛弱 + 2 易傷；升級 13 傷",
+      "value_multi": 2.8,
+      "value_multi_upgraded": 3.47
+    },
+    "OpeningStatement": {
+      "value": 2.0,
+      "value_upgraded": 2.6,
+      "confidence": "high",
+      "reasoning": "10/13 格檔（固有、消耗另計）",
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.6
+    },
+    "PicnicTime": {
+      "value": 1.5,
+      "value_upgraded": 2.5,
+      "confidence": "high",
+      "reasoning": "抽 1 + 下回合 1/2 能量",
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.5
+    },
+    "PiercingDeathSpear": {
+      "value": 2.33,
+      "value_upgraded": 3.33,
+      "confidence": "high",
+      "reasoning": "11/17 傷 + 抽 1",
+      "value_multi": 2.33,
+      "value_multi_upgraded": 3.33
+    },
+    "Prepare": {
+      "value": 1.4,
+      "value_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "下回合 2/3 能量，代價棄 2 張手牌",
+      "value_multi": 1.4,
+      "value_multi_upgraded": 2.4
+    },
+    "Prison": {
+      "value": 1.3,
+      "value_upgraded": 2.0,
+      "value_multi": 1.3,
+      "value_multi_upgraded": 2.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬:魔女化增傷實測每場額外傷害 可可 9.8/艾瑪 8.5，雪莉 0（回合開始清空魔女化）；升級 14.5/13.1/0；條件加權（三宿主平均、扣打出率 0.96）約 6.4/9.6 傷≈1.1/1.6；達 100 層（角色魔法卡）機率 6~9%/17~20%，另計 +0.2/+0.4。v2 3.0/4.0 高估"
+    },
+    "Suicide": {
+      "value": 0.5,
+      "value_upgraded": 0.8,
+      "value_multi": 0.5,
+      "value_multi_upgraded": 0.8,
+      "confidence": "medium",
+      "reasoning": "v5模擬:附加效果核對：自傷 3（−0.6）＋魔女化 20/30 層：倍率僅 +6%/+12% 且小數取整，模擬增傷每場 <0.1；雪莉回合開始清空魔女化。主要價值是處刑卡（典獄長）、湊 100 魔女化與魔女語精通自傷反傷（3×2=全體 6）。v2 1.1/1.8 高估"
+    },
+    "TrialStart": {
+      "value": null,
+      "value_upgraded": null,
+      "confidence": "low",
+      "reasoning": "v5模擬:MultiplayerOnly，單人 value=null；多人欄位沿用。多人限定；替全隊加投票牌到抽牌堆，單人只計自身部分；多人：4 名玩家各得投票牌",
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.8
+    },
+    "Wall": {
+      "value": 3.6,
+      "value_upgraded": 3.6,
+      "value_multi": 3.6,
+      "value_multi_upgraded": 3.6,
+      "confidence": "medium",
+      "reasoning": "v5模擬:受到的未格擋攻擊傷害轉活力：每場活力 26(雪莉)/30(可可)/26(艾瑪)，扣溢出與攻擊時機約八成有效≈22 傷/6≈3.6；需先受傷的條件已由模擬量入。升級僅降 1 費，效果不變"
+    },
+    "WardenCommand": {
+      "value": 2.6,
+      "value_upgraded": 3.3,
+      "value_multi": 2.6,
+      "value_multi_upgraded": 3.3,
+      "confidence": "medium",
+      "reasoning": "v5模擬:每次打出後處刑卡額外打出次數：牌組處刑卡 k=1/2/3/4 張時 0.6~0.8/1.0~1.3/1.2~1.6/1.3~1.7 次，折合價值 1.8/3.0/3.6/4.1（固有升級 2.2/3.7/4.8/5.5）；以 k 分布 0:15% 1:25% 2:30% 3:20% 4:10% 加權（k=0 計 0）→ 2.5/3.2，選此卡的牌組偏處刑略上調 → 2.6/3.3。v2 4.5/5.5 高估"
+    },
+    "WitchIslandExpedition": {
+      "value": 0.3,
+      "value_upgraded": 0.3,
+      "value_multi": 0.3,
+      "value_multi_upgraded": 0.3,
+      "confidence": "low",
+      "reasoning": "v5模擬:敵方 Move 攻擊 ×3，QTE 成功 ×0。QTE 成功率 p=0.5/0.7/0.9 時每場淨受傷 +25~42/+0~5/−23~28 血；損益兩平約 p≈0.72。p 依玩家操作無法模擬，以 p≈0.7 估接近 0；升級固有反而更早承受風險，不加值"
+    },
+    "WorldVanquisher": {
+      "value": 0.6,
+      "value_upgraded": 1.1,
+      "confidence": "medium",
+      "reasoning": "0 費抽 1/2；全場魔女化達每玩家 250 才強制勝利，一般極難達成；多人：門檻變為 250×4 魔女化",
+      "value_multi": 0.5,
+      "value_multi_upgraded": 1.0
+    },
+    "YukiBackflip": {
+      "value": 2.0,
+      "value_upgraded": 2.6,
+      "confidence": "high",
+      "reasoning": "5/8 格檔 + 抽 2",
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.6
+    },
+    "ForgeSpear": {
+      "value": 2.6,
+      "value_upgraded": 3.2,
+      "value_multi": 2.6,
+      "value_multi_upgraded": 3.2,
+      "confidence": "medium",
+      "reasoning": "v5模擬:零件合成率 67%(雪莉)/82%(可可)/80%(艾瑪)，平均第 3.1~3.9 回合合成；長矛實際造成傷害每場 21/25/24（扣溢出）≈3.9；抽到零件的空抽 3.1~3.5 張×0.45 ≈ −1.5 → 2.6（以合成率乘入，不以 50 傷計）。升級不消耗：再洗入一組，合成 0.81~1.05 次、長矛傷 26~32、空抽 3.8~4.7 → 3.2。哈斯米蕾亞只需 3 零件（未模擬，略高）"
+    },
+    "SimpleSpear": {
+      "value": 8.33,
+      "value_upgraded": 12.5,
+      "confidence": "high",
+      "reasoning": "Ancient 衍生，50/75 點傷害，只能由鍛造長槍取得",
+      "value_multi": 8.33,
+      "value_multi_upgraded": 12.5
+    }
+  },
+  "source": "sims/sim_common/sim.py + results.json"
+}

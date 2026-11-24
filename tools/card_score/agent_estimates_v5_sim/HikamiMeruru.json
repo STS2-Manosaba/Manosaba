@@ -1,0 +1,195 @@
+{
+  "character": "HikamiMeruru",
+  "assumptions": [
+    "v5模擬：sims/sim_hikamimeruru/sim.py，3 原型（藥水量產 brew／投擲 throw／治療 heal）各 1000 輪×16 場連續戰鬥（藥水、血量跨戰鬥保留），未升級與全升級各一組；每回合抽 5、3 能量、貪婪（價值/費用）出牌",
+    "資源規則照程式碼：大鍋火力每場 20，非催化劑藥水使用/丟棄時 火力% 機率得催化劑（需空欄）；輕效同種×2→基礎、基礎+催化劑→強效；合成丟棄也觸發大鍋與藥水投擲",
+    "照片遺物欄位 3+{1,2,4,6,10}（Lv1~5，exp 一般1/菁英2/首領3，門檻 0/2/7/15/30），模擬平均 7.2 格，藥水牌組欄位幾乎常滿",
+    "牌組：起始 10 張（4 打擊 3 防禦 創傷 藥水選擇 添柴）+ 共用卡代表 3 張 11 傷/2 張 9 格檔 + 原型卡 10 張；敵血為雪莉模型 ×0.6 使回合長約 一般 3.3~4.4／菁英 5.3~7.9／首領 9~14，重要性 1/2/3",
+    "藥水價值：格檔僅計擋下部分/5、回血 0.33/血、暫時力量計實際加傷/6、能量 0.85、石頭 15 傷；合成產物按名目價值分帳給素材來源；啟發式偏囤藥，量產卡兌現為保守值",
+    "關鍵量測：藥水牌組每場催化劑 3.2 次、輕效配對合成 1.3~2.3 次、催化劑合成 2.0~2.2 次、藥水使用 7~7.6、丟棄 8~10；投擲牌組每場投擲傷害 52~64",
+    "v3 修正保留：一次性回血 0.28/血、可重用 0.22/血（QuickHeal/GrandHeal/MeruruInfirmary）；ShotsFired 沿用 v3_ally 隊友機率 0.088；MultiplayerOnly（DoubleSuicide、DrugDealer）value=null",
+    "條件型/低可用率：Exaid、NanokaPuzzle、PrimalPotionPower、AddFirewood、WitchesCauldron 已以模擬打出/觸發率乘入；X 費卡不處理"
+  ],
+  "mechanic_values": {
+    "隨機基礎藥水": "約 1.3 能量：原版基礎藥水多值 1.5～2，扣除欄位溢出與時機損失，另含約 20% 催化劑機率 +0.1",
+    "輕效藥水": "約 0.6 能量：止痛 2～5 血、5 格檔或暫時力量，單獨使用弱，但可作合成素材",
+    "催化劑": "約 0.7 能量：沒有直接效果，可與藥水合成高級藥水（強效格檔 24、強效能量 5 等）；累積 3 層 CatalystPower 可得殺死魔女的藥",
+    "火力": "每 10 點約 0.2 能量：0.1 機率 × 每戰約 3 次藥水使用 × 催化劑 0.7",
+    "回復生命": "依單位每點 0.12，戰鬥中溢出治療打七折",
+    "抑制力": "單人主要用於讓殺人衝動無效，價值低，每層約 0.05",
+    "催化劑(v5)": "每場藥水牌組 3.2 次觸發；單人只能合成（Tredecim 對自己使用會致死，單人無實用）",
+    "藥水投擲(v5)": "每次丟棄 5 傷/層；石頭滾石 5 起 +5 遞增",
+    "石頭(v5)": "藥水形石頭使用 15 傷 ≈2.5 能量"
+  },
+  "cards": {
+    "StrikeHikamiMeruru": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "6/9 傷害，標準打擊",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.5
+    },
+    "DefendHikamiMeruru": {
+      "value": 1.0,
+      "value_upgraded": 1.6,
+      "confidence": "high",
+      "reasoning": "5/8 格檔，標準防禦",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.6
+    },
+    "TraumaHikamiMeruru": {
+      "value": 0.3,
+      "value_upgraded": 0.45,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 10/15 魔女化整場保留，倍率 1.06/1.09；模擬魔女化加傷每次打出 0.10~0.16（升級牌組 0.22~0.35），梅露露攻擊少，下修自 0.5/0.75",
+      "value_multi": 0.3,
+      "value_multi_upgraded": 0.45
+    },
+    "AddFirewood": {
+      "value": 0.2,
+      "value_upgraded": 0.25,
+      "confidence": "medium",
+      "reasoning": "v5模擬: +10/15 火力只在其後的藥水使用/丟棄（含合成丟棄）時多 10~15% 催化劑機率；模擬每次打出 0.04~0.22（升級 0.03~0.20），常在戰鬥後段打出；滿火力改給催化劑幾乎不發生（每場 <0.02）。條件已乘入",
+      "value_multi": 0.2,
+      "value_multi_upgraded": 0.25
+    },
+    "PotionSelect": {
+      "value": 1.5,
+      "value_upgraded": 2.2,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 選 2/3 瓶輕效（多選輕效格檔配對合成格檔藥水 12）；模擬每次打出 0.7~2.8（樣本少，2 費貪婪少打），溢出 0.3~0.7 瓶/次；維持 v2",
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.2
+    },
+    "CollectPotions": {
+      "value": 1.4,
+      "value_upgraded": 1.8,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 隨機 2/3 瓶輕效；模擬每次實際兌現 1.0~1.2（升級 1.0~1.15），每次生成 2.4~3.5 瓶（含合成產物）、溢出 0.1~1.1 瓶；欄位依照片升級平均 7.2 格。v2 2.2/3.1 下修",
+      "value_multi": 1.4,
+      "value_multi_upgraded": 1.8
+    },
+    "DoubleSuicide": {
+      "value": null,
+      "value_upgraded": null,
+      "confidence": "medium",
+      "reasoning": "v5模擬: MultiplayerOnly（程式碼 MultiplayerConstraint），單人不可用 value=null；多人沿用 v2",
+      "value_multi": 0.6,
+      "value_multi_upgraded": 0.6
+    },
+    "Incitement": {
+      "value": 1.0,
+      "value_upgraded": 1.5,
+      "confidence": "high",
+      "reasoning": "單人只能對自己：抽 2/3 張；隊友分支（魔女化與能量）單人為 0",
+      "value_multi": 1.7,
+      "value_multi_upgraded": 2.05
+    },
+    "ShotsFired": {
+      "value": 1.67,
+      "value_upgraded": 2.5,
+      "confidence": "high",
+      "reasoning": "v3隊友:特定隊友機率=1.5名隊友/17≈0.088（2.5人隊；單人0）；奈葉香隊友時對其造成1傷，負面約−0.1×0.088",
+      "value_multi": 1.66,
+      "value_multi_upgraded": 2.49
+    },
+    "CollectData": {
+      "value": 1.5,
+      "value_upgraded": 2.0,
+      "confidence": "high",
+      "reasoning": "抽 3/4 張",
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.0
+    },
+    "DrugDealer": {
+      "value": null,
+      "value_upgraded": null,
+      "confidence": "medium",
+      "reasoning": "v5模擬: MultiplayerOnly（程式碼 MultiplayerConstraint），單人不可用 value=null；多人全隊各 1 瓶輕效、升級 50% 催化劑沿用 v2",
+      "value_multi": 5.2,
+      "value_multi_upgraded": 5.55
+    },
+    "QuickHeal": {
+      "value": 2.5,
+      "value_upgraded": 3.55,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 每次打出兌現 2.1~2.9（回血 0.22/血+有效格檔），與 v3 相符保留。v3補血: 非消耗可重用，回復 5/7 每點 0.22（舊 0.12×0.7=0.084）+格檔 7/10=1.4/2.0；多人可指定缺血隊友，溢補較少每點 0.26",
+      "value_multi": 2.7,
+      "value_multi_upgraded": 3.8
+    },
+    "AutomatedPotionMix": {
+      "value": 2.8,
+      "value_upgraded": 3.2,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 回合結束 2 瓶輕效；模擬每次打出兌現 1.8（與工廠搶欄位）~2.6（投擲牌組，輕效可丟換傷害），每次溢出 1~5.4 瓶；升級固有（模擬與工廠同時固有時更塞欄位 0.85~1.7）。v2 4.0/4.6 下修",
+      "value_multi": 2.8,
+      "value_multi_upgraded": 3.2
+    },
+    "PotionThrow": {
+      "value": 1.8,
+      "value_upgraded": 1.8,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 每層丟棄藥水對隨機敵 5 傷（v2 誤記 6），丟石頭改滾石 AoE 5 起每次 +5；投擲牌組每張每場約 1.8 張打出、每次打出兌現 1.77~1.83；合成丟棄目前也會觸發（PotionCraftService 未進入抑制範圍）。升級 0 費",
+      "value_multi": 1.8,
+      "value_multi_upgraded": 1.8
+    },
+    "MeruruInfirmary": {
+      "value": 2.6,
+      "value_upgraded": 2.6,
+      "confidence": "low",
+      "reasoning": "v5模擬: 保留 v3 補血 2.6；止痛藥為分級（(層-1)/2 <5 輕止痛 2 血、5~11 止痛 5、≥12 強止痛 12）非精確一半；貪婪 2 費少打（每場 0.04），樣本不足無法確認，維持 low。v3補血: 止痛藥回復量為受傷一半，約 4 瓶×2 血=8 血，回血部分每點 +0.12（逐次小額、溢補少）→ +1.0；升級全隊 4 人×八折 → 多人升級 +3.2",
+      "value_multi": 2.6,
+      "value_multi_upgraded": 9.6
+    },
+    "PotionFactory": {
+      "value": 4.5,
+      "value_upgraded": 5.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 回合開始 2 瓶隨機基礎藥水；模擬欄位幾乎常滿（戰末持有 6.7/7.2 格），每次打出溢出 6.9 瓶、兌現 1.85（含啟發式囤藥保守），實際玩家會更積極使用，取 4.5；v2 6.5/7.3（relative 2.65）下修",
+      "value_multi": 4.5,
+      "value_multi_upgraded": 5.0
+    },
+    "HikamiMeruruExaid": {
+      "value": 3.0,
+      "value_upgraded": 3.0,
+      "confidence": "low",
+      "reasoning": "v5模擬: 魔女化補到 100（倍率 1.84 整場保留）後結束回合；模擬僅在菁英/首領前 3 回合打出時每次 +12.9（剩餘傷害 ×0.84），抽到時可用率約 0.3；其餘情境約 1.5；期望 0.3×10+0.7×1.5≈4 扣結束回合手牌損失 → 3.0；單人殺人衝動無隊友可傷。升級降費",
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.0
+    },
+    "NanokaPuzzle": {
+      "value": 0.5,
+      "value_upgraded": 0.8,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 移除手牌與抽牌堆，塞 35/25 張無效拼圖+5 部件，部件全在手才勝利；模擬首領戰勝率 0.3%/1.3%（約需 8 回合空轉，期間無法防禦），死亡率不變，菁英戰啟發式不打；條件達成率乘入後 v2 2.5/3.5 大幅下修",
+      "value_multi": 0.5,
+      "value_multi_upgraded": 0.8
+    },
+    "PrimalPotionPower": {
+      "value": 4.5,
+      "value_upgraded": 4.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 附加效果補計：藥水形石頭可直接使用造成 15 傷（原版 PotionShapedRock），把輕效（名目 0.5~1.0）換成每瓶約 2.5；模擬投擲牌組每次打出淨 5.2~8.4（約 4~7 瓶轉換），但需持有便宜藥水時才打（打出率 0.18~0.27/場），乘可用率並扣轉掉好藥水，取 4.5；v2 0.8 嚴重低估",
+      "value_multi": 4.5,
+      "value_multi_upgraded": 4.5
+    },
+    "WitchesCauldron": {
+      "value": 1.0,
+      "value_upgraded": 1.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 火力設為 100：其後每次非催化劑藥水使用/丟棄（含合成丟棄）有空欄即得催化劑；模擬每次打出 0.75（藥水牌組，貪婪打出率每場 0.15），催化劑需配對基礎藥水才兌現（+12 格檔等），單人無其他用途；消耗、獨特；升級降費",
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.0
+    },
+    "GrandHeal": {
+      "value": 4.7,
+      "value_upgraded": 4.7,
+      "confidence": "medium",
+      "reasoning": "v3補血: 全體回復 20，大量回血溢補較多每點 0.22→4.4 + 清狀態 0.3；多人 4 人×八折=14.1+0.3；升級僅降費",
+      "value_multi": 14.4,
+      "value_multi_upgraded": 14.4
+    }
+  },
+  "source": "mod"
+}

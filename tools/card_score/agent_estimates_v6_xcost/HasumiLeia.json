@@ -1,0 +1,26 @@
+{
+  "source": "mod",
+  "pool": "HasumiLeia",
+  "cards": {
+    "ShowYouTheUnseen": {
+      "value_by_x": {
+        "0": 0.0,
+        "1": 1.1,
+        "2": 2.2,
+        "3": 3.3,
+        "4": 4.4,
+        "5": 5.5
+      },
+      "value_by_x_upgraded": {
+        "0": 0.0,
+        "1": 1.4,
+        "2": 2.8,
+        "3": 4.2,
+        "4": 5.6,
+        "5": 7.0
+      },
+      "confidence": "low",
+      "reasoning": "v6 X費: X張(升級版)極限衝刺洗入抽牌堆"
+    }
+  }
+}

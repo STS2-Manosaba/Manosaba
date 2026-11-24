@@ -1,0 +1,598 @@
+{
+ "brew_base": {
+  "Trauma": {
+   "per_play": 0.341,
+   "per_play_global": 0.156,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 0.654,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "PotionSelect": {
+   "per_play": 1.048,
+   "per_play_global": 0.724,
+   "gen_global_per_play": 2.104,
+   "ovf_global_per_play": 0.739,
+   "plays_per_fight": 0.057,
+   "gen_per_fight": 0.126,
+   "overflow_per_fight": 0.038
+  },
+  "AddFirewood": {
+   "per_play": 0.323,
+   "per_play_global": 0.18,
+   "gen_global_per_play": 0.017,
+   "ovf_global_per_play": 0.187,
+   "plays_per_fight": 0.442,
+   "gen_per_fight": 0.008,
+   "overflow_per_fight": 0.055
+  },
+  "CollectPotions": {
+   "per_play": 1.528,
+   "per_play_global": 1.012,
+   "gen_global_per_play": 2.357,
+   "ovf_global_per_play": 0.262,
+   "plays_per_fight": 0.726,
+   "gen_per_fight": 1.758,
+   "overflow_per_fight": 0.155
+  },
+  "AutomatedPotionMix": {
+   "per_play": 4.023,
+   "per_play_global": 1.82,
+   "gen_global_per_play": 4.041,
+   "ovf_global_per_play": 5.403,
+   "plays_per_fight": 0.956,
+   "gen_per_fight": 7.088,
+   "overflow_per_fight": 9.593
+  },
+  "PotionFactory": {
+   "per_play": 3.643,
+   "per_play_global": 1.848,
+   "gen_global_per_play": 1.954,
+   "ovf_global_per_play": 6.875,
+   "plays_per_fight": 0.966,
+   "gen_per_fight": 2.837,
+   "overflow_per_fight": 12.594
+  },
+  "WitchesCauldron": {
+   "per_play": 2.132,
+   "per_play_global": 0.748,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 0.152,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "QuickHeal": {
+   "per_play": 2.225,
+   "per_play_global": 2.1,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 2.125,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "deaths": 0.356,
+  "len": 10.106,
+  "dmg_taken": 58.377,
+  "cat_procs": 3.064,
+  "craft_pair": 1.175,
+  "craft_cat": 2.002,
+  "pot_use": 6.789,
+  "pot_discard": 7.628,
+  "throw_dmg": 0.0,
+  "throw_disc_nom": 0.0,
+  "pressure_discard": 1.273,
+  "slots": 7.217,
+  "pots_end": 6.784,
+  "heal_pot": 12.915,
+  "primal_rocks": 0.0,
+  "primal_lost_nom": 0.0,
+  "cr_relic": 2.419,
+  "inf_pots_LPK": 0.0,
+  "inf_pots_PK": 0.0,
+  "inf_pots_GPK": 0.0,
+  "len_by": {
+   "hallway": 4.43,
+   "elite": 7.4,
+   "boss": 13.8
+  }
+ },
+ "brew_upg": {
+  "Trauma": {
+   "per_play": 0.798,
+   "per_play_global": 0.352,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 0.59,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "PotionSelect": {
+   "per_play": 0.663,
+   "per_play_global": 0.371,
+   "gen_global_per_play": 1.087,
+   "ovf_global_per_play": 2.311,
+   "plays_per_fight": 0.019,
+   "gen_per_fight": 0.018,
+   "overflow_per_fight": 0.044
+  },
+  "AddFirewood": {
+   "per_play": 0.063,
+   "per_play_global": 0.035,
+   "gen_global_per_play": 0.017,
+   "ovf_global_per_play": 0.595,
+   "plays_per_fight": 0.393,
+   "gen_per_fight": 0.005,
+   "overflow_per_fight": 0.249
+  },
+  "CollectPotions": {
+   "per_play": 2.061,
+   "per_play_global": 0.985,
+   "gen_global_per_play": 2.619,
+   "ovf_global_per_play": 1.058,
+   "plays_per_fight": 0.093,
+   "gen_per_fight": 0.259,
+   "overflow_per_fight": 0.089
+  },
+  "AutomatedPotionMix": {
+   "per_play": 1.466,
+   "per_play_global": 0.85,
+   "gen_global_per_play": 1.934,
+   "ovf_global_per_play": 8.249,
+   "plays_per_fight": 0.993,
+   "gen_per_fight": 2.289,
+   "overflow_per_fight": 16.466
+  },
+  "PotionFactory": {
+   "per_play": 0.576,
+   "per_play_global": 0.35,
+   "gen_global_per_play": 0.359,
+   "ovf_global_per_play": 9.329,
+   "plays_per_fight": 1.0,
+   "gen_per_fight": 0.423,
+   "overflow_per_fight": 17.481
+  },
+  "WitchesCauldron": {
+   "per_play": 0.238,
+   "per_play_global": 0.147,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 0.768,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "QuickHeal": {
+   "per_play": 3.13,
+   "per_play_global": 2.908,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 2.072,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "deaths": 0.406,
+  "len": 9.884,
+  "dmg_taken": 58.077,
+  "cat_procs": 1.223,
+  "craft_pair": 0.286,
+  "craft_cat": 0.366,
+  "pot_use": 1.89,
+  "pot_discard": 1.816,
+  "throw_dmg": 0.0,
+  "throw_disc_nom": 0.0,
+  "pressure_discard": 0.51,
+  "slots": 7.205,
+  "pots_end": 7.134,
+  "heal_pot": 3.759,
+  "primal_rocks": 0.0,
+  "primal_lost_nom": 0.0,
+  "cr_relic": 0.452,
+  "inf_pots_LPK": 0.0,
+  "inf_pots_PK": 0.0,
+  "inf_pots_GPK": 0.0,
+  "len_by": {
+   "hallway": 3.86,
+   "elite": 6.46,
+   "boss": 14.17
+  }
+ },
+ "throw_base": {
+  "Trauma": {
+   "per_play": 0.204,
+   "per_play_global": 0.098,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 0.626,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "PotionSelect": {
+   "per_play": 3.575,
+   "per_play_global": 1.195,
+   "gen_global_per_play": 2.857,
+   "ovf_global_per_play": 0.287,
+   "plays_per_fight": 0.025,
+   "gen_per_fight": 0.067,
+   "overflow_per_fight": 0.008
+  },
+  "AddFirewood": {
+   "per_play": 0.477,
+   "per_play_global": 0.224,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 0.145,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "CollectPotions": {
+   "per_play": 1.518,
+   "per_play_global": 1.18,
+   "gen_global_per_play": 2.607,
+   "ovf_global_per_play": 0.088,
+   "plays_per_fight": 1.586,
+   "gen_per_fight": 4.145,
+   "overflow_per_fight": 0.091
+  },
+  "AutomatedPotionMix": {
+   "per_play": 5.147,
+   "per_play_global": 2.61,
+   "gen_global_per_play": 6.166,
+   "ovf_global_per_play": 0.977,
+   "plays_per_fight": 0.921,
+   "gen_per_fight": 10.137,
+   "overflow_per_fight": 1.399
+  },
+  "PotionThrow": {
+   "per_play": 3.207,
+   "per_play_global": 1.766,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 1.817,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "PrimalPotionPower": {
+   "per_play": 9.273,
+   "per_play_global": 8.364,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 0.176,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "deaths": 0.048,
+  "len": 7.005,
+  "dmg_taken": 31.454,
+  "cat_procs": 3.241,
+  "craft_pair": 2.293,
+  "craft_cat": 1.971,
+  "pot_use": 7.682,
+  "pot_discard": 9.81,
+  "throw_dmg": 63.117,
+  "throw_disc_nom": 0.0,
+  "pressure_discard": 0.045,
+  "slots": 7.189,
+  "pots_end": 4.478,
+  "heal_pot": 11.891,
+  "primal_rocks": 1.293,
+  "primal_lost_nom": 1.41,
+  "cr_relic": 2.448,
+  "inf_pots_LPK": 0.0,
+  "inf_pots_PK": 0.0,
+  "inf_pots_GPK": 0.0,
+  "len_by": {
+   "hallway": 3.36,
+   "elite": 5.3,
+   "boss": 9.36
+  }
+ },
+ "throw_upg": {
+  "Trauma": {
+   "per_play": 0.422,
+   "per_play_global": 0.216,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 0.569,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "PotionSelect": {
+   "per_play": 2.589,
+   "per_play_global": 0.891,
+   "gen_global_per_play": 3.023,
+   "ovf_global_per_play": 1.18,
+   "plays_per_fight": 0.03,
+   "gen_per_fight": 0.101,
+   "overflow_per_fight": 0.035
+  },
+  "AddFirewood": {
+   "per_play": 0.343,
+   "per_play_global": 0.201,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 0.195,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "CollectPotions": {
+   "per_play": 1.528,
+   "per_play_global": 1.143,
+   "gen_global_per_play": 3.54,
+   "ovf_global_per_play": 0.607,
+   "plays_per_fight": 0.91,
+   "gen_per_fight": 3.304,
+   "overflow_per_fight": 0.46
+  },
+  "AutomatedPotionMix": {
+   "per_play": 4.327,
+   "per_play_global": 1.731,
+   "gen_global_per_play": 5.646,
+   "ovf_global_per_play": 1.075,
+   "plays_per_fight": 0.995,
+   "gen_per_fight": 10.578,
+   "overflow_per_fight": 1.879
+  },
+  "PotionThrow": {
+   "per_play": 2.914,
+   "per_play_global": 1.829,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 1.72,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "PrimalPotionPower": {
+   "per_play": 6.901,
+   "per_play_global": 5.163,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 0.272,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "deaths": 0.001,
+  "len": 5.665,
+  "dmg_taken": 15.478,
+  "cat_procs": 3.326,
+  "craft_pair": 2.331,
+  "craft_cat": 1.935,
+  "pot_use": 7.029,
+  "pot_discard": 10.153,
+  "throw_dmg": 52.847,
+  "throw_disc_nom": 0.0,
+  "pressure_discard": 0.22,
+  "slots": 7.189,
+  "pots_end": 4.93,
+  "heal_pot": 7.469,
+  "primal_rocks": 1.827,
+  "primal_lost_nom": 2.733,
+  "cr_relic": 1.682,
+  "inf_pots_LPK": 0.0,
+  "inf_pots_PK": 0.0,
+  "inf_pots_GPK": 0.0,
+  "len_by": {
+   "hallway": 2.48,
+   "elite": 3.93,
+   "boss": 7.89
+  }
+ },
+ "heal_base": {
+  "Trauma": {
+   "per_play": 0.303,
+   "per_play_global": 0.141,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 0.694,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "PotionSelect": {
+   "per_play": 32.287,
+   "per_play_global": 2.17,
+   "gen_global_per_play": 3.568,
+   "ovf_global_per_play": 0.005,
+   "plays_per_fight": 0.081,
+   "gen_per_fight": 0.292,
+   "overflow_per_fight": 0.0
+  },
+  "AddFirewood": {
+   "per_play": 0.114,
+   "per_play_global": 0.036,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 0.262,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "MeruruInfirmary": {
+   "per_play": 15.095,
+   "per_play_global": 1.578,
+   "gen_global_per_play": 1.848,
+   "ovf_global_per_play": 0.001,
+   "plays_per_fight": 0.045,
+   "gen_per_fight": 0.302,
+   "overflow_per_fight": 0.0
+  },
+  "Exaid": {
+   "per_play": 0.0,
+   "per_play_global": 0.0,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 0.0,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "QuickHeal": {
+   "per_play": 2.247,
+   "per_play_global": 2.079,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 4.174,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "deaths": 0.497,
+  "len": 10.075,
+  "dmg_taken": 66.945,
+  "cat_procs": 0.207,
+  "craft_pair": 0.087,
+  "craft_cat": 0.108,
+  "pot_use": 0.657,
+  "pot_discard": 0.389,
+  "throw_dmg": 0.0,
+  "throw_disc_nom": 0.0,
+  "pressure_discard": 0.0,
+  "slots": 7.198,
+  "pots_end": 0.728,
+  "heal_pot": 1.58,
+  "primal_rocks": 0.0,
+  "primal_lost_nom": 0.0,
+  "cr_relic": 0.352,
+  "inf_pots_LPK": 0.126,
+  "inf_pots_PK": 0.104,
+  "inf_pots_GPK": 0.008,
+  "len_by": {
+   "hallway": 4.29,
+   "elite": 7.75,
+   "boss": 13.55
+  }
+ },
+ "heal_upg": {
+  "Trauma": {
+   "per_play": 0.853,
+   "per_play_global": 0.345,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 0.634,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "PotionSelect": {
+   "per_play": 14.722,
+   "per_play_global": 2.76,
+   "gen_global_per_play": 4.768,
+   "ovf_global_per_play": 0.064,
+   "plays_per_fight": 0.133,
+   "gen_per_fight": 0.652,
+   "overflow_per_fight": 0.005
+  },
+  "AddFirewood": {
+   "per_play": 0.134,
+   "per_play_global": 0.061,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 0.287,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "MeruruInfirmary": {
+   "per_play": 7.156,
+   "per_play_global": 0.567,
+   "gen_global_per_play": 0.772,
+   "ovf_global_per_play": 0.003,
+   "plays_per_fight": 0.039,
+   "gen_per_fight": 0.129,
+   "overflow_per_fight": 0.0
+  },
+  "Exaid": {
+   "per_play": 14.41,
+   "per_play_global": 12.917,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 0.052,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "QuickHeal": {
+   "per_play": 2.784,
+   "per_play_global": 2.506,
+   "gen_global_per_play": 0.0,
+   "ovf_global_per_play": 0.0,
+   "plays_per_fight": 3.964,
+   "gen_per_fight": 0.0,
+   "overflow_per_fight": 0.0
+  },
+  "deaths": 0.081,
+  "len": 10.043,
+  "dmg_taken": 46.476,
+  "cat_procs": 0.296,
+  "craft_pair": 0.146,
+  "craft_cat": 0.143,
+  "pot_use": 0.888,
+  "pot_discard": 0.577,
+  "throw_dmg": 0.0,
+  "throw_disc_nom": 0.0,
+  "pressure_discard": 0.0,
+  "slots": 7.207,
+  "pots_end": 1.328,
+  "heal_pot": 0.606,
+  "primal_rocks": 0.0,
+  "primal_lost_nom": 0.0,
+  "cr_relic": 0.387,
+  "inf_pots_LPK": 0.066,
+  "inf_pots_PK": 0.033,
+  "inf_pots_GPK": 0.001,
+  "len_by": {
+   "hallway": 3.46,
+   "elite": 5.82,
+   "boss": 15.05
+  }
+ },
+ "nanoka_boss_base_False": {
+  "deaths": 0.998,
+  "len": 12.542,
+  "dmg_taken": 106.467,
+  "nanoka_win": 0.0,
+  "nanoka_played": 0.0
+ },
+ "nanoka_boss_base_True": {
+  "deaths": 0.995,
+  "len": 12.2,
+  "dmg_taken": 104.772,
+  "nanoka_win": 0.003,
+  "nanoka_played": 0.046
+ },
+ "nanoka_elite_base_False": {
+  "deaths": 0.0,
+  "len": 7.877,
+  "dmg_taken": 31.503,
+  "nanoka_win": 0.0,
+  "nanoka_played": 0.0
+ },
+ "nanoka_elite_base_True": {
+  "deaths": 0.001,
+  "len": 7.908,
+  "dmg_taken": 32.922,
+  "nanoka_win": 0.0,
+  "nanoka_played": 0.0
+ },
+ "nanoka_boss_upg_False": {
+  "deaths": 0.998,
+  "len": 12.542,
+  "dmg_taken": 106.467,
+  "nanoka_win": 0.0,
+  "nanoka_played": 0.0
+ },
+ "nanoka_boss_upg_True": {
+  "deaths": 0.983,
+  "len": 12.191,
+  "dmg_taken": 104.484,
+  "nanoka_win": 0.015,
+  "nanoka_played": 0.044
+ },
+ "nanoka_elite_upg_False": {
+  "deaths": 0.0,
+  "len": 7.877,
+  "dmg_taken": 31.503,
+  "nanoka_win": 0.0,
+  "nanoka_played": 0.0
+ },
+ "nanoka_elite_upg_True": {
+  "deaths": 0.001,
+  "len": 7.908,
+  "dmg_taken": 32.922,
+  "nanoka_win": 0.0,
+  "nanoka_played": 0.0
+ }
+}

@@ -1,0 +1,232 @@
+{
+  "character": "HasumiLeia",
+  "assumptions": [
+    "v5模擬：sims/sim_hasumi_leia/sim.py 簡化戰鬥，每原型每卡 20000 場；每回合抽 5、3 能量，貪婪啟發式出牌（即時價值/費用最高者）",
+    "資源規則照程式碼：細劍 Lv1~5 反擊比例 60%~100%，等級依經驗表 [0,2,7,15,30]（一般+1/菁英+2/首領+3）換算整局分布 L1 5%/L2 9%/L3 13%/L4 27%/L5 46%；吸收強化攻擊時 ceil(吸收×比例) 反擊攻擊者，RapierMastery 每層多一次",
+    "鑄矛：箭/掃帚/緞帶零件洗入抽牌堆隨機位置、保留不可打出，三件同在手牌即合成簡易長矛（0 費 50 傷，SpearMastery 75）；終結一擊在打出其他劍技後自動免費打出；二刀流劍技每段追加 ceil(30%)",
+    "牌組原型：起始 10 張（3 打擊 4 防禦 虛空 創傷 突刺）+ 劍技型/格反型/長矛型各 8 張代表卡",
+    "敵人：一般 72%(總血 55~80、1~3 隻)、菁英 20%(140~175)、首領 8%(380~450)，70~75% 回合攻擊、傷害隨回合成長；回合長度 3.5~4.3/5.6~7.5/10.7~17；統計以重要性 1/2/3 加權",
+    "結果：每場細劍反擊傷 劍技型 36/格反型 74/長矛型 30；單張投影湊齊長矛 77~86%；終結一擊自動打出率 91~99%；星爆氣流抽到可打出率約 26%（依二刀流來源折算）",
+    "條件型效果一律以模擬達成率×效果計入；只在長矛牌組有效的卡（便攜製箭台、精通長矛、巴比倫之門）以五~六成牌組有鑄矛來源折算",
+    "多人：本檔重估卡無隊友向效果，value_multi 等於 value；MultiplayerOnly 卡沿用 v2（未列出）"
+  ],
+  "mechanic_values": {
+    "細劍反擊": "每場 30~74 傷；每 5 格檔約 0.9 反擊傷≈+0.15",
+    "鑄矛": "單次投影→長矛湊齊 77~86%，有效長矛傷約 26/次",
+    "簡易長矛": "50 傷 0 費，過殺後有效約 33/支",
+    "終結一擊": "自動打出率 91~99%",
+    "二刀流": "儀禮之劍每場追加 12~27 傷；樹枝單回合 2~6 傷",
+    "魔女化": "單人蕾雅來源少，≈0"
+  },
+  "cards": {
+    "Projection": {
+      "value": 3.0,
+      "value_upgraded": 3.6,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.6,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 單張投影在劍技/格反牌組中 77~86% 場次湊齊零件合成簡易長矛（首支約第 3.5 回合），每次打出換得有效長矛傷害約 26（已含過殺與未湊齊=0）≈4.3，扣後續鑄矛 1 能量 ≈3.0；條件達成率已乘入；升級去消耗，長矛牌組可重複鑄矛 +0.6"
+    },
+    "AdvancedProjection": {
+      "value": 3.0,
+      "value_upgraded": 3.6,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.6,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 同投影但 0 費；湊齊率 72~90%、每次打出有效長矛傷約 25，扣鑄矛 1 能量 ≈3.0（費用另計）；升級去消耗 +0.6"
+    },
+    "FinalAttack": {
+      "value": 3.7,
+      "value_upgraded": 3.7,
+      "value_multi": 3.7,
+      "value_multi_upgraded": 3.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 手中有終結一擊時打出劍技即自動免費打出；劍技/格反牌組自動率 99%/94%、長矛牌組 91%，每次約 12 傷(2.0)；實質省下 2 費約 +1.7（×自動率）；程式碼無 OnUpgrade，升級無效果（需確認）"
+    },
+    "TreeBranch": {
+      "value": 0.7,
+      "value_upgraded": 1.1,
+      "value_multi": 0.7,
+      "value_multi_upgraded": 1.1,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 本回合二刀流（劍技每段追加 30% 無強化傷），每次打出追加傷 劍技型 6.4/格反型 3.4/長矛型 2.3，平均約 4.2 傷≈0.7；能讓星爆氣流可打但觸發僅 0.12 次/場；升級去消耗每輪可再用 +0.4"
+    },
+    "PortableFletchingStation": {
+      "value": 1.0,
+      "value_upgraded": 1.0,
+      "value_multi": 1.0,
+      "value_multi_upgraded": 1.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 合成長矛時每層 50% 多一支；長矛牌組每次打出多 0.87 支長矛，但有效長矛傷僅 +13（過殺/戰鬥已結束）≈2.0；無鑄矛來源的牌組 0，以約五成機率在長矛牌組折算 ≈1.0；升級 0 費（費用另計）"
+    },
+    "SmartSpear": {
+      "value": 0.4,
+      "value_upgraded": 0.5,
+      "value_multi": 0.4,
+      "value_multi_upgraded": 0.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 抽到零件時拉其他零件；長矛牌組每場拉 2.0 張，但首支長矛僅提前 0.08 回合、有效長矛傷 +1.9/場（零件本身保留，最終總會湊齊），價值很低；非長矛牌組 0；升級拉 2 張 +0.1"
+    },
+    "SpearMastery": {
+      "value": 1.1,
+      "value_upgraded": 1.1,
+      "value_multi": 1.1,
+      "value_multi_upgraded": 1.1,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 簡易長矛 50→75；長矛牌組每次打出有效長矛傷 +14（≈2.3），死亡率 17.5%→14.6%；無長矛來源 0，以約五成折算 ≈1.1；升級 0 費（費用另計）；另強化巴比倫之門"
+    },
+    "GateOfBabylon": {
+      "value": 4.0,
+      "value_upgraded": 5.5,
+      "value_multi": 4.0,
+      "value_multi_upgraded": 5.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 只在消耗堆已有簡易長矛時可打出（保留等待）；長矛牌組每場打出 0.48 次、每次重打 1.8 支≈73 有效傷，每抽到期望約 39 傷≈6.5，死亡率 17%→7%；非長矛牌組無法打出(0)，以約六成折算 ≈4.0；升級 2 費且長矛升級為 75 傷 ≈+1.5"
+    },
+    "UnlimitedSpearWork": {
+      "value": 7.0,
+      "value_upgraded": 9.0,
+      "value_multi": 7.0,
+      "value_multi_upgraded": 9.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 每回合手牌 +1 虛無鑄矛（需 1 費），每場合成長矛 劍技型 1.6/格反型 2.1/長矛型 2.8 支、有效長矛傷 58/73/94，扣每回合鑄矛約 2.6~4.2 能量；戰鬥長度 5.9→5.5(劍技)、7.5→6.0(格反)；湊齊率與能量成本已乘入，淨約 7.0；升級固有 長矛傷 79/88/102 ≈9.0"
+    },
+    "IAmReborn": {
+      "value": 3.0,
+      "value_upgraded": 3.0,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.0,
+      "confidence": "low",
+      "reasoning": "v5模擬: 貪婪策略極少打出(0.1 次/場)無法可靠量測；解析：棄全部手牌（含保留零件）、下回合傷害×2 與多抽 5，下回合約 3 能量攻擊≈20 傷加倍 +3.3、多抽 +0.8，扣棄掉手牌約 -1.1 ≈3.0；升級 2 費（費用另計）"
+    },
+    "Crowning": {
+      "value": 3.2,
+      "value_upgraded": 3.2,
+      "value_multi": 3.2,
+      "value_multi_upgraded": 3.2,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 本回合全敵 -99 暫時力量；每次打出抵銷原始來襲傷約 20，扣已有格檔約 4 與失去的細劍反擊，淨約 16 血≈3.2；升級 999 與 99 無實質差異"
+    },
+    "Pride": {
+      "value": 6.3,
+      "value_upgraded": 7.5,
+      "value_multi": 6.3,
+      "value_multi_upgraded": 7.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 30 格檔有用約 15(3.0)+細劍反擊約 13 傷(2.2)；王位戴冠入棄牌堆後本場實際打出率 54%×3.2≈1.7；合計約 6.3（過量格檔已折價）；升級 40 格檔 +1.2"
+    },
+    "GazeGuiding": {
+      "value": 2.0,
+      "value_upgraded": 2.3,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.3,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 目標本回合傷害 -50%（魔女化 100 時 -100%；單人蕾雅僅創傷/幽閉恐懼提供少量魔女化）；每次打出實際減傷約 10~12 血≈2.0；永恆；升級保留 +0.3"
+    },
+    "RapierMastery": {
+      "value": 4.2,
+      "value_upgraded": 7.0,
+      "value_multi": 4.2,
+      "value_multi_upgraded": 7.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 細劍反擊多打 1 次；每次打出額外反擊傷 劍技型 27/格反型 40/長矛型 21（細劍等級依整局分布 Lv1 5%~Lv5 46%，平均比例約 90%），死亡率顯著下降；≈4.2；升級多打 2 次 47/61/40 ≈7.0；強烈依賴敵人攻擊頻率"
+    },
+    "SmoothMove": {
+      "value": 3.0,
+      "value_upgraded": 4.8,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 4.8,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 每打出劍技抽 1；每次打出後本場抽 劍技型 8.5/格反型 7.9/長矛型 3.7 張，後段抽牌受能量限制以 0.45/張計 ≈3.0；升級抽 2，抽牌數 17/16/7.6 但邊際遞減 ≈4.8"
+    },
+    "StrongSake": {
+      "value": 4.0,
+      "value_upgraded": 4.0,
+      "value_multi": 4.0,
+      "value_multi_upgraded": 4.0,
+      "confidence": "low",
+      "reasoning": "v5模擬: 每劍技下回合 +1 能量；3 費貪婪極少打出(0.05~0.09 次/場)，打出後每次換得 4.2~6.9 能量，受抽牌限制約七成可用≈4.0；升級 2 費（費用另計）"
+    },
+    "StardustMirage": {
+      "value": 2.8,
+      "value_upgraded": 4.0,
+      "value_multi": 2.8,
+      "value_multi_upgraded": 4.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 頂 5 張每張劍技 2×3 傷；實際打出時（選擇性打出）平均 3.4/2.3/1.8 張劍技（劍技/格反/長矛型），每次 21/16/12 傷，平均≈2.8；附帶洗牌不計；升級 3×3"
+    },
+    "Linear": {
+      "value": 2.2,
+      "value_upgraded": 2.7,
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 8 傷+隨機劍技入手；生成池 11 張（ExtremeDash 不可生成），9% 為無二刀流時不可打的星爆氣流；可連動終結一擊/流暢動作；維持 2.2"
+    },
+    "Comedian": {
+      "value": 2.0,
+      "value_upgraded": 2.15,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.15,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 只計 Token/狀態/詛咒稀有度（零件算，鑄矛 Rare 與簡易長矛 Ancient 不算）；長矛牌組打出時手中平均 0.6 個零件(+1.2 格檔)、其他牌組 0；8 格檔+反擊 ≈2.0"
+    },
+    "CeremonialSword": {
+      "value": 5.4,
+      "value_upgraded": 6.6,
+      "value_multi": 5.4,
+      "value_multi_upgraded": 6.6,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 2 永久力量(2.4)+永久二刀流：每次打出後本場二刀流追加傷 劍技型 27/格反型 21/長矛型 12，平均≈3.0；劍技型死亡率 18%→10.5%；且解鎖星爆氣流；升級 3 力量 +1.2"
+    },
+    "StarburstStream": {
+      "value": 4.4,
+      "value_upgraded": 5.3,
+      "value_multi": 4.4,
+      "value_multi_upgraded": 5.3,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 需二刀流才可打出。有二刀流時每次打出有效傷約 113（16×(3+消耗手牌 1.4~3.5)，過殺已扣）≈18.8，扣消耗手牌約 -1；抽到時可打出率：配儀禮之劍 33~42%、僅樹枝 ~11%、劍類遺物 80%、無來源 0；以 40%儀禮/10%遺物/30%樹枝/20%無 折算≈0.26，未打出死牌 -0.2 ≈4.4；升級額外 30% 一擊 +0.9"
+    },
+    "DefensiveStance": {
+      "value": 1.1,
+      "value_upgraded": 1.1,
+      "value_multi": 1.1,
+      "value_multi_upgraded": 1.1,
+      "confidence": "low",
+      "reasoning": "v5模擬: 本回合之後獲得的格檔翻倍（Shadowmeld）；需手中尚有格檔牌與能量，貪婪下每抽到僅約 12% 打出、每次多 8 格檔≈2.0+反擊；含未用情況折算≈1.1；升級 0 費（費用另計）"
+    },
+    "ShowOff": {
+      "value": 2.2,
+      "value_upgraded": 2.8,
+      "value_multi": 2.2,
+      "value_multi_upgraded": 2.8,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 8 格檔；下一敵方回合完全格擋攻擊得暫時力量，每次打出約 0.74 點、維持到下回合結束≈0.35；格檔+反擊≈1.85；合計 2.2"
+    },
+    "RealisticActing": {
+      "value": 3.6,
+      "value_upgraded": 7.2,
+      "value_multi": 3.6,
+      "value_multi_upgraded": 7.2,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 永久 2 敏捷；劍技型每次打出多反擊約 12 傷、少受約 2.5 血，格反型受傷 16.8→9.6；維持 3.6；升級 4 敏捷"
+    },
+    "Voiding": {
+      "value": 2.25,
+      "value_upgraded": 3.25,
+      "value_multi": 2.25,
+      "value_multi_upgraded": 3.25,
+      "confidence": "high",
+      "reasoning": "v5模擬: 檢查 relative>1.8：8 格檔(1.6)+1 易傷(~0.4)+細劍反擊（每 5 格檔約 0.9 反擊傷≈0.25），次要效果皆已計入，數值合理；升級 11 格檔 2 易傷"
+    },
+    "DefendHasumiLeia": {
+      "value": 1.15,
+      "value_upgraded": 1.8,
+      "value_multi": 1.15,
+      "value_multi_upgraded": 1.8,
+      "confidence": "high",
+      "reasoning": "v5模擬: 每張防禦每次打出多反擊約 0.9 傷(+0.15)，與 v2 一致"
+    }
+  },
+  "source": "mod"
+}

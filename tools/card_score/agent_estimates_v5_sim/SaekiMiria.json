@@ -1,0 +1,192 @@
+{
+  "character": "SaekiMiria",
+  "assumptions": [
+    "單人蒙地卡羅模擬（sim_miria/sim.py），每原型 2000 局完整冒險×39 場（每幕 10 一般+2 菁英+1 首領），重要性權重 1/2/3",
+    "小鑰匙遺物：經驗表 0/2/7/15/30（一般 1、菁英 2、首領 3）；每回合 1 張電影入抽牌堆隨機位置，Lv3 起 50% 卡帶石頭，Lv4 起電影升級，Lv5 每回合 2 張；1% 小紙條（其中 10% 出路）",
+    "單人時起始牌組移除交換與社交（AdjustStartingDeckForRunMode），4 打擊 4 防禦 + 精神碎片 + 心理創傷",
+    "戰鬥長度沿用 turn_model Gamma（4/6.5/10 回合）；敵人數 1~3，依序排程死亡；每敵每回合 65% 攻擊；約 30% 敵人每 2 回合成長力量",
+    "每回合 5 抽、3 能量；回復每回合治療後 -1、中毒每回合 -1、灼燒與厄運不衰減；史萊姆化每次失血 +1 回復",
+    "牌組原型：電影型、厄運/回復型、魔女化型；貪婪出牌（電影優先，其次依優先序）；邊際模擬為換成不可打出空白卡的差值",
+    "結果：每回合打出電影 Lv1~2 約 0.7~2.3、Lv5 約 2.1~3.7 張（依牌組）；魔女化牌組本場達 100 的比例 71%",
+    "換算：6 傷=1 能量、5 點避免失血=1 能量、回血 0.28/0.22 每點；條件型卡以模擬的可用率乘期望值",
+    "多人：value_multi 沿用 v2/v3_ally/v4 規則"
+  ],
+  "mechanic_values": {
+    "電影牌": "0費消耗，抽1+效果，平均約1.25(升級1.95)，入手約1.65",
+    "小鑰匙": "每回合約0.9價值電影入抽牌堆",
+    "魔女化": "每層0.07",
+    "厄運": "每層每回合自傷約-0.1",
+    "回復": "每層約0.12/回合"
+  },
+  "source": "mod",
+  "cards": {
+    "MovieNoise": {
+      "value": 5.5,
+      "value_upgraded": 8.5,
+      "value_multi": 5.5,
+      "value_multi_upgraded": 8.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出後每場觸發：電影專精牌組 17.9 次（每回合打出電影 3.1 張，含卡帶與絕對電影重播）、一般牌組約 1.3~1.6 張/回合×剩約 4.4 回合≈6.5 次；取典型約 6.5 次×5(8) 無力量加成傷≈33(52) 傷，扣隨機目標溢傷；邊際模擬（電影牌組）每場 +84 傷，舊值假設僅 5 次"
+    },
+    "AbsoluteCinema": {
+      "value": 2.6,
+      "value_upgraded": 3.6,
+      "value_multi": 2.6,
+      "value_multi_upgraded": 3.6,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 非消耗，電影牌組每場可打 2.7 次；套用的下一張電影（在抽牌堆隨機位置）於戰鬥內被打出 79%，每次重播 2(3) 次，每次執行（含抽 1）約 1.2~1.6；0.79×2×1.3≈2.1，加電影噪音連動；邊際每場 +48 傷"
+    },
+    "CabinetExpansion": {
+      "value": 4.5,
+      "value_upgraded": 4.5,
+      "value_multi": 4.5,
+      "value_multi_upgraded": 4.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出後本場多打出約 3.7 張電影（每回合 +1 入抽牌堆，打出率約 93%），每張約 1.2；邊際每場 +56 傷（含噪音連動）；升級僅降費"
+    },
+    "MovieViewing": {
+      "value": 2.6,
+      "value_upgraded": 3.7,
+      "value_multi": 2.6,
+      "value_multi_upgraded": 3.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 直接入手 2(3) 張未升級電影（CreateRandomMovieAsync 不升級），0 費必定打出，每張約 1.2~1.3；消耗；邊際每場 +27 傷（含噪音）"
+    },
+    "HeartStopper": {
+      "value": 2.3,
+      "value_upgraded": 3.0,
+      "value_multi": 2.3,
+      "value_multi_upgraded": 3.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 每回合多抽 1，灼燒不衰減：每場自傷約 7.8（升級減半）；電影牌組邊際 +27 傷、多失血 6.5；一般牌組抽牌價值較低，取 2.3/3.0"
+    },
+    "CutterKnife": {
+      "value": 1.5,
+      "value_upgraded": 2.0,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 2.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出時回復層數：電影牌組 2.4、魔女化牌組 10.5、厄運/回復牌組 9.1；一般牌組取約 3 層→9(12) 傷；回復牌組可達 15 傷以上"
+    },
+    "WalkingMisfortune": {
+      "value": 3.8,
+      "value_upgraded": 4.7,
+      "value_multi": 3.8,
+      "value_multi_upgraded": 4.7,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 第 2.5~2.8 回合打出，剩約 4 回合每回合 +1 能量（多數回合能用完，剩餘能量均值 0.05~0.6）；厄運 2(1) 每回合自傷，每場約 7 血；邊際模擬每場 +45 傷、+7 失血（含厄運餵運氣轉移的連動）"
+    },
+    "Makeup": {
+      "value": 2.0,
+      "value_upgraded": 2.4,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 覆甲 7(10) 每回合 -1，剩約 4.4 回合合計約 22(34) 格檔、部分溢擋；厄運 2(3) 每回合自傷約 9(13) 血，但可被運氣轉移×4 轉給敵人（邊際模擬在厄運牌組每場 +35 傷）；一般牌組維持原值"
+    },
+    "LuckTransfer": {
+      "value": 2.5,
+      "value_upgraded": 2.5,
+      "value_multi": 2.5,
+      "value_multi_upgraded": 2.5,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 條件型：自身需有可轉移負面。厄運專精牌組打出時平均自身厄運 2.8、虛弱 1.5、末日 12.3、中毒 1.6，×4 轉移後厄運/中毒傷害每次約 50（剩 4.4 回合）+約 49 末日+6 虛弱，邊際每場 +31 傷；一般牌組抽到時有負面約 50%，未滿足時 0；加權約 2.5；升級僅降費；不移除自身負面"
+    },
+    "Slimification": {
+      "value": 3.4,
+      "value_upgraded": 3.4,
+      "value_multi": 3.4,
+      "value_multi_upgraded": 3.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 每次失血（含中毒/厄運/灼燒自傷）+1 回復：每場約 +7.4 層，邊際回血 +20（約一半溢補）、切割刀 +7 傷；有效回血約 10×0.22+1.2；升級僅降費"
+    },
+    "PepperRamen": {
+      "value": 1.5,
+      "value_upgraded": 3.2,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 3.2,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 回復每回合治療後 -1：回復 3(6) 總治療 6(約 19，剩 4.4 回合截斷)、中毒 1(3) 自傷 1(6)，淨 +5(+13) 血×0.25；回復層數另加切割刀傷害約 +0.2；v3補血 0.25/點保留，舊值低估回復累加"
+    },
+    "TraumaSharing": {
+      "value": 1.1,
+      "value_upgraded": 1.1,
+      "value_multi": 1.1,
+      "value_multi_upgraded": 1.1,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 條件型：需 ≥2 名敵人且目標有負面；抽到時可用約 30%（每張每場僅打出 0.25 次），可用時平均 1.2 名其他敵人、目標 1.5 種負面，邊際每次約 22 傷≈3.7；未能使用計 0；升級僅降費"
+    },
+    "HitTweet": {
+      "value": 5.0,
+      "value_upgraded": 5.0,
+      "value_multi": 5.0,
+      "value_multi_upgraded": 5.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出前魔女化平均 34（魔女化牌組）→補 66 層，傷害倍率 +0.6 以上，剩約 4.5 回合；之後強化攻擊額外 +48 傷/次；同時達 100 魔女化取得記憶共享（入牌組）；一般牌組魔女化更低，增益更大；升級僅降費"
+    },
+    "Friendly": {
+      "value": 2.0,
+      "value_upgraded": 2.4,
+      "value_multi": 2.0,
+      "value_multi_upgraded": 2.4,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 打出後每場減少約 8 點受傷（邊際 -4.9 失血/場）；固有升級多約 1 回合"
+    },
+    "Peacemaker": {
+      "value": 0.5,
+      "value_upgraded": 0.75,
+      "value_multi": 0.75,
+      "value_multi_upgraded": 1.1,
+      "confidence": "low",
+      "reasoning": "v5模擬: 假設約 30% 敵人每 2 回合 +2~3 力量，打出後每場僅阻止約 1.7 點等效傷害；邊際模擬無顯著效益；多人×1.5（v4）"
+    },
+    "BalancedNutrition": {
+      "value": 1.5,
+      "value_upgraded": 1.5,
+      "value_multi": 1.5,
+      "value_multi_upgraded": 1.5,
+      "confidence": "low",
+      "reasoning": "v5模擬: 每次打出永久 +5 最大生命（可每場重複，整局累積），戰鬥內中毒 3 自傷 6；邊際模擬每場多失血 9、輸出 -8 傷（占 2 費）；永久最大生命以約 0.4/點計，扣中毒；升級僅降費"
+    },
+    "MindOverload": {
+      "value": 2.3,
+      "value_upgraded": 3.0,
+      "value_multi": 2.3,
+      "value_multi_upgraded": 3.0,
+      "confidence": "low",
+      "reasoning": "v5模擬: 程式碼未檢查魔女化 100（MajokaRequired 僅文字），實際限制是 5 費：魔女化/能量牌組（含行走的不幸、大叔構文、喜劇電影）抽到時可施放約 17%（每場打出 0.24 次、卡在手上 1.33 回合）；施放時剩 4.4 回合、自動打出 10 張他角色能力約 15；0.17×15≈2.5 扣卡手 0.2；升級保留提高可施放率約 1.3 倍"
+    },
+    "MindExpansion": {
+      "value": 2.6,
+      "value_upgraded": 2.6,
+      "value_multi": 2.6,
+      "value_multi_upgraded": 2.6,
+      "confidence": "low",
+      "reasoning": "v5模擬: 每回合 3 選 1 能力牌入手但仍需付費；模擬剩餘能量均值僅 0.05~0.6，生成的能力會排擠原本出牌，每回合淨約 0.6×剩約 4.4 回合；舊值未扣能量占用"
+    },
+    "TheWayOut": {
+      "value": 3.0,
+      "value_upgraded": 3.0,
+      "value_multi": 3.0,
+      "value_multi_upgraded": 3.0,
+      "confidence": "medium",
+      "reasoning": "v5模擬: 只能經小紙條取得：小鑰匙電影 1% 為小紙條，其中 10% 生成出路→每張電影 0.1%，每場約 0.7% 出現；無魔女化條件，入手後只要在手牌/牌堆，回合結束即勝利（不需打出）。出現時平均剩約 2.5 回合，只省下剩餘失血約 13 血（×0.22）與回合；不是整場戰鬥價值"
+    },
+    "LawKnower": {
+      "value": 4.0,
+      "value_upgraded": 4.0,
+      "value_multi": 4.0,
+      "value_multi_upgraded": 4.0,
+      "confidence": "low",
+      "reasoning": "v5模擬: Deprecated；自身能力層數增加時獲等量格檔（魔女化、回復、覆甲、史萊姆回復都算）：厄運牌組每場約 49 格檔，大量溢擋，有效約 20；升級僅降費"
+    },
+    "MemorySharing": {
+      "value": 2.5,
+      "value_upgraded": 3.2,
+      "value_multi": 5.0,
+      "value_multi_upgraded": 6.4,
+      "confidence": "low",
+      "reasoning": "v5模擬: 魔女化牌組本場達 100 機率 71%（第 3.3 回合），電影牌組 21%、厄運牌組 5%；取得後固有，每回合一張自身牌組副本（虛無、消耗、仍需付費），每回合約 0.4；維持 v2"
+    }
+  }
+}
