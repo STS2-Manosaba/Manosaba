@@ -174,11 +174,11 @@
     "LaboursOfHiro": {
       "value": 1.2,
       "value_upgraded": 1.6,
-      "value_multi": 2.2,
-      "value_multi_upgraded": 2.6,
+      "value_multi": 2.6,
+      "value_multi_upgraded": 3.0,
       "confidence": "low",
-      "reasoning": "v5模擬: 每次打出後本場攻擊牌累積約 47 魔女化，達 100 層僅 5% 場次；中段魔女化約 +15% 攻擊倍率 × 剩餘約 40 傷 → 約 1.0；100 層後殺人衝動會打艾瑪(艾瑪型每場 0.54 傷)；升級固有提前約 1 回合",
-      "reasoning_multi": "多人：LaboursOfHiroPower 對任何人打出的攻擊牌都給希羅魔女化（未檢查出牌者），約 2.5 倍來源易達 100，同時殺人衝動會打隊友與艾瑪"
+      "reasoning": "v5模擬: 每次打出後本場攻擊牌累積約 47 魔女化，達 100 層僅 5% 場次；中段魔女化約 +15% 攻擊倍率 × 剩餘約 40 傷 → 約 1.0；100 層後殺人衝動會打艾瑪(艾瑪型每場 0.54 傷)；其他友軍死亡 +3 力量，但艾瑪死亡時其 IkiteyoHirochanPower 阻止移出戰鬥(wasRemovalPrevented)，不觸發，單人幾乎無此收益；升級固有提前約 1 回合",
+      "reasoning_multi": "多人：任何玩家打出的攻擊牌都給希羅魔女化（未檢查出牌者），約 2.5 倍來源較易達 100，但殺人衝動也會打隊友；隊友死亡每場約 0.3 次、多在戰鬥後段，+3 力量約剩 5 段攻擊 → 期望約 +0.4"
     },
     "LifeSentence": {
       "value": 3.2,

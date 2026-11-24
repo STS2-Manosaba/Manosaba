@@ -367,6 +367,8 @@ class Combat:
         self.energy = self.maxe
         self.draw_n(5 + self.p["HeartStopper"])
         st.add("hand_movies_turn", sum(1 for c in self.hand if c.name in ("Movie", "Cassette", "SmallPaper")), imp)
+        if any(c.name == "MindOverload" for c in self.hand):
+            st.add("MO_inhand_turn", 1, imp); st.add("MO_inhand_maj100", 1 if self.majoka >= 100 else 0, imp)
         e0 = self.energy
         played_movies = 0
         # 出牌
@@ -387,6 +389,8 @@ class Combat:
             for c in self.hand:
                 cost = 0 if c.free else CARDS[c.name][0]
                 if cost > self.energy:
+                    continue
+                if c.name == "MindOverload" and self.majoka < 100:
                     continue
                 if c.name == "HitTweet" and self.majoka >= 100:
                     continue

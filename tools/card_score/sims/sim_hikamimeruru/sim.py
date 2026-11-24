@@ -2,8 +2,8 @@
 - 魔女的大鍋（遺物）：每場火力重設 20；使用／丟棄非催化劑藥水時有 火力% 機率得催化劑（需有空欄）。
 - 大魔女的照片（升級遺物）：藥水欄 3 + {Lv1:1, Lv2:2, Lv3:4, Lv4:6, Lv5:10}；exp 一般 1／菁英 2／首領 3，
   門檻 0/2/7/15/30。藥水跨戰鬥保留（模擬以 16 場連續戰鬥為一輪）。
-- 合成：同種輕效×2→基礎；基礎(止痛/格檔/肌肉/能量/虛弱/甲蟲)+催化劑→強效。合成的丟棄目前會觸發大鍋與藥水投擲
-  （PotionCraftService 未呼叫 BeginCraftDiscardScope）。
+- 合成：同種輕效×2→基礎；基礎(止痛/格檔/肌肉/能量/虛弱/甲蟲)+催化劑→強效。合成的丟棄不會觸發大鍋與藥水投擲
+  （BeginCraftDiscardScope 抑制）。
 - 藥水投擲：丟棄藥水時每層對隨機敵 5 傷；丟石頭改為滾石 AoE 5，每次 +5。
 - 原初藥水力量：所有藥水變成藥水形石頭（使用 15 傷）。
 - 梅露露醫務室：未格擋傷害累積層數，回合開始 (層-1)/2 →<5 輕止痛(2)、5~11 止痛(5)、≥12 強止痛(12)。
@@ -151,8 +151,10 @@ class Combat:
             self.st["cat_procs"] += 1
             self.procure("Cat", src)
 
-    def remove(self, p, discard):
+    def remove(self, p, discard, craft=False):
         self.pots.remove(p)
+        if craft:
+            self.st["craft_discard"] += 1; return  # BeginCraftDiscardScope：不觸發投擲與大鍋
         self.st["pot_discard" if discard else "pot_use"] += 1
         if discard and self.throw:
             for _ in range(self.throw):
@@ -182,7 +184,7 @@ class Combat:
                 ps = [p for p in self.pots if p.k == a]
                 if len(ps) >= 2:
                     x, y = ps[0], ps[1]; src = self.merge(x, y)
-                    self.remove(x, True); self.remove(y, True)
+                    self.remove(x, True, True); self.remove(y, True, True)
                     self.st["craft_pair"] += 1; self.procure(b, src); changed = True; break
             if changed: continue
             cat = self.find("Cat")
@@ -191,7 +193,7 @@ class Combat:
                     p = self.find(b)
                     if p:
                         src = self.merge(p, cat)
-                        self.remove(p, True); self.remove(cat, True)
+                        self.remove(p, True, True); self.remove(cat, True, True)
                         self.st["craft_cat"] += 1; self.procure(g, src); changed = True; break
 
     def merge(self, x, y):

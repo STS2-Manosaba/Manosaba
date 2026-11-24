@@ -107,6 +107,8 @@ class Combat:
             if e.vuln > 0:
                 d *= 1.5
         d = max(0.0, d); real = min(e.hp, d); e.hp -= d; self.dmg_dealt += real
+        if powered and FAN_COUNTS_HANNA_POWER and self.hannapow and not (self.floating > 0 or self.sky > 0):
+            self.st["hanna_fan"] += real / 3
         if tag:
             self.st[tag] += real
         return real
