@@ -16,7 +16,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 
 namespace manosaba.Characters.SakurabaEma.Cards;
 
-public abstract class TestimonyCardBase : PathCustomCardModel
+public abstract class TestimonyCardBase : EncyclopediaCard
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Testimony];
     public override bool CanBeGeneratedInCombat => false;

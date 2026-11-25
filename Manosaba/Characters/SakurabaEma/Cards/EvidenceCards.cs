@@ -16,7 +16,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace manosaba.Characters.SakurabaEma.Cards;
 
-public abstract class EvidenceCard : PathCustomCardModel
+public abstract class EvidenceCard : EncyclopediaCard
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Evidence];
     public override bool CanBeGeneratedInCombat => false;

@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 namespace manosaba.Characters.SakurabaEma.Cards;
 
 [Pool(typeof(SakurabaEmaCardPool))]
-public sealed class HirosPen : PathCustomCardModel
+public sealed class HirosPen : EncyclopediaCard
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [ManosabaKeywords.Evidence, CardKeyword.Eternal, CardKeyword.Innate];
 

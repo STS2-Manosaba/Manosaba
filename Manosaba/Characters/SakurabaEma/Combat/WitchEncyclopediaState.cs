@@ -39,6 +39,8 @@ public sealed class WitchEncyclopediaState
     public static bool ShouldStore(CardModel card) =>
         card.Keywords.Contains(ManosabaKeywords.Evidence) || card.Keywords.Contains(ManosabaKeywords.Testimony);
 
+    internal static int PlayLimit(CardModel card) => card.IsUpgraded ? 5 : 3;
+
     internal static int RemainingUses(CardModel card)
     {
         var owner = card.Owner.Creature;
@@ -47,7 +49,7 @@ public sealed class WitchEncyclopediaState
             .Where(entry => entry.Actor == owner && entry.CardPlay.Card.Id == card.Id &&
                 entry.CardPlay.IsFirstInSeries && entry.HappenedThisTurn(owner.CombatState))
             .Sum(entry => entry.CardPlay.PlayCount);
-        return Math.Max(0, (card.IsUpgraded ? 5 : 3) - used);
+        return Math.Max(0, PlayLimit(card) - used);
     }
 
     internal static bool ShouldCaptureFromHand(CardModel card) => ShouldStore(card) && card != ImmediatePlayCard.Value;
