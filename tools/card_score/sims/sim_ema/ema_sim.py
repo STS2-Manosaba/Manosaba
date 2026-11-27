@@ -1,4 +1,4 @@
-"""艾瑪（SakurabaEma）簡化戰鬥蒙地卡羅模擬。
+﻿"""艾瑪（SakurabaEma）簡化戰鬥蒙地卡羅模擬。
 
 規則依原始碼（Manosaba/Characters/SakurabaEma）：
 - 腿環 LegRing：等級由經驗（一般1/菁英2/首領3，累積 0/2/7/15/30 → Lv1..5）。
@@ -36,15 +36,18 @@ def schedule():
 SCHED = schedule()
 
 # 證物靜態價值（能量單位；1能≈6傷≈5格擋），單人
+import os
 G_VAL = float(__import__('os').environ.get('G_VAL', '0.30'))  # 每層罪證，後由模擬回填
 EVIDENCE = {
-    "BrokenCrossbow": 0.67, "NoahsButterfly": 0.60, "PrisonBlueprint": 0.55, "FruitBasket": 0.50,
-    "WhiteSprayCan": 0.50, "HairRibbon": 0.50, "CocoStream": 0.23, "Broom": 1.00, "TortureShow": 0.37,
-    "Padlock": 0.80, "ChippedKnife": 0.50, "PunishmentRoomKey": "G1", "ScorchedMarks": 0.75,
-    "BulletMarks": 0.37, "WardenStatue": 0.30, "AlisaDoll": 0.35, "GuardRecording": 0.20,
-    "RedPaint": 0.35, "ElectricChair": 0.50, "ShatteredGlass": 0.75, "MeltedCap": 0.60,
-    "WitchFiles": 1.00, "Note": 0.40, "Safe": 0.02, "LargerDoor": 0.90, "ControlPanel": 1.00, "Vent": 0.50,
+    # 5傷+暫時力量1；4格擋+暫時敏捷1；看守所藍圖=自動打出大掃除(暫時力量4，裁判攻擊不吃力量)
+    "BrokenCrossbow": 1.10, "NoahsButterfly": 1.05, "PrisonBlueprint": float(os.environ.get("BP_VAL", "1.20")), "FruitBasket": 0.50,
+    "WhiteSprayCan": 0.50, "HairRibbon": 0.83, "CocoStream": 0.47, "Broom": 1.00, "TortureShow": 0.77,
+    "Padlock": 0.80, "ChippedKnife": 0.50, "PunishmentRoomKey": "G2", "ScorchedMarks": 0.75,
+    "BulletMarks": 1.27, "WardenStatue": 0.30, "AlisaDoll": 0.70, "GuardRecording": 0.20,
+    "RedPaint": 0.35, "ElectricChair": 0.80, "ShatteredGlass": 0.75, "MeltedCap": 0.60,
+    "WitchFiles": 1.10, "Note": 0.80, "Safe": 0.02, "LargerDoor": 0.90, "ControlPanel": 2.30, "Vent": 0.50,
 }
+PLAY_LIMIT = 3   # 證物/證言每回合限打（升級 5）
 EVID_NAMES = list(EVIDENCE)
 TESTIMONIES = ["Ema", "Hiro", "Anan", "Noah", "Leia", "Miria", "Mago", "Nanoka", "Alisa", "Sherry",
                "Hanna", "Coco", "Meruru", "Warden", "Guard", "GrandWitch"]
@@ -54,13 +57,13 @@ def evid_value(name):
         return 1.0
     if name.startswith("T:"):
         t = name[2:]
-        v = 0.5 + 2 * G_VAL
+        v = 0.5 + 1 * G_VAL
         if t == "Ema": v += 0.6
         if t == "Warden": v -= 0.05
-        if t == "Guard": v += 0.8
+        if t == "Guard": v += 0.3   # 暫時力量 2，僅非裁判攻擊吃到
         return v
     v = EVIDENCE[name]
-    return G_VAL if v == "G1" else v
+    return 2 * G_VAL if v == "G2" else v
 
 # 牌定義：cost, trial, kind, base value（貪婪優先序用）
 CARDS = {
@@ -72,9 +75,10 @@ CARDS = {
     "LaVI": (2, True, 3.0), "JudgmentHour": (1, True, 2.4), "AccUh": (1, True, 1.9), "DArime": (2, True, 3.0),
     "BookBite": (2, False, 2.3), "Strangle": (1, False, 2.5), "LivingPage": (0, False, 0.5),
     "Statement": (0, True, 1.0), "RawTellOwk": (0, False, 10), "Fever": (0, False, 0.4), "MagicKill": (1, False, 2.0),
+    "HouseKeep": (1, False, 0.6), "Die": (0, False, 3.0), "ESJD": (1, False, 1.6), "Psychic": (3, False, 5.0),
 }
-EXHAUST = {"Deliberation", "RedTape", "JudgmentHour", "DArime", "LivingPage", "Statement"}
-POWERS = {"RawCard", "Endless", "LaVI", "RawTellOwk", "MagicKill"}
+EXHAUST = {"Deliberation", "RedTape", "JudgmentHour", "DArime", "LivingPage", "Statement", "Die", "ESJD"}
+POWERS = {"RawCard", "Endless", "LaVI", "RawTellOwk", "MagicKill", "Psychic"}
 TRIAL_ATTACKS = {"Rebuttal", "Sophistry", "EvidenceStrike", "Exhaustive", "Hammer", "AccUh", "DArime"}
 JH_POOL = ["Rebuttal", "Sophistry", "EvidenceStrike", "Question", "SusInv", "Exhaustive", "Hammer", "DeafEar",
            "Deliberation", "RedTape", "AccUh", "Present"]
@@ -100,6 +104,11 @@ class Fight:
         if stacks >= 5:
             d = ["TraumaTrue" if c == "Trauma" else c for c in d] + ["MagicKill"]
         self.draw = d[:]; rng.shuffle(self.draw)
+        if "HirosPen" in self.draw:   # 固有
+            self.draw.remove("HirosPen"); self.draw.append("HirosPen")
+        self.uses = {}; self.tracers = []; self.tstr = 0; self.tstr_bp = 0
+        self.stacks = stacks; self.special = False; self.transformed = False; self.end_turn = False
+        self.has_magic = stacks >= 5
         self.disc = []; self.hand = []
         self.ency = []; self.majmult = (50 + 10 * stacks) / 100
         self.search_req = max(2, 10 - 2 * max(1, lv)); self.search = 0; self.search_done = False
@@ -107,12 +116,14 @@ class Fight:
         self.lawdevil = False; self.endless = 0; self.vuln = 0; self.weak = 0; self.burn = False; self.bleed = False
         self.ev = []   # 事件紀錄
         self.st = dict(start_turn=None, p10=None, p20=None, presents=0, present_val=0.0, present_empty=0,
-                       arg10=None, guilt_hits=0.0, trial_hits=0, maj100=None)
+                       arg10=None, guilt_hits=0.0, trial_hits=0, maj100=None,
+                       hk_dmg=0.0, hk_plays=0, bp_presents=0, special_turn=None, special_val=0.0, magic_drawn=0,
+                       psychic_play=None, special_turns=0)
         self.turn = 0
         self.pending_raw = lv >= 5
         if lv >= 5: self.search_done = True
         self.dmg = 0.0; self.hp = None; self.strength = 0; self.vigor = 0
-        self.whits = 0.0; self.ggain = []
+        self.done_tracers = []
 
     def drawn(self, n):
         for _ in range(n):
@@ -121,7 +132,7 @@ class Fight:
                 self.draw = self.disc; self.disc = []; self.r.shuffle(self.draw)
             c = self.draw.pop()
             if c == "HirosPen":
-                self.ency.append("HirosPen")    # 證物進手即收入圖鑑
+                self.add_ency("HirosPen")    # 證物進手即收入圖鑑
             elif len(self.hand) < 10:
                 self.hand.append(c)
             else:
@@ -141,15 +152,20 @@ class Fight:
                 self.search_done = True; self.add_hand("RawTellOwk")
 
     def gain_guilt(self, g):
-        self.guilt += g; self.ggain.append((g, self.whits))
+        self.guilt += g; self.tracers.append([float(g), 0.0, g])   # [剩餘權重, 已貢獻段數, 原始層數]
+
+    def add_ency(self, name):
+        if name not in self.ency: self.ency.append(name)   # 同名合併
 
     def gen_evidence(self):
-        self.ency.append(self.r.choice(EVID_NAMES))
+        self.add_ency(self.r.choice(EVID_NAMES))
 
     def present(self):
-        if not self.ency:
+        avail = [x for x in self.ency if self.uses.get(x, 0) < PLAY_LIMIT]
+        if not avail:
             self.st["present_empty"] += 1; self.st["presents"] += 1; return 0.0
-        best = max(self.ency, key=evid_value)
+        best = max(avail, key=evid_value)
+        self.uses[best] = self.uses.get(best, 0) + 1
         v = evid_value(best)
         self.st["presents"] += 1; self.st["present_val"] += v
         self.resolve_evidence(best)
@@ -159,14 +175,19 @@ class Fight:
     def resolve_evidence(self, e):
         if e == "HirosPen": self.drawn(1); self.vigor += 3
         elif e.startswith("T:"): self.testimony_effect(e[2:])
-        elif e == "WitchFiles": self.drawn(2)
+        elif e == "WitchFiles": self.drawn(2); self.arg += 1
         elif e in ("WhiteSprayCan", "MeltedCap", "ShatteredGlass"): self.drawn(1)
-        elif e == "PunishmentRoomKey": self.gain_guilt(1)
+        elif e == "PunishmentRoomKey": self.gain_guilt(2)
         elif e == "Padlock": self.strength += 1
-        elif e == "BrokenCrossbow": self.hit(4)
-        elif e == "HairRibbon": self.hit(3)
-        elif e == "ElectricChair": self.hit(1); self.hit(1); self.hit(1)
-        elif e == "ControlPanel": self.dmg += 8
+        elif e == "BrokenCrossbow": self.hit(5); self.tstr += 1
+        elif e == "HairRibbon": self.hit(5)
+        elif e == "BulletMarks": self.hit(4)
+        elif e == "CocoStream": self.hit(2)
+        elif e == "ElectricChair":
+            for _ in range(5): self.hit(1)
+        elif e == "ControlPanel": self.dmg += 13
+        elif e == "PrisonBlueprint":   # 自動打出持家：暫時力量4；持家不消耗，進棄牌堆
+            self.tstr += 4; self.tstr_bp += 4; self.disc.append("HouseKeep"); self.st["bp_presents"] += 1
         elif e == "TortureShow": self.sus += 1
         elif e in ("RedPaint",): self.vuln = max(self.vuln, 1)
         elif e == "WardenStatue": self.weak = max(self.weak, 1)
@@ -174,28 +195,40 @@ class Fight:
         elif e == "ChippedKnife": self.bleed = True
 
     def testimony_effect(self, t):
-        self.drawn(1); self.gain_guilt(2)
+        self.drawn(1); self.gain_guilt(1)
         if t == "Ema": self.add_hand("Statement")
+        if t == "Guard": self.tstr += 2
         if t == "Warden": self.sus += 1
 
     BASE_DMG = {"Rebuttal": 9, "Sophistry": 9, "EvidenceStrike": 6, "Exhaustive": 20, "Hammer": 13, "AccUh": 5, "DArime": 13}
 
     def hit(self, d, powered=True):
-        if powered: d += self.strength + self.vigor; self.vigor = 0
-        self.dmg += d * (1.5 if self.vuln > 0 else 1.0)
+        m = 1.5 if self.vuln > 0 else 1.0
+        if powered:
+            d += self.strength + self.tstr + self.vigor; self.vigor = 0
+            self.st["hk_dmg"] += self.tstr_bp * m
+        self.dmg += d * m
 
     def trial_attack(self, name, hits=1):
         bonus = (self.guilt * (2 if self.lv >= 5 else 1)) if self.active else 0
         base = self.BASE_DMG.get(name, 6)
         for i in range(hits):
             d = base + bonus
-            if name == "Rebuttal" and self.prog >= 10: d += 2 * len(self.ency)
+            if name == "Rebuttal" and self.prog >= 10: d += 1 * len(self.ency)
             if name == "Exhaustive" and self.prog >= 10: d += self.prog
             self.hit(d, powered=self.lawdevil)
-        if self.active: self.whits += hits * (2 if self.lv >= 5 else 1)
+        mult = (2 if self.lv >= 5 else 1) if self.active else 0
+        for tr in self.tracers:
+            tr[1] += tr[0] * hits * mult
+            tr[0] /= 2   # 打出裁判攻擊後罪證減半（1 層時移除）
+        self.tracers = [tr for tr in self.tracers if tr[0] >= 0.25 or self._log_tracer(tr)]
+        self.guilt = 0 if self.guilt <= 1 else self.guilt // 2
         self.st["trial_hits"] += hits; self.st["guilt_hits"] += bonus * hits
         self.ev.append((name, self.turn, self.active, self.prog, len(self.ency), self.guilt * (2 if self.lv >= 5 else 1) if self.active else 0,
                         self.sus, (self.vuln > 0) + (self.weak > 0) + self.burn + self.bleed + (self.maj > 0 and False), hits))
+
+    def _log_tracer(self, tr):
+        self.done_tracers.append(tr); return False
 
     def play(self, c):
         cost, trial, _ = CARDS.get(c, (0, False, 0))
@@ -223,7 +256,7 @@ class Fight:
         elif c == "Exhaustive": self.trial_attack(c)
         elif c == "Question":
             self.drawn(1); t = self.r.choice(TESTIMONIES)
-            self.testimony_effect(t); self.after_play(False); self.ency.append("T:" + t)
+            self.add_ency("T:" + t)   # 生成證言進手牌即收入圖鑑，不自動打出
         elif c == "Statement": self.drawn(1); self.arg += 1
         elif c == "SusInv": self.drawn(1); self.sus += 1
         elif c == "DeafEar": self.weak = max(self.weak, 2)
@@ -250,6 +283,21 @@ class Fight:
         elif c == "BookBite": self.vuln = max(self.vuln, 3); self.add_hand("LivingPage")
         elif c == "LivingPage": self.vuln = max(self.vuln, 1)
         elif c == "Fever": self.maj += max(1, int(20 * self.majmult))
+        elif c == "HouseKeep": self.tstr += 4; self.tstr_bp += 4; self.st["hk_plays"] += 1
+        elif c == "Die":
+            up = self.stacks >= 10
+            self.dmg += (5 if up else 3) * 1.5
+            self.st["special_val"] += 3.1 if up else 2.2   # 全體5/3傷＋末日13/10層×0.15
+        elif c == "ESJD":
+            self.drawn(1); self.st["special_val"] += (2.3 if self.stacks >= 10 else 1.6) - 1.0
+        elif c == "Psychic":
+            self.maj = max(self.maj, 100); self.end_turn = True
+            if self.st["psychic_play"] is None: self.st["psychic_play"] = self.turn
+        elif c == "MagicKill":
+            if self.maj >= 100:
+                self.special = True; self.st["special_turn"] = self.turn; self.end_turn = True
+                if self.stacks >= 13: self.transformed = True
+                if self.stacks >= 6: self.st["special_val"] += 1.5   # 衍生 CUrOi/ShiDes
         if self.maj >= 100 and self.st["maj100"] is None: self.st["maj100"] = self.turn
         if c in EXHAUST or c in POWERS: pass
         else: self.disc.append(c)
@@ -258,6 +306,9 @@ class Fight:
     def playable(self, c, e):
         cost = CARDS[c][0] if c in CARDS else 0
         if c == "DArime" and self.prog < 20: return False
+        if c == "MagicKill" and self.maj < 100 and self.turn < 6: return False
+        if c == "Psychic" and (self.maj >= 100 or not self.has_magic or self.special): return False
+        if c == "HouseKeep" and not any(x in ("Strike", "Strangle") for x in self.hand): return False
         return cost <= e
 
     def prio(self, c):
@@ -277,9 +328,18 @@ class Fight:
             if self.arg >= 10 and self.st["arg10"] is None: self.st["arg10"] = t
             if self.lawdevil: self.gain_guilt(1); self.arg += 1
             for _ in range(self.endless): self.gen_evidence()
+            self.uses = {}
             if t == 1 and self.pending_raw: self.add_hand("RawTellOwk")
+            self.end_turn = False
+            if self.special:
+                self.st["special_turns"] += 1
+                if self.transformed:   # 全牌轉為去死吧+：每回合約5張 0 費
+                    self.st["special_val"] += 5 * 3.1; self.dmg += 5 * 7.5
+                    continue
+                self.add_hand("Die"); self.add_hand("Die"); self.add_hand("ESJD")
             self.drawn(5)
-            while True:
+            if "MagicKill" in self.hand: self.st["magic_drawn"] += 1
+            while not self.end_turn:
                 opts = [c for c in self.hand if self.playable(c, e)]
                 if not opts: break
                 c = max(opts, key=self.prio)
@@ -287,8 +347,10 @@ class Fight:
                 self.play(c)
             self.disc += self.hand; self.hand = []
             self.vuln = max(0, self.vuln - 1); self.weak = max(0, self.weak - 1)
-        self.st["g_marg_num"] = sum(g * (self.whits - w) for g, w in self.ggain)
-        self.st["g_marg_den"] = sum(g for g, _ in self.ggain)
+            self.tstr = 0; self.uses = {}
+        allt = self.done_tracers + self.tracers
+        self.st["g_marg_num"] = sum(tr[1] for tr in allt)
+        self.st["g_marg_den"] = sum(tr[2] for tr in allt)
         self.st["guilt_end"] = self.guilt
         return self
 
